@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第4章 STAGE3 3次方程式を解く（カルダノの公式とラグランジュの方法） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="3次方程式の解の公式（カルダノの公式）を中学生向けに解説。1の3乗根 ω を使った u＝α＋ωβ＋ω²γ の3乗が、解の入れ替えで2つの値しかとらないことから、2次方程式と ∛ で解を求める。x³−15x−4＝0 と √−121 の例も。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/galois/stage3">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第4章 STAGE3 3次方程式を解く（カルダノの公式とラグランジュの方法） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="u＝α＋ωβ＋ω²γ の3乗は、解をどう入れ替えても2つの値しかとらない。この発見から、3次方程式の解の公式を自分の手で導く。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/galois/stage3">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE3 3次方程式を解く",
+      "description": "3次方程式の解の公式（カルダノの公式）を中学生向けに解説。1の3乗根 ω を使った u＝α＋ωβ＋ω²γ の3乗が、解の入れ替えで2つの値しかとらないことから、2次方程式と ∛ で解を求める。x³−15x−4＝0 と √−121 の例も。",
+      "url": "https://algebra.habatakijuku.com/galois/stage3",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 3,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第4章 方程式の対称性",
+        "url": "https://algebra.habatakijuku.com/galois/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第4章 方程式の対称性",
+          "item": "https://algebra.habatakijuku.com/galois/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE3 3次方程式を解く",
+          "item": "https://algebra.habatakijuku.com/galois/stage3"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+#u3-perm .btn{min-width:4.4em}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第4章 方程式の対称性 ／ STAGE 3 ― 3次方程式を解く ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第4章 STAGE 3</span><h1 class="chapter-title">3次方程式を解く</h1>
+        <div class="chapter-sub">ω と ∛ で残りの対称性を崩す</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">u＝α＋ωβ＋ω²γ の3乗が、解の6通りの入れ替えで u³ と v³ の2つの値しかとらないことを確かめ、そこからカルダノの公式を導こう。x³−15x−4＝0 の解 4 を公式から出せれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">前のステージで、3次方程式では √ を1回とっても、式を変えない入れ替えが6つから3つに減るだけだと分かった。残りの3つを1つに減らすには ∛ が要る。今日はその道具を作って、<strong>3次方程式の解の公式</strong>を自分の手で導く。1770年にラグランジュが見つけたこの見方は、のちに5次方程式でなぜ同じことができないのかを考える出発点になったんだ。まず準備をしよう。x³＋ax²＋bx＋c＝0 は、x＝y−a/3 とおくと、y² の項が消える。確かめてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(y−a/3)³＝y³−ay²＋(a²/3)y−a³/27 です。ax² のほうは a(y−a/3)²＝ay²−(2a²/3)y＋a³/9 なので、y² の係数は −a＋a＝0。たしかに消えます。だから、y³＋py＋q＝0 の形だけ考えればいいんですね。解と係数の関係は α＋β＋γ＝0、αβ＋βγ＋γα＝p、αβγ＝−q です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。次に、<strong>1 の3乗根</strong>を用意する。3乗すると 1 になる複素数のうち、1 でないものを ω（オメガ）と書く。どんな数か、複素数の掛け算から考えてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble"><a href="https://complex-number.habatakijuku.com/" target="_blank" rel="noopener" style="color:var(--gold-dark);text-decoration:underline">『本当はおもしろい複素数の世界』</a>で、複素数の掛け算は「長さを掛けて、角度を足す」と学びました。3乗して 1 になるには、長さが 1 で、角度を3倍すると 360° の倍数になればいいので、角度は 120° か 240° です。ω＝cos 120°＋i sin 120°＝−1/2＋(√3/2)i として、ω² は角度 240° の −1/2−(√3/2)i。足すと 1＋ω＋ω²＝1−1/2−1/2＋0i＝0 です。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 300 260" style="width:100%;max-width:300px;display:block;margin:0 auto" role="img" aria-label="単位円の上の 1, ω, ω² が正三角形の頂点に並ぶ図">
+          <line x1="20" y1="130" x2="280" y2="130" stroke="#b9b0a3" stroke-width="1.3"/>
+          <line x1="150" y1="14" x2="150" y2="246" stroke="#b9b0a3" stroke-width="1.3"/>
+          <circle cx="150" cy="130" r="100" fill="none" stroke="#9a88d6" stroke-dasharray="5 4"/>
+          <polygon points="250,130 100,43.4 100,216.6" fill="rgba(154,136,214,.12)" stroke="#5b4a9e" stroke-width="1.6"/>
+          <path d="M 175 130 A 25 25 0 0 0 137.5 108.3" fill="none" stroke="#9a6a1c" stroke-width="1.6"/>
+          <text x="166" y="112" font-size="12" fill="#9a6a1c" font-weight="800">120°</text>
+          <circle cx="250" cy="130" r="6" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="100" cy="43.4" r="6" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="100" cy="216.6" r="6" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <text x="256" y="122" font-size="15" font-weight="900" fill="#221d33">1</text>
+          <text x="60" y="38" font-size="15" font-weight="900" fill="#221d33">ω</text>
+          <text x="56" y="232" font-size="15" font-weight="900" fill="#221d33">ω²</text>
+          <text x="276" y="146" font-size="11" fill="#77708c" text-anchor="end">実軸</text>
+          <text x="156" y="24" font-size="11" fill="#77708c">虚軸</text>
+        </svg>
+        <div class="diagram-caption"><strong>1 の3乗根</strong>。1, ω, ω² は単位円（半径 1 の円）の上で、正三角形の頂点に並ぶ。ω を掛けると 120° 回るので、1→ω→ω²→1 と順に移る。3つを足すと 0</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。1＋ω＋ω²＝0 だから、ω は x²＋x＋1＝0 の解で、2次方程式の公式から ω＝(−1＋√−3)/2 と √ だけで書ける。ここからがラグランジュのアイデアだ。3つの解を使って<strong>u＝α＋ωβ＋ω²γ</strong> という式を作る。これに回転 (α β γ)、つまり α を β に、β を γ に、γ を α に付け替える入れ替えをすると、どうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">β＋ωγ＋ω²α になります。u と比べると、α の係数が 1 から ω² に、β の係数が ω から 1 に…。全部の係数に ω² を掛けたものです。ω²u＝ω²α＋ω³β＋ω⁴γ＝ω²α＋β＋ωγ なので、u は <strong>ω²u</strong> に変わります。u そのものは変わりますが、3乗すると (ω²u)³＝ω⁶u³＝u³ で、<strong>u³ は変わりません</strong>。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。では互換 (β γ) をすると？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">α＋ωγ＋ω²β です。これは u とは別の式なので、<strong>v＝α＋ω²β＋ωγ</strong> と名前をつけます。v に (α β γ) をしても、同じ計算で v は ωv に変わるだけなので、v³ は変わりません。だから6つの入れ替えで、u³ は u³ か v³ の<strong>2つの値</strong>にしか行きません。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step"><span class="nw">u＝α＋ωβ＋ω²γ</span>、<span class="nw">v＝α＋ω²β＋ωγ</span></span>
+        <span class="step">(α β γ) をすると：<span class="nw">u → β＋ωγ＋ω²α＝ω²u</span>（ω³＝1 を使う）、だから <span class="nw">u³ → ω⁶u³＝u³</span></span>
+        <span class="step">(β γ) をすると：<span class="nw">u → α＋ωγ＋ω²β＝v</span>、だから <span class="nw">u³ → v³</span></span>
+        <span class="step">6つの入れ替えで、u³ は u³ と v³ の2つの値の間を行き来するだけ</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">6つの入れ替えで u と u³ がどう動くかを、実際の方程式で確かめてみよう。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="sim-controls" id="u3-eq">
+          <span class="grp-label">方程式</span>
+          <button class="btn" data-k="0" aria-pressed="true">x³−15x−4</button>
+          <button class="btn" data-k="1">x³−7x＋6</button>
+          <button class="btn" data-k="2">x³−2</button>
+        </div>
+        <div class="cv-wrap wide"><canvas id="cv-u3" aria-label="左に3つの解と u＝α＋ωβ＋ω²γ の作り方、右に u³ の値を描いた図。入れ替えボタンで解の名前が入れ替わる"></canvas></div>
+        <div class="sim-controls" id="u3-perm"><span class="grp-label">入れ替え</span></div>
+        <div class="readout" id="u3-ro"></div>
+        <div class="diagram-caption"><strong>u³ は2つの値の間を行き来する</strong>。左は3つの解（灰色の点）と、α, ωβ, ω²γ の3本の矢印をつないで u（赤の点）を作る様子。右は u³ の値（赤）と、もう1つの値 v³（青の丸）。入れ替えを選ぶと α, β, γ の名前が付け替わる。u は 120° ずつ回ったり別の点に移ったりするが、u³ は2つの点のどちらかにしか行かない</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">偶置換のときは u³ のまま、互換のときは v³ に移りますね。u³ と v³ の組は、入れ替えでは組ごと変わらないということは、u³＋v³ と u³v³ は対称式ですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。だから係数で書ける。実際に計算しよう。まず uv を展開してごらん。α＋β＋γ＝0 を使うといい。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">uv＝(α＋ωβ＋ω²γ)(α＋ω²β＋ωγ) を展開すると、α²＋β²＋γ² の係数は 1, ω³, ω³ でどれも 1 です。αβ の係数は ω²＋ω、βγ も ω²＋ω、γα も ω＋ω² で、どれも −1 です。だから uv＝α²＋β²＋γ²−(αβ＋βγ＋γα)。α²＋β²＋γ²＝(α＋β＋γ)²−2(αβ＋βγ＋γα)＝−2p なので、<strong>uv＝−2p−p＝−3p</strong> です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。次は u³＋v³ だ。u＋v を先に計算すると楽になるよ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">u＋v＝2α＋(ω＋ω²)β＋(ω²＋ω)γ＝2α−β−γ です。β＋γ＝−α なので u＋v＝<strong>3α</strong>。u³＋v³＝(u＋v)³−3uv(u＋v) は前のステージの式です。これに入れると、27α³−3×(−3p)×3α＝27(α³＋pα)。α は x³＋px＋q＝0 の解なので α³＋pα＝−q で、<strong>u³＋v³＝−27q</strong> です。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step"><span class="nw">uv＝α²＋β²＋γ²−(αβ＋βγ＋γα)</span>（ω³＝1、ω＋ω²＝−1 を使って展開する）</span>
+        <span class="step"><span class="nw">＝(α＋β＋γ)²−3(αβ＋βγ＋γα)＝−3p</span></span>
+        <span class="step"><span class="nw">u＋v＝2α−(β＋γ)＝3α</span>（β＋γ＝−α）</span>
+        <span class="step"><span class="nw">u³＋v³＝(u＋v)³−3uv(u＋v)＝27α³＋27pα＝−27q</span>（α³＋pα＝−q）</span>
+        <span class="step">だから u³ と v³ は、2次方程式 <span class="nw">t²＋27qt−27p³＝0</span> の2つの解（和が −27q、積が (−3p)³）</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">u³ と v³ は、和と積が分かっている2つの数だ。もう解けるね。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">t²＋27qt−27p³＝0 を解の公式で解くと、t＝(−27q±√(729q²＋108p³))/2＝27(−q/2±√(q²/4＋p³/27)) です。u³ がこれなので、u＝3∛(−q/2＋√(q²/4＋p³/27))、v＝3∛(−q/2−√(q²/4＋p³/27))。最後に α＝(u＋v)/3 なので、α＝∛(−q/2＋√(q²/4＋p³/27))＋∛(−q/2−√(q²/4＋p³/27)) です。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step"><strong>カルダノの公式</strong>：x³＋px＋q＝0 の解の1つは</span>
+        <span class="step"><span class="nw">α＝∛(−q/2＋√(q²/4＋p³/27))</span><span class="nw">＋∛(−q/2−√(q²/4＋p³/27))</span></span>
+        <span class="step">残りの2つは、u＋v＝3α と同じように <span class="nw">ω²u＋ωv＝3β</span>、<span class="nw">ωu＋ω²v＝3γ</span> から求まる</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">でも、∛ には3つの値があります。(ω×(何か))³ も同じ数になるので、∛(−q/2＋√…) は3つのうちどれをとればいいんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いい質問だね。u のとり方は3つあるが、u を ωu に変えるのは、さっき見た通り α, β, γ の名前を回転させることにあたる。だから、どれを u に選んでも、3つの解が名前を変えて出てくるだけなんだ。ただし v は自由に選べない。uv＝−3p をみたすように、u に合わせて決める。では、ボンベリが1572年に調べた方程式 x³−15x−4＝0 に公式を使ってごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">p＝−15, q＝−4 です。q²/4＋p³/27＝4−125＝−121 なので、√−121＝11i が出てきます。α＝∛(2＋11i)＋∛(2−11i)。でも、x＝4 を入れると 64−60−4＝0 なので、4 は実数の解です。公式からは複素数が出てきて、どうやって 4 になるんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">ボンベリは、2＋11i が「きれいな数の3乗」になっていないかを考えた。(2＋i)³ を計算してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(2＋i)³＝8＋3×4×i＋3×2×i²＋i³＝8＋12i−6−i＝2＋11i です。同じように (2−i)³＝2−11i。(2＋i)(2−i)＝5 で、uv/9＝−p/3＝5 とも合っています。だから α＝(2＋i)＋(2−i)＝<strong>4</strong>。i が打ち消し合って、実数の解が出ました。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">x³−15x−4＝0：p＝−15、q＝−4、<span class="nw">q²/4＋p³/27＝4−125＝−121</span></span>
+        <span class="step"><span class="nw">α＝∛(2＋√−121)＋∛(2−√−121)＝∛(2＋11i)＋∛(2−11i)</span></span>
+        <span class="step"><span class="nw">(2＋i)³＝8＋12i−6−i＝2＋11i</span>（i²＝−1、i³＝−i）</span>
+        <span class="step"><span class="nw">α＝(2＋i)＋(2−i)＝4</span></span>
+        <span class="step"><span class="nw">β＝ω²(2＋i)＋ω(2−i)＝2(ω＋ω²)＋i(ω²−ω)＝−2＋√3</span>、<span class="nw">γ＝−2−√3</span>（ω²−ω＝−√3 i）</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。3つの解はどれも実数なのに、公式は途中で負の数の √ を通る。この事実が、複素数が「計算の道具」として認められるきっかけになったんだ。さて、今日の解き方を入れ替えの数で振り返ろう。はじめ、係数から分かるのは対称式だけで、式を変えない入れ替えは6つあった。√(q²/4＋p³/27) を使えるようにすると何が分かって、それを変えない入れ替えはいくつかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">u³＝27(−q/2＋√(q²/4＋p³/27)) が分かります。u³ を変えないのは、u³ のままにする偶置換の3つです。そのあと ∛ をとって u が分かると、u を変えない入れ替えは、ω² 倍や ω 倍にする回転が使えなくなるので、e だけです。6→3→1 です。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 340 312" style="width:100%;max-width:440px;display:block;margin:0 auto" role="img" aria-label="3次方程式の解法で、式を変えない入れ替えが6つ、3つ、1つと減っていく図">
+          <defs><marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c8433f"/></marker></defs>
+          <g text-anchor="middle" font-weight="800" fill="#221d33">
+            <rect x="10" y="6" width="320" height="62" rx="10" fill="#efecf8" stroke="#9a88d6"/>
+            <text x="170" y="30" font-size="12.5" fill="#44377a" font-weight="900">6つ（係数だけ分かる）</text>
+            <text x="170" y="54" font-size="11.5">e, (α β γ), (α γ β), (α β), (β γ), (α γ)</text>
+            <rect x="10" y="114" width="320" height="62" rx="10" fill="#f4f1fb" stroke="#9a88d6"/>
+            <text x="170" y="138" font-size="12.5" fill="#44377a" font-weight="900">3つ（u³, v³ が分かる）</text>
+            <text x="170" y="162" font-size="11.5">e, (α β γ), (α γ β)</text>
+            <rect x="10" y="222" width="320" height="62" rx="10" fill="#fdfbf6" stroke="#9a88d6"/>
+            <text x="170" y="246" font-size="12.5" fill="#44377a" font-weight="900">1つ（u, v が分かる）</text>
+            <text x="170" y="270" font-size="11.5">e</text>
+          </g>
+          <line x1="60" y1="70" x2="60" y2="110" stroke="#c8433f" stroke-width="2.4" marker-end="url(#ar3)"/>
+          <line x1="60" y1="178" x2="60" y2="218" stroke="#c8433f" stroke-width="2.4" marker-end="url(#ar3)"/>
+          <text x="72" y="95" font-size="12" fill="#c8433f" font-weight="900">√ をとる：2つの組を1つに絞る</text>
+          <text x="72" y="203" font-size="12" fill="#c8433f" font-weight="900">∛ をとる：3つの組を1つに絞る</text>
+          <text x="170" y="304" font-size="11.5" text-anchor="middle" fill="#a63f6f" font-weight="800">u と v から α＝(u＋v)/3, β, γ がすべて求まる</text>
+        </svg>
+        <div class="diagram-caption"><strong>3次方程式の解き方と、入れ替えの数</strong>。√ をとると、u³ を変えない偶置換の3つが残る。∛ をとると u が分かり、u を ω 倍する回転も使えなくなって、何もしない e だけが残る。√ は2つの組を1つに、∛ は3つの組を1つに絞る</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">√ で「2つのうち1つ」、∛ で「3つのうち1つ」に絞っているんですね。4次方程式も、同じように √ と ∛ で少しずつ絞っていくんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。4次方程式の24通りの入れ替えも、√ と ∛ で段々に絞っていける。フェラーリの解法は、その途中で3次方程式を1つ解くんだ。では5次方程式の120通りの入れ替えはどうか。それを調べるには、まず「方程式にとって意味のある入れ替え」をきちんと定める必要がある。たとえば x³−15x−4 では、解の 4 は有理数だから、4 を別の解と入れ替えるのは不自然だね。次のステージでは、方程式ごとに決まる入れ替えの群、<strong>ガロア群</strong>を定義しよう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">1 の3乗根 ω：長さ 1・角度 120° の複素数。<span class="nw">ω³＝1</span>、<span class="nw">1＋ω＋ω²＝0</span>、<span class="nw">ω＝(−1＋√−3)/2</span></span>
+        <span class="step"><span class="nw">u＝α＋ωβ＋ω²γ</span> は回転で ω 倍・ω² 倍になり、互換で <span class="nw">v＝α＋ω²β＋ωγ</span> に移る。u³ は u³ と v³ の2つの値しかとらない</span>
+        <span class="step"><span class="nw">uv＝−3p</span>、<span class="nw">u＋v＝3α</span>、<span class="nw">u³＋v³＝−27q</span>。u³, v³ は <span class="nw">t²＋27qt−27p³＝0</span> の解</span>
+        <span class="step">カルダノの公式：<span class="nw">α＝∛(−q/2＋√(q²/4＋p³/27))</span><span class="nw">＋∛(−q/2−√(q²/4＋p³/27))</span></span>
+        <span class="step">x³−15x−4＝0：<span class="nw">√−121＝11i</span>、<span class="nw">(2＋i)³＝2＋11i</span> から <span class="nw">α＝(2＋i)＋(2−i)＝4</span>（ボンベリ、1572年）</span>
+        <span class="step">式を変えない入れ替えは、√ で 6→3、∛ で 3→1 と減る</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. u＝α＋ωβ＋ω²γ に回転 (α β γ) をすると、u はどうなる？</p>
+        <div class="choice-list">
+          <button class="choice-btn">v になり、u³ は v³ に変わる</button>
+          <button class="choice-btn">ω²u になり、u³ は変わらない</button>
+          <button class="choice-btn">変わらない</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ β＋ωγ＋ω²α＝ω²(α＋ωβ＋ω²γ)（ω³＝1）。u は ω² 倍になるが、(ω²u)³＝ω⁶u³＝u³。v に移るのは互換をしたとき。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. x³＋px＋q＝0 で、u³ と v³ を2つの解とする2次方程式は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">t²−3pt＋q＝0</button>
+          <button class="choice-btn">t²＋pt＋q＝0</button>
+          <button class="choice-btn">t²＋27qt−27p³＝0</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ u³＋v³＝−27q、u³v³＝(uv)³＝(−3p)³＝−27p³。和と積が分かれば、t²−(和)t＋(積)＝0 の2つの解になる。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. カルダノの公式を x³−15x−4＝0 に使うと、途中で何が起きる？</p>
+        <div class="choice-list">
+          <button class="choice-btn">√−121＝11i が出てくるが、∛(2＋11i)＋∛(2−11i)＝(2＋i)＋(2−i)＝4 と実数の解が得られる</button>
+          <button class="choice-btn">√ の中が正になり、そのまま 4 が出る</button>
+          <button class="choice-btn">公式が使えず、解は求まらない</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ q²/4＋p³/27＝4−125＝−121。(2＋i)³＝2＋11i なので、i が打ち消し合って 4 になる。ボンベリが1572年に示した。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("galois", 3);</script>
+<script>
+/* u³ は2つの値の間を行き来する */
+(function(){
+  var W3=[-0.5,Math.sqrt(3)/2], W32=[-0.5,-Math.sqrt(3)/2], one=[1,0];
+  function m(a,b){return [a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]];}
+  function ad(a,b){return [a[0]+b[0],a[1]+b[1]];}
+  var cb=Math.cbrt(2), r3=Math.sqrt(3);
+  var EQ=[
+    {name:'x³−15x−4',roots:[[4,0],[-2+r3,0],[-2-r3,0]],span:14,span3:720},
+    {name:'x³−7x＋6',roots:[[1,0],[2,0],[-3,0]],span:12,span3:260},
+    {name:'x³−2',roots:[[cb,0],m([cb,0],W3),m([cb,0],W32)],span:9,span3:130}
+  ];
+  var PERM=[{n:'e',p:[0,1,2]},{n:'(α β γ)',p:[1,2,0]},{n:'(α γ β)',p:[2,0,1]},{n:'(α β)',p:[1,0,2]},{n:'(β γ)',p:[0,2,1]},{n:'(α γ)',p:[2,1,0]}];
+  var eq=0, pi=0, ro=document.getElementById('u3-ro'), pbox=document.getElementById('u3-perm');
+  PERM.forEach(function(q,i){var b=document.createElement('button');b.className='btn';b.textContent=q.n;b.setAttribute('aria-pressed',i===0?'true':'false');
+    b.addEventListener('click',function(){pi=i;pbox.querySelectorAll('.btn').forEach(function(x,j){x.setAttribute('aria-pressed',j===i?'true':'false');});st.redraw();});pbox.appendChild(b);});
+  document.querySelectorAll('#u3-eq .btn').forEach(function(b){b.addEventListener('click',function(){eq=+b.dataset.k;
+    document.querySelectorAll('#u3-eq .btn').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});st.redraw();});});
+  function cs(z){var a=Math.round(z[0]*100)/100, b=Math.round(Math.abs(z[1])*100)/100;var s=String(a).replace('-','−');return b===0?s:s+(z[1]<0?'−':'＋')+b+'i';}
+  function stacked(w){return w<480;}
+  var st=FL.canvas('cv-u3',function(w){return stacked(w)?1.5:0.5;},draw);
+  function panel(ctx,x0,y0,w,h,span,cx,cy){var s=Math.min(w,h)/span;return {s:s,X:function(x){return x0+w/2+(x-cx)*s;},Y:function(y){return y0+h/2-(y-cy)*s;}};}
+  function axes(ctx,v,x0,y0,w,h){ctx.save();ctx.beginPath();ctx.rect(x0,y0,w,h);ctx.clip();
+    FL.line(ctx,x0,v.Y(0),x0+w,v.Y(0),FL.C.axis,1.2);FL.line(ctx,v.X(0),y0,v.X(0),y0+h,FL.C.axis,1.2);ctx.restore();}
+  function arrow(ctx,a,b,col){FL.line(ctx,a[0],a[1],b[0],b[1],col,2.4);var ang=Math.atan2(b[1]-a[1],b[0]-a[0]),L=9;
+    ctx.beginPath();ctx.moveTo(b[0],b[1]);ctx.lineTo(b[0]-L*Math.cos(ang-0.4),b[1]-L*Math.sin(ang-0.4));ctx.lineTo(b[0]-L*Math.cos(ang+0.4),b[1]-L*Math.sin(ang+0.4));ctx.closePath();ctx.fillStyle=col;ctx.fill();}
+  function draw(st){
+    var ctx=st.ctx,E=EQ[eq],p=PERM[pi].p;ctx.clearRect(0,0,st.W,st.H);ctx.fillStyle=FL.C.paper;ctx.fillRect(0,0,st.W,st.H);
+    var sk=stacked(st.W), pw=sk?st.W:st.W/2-6, ph=sk?st.H/2-6:st.H;
+    var x1=0,y1=0,x2=sk?0:st.W/2+6,y2=sk?st.H/2+6:0;
+    ctx.strokeStyle=FL.C.grid;ctx.strokeRect(x1+0.5,y1+0.5,pw-1,ph-1);ctx.strokeRect(x2+0.5,y2+0.5,pw-1,ph-1);
+    /* 名前の付け替え：α の位置に入る値は roots[p[0]] */
+    var a=E.roots[p[0]],b=E.roots[p[1]],c=E.roots[p[2]];
+    var t1=m(W3,b), t2=m(W32,c), u=ad(ad(a,t1),t2);
+    var v0=ad(ad(E.roots[0],m(W3,E.roots[1])),m(W32,E.roots[2])), w0=ad(ad(E.roots[0],m(W32,E.roots[1])),m(W3,E.roots[2]));
+    var U3=m(u,m(u,u)), A3=m(v0,m(v0,v0)), B3=m(w0,m(w0,w0));
+    var L=panel(ctx,x1,y1,pw,ph,E.span,0,0);axes(ctx,L,x1,y1,pw,ph);
+    FL.text(ctx,'u の作り方',x1+8,y1+18,{size:12,color:FL.C.themeDark});
+    E.roots.forEach(function(r){FL.dot(ctx,L.X(r[0]),L.Y(r[1]),5,'#b9b0a3');});
+    var P0=[L.X(0),L.Y(0)],P1=[L.X(a[0]),L.Y(a[1])],P2=[L.X(a[0]+t1[0]),L.Y(a[1]+t1[1])],P3=[L.X(u[0]),L.Y(u[1])];
+    ctx.save();ctx.beginPath();ctx.rect(x1,y1,pw,ph);ctx.clip();
+    arrow(ctx,P0,P1,FL.C.gold);arrow(ctx,P1,P2,FL.C.blue);arrow(ctx,P2,P3,FL.C.theme);
+    FL.dot(ctx,P3[0],P3[1],7,FL.C.red,'#fff');
+    FL.text(ctx,'u',P3[0]+9,P3[1]-8,{size:15,color:FL.C.red,halo:true});
+    ctx.restore();
+    var lg=[['α',FL.C.gold],['ωβ',FL.C.blue],['ω²γ',FL.C.theme]];
+    lg.forEach(function(q,i){FL.text(ctx,'━ '+q[0],x1+8+i*52,y1+ph-10,{size:12,color:q[1],halo:true});});
+    var R=panel(ctx,x2,y2,pw,ph,E.span3,0,0);axes(ctx,R,x2,y2,pw,ph);
+    FL.text(ctx,'u³ の値',x2+8,y2+18,{size:12,color:FL.C.themeDark});
+    ctx.save();ctx.beginPath();ctx.rect(x2,y2,pw,ph);ctx.clip();
+    var isA=Math.hypot(U3[0]-A3[0],U3[1]-A3[1])<1e-6*Math.max(1,Math.hypot(A3[0],A3[1]));
+    var other=isA?B3:A3;
+    ctx.strokeStyle=FL.C.blue;ctx.lineWidth=2;ctx.beginPath();ctx.arc(R.X(other[0]),R.Y(other[1]),7,0,Math.PI*2);ctx.stroke();
+    FL.dot(ctx,R.X(U3[0]),R.Y(U3[1]),7,FL.C.red,'#fff');
+    FL.text(ctx,'u³',R.X(U3[0])+10,R.Y(U3[1])-8,{size:14,color:FL.C.red,halo:true});
+    FL.text(ctx,'もう1つの値',R.X(other[0])+10,R.Y(other[1])+(other[1]>U3[1]?-10:18),{size:11,color:FL.C.blue,halo:true});
+    ctx.restore();
+    ro.innerHTML='<span>(α, β, γ)＝('+cs(a)+', '+cs(b)+', '+cs(c)+')</span><span>u＝<b>'+cs(u)+'</b></span><span>u³＝<b>'+cs(U3)+'</b></span>';
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第2章 STAGE2 単数と既約元（ノルム・単数・既約元とは） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="単数と既約元を中学生向けに解説。掛けて1になる数（単数）と、これ以上分けられない数（既約元）を、数の大きさを整数で測るノルムで見分ける。素数が2つの平方数の和になることと、ガウス整数で分けられることが同じだと証明する。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/rings/stage2">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第2章 STAGE2 単数と既約元（ノルム・単数・既約元とは） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="掛けて 1 になる数と、これ以上分けられない数。ノルムというものさしで、素数が平方数の和になる謎を「分けられるか」の問題に言いかえる。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/rings/stage2">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE2 単数と既約元",
+      "description": "単数と既約元を中学生向けに解説。掛けて1になる数（単数）と、これ以上分けられない数（既約元）を、数の大きさを整数で測るノルムで見分ける。素数が2つの平方数の和になることと、ガウス整数で分けられることが同じだと証明する。",
+      "url": "https://algebra.habatakijuku.com/rings/stage2",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 2,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第2章 素因数分解の世界",
+        "url": "https://algebra.habatakijuku.com/rings/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第2章 素因数分解の世界",
+          "item": "https://algebra.habatakijuku.com/rings/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE2 単数と既約元",
+          "item": "https://algebra.habatakijuku.com/rings/stage2"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第2章 素因数分解の世界 ／ STAGE 2 ― 単数と既約元 ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 8</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第2章 STAGE 2</span><h1 class="chapter-title">単数と既約元</h1>
+        <div class="chapter-sub">ノルムで数の大きさを測る</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">ノルム N(a＋bi)＝a²＋b² が掛け算を掛け算に移すことを式で確かめ、ガウス整数の単数が 1, −1, i, −i の4つだけであること、ノルムが素数なら既約元であることを説明しよう。素数 p が2つの平方数の和で書けることと、ガウス整数の世界で既約元でないことが同じだと示せれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">前のステージで、13＝2²＋3²＝(3＋2i)(3−2i) のように、2つの平方数の和は、ガウス整数の世界での掛け算への分解になると分かった。逆向き、つまり「ガウス整数の世界で分けられる素数は、2つの平方数の和で書ける」も言えれば、1つ目の謎は「どの素数がガウス整数の世界で分けられるか」という問題に言いかえられる。今日はそのために、広い世界で「分けられる」「分けられない」を正確に決めよう。まず整数で。6＝(−1)×(−6) は、6 を分けたことになるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">なりません。−1 を掛けて符号を変えただけです。(−1)×(−1)＝1 なので、−1 で割っても整数の世界から出ません。6＝(−1)×(−6) は 6＝1×6 と同じくらい、何も分けていません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。言葉をいくつか決めよう。環の数 z と w について、<strong>z＝w×c となる c が同じ世界にあるとき、「w は z を割り切る」</strong>という。そして、<strong>掛けて 1 になる相手が同じ世界にいる数</strong>を<strong>単数（たんすう）</strong>と呼ぶ。整数の単数は 1 と −1 だけだ。単数 u は 1 を割り切るから、どんな数 z も z＝u×(u の相手×z) と割り切ってしまう。だから単数を掛けるだけの分け方は、分けたうちに数えないことにするんだ。ガウス整数の単数を探してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">1 と −1 のほかに、i×(−i)＝−i²＝1 なので i と −i も単数です。でも、たとえば 2＋i に何かを掛けて 1 にできないかは、試すだけでは分かりません。ガウス整数は無限にあるので、全部は試せません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そこで、数の「大きさ」を整数で測るものさしを作る。ガウス整数 a＋bi は、複素数の平面で横に a、縦に b 進んだ点だったね。原点からの長さはどうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">三平方の定理で √(a²＋b²) です。2＋i なら √5 で、√ が残ってしまいます。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">だから、長さそのものでなく<strong>長さの2乗</strong>を使う。<strong>N(a＋bi)＝a²＋b²</strong> と決めて、これを a＋bi の<strong>ノルム</strong>と呼ぶ。a, b が整数なら、ノルムは 0 以上の整数だ。0 になるのは a＝b＝0 のときだけだね。このものさしのいちばん大事な性質は、掛け算との相性なんだ。2つのガウス整数 z, w の積のノルムは、どうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble"><a href="https://complex-number.habatakijuku.com/" target="_blank" rel="noopener" style="color:var(--gold-dark);text-decoration:underline">『本当はおもしろい複素数の世界』</a>で、複素数の掛け算は「長さどうしを掛けて、角度どうしを足す」と学びました。zw の長さは z の長さ×w の長さなので、2乗しても掛け算のままです。<strong>N(zw)＝N(z)×N(w)</strong> です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。ノルムは整数の式だから、複素数を使わずに、式の展開だけで確かめることもできる。z＝a＋bi, w＝c＋di として、前のステージで計算した zw＝(ac−bd)＋(ad＋bc)i のノルムを展開してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(ac−bd)²＋(ad＋bc)²＝a²c²−2abcd＋b²d²＋a²d²＋2abcd＋b²c²。−2abcd と ＋2abcd が消えて、a²c²＋a²d²＋b²c²＋b²d²＝a²(c²＋d²)＋b²(c²＋d²)＝(a²＋b²)(c²＋d²)。本当に N(z)×N(w) になりました。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">ノルム：<span class="nw">N(a＋bi)＝a²＋b²</span>（原点からの長さの2乗。0 以上の整数）</span>
+        <span class="step"><span class="nw">N((a＋bi)(c＋di))＝N((ac−bd)＋(ad＋bc)i)</span></span>
+        <span class="step"><span class="nw">＝(ac−bd)²＋(ad＋bc)²</span></span>
+        <span class="step"><span class="nw">＝a²c²−2abcd＋b²d²＋a²d²＋2abcd＋b²c²</span></span>
+        <span class="step"><span class="nw">＝a²(c²＋d²)＋b²(c²＋d²)＝(a²＋b²)(c²＋d²)</span>（±2abcd が打ち消し合う）</span>
+        <span class="step">→ <strong><span class="nw">N(zw)＝N(z)×N(w)</span></strong></span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbitThink.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">この式は、「2つの平方数の和」どうしを掛けると、また「2つの平方数の和」になる、とも読めます。5＝1²＋2² と 13＝2²＋3² なら、(1＋2i)(2＋3i)＝2＋3i＋4i＋6i²＝−4＋7i なので、65＝5×13＝4²＋7²。確かに 16＋49＝65 です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。ノルムの掛け算の性質は、そのまま平方数の和の性質でもあるんだ。では、このものさしで単数を調べよう。u が単数で、uv＝1 だとすると？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">両辺のノルムを取ると N(u)×N(v)＝N(1)＝1。ノルムは 0 以上の整数なので、N(u)＝N(v)＝1 しかありません。a²＋b²＝1 になるのは、a² と b² の片方が 1 で片方が 0 のときだけなので、(a, b)＝(1, 0), (−1, 0), (0, 1), (0, −1)。<strong>ガウス整数の単数は 1, −1, i, −i の4つだけ</strong>です。2＋i はノルムが 5 なので単数ではありません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。逆に、ノルムが 1 なら単数だ。(a＋bi)(a−bi)＝a²−(bi)²＝a²＋b² だから、a²＋b²＝1 なら a−bi が掛けて 1 になる相手になる。つまり「単数」と「ノルムが 1」は同じことなんだ。単数を掛けることには、平面の上での意味もある。i を掛けると何が起きるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">i は長さ 1、角度 90° の数なので、i を掛けると長さは変わらずに 90° 回ります。−1 を掛けると 180°、−i を掛けると 270° 回ります。単数を掛けても、原点からの距離は変わらず、向きが変わるだけです。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 280" role="img" aria-label="2＋i に単数 1, i, −1, −i を掛けた4つの数。原点のまわりに 90° ずつ回った位置にあり、どれもノルム 5 の円の上に乗る">
+          <circle cx="48" cy="242" r="2.2" fill="#cfc6ea"/><circle cx="48" cy="208" r="2.2" fill="#cfc6ea"/><circle cx="48" cy="174" r="2.2" fill="#cfc6ea"/><circle cx="48" cy="140" r="2.2" fill="#cfc6ea"/><circle cx="48" cy="106" r="2.2" fill="#cfc6ea"/><circle cx="48" cy="72" r="2.2" fill="#cfc6ea"/><circle cx="48" cy="38" r="2.2" fill="#cfc6ea"/><circle cx="82" cy="242" r="2.2" fill="#cfc6ea"/><circle cx="82" cy="208" r="2.2" fill="#cfc6ea"/><circle cx="82" cy="174" r="2.2" fill="#cfc6ea"/><circle cx="82" cy="140" r="2.2" fill="#cfc6ea"/><circle cx="82" cy="106" r="2.2" fill="#cfc6ea"/><circle cx="82" cy="72" r="2.2" fill="#cfc6ea"/><circle cx="82" cy="38" r="2.2" fill="#cfc6ea"/><circle cx="116" cy="242" r="2.2" fill="#cfc6ea"/><circle cx="116" cy="208" r="2.2" fill="#cfc6ea"/><circle cx="116" cy="174" r="2.2" fill="#cfc6ea"/><circle cx="116" cy="140" r="2.2" fill="#cfc6ea"/><circle cx="116" cy="106" r="2.2" fill="#cfc6ea"/><circle cx="116" cy="72" r="2.2" fill="#cfc6ea"/><circle cx="116" cy="38" r="2.2" fill="#cfc6ea"/><circle cx="150" cy="242" r="2.2" fill="#cfc6ea"/><circle cx="150" cy="208" r="2.2" fill="#cfc6ea"/><circle cx="150" cy="174" r="2.2" fill="#cfc6ea"/><circle cx="150" cy="140" r="2.2" fill="#cfc6ea"/><circle cx="150" cy="106" r="2.2" fill="#cfc6ea"/><circle cx="150" cy="72" r="2.2" fill="#cfc6ea"/><circle cx="150" cy="38" r="2.2" fill="#cfc6ea"/><circle cx="184" cy="242" r="2.2" fill="#cfc6ea"/><circle cx="184" cy="208" r="2.2" fill="#cfc6ea"/><circle cx="184" cy="174" r="2.2" fill="#cfc6ea"/><circle cx="184" cy="140" r="2.2" fill="#cfc6ea"/><circle cx="184" cy="106" r="2.2" fill="#cfc6ea"/><circle cx="184" cy="72" r="2.2" fill="#cfc6ea"/><circle cx="184" cy="38" r="2.2" fill="#cfc6ea"/><circle cx="218" cy="242" r="2.2" fill="#cfc6ea"/><circle cx="218" cy="208" r="2.2" fill="#cfc6ea"/><circle cx="218" cy="174" r="2.2" fill="#cfc6ea"/><circle cx="218" cy="140" r="2.2" fill="#cfc6ea"/><circle cx="218" cy="106" r="2.2" fill="#cfc6ea"/><circle cx="218" cy="72" r="2.2" fill="#cfc6ea"/><circle cx="218" cy="38" r="2.2" fill="#cfc6ea"/><circle cx="252" cy="242" r="2.2" fill="#cfc6ea"/><circle cx="252" cy="208" r="2.2" fill="#cfc6ea"/><circle cx="252" cy="174" r="2.2" fill="#cfc6ea"/><circle cx="252" cy="140" r="2.2" fill="#cfc6ea"/><circle cx="252" cy="106" r="2.2" fill="#cfc6ea"/><circle cx="252" cy="72" r="2.2" fill="#cfc6ea"/><circle cx="252" cy="38" r="2.2" fill="#cfc6ea"/>
+          <line x1="34.400000000000006" y1="140" x2="265.6" y2="140" stroke="#b9b0a3" stroke-width="1.3"/>
+          <line x1="150" y1="17.599999999999994" x2="150" y2="262.4" stroke="#b9b0a3" stroke-width="1.3"/>
+          <circle cx="150" cy="140" r="76.0" fill="none" stroke="#9a6a1c" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <line x1="150" y1="140" x2="218" y2="106" stroke="#5b4a9e" stroke-width="2.2"/><circle cx="218" cy="106" r="6" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="226" y="100" text-anchor="start" font-size="13" font-weight="900" fill="#5b4a9e">2＋i</text>
+          <line x1="150" y1="140" x2="116" y2="72" stroke="#3f6fb5" stroke-width="2.2"/><circle cx="116" cy="72" r="6" fill="#3f6fb5" stroke="#fff" stroke-width="1.5"/><text x="108" y="64" text-anchor="end" font-size="13" font-weight="900" fill="#3f6fb5">−1＋2i</text>
+          <line x1="150" y1="140" x2="82" y2="174" stroke="#c8433f" stroke-width="2.2"/><circle cx="82" cy="174" r="6" fill="#c8433f" stroke="#fff" stroke-width="1.5"/><text x="74" y="190" text-anchor="end" font-size="13" font-weight="900" fill="#c8433f">−2−i</text>
+          <line x1="150" y1="140" x2="184" y2="208" stroke="#9a6a1c" stroke-width="2.2"/><circle cx="184" cy="208" r="6" fill="#9a6a1c" stroke="#fff" stroke-width="1.5"/><text x="192" y="224" text-anchor="start" font-size="13" font-weight="900" fill="#9a6a1c">1−2i</text>
+          <text x="300" y="44" font-size="13" font-weight="900" fill="#221d33">2＋i に単数を掛ける</text>
+          <text x="300" y="74" font-size="13" font-weight="800" fill="#5b4a9e">×1 → 2＋i</text>
+          <text x="300" y="100" font-size="13" font-weight="800" fill="#3f6fb5">×i → −1＋2i</text>
+          <text x="300" y="126" font-size="13" font-weight="800" fill="#c8433f">×(−1) → −2−i</text>
+          <text x="300" y="152" font-size="13" font-weight="800" fill="#9a6a1c">×(−i) → 1−2i</text>
+          <text x="300" y="186" font-size="12" font-weight="800" fill="#77708c">i を掛ける＝90° 回す</text>
+          <text x="300" y="206" font-size="12" font-weight="800" fill="#77708c">どれもノルム 5（点線の円）</text>
+        </svg>
+        <div class="diagram-caption"><strong>単数を掛けることは、回すこと</strong>。2＋i に単数 1, i, −1, −i を掛けると、原点のまわりに 90° ずつ回った4つの点になる。どれもノルムは 5 のまま（点線の円の上）。単数を掛けただけの違いは、分解の部品としては同じものと見なす</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。だから 2＋i と −1＋2i のように、単数を掛けただけ違う2つの数は、分解の部品としては同じものと見なすんだ。では、部品の定義だ。<strong>0 でも単数でもない数 z が、「z＝xy と分けると、x か y のどちらかが必ず単数になる」とき、z を既約元（きやくげん）</strong>と呼ぶ。「単数でない2つの数の積には書けない数」、つまり「これ以上分けられない数」のことだ。整数では 2, 3, 5, … の素数と、それに −1 を掛けた −2, −3, −5, … が既約元だね。0 と単数を除くのは、0 はどんな数を掛けても作れるし、単数は分解の部品として何の役にも立たないからだよ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">ノルムを使えば、既約元かどうかも整数で調べられそうです。z を単数でない2つの数 x, y の積に分けたら、N(z)＝N(x)×N(y) で、N(x) も N(y) も 1 より大きい整数です。だから、N(z) が素数なら、そんな分け方はできません。<strong>ノルムが素数のガウス整数は既約元</strong>、ということですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。2＋i はノルム 5 だから既約元、1＋i はノルム 2 だから既約元だ。さて、整数の世界の素数 2, 3, 5, 7 は、ガウス整数の世界でも既約元かな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">2 のノルムは 2²＝4 です。分けるならノルム 2 の数どうしで、1＋i がそうです。(1＋i)(1−i)＝1−i²＝2 なので、<strong>2 は分けられます</strong>。3 はノルム 9 で、分けるにはノルム 3 の数が要ります。でも a²＋b²＝3 は、a² も b² も 3 以下なので 0 か 1 で、和は 0, 1, 2 にしかなりません。3 は既約元です。5 は (2＋i)(2−i)＝4−i²＝5 で分けられます。7 は a²＋b²＝7 が要りますが、7−0, 7−1, 7−4 がどれも平方数ではないので、既約元です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">よく確かめたね。整数の世界の素数でも、広い世界では分けられることがある。そして、分けられたのは 2 と 5、分けられなかったのは 3 と 7。前のステージの謎とそろっているね。ここで今日の目標の言いかえを完成させよう。素数 p が、ガウス整数の世界で単数でない2つの数の積 p＝zw に分けられたとする。z について何が言えるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">N(z)×N(w)＝N(p)＝p² です。N(z) も N(w) も 1 より大きい整数で、掛けて p² になる組は p×p しかありません。だから N(z)＝p で、z＝a＋bi と書くと a²＋b²＝p。<strong>p は2つの平方数の和で書けます</strong>。逆に p＝a²＋b² なら p＝(a＋bi)(a−bi) で、どちらもノルム p なので単数ではありません。2つは同じことです！</div>
+        </div>
+      </div>
+
+      <div class="note-box"><span class="nb-title">素数と2つの平方数の和</span>整数の素数 p について、次の2つは同じことである。<br>・p は2つの平方数の和 a²＋b² で書ける<br>・p はガウス整数の世界で既約元ではない（単数でない2つの数の積に分けられる）<br>理由：p＝zw なら N(z)N(w)＝p² で N(z)＝N(w)＝p。z＝a＋bi なら a²＋b²＝p。逆は p＝(a＋bi)(a−bi)</div>
+
+      <div class="diagram-box">
+<table class="num-table">
+          <tr><th>素数 p</th><th>4 で割った余り</th><th>ガウス整数での姿</th><th>2つの平方数の和</th></tr>
+          <tr><td>2</td><td>2</td><td class="hit">(1＋i)(1−i)</td><td class="hit">1²＋1²</td></tr>
+          <tr><td>3</td><td>3</td><td class="miss">既約元</td><td class="miss">×</td></tr>
+          <tr><td>5</td><td>1</td><td class="hit">(2＋i)(2−i)</td><td class="hit">1²＋2²</td></tr>
+          <tr><td>7</td><td>3</td><td class="miss">既約元</td><td class="miss">×</td></tr>
+          <tr><td>11</td><td>3</td><td class="miss">既約元</td><td class="miss">×</td></tr>
+          <tr><td>13</td><td>1</td><td class="hit">(3＋2i)(3−2i)</td><td class="hit">2²＋3²</td></tr>
+          <tr><td>17</td><td>1</td><td class="hit">(4＋i)(4−i)</td><td class="hit">1²＋4²</td></tr>
+          <tr><td>19</td><td>3</td><td class="miss">既約元</td><td class="miss">×</td></tr>
+        </table>
+        <div class="diagram-caption"><strong>ガウス整数の世界での小さい素数</strong>。4 で割って 1 余る素数と 2 はガウス整数の世界で2つに分かれ、その分け方から2つの平方数の和が読み取れる。4 で割って 3 余る素数は、ガウス整数の世界でも既約元のまま残る</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">これで1つ目の謎は、「<strong>4 で割って 1 余る素数は、ガウス整数の世界で既約元でない</strong>」を示せばよい、という形になった。最後に、点の並びの上でノルムを見ておこう。ノルムが k の数は、原点からの距離が √k の円の上にある。a＋b√−5 の世界では、a＋b√−5 は横 a・縦 √5 b の点だから、ノルムは長さの2乗で N(a＋b√−5)＝a²＋5b² になる。長さの2乗だから、こちらも N(zw)＝N(z)N(w) が成り立つ。展開しても (ac−5bd)²＋5(ad＋bc)²＝(a²＋5b²)(c²＋5d²) と確かめられるよ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">a＋b√−5 の世界の単数は、a²＋5b²＝1 から b＝0, a＝±1 なので、1 と −1 の2つだけです。それに a²＋5b² は、b が 0 でなければ 5 以上なので、ノルム 2 や 3 の数はありません。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-norm2" aria-label="選んだ世界の数を複素数の平面の点として並べ、ノルムが k の数（原点から距離 √k の円の上の点）を赤で示す図"></canvas></div>
+        <div class="sim-controls">
+          <label>世界 <select id="sel-n2"><option value="1">a＋bi（ガウス整数）</option><option value="5">a＋b√−5</option></select></label>
+          <label>ノルム k <input type="range" id="in-k2" min="1" max="30" value="5"><output id="out-k2">5</output></label>
+        </div>
+        <div class="readout" id="ro-n2"></div>
+        <div class="diagram-caption"><strong>ノルムの円</strong>。選んだ世界の数を点として並べ、原点からの距離が √k の円（金の点線）を描いた。円の上の点（赤）が、ノルムがちょうど k の数。k＝1 の円の上の点が単数で、ガウス整数では4つ、a＋b√−5 では2つ。ガウス整数で k＝2, 5, 13 にすると 2, 5, 13 を分ける数が見つかり、k＝3, 7 の円の上には点がない。a＋b√−5 では k＝2, 3 の円の上に点がない</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。STAGE6 では、このことが a＋b√−5 の世界の謎を解く手がかりになる。今日分かったのは、既約元の見分け方だ。でも、既約元が分かっただけでは、素因数分解が「ただ1通り」かどうかはまだ分からない。次のステージでは、「ただ1通り」が正確には何を言っているのかを調べよう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">単数：掛けて 1 になる相手が同じ世界にいる数。単数を掛けるだけの分け方は、分けたうちに数えない</span>
+        <span class="step">ノルム＝原点からの長さの2乗。<span class="nw">N(a＋bi)＝a²＋b²</span>、<span class="nw">N(a＋b√−5)＝a²＋5b²</span>。展開して <span class="nw">N(zw)＝N(z)N(w)</span> を確かめた</span>
+        <span class="step">単数＝ノルム 1 の数。ガウス整数の単数は 1, −1, i, −i（掛けると 90° ずつ回る）、a＋b√−5 の単数は ±1</span>
+        <span class="step">既約元：0 でも単数でもなく、単数でない2つの数の積に書けない数。ノルムが素数なら既約元</span>
+        <span class="step">ガウス整数では <span class="nw">2＝(1＋i)(1−i)</span>、<span class="nw">5＝(2＋i)(2−i)</span>、3 と 7 は既約元</span>
+        <span class="step">素数 p が2つの平方数の和で書ける ⇔ p がガウス整数の世界で既約元でない（p＝zw なら N(z)＝p）</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. ガウス整数 a＋bi の単数（掛けて 1 になる相手がいる数）は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">1 と −1 の2つ</button>
+          <button class="choice-btn">1, −1, i, −i の4つ</button>
+          <button class="choice-btn">ノルムが素数の数すべて</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ uv＝1 ならノルムを取って N(u)N(v)＝1 なので N(u)＝1。a²＋b²＝1 になるのは (±1, 0), (0, ±1) だけ。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. N((a＋bi)(c＋di))＝(a²＋b²)(c²＋d²) を展開で確かめるとき、途中で打ち消し合う項は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">−2abcd と ＋2abcd</button>
+          <button class="choice-btn">a²c² と b²d²</button>
+          <button class="choice-btn">a²d² と b²c²</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 積は (ac−bd)＋(ad＋bc)i。(ac−bd)² から −2abcd、(ad＋bc)² から ＋2abcd が出て打ち消し合い、残りが (a²＋b²)(c²＋d²) にまとまる。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. 素数 p がガウス整数の世界で単数でない2つの数の積 p＝zw に分けられたとき、言えることは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">z は整数である</button>
+          <button class="choice-btn">p は 4 で割って 3 余る</button>
+          <button class="choice-btn">N(z)＝p なので、p は2つの平方数の和で書ける</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ N(z)N(w)＝N(p)＝p² で、どちらも 1 より大きいので N(z)＝N(w)＝p。z＝a＋bi なら a²＋b²＝p。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("rings", 2);</script>
+<script>
+/* ノルムの円 */
+(function(){
+  var sel=document.getElementById('sel-n2'), inK=document.getElementById('in-k2'), outK=document.getElementById('out-k2'), ro=document.getElementById('ro-n2');
+  function name(a,b,u){ if(b===0) return FL.signed(a); var s=(a!==0?FL.signed(a):''); var bb=Math.abs(b); return s+(b>0?(a!==0?'＋':''):'−')+(bb===1?'':bb)+u; }
+  var st=FL.canvas('cv-norm2',0.8,draw);
+  function draw(st){
+    var d=+sel.value, sd=Math.sqrt(d), u=d===1?'i':'√−5', k=+inK.value; outK.textContent=k;
+    var ctx=st.ctx; ctx.clearRect(0,0,st.W,st.H); ctx.fillStyle=FL.C.paper; ctx.fillRect(0,0,st.W,st.H);
+    var v=FL.view(st,13,0,0);
+    FL.axes(ctx,st,v,0,{labels:false});
+    ctx.save(); ctx.strokeStyle=FL.C.gold; ctx.lineWidth=2; ctx.setLineDash([6,4]);
+    ctx.beginPath(); ctx.arc(v.X(0),v.Y(0),Math.sqrt(k)*v.s,0,Math.PI*2); ctx.stroke(); ctx.restore();
+    var hits=[];
+    for(var a=-12;a<=12;a++) for(var b=-12;b<=12;b++){
+      var x=v.X(a), y=v.Y(b*sd);
+      if(x<-4||x>st.W+4||y<-4||y>st.H+4) continue;
+      var on=(a*a+d*b*b)===k;
+      if(on) hits.push(name(a,b,u));
+      FL.dot(ctx,x,y,on?6:2.8,on?FL.C.red:'#bdb3da',on?'#fff':null);
+    }
+    FL.text(ctx,'√'+k,v.X(0)+Math.sqrt(k)*v.s*0.72+4,v.Y(0)-Math.sqrt(k)*v.s*0.7-4,{color:FL.C.gold,size:12,halo:true});
+    ro.innerHTML='<span>ノルムが '+k+' の数：<b class="'+(hits.length?'':'ng')+'">'+(hits.length?hits.join('、'):'1つもない')+'</b></span>';
+  }
+  sel.addEventListener('change',function(){st.redraw();});
+  inK.addEventListener('input',function(){st.redraw();});
+})();
+</script>
+</body>
+</html>

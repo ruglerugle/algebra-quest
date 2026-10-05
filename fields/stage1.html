@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第3章 STAGE1 作図の約束と体（定規とコンパスの作図と体の定義） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="定規とコンパスの作図と「体」を中学生向けに解説。角の三等分・立方体倍積がなぜ2000年も解けなかったのかを示し、作図できる長さが和・差・積・商と √ で作れる数であること、割り算までできる数の世界「体」の定義と例を学ぶ。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/fields/stage1">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第3章 STAGE1 作図の約束と体（定規とコンパスの作図と体の定義） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="定規とコンパスでは角の三等分ができない。「できない」を証明するための道具、割り算までできる数の世界「体」を作る。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/fields/stage1">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE1 作図の約束と体",
+      "description": "定規とコンパスの作図と「体」を中学生向けに解説。角の三等分・立方体倍積がなぜ2000年も解けなかったのかを示し、作図できる長さが和・差・積・商と √ で作れる数であること、割り算までできる数の世界「体」の定義と例を学ぶ。",
+      "url": "https://algebra.habatakijuku.com/fields/stage1",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 1,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第3章 四則演算と作図",
+        "url": "https://algebra.habatakijuku.com/fields/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第3章 四則演算と作図",
+          "item": "https://algebra.habatakijuku.com/fields/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE1 作図の約束と体",
+          "item": "https://algebra.habatakijuku.com/fields/stage1"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+#cv-board{cursor:crosshair}
+#tb-inv td,#tb-inv th{min-width:24px;padding:4px 5px}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第3章 四則演算と作図 ／ STAGE 1 ― 作図の約束と体 ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第3章 STAGE 1</span><h1 class="chapter-title">作図の約束と体</h1>
+        <div class="chapter-sub">四則と √ で作れる長さ</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">作図の約束（2点を通る直線・円・交点）を知り、長さ 1, a, b から a＋b, a−b, ab, a/b, √a を作図する方法と、その理由（相似・円周角）を説明しよう。体の定義を言えて、ℚ や mod 7 が体で、ℤ や mod 6 が体でない理由を説明できれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">この章のテーマは、古代ギリシャから伝わる3つの作図問題だ。<strong>角の三等分</strong>（どんな角でも3つの等しい角に分ける）、<strong>立方体倍積</strong>（体積がちょうど2倍の立方体の辺を作る）、<strong>円積問題</strong>（円と同じ面積の正方形を作る）。使ってよい道具は、目盛りのない定規とコンパスだけだ。中学で、角の二等分線を作図したね。どうやったかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">角の頂点 O を中心に円をかいて、2本の辺との交点を P, Q とします。P と Q をそれぞれ中心にして同じ半径の円をかき、その交点 R と O を結ぶと二等分線です。OP＝OQ、PR＝QR、OR は共通なので、三角形 OPR と OQR は3辺がそれぞれ等しくて合同になり、角がちょうど半分ずつになります。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。作図の約束をはっきりさせておこう。できることは次の3つだけだ。<br>① すでにある2点を通る直線を引く（定規に目盛りはないので、長さは測れない）<br>② すでにある点を中心に、すでにある別の点を通る円をかく<br>③ 直線や円どうしの交点を、新しい点として使う<br>この約束の中で、60° の角を三等分してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">二等分ができたので、三等分も似た方法でできそうです。線分なら、平行線を使って三等分できます。そこで、O を中心とする円が2本の辺と交わる点を A, B として、弦 AB を三等分し、その2点と O を結んでみます。……でも、これでは角は等しくなりません。弦の真ん中の部分は、両端の部分よりも O に近いので、同じ長さの弦でも O から見た角は大きくなります。両端の2つの角は 20° より小さくなってしまいます。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いいところに気づいたね。計算すると、両端の角は約 19.1°、真ん中の角は約 21.8° になる。二等分をくり返せば 30°, 15°, 7.5°, … は作れるけれど、20° はなかなか作れない。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-board" aria-label="60度の角の作図板。点を2つ選んで直線や円を引くと交点が増え、20度の方向にいちばん近い点の角度が表示される"></canvas></div>
+        <div class="sim-controls">
+          <button class="btn" id="bd-line" aria-pressed="true">直線を引く</button>
+          <button class="btn" id="bd-circ" aria-pressed="false">円をかく</button>
+          <button class="btn" id="bd-undo">1つ戻す</button>
+          <button class="btn" id="bd-reset">最初から</button>
+        </div>
+        <div class="readout" id="ro-board"></div>
+        <div class="diagram-caption"><strong>作図板（60° の角を三等分できるか）</strong>。点 O, A, B（∠AOB＝60°）から始める。「直線を引く」では点を2つ、「円をかく」では中心の点と、円が通る点を順にタップする。直線や円を引くたびに、すべての交点が新しい点として加わる。赤い点線が目標の 20° の方向。たとえば A と B を中心に半径 AB の円を2つかき、その交点と O を結ぶと 30° の線が引ける。どんなに点を増やしても、ぴったり 20° の点は現れない</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">二等分をくり返しても、60° を 2, 4, 8, … で割った角しか作れません。20° にするには 3 で割らなければいけないので、二等分だけでは届きません。でも、ほかの直線や円をうまく組み合わせれば、いつかできるかもしれません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">多くの人がそう考えて、2000年以上も挑戦した。答えが出たのは1837年だ。フランスのヴァンツェルが、60° の角の三等分も立方体倍積も、定規とコンパスでは<strong>できない</strong>ことを証明したんだ。「できる」ことは、作図を1つ見せれば示せる。では、「できない」ことを示すには、どうすればいいと思う？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">ためした作図をいくら並べても、まだためしていない作図があるので、「できない」とは言えません。第1章の15パズルでは、どう動かしても変わらない「偶奇」に注目して、解けないことを証明しました。作図でも、作図できるものすべてに共通する性質を見つけて、20° の角がその性質をもたないことを示せばいい、ということですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。そのために、作図できる長さを全部まとめて1つの「数の世界」として扱う。その道具が、今日から学ぶ<strong>体（たい）</strong>だ。この章の終わりには、ギリシャの3つの問題に決着をつけ、どの正多角形が作図できるかを判定し、さらに QR コードが汚れても読める仕組みまで、同じ道具で説明できるようになる。</div>
+        </div>
+      </div>
+
+      <div class="note-box"><span class="nb-title">この章でできるようになること</span>・定規とコンパスで作図できる長さが、四則演算（＋ − × ÷）と √ で作れる数であることがわかる<br>・割り算までできる数の世界「体」を、√ を足しながらひろげ、そのひろがり具合（次数）を測れる<br>・角の三等分と立方体倍積が不可能であることを、自分で証明できる<br>・正5角形が作図でき、正7角形が作図できない理由を説明できる。ガウスの正17角形の意味がわかる<br>・有限個の数でできた体を使って、QR コードの誤り訂正のしくみを説明できる</div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">第1章で、群という道具が15パズルの謎を解いたのと同じ流れですね。作図できる長さを全部まとめるなら、まず、どんな長さが作図できるのかを調べるところから始める、ということですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。点を2つ決めて、その距離を長さ 1 とする。長さ a と b の線分があるとき、a＋b と a−b（ただし a＞b）はどう作るかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">直線上に長さ a の線分 OA をとり、A を中心に半径 b の円をかきます。円と直線の交点は2つあって、O から遠いほうの点までが a＋b、近いほうの点までが a−b です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">うん。では、掛け算 ab はどうかな？ 使ってよいのは、長さ 1・a・b の線分と、平行線の作図と、相似な三角形だ。平行線は、垂線を2回引けば作図できるね。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">O から2本の半直線を引きます。1本目に OE＝1 と OB＝b、2本目に OA＝a をとります。E と A を結び、B を通って EA に平行な直線を引いて、2本目の半直線との交点を P とします。平行線の同位角は等しいので、三角形 OEA と OBP は相似です。相似比は OE：OB＝1：b なので、OP＝b×OA＝ab です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。割り算 a/b（b＞0）はどうかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">今度は、1本目に OB＝b と OE＝1 をとり、B と A を結びます。E を通って BA に平行な直線を引き、2本目との交点を P とすると、三角形 OBA と OEP が相似です。OP：OA＝OE：OB＝1：b なので、OP＝a/b です。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-cons" aria-label="長さ1, a, b から a+b, a−b, ab, a/b, √a を作図する手順を1ステップずつ再生する図"></canvas></div>
+        <div class="sim-controls">
+          <span class="grp-label">作るもの</span>
+          <button class="btn" data-cons="sum" aria-pressed="false">a＋b</button>
+          <button class="btn" data-cons="dif" aria-pressed="false">a−b</button>
+          <button class="btn" data-cons="mul" aria-pressed="true">ab</button>
+          <button class="btn" data-cons="div" aria-pressed="false">a/b</button>
+          <button class="btn" data-cons="sqrt" aria-pressed="false">√a</button>
+        </div>
+        <div class="sim-controls">
+          <button class="btn" id="cons-prev">◀ 戻る</button>
+          <button class="btn" id="cons-next">次へ ▶</button>
+          <button class="btn" id="cons-all">最後まで</button>
+        </div>
+        <div class="readout" id="ro-cons"></div>
+        <div class="diagram-caption"><strong>四則と √ の作図</strong>（a＝2、b＝1.5 の場合）。作るものを選び、「次へ」で1手ずつ進める。赤がいま引いた線や円、太い緑の線分ができあがった長さ。積と商は、平行線で相似な三角形を作るのがポイント。√a は、AB＝a と BC＝1 を並べた線分 AC を直径とする半円に、B で垂線を立てて作る</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">よし。最後は √ だ。直線上に AB＝a、BC＝1 となるように点 A, B, C を並べ、AC を直径とする半円をかく。B で AC に垂線を立て、半円との交点を H とする。BH の長さを求めてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">直径に対する円周角は 90° なので、∠AHC＝90° です。三角形 ABH と三角形 HBC で、∠ABH＝∠HBC＝90° です。三角形 ABH の内角から ∠BAH＝90°−∠AHB、∠AHC＝90° から ∠BHC＝90°−∠AHB なので、∠BAH＝∠BHC。2つの角が等しいので相似です。BH：AB＝BC：BH から BH²＝AB×BC＝a×1＝a。<strong>BH＝√a</strong> です！</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step"><strong>和と差</strong>：直線上の OA＝a の先に、A を中心に半径 b の円 → 交点までの長さが <span class="nw">a＋b</span> と <span class="nw">a−b</span></span>
+        <span class="step"><strong>積</strong>：OE＝1、OB＝b、OA＝a。B を通り EA に平行な直線 → 三角形 OEA と OBP は相似（相似比 1：b）→ <span class="nw">OP＝ab</span></span>
+        <span class="step"><strong>商</strong>：OB＝b、OE＝1、OA＝a。E を通り BA に平行な直線 → 三角形 OBA と OEP は相似（相似比 b：1）→ <span class="nw">OP＝a/b</span></span>
+        <span class="step"><strong>√</strong>：AB＝a、BC＝1、AC を直径とする半円、B での垂線と半円の交点 H<br><span class="nw">∠AHC＝90°</span>（直径に対する円周角）<br>三角形 ABH と HBC は相似 → <span class="nw">BH：AB＝BC：BH</span> → <span class="nw">BH²＝a×1</span> → <span class="nw">BH＝√a</span></span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。長さ 1 から始めると、足し算で 2, 3, 4, … が作れて、向きを逆にとれば負の数も作れる。割り算で 2/3 のような数も作れる。整数 m と 0 でない整数 n を使って m/n と書ける数を<strong>有理数</strong>といい、有理数全体を <strong>ℚ</strong> と書く。ℚ の数はすべて作図できるわけだ。そのうえ √ を何度でも組み合わせられるから、√2 や 1＋√3、√(1＋√2) も作図できる。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">作図できる長さどうしを足しても、引いても、掛けても、0 以外で割っても、また作図できる長さになります。第2章の環は、足し算・引き算・掛け算で閉じた数の世界でしたが、作図できる数の集まりは、割り算でも閉じています。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう、そこが大事なんだ。0 と 1 を含み、足し算・引き算・掛け算に加えて、<strong>0 以外の数での割り算</strong>でも閉じている数の世界を<strong>体（たい）</strong>という。第2章の言葉で言えば、「0 以外の数がすべて単数（掛けて 1 になる相手がいる数）である環」だ。なぜこう決めるかというと、作図できる長さの集まりが、ちょうどこの性質をもつからだ。それに、体の中なら a≠0 のとき ax＝b という方程式がいつでも x＝b/a と解けて、計算の途中で外に出ることがない。有理数全体 ℚ は体だね。整数全体 ℤ はどうかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">ℤ は環ですが、1 を 2 で割ると 1/2 になって、整数ではなくなります。2 に掛けて 1 になる整数はないので、ℤ は体ではありません。第2章のガウス整数 a＋bi も、1 を 2 で割れないので体ではありません。でも、a と b を有理数にした a＋bi なら、分母と分子に a−bi を掛ければ分母が有理数の a²＋b² になるので、割り算もできて体になりそうです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。実数全体、複素数全体も体だ。では、第1章の mod の世界はどうかな。mod 7 と mod 6 で考えてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">mod 7 では、7 で割り切れない a に対して、第2章の互除法で ax＋7y＝1 となる整数 x, y が作れます。両辺を 7 で割った余りを比べると ax≡1 (mod 7) なので、x が a の逆数です。0 以外のどの数にも逆数があるので、mod 7 の世界は体です。mod 6 では 2×3＝6≡0 です。もし 2 に逆数 x があったら、3＝(x×2)×3＝x×(2×3)≡x×0＝0 となって矛盾します。だから mod 6 の世界は体ではありません。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="sim-controls">
+          <label>mod n の n <input type="range" id="in-modn" min="2" max="13" value="7"><output id="out-modn">7</output></label>
+        </div>
+        <div style="overflow-x:auto"><table class="num-table" id="tb-inv"></table></div>
+        <div class="readout" id="ro-inv"></div>
+        <div class="diagram-caption"><strong>mod n の世界で、逆数（掛けて 1 になる相手）があるか</strong>。上の段が 1 から n−1 までの数、下の段がその逆数。緑は逆数がある数、赤は逆数がない数。n が素数のときだけ全部が緑になり、mod n の世界は体になる。n が素数でないときは、n と共通の約数をもつ数に逆数がない</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。p が素数なら mod p の世界は体になり、p が素数でなければ体にならない。mod p の体は、この章の最後で QR コードを説明するときの主役になる。ここで、体の定義と例をまとめておこう。</div>
+        </div>
+      </div>
+
+      <div class="note-box"><span class="nb-title">体（たい）</span>0 と 1 を含み、足し算・引き算・掛け算と、<strong>0 以外の数での割り算</strong>について閉じている数の世界。言いかえると、0 以外の数がすべて単数である環。<br>・体の例：有理数全体 ℚ、実数全体、複素数全体、a と b が有理数の a＋bi 全体、mod 7 の世界（p が素数なら mod p の世界）<br>・体でない例：整数全体 ℤ（2 で割れない）、ガウス整数（2 で割れない）、mod 6 の世界（2 に逆数がない）</div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">作図できる数は、ℚ から始めて四則と √ で作れる数を全部含みます。でも逆に、作図できる数がすべて四則と √ で書けるかどうかは、まだ分かりません。円と円の交点のように、もっと複雑な数が出てくるかもしれません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いい質問だね。実は、作図で出てくる数は、すべて ℚ から四則と √ で作れる数なんだ。直線や円の交点を求める計算は、いちばん複雑でも2次方程式になるからね。このことは STAGE4 で確かめる。すると、作図の問題は数の問題に言いかえられる。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">60° の三等分は、半径 1 の円の上に 20° の方向の点を作ることなので、その横の座標 cos 20° が作れるかどうか。立方体倍積は、体積 2 の立方体の辺 ∛2 が作れるかどうか。どちらも「ℚ から四則と √ だけで書けるか」という問題になります。でも、√ を何重にも組み合わせた式は無限にあるので、全部を調べることはできません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。だから、ℚ に √ を1つずつ足して体をひろげていき、どれくらいひろがったかを「次数」という数で測る。次のステージでは、いちばん簡単な例として、ℚ に √2 を足した体を作ってみよう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">作図の約束：2点を通る直線、点を中心に別の点を通る円、交点だけが新しい点</span>
+        <span class="step">長さ 1, a, b から <span class="nw">a＋b</span>、<span class="nw">a−b</span>、<span class="nw">ab</span>、<span class="nw">a/b</span>（平行線と相似）、<span class="nw">√a</span>（半円と垂線、円周角と相似）が作図できる</span>
+        <span class="step">体：0 と 1 を含み、四則（0 以外での割り算も）で閉じた数の世界。0 以外がすべて単数の環</span>
+        <span class="step">体の例：ℚ、実数、複素数、mod p（ax＋py＝1 で逆数が作れる）。体でない例：ℤ、ガウス整数、mod 6</span>
+        <span class="step">作図の問題は「その数が ℚ から四則と √ で作れるか」という数の問題になる。「できない」の証明には、作図できる数すべてに共通する性質を探す</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. 長さ 1 と a の線分から √a を作図する方法は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">1辺 a の正方形をかき、その対角線をとる</button>
+          <button class="choice-btn">AB＝a と BC＝1 を一直線に並べ、AC を直径とする半円に B で垂線を立て、半円との交点 H をとる（BH＝√a）</button>
+          <button class="choice-btn">長さ a の線分を二等分する</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 直径に対する円周角は 90° なので、三角形 ABH と HBC は相似。BH：AB＝BC：BH から BH²＝a×1＝a。正方形の対角線は √2×a になる。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. 次のうち、体であるものは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">mod 5 の世界</button>
+          <button class="choice-btn">整数全体 ℤ</button>
+          <button class="choice-btn">mod 6 の世界</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 5 は素数なので、5 で割り切れない a には ax＋5y＝1 となる x があり、x が a の逆数になる。ℤ では 2 で割れず、mod 6 では 2×3≡0 なので 2 に逆数がない。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. 「60° の角は定規とコンパスで三等分できない」と証明するための方針として、正しいものは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">考えられる作図をできるだけたくさん試し、どれもうまくいかないことを確かめる</button>
+          <button class="choice-btn">20° にとても近い角が作図できることを示す</button>
+          <button class="choice-btn">作図できる数すべてに共通する性質を見つけ、cos 20° がその性質をもたないことを示す</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 作図のしかたは無限にあるので、試すだけでは「できない」とは言えない。15パズルで偶奇を使ったように、どう作図しても変わらない性質を探す。この章では、それが「次数が2の累乗」になる。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("fields", 1);</script>
+<script>
+/* 作図板：60° の角から直線と円で点を増やす */
+(function(){
+  var D=Math.PI/180, EPS=1e-7;
+  var pts, objs, hist, mode='L', pick=null, V=null, last=null;
+  var ro=document.getElementById('ro-board');
+  var bL=document.getElementById('bd-line'), bC=document.getElementById('bd-circ');
+  function init(){
+    var B=[Math.cos(60*D),Math.sin(60*D)];
+    pts=[[0,0],[1,0],B];
+    objs=[{t:'L',a:[0,0],b:[1,0]},{t:'L',a:[0,0],b:B}];
+    hist=[]; pick=null; last=null;
+  }
+  function inter(o1,o2){
+    var out=[];
+    if(o1.t==='C'&&o2.t==='L'){ var tmp=o1; o1=o2; o2=tmp; }
+    if(o1.t==='L'&&o2.t==='L'){
+      var a=o1.a,b=o1.b,c=o2.a,d=o2.b, r=[b[0]-a[0],b[1]-a[1]], s=[d[0]-c[0],d[1]-c[1]];
+      var den=r[0]*s[1]-r[1]*s[0]; if(Math.abs(den)<1e-12) return out;
+      var t=((c[0]-a[0])*s[1]-(c[1]-a[1])*s[0])/den; out.push([a[0]+t*r[0],a[1]+t*r[1]]); return out;
+    }
+    if(o1.t==='L'&&o2.t==='C'){
+      var p=o1.a,q=o1.b, dx=q[0]-p[0], dy=q[1]-p[1], fx=p[0]-o2.c[0], fy=p[1]-o2.c[1];
+      var A=dx*dx+dy*dy, Bq=2*(fx*dx+fy*dy), C=fx*fx+fy*fy-o2.r*o2.r, Dd=Bq*Bq-4*A*C;
+      if(Dd<-1e-12) return out; var sd=Math.sqrt(Math.max(0,Dd));
+      [(-Bq-sd)/(2*A),(-Bq+sd)/(2*A)].forEach(function(t){ out.push([p[0]+t*dx,p[1]+t*dy]); }); return out;
+    }
+    var x1=o1.c[0],y1=o1.c[1],x2=o2.c[0],y2=o2.c[1],r1=o1.r,r2=o2.r, dd=Math.hypot(x2-x1,y2-y1);
+    if(dd<1e-12||dd>r1+r2+1e-12||dd<Math.abs(r1-r2)-1e-12) return out;
+    var aa=(r1*r1-r2*r2+dd*dd)/(2*dd), h=Math.sqrt(Math.max(0,r1*r1-aa*aa)), mx=x1+aa*(x2-x1)/dd, my=y1+aa*(y2-y1)/dd;
+    out.push([mx+h*(y2-y1)/dd,my-h*(x2-x1)/dd],[mx-h*(y2-y1)/dd,my+h*(x2-x1)/dd]); return out;
+  }
+  function addPoint(p){
+    for(var i=0;i<pts.length;i++) if(Math.abs(pts[i][0]-p[0])<EPS&&Math.abs(pts[i][1]-p[1])<EPS) return;
+    pts.push(p);
+  }
+  function addObj(o){
+    var n=pts.length;
+    for(var i=0;i<objs.length;i++) inter(o,objs[i]).forEach(addPoint);
+    objs.push(o); hist.push(n); last=o;
+  }
+  init();
+  var st=FL.canvas('cv-board',0.85,draw);
+  function draw(st){
+    var ctx=st.ctx; ctx.clearRect(0,0,st.W,st.H); ctx.fillStyle=FL.C.paper; ctx.fillRect(0,0,st.W,st.H);
+    V=FL.view(st,2.7,0.55,0.42);
+    var big=50;
+    // 目標の 20° 方向
+    FL.line(ctx,V.X(0),V.Y(0),V.X(big*Math.cos(20*D)),V.Y(big*Math.sin(20*D)),'rgba(200,67,63,.55)',1.5,[6,5]);
+    objs.forEach(function(o,i){
+      var col=(o===last)?FL.C.red:(i<2?FL.C.themeDark:FL.C.themeLight), w=(o===last||i<2)?2:1.3;
+      if(o.t==='L'){
+        var dx=o.b[0]-o.a[0], dy=o.b[1]-o.a[1], L=Math.hypot(dx,dy);
+        if(i<2){ FL.line(ctx,V.X(0),V.Y(0),V.X(big*dx/L),V.Y(big*dy/L),col,w); }
+        else FL.line(ctx,V.X(o.a[0]-big*dx/L),V.Y(o.a[1]-big*dy/L),V.X(o.a[0]+big*dx/L),V.Y(o.a[1]+big*dy/L),col,w);
+      } else {
+        ctx.save(); ctx.strokeStyle=col; ctx.lineWidth=w; ctx.beginPath(); ctx.arc(V.X(o.c[0]),V.Y(o.c[1]),o.r*V.s,0,Math.PI*2); ctx.stroke(); ctx.restore();
+      }
+    });
+    pts.forEach(function(p,i){ FL.dot(ctx,V.X(p[0]),V.Y(p[1]),i<3?4.5:3.2,i<3?FL.C.themeDark:FL.C.ink,'#fff'); });
+    if(pick!==null){ ctx.save(); ctx.strokeStyle=FL.C.gold; ctx.lineWidth=2.5; ctx.beginPath(); ctx.arc(V.X(pts[pick][0]),V.Y(pts[pick][1]),9,0,Math.PI*2); ctx.stroke(); ctx.restore(); }
+    FL.text(ctx,'O',V.X(0)-14,V.Y(0)+16,{size:13,color:FL.C.themeDark,halo:true});
+    FL.text(ctx,'A',V.X(1)+4,V.Y(0)+16,{size:13,color:FL.C.themeDark,halo:true});
+    FL.text(ctx,'B',V.X(0.5)-16,V.Y(Math.sin(60*D))-4,{size:13,color:FL.C.themeDark,halo:true});
+    FL.text(ctx,'20°',V.X(1.75*Math.cos(20*D)),V.Y(1.75*Math.sin(20*D))-6,{size:12,color:FL.C.red,halo:true});
+    // 読み取り
+    var best=null;
+    pts.forEach(function(p){ if(Math.hypot(p[0],p[1])<1e-6) return; var ang=Math.atan2(p[1],p[0])/D; if(best===null||Math.abs(ang-20)<Math.abs(best-20)) best=ang; });
+    ro.innerHTML='<span>直線と円：<b>'+(objs.length-2)+'</b> 本</span><span>点：<b>'+pts.length+'</b> 個</span><span>20° にいちばん近い点の方向：<b>'+best.toFixed(3)+'°</b></span>'+(pick!==null?'<span>'+(mode==='L'?'もう1つの点を選ぶ':'円が通る点を選ぶ')+'</span>':'');
+  }
+  function tap(e){
+    if(!V) return;
+    var r=st.cv.getBoundingClientRect(), px=e.clientX-r.left, py=e.clientY-r.top;
+    var bi=-1, bd=18;
+    pts.forEach(function(p,i){ var d=Math.hypot(V.X(p[0])-px,V.Y(p[1])-py); if(d<bd){bd=d;bi=i;} });
+    if(bi<0) return;
+    if(pick===null){ pick=bi; st.redraw(); return; }
+    if(bi===pick){ pick=null; st.redraw(); return; }
+    if(pts.length>600){ pick=null; st.redraw(); return; }
+    var a=pts[pick], b=pts[bi];
+    if(mode==='L') addObj({t:'L',a:a,b:b}); else addObj({t:'C',c:a,r:Math.hypot(b[0]-a[0],b[1]-a[1])});
+    pick=null; st.redraw();
+  }
+  st.cv.addEventListener('click',tap);
+  function setMode(m){ mode=m; pick=null; bL.setAttribute('aria-pressed',m==='L'); bC.setAttribute('aria-pressed',m==='C'); st.redraw(); }
+  bL.addEventListener('click',function(){setMode('L');});
+  bC.addEventListener('click',function(){setMode('C');});
+  document.getElementById('bd-undo').addEventListener('click',function(){
+    if(!hist.length) return; objs.pop(); pts.length=hist.pop(); last=objs.length>2?objs[objs.length-1]:null; pick=null; st.redraw();
+  });
+  document.getElementById('bd-reset').addEventListener('click',function(){ init(); st.redraw(); });
+})();
+
+/* 四則と √ の作図をステップ再生 */
+(function(){
+  var a=2, b=1.5, D=Math.PI/180, u=[Math.cos(35*D),Math.sin(35*D)];
+  function U(k){ return [k*u[0],k*u[1]]; }
+  var G='#2f8f65';
+  // 部品: seg(線分), line(直線), ray(半直線), circ(円/弧), pt(点), lab(文字)
+  var C={
+    sum:{asp:0.62,span:3.3,cx:1.75,cy:0,res:'a＋b＝3.5',steps:[
+      {txt:'直線上に OA＝a をとる',add:[{t:'line',a:[-1,0],b:[5,0]},{t:'pt',p:[0,0],l:'O'},{t:'pt',p:[a,0],l:'A'},{t:'seg',a:[0,0],b:[a,0],lab:'a',col:FL.C.theme,w:3,off:-0.22}]},
+      {txt:'A を中心に、半径 b の円をかく',add:[{t:'circ',c:[a,0],r:b}]},
+      {txt:'円と直線の交点のうち、O から遠いほうを C とする。OC＝a＋b',add:[{t:'pt',p:[a+b,0],l:'C'},{t:'seg',a:[0,0],b:[a+b,0],lab:'a＋b',col:G,w:5,off:0.3}]}
+    ]},
+    dif:{asp:0.62,span:3.3,cx:1.75,cy:0,res:'a−b＝0.5',steps:[
+      {txt:'直線上に OA＝a をとる',add:[{t:'line',a:[-1,0],b:[5,0]},{t:'pt',p:[0,0],l:'O'},{t:'pt',p:[a,0],l:'A'},{t:'seg',a:[0,0],b:[a,0],lab:'a',col:FL.C.theme,w:3,off:-0.22}]},
+      {txt:'A を中心に、半径 b の円をかく',add:[{t:'circ',c:[a,0],r:b}]},
+      {txt:'円と直線の交点のうち、O に近いほうを D とする。OD＝a−b',add:[{t:'pt',p:[a-b,0],l:'D'},{t:'seg',a:[0,0],b:[a-b,0],lab:'a−b',col:G,w:5,off:0.3}]}
+    ]},
+    mul:{asp:0.72,span:3.9,cx:1.7,cy:1.0,res:'ab＝3',steps:[
+      {txt:'O から2本の半直線を引く',add:[{t:'ray',a:[0,0],b:[4,0]},{t:'ray',a:[0,0],b:U(4)},{t:'pt',p:[0,0],l:'O'}]},
+      {txt:'コンパスで、1本目に OE＝1 と OB＝b、2本目に OA＝a をとる',add:[{t:'arc',c:[0,0],r:1,a0:-10,a1:10},{t:'arc',c:[0,0],r:b,a0:-10,a1:10},{t:'arc',c:[0,0],r:a,a0:25,a1:45},{t:'pt',p:[1,0],l:'E'},{t:'pt',p:[b,0],l:'B'},{t:'pt',p:U(a),l:'A'}]},
+      {txt:'E と A を直線で結ぶ',add:[{t:'line',a:[1,0],b:U(a)}]},
+      {txt:'B を通り EA に平行な直線を引き（垂線を2回引いて作図）、2本目との交点を P とする',add:[{t:'line',a:[b,0],b:U(a*b)},{t:'pt',p:U(a*b),l:'P'}]},
+      {txt:'三角形 OEA と OBP は相似で、相似比は 1：b。だから OP＝ab',add:[{t:'seg',a:[0,0],b:U(a*b),lab:'ab',col:G,w:5,off:0.28}]}
+    ]},
+    div:{asp:0.72,span:3.4,cx:1.25,cy:0.75,res:'a/b＝4/3',steps:[
+      {txt:'O から2本の半直線を引く',add:[{t:'ray',a:[0,0],b:[3.5,0]},{t:'ray',a:[0,0],b:U(3.5)},{t:'pt',p:[0,0],l:'O'}]},
+      {txt:'コンパスで、1本目に OE＝1 と OB＝b、2本目に OA＝a をとる',add:[{t:'arc',c:[0,0],r:1,a0:-10,a1:10},{t:'arc',c:[0,0],r:b,a0:-10,a1:10},{t:'arc',c:[0,0],r:a,a0:25,a1:45},{t:'pt',p:[1,0],l:'E'},{t:'pt',p:[b,0],l:'B'},{t:'pt',p:U(a),l:'A'}]},
+      {txt:'B と A を直線で結ぶ',add:[{t:'line',a:[b,0],b:U(a)}]},
+      {txt:'E を通り BA に平行な直線を引き、2本目との交点を P とする',add:[{t:'line',a:[1,0],b:U(a/b)},{t:'pt',p:U(a/b),l:'P'}]},
+      {txt:'三角形 OBA と OEP は相似で、OP：OA＝1：b。だから OP＝a/b',add:[{t:'seg',a:[0,0],b:U(a/b),lab:'a/b',col:G,w:5,off:0.28}]}
+    ]},
+    sqrt:{asp:0.66,span:2.6,cx:-0.5,cy:0.8,res:'√a＝√2≒1.414',steps:[
+      {txt:'直線上に AB＝a、BC＝1 となるように A, B, C を並べる',add:[{t:'line',a:[-3,0],b:[2,0]},{t:'pt',p:[-a,0],l:'A'},{t:'pt',p:[0,0],l:'B'},{t:'pt',p:[1,0],l:'C'},{t:'seg',a:[-a,0],b:[0,0],lab:'a',col:FL.C.theme,w:3,off:-0.22},{t:'seg',a:[0,0],b:[1,0],lab:'1',col:FL.C.theme,w:3,off:-0.22}]},
+      {txt:'AC の垂直二等分線を引き、AC の真ん中の点 M をとる',add:[{t:'line',a:[(1-a)/2,-0.4],b:[(1-a)/2,2],dash:[5,4]},{t:'pt',p:[(1-a)/2,0],l:'M'}]},
+      {txt:'M を中心に、AC を直径とする半円をかく',add:[{t:'arc',c:[(1-a)/2,0],r:(1+a)/2,a0:0,a1:180}]},
+      {txt:'B で AC に垂線を立て、半円との交点を H とする',add:[{t:'line',a:[0,-0.4],b:[0,2.2]},{t:'pt',p:[0,Math.sqrt(a)],l:'H'}]},
+      {txt:'∠AHC＝90° で、三角形 ABH と HBC は相似。BH²＝a×1 なので BH＝√a',add:[{t:'seg',a:[-a,0],b:[0,Math.sqrt(a)],col:FL.C.muted,w:1.2},{t:'seg',a:[1,0],b:[0,Math.sqrt(a)],col:FL.C.muted,w:1.2},{t:'seg',a:[0,0],b:[0,Math.sqrt(a)],lab:'√a',col:G,w:5,off:0.3}]}
+    ]}
+  };
+  var cur='mul', k=5, ro=document.getElementById('ro-cons');
+  var st=FL.canvas('cv-cons',0.72,draw);
+  function draw(st){
+    var c=C[cur], ctx=st.ctx; ctx.clearRect(0,0,st.W,st.H); ctx.fillStyle=FL.C.paper; ctx.fillRect(0,0,st.W,st.H);
+    var v=FL.view(st,c.span,c.cx,c.cy), big=30, labels=[];
+    for(var i=0;i<k;i++){
+      var now=(i===k-1);
+      c.steps[i].add.forEach(function(o){
+        var col=now&&o.t!=='pt'&&o.t!=='seg'?FL.C.red:FL.C.themeLight;
+        if(o.t==='line'||o.t==='ray'){
+          var dx=o.b[0]-o.a[0], dy=o.b[1]-o.a[1], L=Math.hypot(dx,dy);
+          var s0=o.t==='ray'?0:-big;
+          FL.line(ctx,v.X(o.a[0]+s0*dx/L),v.Y(o.a[1]+s0*dy/L),v.X(o.a[0]+big*dx/L),v.Y(o.a[1]+big*dy/L),o.t==='ray'&&!now?FL.C.themeDark:col,now?2:1.4,o.dash);
+        } else if(o.t==='circ'||o.t==='arc'){
+          ctx.save(); ctx.strokeStyle=col; ctx.lineWidth=now?2:1.4; ctx.beginPath();
+          if(o.t==='circ') ctx.arc(v.X(o.c[0]),v.Y(o.c[1]),o.r*v.s,0,Math.PI*2);
+          else ctx.arc(v.X(o.c[0]),v.Y(o.c[1]),o.r*v.s,-o.a1*D,-o.a0*D);
+          ctx.stroke(); ctx.restore();
+        } else if(o.t==='seg'){
+          FL.line(ctx,v.X(o.a[0]),v.Y(o.a[1]),v.X(o.b[0]),v.Y(o.b[1]),o.col,o.w);
+          if(o.lab){
+            var mx=(o.a[0]+o.b[0])/2, my=(o.a[1]+o.b[1])/2, dx2=o.b[0]-o.a[0], dy2=o.b[1]-o.a[1], L2=Math.hypot(dx2,dy2);
+            var nx=-dy2/L2, ny=dx2/L2;
+            labels.push({s:o.lab,x:v.X(mx+o.off*nx),y:v.Y(my+o.off*ny),col:o.col});
+          }
+        } else if(o.t==='pt'){
+          labels.push({pt:o});
+        }
+      });
+    }
+    labels.forEach(function(L){
+      if(L.pt){ var p=L.pt.p; FL.dot(ctx,v.X(p[0]),v.Y(p[1]),4.2,FL.C.ink,'#fff'); FL.text(ctx,L.pt.l,v.X(p[0])+6,v.Y(p[1])+16,{size:13,color:FL.C.ink,halo:true}); }
+      else FL.text(ctx,L.s,L.x,L.y,{size:14,color:L.col,align:'center',base:'middle',halo:true});
+    });
+    ro.innerHTML='<span>手順 <b>'+k+' / '+c.steps.length+'</b></span><span>'+c.steps[k-1].txt+'</span>'+(k===c.steps.length?'<span class="ok"><b>'+c.res+'</b></span>':'');
+  }
+  document.querySelectorAll('[data-cons]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      cur=btn.getAttribute('data-cons'); k=1; st.aspect=C[cur].asp;
+      document.querySelectorAll('[data-cons]').forEach(function(x){x.setAttribute('aria-pressed',x===btn);});
+      st.resize();
+    });
+  });
+  document.getElementById('cons-prev').addEventListener('click',function(){ if(k>1){k--; st.redraw();} });
+  document.getElementById('cons-next').addEventListener('click',function(){ if(k<C[cur].steps.length){k++; st.redraw();} });
+  document.getElementById('cons-all').addEventListener('click',function(){ k=C[cur].steps.length; st.redraw(); });
+})();
+
+/* mod n の逆数表 */
+(function(){
+  var inp=document.getElementById('in-modn'), out=document.getElementById('out-modn'), tb=document.getElementById('tb-inv'), ro=document.getElementById('ro-inv');
+  function render(){
+    var n=parseInt(inp.value,10); out.textContent=n;
+    var r1='<tr><th>a</th>', r2='<tr><th>逆数</th>', bad=[];
+    for(var a=1;a<n;a++){
+      var inv=null; for(var x=1;x<n;x++) if((a*x)%n===1){inv=x;break;}
+      if(n===2&&a===1) inv=1;
+      r1+='<td>'+a+'</td>';
+      if(inv===null){ r2+='<td class="miss">なし</td>'; bad.push(a); } else r2+='<td class="hit">'+inv+'</td>';
+    }
+    tb.innerHTML=r1+'</tr>'+r2+'</tr>';
+    ro.innerHTML=bad.length?'<span class="ng"><b>mod '+n+' は体ではない</b></span><span>逆数がない数：'+bad.join(', ')+'</span>':'<span class="ok"><b>mod '+n+' は体（'+n+' は素数）</b></span><span>0 以外のどの数にも逆数がある</span>';
+  }
+  inp.addEventListener('input',render); render();
+})();
+</script>
+</body>
+</html>

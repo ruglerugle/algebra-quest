@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第3章 STAGE2 体をひろげる（体の拡大 ℚ(√2) と拡大次数） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="体の拡大と拡大次数を中学生向けに解説。有理数に √2 を加えた体 ℚ(√2)＝{a＋b√2} で割り算ができる理由（分母の有理化）、数を1通りに表す数の組と次数、√3 が ℚ(√2) に入らない証明、次数4の体 ℚ(√2,√3) を確かめる。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/fields/stage2">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第3章 STAGE2 体をひろげる（体の拡大 ℚ(√2) と拡大次数） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="有理数に √2 を1つ足すと、どれだけ世界がひろがるか。a＋b√2 の形の数の体と、ひろがりを測る「次数」。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/fields/stage2">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE2 体をひろげる",
+      "description": "体の拡大と拡大次数を中学生向けに解説。有理数に √2 を加えた体 ℚ(√2)＝{a＋b√2} で割り算ができる理由（分母の有理化）、数を1通りに表す数の組と次数、√3 が ℚ(√2) に入らない証明、次数4の体 ℚ(√2,√3) を確かめる。",
+      "url": "https://algebra.habatakijuku.com/fields/stage2",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 2,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第3章 四則演算と作図",
+        "url": "https://algebra.habatakijuku.com/fields/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第3章 四則演算と作図",
+          "item": "https://algebra.habatakijuku.com/fields/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE2 体をひろげる",
+          "item": "https://algebra.habatakijuku.com/fields/stage2"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第3章 四則演算と作図 ／ STAGE 2 ― 体をひろげる ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第3章 STAGE 2</span><h1 class="chapter-title">体をひろげる</h1>
+        <div class="chapter-sub">ℚ(√2) と拡大の次数</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">ℚ(√2)＝{a＋b√2} が四則で閉じた体であること（割り算は分母の有理化）、どの数も a＋b√2 とただ1通りに書けるので次数が 2 であることを説明しよう。√3 が ℚ(√2) に入らないことを証明し、ℚ(√2,√3) の次数が 4 であることを確かめられれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">前のステージで、作図できる数は、ℚ（有理数全体）から始めて四則と √ で作れる数だと分かった。∛2 や cos 20° が作図できないことを示すには、√ を1つ足すと数の世界がどれだけひろがるのかを、きちんと測る必要がある。今日は、いちばん簡単な例として ℚ に √2 を足してみよう。有理数と √2 を足し引き掛け算して、(1＋√2)² と (3−√2)(1＋2√2) を計算してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(1＋√2)²＝1＋2√2＋2＝3＋2√2。(3−√2)(1＋2√2)＝3＋6√2−√2−2×2＝−1＋5√2。どちらも「有理数＋有理数×√2」の形になりました。√2 どうしを掛けると (√2)²＝2 で有理数に戻るので、何回掛けても a＋b√2 の形から出ません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。足し算と引き算は、a どうし、b どうしをまとめればいいね。では割り算はどうかな。1/(1＋√2) を a＋b√2 の形にしてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">中学で習った分母の有理化です。分母と分子に 1−√2 を掛けると、(1−√2)/((1＋√2)(1−√2))＝(1−√2)/(1−2)＝−1＋√2。一般には、1/(a＋b√2) の分母と分子に a−b√2 を掛けて、(a−b√2)/(a²−2b²) です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その分母 a²−2b² が 0 になってしまうことはないかな？ a, b は有理数で、a＋b√2 は 0 でないとしよう。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">b＝0 なら a≠0 なので a²−2b²＝a²≠0 です。b≠0 で a²＝2b² だとすると (a/b)²＝2 なので、√2 が有理数 ±a/b になってしまいます。√2 は有理数ではありません。もし √2＝p/q（整数）なら p²＝2q² ですが、素因数分解したとき左辺の 2 の個数は偶数、右辺の 2 の個数は奇数になって、素因数分解がただ1通りであることに反するからです。だから分母は 0 になりません。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step"><strong>掛け算</strong>：<span class="nw">(a＋b√2)(c＋d√2)＝ac＋ad√2＋bc√2＋bd(√2)²</span><br><span class="nw">＝(ac＋2bd)＋(ad＋bc)√2</span>（(√2)²＝2 で有理数に戻る）</span>
+        <span class="step"><strong>割り算</strong>：<span class="nw">1/(a＋b√2)＝(a−b√2)/((a＋b√2)(a−b√2))</span><br><span class="nw">＝(a−b√2)/(a²−2b²)</span><br><span class="nw">＝a/(a²−2b²)＋(−b/(a²−2b²))√2</span>（分母の有理化）</span>
+        <span class="step">分母 <span class="nw">a²−2b²</span> は 0 にならない（0 になると √2 が有理数になってしまう）</span>
+      </div>
+
+      <div class="diagram-box">
+<div class="sim-controls">
+          <label>(<input type="number" id="dv-a" min="-20" max="20" value="1"> ＋ <input type="number" id="dv-b" min="-20" max="20" value="0">√2)</label>
+          <span class="grp-label">÷</span>
+          <label>(<input type="number" id="dv-c" min="-20" max="20" value="1"> ＋ <input type="number" id="dv-d" min="-20" max="20" value="1">√2)</label>
+        </div>
+        <div class="formula-box" id="dv-out" style="text-align:left;margin-top:10px"></div>
+        <div class="diagram-caption"><strong>ℚ(√2) の割り算機</strong>。割られる数 a＋b√2 と割る数 c＋d√2 の整数 a, b, c, d を入れると、分母と分子に c−d√2 を掛けて計算し、答えを「有理数＋有理数×√2」の形で示す。最後の行で、答えに割る数を掛けるともとに戻ることを確かめている。割る数を 0 以外にすると、分母 c²−2d² は決して 0 にならない</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。だから、a と b を有理数とする a＋b√2 の形の数全体は、四則で閉じた体になる。これを <strong>ℚ(√2)</strong> と書く。一般に、体 K に数 α を加えて、K の数と α から四則で作れる数を全部集めた体を <strong>K(α)</strong> と書き、K を<strong>ひろげた体（拡大体）</strong>と呼ぶ。こう決めるのは、作図で √ を1回使うことが、ちょうど「体に √ を1つ加える」ことにあたるからだ。いま確かめたのは、ℚ(√2) の数がすべて a＋b√2 の形をしている、ということだね。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">ℚ(√2) の数を1つ選ぶと、有理数の組 (a, b) が決まります。逆に、組 (a, b) が決まれば数 a＋b√2 が決まります。でも、違う組から同じ数が出てくることはないんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いい質問だね。a＋b√2＝c＋d√2 で、(a, b) と (c, d) が違うとしてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">移項すると (b−d)√2＝c−a。もし b≠d なら √2＝(c−a)/(b−d) で、√2 が有理数になってしまいます。だから b＝d で、すると c−a＝0 なので a＝c。違う組から同じ数が出ることはありません。ℚ(√2) の数と、有理数の組 (a, b) は、ちょうど1つずつ対応しています。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-lat" aria-label="上に整数の組(a,b)の格子点、下に数直線を描き、選んだ組を a＋b×(加える数) の位置に移す図。√2 を加えると移った先がすべて別々になり、1.5 を加えると重なりが出る"></canvas></div>
+        <div class="sim-controls">
+          <span class="grp-label">加える数</span>
+          <button class="btn" data-lat="r2" aria-pressed="true">√2</button>
+          <button class="btn" data-lat="q" aria-pressed="false">1.5（有理数）</button>
+        </div>
+        <div class="sim-controls">
+          <label>a <input type="range" id="in-la" min="-3" max="3" value="1"><output id="out-la">1</output></label>
+          <label>b <input type="range" id="in-lb" min="-2" max="2" value="1"><output id="out-lb">1</output></label>
+        </div>
+        <div class="readout" id="ro-lat"></div>
+        <div class="diagram-caption"><strong>組 (a, b) と数 a＋b√2 の対応</strong>。上の格子点が整数の組 (a, b)（a は −3〜3、b は −2〜2 の 35 組）、下の数直線がそれを移した先 a＋b√2。選んだ組（赤）がどこへ移るかを線で結んだ。√2 を加えると 35 組が 35 個の別々の数に移る。加える数を有理数 1.5 にすると、たとえば (3, 0) と (0, 2) が同じ 3 に移ってしまい、組と数が1つずつ対応しなくなる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。ℚ(√2) のどの数も、1 と √2 の2つを使って「a×1＋b×√2」と<strong>ただ1通りに</strong>書ける。このように、ひろげた体 L のどの数も、いくつかの数 u₁, u₂, … を使って「K の数×u₁＋K の数×u₂＋…」とただ1通りに書けるとき、u₁, u₂, … を L の K 上の<strong>基底（きてい）</strong>と呼び、その個数を<strong>拡大の次数</strong>といって [L：K] と書く。[ℚ(√2)：ℚ]＝2 だ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">「ただ1通り」という条件は、何のためにあるんですか？ 1, √2, 3＋√2 の3つを使っても、ℚ(√2) のどの数も書けます。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">それが理由なんだ。1, √2, 3＋√2 を使うと、3＋√2 は「1×(3＋√2)」とも「3×1＋1×√2」とも書けて、書き方が何通りもできる。むだな数が混じると、個数が水増しされてしまう。「ただ1通り」を条件にすれば、むだのない組だけを数えることになって、次数は体そのものの大きさを表す数になる。ℚ の数は1つの有理数で決まるから、ℚ を直線にたとえると、ℚ(√2) は2つの有理数で決まる平面のようなものだね。</div>
+        </div>
+      </div>
+
+      <div class="note-box"><span class="nb-title">拡大体と次数</span>・K(α)：体 K に数 α を加え、K の数と α から四則で作れる数を全部集めた体<br>・基底：L のどの数も「K の数×u₁＋K の数×u₂＋…」と<strong>ただ1通りに</strong>書けるような数の組 u₁, u₂, …<br>・次数 [L：K]：基底の個数（L が K からどれだけひろがったか）<br>・例：ℚ(√2)＝{a＋b√2｜a, b は有理数}、基底 1, √2、<span class="nw">[ℚ(√2)：ℚ]＝2</span></div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">同じように考えると、ℚ(√3) も a＋b√3 の形の数全体で、次数は 2 です。でも、√8 を加えても √8＝2√2 なので ℚ(√8)＝ℚ(√2) です。√ を加えれば必ず新しい体になるわけではないんですね。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。だから、加える数がすでに体に入っているかどうかを確かめることが大事になる。では、ℚ(√2) にさらに √3 を加えることを考えよう。√3 は ℚ(√2) に入っているかな？ √3＝a＋b√2（a, b は有理数）と書けたとして、矛盾を導いてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbitThink.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">両辺を2乗すると 3＝a²＋2ab√2＋2b² です。ab≠0 なら √2＝(3−a²−2b²)/(2ab) で √2 が有理数になって矛盾。b＝0 なら √3＝a が有理数になって矛盾。a＝0 なら 3＝2b² なので (2b)²＝6 となり、√6 が有理数になります。√6＝p/q なら p²＝6q² で、2 の個数が左辺は偶数、右辺は奇数なので、これも矛盾です。どの場合もだめなので、<strong>√3 は ℚ(√2) に入りません</strong>。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">√3＝a＋b√2（a, b は有理数）と書けたとする</span>
+        <span class="step">両辺を2乗：<span class="nw">3＝a²＋2b²＋2ab√2</span></span>
+        <span class="step">ab≠0 のとき：<span class="nw">√2＝(3−a²−2b²)/(2ab)</span> が有理数になり、矛盾</span>
+        <span class="step">b＝0 のとき：<span class="nw">√3＝a</span> が有理数になり、矛盾</span>
+        <span class="step">a＝0 のとき：<span class="nw">3＝2b²</span> から <span class="nw">(2b)²＝6</span>、√6 が有理数になり、矛盾（p²＝6q² では 2 の個数の偶奇が合わない）</span>
+        <span class="step">よって √3 は ℚ(√2) に入らない</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">よく確かめたね。すると、K＝ℚ(√2) を出発点にして、K に √3 を加えた体 K(√3) が作れる。これを ℚ(√2, √3) と書く。K の数を係数にした x＋y√3（x, y は K の数）が体になる理由は、さっきの √2 の話と同じだ。分母の x²−3y² が 0 にならないのは、√3 が K に入らないからだね。だから [ℚ(√2, √3)：ℚ(√2)]＝2。では、ℚ(√2, √3) の数を、有理数だけを係数にして書くとどうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">x＝a＋b√2、y＝c＋d√2（a, b, c, d は有理数）とすると、x＋y√3＝a＋b√2＋c√3＋d√2√3＝a＋b√2＋c√3＋d√6。1, √2, √3, √6 の4つを使えば書けます。この書き方がただ1通りなら、[ℚ(√2, √3)：ℚ]＝4 です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。ただ1通りかどうかは、2つの書き方が同じ数になったとして、その差を考えるといい。差をとると、「a＋b√2＋c√3＋d√6＝0 なら a＝b＝c＝d＝0」を示せば十分だ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">a＋b√2＋c√3＋d√6＝(a＋b√2)＋(c＋d√2)√3＝0 です。ℚ(√2, √3) の数は、ℚ(√2) の数 x, y を使って x＋y√3 とただ1通りに書けるので、0＝0＋0×√3 と比べて、a＋b√2＝0、c＋d√2＝0。ℚ(√2) の数もただ1通りに書けるので、a＝b＝0、c＝d＝0。<strong>[ℚ(√2, √3)：ℚ]＝4</strong> です。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 300" role="img" aria-label="ℚ ⊂ ℚ(√2) ⊂ ℚ(√2,√3) の拡大の塔。各段の次数は2で、全体の次数は4。右にそれぞれの基底を書いた">
+          <rect x="0" y="0" width="440" height="300" fill="#fdfbf6"/>
+          <g font-size="15" font-weight="800" fill="#221d33" text-anchor="middle">
+            <rect x="40" y="20" width="160" height="46" rx="10" fill="#efe9f9" stroke="#5b4a9e" stroke-width="2"/>
+            <text x="120" y="49">ℚ(√2, √3)</text>
+            <rect x="40" y="127" width="160" height="46" rx="10" fill="#efe9f9" stroke="#5b4a9e" stroke-width="2"/>
+            <text x="120" y="156">ℚ(√2)</text>
+            <rect x="40" y="234" width="160" height="46" rx="10" fill="#efe9f9" stroke="#5b4a9e" stroke-width="2"/>
+            <text x="120" y="263">ℚ</text>
+          </g>
+          <g stroke="#5b4a9e" stroke-width="2.5"><line x1="120" y1="68" x2="120" y2="125"/><line x1="120" y1="175" x2="120" y2="232"/></g>
+          <g font-size="13" font-weight="800" fill="#c8433f">
+            <text x="128" y="101">次数 2（1, √3）</text>
+            <text x="128" y="208">次数 2（1, √2）</text>
+          </g>
+          <path d="M 32 43 Q 12 150 32 257" fill="none" stroke="#9a6a1c" stroke-width="2" stroke-dasharray="5 4"/>
+          <text x="9" y="154" font-size="13" font-weight="800" fill="#9a6a1c" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90 9 154)">次数 4＝2×2</text>
+          <g font-size="12.5" font-weight="700" fill="#44377a">
+            <text x="222" y="38">基底：1, √2, √3, √6</text>
+            <text x="222" y="58">a＋b√2＋c√3＋d√6</text>
+            <text x="222" y="145">基底：1, √2</text>
+            <text x="222" y="165">a＋b√2</text>
+            <text x="222" y="252">基底：1</text>
+            <text x="222" y="272">a（有理数）</text>
+          </g>
+        </svg>
+        <div class="diagram-caption"><strong>拡大の塔</strong>。下から上へ、√2 を加え、さらに √3 を加えた。それぞれの段の次数は 2 で、ℚ からてっぺんまでの次数は 4。てっぺんの基底 1, √2, √3, √6 は、下の段の基底 1, √2 と、上の段の基底 1, √3 を1つずつ掛け合わせた4つになっている</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。2 倍にひろがった体を、さらに 2 倍にひろげたから、全体は 4 倍になった。次数がこのように掛け算になることは STAGE4 でくわしく調べる。体の中では割り算も自由にできるから、思わぬ数が入っていることもある。ℚ(√2＋√3) にはどんな数が入っているか、調べてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">1/(√2＋√3) の分母と分子に √3−√2 を掛けると、(√3−√2)/(3−2)＝√3−√2 です。だから √2＋√3 と √3−√2 が両方 ℚ(√2＋√3) に入ります。足して 2 で割ると √3、引いて 2 で割ると √2。結局 √2 も √3 も入っているので、ℚ(√2＋√3)＝ℚ(√2, √3) です。1つの数を加えただけで、次数 4 の体になるんですね。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。体をひろげるときは、何を加えたかより、どれだけひろがったかが大事なんだ。では、立方体倍積の ∛2 を加えた体 ℚ(∛2) はどうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(∛2)²＝∛4 は a＋b∛2 の形には書けそうにありません。(∛2)³＝2 で有理数に戻るので、1, ∛2, ∛4 の3つがあれば掛け算は閉じそうです。でも、1/(1＋∛2) は、分母の有理化のように1回掛けるだけでは整理できません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いいところに気づいたね。√ のときは「2乗すると有理数」を使えたけれど、∛ ではそうはいかない。次のステージでは、多項式の割り算という道具を作って、ℚ(∛2) の割り算と次数を求めよう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">ℚ(√2)＝{a＋b√2｜a, b は有理数} は体。掛け算は (√2)²＝2、割り算は分母の有理化で、分母 a²−2b² は 0 にならない</span>
+        <span class="step">K(α)：体 K に α を加え、四則で作れる数を全部集めた体（拡大体）</span>
+        <span class="step">基底：どの数も「K の数×u₁＋K の数×u₂＋…」とただ1通りに書ける数の組。その個数が次数 [L：K]。<span class="nw">[ℚ(√2)：ℚ]＝2</span></span>
+        <span class="step">√3 は ℚ(√2) に入らない（2乗すると √2, √3, √6 のどれかが有理数になって矛盾）</span>
+        <span class="step">ℚ(√2, √3) の基底は 1, √2, √3, √6。<span class="nw">[ℚ(√2, √3)：ℚ]＝4＝2×2</span>。しかも ℚ(√2＋√3)＝ℚ(√2, √3)</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. 1/(1＋√2) を a＋b√2 の形にすると？</p>
+        <div class="choice-list">
+          <button class="choice-btn">1−√2</button>
+          <button class="choice-btn">(1＋√2)/3</button>
+          <button class="choice-btn">−1＋√2</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 分母と分子に 1−√2 を掛けると (1−√2)/(1−2)＝−(1−√2)＝−1＋√2。確かめ：(1＋√2)(−1＋√2)＝−1＋√2−√2＋2＝1。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. [ℚ(√2, √3)：ℚ]（ℚ(√2, √3) の ℚ 上の次数）は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">2</button>
+          <button class="choice-btn">4</button>
+          <button class="choice-btn">6</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ どの数も a＋b√2＋c√3＋d√6（a, b, c, d は有理数）とただ1通りに書けるので、基底は 1, √2, √3, √6 の4個。2×2＝4。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. √3 が ℚ(√2) に入らないことの証明で使ったことは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">√3＝a＋b√2 を2乗すると、√2, √3, √6 のどれかが有理数になってしまうこと</button>
+          <button class="choice-btn">√3 が √2 より大きいこと</button>
+          <button class="choice-btn">3 と 2 の和が 5 であること</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 3＝a²＋2b²＋2ab√2 から、ab≠0 なら √2 が、b＝0 なら √3 が、a＝0 なら √6 が有理数になって矛盾する。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("fields", 2);</script>
+<script>
+/* ℚ(√2) の割り算機 */
+(function(){
+  var ids=['dv-a','dv-b','dv-c','dv-d'].map(function(i){return document.getElementById(i);}), out=document.getElementById('dv-out');
+  function nm(p,q){ // p+q√2（分数）
+    var s='', z=FL.Q(0);
+    if(p.n!==0n||q.n===0n) s=FL.qstr(p);
+    if(q.n!==0n){
+      var neg=q.n<0n, aq=neg?FL.qneg(q):q, qs=(aq.n===1n&&aq.d===1n)?'':(aq.d===1n?FL.qstr(aq):'('+FL.qstr(aq)+')');
+      s+=(s?(neg?'−':'＋'):(neg?'−':''))+qs+'√2';
+    }
+    return s;
+  }
+  function render(){
+    var v=ids.map(function(el){ var x=parseInt(el.value,10); return isNaN(x)?0:x; });
+    var a=FL.Q(v[0]),b=FL.Q(v[1]),c=FL.Q(v[2]),d=FL.Q(v[3]);
+    if(v[2]===0&&v[3]===0){ out.innerHTML='<span class="step">割る数が 0 なので割れない</span>'; return; }
+    var den=FL.qsub(FL.qmul(c,c),FL.qmul(FL.Q(2),FL.qmul(d,d)));
+    var nr=FL.qsub(FL.qmul(a,c),FL.qmul(FL.Q(2),FL.qmul(b,d))), ni=FL.qsub(FL.qmul(b,c),FL.qmul(a,d));
+    var p=FL.qdiv(nr,den), q=FL.qdiv(ni,den);
+    var cr=FL.qadd(FL.qmul(p,c),FL.qmul(FL.Q(2),FL.qmul(q,d))), ci=FL.qadd(FL.qmul(p,d),FL.qmul(q,c));
+    out.innerHTML='<span class="step">('+nm(a,b)+')÷('+nm(c,d)+')</span>'+
+      '<span class="step">＝('+nm(a,b)+')('+nm(c,FL.qneg(d))+') ÷ (('+nm(c,d)+')('+nm(c,FL.qneg(d))+'))（分母と分子に '+nm(c,FL.qneg(d))+' を掛ける）</span>'+
+      '<span class="step">＝('+nm(nr,ni)+') ÷ '+(den.n<0n?'('+FL.qstr(den)+')':FL.qstr(den))+'（分母は c²−2d²）</span>'+
+      '<span class="step">＝<b>'+nm(p,q)+'</b></span>'+
+      '<span class="step">確かめ：('+nm(p,q)+')×('+nm(c,d)+')＝'+nm(cr,ci)+'</span>';
+  }
+  ids.forEach(function(el){ el.addEventListener('input',render); }); render();
+})();
+
+/* 組 (a,b) と数 a＋b×(加える数) の対応 */
+(function(){
+  var kind='r2', inA=document.getElementById('in-la'), inB=document.getElementById('in-lb'), oA=document.getElementById('out-la'), oB=document.getElementById('out-lb'), ro=document.getElementById('ro-lat');
+  function val(a,b){ return a+b*(kind==='r2'?Math.SQRT2:1.5); }
+  function sg(x){ return FL.signed(x); }
+  var st=FL.canvas('cv-lat',0.78,draw);
+  function draw(st){
+    var ctx=st.ctx, W=st.W, Hh=st.H; ctx.clearRect(0,0,W,Hh); ctx.fillStyle=FL.C.paper; ctx.fillRect(0,0,W,Hh);
+    var A=parseInt(inA.value,10), B=parseInt(inB.value,10); oA.textContent=sg(A); oB.textContent=sg(B);
+    // 格子（上）
+    var gx=function(a){ return W/2+a*W*0.11; }, gy=function(b){ return Hh*0.30-b*Hh*0.105; };
+    FL.text(ctx,'組 (a, b)',10,18,{size:12,color:FL.C.muted});
+    for(var b=-2;b<=2;b++) FL.text(ctx,'b＝'+sg(b),gx(-3)-12,gy(b)+4,{size:10,color:FL.C.muted,align:'right'});
+    // 数直線（下）
+    var ly=Hh*0.84, lx=function(x){ return W/2+x*W/13.2; };
+    FL.line(ctx,8,ly,W-8,ly,FL.C.axis,1.5);
+    for(var t=-6;t<=6;t++){ FL.line(ctx,lx(t),ly-5,lx(t),ly+5,FL.C.axis,1); FL.text(ctx,sg(t),lx(t),ly+19,{size:10,color:FL.C.muted,align:'center'}); }
+    FL.text(ctx,'a＋b×'+(kind==='r2'?'√2':'1.5'),10,ly-34,{size:12,color:FL.C.muted});
+    var seen={}, distinct=0, clash=[];
+    for(var a=-3;a<=3;a++) for(b=-2;b<=2;b++){
+      var v=val(a,b), key=v.toFixed(6);
+      if(seen[key]){ seen[key].push([a,b]); } else { seen[key]=[[a,b]]; distinct++; }
+    }
+    Object.keys(seen).forEach(function(k){
+      var v=parseFloat(k), many=seen[k].length>1;
+      FL.line(ctx,lx(v),ly-12,lx(v),ly,many?FL.C.red:FL.C.themeLight,many?2.5:1.5);
+    });
+    for(a=-3;a<=3;a++) for(b=-2;b<=2;b++) FL.dot(ctx,gx(a),gy(b),4,(seen[val(a,b).toFixed(6)].length>1)?'#e8a9a6':FL.C.themeLight);
+    // 選んだ組
+    var v0=val(A,B), mates=seen[v0.toFixed(6)];
+    mates.forEach(function(m){ FL.line(ctx,gx(m[0]),gy(m[1]),lx(v0),ly-12,(m[0]===A&&m[1]===B)?FL.C.red:'rgba(200,67,63,.45)',(m[0]===A&&m[1]===B)?2:1.5,[5,4]); FL.dot(ctx,gx(m[0]),gy(m[1]),6,FL.C.red,'#fff'); });
+    FL.dot(ctx,lx(v0),ly,6,FL.C.red,'#fff');
+    var name=(kind==='r2')?(sg(A)+(B<0?'−':'＋')+Math.abs(B)+'√2'):(sg(A)+(B<0?'−':'＋')+Math.abs(B)+'×1.5');
+    ro.innerHTML='<span>('+sg(A)+', '+sg(B)+') → '+name+'＝<b>'+(Math.round(v0*1000)/1000).toString().replace('-','−')+'</b></span><span>35 組 → 別々の数は <b>'+distinct+'</b> 個</span>'+(mates.length>1?'<span class="ng"><b>同じ数に移る組：'+mates.map(function(m){return '('+sg(m[0])+', '+sg(m[1])+')';}).join(' と ')+'</b></span>':'');
+  }
+  [inA,inB].forEach(function(el){ el.addEventListener('input',function(){ st.redraw(); }); });
+  document.querySelectorAll('[data-lat]').forEach(function(btn){
+    btn.addEventListener('click',function(){ kind=btn.getAttribute('data-lat'); document.querySelectorAll('[data-lat]').forEach(function(x){x.setAttribute('aria-pressed',x===btn);}); st.redraw(); });
+  });
+})();
+</script>
+</body>
+</html>

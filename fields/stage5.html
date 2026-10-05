@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第3章 STAGE5 解けない作図（角の三等分・立方体倍積・円積問題が不可能な理由） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="角の三等分と立方体倍積が定規とコンパスで不可能な理由を中学生向けに証明。∛2 の次数は 3、cos 20° は 8x³−6x−1＝0 の根で次数 3 なので、2 の累乗にならず作図できない。3倍角の公式は複素数の3乗から導く。円積問題と π の超越性も紹介。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/fields/stage5">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第3章 STAGE5 解けない作図（角の三等分・立方体倍積・円積問題が不可能な理由） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="∛2 も cos 20° も次数は 3。だから作図できない。2000年以上の謎に、体の次数で決着をつける。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/fields/stage5">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE5 解けない作図",
+      "description": "角の三等分と立方体倍積が定規とコンパスで不可能な理由を中学生向けに証明。∛2 の次数は 3、cos 20° は 8x³−6x−1＝0 の根で次数 3 なので、2 の累乗にならず作図できない。3倍角の公式は複素数の3乗から導く。円積問題と π の超越性も紹介。",
+      "url": "https://algebra.habatakijuku.com/fields/stage5",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 5,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第3章 四則演算と作図",
+        "url": "https://algebra.habatakijuku.com/fields/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第3章 四則演算と作図",
+          "item": "https://algebra.habatakijuku.com/fields/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE5 解けない作図",
+          "item": "https://algebra.habatakijuku.com/fields/stage5"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第3章 四則演算と作図 ／ STAGE 5 ― 解けない作図 ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第3章 STAGE 5</span><h1 class="chapter-title">解けない作図</h1>
+        <div class="chapter-sub">立方体倍積と角の三等分</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">立方体倍積が ∛2（次数 3）の作図であることから不可能を示そう。3倍角の公式 cos 3θ＝4cos³θ−3cos θ を複素数の3乗から導き、cos 20° が既約な3次方程式の根であることから 60° の三等分が不可能であること、90° の三等分は可能であることを説明できれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">前のステージで、作図できる数の次数は必ず 2 の累乗だと分かった。いよいよ、ギリシャの作図問題に決着をつけよう。まずは立方体倍積だ。古代ギリシャには、疫病を鎮めるために「デロス島のアポロンの祭壇（立方体）を2倍の大きさにせよ」というお告げが下った、という言い伝えがあって、「デロスの問題」とも呼ばれる。1辺 1 の立方体の、ちょうど2倍の体積をもつ立方体の1辺を作図できるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">1辺 x の立方体の体積は x³ なので、x³＝2、x＝∛2 です。∛2 の最小多項式は x³−2 で、STAGE3 で既約だと確かめたので、∛2 の次数は 3 です。3 は 2 の累乗ではないので、前のステージの判定法から、<strong>∛2 は作図できません</strong>。立方体倍積は不可能です。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 200" role="img" aria-label="1辺1の立方体と、体積が2倍の1辺∛2の立方体">
+          <rect x="0" y="0" width="440" height="200" fill="#fdfbf6"/>
+          <g stroke="#44377a" stroke-width="2" stroke-linejoin="round">
+            <polygon points="40,150 120,150 120,70 40,70" fill="#efe9f9"/>
+            <polygon points="40,70 70,45 150,45 120,70" fill="#e1d8f5"/>
+            <polygon points="120,150 150,125 150,45 120,70" fill="#cfc4ee"/>
+            <polygon points="220,170 321,170 321,69 220,69" fill="#fbe9e8"/>
+            <polygon points="220,69 258,38 359,38 321,69" fill="#f5d3d1"/>
+            <polygon points="321,170 359,139 359,38 321,69" fill="#eebcb9"/>
+          </g>
+          <g font-size="14" font-weight="800" text-anchor="middle">
+            <text x="80" y="168" fill="#44377a">1</text>
+            <text x="85" y="114" fill="#44377a">体積 1</text>
+            <text x="270" y="192" fill="#c8433f">∛2≒1.26</text>
+            <text x="270" y="125" fill="#c8433f">体積 2</text>
+          </g>
+        </svg>
+        <div class="diagram-caption"><strong>立方体倍積（デロスの問題）</strong>。体積を2倍にするには、1辺を ∛2≒1.2599 倍にすればいい。∛2 の最小多項式は既約な3次式 x³−2 なので次数は 3。2 の累乗ではないから、定規とコンパスでは作図できない</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。これが1837年にヴァンツェルが示したことだ。2000年以上の問題が、次数の計算だけで片づいた。次は角の三等分だ。まず、三等分できる角もあることを確かめておこう。90° の三等分はできるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">90° を三等分すると 30° です。正三角形をかけば 60° が作れて、それを二等分すれば 30° です。だから 90° は三等分できます。数で言えば、半径 1 の円の上の 30° の点の横の座標は cos 30°＝√3/2 で、次数 2 です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。だから「角の三等分は不可能」というのは、「<strong>どんな角でも三等分できる方法はない</strong>」という意味だ。それを示すには、三等分できない角を1つ見せればいい。60° の三等分、つまり 20° の角が作れるかを調べよう。半径 1 の円の上に 20° の方向の点を作ることは、その横の座標 cos 20° を作ることと同じだった。cos 20° がみたす方程式を作りたい。手がかりは、cos 3θ を cos θ で表す式だ。複素数の掛け算は「長さを掛けて、角度を足す」だったね。それを使って (cos θ＋i sin θ)³ を2通りに計算してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbitThink.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">cos θ＋i sin θ は長さ 1、角度 θ の複素数なので、3乗すると長さ 1、角度 3θ で、cos 3θ＋i sin 3θ になります。一方、c＝cos θ、s＝sin θ として展開すると、(c＋is)³＝c³＋3c²(is)＋3c(is)²＋(is)³＝c³＋3c²s i−3cs²−s³ i です。実部を比べると、cos 3θ＝c³−3cs²。三平方の定理から s²＝1−c² なので、cos 3θ＝c³−3c(1−c²)＝<strong>4c³−3c</strong> です！</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step"><span class="nw">(cos θ＋i sin θ)³＝cos 3θ＋i sin 3θ</span>（長さ 1 のまま、角度が3倍になる）</span>
+        <span class="step">展開：<span class="nw">(c＋is)³＝c³＋3c²(is)＋3c(is)²＋(is)³</span><br><span class="nw">＝(c³−3cs²)＋(3c²s−s³)i</span>（i²＝−1、i³＝−i）</span>
+        <span class="step">実部を比べる：<span class="nw">cos 3θ＝c³−3cs²</span></span>
+        <span class="step"><span class="nw">s²＝1−c²</span> を入れる：<span class="nw">cos 3θ＝c³−3c(1−c²)＝4c³−3c</span>（<strong>3倍角の公式</strong>）</span>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-rot" aria-label="単位円の上の複素数 z=cosθ+i sinθ と、その2乗・3乗。3乗の横の座標 cos3θ と 4cos³θ−3cosθ が一致する様子"></canvas></div>
+        <div class="sim-controls">
+          <label>θ <input type="range" id="in-th" min="0" max="120" value="20"><output id="out-th">20°</output></label>
+        </div>
+        <div class="readout" id="ro-rot"></div>
+        <div class="diagram-caption"><strong>3乗は角度を3倍にする回転</strong>。z＝cos θ＋i sin θ（紫）を2乗、3乗すると、長さ 1 のまま角度が 2θ, 3θ になる（z³ は赤）。z³ の横の座標が cos 3θ で、それが 4cos³θ−3cos θ と一致することを数値で確かめられる。θ＝20° のとき z³ は 60° の点で、cos 60°＝1/2</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">よく導けたね。公式は、知っている角で確かめておくと安心だ。θ＝30° で両辺を計算してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">左辺は cos 90°＝0 です。右辺は cos 30°＝√3/2 なので、4×(√3/2)³−3×(√3/2)＝4×(3√3/8)−3√3/2＝3√3/2−3√3/2＝0。両辺とも 0 で合っています。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。では θ＝20° を入れてみよう。cos 60°＝1/2 だから、x＝cos 20° はどんな方程式をみたすかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">4x³−3x＝1/2 なので、両辺を 2 倍して <strong>8x³−6x−1＝0</strong> です。有理根の判定をすると、候補は ±1, ±1/2, ±1/4, ±1/8 の8つです。……もっと簡単にするには、y＝2x とおくと 8x³＝y³、6x＝3y なので、y³−3y−1＝0。これは STAGE3 で調べた x³−3x−1 と同じ式で、候補 ±1 はどちらも根でないので既約でした。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。y＝2cos 20° と x＝cos 20° は、2 を掛けたり割ったりするだけで行き来できるから、ℚ(x)＝ℚ(y) で、次数は同じだ。結論はどうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">2cos 20° の最小多項式は既約な3次式 y³−3y−1 なので、次数は 3。cos 20° の次数も 3 です。2 の累乗ではないので、cos 20° は作図できません。だから <strong>60° の角は、定規とコンパスでは三等分できません</strong>。二等分や交点をどれだけ重ねても 20° に届かなかったのは、工夫が足りなかったからではなかったんですね。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-cub" aria-label="3次式のグラフと、x軸との交点（cos20°, cos140°, cos260°）、有理数の根の候補"></canvas></div>
+        <div class="sim-controls">
+          <button class="btn" data-cub="0" aria-pressed="true">8x³−6x−1（x＝cos θ）</button>
+          <button class="btn" data-cub="1" aria-pressed="false">y³−3y−1（y＝2cos θ）</button>
+        </div>
+        <div class="readout" id="ro-cub"></div>
+        <div class="diagram-caption"><strong>cos 20° がみたす3次方程式</strong>。グラフは x 軸と3点（緑）で交わり、それぞれ cos 20°, cos 140°, cos 260°（2 倍した式では 2cos 20° など）。赤い点は有理数の根の候補で、どれも根ではない。だから式は既約で、cos 20° の次数は 3</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いいところに気づいたね。この方程式には根が3つあって、cos 20° のほかに cos 140° と cos 260° も根だ。3倍すると 420° と 780° で、どちらも 360° の倍数を引けば 60° になるからね。方程式からは、この3つを区別できない。では、90° の三等分がうまくいく理由を、同じ方法で確かめてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">cos 90°＝0 なので、x＝cos 30° は 4x³−3x＝0、つまり x(4x²−3)＝0 をみたします。この3次式は x で割り切れるので、既約ではありません。cos 30° は 0 ではないので 4x²−3＝0 の根で、x＝√3/2。最小多項式は x²−3/4 で、次数は 2 です。3次式が分けられるかどうかで、三等分できるかどうかが決まるんですね。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<table class="num-table">
+          <tr><th>三等分する角 3θ</th><th>cos 3θ</th><th>x＝cos θ の方程式</th><th>分けられるか</th><th>三等分</th></tr>
+          <tr><td>90°</td><td>0</td><td>4x³−3x＝0</td><td>x(4x²−3)</td><td class="hit">できる（30°）</td></tr>
+          <tr><td>180°</td><td>−1</td><td>4x³−3x＋1＝0</td><td>(x＋1)(2x−1)²</td><td class="hit">できる（60°）</td></tr>
+          <tr><td>60°</td><td>1/2</td><td>8x³−6x−1＝0</td><td>既約</td><td class="miss">できない（20°）</td></tr>
+          <tr><td>120°</td><td>−1/2</td><td>8x³−6x＋1＝0</td><td>既約</td><td class="miss">できない（40°）</td></tr>
+        </table>
+        <div class="diagram-caption"><strong>角の三等分ができるかどうか</strong>。3倍角の公式 4x³−3x＝cos 3θ を、三等分したい角ごとに書いた。3次式が有理数の係数で分けられれば cos θ の次数は 2 以下で三等分できる。既約なら次数 3 で、三等分できない。120° のときは y＝2x とおくと y³−3y＋1＝0 になり、候補 ±1 はどちらも根でない</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。最後に円積問題だ。半径 1 の円の面積は π だから、同じ面積の正方形の1辺は √π になる。√π が作図できれば、それを2乗した π も作図できるはずだね。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">π が作図できるなら、π の次数は 2 の累乗のはずです。でも、π の最小多項式なんて見当がつきません。π は有理数ではないと聞いたことがありますが、そもそも π を根にもつ多項式はあるんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">それが答えなんだ。1882年に、ドイツのリンデマンが「π は、有理数を係数とするどんな多項式の根にもならない」ことを証明した。こういう数を<strong>超越数（ちょうえつすう）</strong>という。最小多項式がないのだから、次数が 2 の累乗の体の塔のどこにも入らない。だから √π も π も作図できず、<strong>円積問題も不可能</strong>だ。この証明は高度なので、ここでは事実として受け取っておこう。こうして、ギリシャの3つの作図問題は、1837年と1882年に、すべて「不可能」という答えで決着したんだ。</div>
+        </div>
+      </div>
+
+      <div class="note-box"><span class="nb-title">ギリシャの3大作図問題の答え</span>・<strong>立方体倍積</strong>：∛2 の最小多項式 x³−2 は既約 → 次数 3 → 不可能（ヴァンツェル、1837年）<br>・<strong>角の三等分</strong>：cos 20° は既約な 8x³−6x−1 の根 → 次数 3 → 60° は三等分できない（ヴァンツェル、1837年）。90° や 180° のように三等分できる角もある<br>・<strong>円積問題</strong>：π は超越数（どんな有理数係数の多項式の根でもない）→ 不可能（リンデマン、1882年）</div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">「できない」と言っても、ギリシャの人たちが下手だったわけではなく、定規とコンパスでは2次方程式までしか解けない、ということなんですね。道具を変えれば、3次方程式の根も作れるかもしれません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。実際、アルキメデスは、定規に2つの印をつけて動かす方法で、どんな角でも三等分できることを知っていた。印のついた定規は、約束の外の道具だから、矛盾はしない。大事なのは、決められた道具で何ができて何ができないかを、数の世界の大きさとしてきちんと言えるようになったことだ。次のステージでは、同じ道具で、どの正多角形が作図できるかを調べよう。ガウスが19歳を前にして見つけた、正17角形の話も出てくる。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">正多角形も、中心角の cos が作図できるかどうかで決まるはずです。正5角形なら cos 72° の次数を調べればいい、ということですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。cos 72° がどんな方程式をみたすか、複素数を使って見つけるところから始めよう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">立方体倍積：1辺 ∛2 の作図。∛2 の次数は 3 → 2 の累乗でない → 不可能</span>
+        <span class="step">3倍角の公式 <span class="nw">cos 3θ＝4cos³θ−3cos θ</span> は、(cos θ＋i sin θ)³＝cos 3θ＋i sin 3θ を展開して実部を比べて得られる</span>
+        <span class="step">cos 20° は <span class="nw">8x³−6x−1＝0</span>（y＝2x で y³−3y−1＝0）の根。有理数の根がなく既約 → 次数 3 → 60° は三等分できない</span>
+        <span class="step">90° の三等分は可能：4x³−3x＝0 は x(4x²−3) と分けられ、cos 30°＝√3/2 は次数 2</span>
+        <span class="step">円積問題：π は超越数（リンデマン、1882年）なので不可能。3大作図問題はすべて「不可能」で決着</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. cos 20° がみたす方程式は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">x³−2＝0</button>
+          <button class="choice-btn">4x²−3＝0</button>
+          <button class="choice-btn">8x³−6x−1＝0</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 3倍角の公式 cos 3θ＝4cos³θ−3cos θ に θ＝20° を入れると 1/2＝4x³−3x。2倍して 8x³−6x−1＝0。4x²−3＝0 は cos 30° の方程式。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. 3倍角の公式 cos 3θ＝4cos³θ−3cos θ を導くのに使ったことは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">(cos θ＋i sin θ)³＝cos 3θ＋i sin 3θ を展開して実部を比べ、sin²θ＝1−cos²θ を入れる</button>
+          <button class="choice-btn">cos 3θ＝3cos θ が成り立つこと</button>
+          <button class="choice-btn">∛2 の次数が 3 であること</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 複素数の掛け算は角度を足すので、3乗で角度が3倍。展開した実部 c³−3cs² に s²＝1−c² を入れると 4c³−3c。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. 90° の角は三等分できるのに、60° の角は三等分できない理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">90° のほうが大きい角だから</button>
+          <button class="choice-btn">cos 30° の方程式 4x³−3x＝0 は x(4x²−3) と分けられて次数 2 になるが、cos 20° の方程式 8x³−6x−1＝0 は既約で次数 3 だから</button>
+          <button class="choice-btn">60° は正三角形の角なので、それ以上分けられないから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 作図できる数の次数は 2 の累乗。cos 30°＝√3/2 は次数 2 で作図でき、cos 20° は次数 3 で作図できない。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("fields", 5);</script>
+<script>
+/* 3乗は角度を3倍にする回転 */
+(function(){
+  var inp=document.getElementById('in-th'), out=document.getElementById('out-th'), ro=document.getElementById('ro-rot');
+  var st=FL.canvas('cv-rot',0.86,draw);
+  function f4(x){ return (Math.round(x*10000)/10000).toFixed(4).replace('-','−'); }
+  function draw(st){
+    var th=+inp.value, D=Math.PI/180; out.textContent=th+'°';
+    var ctx=st.ctx; ctx.clearRect(0,0,st.W,st.H); ctx.fillStyle=FL.C.paper; ctx.fillRect(0,0,st.W,st.H);
+    var v=FL.view(st,2.7,0,0.05);
+    FL.axes(ctx,st,v,0,{labels:false});
+    ctx.save(); ctx.strokeStyle=FL.C.grid; ctx.lineWidth=1.5; ctx.beginPath(); ctx.arc(v.X(0),v.Y(0),v.s,0,Math.PI*2); ctx.stroke(); ctx.restore();
+    var cols=[FL.C.theme,FL.C.blue,FL.C.red], labs=['z','z²','z³'];
+    for(var k=1;k<=3;k++){
+      var a=k*th*D, x=Math.cos(a), y=Math.sin(a);
+      ctx.save(); ctx.strokeStyle=cols[k-1]; ctx.globalAlpha=.35; ctx.lineWidth=2; ctx.beginPath(); ctx.arc(v.X(0),v.Y(0),v.s*(0.16+0.07*k),-a,0); ctx.stroke(); ctx.restore();
+      FL.line(ctx,v.X(0),v.Y(0),v.X(x),v.Y(y),cols[k-1],k===3?3:2);
+      FL.dot(ctx,v.X(x),v.Y(y),5.5,cols[k-1],'#fff');
+      FL.text(ctx,labs[k-1]+'（'+(k*th)+'°）',v.X(1.13*x),v.Y(1.13*y)+4,{size:12.5,color:cols[k-1],align:x<-0.2?'right':(x>0.2?'left':'center'),halo:true});
+    }
+    var c3=Math.cos(3*th*D), s3=Math.sin(3*th*D);
+    FL.line(ctx,v.X(c3),v.Y(s3),v.X(c3),v.Y(0),FL.C.red,1.5,[5,4]);
+    FL.dot(ctx,v.X(c3),v.Y(0),4,FL.C.red);
+    FL.text(ctx,'cos 3θ',v.X(c3),v.Y(0)+(s3>=0?18:-8),{size:12,color:FL.C.red,align:'center',halo:true});
+    var c=Math.cos(th*D);
+    ro.innerHTML='<span>cos θ＝'+f4(c)+'</span><span>cos 3θ＝<b>'+f4(c3)+'</b></span><span>4cos³θ−3cos θ＝<b>'+f4(4*c*c*c-3*c)+'</b></span>';
+  }
+  inp.addEventListener('input',function(){ st.redraw(); });
+})();
+
+/* cos 20° がみたす3次方程式 */
+(function(){
+  var P=[
+    {f:function(x){return 8*x*x*x-6*x-1;}, name:'y＝8x³−6x−1', xr:[-1.15,1.15], yr:[-6.5,5], roots:[[20,1],[140,1],[260,1]], cand:[[-1,'−1'],[-0.5,'−1/2'],[-0.25,'−1/4'],[-0.125,'−1/8'],[0.125,'1/8'],[0.25,'1/4'],[0.5,'1/2'],[1,'1']], rl:'cos '},
+    {f:function(y){return y*y*y-3*y-1;}, name:'y＝x³−3x−1', xr:[-2.3,2.3], yr:[-5,5], roots:[[20,2],[140,2],[260,2]], cand:[[-1,'−1'],[1,'1']], rl:'2cos '}
+  ];
+  var cur=0, ro=document.getElementById('ro-cub');
+  var st=FL.canvas('cv-cub',0.72,draw);
+  function draw(st){
+    var p=P[cur], ctx=st.ctx; ctx.clearRect(0,0,st.W,st.H); ctx.fillStyle=FL.C.paper; ctx.fillRect(0,0,st.W,st.H);
+    var X=function(x){ return 16+(x-p.xr[0])/(p.xr[1]-p.xr[0])*(st.W-32); }, Y=function(y){ return 30+(p.yr[1]-y)/(p.yr[1]-p.yr[0])*(st.H-60); };
+    FL.line(ctx,0,Y(0),st.W,Y(0),FL.C.axis,1.3); FL.line(ctx,X(0),0,X(0),st.H,FL.C.axis,1.3);
+    ctx.save(); ctx.strokeStyle=FL.C.theme; ctx.lineWidth=2.4; ctx.beginPath();
+    for(var i=0;i<=400;i++){ var x=p.xr[0]+(p.xr[1]-p.xr[0])*i/400, y=Math.max(p.yr[0]-3,Math.min(p.yr[1]+3,p.f(x))); if(i) ctx.lineTo(X(x),Y(y)); else ctx.moveTo(X(x),Y(y)); }
+    ctx.stroke(); ctx.restore();
+    p.cand.forEach(function(c,j){
+      FL.dot(ctx,X(c[0]),Y(0),4.5,FL.C.red,'#fff');
+      var row=(cur===0)?(j%2):0;
+      FL.text(ctx,c[1],X(c[0]),Y(0)+17+row*14,{size:11,color:FL.C.red,align:'center',halo:true});
+    });
+    var D=Math.PI/180;
+    p.roots.forEach(function(r,j){
+      var x=r[1]*Math.cos(r[0]*D);
+      FL.dot(ctx,X(x),Y(0),6,'#2f8f65','#fff');
+      FL.text(ctx,p.rl+r[0]+'°',X(x),Y(0)-12-(j===2?16:0),{size:12,color:'#2f8f65',align:'center',halo:true});
+    });
+    FL.text(ctx,p.name,10,20,{size:13,color:FL.C.theme,halo:true});
+    var vals=p.cand.map(function(c){ var v=p.f(c[0]); return c[1]+' → '+(Math.round(v*1000)/1000).toString().replace('-','−'); });
+    ro.innerHTML='<span>候補での値：'+vals.join('、')+'</span><span class="ok"><b>どれも 0 でない → 既約 → 次数 3</b></span>';
+  }
+  document.querySelectorAll('[data-cub]').forEach(function(btn){
+    btn.addEventListener('click',function(){ cur=+btn.getAttribute('data-cub'); document.querySelectorAll('[data-cub]').forEach(function(x){x.setAttribute('aria-pressed',x===btn);}); st.redraw(); });
+  });
+})();
+</script>
+</body>
+</html>

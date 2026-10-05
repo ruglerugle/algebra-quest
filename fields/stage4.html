@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第3章 STAGE4 次数の掛け算（拡大次数の積の法則と作図可能性） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="拡大次数の積の法則 [L:K]＝[L:M][M:K] を中学生向けに解説。基底どうしを掛け合わせると大きい体の基底になることを示し、直線や円の交点が2次方程式で求まることから、定規とコンパスで作図できる数の次数は必ず 2 の累乗になることを証明する。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/fields/stage4">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第3章 STAGE4 次数の掛け算（拡大次数の積の法則と作図可能性） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="体を2段階でひろげると、次数は掛け算になる。作図の1手は √ を1つ足すだけ。だから作図できる数の次数は 1, 2, 4, 8, … のどれか。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/fields/stage4">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE4 次数の掛け算",
+      "description": "拡大次数の積の法則 [L:K]＝[L:M][M:K] を中学生向けに解説。基底どうしを掛け合わせると大きい体の基底になることを示し、直線や円の交点が2次方程式で求まることから、定規とコンパスで作図できる数の次数は必ず 2 の累乗になることを証明する。",
+      "url": "https://algebra.habatakijuku.com/fields/stage4",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 4,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第3章 四則演算と作図",
+        "url": "https://algebra.habatakijuku.com/fields/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第3章 四則演算と作図",
+          "item": "https://algebra.habatakijuku.com/fields/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE4 次数の掛け算",
+          "item": "https://algebra.habatakijuku.com/fields/stage4"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+.dg-tower{display:flex;flex-direction:column-reverse;align-items:center;gap:6px;margin:12px auto 0;max-width:460px}
+.dg-tower .lv{width:100%;border:1.5px solid #9a88d6;border-radius:9px;background:#f4f1fb;padding:6px 10px;font-size:13px;font-weight:800;color:#221d33;text-align:left}
+.dg-tower .lv.same{border-color:#e3bd6a;background:#fff8e6}
+.dg-tower .lv b{color:#44377a}
+.dg-tower .basis{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
+.dg-tower .basis span{display:inline-block;padding:1px 7px;border-radius:6px;background:#fff;border:1px solid #cfc6ea;font-size:12.5px}
+.dg-tower .basis span.new{background:#e6f5ec;border-color:#7fc0a8;color:#1f6b48}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第3章 四則演算と作図 ／ STAGE 4 ― 次数の掛け算 ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第3章 STAGE 4</span><h1 class="chapter-title">次数の掛け算</h1>
+        <div class="chapter-sub">作図できる数の次数は 2 の累乗</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">次数の積の法則 [L：K]＝[L：M][M：K] を、基底を掛け合わせる方法で説明しよう。作図の1手で新しく出てくる座標が「√ を1つ加えた体」に入ることを示し、作図できる数の次数が 2 の累乗であることを証明できれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いよいよ、作図できる数に共通する性質を突き止める。作図できない数を見分けるために、2つのことを示したい。1つは、「作図の1手で、体は次数 1 か 2 しかひろがらない」こと。もう1つは、「体を何段階かひろげたとき、全体の次数は各段の次数の掛け算になる」こと。2つ目から始めよう。STAGE2 で、ℚ(√2, √3) の基底を作ったね。どうやって作ったかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">ℚ(√2) の ℚ 上の基底は 1, √2 で、ℚ(√2, √3) の ℚ(√2) 上の基底は 1, √3 でした。この2組から1つずつ選んで掛け合わせた 1, √2, √3, √6 が、ℚ(√2, √3) の ℚ 上の基底になりました。2×2＝4 です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。これがいつでも成り立つことを示そう。体が K ⊂ M ⊂ L と3段に重なっているとする。M の K 上の基底を u₁, …, uₘ（m 個）、L の M 上の基底を v₁, …, vₙ（n 個）とする。u と v を1つずつ掛けた m×n 個の数 uᵢvⱼ が、L の K 上の基底になることを確かめたい。まず、L のどの数も「K の数×uᵢvⱼ」の和で書けることを示してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">L の数 z は、M の数 y₁, …, yₙ を使って z＝y₁v₁＋…＋yₙvₙ と書けます。それぞれの yⱼ は M の数なので、K の数を係数にして yⱼ＝x₁ⱼu₁＋…＋xₘⱼuₘ と書けます。これを代入して展開すると、z は「K の数 xᵢⱼ ×uᵢvⱼ」を全部足した形になります。m×n 個の uᵢvⱼ があれば、L のどの数も書けます。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。次は「ただ1通り」だ。STAGE2 と同じように、全部足して 0 になるなら係数 xᵢⱼ がすべて 0 になる、を示せばいい。足し算の順番を工夫してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">同じ vⱼ を含む項をまとめると、0＝(x₁₁u₁＋…＋xₘ₁uₘ)v₁＋…＋(x₁ₙu₁＋…＋xₘₙuₘ)vₙ です。かっこの中は M の数で、v₁, …, vₙ は L の M 上の基底なので、0 の書き方はかっこの中が全部 0 の1通りだけです。すると、x₁ⱼu₁＋…＋xₘⱼuₘ＝0 で、u₁, …, uₘ は M の K 上の基底なので、x₁ⱼ＝…＝xₘⱼ＝0。係数はすべて 0 です。だから uᵢvⱼ は基底で、<strong>[L：K]＝m×n</strong> です。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step"><strong>次数の積の法則</strong>：K ⊂ M ⊂ L のとき <span class="nw">[L：K]＝[L：M]×[M：K]</span></span>
+        <span class="step">M の K 上の基底 u₁, …, uₘ、L の M 上の基底 v₁, …, vₙ → 積 uᵢvⱼ（m×n 個）が L の K 上の基底</span>
+        <span class="step">書ける：<span class="nw">z＝Σ yⱼvⱼ</span>、<span class="nw">yⱼ＝Σ xᵢⱼuᵢ</span> を代入して <span class="nw">z＝Σ xᵢⱼuᵢvⱼ</span>（Σ は「全部足す」の意味）</span>
+        <span class="step">ただ1通り：<span class="nw">Σ xᵢⱼuᵢvⱼ＝0</span> を vⱼ ごとにまとめ、まず v の基底から「かっこの中＝0」、次に u の基底から「xᵢⱼ＝0」</span>
+        <span class="step">例：<span class="nw">[ℚ(√2, √3)：ℚ]＝[ℚ(√2, √3)：ℚ(√2)]×[ℚ(√2)：ℚ]＝2×2＝4</span></span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">よし。式の中の Σ は「全部足す」という記号で、ここでは書き方を短くするためだけに使った。この法則を使うと、√ を次々に加えていったときの次数がすぐに分かる。√ を1つ加えるたびに、次数はどう変わるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">体 K に √d（d は K の数で、√d は K に入らない）を加えると、STAGE2 の √2 と同じように、K(√d) の数は x＋y√d とただ1通りに書けるので、[K(√d)：K]＝2 です。√d がもともと K に入っていれば、何も変わらず次数は 1。だから、√ を1つ加えるたびに、全体の次数は 2 倍になるか、そのままです。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="sim-controls" id="dg-btns"></div>
+        <div class="sim-controls"><button class="btn" id="dg-reset">ℚ に戻す</button></div>
+        <div id="dg-tower" class="dg-tower"></div>
+        <div class="readout" id="ro-dg"></div>
+        <div class="diagram-caption"><strong>√ を加えて体をひろげる</strong>。ボタンで √ を1つずつ加えると、加えた順に体の塔が積み上がり、いちばん上の体の ℚ 上の基底（数の組）が並ぶ。すでに入っている √ を加えたときは次数が変わらない（たとえば √2 と √3 のあとの √6＝√2×√3）。新しい √ を加えると基底は2倍になり、全体の次数はいつも 1, 2, 4, 8, … のどれかになる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。では1つ目の、作図の1手で何が起きるかを調べよう。はじめにある点は (0, 0) と (1, 0) で、座標は有理数だ。いま、ここまでに作った点の座標が、すべてある体 K（実数の中の体）に入っているとしよう。K の点を2つ通る直線の式は ax＋by＝c、K の点を中心にして K の点を通る円の式は (x−p)²＋(y−q)²＝r² と書けて、a, b, c, p, q, r² はどれも K の数になる。まず、2本の直線の交点の座標はどんな数かな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">ax＋by＝c と a′x＋b′y＝c′ の連立方程式を解くことになります。中学の加減法や代入法は、足し算・引き算・掛け算・割り算しか使わないので、答えの x, y は K の数です。新しい数は出てきません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。では、直線と円の交点は？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">直線の式を y＝(c−ax)/b のように変形して（b＝0 なら x＝c/a として）円の式に代入すると、x の2次方程式 Ax²＋Bx＋C＝0 ができて、A, B, C は K の数です。解の公式で x＝(−B±√(B²−4AC))/(2A) となるので、x は K に √D（D＝B²−4AC は K の数）を1つ加えた体 K(√D) に入ります。y も直線の式から四則で求まるので K(√D) の数です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。最後に、2つの円の交点は？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">x²＋y²＋…＝… の形の式が2つあるので、引き算すると x² と y² が消えて、1次式 ax＋by＝c が残ります。2つの円の交点は、この直線ともとの円の交点と同じです。だから、さっきと同じで K(√D) に入ります。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">直線 × 直線：連立1次方程式 → 四則だけで解ける → 交点の座標は <strong>K の数</strong></span>
+        <span class="step">直線 × 円：代入すると2次方程式 <span class="nw">Ax²＋Bx＋C＝0</span>（A, B, C は K の数）<br><span class="nw">x＝(−B±√D)/(2A)</span>、<span class="nw">D＝B²−4AC</span> → 交点の座標は <strong>K(√D) の数</strong></span>
+        <span class="step">円 × 円：2つの式を引くと <span class="nw">x²＋y²</span> が消えて直線の式になる → 直線 × 円と同じ</span>
+        <span class="step">つまり作図の1手ごとに、座標の入る体は <span class="nw">K → K(√D)</span>：次数は 1 倍か 2 倍</span>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 480 190" role="img" aria-label="交点の3つの場合。直線と直線、直線と円、円と円">
+          <rect x="0" y="0" width="480" height="190" fill="#fdfbf6"/>
+          <g fill="none" stroke-width="2">
+            <line x1="14" y1="130" x2="146" y2="40" stroke="#5b4a9e"/><line x1="14" y1="60" x2="146" y2="140" stroke="#3f6fb5"/>
+            <circle cx="240" cy="92" r="52" stroke="#3f6fb5"/><line x1="170" y1="128" x2="312" y2="50" stroke="#5b4a9e"/>
+            <circle cx="374" cy="92" r="48" stroke="#3f6fb5"/><circle cx="424" cy="92" r="42" stroke="#3f6fb5"/>
+            <line x1="398" y1="30" x2="398" y2="154" stroke="#9a88d6" stroke-dasharray="5 4"/>
+          </g>
+          <g fill="#c8433f" stroke="#fff" stroke-width="1.5">
+            <circle cx="80" cy="95" r="5"/>
+            <circle cx="193.4" cy="114.8" r="5"/><circle cx="289.4" cy="62.1" r="5"/>
+            <circle cx="398" cy="49.7" r="5"/><circle cx="398" cy="134.3" r="5"/>
+          </g>
+          <g font-size="12.5" font-weight="800" text-anchor="middle" fill="#221d33">
+            <text x="80" y="170">直線 × 直線</text><text x="80" y="185" fill="#2f8f65">四則だけ（K のまま）</text>
+            <text x="240" y="170">直線 × 円</text><text x="240" y="185" fill="#c8433f">2次方程式（√ が1つ）</text>
+            <text x="400" y="170">円 × 円</text><text x="400" y="185" fill="#c8433f">引くと直線（√ が1つ）</text>
+          </g>
+        </svg>
+        <div class="diagram-caption"><strong>交点の3つの場合</strong>。左：2直線の交点は連立1次方程式で求まり、新しい √ は出ない。中央：直線と円の交点は2次方程式の解なので、√ が1つだけ出る。右：2円の交点は、2つの円の式を引いてできる直線（点線）ともとの円の交点と同じ</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">よく分かったね。点を1つ作るたびに、その点の座標が入るように体を1段ずつひろげていくと、ℚ＝K₀ ⊂ K₁ ⊂ K₂ ⊂ … ⊂ Kₙ という体の塔ができて、各段の次数は 1 か 2 になる。どれだけ複雑な作図でも、交点を1つずつ作っていくのだから、作った点の座標はすべていちばん上の Kₙ に入る。Kₙ の ℚ 上の次数はどうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">次数の積の法則で、[Kₙ：ℚ]＝[Kₙ：Kₙ₋₁]×…×[K₁：K₀] です。どの段も 1 か 2 なので、全体は 2 を何回か掛けた数、つまり <strong>2 の累乗</strong>です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。最後の一歩だ。作図できる数 α は Kₙ に入っているから、ℚ ⊂ ℚ(α) ⊂ Kₙ と並ぶ。Kₙ を ℚ(α) をひろげた体と見ても、基底はとれる（ℚ 上の基底から、むだなものを取り除いていけばいい）。α の次数について何が言えるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbitThink.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">積の法則で [Kₙ：ℚ]＝[Kₙ：ℚ(α)]×[ℚ(α)：ℚ] なので、[ℚ(α)：ℚ] は [Kₙ：ℚ]＝2ᵐ を割り切ります。2ᵐ の約数は、素因数分解がただ1通りなので 1, 2, 4, …, 2ᵐ だけです。STAGE3 で、[ℚ(α)：ℚ] は α の最小多項式の次数でした。だから、<strong>作図できる数の最小多項式の次数は、必ず 2 の累乗</strong>です！</div>
+        </div>
+      </div>
+
+      <div class="note-box"><span class="nb-title">作図できる数の判定法</span>定規とコンパスで作図できる数 α は、√ を1つずつ加えた体の塔 <span class="nw">ℚ＝K₀ ⊂ K₁ ⊂ … ⊂ Kₙ</span>（各段の次数は 1 か 2）のどこかに入る。だから<br><strong>α が作図できる ⇒ α の次数（最小多項式の次数）は 1, 2, 4, 8, … のどれか</strong><br>言いかえると、次数が 3 や 5 や 6 の数は、どう工夫しても作図できない。</div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">これで、STAGE1 で約束したことも確かめられた。作図で出てくる座標は、ℚ から四則と √ を1つずつ加えていった体に入る。つまり、作図できる数は ℚ から四則と √ で作れる数とぴったり同じなんだ。実際に、点を増やしてみよう。(0, 0) と (1, 0) の2点から1手目で、2点を通る直線を1本、2つの円をかく。どんな点ができるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">直線は x 軸です。(0, 0) を中心に (1, 0) を通る円と x 軸の交点は (−1, 0)、(1, 0) を中心に (0, 0) を通る円と x 軸の交点は (2, 0)。2つの円の交点は、x²＋y²＝1 と (x−1)²＋y²＝1 を引いて 2x−1＝0、x＝1/2、y²＝3/4 なので (1/2, ±√3/2)。新しい点は4つで、合わせて6点です。2つの円の交点で √3 が1つ出てきました。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-grow" aria-label="(0,0)と(1,0)から始めて、すべての直線と円を引いて交点を加える操作を1回、2回とくり返したときの点の様子"></canvas></div>
+        <div class="sim-controls">
+          <button class="btn" data-gr="0" aria-pressed="false">はじめ</button>
+          <button class="btn" data-gr="1" aria-pressed="false">1手目のあと</button>
+          <button class="btn" data-gr="2" aria-pressed="true">2手目のあと</button>
+        </div>
+        <div class="readout" id="ro-grow"></div>
+        <div class="diagram-caption"><strong>作図できる点が増えていく様子</strong>。今ある点のすべての組について、2点を通る直線と、一方を中心に他方を通る円を引き（薄い線）、すべての交点を新しい点にする。これを1回行うと点は 2 個 → 6 個、2回で 203 個になる（そのうち枠の中に入るものを表示）。点はどんどん増えるが、どの点の座標も、√ を次々に加えた体の中にある</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。3回目まで続けると、点の数は 17 億個を超えることが計算機で確かめられている。それでも、どの点の座標も、√ を1つずつ加えた体の数で、次数は 2 の累乗だ。ただし注意しておくと、次数が 2 の累乗なら必ず作図できる、とまでは言えない。次数が 4 なのに作図できない数もあって、それを見分けるには第4章のガロア理論が必要になる。でも、「できない」ことを示すには、今日の判定法だけで十分なんだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">STAGE3 で、∛2 の最小多項式は x³−2 で、次数は 3 でした。3 は 2 の累乗ではありません。ということは、体積 2 の立方体の辺 ∛2 は、作図できないということですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。2000年以上の謎が、もう手の届くところにある。次のステージで、立方体倍積と角の三等分に決着をつけよう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">次数の積の法則：<span class="nw">[L：K]＝[L：M]×[M：K]</span>。基底どうしを掛け合わせた uᵢvⱼ が L の K 上の基底になる</span>
+        <span class="step">√ を1つ加えると、次数は 2 倍（√ が新しいとき）か 1 倍（もともと入っているとき）</span>
+        <span class="step">作図の1手：直線×直線は四則だけ、直線×円は2次方程式、円×円は引くと直線×円 → 座標は K(√D) に入る</span>
+        <span class="step">作図できる点の座標は体の塔 ℚ＝K₀ ⊂ … ⊂ Kₙ（各段の次数 1 か 2）に入る → [Kₙ：ℚ] は 2 の累乗</span>
+        <span class="step"><strong>作図できる数の次数（最小多項式の次数）は 2 の累乗</strong>。∛2 は次数 3 なので作図できない</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. K ⊂ M ⊂ L で [M：K]＝2、[L：M]＝3 のとき、[L：K] は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">5</button>
+          <button class="choice-btn">6</button>
+          <button class="choice-btn">8</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 次数の積の法則で [L：K]＝[L：M]×[M：K]＝3×2＝6。M の基底 2 個と L の基底 3 個を掛け合わせた 6 個が、L の K 上の基底になる。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. 直線と円の交点の座標が、K に √ を1つ加えた体 K(√D) に入る理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">円の半径がいつも 1 だから</button>
+          <button class="choice-btn">交点がいつも1つしかないから</button>
+          <button class="choice-btn">直線の式を円の式に代入すると、係数が K の数の2次方程式になり、解の公式で √ が1つだけ出るから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 代入すると Ax²＋Bx＋C＝0（A, B, C は K の数）になり、x＝(−B±√D)/(2A)。y は直線の式から四則で求まる。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. 定規とコンパスで作図できる数 α の次数（最小多項式の次数）としてありえるものは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">8</button>
+          <button class="choice-btn">3</button>
+          <button class="choice-btn">6</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 作図できる数は、各段の次数が 1 か 2 の体の塔に入るので、次数は 2ᵐ の約数、つまり 1, 2, 4, 8, … のどれか。3 や 6 はありえない。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("fields", 4);</script>
+<script>
+/* √ を加えて体をひろげる */
+(function(){
+  var PR=[2,3,5,7];
+  var OPT=[2,3,5,6,10,15,7];
+  var box=document.getElementById('dg-btns'), tower=document.getElementById('dg-tower'), ro=document.getElementById('ro-dg');
+  function mask(n){ var m=0; PR.forEach(function(p,i){ if(n%p===0) m|=(1<<i); }); return m; }
+  function val(m){ var v=1; PR.forEach(function(p,i){ if(m&(1<<i)) v*=p; }); return v; }
+  function name(m){ return m===0?'1':'√'+val(m); }
+  var gens, levels;
+  function reset(){ gens=[]; levels=[{label:'ℚ',basis:[0],added:null,same:false}]; render(); }
+  function span(gs){ var set=[0]; gs.forEach(function(g){ var add=set.map(function(x){return x^g;}); add.forEach(function(x){ if(set.indexOf(x)<0) set.push(x); }); }); return set; }
+  function addRoot(n){
+    if(levels.length>=6) return;
+    var m=mask(n), cur=span(gens), same=cur.indexOf(m)>=0;
+    if(!same) gens.push(m);
+    var b=span(gens);
+    var label='ℚ('+gens.map(function(g){return '√'+val(g);}).join(', ')+')';
+    levels.push({label:label,basis:b,prev:cur,added:n,same:same});
+    render();
+  }
+  function render(){
+    var h='';
+    levels.forEach(function(L,i){
+      var deg=L.basis.length;
+      h+='<div class="lv'+(L.same?' same':'')+'">';
+      if(i===0) h+='<b>ℚ</b>　次数 1';
+      else h+='<b>√'+L.added+' を加える</b>：'+(L.same?'√'+L.added+' はすでに入っている → 体は変わらず、この段の次数 1':'この段の次数 2')+'　→ <b>'+L.label+'</b>、ℚ 上の次数 <b>'+deg+'</b>';
+      h+='<div class="basis">'+L.basis.map(function(x){ var isNew=i>0&&!L.same&&L.prev.indexOf(x)<0; return '<span class="'+(isNew?'new':'')+'">'+name(x)+'</span>'; }).join('')+'</div></div>';
+    });
+    tower.innerHTML=h;
+    var top=levels[levels.length-1], prod=levels.slice(1).map(function(L){return L.same?1:2;});
+    ro.innerHTML='<span>全体の次数＝'+(prod.length?prod.join('×')+'＝':'')+'<b>'+top.basis.length+'</b></span>'+(levels.length>=6?'<span>（ここまで）</span>':'');
+  }
+  OPT.forEach(function(n){
+    var b=document.createElement('button'); b.className='btn'; b.textContent='√'+n+' を加える';
+    b.addEventListener('click',function(){ addRoot(n); }); box.appendChild(b);
+  });
+  document.getElementById('dg-reset').addEventListener('click',reset);
+  reset(); addRoot(2); addRoot(3); addRoot(6);
+})();
+
+/* 作図できる点が増えていく様子 */
+(function(){
+  var rounds=[], objsByRound=[];
+  function key(p){ return (Math.round(p[0]*1e6)||0)+','+(Math.round(p[1]*1e6)||0); }
+  function inter(o1,o2){
+    var out=[];
+    if(o1.t==='C'&&o2.t==='L'){ var tmp=o1; o1=o2; o2=tmp; }
+    if(o1.t==='L'&&o2.t==='L'){
+      var a=o1.a,b=o1.b,c=o2.a,d=o2.b, r=[b[0]-a[0],b[1]-a[1]], s=[d[0]-c[0],d[1]-c[1]];
+      var den=r[0]*s[1]-r[1]*s[0]; if(Math.abs(den)<1e-12) return out;
+      var t=((c[0]-a[0])*s[1]-(c[1]-a[1])*s[0])/den; out.push([a[0]+t*r[0],a[1]+t*r[1]]); return out;
+    }
+    if(o1.t==='L'&&o2.t==='C'){
+      var p=o1.a,q=o1.b, dx=q[0]-p[0], dy=q[1]-p[1], fx=p[0]-o2.c[0], fy=p[1]-o2.c[1];
+      var A=dx*dx+dy*dy, B=2*(fx*dx+fy*dy), C=fx*fx+fy*fy-o2.r*o2.r, D=B*B-4*A*C;
+      if(D<-1e-9) return out; var sd=Math.sqrt(Math.max(0,D));
+      [(-B-sd)/(2*A),(-B+sd)/(2*A)].forEach(function(t){ out.push([p[0]+t*dx,p[1]+t*dy]); }); return out;
+    }
+    var x1=o1.c[0],y1=o1.c[1],x2=o2.c[0],y2=o2.c[1],r1=o1.r,r2=o2.r, dd=Math.hypot(x2-x1,y2-y1);
+    if(dd<1e-12||dd>r1+r2+1e-9||dd<Math.abs(r1-r2)-1e-9) return out;
+    var aa=(r1*r1-r2*r2+dd*dd)/(2*dd), h=Math.sqrt(Math.max(0,r1*r1-aa*aa)), mx=x1+aa*(x2-x1)/dd, my=y1+aa*(y2-y1)/dd;
+    out.push([mx+h*(y2-y1)/dd,my-h*(x2-x1)/dd],[mx-h*(y2-y1)/dd,my+h*(x2-x1)/dd]); return out;
+  }
+  var pts=[[0,0],[1,0]]; rounds.push(pts.slice()); objsByRound.push([]);
+  for(var rd=1;rd<=2;rd++){
+    var objs=[], seenL={};
+    for(var i=0;i<pts.length;i++) for(var j=0;j<pts.length;j++){
+      if(i===j) continue;
+      if(i<j) objs.push({t:'L',a:pts[i],b:pts[j]});
+      objs.push({t:'C',c:pts[i],r:Math.hypot(pts[j][0]-pts[i][0],pts[j][1]-pts[i][1])});
+    }
+    var m={}; pts.forEach(function(p){ m[key(p)]=p; });
+    for(i=0;i<objs.length;i++) for(j=i+1;j<objs.length;j++) inter(objs[i],objs[j]).forEach(function(p){ var k=key(p); if(!m[k]) m[k]=p; });
+    pts=Object.keys(m).map(function(k){return m[k];});
+    rounds.push(pts.slice()); objsByRound.push(objs);
+  }
+  var cur=2, ro=document.getElementById('ro-grow');
+  var st=FL.canvas('cv-grow',0.78,draw);
+  function draw(st){
+    var ctx=st.ctx; ctx.clearRect(0,0,st.W,st.H); ctx.fillStyle=FL.C.paper; ctx.fillRect(0,0,st.W,st.H);
+    var v=FL.view(st,cur===0?3:(cur===1?3.6:5.6),0.5,0);
+    FL.axes(ctx,st,v,0,{labels:false});
+    if(cur>0){
+      ctx.save(); ctx.lineWidth=1; ctx.strokeStyle='rgba(154,136,214,'+(cur===2?0.28:0.6)+')';
+      objsByRound[cur].forEach(function(o){
+        if(o.t==='L'){ var dx=o.b[0]-o.a[0], dy=o.b[1]-o.a[1], L=Math.hypot(dx,dy); ctx.beginPath(); ctx.moveTo(v.X(o.a[0]-40*dx/L),v.Y(o.a[1]-40*dy/L)); ctx.lineTo(v.X(o.a[0]+40*dx/L),v.Y(o.a[1]+40*dy/L)); ctx.stroke(); }
+        else { ctx.beginPath(); ctx.arc(v.X(o.c[0]),v.Y(o.c[1]),o.r*v.s,0,Math.PI*2); ctx.stroke(); }
+      });
+      ctx.restore();
+    }
+    var shown=0, prevKeys={};
+    if(cur>0) rounds[cur-1].forEach(function(p){ prevKeys[key(p)]=1; });
+    rounds[cur].forEach(function(p){
+      var x=v.X(p[0]), y=v.Y(p[1]); if(x<-4||x>st.W+4||y<-4||y>st.H+4) return; shown++;
+      var old=prevKeys[key(p)];
+      FL.dot(ctx,x,y,old||cur===0?4:3,old||cur===0?FL.C.themeDark:FL.C.red,old||cur===0?'#fff':null);
+    });
+    if(cur===1){
+      [['(0, 0)',0,0],['(1, 0)',1,0],['(−1, 0)',-1,0],['(2, 0)',2,0],['(1/2, √3/2)',0.5,Math.sqrt(3)/2],['(1/2, −√3/2)',0.5,-Math.sqrt(3)/2]].forEach(function(L){
+        FL.text(ctx,L[0],v.X(L[1])+5,v.Y(L[2])+(L[2]<0?18:-7),{size:11,color:FL.C.ink,halo:true});
+      });
+    }
+    if(cur===0){ FL.text(ctx,'(0, 0)',v.X(0)-4,v.Y(0)+18,{size:12,align:'center',halo:true}); FL.text(ctx,'(1, 0)',v.X(1)+4,v.Y(0)+18,{size:12,align:'center',halo:true}); }
+    ro.innerHTML='<span>点の数：<b>'+rounds[cur].length+'</b> 個</span>'+(cur>0?'<span>引いた直線と円：'+objsByRound[cur].length+' 本（重なりを含む）</span><span>枠の中に表示：'+shown+' 個（赤が新しい点）</span>':'');
+  }
+  document.querySelectorAll('[data-gr]').forEach(function(btn){
+    btn.addEventListener('click',function(){ cur=+btn.getAttribute('data-gr'); document.querySelectorAll('[data-gr]').forEach(function(x){x.setAttribute('aria-pressed',x===btn);}); st.redraw(); });
+  });
+})();
+</script>
+</body>
+</html>

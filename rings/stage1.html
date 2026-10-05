@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第2章 STAGE1 2つの謎と数の世界（環とは・平方数の和と素因数分解） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="環とは何かを中学生向けに解説。どんな素数が2つの平方数の和になるか、6＝2×3＝(1＋√−5)(1−√−5) となる世界はなぜあるか、という2つの謎から出発し、足し算・引き算・掛け算で閉じた数の世界（環）を定義する。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/rings/stage1">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第2章 STAGE1 2つの謎と数の世界（環とは・平方数の和と素因数分解） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="5＝1²＋2² なのに 3 や 7 は平方数の和にならない。6 が2通りに分解される世界もある。2つの謎を解く舞台「環」を作る。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/rings/stage1">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE1 2つの謎と数の世界",
+      "description": "環とは何かを中学生向けに解説。どんな素数が2つの平方数の和になるか、6＝2×3＝(1＋√−5)(1−√−5) となる世界はなぜあるか、という2つの謎から出発し、足し算・引き算・掛け算で閉じた数の世界（環）を定義する。",
+      "url": "https://algebra.habatakijuku.com/rings/stage1",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 1,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第2章 素因数分解の世界",
+        "url": "https://algebra.habatakijuku.com/rings/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第2章 素因数分解の世界",
+          "item": "https://algebra.habatakijuku.com/rings/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE1 2つの謎と数の世界",
+          "item": "https://algebra.habatakijuku.com/rings/stage1"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:6px;max-width:500px;margin:0 auto}
+  .pgrid button{font:inherit;font-size:14px;font-weight:900;color:#221d33;background:#fff;border:2px solid #d9d1ee;border-radius:9px;padding:6px 0 4px;cursor:pointer;line-height:1.15;min-height:46px}
+  .pgrid button small{display:block;font-size:10.5px;font-weight:800;color:#77708c;min-height:12px}
+  .pgrid button.yes small{color:#2e7d4f}
+  .pgrid button.no small{color:#c8433f}
+  .pgrid button.sel{box-shadow:0 0 0 3px #9a88d6}
+  .pgrid.mod button.r1{background:#e7eefa;border-color:#3f6fb5}
+  .pgrid.mod button.r3{background:#fbe9e8;border-color:#c8433f}
+  .pgrid.mod button.r2{background:#f7eedb;border-color:#9a6a1c}
+  .ring-ex td.lft{text-align:left}
+  .ring-ex{font-size:12.5px}
+  @media (max-width:520px){.ring-ex{font-size:11px}.ring-ex th,.ring-ex td{padding:3px 4px}}
+  .unit-l{min-width:2.2em;text-align:left}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第2章 素因数分解の世界 ／ STAGE 1 ― 2つの謎と数の世界 ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 8</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第2章 STAGE 1</span><h1 class="chapter-title">2つの謎と数の世界</h1>
+        <div class="chapter-sub">素因数分解の謎と、環という舞台</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">平方数の和で書ける素数を自分で調べて、4 で割った余りとの関係に気づこう。環（0 と 1 を含み、足し算・引き算・掛け算で閉じた数の集まり）の定義と、それに当てはまる例・当てはまらない例を説明できれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">第1章では、回す・裏返す・入れ替えるといった操作を計算する道具、群を作った。第2章では、いちばん身近な数、整数に戻ろう。まず1つ実験だ。素数 2, 3, 5, 7, 11, 13 のそれぞれが、<strong>2つの平方数の和</strong>で書けるか調べてごらん。0² も使っていいよ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">平方数は 0, 1, 4, 9, 16, … です。2＝1²＋1²、5＝1²＋2²、13＝2²＋3² は書けます。3 は 0＋1, 1＋1, 0＋0 のどれでもなく、7 は 7−0, 7−1, 7−4 が 7, 6, 3 でどれも平方数でないので書けません。11 も 11, 10, 7 で書けません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。50 くらいまでの素数で続けて、書けるものと書けないものに分けてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">17＝1²＋4²、29＝2²＋5²、37＝1²＋6²、41＝4²＋5² は書けます。19, 23, 31, 43, 47 は、平方数を引いた残りがどれも平方数になりません。書けるのは 2, 5, 13, 17, 29, 37, 41 で、書けないのは 3, 7, 11, 19, 23, 31, 43, 47 です。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="pgrid" id="pgrid" role="group" aria-label="100 未満の素数の一覧。素数を選ぶと、2つの平方数の和で書けるかを調べる"></div>
+        <div class="sim-controls">
+          <button class="btn" type="button" id="pg-all">全部調べる</button>
+          <button class="btn" type="button" id="pg-mod" aria-pressed="false">4 で割った余りで色分け</button>
+          <button class="btn" type="button" id="pg-reset">はじめから</button>
+        </div>
+        <div class="readout" id="ro-pg"><span>素数を1つ選んでごらん</span></div>
+        <div class="diagram-caption"><strong>2つの平方数の和で書ける素数を探す</strong>。素数を選ぶと、p から 0², 1², 2², … を引いた残りが平方数になるかを順に調べ、書ければ ○、書けなければ × をつける。「全部調べる」で 100 未満の素数をすべて調べたあと、「4 で割った余りで色分け」を押すと、余りが 1 の素数（青）・3 の素数（赤）・2（金）に色が分かれる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">書ける素数と書けない素数を分けている規則がある。それぞれを 4 で割った余りを調べてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">書ける 5, 13, 17, 29, 37, 41 は、4 で割るとどれも余り 1 です。書けない 3, 7, 11, 19, 23, 31, 43, 47 は、どれも余り 3 です。2 だけは別で、余り 2 で書けます。奇数の素数は 4 で割ると余り 1 か 3 なので、余りだけで書けるかどうかが決まっているように見えます。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">それが1つ目の謎だ。<strong>4 で割って 1 余る素数は2つの平方数の和で書け、3 余る素数は書けない</strong>。1640年、フェルマーが手紙にこの事実を書いたけれど、証明は残さなかった。最初の証明は、1749年にオイラーが何年も苦労してやっと手紙で知らせたものだ。でも、整数より広い数の世界から見ると、見通しよく証明できる。13＝2²＋3² だったね。i² ＝ −1 を思い出して、(3＋2i)(3−2i) を計算してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble"><a href="https://complex-number.habatakijuku.com/" target="_blank" rel="noopener" style="color:var(--gold-dark);text-decoration:underline">『本当はおもしろい複素数の世界』</a>で学んだとおりに展開すると、(3＋2i)(3−2i)＝9−6i＋6i−4i²＝9＋4＝13。……13 は整数の世界では素数ですが、i を使ってよい世界では、2つの数の掛け算に分かれるんですね。a²＋b² ＝ (a＋bi)(a−bi) なので、2つの平方数の和で書ける数はどれも、こうして分かれます。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。「2つの平方数の和で書けるか」という整数の問題が、「i を使ってよい世界で、掛け算に分かれるか」という問題に言いかえられるんだ。これをきちんと証明するのが、この章の目標の1つだよ。ところが、広い世界に出ると、困ったことも起きる。<strong>√−5</strong> を、2乗すると −5 になる数、つまり √5 i として、a＋b√−5（a, b は整数）の形の数だけを使う世界を考える。(1＋√−5)(1−√−5) を計算してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(1＋√−5)(1−√−5)＝1−(√−5)²＝1−(−5)＝6 です。<strong>6＝2×3＝(1＋√−5)(1−√−5)</strong>。6 の分け方が2通りあります。でも、整数でも 12＝3×4＝2×6 のように、途中までならいろいろな分け方があります。4＝2×2 と最後まで分ければ、どちらも 2×2×3 にそろいます。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その疑問が大事なんだ。実はこの世界では、2, 3, 1＋√−5, 1−√−5 のどれも、この世界の数ではそれ以上分けられない。それを確かめるのは STAGE6 だ。つまり、この世界では<strong>素因数分解がただ1通りにならない</strong>。これが2つ目の謎だよ。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 190" role="img" aria-label="6 の2通りの分け方。上の段は 6＝2×3、下の段は 6＝(1＋√−5)×(1−√−5)。どの4つの数も、a＋b√−5 の世界ではそれ以上分けられない">
+          <rect x="10" y="12" width="420" height="166" rx="12" fill="#f6f3fc" stroke="#d9d1ee"/>
+          <text x="40" y="62" font-size="22" font-weight="900" fill="#221d33">6 ＝</text>
+          <rect x="110" y="34" width="70" height="40" rx="9" fill="#3f6fb5"/><text x="145" y="61" text-anchor="middle" font-size="20" font-weight="900" fill="#fff">2</text>
+          <text x="196" y="62" text-anchor="middle" font-size="20" font-weight="900" fill="#221d33">×</text>
+          <rect x="212" y="34" width="70" height="40" rx="9" fill="#9a6a1c"/><text x="247" y="61" text-anchor="middle" font-size="20" font-weight="900" fill="#fff">3</text>
+          <text x="40" y="140" font-size="22" font-weight="900" fill="#221d33">6 ＝</text>
+          <rect x="110" y="112" width="120" height="40" rx="9" fill="#5b4a9e"/><text x="170" y="139" text-anchor="middle" font-size="18" font-weight="900" fill="#fff">1＋√−5</text>
+          <text x="246" y="140" text-anchor="middle" font-size="20" font-weight="900" fill="#221d33">×</text>
+          <rect x="262" y="112" width="120" height="40" rx="9" fill="#c8433f"/><text x="322" y="139" text-anchor="middle" font-size="18" font-weight="900" fill="#fff">1−√−5</text>
+          <text x="300" y="62" font-size="13" font-weight="800" fill="#77708c">整数の分け方</text>
+          <text x="220" y="100" text-anchor="middle" font-size="12.5" font-weight="800" fill="#77708c">どの部品も、この世界ではもう分けられない</text>
+        </svg>
+        <div class="diagram-caption"><strong>2つ目の謎：6 の2通りの分け方</strong>。a＋b√−5 の世界では、6 は 2×3 とも (1＋√−5)×(1−√−5) とも書ける。整数の 12＝3×4＝2×6 とちがい、4つの部品はどれもそれ以上分けられないので、最後まで分けても2通りのまま残る</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">1つ目の謎では、広い世界で素数が分かれることが役に立ちそうでした。でも2つ目の謎のように、広い世界では素因数分解が崩れることもあるんですね。どちらの世界でも同じように計算しているのに、何が違うんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">それこそが、この章で突き止めることなんだ。歴史の上でも大事件だった。1847年、ラメという数学者が、こういう広い世界の数を使って「フェルマーの最終定理（3 以上の n で xⁿ＋yⁿ＝zⁿ をみたす自然数はない）を証明した」と発表した。ところが、その証明は、新しい世界でも素因数分解がただ1通りだと思い込んで使っていて、そこが崩れていた。この章の道具を使うと、こういうことができるようになる。</div>
+        </div>
+      </div>
+
+      <div class="note-box"><span class="nb-title">この章でできるようになること</span>・整数の素因数分解が「ただ1通り」になる理由を、自分の手で証明できる<br>・ユークリッドの互除法で ax＋py＝1 を作れる（第1章の mod p の逆数や RSA の秘密鍵も、これで計算できる）<br>・4 で割って 1 余る素数が2つの平方数の和で書けることを、ガウス整数の世界で証明できる<br>・6＝2×3＝(1＋√−5)(1−√−5) がなぜ起きるかを説明し、「イデアル」という部品で素因数分解を修理できる</div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">i を使ってよい世界、√−5 を使う世界と言いましたが、そういう世界は、好きな数を集めて自由に作ってよいんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いい質問だね。それを決めよう。整数どうしを足しても、引いても、掛けても、答えはまた整数だね。こういう、計算しても集まりの外に出ないことを<strong>閉じている</strong>という。そして、<strong>0 と 1 を含み、足し算・引き算・掛け算で閉じた数の集まり</strong>を<strong>環（かん）</strong>と呼ぶ。この章では「数の世界」とも呼ぶよ。素因数分解の話をするには、掛け算をしても世界の外に出ないことがまず必要だからね。交換法則や分配法則のような計算の決まりは、もとの数（複素数や整数）から引き継がれるから、確かめるのは「閉じているか」だけでいい。ガウス整数、つまり a＋bi（a, b は整数）の形の数全体が環になるか、確かめてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">足し算と引き算は (a＋bi)±(c＋di)＝(a±c)＋(b±d)i なので、また整数＋整数×i の形です。掛け算は (a＋bi)(c＋di)＝ac＋adi＋bci＋bdi²＝(ac−bd)＋(ad＋bc)i で、ac−bd も ad＋bc も整数です。0＝0＋0i と 1＝1＋0i も入っています。ガウス整数は環です。a＋b√−5 なら、(√−5)²＝−5 なので (a＋b√−5)(c＋d√−5)＝(ac−5bd)＋(ad＋bc)√−5 で、やはり閉じています。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">ガウス整数：<span class="nw">(a＋bi)(c＋di)＝ac＋adi＋bci＋bd i²</span><br><span class="nw">＝(ac−bd)＋(ad＋bc)i</span>（i²＝−1 を使う）</span>
+        <span class="step">a＋b√−5：<span class="nw">(a＋b√−5)(c＋d√−5)</span><br><span class="nw">＝ac＋ad√−5＋bc√−5＋bd(√−5)²</span><br><span class="nw">＝(ac−5bd)＋(ad＋bc)√−5</span>（(√−5)²＝−5 を使う）</span>
+        <span class="step">どちらも「整数＋整数×(i や √−5)」の形に戻る → 掛け算で閉じている</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">この2つの世界の数は、複素数の平面の上に、規則正しく並んだ点として描ける。ガウス整数は1辺 1 の正方形の角に、a＋b√−5 は横 1・縦 √5 の長方形の角に並ぶ。どの2つを掛けても、積はまた同じ並びの点に乗るんだ。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-world1" aria-label="数の世界を複素数の平面の点の並びとして描いた図。選んだ2つの数 z, w と積 zw が、どれも同じ並びの点の上に乗る"></canvas></div>
+        <div class="sim-controls">
+          <label>世界 <select id="sel-w1"><option value="i">a＋bi（ガウス整数）</option><option value="5">a＋b√−5</option><option value="2">a＋b√−2</option></select></label>
+        </div>
+        <div class="sim-controls">
+          <label>z＝ <input type="number" id="w1-za" min="-3" max="3" value="2"> ＋ <input type="number" id="w1-zb" min="-3" max="3" value="1"><span class="unit-l">i</span></label>
+          <label>w＝ <input type="number" id="w1-wa" min="-3" max="3" value="1"> ＋ <input type="number" id="w1-wb" min="-3" max="3" value="1"><span class="unit-l">i</span></label>
+        </div>
+        <div class="readout" id="ro-w1"></div>
+        <div class="diagram-caption"><strong>数の世界を点の並びで見る</strong>。横が実数の部分、縦が i の部分の複素数の平面に、世界の数を点として並べた。ガウス整数は正方形の目、a＋b√−5 は縦に長い長方形の目（縦の間隔 √5≒2.24）、a＋b√−2 は縦の間隔 √2≒1.41 の目。z と w（青）を変えると、積 zw（赤）もいつも同じ並びの点に乗る。これが「掛け算で閉じている」ということ</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">足し算については、第1章の<strong>群</strong>になっていますね。足し算の結果がまた世界の中にあって（閉じている）、結合法則が成り立ち、0 を足しても変わらず（単位元）、a の逆元は −a です。引き算で閉じているので、−a もちゃんと世界の中にあります。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。環は「足し算については群で、そのうえ掛け算もできる世界」だと言ってもいい。第1章の <strong>mod n の世界</strong>も環になるよ。0, 1, …, n−1 の中で、足し算・引き算・掛け算の余りを取る世界だったね。では、なぜ環の約束に「割り算」を入れないのか。整数の代わりに、有理数（整数÷整数で書ける数）全体を世界にしたら、素因数分解はどうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">有理数の世界では 6＝(1/2)×12＝(3/7)×14 のように、0 でないどんな数 c を選んでも 6＝c×(6/c) と書けて、6/c も有理数です。どの数もどの数でも割り切れてしまうので、「これ以上分けられない数」が1つもありません。素因数分解を考えるなら、割り算がいつもはできない世界でないといけない、ということですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。割り算がいつもできる世界は、第3章で主役になる。この章の舞台は、割り算がいつもはできないからこそ「割り切れる」「約数」が意味をもつ環なんだ。逆に、当てはまらない例も見ておこう。偶数全体はどうかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">偶数＋偶数、偶数−偶数、偶数×偶数はどれも偶数なので、計算では閉じています。でも 1 が入っていないので、約束どおりなら環ではありません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。偶数全体は環ではないけれど、STAGE7 で「イデアル」という別の役で再登場する。もう1つ。3乗すると 2 になる数を ∛2 として、a＋b∛2（a, b は整数）の集まりを考える。∛2×∛2＝∛4 が a＋b∛2 の形に書けるとしたら、両辺に ∛2 を掛けるとどうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">∛4＝a＋b∛2 の両辺に ∛2 を掛けると、∛4×∛2＝∛8＝2 なので、2＝a∛2＋b∛4。右辺の ∛4 にまた a＋b∛2 を入れると 2＝a∛2＋b(a＋b∛2)＝ab＋(a＋b²)∛2 です。a＋b² が 0 でなければ ∛2＝(2−ab)/(a＋b²) で、∛2 が有理数になってしまいます。a＋b²＝0 なら a＝−b² で、2＝ab＝−b³、つまり b³＝−2 となる整数 b が必要ですが、ありません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。最後に、∛2 が有理数でないことを確かめれば完成だ。∛2＝m/n（m, n は自然数で、これ以上約分できない分数）としてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">両辺を3乗すると 2＝m³/n³ で、m³＝2n³。右辺は偶数なので m³ は偶数で、奇数の3乗は奇数なので m は偶数です。m＝2k とすると 8k³＝2n³ で n³＝4k³、今度は n も偶数です。m も n も偶数だと約分できるので、矛盾します。だから ∛4 は a＋b∛2 の形に書けず、<strong>a＋b∛2 の集まりは掛け算で閉じていない</strong>ので環ではありません。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">∛4＝a＋b∛2（a, b は整数）と仮定する</span>
+        <span class="step">両辺に ∛2 を掛ける：<span class="nw">2＝a∛2＋b∛4＝a∛2＋b(a＋b∛2)＝ab＋(a＋b²)∛2</span>（∛4 にもう一度 a＋b∛2 を入れる）</span>
+        <span class="step">a＋b²≠0 なら <span class="nw">∛2＝(2−ab)/(a＋b²)</span> で有理数になる → ∛2＝m/n なら m³＝2n³ から m も n も偶数になり、約分できない分数にならない</span>
+        <span class="step">a＋b²＝0 なら a＝−b² で <span class="nw">2＝ab＝−b³</span> → b³＝−2 となる整数はない</span>
+        <span class="step">→ ∛4 は a＋b∛2 の形に書けない。a＋b∛2 の集まりは環ではない</span>
+      </div>
+
+      <div class="diagram-box">
+<table class="num-table ring-ex">
+          <tr><th>集まり</th><th>0 と 1</th><th>足し算・引き算</th><th>掛け算</th><th>判定</th></tr>
+          <tr><td class="lft">整数 …, −2, −1, 0, 1, 2, …</td><td class="hit">○</td><td class="hit">○</td><td class="hit">○</td><td class="hit"><b>環</b></td></tr>
+          <tr><td class="lft">ガウス整数 a＋bi</td><td class="hit">○</td><td class="hit">○</td><td class="hit">○</td><td class="hit"><b>環</b></td></tr>
+          <tr><td class="lft">a＋b√−5</td><td class="hit">○</td><td class="hit">○</td><td class="hit">○</td><td class="hit"><b>環</b></td></tr>
+          <tr><td class="lft">mod n の世界 0, 1, …, n−1</td><td class="hit">○</td><td class="hit">○</td><td class="hit">○</td><td class="hit"><b>環</b></td></tr>
+          <tr><td class="lft">自然数 1, 2, 3, …</td><td class="miss">0 がない</td><td class="miss">×（2−5）</td><td class="hit">○</td><td class="miss"><b>環でない</b></td></tr>
+          <tr><td class="lft">偶数全体</td><td class="miss">1 がない</td><td class="hit">○</td><td class="hit">○</td><td class="miss"><b>環でない</b></td></tr>
+          <tr><td class="lft">a＋b∛2</td><td class="hit">○</td><td class="hit">○</td><td class="miss">×（∛2×∛2）</td><td class="miss"><b>環でない</b></td></tr>
+        </table>
+        <div class="diagram-caption"><strong>環の例と、当てはまらない例</strong>。「0 と 1 を含む」「足し算・引き算で閉じる」「掛け算で閉じる」の3つの約束を全部みたすものだけが環。偶数全体は 1 がないので、a＋b∛2 は ∛2×∛2＝∛4 が外に出るので、環ではない</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">ガウス整数や a＋b√−5 が環になったのは、i² や (√−5)² が整数に戻るからなんですね。∛2 は2乗しても整数に戻らず、新しい ∛4 が出てきてしまいます。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。これで舞台ができた。次のステージでは、環の中で「これ以上分けられない数」をどう見分けるかを考えよう。そのとき、数の大きさを整数で測る「ノルム」というものさしを作る。それが1つ目の謎への第一歩にもなるよ。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">謎1：100 未満の素数では、4 で割って 1 余る素数と 2 は2つの平方数の和で書け、3 余る素数は書けない（フェルマー 1640年、オイラーの証明 1749年）</span>
+        <span class="step"><span class="nw">13＝2²＋3²＝(3＋2i)(3−2i)</span>：平方数の和は、i を使ってよい世界での掛け算への分解に言いかえられる</span>
+        <span class="step">謎2：a＋b√−5 の世界では <span class="nw">6＝2×3＝(1＋√−5)(1−√−5)</span> と素因数分解が2通りになる（ラメの証明が崩れた原因と同じ種類の現象）</span>
+        <span class="step">環：0 と 1 を含み、足し算・引き算・掛け算で閉じた数の集まり。足し算については第1章の群。整数、ガウス整数、a＋b√−5、mod n の世界は環</span>
+        <span class="step">割り算は約束に入れない（有理数ではどの数も割り切れて素因数分解が意味を失う）。偶数全体（1 がない）と a＋b∛2（∛4 が外に出る）は環ではない</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. 次の素数のうち、2つの平方数の和で書けるものは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">29</button>
+          <button class="choice-btn">19</button>
+          <button class="choice-btn">23</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 29＝2²＋5² で、29 は 4 で割って 1 余る。19 と 23 は 4 で割って 3 余り、どの平方数を引いても残りが平方数にならない。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. 次のうち、環（0 と 1 を含み、足し算・引き算・掛け算で閉じた数の集まり）であるものは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">偶数全体</button>
+          <button class="choice-btn">a＋b∛2（a, b は整数）全体</button>
+          <button class="choice-btn">a＋b√−5（a, b は整数）全体</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ a＋b√−5 は (√−5)²＝−5 なので掛けても同じ形に戻る。偶数全体は 1 を含まず、a＋b∛2 は ∛2×∛2＝∛4 がこの形に書けないので、どちらも環ではない。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. 素因数分解を考える舞台に、有理数全体を使わない理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">有理数は足し算で閉じていないから</button>
+          <button class="choice-btn">0 でないどの数 c でも 6＝c×(6/c) と書けて、「これ以上分けられない数」がなくなるから</button>
+          <button class="choice-btn">有理数には 1 が含まれないから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 有理数の世界では 0 以外のどんな数でも割れるので、どの数もどの数でも割り切れる。素因数分解を考えるのは、割り算がいつもはできない環。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("rings", 1);</script>
+<script>
+/* 2つの平方数の和で書ける素数を探す */
+(function(){
+  var grid=document.getElementById('pgrid'), ro=document.getElementById('ro-pg');
+  var bAll=document.getElementById('pg-all'), bMod=document.getElementById('pg-mod'), bReset=document.getElementById('pg-reset');
+  var ps=FL.primes(100), cells={};
+  function two(p){ for(var a=0;a*a<=p;a++){ var b=Math.round(Math.sqrt(p-a*a)); if(b>=a&&a*a+b*b===p) return [a,b]; } return null; }
+  ps.forEach(function(p){
+    var b=document.createElement('button'); b.type='button'; b.innerHTML=p+'<small></small>';
+    b.className='r'+(p%4); b.setAttribute('aria-label','素数 '+p);
+    b.addEventListener('click',function(){ check(p,true); });
+    grid.appendChild(b); cells[p]=b;
+  });
+  function mark(p){ var t=two(p), b=cells[p]; b.classList.add(t?'yes':'no'); b.querySelector('small').textContent=t?(t[0]+'²＋'+t[1]+'²'):'×'; }
+  function check(p,show){
+    mark(p);
+    Object.keys(cells).forEach(function(k){cells[k].classList.toggle('sel',+k===p);});
+    if(!show) return;
+    var tries=[];
+    for(var a=0;a*a<=p;a++){ var r=p-a*a, s=Math.round(Math.sqrt(r)); tries.push(p+'−'+a+'²＝'+r+(s*s===r?'＝'+s+'² ○':'')); }
+    var t=two(p);
+    ro.innerHTML='<span>'+tries.join('、')+'</span><span>'+(t?'<b class="ok">'+p+'＝'+t[0]+'²＋'+t[1]+'²</b>':'<b class="ng">'+p+' は2つの平方数の和で書けない</b>')+'</span>';
+  }
+  bAll.addEventListener('click',function(){ ps.forEach(function(p){mark(p);}); var y=ps.filter(function(p){return two(p);}).length; ro.innerHTML='<span>100 未満の素数 '+ps.length+' 個のうち、書けるものは <b>'+y+' 個</b>、書けないものは <b>'+(ps.length-y)+' 個</b></span>'; });
+  bMod.addEventListener('click',function(){ var on=bMod.getAttribute('aria-pressed')!=='true'; bMod.setAttribute('aria-pressed',on?'true':'false'); grid.classList.toggle('mod',on);
+    if(on) ro.innerHTML='<span style="color:#3f6fb5">青：4 で割って 1 余る</span><span style="color:#c8433f">赤：4 で割って 3 余る</span><span style="color:#9a6a1c">金：2</span>'; });
+  bReset.addEventListener('click',function(){ ps.forEach(function(p){ var b=cells[p]; b.classList.remove('yes','no','sel'); b.querySelector('small').textContent=''; }); bMod.setAttribute('aria-pressed','false'); grid.classList.remove('mod'); ro.innerHTML='<span>素数を1つ選んでごらん</span>'; });
+})();
+
+/* 数の世界を点の並びで見る */
+(function(){
+  var sel=document.getElementById('sel-w1'), ro=document.getElementById('ro-w1');
+  var ids=['w1-za','w1-zb','w1-wa','w1-wb'].map(function(id){return document.getElementById(id);});
+  var W={
+    i:{u:'i', k:1}, '5':{u:'√−5', k:5}, '2':{u:'√−2', k:2}
+  };
+  function name(a,b,u){ if(b===0) return FL.signed(a); var s=(a!==0?FL.signed(a):''); var bb=Math.abs(b); return s+(b>0?(a!==0?'＋':''):'−')+(bb===1?'':bb)+u; }
+  var st=FL.canvas('cv-world1',0.8,draw);
+  function draw(st){
+    var w=W[sel.value], sk=Math.sqrt(w.k);
+    var v=ids.map(function(el){var x=Math.max(-3,Math.min(3,parseInt(el.value,10)||0)); return x;});
+    document.querySelectorAll('.unit-l').forEach(function(e){e.textContent=w.u;});
+    var pa=v[0]*v[2]-w.k*v[1]*v[3], pb=v[0]*v[3]+v[1]*v[2];
+    var pts=[[v[0],v[1]*sk],[v[2],v[3]*sk],[pa,pb*sk]];
+    var m=0; pts.forEach(function(p){m=Math.max(m,Math.abs(p[0])*0.8,Math.abs(p[1]));});
+    var span=Math.max(7,2*m+2);
+    var ctx=st.ctx; ctx.clearRect(0,0,st.W,st.H); ctx.fillStyle=FL.C.paper; ctx.fillRect(0,0,st.W,st.H);
+    var vw=FL.view(st,span,0,0);
+    FL.axes(ctx,st,vw,0,{labels:false});
+    var R=Math.ceil(span*1.4);
+    for(var a=-R;a<=R;a++) for(var b=-R;b<=R;b++){
+      var x=vw.X(a), y=vw.Y(b*sk); if(x<-5||x>st.W+5||y<-5||y>st.H+5) continue;
+      FL.dot(ctx,x,y,span>16?1.7:2.7,'#bdb3da');
+    }
+    function mk(p,c,t,dy){ FL.dot(ctx,vw.X(p[0]),vw.Y(p[1]),6,c,'#fff'); FL.text(ctx,t,vw.X(p[0])+9,vw.Y(p[1])+dy,{color:c,size:13,halo:true}); }
+    mk(pts[0],FL.C.blue,'z',-8); mk(pts[1],FL.C.blue,'w',16); mk(pts[2],FL.C.red,'zw',-8);
+    FL.text(ctx,'実数の部分',st.W-8,vw.Y(0)-6,{color:FL.C.muted,align:'right',size:11});
+    ro.innerHTML='<span>z＝<b>'+name(v[0],v[1],w.u)+'</b></span><span>w＝<b>'+name(v[2],v[3],w.u)+'</b></span><span>zw＝<b class="ng">'+name(pa,pb,w.u)+'</b></span>';
+  }
+  sel.addEventListener('change',function(){st.redraw();});
+  ids.forEach(function(el){el.addEventListener('input',function(){st.redraw();});});
+})();
+</script>
+</body>
+</html>

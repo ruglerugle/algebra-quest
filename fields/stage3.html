@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第3章 STAGE3 多項式の世界（多項式の割り算・既約多項式・最小多項式） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="多項式の余りのある割り算と最小多項式を中学生向けに解説。多項式は整数と同じように割り算・互除法ができ、既約多項式は素数にあたる。∛2 の最小多項式 x³−2 が既約であることを有理根の判定で示し、ℚ(∛2) の次数が 3 になることを確かめる。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/fields/stage3">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第3章 STAGE3 多項式の世界（多項式の割り算・既約多項式・最小多項式） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="多項式も、整数と同じように余りのある割り算ができる。∛2 をみたすいちばん簡単な式から、ℚ(∛2) の大きさ（次数 3）を求める。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/fields/stage3">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE3 多項式の世界",
+      "description": "多項式の余りのある割り算と最小多項式を中学生向けに解説。多項式は整数と同じように割り算・互除法ができ、既約多項式は素数にあたる。∛2 の最小多項式 x³−2 が既約であることを有理根の判定で示し、ℚ(∛2) の次数が 3 になることを確かめる。",
+      "url": "https://algebra.habatakijuku.com/fields/stage3",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 3,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第3章 四則演算と作図",
+        "url": "https://algebra.habatakijuku.com/fields/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第3章 四則演算と作図",
+          "item": "https://algebra.habatakijuku.com/fields/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE3 多項式の世界",
+          "item": "https://algebra.habatakijuku.com/fields/stage3"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+.pdiv{border-collapse:collapse;margin:10px auto 0;font-size:14px;font-weight:800;font-variant-numeric:tabular-nums;color:#221d33}
+.pdiv td{padding:3px 7px;text-align:right;white-space:nowrap;min-width:46px}
+.pdiv td.lab{text-align:right;color:#77708c;font-size:12px;min-width:0}
+.pdiv tr.q td{color:#2f8f65}
+.pdiv tr.sub td{color:#3f6fb5}
+.pdiv tr.rem td{color:#c8433f;border-top:2px solid #221d33}
+.pdiv tr.rem td.lab{border-top:none}
+.pdiv tr.f td{border-top:2px solid #221d33}
+.pdiv tr.f td.lab{border-top:none}
+.pdiv td.z{color:#b9b0a3}
+.pdiv tr.hide td{visibility:hidden}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第3章 四則演算と作図 ／ STAGE 3 ― 多項式の世界 ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第3章 STAGE 3</span><h1 class="chapter-title">多項式の世界</h1>
+        <div class="chapter-sub">最小多項式と次数</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">多項式の余りのある割り算を筆算で実行し、互除法で 1/(1＋∛2) を計算しよう。最小多項式が既約であること、ℚ(α) の次数が最小多項式の次数に等しいことを説明し、有理根の判定で x³−2 が既約であることを示せれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">前のステージで、ℚ(∛2) では 1/(1＋∛2) のような割り算を分母の有理化だけでは整理できない、と分かった。α＝∛2 とおくと、α から四則で作った数は「x に α を入れた式の値」になる。だから、x の式そのものを計算の対象にすれば、ℚ(α) の割り算も、次数も求められるんだ。今日の道具は<strong>多項式</strong>だ。2x³＋x²−5x＋4 のように、x の累乗に数を掛けて足した式のことで、x の指数のいちばん大きいものを、その多項式の<strong>次数</strong>という。この章では、係数が有理数の多項式を考える。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">多項式どうしは、足しても引いても掛けても、また多項式になります。だから多項式全体は環です。でも、1 を x で割った 1/x は多項式ではないので、体ではありません。整数全体 ℤ と同じ立場です。第2章では、整数の素因数分解や互除法の土台に「余りのある割り算」がありました。多項式でも、余りのある割り算ができるんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">できるんだ。多項式 f を、0 でない多項式 g で割ると、f＝q×g＋r と書けて、余り r の次数を g の次数より小さくできる。整数で「余りが割る数より小さい」と言っていたところを、「余りの次数が割る数の次数より小さい」に置きかえるわけだ。やり方は、いちばん次数の高い項を消すように商を決めていく。(2x³＋x²−5x＋4)÷(x²＋x−1) で、まず 2x³ を消すには、x²＋x−1 に何を掛ければいいかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">2x³÷x²＝2x なので 2x を掛けます。2x(x²＋x−1)＝2x³＋2x²−2x を引くと、(2x³＋x²−5x＋4)−(2x³＋2x²−2x)＝−x²−3x＋4。次は −x² を消すために −1 を掛けて、−(x²＋x−1)＝−x²−x＋1 を引くと、−2x＋3。次数が 1 になって、割る式の次数 2 より小さいので止まります。商は 2x−1、余りは −2x＋3 です。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="sim-controls">
+          <span class="grp-label">割り算</span>
+          <button class="btn" data-dv="0" aria-pressed="true">(2x³＋x²−5x＋4)÷(x²＋x−1)</button>
+          <button class="btn" data-dv="1" aria-pressed="false">(x³−2)÷(x＋1)</button>
+          <button class="btn" data-dv="2" aria-pressed="false">(x⁴＋x＋1)÷(x³−2)</button>
+        </div>
+        <div style="overflow-x:auto"><table class="pdiv" id="tb-pdiv"></table></div>
+        <div class="sim-controls">
+          <button class="btn" id="pd-prev">◀ 戻る</button>
+          <button class="btn" id="pd-next">次へ ▶</button>
+          <button class="btn" id="pd-all">最後まで</button>
+        </div>
+        <div class="readout" id="ro-pdiv"></div>
+        <div class="diagram-caption"><strong>多項式の割り算の筆算</strong>。列は x³, x², x, 定数の項（x⁴ がある式ではその列も）をそろえて並べている。「次へ」で1手ずつ進む。いちばん次数の高い項を消すように商の項を決め、割る式に掛けたもの（青）を引く。残った式（赤）の次数が割る式の次数より小さくなったら、それが余り</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。この筆算は、整数の割り算の筆算とそっくりだね。1つ大事な使い方がある。f(x) を x−r で割ると、余りはどうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">x−r の次数は 1 なので、余りの次数は 0、つまり定数 c です。f(x)＝(x−r)q(x)＋c に x＝r を入れると、f(r)＝0×q(r)＋c＝c。<strong>余りは f(r)</strong> です。だから、f(r)＝0 のときは余りが 0 で、f(x) は x−r で割り切れます。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step"><strong>多項式の余りのある割り算</strong>：<span class="nw">f＝q×g＋r</span>、ただし r の次数は g の次数より小さい（または r＝0）</span>
+        <span class="step">例：<span class="nw">2x³＋x²−5x＋4＝(2x−1)(x²＋x−1)＋(−2x＋3)</span></span>
+        <span class="step">x−r で割ると：<span class="nw">f(x)＝(x−r)q(x)＋c</span>。x＝r を入れて <span class="nw">c＝f(r)</span></span>
+        <span class="step">f(r)＝0 なら、f(x) は x−r で割り切れる</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。では、ℚ(∛2) の計算に使おう。α＝∛2 は α³−2＝0 をみたす。α⁴＋α＋1 のように α の累乗が入った数は、x⁴＋x＋1 を x³−2 で割って考えるといい。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">x⁴＋x＋1＝x(x³−2)＋3x＋1 です。x に α を入れると α³−2＝0 なので、α⁴＋α＋1＝α×0＋3α＋1＝3α＋1。どんな多項式 f でも、x³−2 で割った余りは2次以下なので、f(α) は a＋bα＋cα²（a, b, c は有理数）の形になります。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。次は割り算だ。1/(1＋α) を求めたい。第2章で、互除法を逆にたどって ax＋py＝1 を作ったね。それと同じことを多項式でやってみよう。x³−2 を x＋1 で割ってごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">x³−2＝(x＋1)(x²−x＋1)−3 です。移項すると 3＝(x＋1)(x²−x＋1)−(x³−2)。x に α を入れると α³−2＝0 なので、3＝(1＋α)(α²−α＋1)。両辺を 3(1＋α) で割ると、<strong>1/(1＋α)＝(α²−α＋1)/3</strong>。確かめると、(1＋α)(α²−α＋1)＝α³＋1＝3 で合っています。第2章の ax＋py＝1 と同じ形です！</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step"><span class="nw">x³−2＝(x＋1)(x²−x＋1)−3</span>（筆算の結果）</span>
+        <span class="step"><span class="nw">3＝(x＋1)(x²−x＋1)−(x³−2)</span>（移項して、ax＋py＝1 と同じ形にする）</span>
+        <span class="step">x＝α＝∛2 を入れると α³−2＝0 なので <span class="nw">3＝(1＋α)(α²−α＋1)</span></span>
+        <span class="step"><span class="nw">1/(1＋∛2)＝(∛4−∛2＋1)/3</span></span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">よくできたね。いまは x＋1 と x³−2 に共通の因数がなかったから、互除法の最後に定数が出てきた。いつもそうなることを保証するのが、素数にあたる多項式だ。次数 1 以上の多項式で、次数の低い2つの多項式（係数は有理数）の積に書けないものを<strong>既約多項式（きやくたこうしき）</strong>という。第2章の既約元の多項式版だね。0 でない定数は掛けて 1 になる相手がいる単数なので、分けたうちに数えない。たとえば x²−1＝(x−1)(x＋1) は既約でない。x²−2 はどうかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">x²−2 を1次式2つに分けると、x²−2＝(x−r)(x−s) の形になって、r は x²−2 の根なので r＝±√2 です。√2 は有理数ではないので、有理数の係数では分けられません。x²−2 は既約です。でも、√2 も係数に使ってよければ (x−√2)(x＋√2) と分けられます。どの体の数を係数にするかで、既約かどうかが変わるんですね。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。第2章で、2 が整数では既約元なのにガウス整数では (1＋i)(1−i) と分けられたのと同じだ。2次や3次の多項式なら、既約かどうかはもっと簡単に判定できる。理由を考えてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">2次式や3次式を、次数の低い2つの多項式に分けると、次数は 1＋1 か 1＋2 なので、必ず1次式が混じります。1次式 ax＋b（a≠0）は x＝−b/a で 0 になるので、もとの式は有理数の根をもちます。逆に、有理数の根 r があれば x−r で割り切れます。つまり、<strong>2次式・3次式は、有理数の根がないとき、そのときに限って既約</strong>です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。ただし 4 次以上では、この判定は使えない。x⁴＋4 は有理数の根をもたない（x⁴＋4 はいつも 4 以上）のに、2次式2つに分けられるんだ。(x²＋2x＋2)(x²−2x＋2) を展開してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">x⁴−2x³＋2x²＋2x³−4x²＋4x＋2x²−4x＋4＝x⁴＋4。本当に分けられました。4次式は、1次式を含まずに 2＋2 と分かれることがあるんですね。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。では、この章で大事な定義をしよう。α を根にもつ有理数係数の多項式のうち、次数がいちばん低く、いちばん高い次数の項の係数が 1 のものを、α の<strong>最小多項式</strong>という。α がみたす「いちばん簡単な式」だ。こう決めるのは、ℚ(α) の中の計算が、すべてこの式で決まるからなんだ。たとえば √2 の最小多項式は x²−2。1次式 x−r だと r＝√2 が有理数になってしまうからね。最小多項式は必ず既約になる。理由を説明してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">最小多項式 m が、次数の低い2つの多項式の積 g×h に分けられたとします。m(α)＝g(α)h(α)＝0 です。もし g(α)≠0 なら、体の中では g(α) で割れるので h(α)＝0 になります。どちらにしても、m より次数の低い多項式が α を根にもってしまい、m の次数がいちばん低いことに反します。だから<strong>最小多項式は既約</strong>です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。逆に、α を根にもつ既約多項式 p があれば、p は最小多項式の定数倍になる。p を最小多項式 m で割って p＝q×m＋r とすると、r(α)＝p(α)−q(α)m(α)＝0 で、r の次数は m より低いから、r は 0 でなければならない。すると m は p を割り切るけれど、p は既約だから、p は m の定数倍しかない。では、∛2 の最小多項式は何かな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">x³−2 は ∛2 を根にもつ3次式です。有理数の根 r があったら r³＝2 です。r＝p/q（整数）なら p³＝2q³ ですが、素因数分解すると左辺の 2 の個数は 3 の倍数、右辺の 2 の個数は「3 の倍数＋1」なので、ありえません。有理数の根がない3次式なので x³−2 は既約で、∛2 の最小多項式は x³−2 です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">よし。最後の仕上げだ。ℚ(∛2) の数は a＋bα＋cα² の形に書けると分かった。これが<strong>ただ1通り</strong>かどうかを確かめてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">2通りに書けたとして差をとると、a＋bα＋cα²＝0 で、a, b, c のどれかが 0 でない形になります。すると α は 2次以下の多項式 a＋bx＋cx² の根になって、最小多項式 x³−2 の次数 3 がいちばん低いことに反します。だから書き方はただ1通りで、1, α, α² が基底です。<strong>[ℚ(∛2)：ℚ]＝3</strong>。最小多項式の次数と、体の次数が同じ 3 になりました。</div>
+        </div>
+      </div>
+
+      <div class="note-box"><span class="nb-title">最小多項式と次数</span>・既約多項式：次数の低い2つの多項式の積に書けない多項式（素数・既約元にあたる）<br>・2次式・3次式は、有理数の根がない ⇔ 既約（4次以上では成り立たない：<span class="nw">x⁴＋4＝(x²＋2x＋2)(x²−2x＋2)</span>）<br>・α の最小多項式：α を根にもつ有理数係数の多項式のうち、次数がいちばん低く、最高次の係数が 1 のもの。必ず既約で、α を根にもつ既約多項式はその定数倍<br>・<strong>[ℚ(α)：ℚ]＝α の最小多項式の次数</strong>（最小多項式の次数を n とすると、基底は 1, α, α², …, αⁿ⁻¹）<br>・例：√2 → x²−2（次数 2）、∛2 → x³−2（次数 3）</div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">「次数」という言葉が、多項式の次数と体の次数の2つの意味で出てきたけれど、α については2つがいつも一致する。これからは、α の最小多項式の次数を、単に「α の次数」と呼ぼう。次数を求めるには、最小多項式を見つけて、それが既約だと確かめればいい。3次式の既約性は有理数の根があるかどうかで決まるけれど、有理数は無限にあるから、全部は試せない。そこで、根の候補をしぼる方法がある。整数係数の3次式 ax³＋bx²＋cx＋d が、既約分数 p/q を根にもつとしよう。両辺に q³ を掛けてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">a(p/q)³＋b(p/q)²＋c(p/q)＋d＝0 に q³ を掛けると、ap³＋bp²q＋cpq²＋dq³＝0。dq³＝−p(ap²＋bpq＋cq²) なので、p は dq³ を割り切ります。p と q は共通の素因数をもたないので、p の素因数はどれも q³ を割り切りません。第2章の「素数は素元」から、p の素因数は d を割り切り、p は d を割り切ります。同じように ap³＝−q(bp²＋cpq＋dq²) から、q は a を割り切ります。<strong>p は定数項 d の約数、q は最高次の係数 a の約数</strong>です。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">既約分数 p/q が <span class="nw">ax³＋bx²＋cx＋d＝0</span>（係数は整数）の根だとする</span>
+        <span class="step">q³ を掛ける：<span class="nw">ap³＋bp²q＋cpq²＋dq³＝0</span></span>
+        <span class="step"><span class="nw">dq³＝−p(ap²＋bpq＋cq²)</span> → p は dq³ を割り切り、q とは共通の素因数がない → <strong>p は d の約数</strong></span>
+        <span class="step"><span class="nw">ap³＝−q(bp²＋cpq＋dq²)</span> → 同じ理由で <strong>q は a の約数</strong></span>
+        <span class="step">例：<span class="nw">x³−3x−1</span> の有理数の根の候補は ±1 だけ。<span class="nw">1−3−1＝−3</span>、<span class="nw">−1＋3−1＝1</span> でどちらも根でない → 既約</span>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-rr" aria-label="選んだ3次式のグラフと、有理数の根の候補を x 軸上に示す図。候補が根なら緑、根でなければ赤で表示する"></canvas></div>
+        <div class="sim-controls">
+          <button class="btn" data-rr="0" aria-pressed="true">x³−2</button>
+          <button class="btn" data-rr="1" aria-pressed="false">x³−3x−1</button>
+          <button class="btn" data-rr="2" aria-pressed="false">x³−3x＋2</button>
+          <button class="btn" data-rr="3" aria-pressed="false">2x³−3x²＋1</button>
+        </div>
+        <div class="readout" id="ro-rr"></div>
+        <div class="diagram-caption"><strong>有理数の根の候補を調べる</strong>。3次式のグラフと、有理数の根の候補（±（定数項の約数）/（最高次の係数の約数））を x 軸上に並べた。候補での値が 0 なら緑、0 でなければ赤。x³−2 と x³−3x−1 は、グラフが x 軸と交わる点（実数の根）はあっても、候補はすべて赤なので有理数の根がなく、既約。x³−3x＋2 と 2x³−3x²＋1 は候補の中に根があり、既約でない</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。最後に、整数と多項式の対応を整理しておこう。整数では、素数 p で割った余りの世界 mod p が体になった。多項式でも同じことが起きる。ℚ(∛2) の計算は、「多項式を x³−2 で割った余りで計算する」ことだったね。x³−2 が既約だから、互除法で逆数が作れて、余りの世界が体になったんだ。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 460 268" role="img" aria-label="整数と、有理数係数の多項式の対応表">
+          <rect x="0" y="0" width="460" height="268" fill="#fdfbf6"/>
+          <g font-size="13.5" font-weight="900" fill="#fff" text-anchor="middle">
+            <rect x="8" y="8" width="104" height="30" rx="6" fill="#77708c"/><text x="60" y="28">　</text>
+            <rect x="116" y="8" width="164" height="30" rx="6" fill="#5b4a9e"/><text x="198" y="28">整数</text>
+            <rect x="284" y="8" width="168" height="30" rx="6" fill="#2f8f65"/><text x="368" y="28">多項式（係数は有理数）</text>
+          </g>
+          <g font-size="12.5" font-weight="800" fill="#221d33">
+            <text x="14" y="64">割り算</text><text x="122" y="64">余り＜割る数</text><text x="290" y="64">余りの次数＜割る式の次数</text>
+            <text x="14" y="100">互除法</text><text x="122" y="100">3×12−5×7＝1</text><text x="290" y="100">3＝(x＋1)(x²−x＋1)−(x³−2)</text>
+            <text x="14" y="136">単数</text><text x="122" y="136">±1</text><text x="290" y="136">0 でない定数</text>
+            <text x="14" y="172">分けられない</text><text x="122" y="172">素数 2, 3, 5, 7, …</text><text x="290" y="172">既約多項式 x²−2, x³−2, …</text>
+            <text x="14" y="208">余りの世界</text><text x="122" y="208">mod p</text><text x="290" y="208">x³−2 で割った余り</text>
+            <text x="14" y="244">それが体</text><text x="122" y="244">p が素数のとき</text><text x="290" y="244">既約多項式で割るとき</text>
+          </g>
+          <g stroke="#e6e0d6" stroke-width="1"><line x1="8" y1="78" x2="452" y2="78"/><line x1="8" y1="114" x2="452" y2="114"/><line x1="8" y1="150" x2="452" y2="150"/><line x1="8" y1="186" x2="452" y2="186"/><line x1="8" y1="222" x2="452" y2="222"/></g>
+        </svg>
+        <div class="diagram-caption"><strong>整数と多項式の対応</strong>。多項式の世界は、整数の世界とほとんど同じしくみで動いている。いちばん下の2行が今日の要点で、素数で割った余りの世界 mod p が体になるように、既約多項式 x³−2 で割った余りの世界（ℚ(∛2) の計算）も体になる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">ℚ(∛2) の数 a＋b∛2＋c∛4 は、3次式で割った余り a＋bx＋cx² のことで、mod p の数が 0 から p−1 までの余りだったのと同じなんですね。1/(1＋∛2＋∛4) なら、(x−1)(x²＋x＋1)＝x³−1＝(x³−2)＋1 なので、x に ∛2 を入れて (∛2−1)(1＋∛2＋∛4)＝1。答えは ∛2−1 です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。これで、数 α の次数を最小多項式から求められるようになった。次のステージでは、√ を何回も加えたときに次数がどうなるかを調べて、作図できる数の次数がどんな数になるのかを突き止めよう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">多項式も余りのある割り算ができる：<span class="nw">f＝q×g＋r</span>（r の次数＜g の次数）。x−r で割った余りは f(r)</span>
+        <span class="step">互除法で <span class="nw">3＝(x＋1)(x²−x＋1)−(x³−2)</span> → <span class="nw">1/(1＋∛2)＝(∛4−∛2＋1)/3</span></span>
+        <span class="step">既約多項式は素数にあたる。2次・3次式は有理数の根がなければ既約（4次以上は別：x⁴＋4 は分けられる）</span>
+        <span class="step">有理数の根 p/q は、p が定数項の約数、q が最高次の係数の約数。x³−2、x³−3x−1 は既約</span>
+        <span class="step">最小多項式：α を根にもつ次数最小の多項式。必ず既約。<strong>[ℚ(α)：ℚ]＝最小多項式の次数</strong>。<span class="nw">[ℚ(∛2)：ℚ]＝3</span></span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. (x³−2)÷(x＋1) の商と余りは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">商 x²−x＋1、余り −3</button>
+          <button class="choice-btn">商 x²＋x＋1、余り −1</button>
+          <button class="choice-btn">商 x²−1、余り 0</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ x²(x＋1)＝x³＋x² を引いて −x²−2、−x(x＋1) を引いて x−2、1×(x＋1) を引いて −3。余りは x＝−1 を入れた値 (−1)³−2＝−3 とも一致する。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. 3次式 2x³−3x²＋1 の有理数の根の候補として、有理根の判定で考えればよいものは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">±1, ±2, ±3</button>
+          <button class="choice-btn">±1, ±1/2</button>
+          <button class="choice-btn">すべての有理数</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 根 p/q の p は定数項 1 の約数（±1）、q は最高次の係数 2 の約数（1, 2）。実際 x＝1 と x＝−1/2 が根で、2x³−3x²＋1＝(x−1)²(2x＋1)。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. ∛2 の次数（[ℚ(∛2)：ℚ]）が 3 である理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">∛2 が 3 より小さいから</button>
+          <button class="choice-btn">x³−2 が有理数の根 2 をもつから</button>
+          <button class="choice-btn">最小多項式 x³−2 が既約な3次式で、基底が 1, ∛2, ∛4 になるから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ x³−2 は有理数の根をもたない（p³＝2q³ は2の個数が合わない）3次式なので既約で、∛2 の最小多項式。ℚ(α) の次数は最小多項式の次数に等しい。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("fields", 3);</script>
+<script>
+/* 多項式の割り算の筆算 */
+(function(){
+  var EX=[
+    {f:[2,1,-5,4], g:[1,1,-1], gs:'x²＋x−1'},
+    {f:[1,0,0,-2], g:[1,1], gs:'x＋1'},
+    {f:[1,0,0,1,1], g:[1,0,0,-2], gs:'x³−2'}
+  ];
+  var SUP=['','','²','³','⁴'];
+  function term(c,k,first){
+    if(c===0) return first?'0':'＋0'+(k===0?'':(k===1?'x':'x'+SUP[k]));
+    var a=Math.abs(c), s=(c<0?'−':(first?'':'＋'));
+    var body=(k===0)?String(a):((a===1?'':a)+(k===1?'x':'x'+SUP[k]));
+    return s+body;
+  }
+  var cur=0, k=0, tb=document.getElementById('tb-pdiv'), ro=document.getElementById('ro-pdiv');
+  function plan(ex){
+    var a=ex.f.slice(), g=ex.g, n=a.length-1, dg=g.length-1, steps=[], q=[];
+    var off=0;
+    while(n-off>=dg){
+      if(a[off]===0){ off++; continue; }
+      var c=a[off]/g[0], pw=n-off-dg; q.push({c:c,k:pw});
+      var prod=Array(a.length).fill(null);
+      for(var i=0;i<g.length;i++) prod[off+i]=c*g[i];
+      for(i=0;i<g.length;i++) a[off+i]-=prod[off+i];
+      off++;
+      var rem=Array(a.length).fill(null);
+      for(i=off;i<a.length;i++) rem[i]=a[i];
+      steps.push({q:{c:c,k:pw},prod:prod,rem:rem,from:off});
+    }
+    return {steps:steps,q:q,n:n};
+  }
+  function render(){
+    var ex=EX[cur], P=plan(ex), n=P.n, h='';
+    // 商の行
+    h+='<tr class="q"><td class="lab">商</td>';
+    for(var c=0;c<=n;c++){
+      var cell='';
+      P.steps.forEach(function(s,i){ if(i<k && n-c===s.q.k) cell=term(s.q.c,s.q.k,i===0); });
+      h+='<td>'+cell+'</td>';
+    }
+    h+='</tr>';
+    h+='<tr class="f"><td class="lab">'+ex.gs+' )</td>';
+    for(c=0;c<=n;c++){ var co=ex.f[c]; h+='<td class="'+(co===0?'z':'')+'">'+term(co,n-c,c===0)+'</td>'; }
+    h+='</tr>';
+    P.steps.forEach(function(s,i){
+      var hid=(i>=k)?' hide':'';
+      h+='<tr class="sub'+hid+'"><td class="lab">'+term(s.q.c,s.q.k,true).replace(/^$/,'1')+' 倍を引く</td>';
+      var first=true;
+      for(var c=0;c<=n;c++){ var v=s.prod[c]; if(v===null){h+='<td></td>';} else { h+='<td>'+term(v,n-c,first)+'</td>'; first=false; } }
+      h+='</tr><tr class="rem'+hid+'"><td class="lab"></td>';
+      first=true;
+      var lastNZ=-1; for(c=0;c<=n;c++) if(s.rem[c]!==null&&s.rem[c]!==0) { lastNZ=c; break; }
+      for(c=0;c<=n;c++){ var w=s.rem[c];
+        if(w===null||(w===0&&first&&!(lastNZ<0&&c===n))){h+='<td></td>';}
+        else { h+='<td class="'+(w===0?'z':'')+'">'+term(w,n-c,first)+'</td>'; first=false; } }
+      h+='</tr>';
+    });
+    tb.innerHTML=h;
+    var msg;
+    if(k===0) msg='いちばん次数の高い項を消す商の項を決める';
+    else if(k<P.steps.length) msg='残りの式の次数がまだ割る式の次数以上なので、続ける';
+    else {
+      var last=P.steps[P.steps.length-1].rem, rs='', first=true;
+      for(var i=0;i<=n;i++) if(last[i]!==null && (last[i]!==0)){ rs+=term(last[i],n-i,first); first=false; }
+      if(rs==='') rs='0';
+      var qs=''; P.q.forEach(function(t,j){ if(t.c!==0||j===0) qs+=term(t.c,t.k,qs===''); });
+      msg='商 <b>'+qs+'</b>、余り <b>'+rs+'</b>（余りの次数が割る式より小さいので終わり）';
+    }
+    ro.innerHTML='<span>手順 '+k+' / '+P.steps.length+'</span><span>'+msg+'</span>';
+  }
+  document.querySelectorAll('[data-dv]').forEach(function(btn){
+    btn.addEventListener('click',function(){ cur=+btn.getAttribute('data-dv'); k=0; document.querySelectorAll('[data-dv]').forEach(function(x){x.setAttribute('aria-pressed',x===btn);}); render(); });
+  });
+  document.getElementById('pd-prev').addEventListener('click',function(){ if(k>0){k--; render();} });
+  document.getElementById('pd-next').addEventListener('click',function(){ if(k<plan(EX[cur]).steps.length){k++; render();} });
+  document.getElementById('pd-all').addEventListener('click',function(){ k=plan(EX[cur]).steps.length; render(); });
+  k=plan(EX[0]).steps.length; render();
+})();
+
+/* 有理数の根の候補 */
+(function(){
+  var P=[
+    {c:[1,0,0,-2], name:'x³−2', span:[-2.6,2.6,-12,10]},
+    {c:[1,0,-3,-1], name:'x³−3x−1', span:[-2.6,2.6,-6,6]},
+    {c:[1,0,-3,2], name:'x³−3x＋2', span:[-3.2,2.6,-6,8]},
+    {c:[2,-3,0,1], name:'2x³−3x²＋1', span:[-1.6,2.2,-3,3]}
+  ];
+  var cur=0, ro=document.getElementById('ro-rr');
+  function f(c,x){ return ((c[0]*x+c[1])*x+c[2])*x+c[3]; }
+  function divs(n){ n=Math.abs(n); var r=[]; for(var i=1;i<=n;i++) if(n%i===0) r.push(i); return r; }
+  function cands(c){
+    var out=[], seen={};
+    divs(c[3]).forEach(function(p){ divs(c[0]).forEach(function(q){ [p/q,-p/q].forEach(function(v){ var key=v.toFixed(6); if(!seen[key]){ seen[key]=1; out.push({v:v,s:(v<0?'−':'')+p+(q>1?'/'+q:'')}); } }); }); });
+    return out.sort(function(a,b){return a.v-b.v;});
+  }
+  function fr(x){ var r=Math.round(x*1000)/1000; return FL.signed(r); }
+  var st=FL.canvas('cv-rr',0.7,draw);
+  function draw(st){
+    var p=P[cur], ctx=st.ctx; ctx.clearRect(0,0,st.W,st.H); ctx.fillStyle=FL.C.paper; ctx.fillRect(0,0,st.W,st.H);
+    var x0=p.span[0],x1=p.span[1],y0=p.span[2],y1=p.span[3];
+    var X=function(x){ return 20+(x-x0)/(x1-x0)*(st.W-40); }, Y=function(y){ return 14+(y1-y)/(y1-y0)*(st.H-40); };
+    FL.line(ctx,X(x0),Y(0),X(x1),Y(0),FL.C.axis,1.3); FL.line(ctx,X(0),Y(y0),X(0),Y(y1),FL.C.axis,1.3);
+    for(var t=Math.ceil(x0);t<=x1;t++){ FL.line(ctx,X(t),Y(0)-3,X(t),Y(0)+3,FL.C.axis,1); }
+    ctx.save(); ctx.strokeStyle=FL.C.theme; ctx.lineWidth=2.4; ctx.beginPath();
+    for(var i=0;i<=400;i++){ var x=x0+(x1-x0)*i/400, y=f(p.c,x); y=Math.max(y0-5,Math.min(y1+5,y)); if(i) ctx.lineTo(X(x),Y(y)); else ctx.moveTo(X(x),Y(y)); }
+    ctx.stroke(); ctx.restore();
+    var cs=cands(p.c), hits=[];
+    cs.forEach(function(cd,j){
+      var val=f(p.c,cd.v), ok=Math.abs(val)<1e-9;
+      if(ok) hits.push(cd.s);
+      FL.dot(ctx,X(cd.v),Y(0),5.5,ok?'#2f8f65':FL.C.red,'#fff');
+      FL.text(ctx,cd.s,X(cd.v),Y(0)+(j%2?30:18),{size:11.5,color:ok?'#2f8f65':FL.C.red,align:'center',halo:true});
+    });
+    FL.text(ctx,'y＝'+p.name,X(x0)+4,26,{size:13,color:FL.C.theme,halo:true});
+    ro.innerHTML='<span>候補：'+cs.map(function(cd){ var v=f(p.c,cd.v); return cd.s+' → '+fr(v); }).join('、')+'</span>'+(hits.length?'<span class="ng"><b>有理数の根 '+hits.join(', ')+' がある → 既約でない</b></span>':'<span class="ok"><b>有理数の根がない → 3次式なので既約</b></span>');
+  }
+  document.querySelectorAll('[data-rr]').forEach(function(btn){
+    btn.addEventListener('click',function(){ cur=+btn.getAttribute('data-rr'); document.querySelectorAll('[data-rr]').forEach(function(x){x.setAttribute('aria-pressed',x===btn);}); st.redraw(); });
+  });
+})();
+</script>
+</body>
+</html>

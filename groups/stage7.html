@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第1章 STAGE7 15パズルの謎を解く（15パズルが解けない理由と置換の偶奇） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="15パズルで14と15を入れ替えた配置が解けない理由を中学生向けに解説。1手は空白との互換で、市松模様から空白が戻るには偶数手かかる。だから全体は偶置換で、奇置換の14-15入れ替えには届かない。逆も確かめる。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/groups/stage7">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第1章 STAGE7 15パズルの謎を解く（15パズルが解けない理由と置換の偶奇） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="1手は互換、市松模様で空白は偶数手で戻る。だから全体は偶置換。14 と 15 の入れ替えが不可能な理由をついに証明する。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/groups/stage7">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE7 15パズルの謎を解く",
+      "description": "15パズルで14と15を入れ替えた配置が解けない理由を中学生向けに解説。1手は空白との互換で、市松模様から空白が戻るには偶数手かかる。だから全体は偶置換で、奇置換の14-15入れ替えには届かない。逆も確かめる。",
+      "url": "https://algebra.habatakijuku.com/groups/stage7",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 7,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第1章 対称性を計算する",
+        "url": "https://algebra.habatakijuku.com/groups/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第1章 対称性を計算する",
+          "item": "https://algebra.habatakijuku.com/groups/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE7 15パズルの謎を解く",
+          "item": "https://algebra.habatakijuku.com/groups/stage7"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+.pz-board{position:relative;width:min(100%,300px);aspect-ratio:1/1;margin:4px auto 0;background:#2f2652;border-radius:12px;padding:6px;box-sizing:border-box}
+.pz-in{position:relative;width:100%;height:100%}
+.pz-cell{position:absolute;width:25%;height:25%;box-sizing:border-box;border-radius:7px}
+.pz-par .pz-cell.c0{background:#e3bd6a}
+.pz-par .pz-cell.c1{background:#9a88d6}
+.pz-tile{position:absolute;width:25%;height:25%;padding:3px;box-sizing:border-box;border:0;background:transparent;cursor:pointer;transition:left .12s,top .12s;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.pz-par .pz-tile{padding:7px}
+.pz-tile span{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:7px;background:linear-gradient(#fdfbf6,#efe9f9);box-shadow:inset 0 -3px 0 #c9bfe6;font:900 22px var(--f);color:#2a2245}
+.pz-par .pz-tile span{font-size:19px}
+.pz-tile.sel span{background:#fbe9e8;box-shadow:inset 0 0 0 3px #c8433f}
+@media (prefers-reduced-motion:reduce){.pz-tile{transition:none}}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第1章 対称性を計算する ／ STAGE 7 ― 15パズルの謎を解く ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第1章 STAGE 7</span><h1 class="chapter-title">15パズルの謎を解く</h1>
+        <div class="chapter-sub">市松模様と偶置換</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">15パズルの1手が互換であること、空白が右下に戻るには偶数手かかることから、14 と 15 を入れ替えた配置（奇置換）にはたどり着けないことを証明しよう。空白を 2×2 で1周させると3枚が回ることも確かめれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いよいよ15パズルの謎を解こう。使う道具は前のステージの置換の偶奇だ。2つだけの入れ替え（互換）をいくつ掛けたかの偶奇は、置換によって決まっていて、転倒数（順番が逆になっているペアの数）の偶奇と一致したね。まず、15パズルの配置を置換で表そう。16 マスを、左上から右へ、1段ずつ下へと読んでいく順に並べ、空白を「16 番のタイル」と考える。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">そろった状態は 1, 2, …, 15, 16 の順です。14 と 15 を入れ替えた配置は …, 13, 15, 14, 16 で、そろった状態に互換 (14 15) を1回した置換です。転倒数は 1 で、奇置換です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。では、パズルの1手は、どんな置換かな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">空白、つまり 16 番のタイルと、となりのタイルとの入れ替えなので、互換1回です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。だから、そろった状態から k 手動かした配置は、k 個の互換の積でできている。次に、空白の動きを考えよう。16 マスを市松模様、つまりチェス盤のように2色にぬり分ける。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">1手ごとに空白はとなりのマスに動くので、空白のいるマスの色は必ず変わります。右下から出発して右下に戻ってくるには、色がもとに戻らないといけないので、動かした回数は<strong>偶数</strong>です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。2つを合わせてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbitThink.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">空白が右下にある配置は、どれも、そろった状態に偶数個の互換を掛けたもの、つまり偶置換です。でも 14 と 15 を入れ替えた配置は、空白が右下にあるのに奇置換です。前のステージで、偶置換と奇置換の両方になる置換はないと分かっています。だから、<strong>どう動かしても 14 と 15 を入れ替えた配置にはたどり着けません</strong>！</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">配置を、16 マスを読む順に並べた番号の並びと見る（空白は 16 番）。そろった状態は <span class="nw">1, 2, …, 16</span></span>
+        <span class="step">1手＝空白と、となりのタイルの入れ替え＝互換1個</span>
+        <span class="step">市松模様：1手ごとに空白のマスの色が変わる → 空白が右下に戻るのは偶数手のとき</span>
+        <span class="step">空白が右下にある、たどり着ける配置は、偶数個の互換の積＝偶置換</span>
+        <span class="step">14 と 15 を入れ替えた配置は互換 (14 15) 1個＝奇置換。偶奇は書き方によらない（STAGE6）→ <strong>たどり着けない</strong></span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。1879年にジョンソンとストーリーが示したのも、この考え方だ。では、空白が右下にないときはどうかな。空白が右下のマスから、横に何マス、縦に何マス離れているかの合計を d とする。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">1手ごとに互換が1つ加わるので、転倒数の偶奇が変わります。空白は1マス動くので、d は 1 増えるか 1 減って、やはり偶奇が変わります。2つが同時に変わるので、<strong>転倒数＋d の偶奇は、どう動かしても変わりません</strong>。そろった状態では 0＋0＝0 で偶数なので、和が奇数の配置にはたどり着けません。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="pz-board" id="pz-p7" role="group" aria-label="15パズルの盤。マスは市松模様に2色でぬり分けてある。転倒数と空白の距離の和の偶奇を表示する"></div>
+        <div class="sim-controls" id="ctl-p7"></div>
+        <div class="readout" id="ro-p7"></div>
+        <div class="diagram-caption"><strong>偶奇つきの15パズル</strong>。マスを2色の市松模様にぬった。タイルを動かすと、転倒数（空白を 16 番として、読む順に並べたときに順番が逆のペアの数）と、空白の右下からの距離が両方1ずつ変わり、その和の偶奇はずっと変わらない。「シールを貼り替える」を押すと、2枚のタイルを直接入れ替えられる（偶奇が変わる）。「空白で右下の2×2を1周」は、空白を右下に置いてから押すと、3枚が回る様子を再生する</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。それが、STAGE1 で探していた「どう動かしても変わらない性質」だ。たとえば、空白を左上に置いて、残りに 1 から 15 を順に並べた配置はどうかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">空白の 16 番が先頭にあって、残りの 15 枚全部より左にあるので、転倒数は 15 です。空白は右下から横に 3、縦に 3 離れているので d＝6。和は 21 で奇数なので、この配置もそろえられません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。和が偶数の配置と奇数の配置は、ちょうど同じ個数ある。1 と 2 のタイルを貼り替えると和の偶奇が入れ替わるから、2つが1対1にペアになるんだ。では逆に、和が偶数の配置には、必ずたどり着けるのか。答えは「たどり着ける」だ。全部の証明は長いので、しくみだけ見よう。空白を右下に置いて、右下の 2×2 のマスで、空白を上、左、下、右と1周させてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">右下の 2×2 には 11, 12, 15 と空白があります。空白が上へ行くと 12 が下へ、左へ行くと 11 が右へ、下へ行くと 15 が上へ、右へ行くと 12 が左へ動きます。1周すると、11 があった場所に 15、12 があった場所に 11、15 があった場所に 12 が来ます。<strong>3枚が回りました</strong>。4手で空白も戻っているので、偶置換です。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 460 120" style="width:100%;max-width:500px;display:block;margin:0 auto" role="img" aria-label="右下の2×2のマスで空白を上、左、下、右と1周させると、11, 12, 15 の3枚が回る様子"><defs><marker id="ar7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b4a9e"/></marker></defs><rect x="4" y="10" width="76" height="76" rx="7" fill="#2f2652"/><rect x="10" y="16" width="30" height="30" rx="5" fill="#fbe9e8"/><text x="25" y="37" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">11</text><rect x="44" y="16" width="30" height="30" rx="5" fill="#e7eef9"/><text x="59" y="37" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">12</text><rect x="10" y="50" width="30" height="30" rx="5" fill="#fdf4dd"/><text x="25" y="71" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">15</text><text x="42" y="110" text-anchor="middle" font-size="15" font-weight="800" fill="#44377a">はじめ</text><line x1="84" y1="48" x2="94" y2="48" stroke="#5b4a9e" stroke-width="2" marker-end="url(#ar7)"/><rect x="98" y="10" width="76" height="76" rx="7" fill="#2f2652"/><rect x="104" y="16" width="30" height="30" rx="5" fill="#fbe9e8"/><text x="119" y="37" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">11</text><rect x="104" y="50" width="30" height="30" rx="5" fill="#fdf4dd"/><text x="119" y="71" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">15</text><rect x="138" y="50" width="30" height="30" rx="5" fill="#e7eef9"/><text x="153" y="71" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">12</text><text x="136" y="110" text-anchor="middle" font-size="15" font-weight="800" fill="#44377a">上へ</text><line x1="178" y1="48" x2="188" y2="48" stroke="#5b4a9e" stroke-width="2" marker-end="url(#ar7)"/><rect x="192" y="10" width="76" height="76" rx="7" fill="#2f2652"/><rect x="232" y="16" width="30" height="30" rx="5" fill="#fbe9e8"/><text x="247" y="37" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">11</text><rect x="198" y="50" width="30" height="30" rx="5" fill="#fdf4dd"/><text x="213" y="71" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">15</text><rect x="232" y="50" width="30" height="30" rx="5" fill="#e7eef9"/><text x="247" y="71" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">12</text><text x="230" y="110" text-anchor="middle" font-size="15" font-weight="800" fill="#44377a">左へ</text><line x1="272" y1="48" x2="282" y2="48" stroke="#5b4a9e" stroke-width="2" marker-end="url(#ar7)"/><rect x="286" y="10" width="76" height="76" rx="7" fill="#2f2652"/><rect x="292" y="16" width="30" height="30" rx="5" fill="#fdf4dd"/><text x="307" y="37" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">15</text><rect x="326" y="16" width="30" height="30" rx="5" fill="#fbe9e8"/><text x="341" y="37" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">11</text><rect x="326" y="50" width="30" height="30" rx="5" fill="#e7eef9"/><text x="341" y="71" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">12</text><text x="324" y="110" text-anchor="middle" font-size="15" font-weight="800" fill="#44377a">下へ</text><line x1="366" y1="48" x2="376" y2="48" stroke="#5b4a9e" stroke-width="2" marker-end="url(#ar7)"/><rect x="380" y="10" width="76" height="76" rx="7" fill="#2f2652"/><rect x="386" y="16" width="30" height="30" rx="5" fill="#fdf4dd"/><text x="401" y="37" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">15</text><rect x="420" y="16" width="30" height="30" rx="5" fill="#fbe9e8"/><text x="435" y="37" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">11</text><rect x="386" y="50" width="30" height="30" rx="5" fill="#e7eef9"/><text x="401" y="71" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">12</text><text x="418" y="110" text-anchor="middle" font-size="15" font-weight="800" fill="#44377a">右へ</text></svg>
+        <div class="diagram-caption"><strong>2×2 で空白を1周させる</strong>。右下の 2×2 のマスで、空白を上・左・下・右と動かすと、空白は右下に戻り、11, 12, 15 の3枚だけが回る（3巡回）。4手なので偶置換</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。3枚を回す置換、つまり (a b c) の形の置換を<strong>3巡回</strong>という。偶置換は、どれも3巡回の積で書けるんだ。互換を2つずつ組にして考えてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">偶置換は互換が偶数個なので、2個ずつ組にできます。(a b)(a c) のように番号を共有する組は、前のステージの (1 2)(1 3)＝(1 2 3) と同じ形で3巡回です。(a b)(c d) のように共有しない組は、間に (b c)(b c) を入れても変わらないので、(a b)(b c) と (b c)(c d) の2つの組に分けられて、どちらも番号を共有するので3巡回です。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">番号を共有する2つの互換：<span class="nw">(a b)(a c)＝(a b c)</span>（3巡回）</span>
+        <span class="step">共有しない2つの互換：<span class="nw">(a b)(c d)＝(a b)(b c)(b c)(c d)</span>（(b c) を2回続けると何もしない）</span>
+        <span class="step"><span class="nw">(a b)(b c)</span> と <span class="nw">(b c)(c d)</span> はどちらも番号を共有するので3巡回</span>
+        <span class="step">よって、偶置換はどれも3巡回の積で書ける</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。そして、どの3枚のタイルでも、まず3枚を右下の 2×2 に運び込み、空白で1周させて回し、運び込んだ手順を逆にたどって戻すと、その3枚だけを回すことができる。運び込む手順と戻す手順が打ち消し合うからね。細かい手順の確かめは省くけれど、こうして、和が偶数の配置には、どれもたどり着けるんだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">すると、15パズルの 16! 通りの配置は、たどり着ける配置とたどり着けない配置の、同じ個数ずつの2つに、ちょうど分かれるんですね。16! の半分は 10461394944000 で、約 10 兆 4600 億通りです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。ここで、この章の道具が謎のどこで使われたか、振り返ってごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">操作を積として計算できるので、k 手の動きを k 個の互換の積と書けました。互換の個数の偶奇が書き方によらないことは、転倒数で証明しました。市松模様の色で、空白が戻るには偶数手かかることが分かりました。偶置換が全体のちょうど半分で、3巡回で全部作れることから、たどり着ける配置がちょうど半分だと分かりました。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 400 352" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="第1章で学んだことのつながりの図">
+  <defs><marker id="ar7b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#77708c"/></marker></defs>
+  <rect x="70" y="4" width="260" height="42" rx="9" fill="#5b4a9e" stroke="#5b4a9e" stroke-width="1.6"/><text x="200" y="30.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">群：操作を積として計算（1・2）</text>
+  <line x1="160" y1="48" x2="105" y2="74" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar7b)"/>
+  <line x1="240" y1="48" x2="295" y2="74" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar7b)"/>
+  <text x="100" y="92" text-anchor="middle" font-size="14.5" font-weight="900" fill="#9a6a1c">数の群</text><text x="300" y="92" text-anchor="middle" font-size="14.5" font-weight="900" fill="#c8433f">入れ替えの群</text>
+  <rect x="6" y="102" width="184" height="42" rx="9" fill="#fdf4dd" stroke="#9a6a1c" stroke-width="1.6"/><text x="98" y="128.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33">mod の群・巡回群（3）</text>
+  <rect x="210" y="102" width="184" height="42" rx="9" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.6"/><text x="302" y="128.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33">置換・転倒数（6）</text>
+  <line x1="98" y1="146" x2="98" y2="162" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar7b)"/>
+  <line x1="302" y1="146" x2="302" y2="162" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar7b)"/>
+  <rect x="6" y="164" width="184" height="42" rx="9" fill="#fdf4dd" stroke="#9a6a1c" stroke-width="1.6"/><text x="98" y="190.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33">ラグランジュ（4）</text>
+  <rect x="210" y="164" width="184" height="42" rx="9" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.6"/><text x="302" y="190.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33">偶置換・交代群（6）</text>
+  <line x1="98" y1="208" x2="98" y2="224" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar7b)"/>
+  <line x1="302" y1="208" x2="302" y2="224" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar7b)"/>
+  <rect x="6" y="226" width="184" height="42" rx="9" fill="#fdf4dd" stroke="#9a6a1c" stroke-width="1.6"/><text x="98" y="252.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33">オイラー・RSA（5）</text>
+  <rect x="210" y="226" width="184" height="42" rx="9" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.6"/><text x="302" y="252.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33">15パズルの謎（7）</text>
+  <line x1="190" y1="185" x2="210" y2="185" stroke="#77708c" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <line x1="302" y1="270" x2="302" y2="290" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar7b)"/>
+  <rect x="150" y="294" width="244" height="44" rx="9" fill="#e9e4f7" stroke="#5b4a9e" stroke-width="1.6"/><text x="272" y="321.5" text-anchor="middle" font-size="15" font-weight="900" fill="#44377a">第4章：解を入れ替える群</text>
+</svg>
+        <div class="diagram-caption"><strong>第1章のまとめ</strong>。操作を積として計算する「群」から、数の群（mod、ラグランジュの定理、RSA 暗号）と、入れ替えの群（置換の偶奇、15パズル）の2本の道に分かれた。かっこ内の数はステージの番号。入れ替えの群は、第4章で方程式の解の入れ替えとして再び主役になる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。群の考え方の本当の力は、もの自体ではなく、<strong>ものを動かす操作</strong>に目を向けるところにある。この考え方を最初に大きく使ったのが、フランスのガロアだ。1832年に 20 歳で亡くなったガロアは、方程式の解を入れ替える置換の群を調べて、5次方程式に解の公式がない理由を明らかにした。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">方程式の解の入れ替えも置換なら、15パズルのように「どう入れ替えても変わらない性質」を使って、できないことを言い切るんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。第4章では、方程式の解の入れ替えのうち、解の間の関係を保つものの群（ガロア群）を調べ、その群の形で、√ や ∛ だけで解けるかどうかが決まることを見る。今日の交代群 Aₙ も、そこでまた主役になる。その前に、第2章では、足し算と掛け算の両方をもつ「環」という道具で、素因数分解がただ1通りになるしくみを調べよう。この章で何度も使った「素因数分解はただ1通り」の正体だ。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">15パズルの配置を、16 マスを読む順の番号の並び（空白は 16 番）と見る。1手は空白との互換</span>
+        <span class="step">市松模様：1手ごとに空白のマスの色が変わる → 空白が右下に戻るのは偶数手 → たどり着ける配置は偶置換</span>
+        <span class="step">14 と 15 を入れ替えた配置は奇置換 → どう動かしてもたどり着けない（転倒数＋空白の距離の偶奇が変わらない）</span>
+        <span class="step">空白を 2×2 で1周すると3枚が回る（3巡回）。偶置換は3巡回の積なので、和が偶数の配置にはすべてたどり着ける</span>
+        <span class="step">16! 通りの配置は、たどり着ける半分とたどり着けない半分に分かれる。入れ替えの群は第4章（ガロア理論）へ続く</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. 15パズルで、空白が右下から出て右下に戻ってくるまでの手数について正しいものは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">必ず奇数手</button>
+          <button class="choice-btn">偶数手のことも奇数手のこともある</button>
+          <button class="choice-btn">必ず偶数手</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ マスを市松模様にぬると、1手ごとに空白のマスの色が変わる。もとのマスに戻るには色がもとに戻る必要があるので、手数は偶数。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. 14 と 15 を入れ替えた配置にたどり着けない理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">空白が右下にある配置は偶数個の互換の積（偶置換）だが、14 と 15 の入れ替えは奇置換だから</button>
+          <button class="choice-btn">14 と 15 はとなりどうしなので入れ替えられないから</button>
+          <button class="choice-btn">15パズルの配置は全部で奇数個しかないから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 1手は互換1個。空白が右下に戻るには偶数手かかるので、たどり着ける配置は偶置換。互換の個数の偶奇は書き方によらないので、奇置換の (14 15) にはなれない。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. 空白を右下の 2×2 のマスで1周させると、何が起きる？</p>
+        <div class="choice-list">
+          <button class="choice-btn">すべてのタイルがもとに戻る</button>
+          <button class="choice-btn">空白は右下に戻り、3枚のタイルが回る</button>
+          <button class="choice-btn">2枚のタイルが入れ替わる</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 空白を上・左・下・右と動かすと、11, 12, 15 の3枚が回る（3巡回）。4手なので偶置換。2枚だけの入れ替え（奇置換）にはならない。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("groups", 7);</script>
+<script>
+(function puzzle(cfg) {
+  const host = document.getElementById("pz-" + cfg.id), ro = document.getElementById("ro-" + cfg.id), ctl = document.getElementById("ctl-" + cfg.id);
+  const inner = document.createElement("div"); inner.className = "pz-in"; host.appendChild(inner);
+  if (cfg.parity) host.classList.add("pz-par");
+  const SOLVED = []; for (let i = 1; i <= 15; i++) SOLVED.push(i); SOLVED.push(0);
+  let s = SOLVED.slice(), moves = 0, sticker = false, sel = null, busy = false, swapped = 0;
+  const tiles = {};
+  for (let i = 0; i < 16; i++) {
+    const c = document.createElement("div"); c.className = "pz-cell " + (((i >> 2) + (i & 3)) % 2 ? "c1" : "c0");
+    c.style.left = (i % 4) * 25 + "%"; c.style.top = Math.floor(i / 4) * 25 + "%"; inner.appendChild(c);
+  }
+  for (let t = 1; t <= 15; t++) {
+    const b = document.createElement("button"); b.type = "button"; b.className = "pz-tile"; b.setAttribute("aria-label", "タイル " + t);
+    b.innerHTML = "<span>" + t + "</span>";
+    b.addEventListener("click", () => onTile(t));
+    inner.appendChild(b); tiles[t] = b;
+  }
+  const layout = () => {
+    s.forEach((t, i) => { if (t) { tiles[t].style.left = (i % 4) * 25 + "%"; tiles[t].style.top = Math.floor(i / 4) * 25 + "%"; tiles[t].classList.toggle("sel", sel === t); } });
+    show();
+  };
+  const blank = () => s.indexOf(0);
+  const stepTo = (cell) => { const b = blank(); s[b] = s[cell]; s[cell] = 0; moves++; };
+  function onTile(t) {
+    if (busy) return;
+    if (sticker) {
+      if (sel === null) { sel = t; layout(); return; }
+      if (sel !== t) { const i = s.indexOf(sel), j = s.indexOf(t); s[i] = t; s[j] = sel; swapped++; }
+      sel = null; layout(); return;
+    }
+    const i = s.indexOf(t), b = blank();
+    const ri = Math.floor(i / 4), ci = i % 4, rb = Math.floor(b / 4), cb = b % 4;
+    if (ri !== rb && ci !== cb) return;
+    const d = ri === rb ? (ci > cb ? 1 : -1) : (ri > rb ? 4 : -4);
+    while (blank() !== i) stepTo(blank() + d);
+    layout();
+  }
+  function inv() { const a = s.map((x) => x || 16); let c = 0; for (let i = 0; i < 16; i++) for (let j = i + 1; j < 16; j++) if (a[i] > a[j]) c++; return c; }
+  function show() {
+    const b = blank(), dist = (3 - Math.floor(b / 4)) + (3 - b % 4);
+    const solved = s.every((x, i) => x === SOLVED[i]);
+    let h = "<span>動かした回数：<b>" + moves + "</b></span>";
+    if (cfg.parity) {
+      const iv = inv();
+      h += "<span>転倒数（空白を16として）：<b>" + iv + "</b>（" + (iv % 2 ? "奇数" : "偶数") + "）</span>";
+      h += "<span>空白の右下からの距離：<b>" + dist + "</b>（" + (dist % 2 ? "奇数" : "偶数") + "）</span>";
+      const ok = (iv + dist) % 2 === 0;
+      h += "<span class=\"" + (ok ? "ok" : "ng") + "\">2つの和は<b>" + (ok ? "偶数 → そろえられる配置" : "奇数 → そろえられない配置") + "</b></span>";
+    }
+    if (solved) h += "<span class=\"ok\"><b>そろった！</b></span>";
+    else if (s[13] === 15 && s[14] === 14 && s.every((x, i) => i === 13 || i === 14 || x === SOLVED[i])) h += "<span class=\"ng\"><b>14 と 15 だけが入れ替わっている</b></span>";
+    if (sticker) h += "<span>シール貼り替えモード：入れ替える2枚を順にタップ</span>";
+    ro.innerHTML = h;
+  }
+  const btn = (label, fn) => { const b = document.createElement("button"); b.type = "button"; b.className = "btn"; b.textContent = label; b.addEventListener("click", fn); ctl.appendChild(b); return b; };
+  btn("そろった状態", () => { s = SOLVED.slice(); moves = 0; sel = null; layout(); });
+  btn("14 と 15 を入れ替えた配置", () => { s = SOLVED.slice(); s[13] = 15; s[14] = 14; moves = 0; sel = null; layout(); });
+  btn("よく混ぜる", () => {
+    let prev = -1;
+    for (let k = 0; k < 300; k++) {
+      const b = blank(), r = Math.floor(b / 4), c = b % 4, opt = [];
+      if (r > 0) opt.push(b - 4); if (r < 3) opt.push(b + 4); if (c > 0) opt.push(b - 1); if (c < 3) opt.push(b + 1);
+      const cand = opt.filter((x) => x !== prev), pick = cand[Math.floor(Math.random() * cand.length)];
+      prev = b; stepTo(pick);
+    }
+    moves = 0; sel = null; layout();
+  });
+  if (cfg.loop) {
+    btn("空白で右下の2×2を1周", () => {
+      if (busy || sticker) return;
+      if (blank() !== 15) { ro.innerHTML += "<span class=\"ng\">空白を右下のマスに置いてから押してね</span>"; return; }
+      busy = true; const path = [11, 10, 14, 15]; let k = 0;
+      const go = () => { stepTo(path[k]); layout(); k++; if (k < path.length) setTimeout(go, FL.reducedMotion() ? 0 : 320); else busy = false; };
+      go();
+    });
+  }
+  if (cfg.sticker) {
+    const sb = btn("シールを貼り替える", () => { sticker = !sticker; sel = null; sb.setAttribute("aria-pressed", sticker ? "true" : "false"); layout(); });
+    sb.setAttribute("aria-pressed", "false");
+  }
+  layout();
+})({"id":"p7","parity":true,"sticker":true,"loop":true});
+</script>
+</body>
+</html>

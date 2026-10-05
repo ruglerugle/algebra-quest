@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第2章 STAGE6 こわれた素因数分解（a＋b√−5 で素因数分解が1通りでない理由） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="素因数分解が1通りでない世界 a＋b√−5 を中学生向けに解説。余りのある割り算ができず、6＝2×3＝(1＋√−5)(1−√−5) と2通りに分かれる。4つの部品が本当に分けられないことをノルムで確かめ、a＋b√−2 の世界との違いも調べる。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/rings/stage6">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第2章 STAGE6 こわれた素因数分解（a＋b√−5 で素因数分解が1通りでない理由） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="余りのある割り算ができない世界 a＋b√−5 では、6＝2×3＝(1＋√−5)(1−√−5)。2 は分けられないのに素元ではない。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/rings/stage6">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE6 こわれた素因数分解",
+      "description": "素因数分解が1通りでない世界 a＋b√−5 を中学生向けに解説。余りのある割り算ができず、6＝2×3＝(1＋√−5)(1−√−5) と2通りに分かれる。4つの部品が本当に分けられないことをノルムで確かめ、a＋b√−2 の世界との違いも調べる。",
+      "url": "https://algebra.habatakijuku.com/rings/stage6",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 6,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第2章 素因数分解の世界",
+        "url": "https://algebra.habatakijuku.com/rings/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第2章 素因数分解の世界",
+          "item": "https://algebra.habatakijuku.com/rings/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE6 こわれた素因数分解",
+          "item": "https://algebra.habatakijuku.com/rings/stage6"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+.tbl-scroll{overflow-x:auto;max-width:100%}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第2章 素因数分解の世界 ／ STAGE 6 ― こわれた素因数分解 ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 8</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第2章 STAGE 6</span><h1 class="chapter-title">こわれた素因数分解</h1>
+        <div class="chapter-sub">既約元なのに素元でない数</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">a＋b√−5 の世界では余りのある割り算ができない理由（長方形の真ん中から角まで √6/2）を説明し、2, 3, 1±√−5 がどれも既約元であることをノルムで確かめよう。2 が既約元なのに素元でないことと、a＋b√−2 では同じことが起きない理由を説明できれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">前のステージで、ガウス整数の世界の素因数分解がただ1通りであることを使って、1つ目の謎を解いた。その一意性を支えていたのは「余りのある割り算」だったね。今日は2つ目の謎、a＋b√−5 の世界を調べる。この世界でつまずく場所を正確に突き止めることが、ラメの証明がどこで崩れたかを知ることにもなるし、STAGE7・STAGE8 で素因数分解を修理するための準備にもなるんだ。まず割り算から。この世界の数は、複素数の平面で横 a、縦 √5 b の点だったね。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">点は横 1、縦 √5 の長方形の角に並びます。ガウス整数と同じように考えると、長方形の真ん中から角までは、三平方の定理で √((1/2)²＋(√5/2)²)＝√(1/4＋5/4)＝√6/2≒1.22 です。1 より大きいので、z÷w が真ん中あたりに来ると、いちばん近い点を選んでも、余りのノルムが割る数のノルムより小さくならないかもしれません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">実際にそうなる例がある。1＋√−5 を 2 で割ってごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(1＋√−5)÷2＝1/2＋(1/2)√−5。ちょうど長方形の真ん中です。商の候補はまわりの 0, 1, √−5, 1＋√−5 で、余り (1＋√−5)−2q はそれぞれ 1＋√−5, −1＋√−5, 1−√−5, −1−√−5 です。どれもノルムは 1＋5＝6 で、割る数 2 のノルム 4 より大きくなります。余りを小さくできません。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 260" role="img" aria-label="a＋b√−5 の格子の長方形（横1・縦√5）。真ん中の点 1/2＋(1/2)√−5 から4つの角までの距離はどれも √6/2 で、1 より大きい">
+          <rect x="95" y="63.47524157501471" width="70" height="156.5" fill="#f6f3fc" stroke="#9a88d6" stroke-width="2"/>
+          <circle cx="130" cy="141.73762078750735" r="70" fill="none" stroke="#c8433f" stroke-width="1.3" stroke-dasharray="4 4"/>
+          <line x1="130" y1="141.73762078750735" x2="95" y2="220" stroke="#9a6a1c" stroke-width="1.8"/><line x1="130" y1="141.73762078750735" x2="165" y2="220" stroke="#9a6a1c" stroke-width="1.8"/><line x1="130" y1="141.73762078750735" x2="95" y2="63.47524157501471" stroke="#9a6a1c" stroke-width="1.8"/><line x1="130" y1="141.73762078750735" x2="165" y2="63.47524157501471" stroke="#9a6a1c" stroke-width="1.8"/>
+          <circle cx="95" cy="220" r="6" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="85" y="238" text-anchor="end" font-size="13" font-weight="900" fill="#44377a">0</text><circle cx="165" cy="220" r="6" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="175" y="238" text-anchor="start" font-size="13" font-weight="900" fill="#44377a">1</text><circle cx="95" cy="63.47524157501471" r="6" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="85" y="55.47524157501471" text-anchor="end" font-size="13" font-weight="900" fill="#44377a">√−5</text><circle cx="165" cy="63.47524157501471" r="6" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="175" y="55.47524157501471" text-anchor="start" font-size="13" font-weight="900" fill="#44377a">1＋√−5</text>
+          <circle cx="130" cy="141.73762078750735" r="6" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <text x="250" y="70" font-size="13" font-weight="900" fill="#221d33">真ん中から角まで</text>
+          <text x="250" y="94" font-size="13" font-weight="800" fill="#9a6a1c">√(1/4＋5/4)＝√6/2≒1.22</text>
+          <text x="250" y="130" font-size="13" font-weight="900" fill="#221d33">どの角を商にしても</text>
+          <text x="250" y="154" font-size="13" font-weight="800" fill="#44377a">余りは ±1±√−5（ノルム 6）</text>
+          <text x="250" y="178" font-size="13" font-weight="800" fill="#c8433f">N(2)＝4 より大きい</text>
+          <text x="250" y="214" font-size="12" font-weight="800" fill="#77708c">赤い点：(1＋√−5)÷2</text>
+          <text x="250" y="234" font-size="12" font-weight="800" fill="#77708c">赤い点線：半径 1 の円</text>
+        </svg>
+        <div class="diagram-caption"><strong>a＋b√−5 の世界では割り算がうまくいかない</strong>。格子は横 1・縦 √5 の長方形。真ん中の点 (1＋√−5)÷2 から4つの角までは、どれも √6/2≒1.22 で、半径 1 の円（赤い点線）の外にある。どの角を商に選んでも、余りのノルムは 6 で、N(2)＝4 より小さくならない</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。ガウス整数では、z÷w がどこに来ても距離 √2/2 以内に格子点があったけれど、この世界では、どの格子点からも距離が 1 を超える場所が残る。いくつかの世界で比べてみよう。a＋b√−d の世界の格子は横 1・縦 √d の長方形で、すきまができるかどうかは、真ん中から角までの距離で決まる。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-cover" aria-label="選んだ世界の格子点のまわりに半径1の円を描いた図。ガウス整数や a＋b√−2 では円が平面をすきまなくおおうが、a＋b√−5 や a＋b√−6 では円と円の間にすきまが残る"></canvas></div>
+        <div class="sim-controls">
+          <label>世界 <select id="sel-cover"><option value="5">a＋b√−5</option><option value="1">a＋bi（ガウス整数）</option><option value="2">a＋b√−2</option><option value="6">a＋b√−6</option></select></label>
+        </div>
+        <div class="readout" id="ro-cover"></div>
+        <div class="diagram-caption"><strong>余りを小さくできる範囲</strong>。それぞれの格子点を中心に、半径 1 の円を描いた。z÷w がどれかの円の内側に入れば、その中心を商に選んで、余りのノルムを割る数のノルムより小さくできる。ガウス整数と a＋b√−2 では円が平面をすきまなくおおうので、余りのある割り算がいつでもできる。a＋b√−5 や a＋b√−6 では長方形の真ん中にすきま（赤い点）が残る</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">a＋b√−2 なら √(1/4＋2/4)＝√3/2≒0.87 で 1 より小さいので、割り算ができます。でも、割り算ができないからといって、すぐに素因数分解が崩れるとは限りませんよね。STAGE4 の証明が使えなくなるだけで、別の理由でただ1通りになっているかもしれません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。だから実例で確かめる。STAGE1 で見た 6＝2×3＝(1＋√−5)(1−√−5) だ。これが本当に「素因数分解が2通り」の例になっているには、何を確かめればいいかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">2, 3, 1＋√−5, 1−√−5 が4つとも既約元（これ以上分けられない数）であることと、上の分け方の部品と下の分け方の部品が、単数を掛けただけの違いではないことです。整数の 12＝3×4＝2×6 のように、途中までの分け方なら何通りあってもおかしくないからです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。STAGE2 のノルム N(a＋b√−5)＝a²＋5b² を使ってごらん。この世界には、ノルム 2 の数も 3 の数もなかったね。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">2 を単数でない2つの数に分けると、ノルムは N(2)＝4＝2×2 なので、ノルム 2 の数が要ります。ありません。3 はノルム 9＝3×3 で、ノルム 3 の数が要りますが、ありません。1±√−5 はノルム 6＝2×3 で、ノルム 2 か 3 の数が要りますが、どちらもありません。4つとも既約元です。この世界の単数は ±1 だけで、2 のノルムは 4、1±√−5 のノルムは 6 なので、2 に ±1 を掛けても 1±√−5 にはなりません。3 もノルム 9 なので同じです。<strong>6 は、本当に2通りに分解できてしまいます</strong>。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">ノルム：<span class="nw">N(a＋b√−5)＝a²＋5b²</span>。b≠0 なら 5 以上なので、<strong>ノルム 2, 3 の数はない</strong></span>
+        <span class="step"><span class="nw">N(2)＝4＝2×2</span>、<span class="nw">N(3)＝9＝3×3</span>、<span class="nw">N(1±√−5)＝6＝2×3</span> → どれも分けるにはノルム 2 か 3 の数が要る → 4つとも既約元</span>
+        <span class="step">単数は ±1 だけ。ノルムが 4, 9, 6 と違うので、どの2つも単数を掛けただけの違いではない</span>
+        <span class="step">→ <span class="nw">6＝2×3＝(1＋√−5)(1−√−5)</span> は、本当に違う2通りの素因数分解</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。STAGE3 の言葉で言うと、何が起きているかな？ 2 は素元（ab を割り切れば a か b を割り切る数）だろうか。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">2 は (1＋√−5)(1−√−5)＝6 を割り切ります。でも、(1＋√−5)÷2＝1/2＋(1/2)√−5 はこの世界の数ではないので、2 は 1＋√−5 を割り切りません。1−√−5 も同じです。2 は<strong>既約元なのに素元ではない</strong>。STAGE3 で、既約元がどれも素元なら一意だと分かりましたが、ここではそれが成り立っていないので、部品を打ち消し合わせられなくなっています。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。こういう数は 6 だけではない。9＝3×3 と (2＋√−5)(2−√−5) を比べてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(2＋√−5)(2−√−5)＝4−(−5)＝9。2±√−5 はノルム 9 で、分けるにはノルム 3 の数が要るので既約元です。9 も2通りに分かれます。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="tbl-scroll"><table class="num-table">
+          <tr><th>数</th><th>分け方1</th><th>分け方2</th><th>分け方3</th></tr>
+          <tr><td><b>6</b></td><td>2×3</td><td>(1＋√−5)(1−√−5)</td><td>—</td></tr>
+          <tr><td><b>9</b></td><td>3×3</td><td>(2＋√−5)(2−√−5)</td><td>—</td></tr>
+          <tr><td><b>14</b></td><td>2×7</td><td>(3＋√−5)(3−√−5)</td><td>—</td></tr>
+          <tr><td><b>21</b></td><td>3×7</td><td>(1＋2√−5)(1−2√−5)</td><td>(4＋√−5)(4−√−5)</td></tr>
+        </table></div>
+        <div class="tbl-scroll"><table class="num-table" style="margin-top:12px">
+          <tr><th>k</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr>
+          <tr><th>a²＋5b²＝k</th><td class="hit">○</td><td class="miss">×</td><td class="miss">×</td><td class="hit">○</td><td class="hit">○</td><td class="hit">○</td><td class="miss">×</td><td class="miss">×</td><td class="hit">○</td><td class="miss">×</td></tr>
+        </table></div>
+        <div class="diagram-caption"><strong>a＋b√−5 の世界で2通り以上に分かれる数</strong>。表の分け方の部品はどれも既約元（分けるのに必要なノルム 2, 3, 7 の数がこの世界にない）。21 は3通りに分かれる。下の表は、ノルム k の数があるか（○）ないか（×）。ノルム 2, 3, 7 の数がないことが、分解をこわしている</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">では、比べるために a＋b√−2 の世界も見ておこう。こちらでも (2＋√−2)(2−√−2)＝4−(−2)＝6 で、6＝2×3＝(2＋√−2)(2−√−2) と書ける。こちらも一意性がこわれているかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbitThink.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">この世界のノルムは a²＋2b² で、ノルム 2 の数 √−2 があります。(√−2)²＝−2 なので 2＝−(√−2)²。3 はノルム 9 なのでノルム 3 の数を探すと、1＋√−2 がそうで、(1＋√−2)(1−√−2)＝1＋2＝3。2＋√−2 はノルム 6 なので、√−2 で割ってみると、√−2×(1−√−2)＝√−2−(√−2)²＝√−2＋2 なので 2＋√−2＝√−2(1−√−2)。同じように 2−√−2＝−√−2(1＋√−2)。どちらの分け方も、分けきると <strong>−(√−2)²(1＋√−2)(1−√−2)</strong> で、部品は同じです。こわれていません。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 460 350" role="img" aria-label="6の2通りの分け方の比較。a＋b√−2 の世界では、2, 3, 2＋√−2, 2−√−2 がさらに分かれて、どちらも同じ部品 −1, √−2, √−2, 1＋√−2, 1−√−2 になる。a＋b√−5 の世界では、2, 3, 1＋√−5, 1−√−5 はもう分けられない">
+          <text x="10" y="22" font-size="13" font-weight="900" fill="#221d33">a＋b√−2 の世界</text>
+          <text x="12" y="58" font-size="14" font-weight="900" fill="#221d33">6＝</text><rect x="42" y="39" width="40" height="28" rx="7" fill="#3f6fb5"/><text x="62" y="58" text-anchor="middle" font-size="12.5" font-weight="900" fill="#fff">2</text><rect x="132" y="39" width="40" height="28" rx="7" fill="#9a6a1c"/><text x="152" y="58" text-anchor="middle" font-size="12.5" font-weight="900" fill="#fff">3</text><rect x="253" y="39" width="78" height="28" rx="7" fill="#5b4a9e"/><text x="292" y="58" text-anchor="middle" font-size="12.5" font-weight="900" fill="#fff">2＋√−2</text><rect x="359" y="39" width="78" height="28" rx="7" fill="#c8433f"/><text x="398" y="58" text-anchor="middle" font-size="12.5" font-weight="900" fill="#fff">2−√−2</text><text x="222" y="58" text-anchor="middle" font-size="14" font-weight="900" fill="#221d33">＝</text><text x="107" y="58" text-anchor="middle" font-size="14" font-weight="900" fill="#221d33">×</text><text x="345" y="58" text-anchor="middle" font-size="14" font-weight="900" fill="#221d33">×</text>
+          <line x1="62" y1="68" x2="62" y2="88" stroke="#b9b0a3" stroke-width="1.6"/><line x1="152" y1="68" x2="152" y2="88" stroke="#b9b0a3" stroke-width="1.6"/><line x1="292" y1="68" x2="292" y2="88" stroke="#b9b0a3" stroke-width="1.6"/><line x1="398" y1="68" x2="398" y2="88" stroke="#b9b0a3" stroke-width="1.6"/>
+          <text x="62" y="104" text-anchor="middle" font-size="11.5" font-weight="800" fill="#44377a">−(√−2)²</text><text x="152" y="104" text-anchor="middle" font-size="11.5" font-weight="800" fill="#44377a">(1＋√−2)</text><text x="152" y="120" text-anchor="middle" font-size="11.5" font-weight="800" fill="#44377a">×(1−√−2)</text><text x="292" y="104" text-anchor="middle" font-size="11.5" font-weight="800" fill="#44377a">√−2</text><text x="292" y="120" text-anchor="middle" font-size="11.5" font-weight="800" fill="#44377a">×(1−√−2)</text><text x="398" y="104" text-anchor="middle" font-size="11.5" font-weight="800" fill="#44377a">−√−2</text><text x="398" y="120" text-anchor="middle" font-size="11.5" font-weight="800" fill="#44377a">×(1＋√−2)</text>
+          <text x="230" y="152" text-anchor="middle" font-size="12.5" font-weight="900" fill="#2e7d4f">どちらも −(√−2)²(1＋√−2)(1−√−2)：同じ部品にそろう</text>
+          <line x1="10" y1="172" x2="450" y2="172" stroke="#e6e0d6" stroke-width="1.5"/>
+          <text x="10" y="202" font-size="13" font-weight="900" fill="#221d33">a＋b√−5 の世界</text>
+          <text x="12" y="240" font-size="14" font-weight="900" fill="#221d33">6＝</text><rect x="42" y="221" width="40" height="28" rx="7" fill="#3f6fb5"/><text x="62" y="240" text-anchor="middle" font-size="12.5" font-weight="900" fill="#fff">2</text><rect x="132" y="221" width="40" height="28" rx="7" fill="#9a6a1c"/><text x="152" y="240" text-anchor="middle" font-size="12.5" font-weight="900" fill="#fff">3</text><rect x="253" y="221" width="78" height="28" rx="7" fill="#5b4a9e"/><text x="292" y="240" text-anchor="middle" font-size="12.5" font-weight="900" fill="#fff">1＋√−5</text><rect x="359" y="221" width="78" height="28" rx="7" fill="#c8433f"/><text x="398" y="240" text-anchor="middle" font-size="12.5" font-weight="900" fill="#fff">1−√−5</text><text x="222" y="240" text-anchor="middle" font-size="14" font-weight="900" fill="#221d33">＝</text><text x="107" y="240" text-anchor="middle" font-size="14" font-weight="900" fill="#221d33">×</text><text x="345" y="240" text-anchor="middle" font-size="14" font-weight="900" fill="#221d33">×</text>
+          <text x="62" y="276" text-anchor="middle" font-size="11.5" font-weight="800" fill="#c8433f">ノルム 4</text><text x="152" y="276" text-anchor="middle" font-size="11.5" font-weight="800" fill="#c8433f">ノルム 9</text><text x="292" y="276" text-anchor="middle" font-size="11.5" font-weight="800" fill="#c8433f">ノルム 6</text><text x="398" y="276" text-anchor="middle" font-size="11.5" font-weight="800" fill="#c8433f">ノルム 6</text>
+          <text x="230" y="314" text-anchor="middle" font-size="12.5" font-weight="900" fill="#c8433f">ノルム 2, 3 の数がないので、どれももう分けられない</text>
+          <text x="230" y="336" text-anchor="middle" font-size="12.5" font-weight="900" fill="#c8433f">→ 部品が違うまま2通りに残る</text>
+        </svg>
+        <div class="diagram-caption"><strong>分けきったとき、部品がそろうか</strong>。上：a＋b√−2 の世界では、6 の2通りの書き方の部品がどれもまだ分けられ、分けきるとどちらも同じ部品の組になる（単数 −1 の違いを除いて）。下：a＋b√−5 の世界では、4つの部品がもう分けられないのに、組が違う</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">よく分けきったね。大事なのは、書き方が何通りあるかではなく、<strong>これ以上分けられない数まで分けきったとき、部品がそろうかどうか</strong>なんだ。a＋b√−2 の世界では余りのある割り算ができるから、STAGE4 と同じ証明で既約元はどれも素元になり、分けきれば必ずそろう。a＋b√−5 の世界ではそろわない。ラメの証明が崩れたのも、同じ種類の現象だ。ラメは 1 の p 乗根という数を使った世界で素因数分解がただ1通りだと思い込んでいたけれど、クンマーは 1844年に、p＝23 のときその世界で素因数分解がこわれることを見つけていた。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">素因数分解が1通りでない世界では、「素数で割り切れるかどうか」で数を調べる方法が使えなくなります。2 で割り切れる数の積なのに、どちらも 2 で割り切れない、ということが起きるからです。この世界では、もう素因数分解は役に立たないんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">クンマーは逆に、この世界を修理する方法を考えた。2 を「これ以上分けられない」と思ったのは、この世界の<strong>数</strong>だけを部品として探したからだ。数の代わりに、もう少し広い「部品」を考えると、2 も 3 も 1±√−5 も、さらに分けられるようになる。次のステージで、その部品の正体、「<strong>イデアル</strong>」を作ろう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">a＋b√−5 の格子は横 1・縦 √5。真ん中から角まで √6/2＞1 なので、余りのある割り算ができないことがある（例：(1＋√−5)÷2 はどの商でも余りのノルム 6＞4）</span>
+        <span class="step">a＋b√−5 にはノルム 2, 3 の数がない → 2, 3, 1±√−5 は4つとも既約元。単数は ±1 だけでノルムも違う → <span class="nw">6＝2×3＝(1＋√−5)(1−√−5)</span> は本当に2通り</span>
+        <span class="step">2 は 6 を割り切るのに 1±√−5 を割り切らない → 既約元なのに素元ではない → 部品を打ち消し合わせられない</span>
+        <span class="step">9＝3×3＝(2＋√−5)(2−√−5)、21 は3通り。こわれ方は 6 だけではない</span>
+        <span class="step">a＋b√−2 では真ん中から角まで √3/2＜1。6＝2×3＝(2＋√−2)(2−√−2) も分けきると同じ部品 −(√−2)²(1＋√−2)(1−√−2) にそろう</span>
+        <span class="step">大事なのは「分けきったとき部品がそろうか」。ラメの 1 の p 乗根の世界でも、p＝23 で同じ崩れが起きる（クンマー 1844年）</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. a＋b√−5 の世界で余りのある割り算ができないことがある理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">√−5 が実数ではないから</button>
+          <button class="choice-btn">ノルムが掛け算を掛け算に移さないから</button>
+          <button class="choice-btn">格子の長方形（横 1・縦 √5）の真ん中から角まで √6/2 で、1 より大きいから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ z÷w が長方形の真ん中あたりに来ると、いちばん近い格子点でも距離が 1 を超え、余りのノルムを割る数のノルムより小さくできない。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. a＋b√−5 の世界で、1＋√−5 が既約元だと言える理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">ノルム 6 を分けるにはノルム 2 か 3 の数が要るが、a²＋5b² が 2 や 3 になる整数 a, b はないから</button>
+          <button class="choice-btn">1＋√−5 は整数ではないから</button>
+          <button class="choice-btn">1＋√−5 のノルムが素数だから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 単数でない2つの数に分けると、ノルムは 6＝2×3 と分かれる。a²＋5b² は b≠0 なら 5 以上、b＝0 なら平方数なので、2 にも 3 にもならない。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. a＋b√−2 の世界で、6＝2×3＝(2＋√−2)(2−√−2) が一意性の崩れにならない理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">√−2 は使ってはいけない数だから</button>
+          <button class="choice-btn">2, 3, 2±√−2 はまだ分けられ、分けきるとどちらも同じ部品の組になるから</button>
+          <button class="choice-btn">6 は既約元だから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 2＝−(√−2)²、3＝(1＋√−2)(1−√−2)、2＋√−2＝√−2(1−√−2)、2−√−2＝−√−2(1＋√−2)。分けきると −(√−2)²(1＋√−2)(1−√−2) という同じ組になる。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("rings", 6);</script>
+<script>
+/* 余りを小さくできる範囲（半径1の円でおおえるか） */
+(function(){
+  var sel=document.getElementById('sel-cover'), ro=document.getElementById('ro-cover');
+  var st=FL.canvas('cv-cover',0.8,draw);
+  function draw(st){
+    var d=+sel.value, sd=Math.sqrt(d), far=Math.sqrt(0.25+d/4);
+    var ctx=st.ctx; ctx.clearRect(0,0,st.W,st.H); ctx.fillStyle=FL.C.paper; ctx.fillRect(0,0,st.W,st.H);
+    var v=FL.view(st,6.5,0.5,0.9);
+    ctx.fillStyle='rgba(154,136,214,.26)';
+    for(var a=-8;a<=8;a++) for(var b=-5;b<=5;b++){ ctx.beginPath(); ctx.arc(v.X(a),v.Y(b*sd),v.s,0,Math.PI*2); ctx.fill(); }
+    for(a=-8;a<=8;a++) for(b=-5;b<=5;b++){ FL.dot(ctx,v.X(a),v.Y(b*sd),3.4,FL.C.themeDark); }
+    var ok=far<1;
+    FL.dot(ctx,v.X(0.5),v.Y(sd/2),5.5,ok?FL.C.gold:FL.C.red,'#fff');
+    var u=d===1?'i':'√−'+d;
+    ro.innerHTML='<span>a＋b'+u+'：長方形（横 1・縦 √'+d+'）の真ん中から角まで √(1/4＋'+d+'/4)≒'+far.toFixed(2)+'</span><span class="'+(ok?'ok':'ng')+'"><b>'+(ok?'1 より小さい → 余りのある割り算ができる':'1 より大きい → すきまが残り、余りを小さくできないことがある')+'</b></span>';
+  }
+  sel.addEventListener('change',function(){st.redraw();});
+})();
+</script>
+</body>
+</html>

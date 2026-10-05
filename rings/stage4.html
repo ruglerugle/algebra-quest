@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第2章 STAGE4 余りのある割り算（ユークリッドの互除法とガウス整数の割り算） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="ユークリッドの互除法を中学生向けに解説。最後の余りが最大公約数になる理由、ax＋py＝1 の作り方、そこから素数が素元であること（素因数分解の一意性）を証明する。ガウス整数でも余りを小さくできるので、一意性が成り立つ。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/rings/stage4">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第2章 STAGE4 余りのある割り算（ユークリッドの互除法とガウス整数の割り算） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="小学校で習う「余りのある割り算」が、素因数分解がただ1通りである理由だった。mod p の逆数や RSA の鍵も、同じ計算で求まる。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/rings/stage4">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE4 余りのある割り算",
+      "description": "ユークリッドの互除法を中学生向けに解説。最後の余りが最大公約数になる理由、ax＋py＝1 の作り方、そこから素数が素元であること（素因数分解の一意性）を証明する。ガウス整数でも余りを小さくできるので、一意性が成り立つ。",
+      "url": "https://algebra.habatakijuku.com/rings/stage4",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 4,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第2章 素因数分解の世界",
+        "url": "https://algebra.habatakijuku.com/rings/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第2章 素因数分解の世界",
+          "item": "https://algebra.habatakijuku.com/rings/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE4 余りのある割り算",
+          "item": "https://algebra.habatakijuku.com/rings/stage4"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+.tbl-scroll{overflow-x:auto;max-width:100%}
+  #tb-ext td.hl{background:#efe9f9;color:#44377a}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第2章 素因数分解の世界 ／ STAGE 4 ― 余りのある割り算 ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 8</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第2章 STAGE 4</span><h1 class="chapter-title">余りのある割り算</h1>
+        <div class="chapter-sub">互除法で素数が素元であることを示す</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">互除法の最後の余りが最大公約数になる理由を説明し、ax＋py＝1 を作って、素数が素元であることを証明しよう。ガウス整数でも余りのノルムを割る数のノルムより小さくできる理由（√2/2 の距離）を説明できれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">前のステージで、<strong>既約元がどれも素元</strong>（p が ab を割り切れば a か b を割り切る数）なら、素因数分解はただ1通りになると分かった。今日はいよいよ、整数の素数が素元であることを証明する。そして同じ方法がガウス整数の世界でも使えることを確かめる。そうすれば、1つ目の謎を解く道具がそろうんだ。おまけに、第1章で存在だけ確かめた mod p の逆数を、実際に計算する方法も手に入る。道具は割り算だ。17 を 5 で割ると、どうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">17＝5×3＋2 です。商が 3、余りが 2。余りは、割る数の 5 より小さくなります。5 の倍数 0, 5, 10, 15, 20, … を並べると、17 は 15 と 20 の間にあるので、15 を引いた残り 2 は 5 より小さくなります。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。どんな整数 a と正の整数 b でも、b の倍数のうち a を超えない最大のものを qb とすれば、a＝qb＋r で余り r は 0 以上 b 未満になる。これが<strong>余りのある割り算</strong>だ。これをくり返すのが<strong>ユークリッドの互除法</strong>だよ。84 と 30 で、大きいほうを小さいほうで割り、次は割った数を余りで割り…と、余りが 0 になるまで続けてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">84＝30×2＋24、30＝24×1＋6、24＝6×4＋0。余りは 24, 6, 0 です。余りは割る数より小さいので、どんどん小さくなって、必ず 0 で止まります。最後の 0 でない余りは 6 で、84 と 30 の最大公約数も 6 です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。最後の 0 でない余りは、いつでも2つの数の<strong>最大公約数</strong>になる。その理由を確かめよう。84 と 30 の公約数と、30 と 24 の公約数を比べてごらん。24＝84−30×2 だね。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">d が 84 と 30 の公約数なら、84 も 30×2 も d で割り切れるので、差の 24 も d で割り切れます。だから d は 30 と 24 の公約数です。逆に d が 30 と 24 の公約数なら、84＝30×2＋24 も d で割り切れるので、d は 84 と 30 の公約数です。つまり、<strong>84 と 30 の公約数と、30 と 24 の公約数は、まったく同じ</strong>です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。割り算を1回するたびに数の組は変わるけれど、公約数の集まりは変わらない。最後はどうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(84, 30) → (30, 24) → (24, 6) → (6, 0) と、公約数の集まりはずっと同じです。0 はどんな数でも割り切れるので、6 と 0 の公約数は 6 の約数そのもので、1, 2, 3, 6 です。いちばん大きいのは 6。だから 84 と 30 の最大公約数は、最後の 0 でない余りの 6 です。どんな2つの数でも、同じ理由で言えます。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">余りのある割り算：<span class="nw">a＝qb＋r</span>（0≦r＜b）</span>
+        <span class="step">互除法：<span class="nw">84＝30×2＋24</span>、<span class="nw">30＝24×1＋6</span>、<span class="nw">24＝6×4＋0</span></span>
+        <span class="step">d が a と b の公約数 → <span class="nw">r＝a−qb</span> も d で割り切れる → d は b と r の公約数</span>
+        <span class="step">d が b と r の公約数 → <span class="nw">a＝qb＋r</span> も d で割り切れる → d は a と b の公約数</span>
+        <span class="step">→ 公約数の集まりは割り算のたびに変わらず、最後の (6, 0) の公約数は 6 の約数。<strong>最後の 0 でない余り＝最大公約数</strong></span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">互除法には、長方形を使った見方もある。横 84・縦 30 の長方形から、1辺 30 の正方形をできるだけ切り取ると、残りは横 24・縦 30 の長方形だ。そこから1辺 24 の正方形を切り取り…とくり返すと、最後の正方形の1辺が最大公約数になる。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">最後の正方形は、ひとつ前の長方形をぴったり埋めます。その長方形の辺で、さらに前の長方形が埋まり…とさかのぼると、最初の長方形全体が最後の正方形でぴったり埋まります。だから最後の正方形の1辺は、84 も 30 も割り切ります。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-euc" aria-label="横 a・縦 b の長方形から、できるだけ大きな正方形を切り取ることをくり返す図。最後の正方形の1辺が最大公約数になる"></canvas></div>
+        <div class="sim-controls">
+          <label>a <input type="number" id="in-ea" min="1" max="200" value="84"></label>
+          <label>b <input type="number" id="in-eb" min="1" max="200" value="30"></label>
+        </div>
+        <div class="readout" id="ro-euc"></div>
+        <div class="diagram-caption"><strong>互除法を長方形で見る</strong>。横 a・縦 b の長方形から、短いほうの辺を1辺とする正方形をできるだけ多く切り取る（1回の割り算の商が切り取る個数、余りが残りの幅）。残った長方形で同じことをくり返し、最後に残った正方形（いちばん濃い色）の1辺が a と b の最大公約数。その正方形を並べると、元の長方形がぴったり埋まる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。互除法には、もう1つ大事な使い道がある。最後の余り 6 を、途中の式を下からたどって、84 と 30 だけで書いてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">30＝24×1＋6 から 6＝30−24。84＝30×2＋24 から 24＝84−30×2。入れると 6＝30−(84−30×2)＝30×3−84。<strong>6＝84×(−1)＋30×3</strong>。84 と 30 に整数を掛けて足したら、最大公約数が作れました。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。上からたどっても分かる。最初の余り 24 は 84−30×2 で、「84×整数＋30×整数」の形だ。次の余りは「ひとつ前の割る数−商×ひとつ前の余り」だから、どうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">割る数も余りも「84×整数＋30×整数」の形なら、その差もやはりその形です。だから余りは全部その形で、最後の余り、つまり最大公約数も <strong>84x＋30y</strong>（x, y は整数）の形に書けます。どんな2つの整数でも同じです。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="sim-controls">
+          <label>a <input type="number" id="in-xa" min="1" max="999" value="84"></label>
+          <label>b <input type="number" id="in-xb" min="1" max="999" value="30"></label>
+        </div>
+        <div class="tbl-scroll"><table class="num-table" id="tb-ext"></table></div>
+        <div class="readout" id="ro-ext"></div>
+        <div class="diagram-caption"><strong>余りを「ax＋by」の形で書きながら互除法を進める</strong>。左の列が割り算、右の列がその余りを a と b で書いた形。1行目は a＝a×1＋b×0、2行目は b＝a×0＋b×1。次の行は「2行前−商×1行前」で作るので、x と y も同じ計算で求まる。最後の 0 でない余り（最大公約数）の行に、ax＋by の x と y が出る</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">よく見抜いたね。さあ、p を素数、a を p で割り切れない整数としよう。何が言えるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">p の約数は 1 と p だけで、p は a を割り切らないので、p と a の公約数は 1 だけです。だから互除法の最後の余りは 1 で、<strong>ax＋py＝1</strong> となる整数 x, y が作れます。……この式を mod p で見ると、py は p の倍数なので ax≡1 (mod p) です。x は、第1章の mod p の世界での a の<strong>逆元</strong>です！</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。第1章では、mod p の掛け算表の各行に 1 が1回ずつ出ることから逆元が<strong>ある</strong>ことを確かめたけれど、互除法を使うと、どんなに大きな p でも逆元を<strong>計算</strong>できる。RSA 暗号の秘密鍵 d も、e×d≡1 (mod φ(n)) をみたす数だったから、同じ計算で求まる。たとえば φ(n)＝20、e＝3 なら？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">20＝3×6＋2、3＝2×1＋1。逆にたどると 1＝3−2＝3−(20−3×6)＝3×7−20。だから 3×7≡1 (mod 20) で、d＝7 です。確かに 3×7＝21 は 20 で割ると 1 余ります。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。では本題に戻ろう。ax＋py＝1 の両辺に b を掛けてごらん。そして、p が ab を割り切るとしよう。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">abx＋pby＝b。ab は p で割り切れるので abx も p で割り切れ、pby も p で割り切れます。だから左辺は p で割り切れて、右辺の b も p で割り切れます。つまり、p が ab を割り切るとき、p が a を割り切らなければ b を割り切ります。<strong>素数は素元</strong>です！ 前のステージの話と合わせると、整数の素因数分解はただ1通りです。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">p が素数で a を割り切らない → p と a の最大公約数は 1 → 互除法で <span class="nw">ax＋py＝1</span></span>
+        <span class="step">両辺に b を掛ける：<span class="nw">abx＋pby＝b</span></span>
+        <span class="step">p が ab を割り切るなら、左辺の abx も pby も p で割り切れる → 右辺の b も p で割り切れる</span>
+        <span class="step">→ <strong>素数は素元</strong> → 既約元がどれも素元 → 整数の素因数分解はただ1通り</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。この証明で本当に使った道具は何だったかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">余りのある割り算です。余りが割る数より小さくなるので、互除法が必ず止まって、ax＋py＝1 が作れました。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。だから、ガウス整数でも余りのある割り算ができれば、同じ証明が通る。複素数には大小がないから、「小さい」はノルムで測ろう。z を w で割って <strong>z＝qw＋r、N(r)＜N(w)</strong> にできればいい。まず z÷w を計算する。分母の w＝3＋2i に 3−2i を掛けると、(3＋2i)(3−2i)＝9＋4＝13 で実数になる。z＝10＋7i として、z÷w を求めてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">分母と分子に 3−2i を掛けて、(10＋7i)(3−2i)/13＝(30−20i＋21i−14i²)/13＝(44＋i)/13 です。44/13≒3.38、1/13≒0.08 なので、z÷w≒3.38＋0.08i。ガウス整数ではありません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そこで、z÷w にいちばん近いガウス整数を商 q に選ぶ。q＝3 だね。余り r＝z−qw を計算してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">qw＝3(3＋2i)＝9＋6i。r＝(10＋7i)−(9＋6i)＝1＋i で、N(r)＝2 です。N(w)＝13 より小さくなりました。これが、いつでもうまくいくんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">それを確かめよう。z÷w は平面のどこかの点で、ガウス整数の点は1辺 1 の正方形の角に並んでいる。z÷w にいちばん近い角を q に選ぶと、z÷w と q の距離はどこまで大きくなりうるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">正方形の中で、いちばん近い角がいちばん遠くなるのは、真ん中の点のときです。真ん中から角までは、三平方の定理で √((1/2)²＋(1/2)²)＝√2/2 です。だから z÷w と q の距離は √2/2 以下です。余り r＝z−qw＝w×(z÷w−q) の長さは、掛け算で長さが掛け算になるので |w|×（√2/2 以下）。ノルムは長さの2乗なので、<strong>N(r)≦N(w)×1/2＜N(w)</strong>。余りは必ず小さくできます！</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-gdiv" aria-label="z÷w の点と、そのまわりのガウス整数の格子点。いちばん近い格子点 q を商に選び、z÷w と q の距離が √2/2 以下になる様子を示す"></canvas></div>
+        <div class="sim-controls">
+          <label>z＝ <input type="number" id="in-ga" min="-30" max="30" value="10"> ＋ <input type="number" id="in-gb" min="-30" max="30" value="7">i</label>
+          <label>w＝ <input type="number" id="in-gc" min="-9" max="9" value="3"> ＋ <input type="number" id="in-gd" min="-9" max="9" value="2">i</label>
+        </div>
+        <div class="readout" id="ro-gdiv"></div>
+        <div class="diagram-caption"><strong>ガウス整数の余りのある割り算</strong>。z÷w（赤）を、まわりのガウス整数の格子点（1辺 1 の正方形の角）と一緒に描いた。いちばん近い格子点を商 q（紫）に選ぶ。z÷w と q の距離は、正方形の真ん中に来たときでも √2/2（点線の円の半径）以下。だから余り r＝z−qw のノルムは、いつでも N(w) の半分以下になる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">よく確かめたね。ガウス整数でも余りのある割り算ができるから、互除法が使える。割るたびに余りのノルムが小さくなるから、必ず止まる。そして、整数のときと同じ理由で、最後の 0 でない余り d は2つの数の公約数で、しかも「z×（ガウス整数）＋w×（ガウス整数）」の形に書ける。では、π をガウス整数の既約元、a を π で割り切れないガウス整数としよう。π と a で互除法をすると、最後の余り d について何が言えるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">d は π を割り切るので、π＝d×c と書けます。π は既約元なので、d か c のどちらかは単数です。もし c が単数なら、d は π に単数を掛けただけの数で、d は a を割り切るので、π も a を割り切ってしまいます。だから d が単数です。d に、掛けて 1 になる相手を掛ければ、<strong>πx＋ay＝1</strong> の形の式が作れます。あとは整数と同じで、両辺に b を掛ければ、π が ab を割り切るとき b を割り切ります。<strong>ガウス整数の既約元は、どれも素元</strong>です！</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。だから<strong>ガウス整数の素因数分解も、順番と単数の違いを除いてただ1通り</strong>になる。整数の一意性も、ガウス整数の一意性も、「余りのある割り算ができる」という1つの性質から出てきたんだ。次のステージでは、この一意性を使って、いよいよ1つ目の謎、2つの平方数の和の謎を解こう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">余りのある割り算：<span class="nw">a＝qb＋r</span>（0≦r＜b）。くり返すのがユークリッドの互除法</span>
+        <span class="step">割り算のたびに公約数の集まりは変わらない → 最後の 0 でない余りが最大公約数（長方形を正方形で切り取る図でも見える）</span>
+        <span class="step">余りはどれも「ax＋by」の形 → 最大公約数も ax＋by。p が素数で a を割り切らなければ <span class="nw">ax＋py＝1</span>（x は mod p での a の逆元。RSA の秘密鍵もこれで求まる）</span>
+        <span class="step">両辺に b を掛けて <span class="nw">abx＋pby＝b</span> → 素数は素元 → 整数の素因数分解はただ1通り</span>
+        <span class="step">ガウス整数の割り算：z÷w にいちばん近い格子点を q にすると、距離は √2/2 以下 → <span class="nw">N(r)≦N(w)/2</span></span>
+        <span class="step">ガウス整数でも互除法が使え、既約元はどれも素元 → ガウス整数の素因数分解もただ1通り</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. 互除法の最後の 0 でない余りが最大公約数になる理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">a＝qb＋r のとき、a と b の公約数と b と r の公約数が同じなので、割り算をくり返しても公約数の集まりが変わらないから</button>
+          <button class="choice-btn">余りがいつも素数になるから</button>
+          <button class="choice-btn">最後の余りはいつも 1 になるから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ d が a と b を割り切れば r＝a−qb も割り切り、d が b と r を割り切れば a＝qb＋r も割り切る。最後の (g, 0) の公約数は g の約数なので、最大公約数は g。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. 互除法で 3x＋20y＝1 となる整数を求めると、mod 20 での 3 の逆元は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">3</button>
+          <button class="choice-btn">7</button>
+          <button class="choice-btn">17</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 20＝3×6＋2、3＝2×1＋1 から 1＝3−2＝3−(20−3×6)＝3×7−20。3×7＝21≡1 (mod 20) なので逆元は 7。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. ガウス整数の割り算で、余り r のノルムが必ず N(w) より小さくなる理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">ガウス整数は実数だから</button>
+          <button class="choice-btn">w のノルムがいつも 1 だから</button>
+          <button class="choice-btn">z÷w にいちばん近い格子点までの距離が √2/2 以下なので、N(r)≦N(w)/2 になるから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 格子は1辺 1 の正方形。いちばん遠いのは真ん中で、角まで √2/2。r＝w×(z÷w−q) の長さは |w|×√2/2 以下なので、ノルムは N(w)/2 以下。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("rings", 4);</script>
+<script>
+/* 互除法を長方形で見る */
+(function(){
+  var ia=document.getElementById('in-ea'), ib=document.getElementById('in-eb'), ro=document.getElementById('ro-euc');
+  var st=FL.canvas('cv-euc',function(w){
+    var a=Math.max(1,Math.min(200,parseInt(ia.value,10)||1)), b=Math.max(1,Math.min(200,parseInt(ib.value,10)||1));
+    var W=Math.max(a,b), H=Math.min(a,b); return Math.max(0.3,Math.min(0.9,H/W))+0.08;
+  },draw);
+  function draw(st){
+    var a=Math.max(1,Math.min(200,parseInt(ia.value,10)||1)), b=Math.max(1,Math.min(200,parseInt(ib.value,10)||1));
+    var ctx=st.ctx; ctx.clearRect(0,0,st.W,st.H); ctx.fillStyle=FL.C.paper; ctx.fillRect(0,0,st.W,st.H);
+    var W=Math.max(a,b), Hh=Math.min(a,b);
+    var pad=10, s=Math.min((st.W-2*pad)/W,(st.H-2*pad)/Hh);
+    var ox=(st.W-W*s)/2, oy=(st.H-Hh*s)/2;
+    /* 長方形 (x,y,w,h) を短い辺の正方形で切り取っていく */
+    var x=0,y=0,w=W,h=Hh,step=0,lines=[],last=0,sqs=[];
+    while(w>0&&h>0){
+      if(w>=h){ var q=Math.floor(w/h); for(var k=0;k<q;k++){ sqs.push([x+k*h,y,h,step]); } lines.push(w+'＝'+h+'×'+q+'＋'+(w%h)); last=h; x+=q*h; w-=q*h; }
+      else { var q2=Math.floor(h/w); for(k=0;k<q2;k++){ sqs.push([x,y+k*w,w,step]); } lines.push(h+'＝'+w+'×'+q2+'＋'+(h%w)); last=w; y+=q2*w; h-=q2*w; }
+      step++;
+    }
+    var A=[228,221,245], B=[68,55,122];
+    sqs.forEach(function(t){ var f=step>1?t[3]/(step-1):1; var c='rgb('+A.map(function(v,i){return Math.round(v+(B[i]-v)*f);}).join(',')+')'; sq(t[0],t[1],t[2],c,f>0.45?'#fff':FL.C.themeDark); });
+    function sq(px,py,side,c,tc){ ctx.fillStyle=c; ctx.fillRect(ox+px*s,oy+py*s,side*s,side*s); ctx.strokeStyle='#fff'; ctx.lineWidth=Math.max(0.6,Math.min(2,side*s/12)); ctx.strokeRect(ox+px*s,oy+py*s,side*s,side*s);
+      if(side*s>26) FL.text(ctx,String(side),ox+(px+side/2)*s,oy+(py+side/2)*s+5,{align:'center',size:Math.min(16,side*s/3),color:tc}); }
+    ctx.strokeStyle=FL.C.themeDark; ctx.lineWidth=2; ctx.strokeRect(ox,oy,W*s,Hh*s);
+    ro.innerHTML='<span>'+lines.join('、')+'</span><span>最大公約数 <b>'+last+'</b></span>';
+  }
+  [ia,ib].forEach(function(el){el.addEventListener('input',function(){st.resize();});});
+})();
+
+/* 余りを ax＋by の形で書きながら互除法を進める */
+(function(){
+  var ia=document.getElementById('in-xa'), ib=document.getElementById('in-xb'), tb=document.getElementById('tb-ext'), ro=document.getElementById('ro-ext');
+  function sg(x){ return FL.signed(x); }
+  function draw(){
+    var a=Math.max(1,Math.min(999,parseInt(ia.value,10)||1)), b=Math.max(1,Math.min(999,parseInt(ib.value,10)||1));
+    var rows=[[a,1,0,''],[b,0,1,'']];
+    while(rows[rows.length-1][0]!==0){
+      var p=rows[rows.length-2], c=rows[rows.length-1], q=Math.floor(p[0]/c[0]);
+      rows.push([p[0]-q*c[0], p[1]-q*c[1], p[2]-q*c[2], p[0]+'＝'+c[0]+'×'+q+'＋'+(p[0]-q*c[0])]);
+    }
+    var g=rows[rows.length-2];
+    var h='<tr><th>割り算</th><th>余り</th><th>＝a×x＋b×y</th></tr>';
+    rows.forEach(function(r,i){
+      var isG=(i===rows.length-2);
+      h+='<tr><td>'+(r[3]||(i===0?'（a）':'（b）'))+'</td><td'+(isG?' class="hl"':'')+'><b>'+r[0]+'</b></td><td'+(isG?' class="hl"':'')+'>'+(r[0]===0?'—':a+'×('+sg(r[1])+')＋'+b+'×('+sg(r[2])+')')+'</td></tr>';
+    });
+    tb.innerHTML=h;
+    ro.innerHTML='<span>最大公約数 <b>'+g[0]+'＝'+a+'×('+sg(g[1])+')＋'+b+'×('+sg(g[2])+')</b></span>'+(g[0]===1?'<span class="ok">'+a+'×('+sg(g[1])+')≡1 (mod '+b+')</span>':'');
+  }
+  [ia,ib].forEach(function(el){el.addEventListener('input',draw);}); draw();
+})();
+
+/* ガウス整数の余りのある割り算 */
+(function(){
+  var ids=['in-ga','in-gb','in-gc','in-gd'].map(function(id){return document.getElementById(id);}), ro=document.getElementById('ro-gdiv');
+  function name(a,b){ if(b===0) return FL.signed(a); var s=(a!==0?FL.signed(a):''); var bb=Math.abs(b); return s+(b>0?(a!==0?'＋':''):'−')+(bb===1?'':bb)+'i'; }
+  function f2(x){ return (Math.round(x*100)/100).toString().replace('-','−'); }
+  var st=FL.canvas('cv-gdiv',0.8,draw);
+  function draw(st){
+    var v=ids.map(function(el){return parseInt(el.value,10)||0;});
+    var a=v[0],b=v[1],c=v[2],d=v[3];
+    var ctx=st.ctx; ctx.clearRect(0,0,st.W,st.H); ctx.fillStyle=FL.C.paper; ctx.fillRect(0,0,st.W,st.H);
+    var nw=c*c+d*d;
+    if(nw===0){ ro.innerHTML='<span class="ng">w に 0 は選べない</span>'; return; }
+    var re=(a*c+b*d)/nw, im=(b*c-a*d)/nw;
+    var qa=Math.round(re), qb=Math.round(im);
+    var ra=a-(qa*c-qb*d), rb=b-(qa*d+qb*c);
+    var vw=FL.view(st,4.2,re,im);
+    for(var x=Math.floor(re)-4;x<=Math.ceil(re)+4;x++) for(var y=Math.floor(im)-4;y<=Math.ceil(im)+4;y++){
+      FL.line(ctx,vw.X(x),vw.Y(y),vw.X(x+1),vw.Y(y),FL.C.grid,1); FL.line(ctx,vw.X(x),vw.Y(y),vw.X(x),vw.Y(y+1),FL.C.grid,1);
+    }
+    for(x=Math.floor(re)-4;x<=Math.ceil(re)+4;x++) for(y=Math.floor(im)-4;y<=Math.ceil(im)+4;y++){
+      var px=vw.X(x), py=vw.Y(y); if(px<-20||px>st.W+20||py<-20||py>st.H+20) continue;
+      FL.dot(ctx,px,py,3.2,'#bdb3da');
+      if(!(x===qa&&y===qb)) FL.text(ctx,name(x,y),px+5,py-5,{size:10,color:FL.C.muted});
+    }
+    ctx.save(); ctx.strokeStyle=FL.C.theme; ctx.setLineDash([5,4]); ctx.lineWidth=1.5;
+    ctx.beginPath(); ctx.arc(vw.X(qa),vw.Y(qb),Math.SQRT1_2*vw.s,0,Math.PI*2); ctx.stroke(); ctx.restore();
+    FL.line(ctx,vw.X(re),vw.Y(im),vw.X(qa),vw.Y(qb),FL.C.gold,2);
+    FL.dot(ctx,vw.X(qa),vw.Y(qb),6.5,FL.C.theme,'#fff');
+    FL.dot(ctx,vw.X(re),vw.Y(im),6,FL.C.red,'#fff');
+    FL.text(ctx,'z÷w',vw.X(re)+9,vw.Y(im)-10,{color:FL.C.red,size:13,halo:true});
+    FL.text(ctx,'q＝'+name(qa,qb),vw.X(qa)-9,vw.Y(qb)+20,{color:FL.C.theme,size:13,halo:true,align:'right'});
+    var nr=ra*ra+rb*rb;
+    ro.innerHTML='<span>z÷w≒'+f2(re)+(im<0?'−':'＋')+f2(Math.abs(im))+'i</span><span>q＝<b>'+name(qa,qb)+'</b></span><span>r＝z−qw＝<b>'+name(ra,rb)+'</b></span><span class="ok">N(r)＝'+nr+' ＜ N(w)＝'+nw+'</span>';
+  }
+  ids.forEach(function(el){el.addEventListener('input',function(){st.redraw();});});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<meta name="robots" content="noindex">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第3章 体 クリア ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="第3章「体 ― 四則演算と作図」のまとめ。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/fields/complete">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第3章 体 クリア ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="第3章「体 ― 四則演算と作図」のまとめ。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/fields/complete">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+  .chapter-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
+  .riddle{max-width:560px;margin:14px auto 0;background:rgba(0,0,0,.22);border:1px solid rgba(227,189,106,.45);border-radius:12px;padding:10px 14px;color:#f6e7c2;font-size:13.5px;font-weight:800;line-height:1.8}
+  .riddle b{display:block;font-size:11px;letter-spacing:.12em;color:var(--gold);margin-bottom:2px}
+
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav class="topbar" aria-label="サイト情報">
+    <a class="brand-badge" href="../" title="トップへ" aria-label="トップへ" style="text-decoration:none">🔷</a>
+    <span class="brand-copy">
+      <strong>群・環・体からガロア理論へ</strong>
+      <small>ALGEBRA QUEST</small>
+    </span>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-copy">
+      <p style="font-weight:900;color:var(--gold);letter-spacing:.08em;margin-bottom:4px">第3章 ／ FIELDS</p>
+      <h1><span class="line">第3章「体」をクリア！</span></h1>
+      <div class="riddle"><b>この章で解いた謎</b>定規とコンパスでは、角の三等分も、体積が2倍の立方体も作図できない。2000年かかった証明とは？</div>
+      <p>次の第4章では、新しい謎が待っている。2次・3次・4次方程式には解の公式があるのに、5次方程式にはない。なぜか？</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="board" aria-labelledby="recap-heading">
+      <div class="board-head">
+        <div><h2 id="recap-heading">この章を振り返ろう</h2></div>
+      </div>
+      <div class="recap-list">
+        <div class="recap-item">
+          <span class="recap-num">1</span>
+          <div class="recap-body"><span class="recap-title">作図の約束と体。</span> <span class="recap-desc">作図の約束：2点を通る直線、点を中心に別の点を通る円、交点だけが新しい点 ／ 長さ 1, a, b から <span class="nw">a＋b</span>、<span class="nw">a−b</span>、<span class="nw">ab</span>、<span class="nw">a/b</span>（平行線と相似）、<span class="nw">√a</span>（半円と垂線、円周角と相似）が作図できる</span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">2</span>
+          <div class="recap-body"><span class="recap-title">体をひろげる。</span> <span class="recap-desc">ℚ(√2)＝{a＋b√2｜a, b は有理数} は体。掛け算は (√2)²＝2、割り算は分母の有理化で、分母 a²−2b² は 0 にならない ／ K(α)：体 K に α を加え、四則で作れる数を全部集めた体（拡大体）</span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">3</span>
+          <div class="recap-body"><span class="recap-title">多項式の世界。</span> <span class="recap-desc">多項式も余りのある割り算ができる：<span class="nw">f＝q×g＋r</span>（r の次数＜g の次数）。x−r で割った余りは f(r) ／ 互除法で <span class="nw">3＝(x＋1)(x²−x＋1)−(x³−2)</span> → <span class="nw">1/(1＋∛2)＝(∛4−∛2＋1)/3</span></span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">4</span>
+          <div class="recap-body"><span class="recap-title">次数の掛け算。</span> <span class="recap-desc">次数の積の法則：<span class="nw">[L：K]＝[L：M]×[M：K]</span>。基底どうしを掛け合わせた uᵢvⱼ が L の K 上の基底になる ／ √ を1つ加えると、次数は 2 倍（√ が新しいとき）か 1 倍（もともと入っているとき）</span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">5</span>
+          <div class="recap-body"><span class="recap-title">解けない作図。</span> <span class="recap-desc">立方体倍積：1辺 ∛2 の作図。∛2 の次数は 3 → 2 の累乗でない → 不可能 ／ 3倍角の公式 <span class="nw">cos 3θ＝4cos³θ−3cos θ</span> は、(cos θ＋i sin θ)³＝cos 3θ＋i sin 3θ を展開して実部を比べて得られる</span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">6</span>
+          <div class="recap-body"><span class="recap-title">正多角形の作図。</span> <span class="recap-desc">正 n 角形の作図は cos(360°/n) の作図と同じ。ζ＝cos(360°/n)＋i sin(360°/n) は ζⁿ＝1 をみたす（1 の n 乗根） ／ 正5角形：t＝ζ＋ζ⁻¹＝2cos 72° は <span class="nw">t²＋t−1＝0</span> → <span class="nw">cos 72°＝(√5−1)/4</span>（次数 2）→ 作図できる。BN²＝t²＋1＝2−t が1辺の2乗</span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">7</span>
+          <div class="recap-body"><span class="recap-title">有限の体と QR コード。</span> <span class="recap-desc">mod 4 は体でない（2×2≡0）。mod 2 の既約多項式 x²＋x＋1 の根 α を加えると、要素4個の体 {0, 1, α, α＋1}（α²＝α＋1）ができる ／ 有限体の要素の個数は素数の累乗 pᵏ。QR コードは 2⁸＝256 個の体（1 バイト＝1 要素）を使う</span></div>
+        </div>
+      </div>
+      <div class="complete-actions">
+        <a class="btn btn-primary" href="../galois/">第4章「ガロア理論」へ進む →</a>
+        <a class="btn" href="../">🗺️ 地図に戻る</a>
+        <button class="btn" id="btn-reset-all">🔄 この章を最初から</button>
+      </div>
+    </section>
+
+    <div id="book-recommend"></div>
+  </main>
+
+  <footer>
+    <p>NO DOWNLOAD. NO REGISTRATION. JUST LEARN. &nbsp;© <span id="year"></span> ruglerugle</p>
+    <div class="footer-suits" aria-hidden="true"><span>🔺</span><span>🧩</span><span>📐</span><span>👑</span></div>
+  </footer>
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script>AQ.initCompletePage("fields");</script>
+</body>
+</html>

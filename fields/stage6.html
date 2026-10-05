@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第3章 STAGE6 正多角形の作図（正5角形・正7角形・ガウスの正17角形） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="正多角形の作図を中学生向けに解説。複素数 ζ を使って cos 72° が2次方程式の解であることを導き、正5角形を作図する。正7角形は既約な3次方程式で作図できず、正17角形はガウスが19歳を前に発見した。どの正 n 角形が作図できるかをフェルマー素数で判定する。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/fields/stage6">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第3章 STAGE6 正多角形の作図（正5角形・正7角形・ガウスの正17角形） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="正5角形は作図できて、正7角形はできない。19歳を前にしたガウスが正17角形の作図を見つけた理由を、体の次数で読み解く。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/fields/stage6">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE6 正多角形の作図",
+      "description": "正多角形の作図を中学生向けに解説。複素数 ζ を使って cos 72° が2次方程式の解であることを導き、正5角形を作図する。正7角形は既約な3次方程式で作図できず、正17角形はガウスが19歳を前に発見した。どの正 n 角形が作図できるかをフェルマー素数で判定する。",
+      "url": "https://algebra.habatakijuku.com/fields/stage6",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 6,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第3章 四則演算と作図",
+        "url": "https://algebra.habatakijuku.com/fields/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第3章 四則演算と作図",
+          "item": "https://algebra.habatakijuku.com/fields/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE6 正多角形の作図",
+          "item": "https://algebra.habatakijuku.com/fields/stage6"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+.ng-grid{margin-top:12px}
+.ng-grid td{min-width:30px;padding:4px 4px;font-size:12.5px}
+.ng-grid td.cur{outline:2.5px solid #5b4a9e;outline-offset:-2px}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第3章 四則演算と作図 ／ STAGE 6 ― 正多角形の作図 ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第3章 STAGE 6</span><h1 class="chapter-title">正多角形の作図</h1>
+        <div class="chapter-sub">作図できる正 n 角形の判定</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">1 の5乗根 ζ と t＝ζ＋ζ⁻¹ を使って cos 72°＝(√5−1)/4 を導き、正5角形が作図できることを確かめよう。正7角形では t³＋t²−2t−1＝0 が既約で作図できないこと、正 p 角形（p は素数）が作図できるのは p がフェルマー素数のときだけであることを説明できれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">作図できる数の判定法を、正多角形に使ってみよう。紀元前300年ごろのユークリッドの『原論』には、正3角形・正4角形・正5角形・正6角形・正15角形の作図と、辺の数を2倍にする方法が書かれている。でも、そのほかの正多角形は、2000年以上だれも作図できなかった。正7角形はできるのか、正17角形はどうか。今日の道具で、その答えを出すことができる。半径 1 の円に内接する正 n 角形を考えよう。作図できるかどうかは、何が作図できるかで決まるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">頂点の1つを (1, 0) にとると、となりの頂点は中心角 360°/n の方向にあるので、座標は (cos(360°/n), sin(360°/n)) です。sin は √(1−cos²) で cos から作図できるので、cos(360°/n) が作図できれば、その頂点が作れます。あとは、となりの頂点までの長さをコンパスで次々に写せば、全部の頂点が作れます。正4角形は cos 90°＝0、正6角形は cos 60°＝1/2 なので作図できます。正5角形の cos 72° は、まだ分かりません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。cos 72° を求めるのに、複素数を使おう。長さ 1、角度 72° の複素数を ζ（ゼータ）とする。ζ⁵ は何になるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">複素数の掛け算は角度を足すので、ζ⁵ の角度は 72°×5＝360°、長さは 1 なので、ζ⁵＝1 です。ζ⁵−1＝0 で、ζ⁵−1＝(ζ−1)(ζ⁴＋ζ³＋ζ²＋ζ＋1) と分けられます（右辺を展開すると、真ん中の項が打ち消し合って ζ⁵−1 になります）。ζ≠1 なので、<strong>ζ⁴＋ζ³＋ζ²＋ζ＋1＝0</strong> です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。ζ は 1 の5乗根と呼ばれる数の1つだ。ここからが工夫のしどころだ。両辺を ζ² で割って、t＝ζ＋ζ⁻¹ という数を使って書き直してごらん。ζ⁻¹ は 1/ζ のことだよ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbitThink.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">ζ⁻¹ は長さ 1、角度 −72° の複素数なので、ζ⁻¹＝cos 72°−i sin 72° です。だから t＝ζ＋ζ⁻¹＝2cos 72° で、t は実数です。両辺を ζ² で割ると、ζ²＋ζ＋1＋ζ⁻¹＋ζ⁻²＝0。t²＝ζ²＋2＋ζ⁻² なので ζ²＋ζ⁻²＝t²−2。代入すると (t²−2)＋t＋1＝0、つまり <strong>t²＋t−1＝0</strong> です！ 解の公式で t＝(−1±√5)/2。cos 72° は正なので t＝(√5−1)/2、<strong>cos 72°＝(√5−1)/4</strong> です。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">ζ＝cos 72°＋i sin 72°、<span class="nw">ζ⁵＝1</span>、ζ≠1 → <span class="nw">ζ⁴＋ζ³＋ζ²＋ζ＋1＝0</span></span>
+        <span class="step">ζ² で割る：<span class="nw">(ζ²＋ζ⁻²)＋(ζ＋ζ⁻¹)＋1＝0</span></span>
+        <span class="step"><span class="nw">t＝ζ＋ζ⁻¹＝2cos 72°</span> とおくと <span class="nw">t²＝ζ²＋2＋ζ⁻²</span> なので <span class="nw">ζ²＋ζ⁻²＝t²−2</span></span>
+        <span class="step"><span class="nw">(t²−2)＋t＋1＝0</span> → <span class="nw">t²＋t−1＝0</span> → <span class="nw">t＝(√5−1)/2</span>（t＞0 のほう）</span>
+        <span class="step"><span class="nw">cos 72°＝(√5−1)/4≒0.309</span>。√5 だけで書けるので次数 2 → 正5角形は作図できる</span>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-zeta" aria-label="単位円上の1のn乗根ζのk乗と、ζのk乗とζの−k乗を結ぶ線。足すと2cosの実数になる"></canvas></div>
+        <div class="sim-controls">
+          <button class="btn" data-zn="5" aria-pressed="true">n＝5</button>
+          <button class="btn" data-zn="7" aria-pressed="false">n＝7</button>
+          <button class="btn" data-zn="17" aria-pressed="false">n＝17</button>
+        </div>
+        <div class="readout" id="ro-zeta"></div>
+        <div class="diagram-caption"><strong>1 の n 乗根と t＝ζ＋ζ⁻¹</strong>。単位円の上の点 ζ, ζ², …（角度 360°/n ずつ）を並べた。ζ<sup>k</sup> と ζ<sup>−k</sup>（上下に向かい合う点）を足すと、虚部が打ち消し合って実数 2cos(360°×k/n) になる（点線と横軸の交点の2倍）。n＝5 ではこの値が2つで t²＋t−1＝0 の2つの解、n＝7 では3つで3次方程式の解、n＝17 では8つになる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">よく求めたね。cos 72° が分かれば、正5角形を実際に作図できる。いちばん上の頂点を B＝(0, 1) にとって、次の手順で辺の長さを作ろう。半径 1 の円で、横の直径の左端を (−1, 0) とし、O と (−1, 0) の真ん中の点を M＝(−1/2, 0) とする。M を中心に B を通る円をかき、横の直径（を延ばした直線）との右側の交点を N とする。ON と BN の長さを求めてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">MB は三平方の定理で √((1/2)²＋1²)＝√5/2 です。N は M から右へ √5/2 進んだ点なので、ON＝−1/2＋√5/2＝(√5−1)/2。さっきの t です！ BN は三平方の定理で BN²＝t²＋1。t²＋t−1＝0 から t²＝1−t なので、BN²＝2−t です。正5角形の1辺は、B と、そのとなりの 18° の方向の頂点 (cos 18°, sin 18°) の距離で、2乗すると cos²18°＋(sin 18°−1)²＝2−2sin 18°。sin 18°＝cos 72°＝t/2 なので 2−t です。<strong>BN は正5角形の1辺の長さ</strong>です！</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-pent" aria-label="正5角形の作図手順を1ステップずつ再生する図"></canvas></div>
+        <div class="sim-controls">
+          <button class="btn" id="pt-prev">◀ 戻る</button>
+          <button class="btn" id="pt-next">次へ ▶</button>
+          <button class="btn" id="pt-all">最後まで</button>
+          <button class="btn" id="pt-first">最初から</button>
+        </div>
+        <div class="readout" id="ro-pent"></div>
+        <div class="diagram-caption"><strong>正5角形の作図</strong>。「次へ」で1手ずつ進む。赤がいま引いた線や円。ON の長さが t＝2cos 72°＝(√5−1)/2 で、BN が1辺の長さになる。B を中心に半径 BN の円をかけば両どなりの頂点が、そこからさらに同じ半径の円をかけば残りの頂点が決まる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。では正7角形はどうかな。ζ を長さ 1、角度 360°/7 の複素数として、同じ方法で t＝ζ＋ζ⁻¹＝2cos(360°/7) の方程式を作ってごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">ζ⁷＝1、ζ≠1 なので 1＋ζ＋ζ²＋…＋ζ⁶＝0。ζ³ で割ると (ζ³＋ζ⁻³)＋(ζ²＋ζ⁻²)＋(ζ＋ζ⁻¹)＋1＝0。ζ²＋ζ⁻²＝t²−2 で、t³＝ζ³＋3ζ＋3ζ⁻¹＋ζ⁻³ なので ζ³＋ζ⁻³＝t³−3t。代入すると (t³−3t)＋(t²−2)＋t＋1＝0、つまり <strong>t³＋t²−2t−1＝0</strong>。有理数の根の候補は ±1 で、1＋1−2−1＝−1、−1＋1＋2−1＝1 なので、どちらも根ではありません。既約な3次式なので t の次数は 3 です。<strong>正7角形は作図できません</strong>。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">ζ＝cos(360°/7)＋i sin(360°/7)、<span class="nw">1＋ζ＋ζ²＋…＋ζ⁶＝0</span></span>
+        <span class="step">ζ³ で割る：<span class="nw">(ζ³＋ζ⁻³)＋(ζ²＋ζ⁻²)＋(ζ＋ζ⁻¹)＋1＝0</span></span>
+        <span class="step">t＝ζ＋ζ⁻¹：<span class="nw">ζ²＋ζ⁻²＝t²−2</span>、<span class="nw">ζ³＋ζ⁻³＝t³−3t</span>（t³ を展開して 3t を引く）</span>
+        <span class="step"><span class="nw">t³＋t²−2t−1＝0</span>。候補 ±1 は根でない → 既約 → 2cos(360°/7) の次数は 3 → 正7角形は作図できない</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。この方法は、辺の数が素数 p のとき、いつでも使える。ζ は 1＋x＋x²＋…＋xᵖ⁻¹＝0 の根で、この (p−1) 次式は既約だと証明できる（第4章で出てくるアイゼンシュタインの判定法を使う）。だから ζ の次数は p−1。t＝ζ＋ζ⁻¹ を加えた体から ζ までは、ζ が2次方程式 x²−tx＋1＝0 の根なので、次数は 2 だ。すると t の次数はいくつかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">次数の積の法則で、p−1＝[ℚ(ζ)：ℚ]＝[ℚ(ζ)：ℚ(t)]×[ℚ(t)：ℚ]＝2×[ℚ(t)：ℚ] なので、t の次数は (p−1)/2 です。p＝5 なら 2、p＝7 なら 3 で、さっきの計算と合います。作図できるには (p−1)/2 が 2 の累乗、つまり p−1 が 2 の累乗でなければいけません。p＝2<sup>k</sup>＋1 の形です。k＝1, 2, 3, 4, 5, 6, 7, 8 で 3, 5, 9, 17, 33, 65, 129, 257 で、素数なのは 3, 5, 17, 257 です。<strong>正17角形</strong>は作図できるかもしれません！</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。2<sup>k</sup>＋1 が素数になるのは、k が 2 の累乗のときだけなんだ。k が奇数の約数をもつと、たとえば 2⁶＋1＝(2²)³＋1 が 2²＋1＝5 で割り切れて 65＝5×13 となるように、必ず分けられてしまうからね。こうしてできる 2<sup>2<sup>m</sup></sup>＋1 の形の素数を<strong>フェルマー素数</strong>という。3, 5, 17, 257, 65537 の5つだ。フェルマーは1640年ごろ、この形の数はすべて素数だと予想したけれど、1732年にオイラーが 2³²＋1＝4294967297＝641×6700417 と分けられることを見つけた。それ以降、6つ目のフェルマー素数は見つかっていない。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">正17角形を作図するには、2cos(360°/17) の次数が (17−1)/2＝8＝2³ で、2 の累乗にはなっています。でも、次数が 2 の累乗でも作図できるとは限らない、という話でした。本当に作図できるんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いい質問だね。それを実際に示したのが、ガウスだ。1796年3月、19歳の誕生日の1か月前のガウスは、cos(360°/17) を √ だけで書く方法を見つけた。2次方程式を4回解くと届くんだ。ガウスはこの発見をきっかけに数学者になる決心をしたと言われ、自分の墓に正17角形を刻んでほしいと望んだという話も伝わっている。式はこうなる。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step"><span class="nw">16cos(360°/17)</span><br><span class="nw">＝−1＋√17＋√(34−2√17)</span><br><span class="nw">　＋2√(17＋3√17−√(34−2√17)−2√(34＋2√17))</span></span>
+        <span class="step">数値で確かめると、どちらも <span class="nw">cos(360°/17)≒0.93247</span></span>
+        <span class="step">√ が4重に重なっている → ℚ ⊂ K₁ ⊂ K₂ ⊂ K₃ ⊂ K₄ と次数 2 の段を4つ重ねた体に入る（ζ の次数 16＝2⁴）</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">√ の中にさらに √ が入っていて、4段の体の塔になっているんですね。正5角形のときは √5 の1段でした。正3角形・正5角形・正17角形が作図できて、正7角形・正11角形・正13角形はできない。辺の数が素数でないときはどうなるんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">それも、ガウスが答えを書いている。正 n 角形が作図できるのは、n が「2 の累乗 × 異なるフェルマー素数の積」の形のときで、そのときに限る。ガウスはこれが十分であることを示し、必要であることは1837年にヴァンツェルが証明した。第1章で学んだ φ(n)（1 から n までのうち n と互いに素な数の個数）を使うと、「φ(n) が 2 の累乗のとき、そのときに限る」とも言いかえられる。正 n 角形の頂点 ζ の次数が、ちょうど φ(n) になるからだ。正9角形で確かめてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">9＝3×3 で、フェルマー素数 3 を2回使っているので、作図できません。φ(9) は 1〜9 のうち 3 の倍数でない数 1, 2, 4, 5, 7, 8 の6個で、2 の累乗ではありません。正9角形の中心角は 40° です。前のステージで、120° の三等分、つまり 40° の作図はできないと分かったので、ちゃんと合っています。正15角形は 3×5 で φ(15)＝8 なので作図できて、ユークリッドの『原論』と合います。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-ngon" aria-label="選んだ n の正 n 角形と、φ(n) による作図可能性の判定"></canvas></div>
+        <div class="sim-controls">
+          <label>n <input type="range" id="in-ng" min="3" max="40" value="17"><output id="out-ng">17</output></label>
+        </div>
+        <div class="readout" id="ro-ngon"></div>
+        <div style="overflow-x:auto"><table class="num-table ng-grid" id="tb-ng"></table></div>
+        <div class="diagram-caption"><strong>どの正 n 角形が作図できるか</strong>。スライダーで n を選ぶと、正 n 角形と φ(n)（1 から n までのうち n と互いに素な数の個数）を表示する。φ(n) が 2 の累乗（1, 2, 4, 8, 16, …）なら作図できる（緑）、そうでなければできない（赤）。下の表は n＝3〜40 の一覧。作図できるのは、n が 2 の累乗とフェルマー素数 3, 5, 17, 257, 65537（それぞれ1回まで）の積になっているとき</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。2000年も止まっていた正多角形の作図を、ガウスは「体の次数」の考え方で一気に解決した。ここまでで、作図の謎はすべて体の言葉で説明できた。次のステージでは、体のもう1つの顔を見よう。有限個の数でできた体だ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">mod p の世界は、p 個の数しかないのに体でした。有限個の数の体が、作図とは別のところで役に立つんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。スマートフォンで QR コードを読むとき、汚れや欠けがあっても正しく読めるのは、有限の体のおかげなんだ。最後のステージで、その仕組みを確かめよう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">正 n 角形の作図は cos(360°/n) の作図と同じ。ζ＝cos(360°/n)＋i sin(360°/n) は ζⁿ＝1 をみたす（1 の n 乗根）</span>
+        <span class="step">正5角形：t＝ζ＋ζ⁻¹＝2cos 72° は <span class="nw">t²＋t−1＝0</span> → <span class="nw">cos 72°＝(√5−1)/4</span>（次数 2）→ 作図できる。BN²＝t²＋1＝2−t が1辺の2乗</span>
+        <span class="step">正7角形：<span class="nw">t³＋t²−2t−1＝0</span> は既約 → 次数 3 → 作図できない</span>
+        <span class="step">正 p 角形（p は素数）：t の次数は (p−1)/2 → p はフェルマー素数 3, 5, 17, 257, 65537 でなければならない</span>
+        <span class="step">ガウス（1796年）：正17角形は √ を4重に使って作図できる。正 n 角形が作図できる ⇔ φ(n) が 2 の累乗</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. 1 の5乗根 ζ について、t＝ζ＋ζ⁻¹ がみたす方程式は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">t²＋t−1＝0</button>
+          <button class="choice-btn">t³＋t²−2t−1＝0</button>
+          <button class="choice-btn">t²−2＝0</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ ζ⁴＋ζ³＋ζ²＋ζ＋1＝0 を ζ² で割り、ζ²＋ζ⁻²＝t²−2 を使うと (t²−2)＋t＋1＝0。t³＋t²−2t−1＝0 は正7角形のほう。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. 正7角形が定規とコンパスで作図できない理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">7 が奇数だから</button>
+          <button class="choice-btn">360 が 7 で割り切れないから</button>
+          <button class="choice-btn">2cos(360°/7) が既約な3次方程式 t³＋t²−2t−1＝0 の根で、次数が 3 だから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 候補 ±1 を入れると −1 と 1 で、有理数の根がない。3次式なので既約で、次数 3 は 2 の累乗でない。正5角形の 5 も奇数で、360÷5 も割り切れるが、それは理由にならない（正17角形は 360 が割り切れないのに作図できる）。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. 次のうち、定規とコンパスで作図できる正多角形は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">正9角形</button>
+          <button class="choice-btn">正17角形</button>
+          <button class="choice-btn">正11角形</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 17 はフェルマー素数（2⁴＋1）で φ(17)＝16＝2⁴。正9角形は φ(9)＝6、正11角形は φ(11)＝10 で、どちらも 2 の累乗でない。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("fields", 6);</script>
+<script>
+/* 1 の n 乗根と t＝ζ＋ζ⁻¹ */
+(function(){
+  var n=5, ro=document.getElementById('ro-zeta');
+  var EQ={5:'t²＋t−1＝0',7:'t³＋t²−2t−1＝0',17:'8次方程式'};
+  var st=FL.canvas('cv-zeta',0.9,draw);
+  function draw(st){
+    var ctx=st.ctx; ctx.clearRect(0,0,st.W,st.H); ctx.fillStyle=FL.C.paper; ctx.fillRect(0,0,st.W,st.H);
+    var v=FL.view(st,2.75,0,0);
+    FL.axes(ctx,st,v,0,{labels:false});
+    ctx.save(); ctx.strokeStyle=FL.C.grid; ctx.lineWidth=1.5; ctx.beginPath(); ctx.arc(v.X(0),v.Y(0),v.s,0,Math.PI*2); ctx.stroke(); ctx.restore();
+    var vals=[];
+    for(var k=1;k<=(n-1)/2;k++){
+      var a=2*Math.PI*k/n, c=Math.cos(a), s=Math.sin(a);
+      FL.line(ctx,v.X(c),v.Y(s),v.X(c),v.Y(-s),k===1?FL.C.red:'rgba(200,67,63,.4)',k===1?2:1.2,[5,4]);
+      FL.dot(ctx,v.X(c),v.Y(0),k===1?5:3.5,FL.C.red);
+      vals.push((2*c).toFixed(4).replace('-','−'));
+    }
+    for(k=0;k<n;k++){
+      var b=2*Math.PI*k/n, x=Math.cos(b), y=Math.sin(b);
+      FL.dot(ctx,v.X(x),v.Y(y),n>10?4:5.5,k===0?FL.C.ink:FL.C.theme,'#fff');
+      if(n<=7||k===1||k===n-1){
+        var lab=k===0?'1':(k===1?'ζ':(k===n-1?'ζ⁻¹':'ζ'+['','','²','³','⁴','⁵','⁶'][k]));
+        FL.text(ctx,lab,v.X(1.16*x),v.Y(1.16*y)+5,{size:13,color:k===0?FL.C.ink:FL.C.theme,align:'center',halo:true});
+      }
+    }
+    FL.text(ctx,'cos(360°/'+n+')',v.X(Math.cos(2*Math.PI/n)),v.Y(0)+18,{size:11.5,color:FL.C.red,align:'center',halo:true});
+    ro.innerHTML='<span>ζ<sup>k</sup>＋ζ<sup>−k</sup> の値：'+vals.join('、')+'</span><span>これらが <b>'+EQ[n]+'</b> の解（'+((n-1)/2)+' 個）</span>';
+  }
+  document.querySelectorAll('[data-zn]').forEach(function(btn){
+    btn.addEventListener('click',function(){ n=+btn.getAttribute('data-zn'); document.querySelectorAll('[data-zn]').forEach(function(x){x.setAttribute('aria-pressed',x===btn);}); st.redraw(); });
+  });
+})();
+
+/* 正5角形の作図 */
+(function(){
+  var D=Math.PI/180, t=(Math.sqrt(5)-1)/2, side=Math.sqrt(t*t+1);
+  function P(deg){ return [Math.cos(deg*D),Math.sin(deg*D)]; }
+  var B=[0,1], M=[-0.5,0], Nn=[t,0], P1=P(18), P4=P(162), P2=P(306), P3=P(234);
+  var steps=[
+    {txt:'O を中心に半径 1 の円をかき、横の直径を引く（両端 (1, 0) と (−1, 0)）',add:[{t:'circ',c:[0,0],r:1},{t:'line',a:[-1.4,0],b:[1.4,0]},{t:'pt',p:[0,0],l:'O',d:[-14,16]},{t:'pt',p:[1,0],l:'',d:[0,0]},{t:'pt',p:[-1,0],l:'',d:[0,0]}]},
+    {txt:'横の直径の垂直二等分線を引き、円との上の交点を B とする',add:[{t:'line',a:[0,-1.35],b:[0,1.35]},{t:'pt',p:B,l:'B',d:[6,-8]}]},
+    {txt:'O と (−1, 0) の真ん中の点 M をとる（垂直二等分線で）',add:[{t:'line',a:[-0.5,-0.35],b:[-0.5,0.35],dash:1},{t:'pt',p:M,l:'M',d:[-16,16]}]},
+    {txt:'M を中心に B を通る円（半径 √5/2）をかき、横の直線との右の交点を N とする。ON＝(√5−1)/2＝t',add:[{t:'arc',c:M,r:Math.sqrt(5)/2,a0:-5,a1:120},{t:'pt',p:Nn,l:'N',d:[4,16]},{t:'seg',a:[0,0],b:Nn,col:'#2f8f65',w:4}]},
+    {txt:'BN が正5角形の1辺。B を中心に半径 BN の円をかき、もとの円との交点 P₁, P₄ をとる',add:[{t:'seg',a:B,b:Nn,col:'#2f8f65',w:4},{t:'circ',c:B,r:side},{t:'pt',p:P1,l:'P₁',d:[8,0]},{t:'pt',p:P4,l:'P₄',d:[-24,0]}]},
+    {txt:'P₁, P₄ を中心に同じ半径の円をかき、残りの頂点 P₂, P₃ をとる',add:[{t:'circ',c:P1,r:side},{t:'circ',c:P4,r:side},{t:'pt',p:P2,l:'P₂',d:[8,12]},{t:'pt',p:P3,l:'P₃',d:[-24,12]}]},
+    {txt:'頂点を順に結ぶと正5角形ができる',add:[{t:'poly',ps:[B,P1,P2,P3,P4]}]}
+  ];
+  var k=steps.length, ro=document.getElementById('ro-pent');
+  var st=FL.canvas('cv-pent',0.95,draw);
+  function draw(st){
+    var ctx=st.ctx; ctx.clearRect(0,0,st.W,st.H); ctx.fillStyle=FL.C.paper; ctx.fillRect(0,0,st.W,st.H);
+    var v=FL.view(st,2.75,0,0.05), pts=[];
+    for(var i=0;i<k;i++){
+      var now=(i===k-1);
+      steps[i].add.forEach(function(o){
+        var col=now?FL.C.red:FL.C.themeLight, w=now?2:1.3;
+        if(o.t==='line') FL.line(ctx,v.X(o.a[0]),v.Y(o.a[1]),v.X(o.b[0]),v.Y(o.b[1]),col,w,o.dash?[5,4]:null);
+        else if(o.t==='circ'||o.t==='arc'){ ctx.save(); ctx.strokeStyle=col; ctx.lineWidth=w; ctx.beginPath(); if(o.t==='circ') ctx.arc(v.X(o.c[0]),v.Y(o.c[1]),o.r*v.s,0,Math.PI*2); else ctx.arc(v.X(o.c[0]),v.Y(o.c[1]),o.r*v.s,-o.a1*D,-o.a0*D); ctx.stroke(); ctx.restore(); }
+        else if(o.t==='seg') FL.line(ctx,v.X(o.a[0]),v.Y(o.a[1]),v.X(o.b[0]),v.Y(o.b[1]),o.col,o.w);
+        else if(o.t==='poly'){ ctx.save(); ctx.strokeStyle=FL.C.theme; ctx.lineWidth=3; ctx.fillStyle='rgba(154,136,214,.18)'; ctx.beginPath(); o.ps.forEach(function(p,j){ if(j) ctx.lineTo(v.X(p[0]),v.Y(p[1])); else ctx.moveTo(v.X(p[0]),v.Y(p[1])); }); ctx.closePath(); ctx.fill(); ctx.stroke(); ctx.restore(); }
+        else if(o.t==='pt') pts.push(o);
+      });
+    }
+    pts.forEach(function(o){ FL.dot(ctx,v.X(o.p[0]),v.Y(o.p[1]),4.2,FL.C.ink,'#fff'); if(o.l) FL.text(ctx,o.l,v.X(o.p[0])+o.d[0],v.Y(o.p[1])+o.d[1],{size:13,color:FL.C.ink,halo:true}); });
+    ro.innerHTML='<span>手順 <b>'+k+' / '+steps.length+'</b></span><span>'+steps[k-1].txt+'</span>';
+  }
+  document.getElementById('pt-prev').addEventListener('click',function(){ if(k>1){k--; st.redraw();} });
+  document.getElementById('pt-next').addEventListener('click',function(){ if(k<steps.length){k++; st.redraw();} });
+  document.getElementById('pt-all').addEventListener('click',function(){ k=steps.length; st.redraw(); });
+  document.getElementById('pt-first').addEventListener('click',function(){ k=1; st.redraw(); });
+})();
+
+/* どの正 n 角形が作図できるか */
+(function(){
+  var inp=document.getElementById('in-ng'), out=document.getElementById('out-ng'), ro=document.getElementById('ro-ngon'), tb=document.getElementById('tb-ng');
+  var FERMAT=[3,5,17,257,65537];
+  function phi(n){ var r=0; for(var k=1;k<=n;k++) if(FL.gcdN(k,n)===1) r++; return r; }
+  function pow2(x){ return (x&(x-1))===0; }
+  function fac(n){ var out=[], m=n; for(var p=2;p*p<=m;p++){ var e=0; while(m%p===0){m/=p;e++;} if(e) out.push(p+(e>1?'^'+e:'')); } if(m>1) out.push(String(m)); return out.join('×').replace(/\^(\d+)/g,function(_,e){ return ['','','²','³','⁴','⁵'][+e]; }); }
+  var st=FL.canvas('cv-ngon',0.62,draw);
+  function draw(st){
+    var n=+inp.value; out.textContent=n;
+    var ok=pow2(phi(n));
+    var ctx=st.ctx; ctx.clearRect(0,0,st.W,st.H); ctx.fillStyle=FL.C.paper; ctx.fillRect(0,0,st.W,st.H);
+    var v=FL.view(st,2.4,0,0);
+    ctx.save(); ctx.strokeStyle=FL.C.grid; ctx.lineWidth=1.2; ctx.beginPath(); ctx.arc(v.X(0),v.Y(0),v.s,0,Math.PI*2); ctx.stroke();
+    ctx.strokeStyle=ok?'#2f8f65':FL.C.red; ctx.fillStyle=ok?'rgba(47,143,101,.12)':'rgba(200,67,63,.10)'; ctx.lineWidth=2.5; ctx.beginPath();
+    for(var k=0;k<=n;k++){ var a=Math.PI/2+2*Math.PI*k/n; if(k) ctx.lineTo(v.X(Math.cos(a)),v.Y(Math.sin(a))); else ctx.moveTo(v.X(Math.cos(a)),v.Y(Math.sin(a))); }
+    ctx.closePath(); ctx.fill(); ctx.stroke(); ctx.restore();
+    FL.text(ctx,'正'+n+'角形',v.X(0),v.Y(0)+5,{size:15,color:ok?'#1f6b48':FL.C.red,align:'center',halo:true});
+    ro.innerHTML='<span>n＝'+fac(n)+'</span><span>φ('+n+')＝<b>'+phi(n)+'</b></span><span class="'+(ok?'ok':'ng')+'"><b>'+(ok?'2 の累乗 → 作図できる':'2 の累乗でない → 作図できない')+'</b></span>';
+    var h='';
+    for(var r=0;r<4;r++){
+      h+='<tr>';
+      for(var c=0;c<10;c++){ var m=3+r*10+c; if(m>40){h+='<td></td>';continue;} h+='<td class="'+(pow2(phi(m))?'hit':'miss')+(m===n?' cur':'')+'">'+m+'</td>'; }
+      h+='</tr>';
+    }
+    tb.innerHTML=h;
+  }
+  inp.addEventListener('input',function(){ st.redraw(); });
+})();
+</script>
+</body>
+</html>

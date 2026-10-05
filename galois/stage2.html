@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第4章 STAGE2 解を入れ替える（対称式と判別式） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="対称式と判別式を中学生向けに解説。解をどう入れ替えても変わらない式（対称式）は係数で書けることを示し、入れ替えで符号だけ変わる α−β の2乗から、2次方程式の解の公式を作り直す。3次方程式の解と係数の関係と (α−β)(β−γ)(γ−α) も調べる。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/galois/stage2">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第4章 STAGE2 解を入れ替える（対称式と判別式） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="解をどう入れ替えても変わらない式は、解を知らなくても係数から計算できる。入れ替えで符号だけ変わる式に √ を1回使うと、2次方程式が解ける。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/galois/stage2">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE2 解を入れ替える",
+      "description": "対称式と判別式を中学生向けに解説。解をどう入れ替えても変わらない式（対称式）は係数で書けることを示し、入れ替えで符号だけ変わる α−β の2乗から、2次方程式の解の公式を作り直す。3次方程式の解と係数の関係と (α−β)(β−γ)(γ−α) も調べる。",
+      "url": "https://algebra.habatakijuku.com/galois/stage2",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 2,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第4章 方程式の対称性",
+        "url": "https://algebra.habatakijuku.com/galois/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第4章 方程式の対称性",
+          "item": "https://algebra.habatakijuku.com/galois/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE2 解を入れ替える",
+          "item": "https://algebra.habatakijuku.com/galois/stage2"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+#sw2-tab,#p3-tab{margin-top:10px}
+  #sw2-tab td.chg,#p3-tab td.chg{background:#fbe9e8;color:#c8433f}
+  #p3-btns .btn{min-width:4.6em}
+  #p3-tab td:first-child,#sw2-tab td:first-child{text-align:left}
+  @media(max-width:480px){#p3-tab,#sw2-tab{font-size:12px}#p3-tab th,#p3-tab td{padding:3px 5px}}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第4章 方程式の対称性 ／ STAGE 2 ― 解を入れ替える ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第4章 STAGE 2</span><h1 class="chapter-title">解を入れ替える</h1>
+        <div class="chapter-sub">対称式と判別式</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">対称式が係数で書ける理由を説明し、α−β が入れ替えで符号だけ変わることから2次方程式の解の公式を作り直そう。3次方程式で (α−β)(β−γ)(γ−α) を保つ入れ替えがどれかを言えれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">前のステージで、係数は解を入れ替えても変わらない式 α＋β, αβ で書けると分かった。今日はこれを逆から使う。<strong>入れ替えで変わらない式は、解を知らなくても係数から計算できる</strong>。この事実と、入れ替えで「少しだけ」変わる式を組み合わせると、解の公式が作れるんだ。3次方程式を解くための作戦の土台になる。まず、解 α, β をどう入れ替えても変わらない式を<strong>対称式</strong>と呼ぶ。α＋β と αβ は対称式だね。α²＋β² を α＋β と αβ で書いてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(α＋β)²＝α²＋2αβ＋β² なので、α²＋β²＝(α＋β)²−2αβ です。たとえば x²−4x＋1＝0 なら、α＋β＝4, αβ＝1 なので、α²＋β²＝16−2＝14。解を求めなくても計算できました。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。α³＋β³ や 1/α＋1/β ではどうかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(α＋β)³＝α³＋3α²β＋3αβ²＋β³＝α³＋β³＋3αβ(α＋β) なので、α³＋β³＝(α＋β)³−3αβ(α＋β)＝64−12＝52 です。1/α＋1/β は通分して (α＋β)/(αβ)＝4 です。どれも α＋β と αβ だけで書けますね。いつでもそうなるんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いい質問だね。2つの解のときは、全部確かめられる。対称式を項ごとに見ると、α⁵β² があれば、入れ替えた α²β⁵ も同じ係数で入っているはずだ。この2つの組は (αβ)²(α³＋β³) とまとめられる。だから、αⁿ＋βⁿ がどれも α＋β と αβ で書ければいい。(α＋β)(αⁿ⁻¹＋βⁿ⁻¹) を展開してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(α＋β)(αⁿ⁻¹＋βⁿ⁻¹)＝αⁿ＋αβⁿ⁻¹＋βαⁿ⁻¹＋βⁿ＝(αⁿ＋βⁿ)＋αβ(αⁿ⁻²＋βⁿ⁻²) です。だから αⁿ＋βⁿ＝(α＋β)(αⁿ⁻¹＋βⁿ⁻¹)−αβ(αⁿ⁻²＋βⁿ⁻²)。1つ前と2つ前から次が決まるので、α¹＋β¹＝α＋β と α⁰＋β⁰＝2 から順に、全部 α＋β と αβ で書けます。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step"><strong>対称式</strong>：解をどう入れ替えても変わらない式</span>
+        <span class="step">入れ替えた項が同じ係数でそろうので、<span class="nw">α<sup>m</sup>β<sup>k</sup>＋α<sup>k</sup>β<sup>m</sup>＝(αβ)<sup>k</sup>(α<sup>m−k</sup>＋β<sup>m−k</sup>)</span> の形の和になる、ただし m＞k</span>
+        <span class="step"><span class="nw">αⁿ＋βⁿ＝(α＋β)(αⁿ⁻¹＋βⁿ⁻¹)−αβ(αⁿ⁻²＋βⁿ⁻²)</span>（1つ前と2つ前から決まる）</span>
+        <span class="step"><span class="nw">α²＋β²＝(α＋β)²−2αβ</span>、<span class="nw">α³＋β³＝(α＋β)³−3αβ(α＋β)</span></span>
+        <span class="step">だから対称式は、α＋β と αβ、つまり係数だけで書ける</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。解が3つ以上でも同じことが成り立つ。どんな対称式も、解と係数の関係に出てくる式の足し算・引き算・掛け算で書ける。これを<strong>対称式の基本定理</strong>という。では、対称式でない式はどうなるか。α−β で、α と β を入れ替えてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">β−α になるので、−(α−β) です。符号だけ変わります。そうすると、2乗した (α−β)² は入れ替えで変わらないので対称式です。(α−β)²＝(α＋β)²−4αβ。ax²＋bx＋c＝0 なら α＋β＝−b/a、αβ＝c/a を入れて、b²/a²−4c/a＝(b²−4ac)/a² になります。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。分子の <strong>D＝b²−4ac</strong> を<strong>判別式</strong>という。D は (α−β)² を係数で書いたもの（の a² 倍）なんだ。ここまでで、解の公式を作る材料がそろった。α＋β は係数で分かる。α−β は、2乗すれば係数で分かる。α を求めてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(α−β)²＝D/a² なので、√ を取って α−β＝√D/a とします（−√D/a を選んでも、α と β の名前が入れ替わるだけです）。α＝((α＋β)＋(α−β))/2＝(−b/a＋√D/a)/2＝(−b＋√D)/(2a)、β＝((α＋β)−(α−β))/2＝(−b−√D)/(2a)。前のステージの公式と同じになりました。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">① 対称式は係数で分かる：<span class="nw">α＋β＝−b/a</span></span>
+        <span class="step">② 入れ替えで符号だけ変わる式 α−β は、2乗すると対称式：<span class="nw">(α−β)²＝(b²−4ac)/a²</span></span>
+        <span class="step">③ √ を1回とる：<span class="nw">α−β＝√(b²−4ac)/a</span></span>
+        <span class="step">④ <span class="nw">α＝((α＋β)＋(α−β))/2＝(−b＋√(b²−4ac))/(2a)</span>（和と差から α を取り出す）</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">この手順を「入れ替え」の言葉で言い直そう。最初、係数から分かるのは、対称式、つまり「何もしない」と「α と β の入れ替え」の<strong>2つの操作</strong>の両方で変わらない式だけだった。√D を1つ使えるようにすると、α−β が分かる。α−β を変えない操作は「何もしない」の<strong>1つだけ</strong>だ。√ を1回とるたびに、式を変えない入れ替えの数が減っていく。それが解に近づくということなんだ。入れ替えで値がどう変わるか、表で確かめよう。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="sim-controls">
+          <button class="btn" id="sw2-btn">α と β を入れ替える</button>
+          <button class="btn" id="sw2-reset">もとに戻す</button>
+        </div>
+        <table class="num-table" id="sw2-tab"></table>
+        <div class="readout" id="sw2-ro"></div>
+        <div class="diagram-caption"><strong>x²−4x＋1＝0 の2つの解の入れ替え</strong>。2つの解は 2＋√3 と 2−√3。入れ替えボタンを押すと、α と β の値が交換され、値の変わった式が赤くなる。対称式（α＋β, αβ, α²＋β², (α−β)²）は変わらず、α−β は符号だけが変わる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">2つの解では、√ を1回とるだけで、2つの操作が1つに減って終わりなんですね。3つの解なら、入れ替えはもっとたくさんあります。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。3次方程式で同じことを考えよう。まず解と係数の関係からだ。x³＋ax²＋bx＋c＝0 の3つの解を α, β, γ とすると、左辺は (x−α)(x−β)(x−γ) と因数分解できる。展開してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(x−α)(x−β)＝x²−(α＋β)x＋αβ に (x−γ) を掛けて、x³−(α＋β＋γ)x²＋(αβ＋βγ＋γα)x−αβγ です。係数を比べると、α＋β＋γ＝−a、αβ＋βγ＋γα＝b、αβγ＝−c になります。3つとも、α, β, γ をどう入れ替えても変わりません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。3つの解の入れ替えは何通りあるかな？ 第1章を思い出してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">3つのものの並べ替えは 3×2×1＝6 通りで、第1章の正三角形の6つの操作と同じです。巡回の記法で書くと、何もしない e、回す (α β γ) と (α γ β)、2つだけの入れ替え（互換）(α β), (β γ), (α γ) です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。(α β γ) は「α を β に、β を γ に、γ を α に付け替える」入れ替えだったね。では、2次方程式の α−β にあたる式を探そう。<strong>Δ＝(α−β)(β−γ)(γ−α)</strong>（Δ はデルタと読む）に、(α β) と (α β γ) をしてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(α β) をすると、(β−α)(α−γ)(γ−β) です。β−α＝−(α−β)、α−γ＝−(γ−α)、γ−β＝−(β−γ) なので、マイナスが3つ出て −Δ になります。(α β γ) をすると (β−γ)(γ−α)(α−β) で、掛ける順番が変わっただけなので Δ のままです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">残りの4つも同じように調べると、Δ を変えないのは e, (α β γ), (α γ β) の3つ、符号を変えるのは3つの互換だと分かる。6つの入れ替えで、いろいろな式がどんな値をとるか、実際の方程式で確かめてみよう。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="sim-controls" id="p3-btns"></div>
+        <table class="num-table" id="p3-tab"></table>
+        <div class="diagram-caption"><strong>x³−7x＋6＝0 の3つの解の入れ替え</strong>。3つの解は 1, 2, −3（x³−7x＋6＝(x−1)(x−2)(x＋3)）で、最初は α＝1, β＝2, γ＝−3。入れ替えを選ぶと、その入れ替えをしたあとの各式の値を示す。右の列は、6つの入れ替えで各式がとる値の種類の数。対称式は 1 種類、Δ は ±20 の 2 種類、α は 3 種類になる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">Δ を保つのが e と2つの回転で、符号を変えるのが互換というのは、第1章で学んだ偶置換・奇置換の分かれ方と同じです。互換は奇置換で、回転 (α β γ) は、(β γ) のあとに (α β) をしたもの、つまり (β γ)(α β) と互換2つの積なので偶置換です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">よく思い出したね。Δ は、入れ替えが偶置換なら変わらず、奇置換なら符号が変わる。だから Δ² は対称式で、係数で書ける。x³＋px＋q＝0 の形なら、計算すると <strong>Δ²＝−4p³−27q²</strong> になる。これが3次方程式の判別式だ。x³−7x＋6 で確かめてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">p＝−7, q＝6 なので、−4×(−343)−27×36＝1372−972＝400 です。Δ＝(1−2)(2−(−3))(−3−1)＝(−1)×5×(−4)＝20 で、20²＝400。合っています。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。Δ² が係数で分かるから、√ を1回とれば Δ が手に入る。そのとき、式を変えない入れ替えは6つから偶置換の3つに減る。ちょうど半分になるのは偶然ではない。Δ を保つ入れ替えの集まりは部分群で、符号を変える入れ替えの集まりは、それを1つの互換でずらしたコピーになっている。第1章の剰余類の話だね。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 340 300" style="width:100%;max-width:440px;display:block;margin:0 auto" role="img" aria-label="√ を1回とるごとに式を変えない入れ替えの数が半分になる様子">
+          <defs><marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c8433f"/></marker></defs>
+          <text x="4" y="18" font-size="13.5" font-weight="900" fill="#44377a">2次方程式</text>
+          <rect x="4" y="28" width="146" height="58" rx="10" fill="#efecf8" stroke="#9a88d6"/>
+          <text x="77" y="52" font-size="13" text-anchor="middle" fill="#221d33" font-weight="800">e, (α β)</text>
+          <text x="77" y="74" font-size="11.5" text-anchor="middle" fill="#77708c">2つの操作</text>
+          <line x1="152" y1="57" x2="186" y2="57" stroke="#c8433f" stroke-width="2.4" marker-end="url(#ar2)"/>
+          <text x="169" y="47" font-size="12" text-anchor="middle" fill="#c8433f" font-weight="900">√D</text>
+          <rect x="190" y="28" width="146" height="58" rx="10" fill="#fdfbf6" stroke="#9a88d6"/>
+          <text x="263" y="52" font-size="13" text-anchor="middle" fill="#221d33" font-weight="800">e</text>
+          <text x="263" y="74" font-size="11.5" text-anchor="middle" fill="#77708c">1つ（α−β が分かる）</text>
+          <text x="4" y="128" font-size="13.5" font-weight="900" fill="#44377a">3次方程式</text>
+          <rect x="4" y="138" width="146" height="100" rx="10" fill="#efecf8" stroke="#9a88d6"/>
+          <text x="77" y="164" font-size="11.5" text-anchor="middle" fill="#221d33" font-weight="800">e, (α β γ), (α γ β)</text>
+          <text x="77" y="186" font-size="11.5" text-anchor="middle" fill="#221d33" font-weight="800">(α β), (β γ), (α γ)</text>
+          <text x="77" y="222" font-size="11.5" text-anchor="middle" fill="#77708c">6つの操作</text>
+          <line x1="152" y1="188" x2="186" y2="188" stroke="#c8433f" stroke-width="2.4" marker-end="url(#ar2)"/>
+          <text x="169" y="178" font-size="11" text-anchor="middle" fill="#c8433f" font-weight="900">√(Δ²)</text>
+          <rect x="190" y="138" width="146" height="100" rx="10" fill="#fdfbf6" stroke="#9a88d6"/>
+          <text x="263" y="164" font-size="11.5" text-anchor="middle" fill="#221d33" font-weight="800">e, (α β γ), (α γ β)</text>
+          <text x="263" y="198" font-size="11.5" text-anchor="middle" fill="#77708c">3つ（Δ が分かる）</text>
+          <text x="263" y="222" font-size="11.5" text-anchor="middle" fill="#a63f6f" font-weight="800">まだ解は分からない</text>
+        </svg>
+        <div class="diagram-caption"><strong>√ を1回とると、式を変えない入れ替えが半分になる</strong>。左の箱は係数だけで分かる段階（対称式を変えない入れ替え）、右の箱は √ を1回とった段階（新しく分かった式を変えない入れ替え）。2次方程式は1つになって解ける。3次方程式は3つ残る</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">2次方程式は √ 1回で2つから1つになって解けました。でも3次方程式は、√ で6つが3つになったあと、3つが残っています。3つは半分に分けられないので、もう一度 √ をとっても減らないということですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いいところに気づいたね。第1章のラグランジュの定理で言えば、3個の群の部分群は、個数が 3 を割り切るので、1個か3個しかない。半分にはならないんだ。3つを一気に1つに減らすには、√ ではなく<strong>∛</strong>が必要になる。次のステージで、3次方程式を実際に解きながら、そのしくみを見よう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">対称式：解をどう入れ替えても変わらない式。<span class="nw">αⁿ＋βⁿ＝(α＋β)(αⁿ⁻¹＋βⁿ⁻¹)−αβ(αⁿ⁻²＋βⁿ⁻²)</span> などで、係数だけで書ける（対称式の基本定理）</span>
+        <span class="step">α−β は入れ替えで符号だけ変わる。<span class="nw">(α−β)²＝(b²−4ac)/a²</span> は対称式で、分子が判別式 D</span>
+        <span class="step">解の公式＝①対称式 α＋β を係数で ②(α−β)² を係数で ③√ を1回とって α−β ④和と差から α。√ をとると、式を変えない入れ替えが 2 つから 1 つに減る</span>
+        <span class="step">3次の解と係数の関係：<span class="nw">α＋β＋γ＝−a</span>、<span class="nw">αβ＋βγ＋γα＝b</span>、<span class="nw">αβγ＝−c</span>（x³＋ax²＋bx＋c＝0）</span>
+        <span class="step"><span class="nw">Δ＝(α−β)(β−γ)(γ−α)</span> は偶置換で不変、奇置換（互換）で符号が変わる。x³＋px＋q＝0 では <span class="nw">Δ²＝−4p³−27q²</span>。√(Δ²) で 6 つが 3 つに減るが、まだ解けない</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. x²−4x＋1＝0 の2つの解 α, β について、α³＋β³ の値は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">52</button>
+          <button class="choice-btn">64</button>
+          <button class="choice-btn">14</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ α＋β＝4, αβ＝1。α³＋β³＝(α＋β)³−3αβ(α＋β)＝64−12＝52。解を求めなくても係数から計算できる。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. 2次方程式の解の公式で √ が1回だけで済む理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">2次方程式の解はいつも実数だから</button>
+          <button class="choice-btn">α−β は入れ替えで符号だけ変わるので、2乗が対称式になり、√ を1回とれば α−β が分かるから</button>
+          <button class="choice-btn">α＋β が √ を含むから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ (α−β)²＝(b²−4ac)/a² は係数で書ける。√ をとって α−β が分かれば、α＋β と組み合わせて α＝((α＋β)＋(α−β))/2。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. 3次方程式で Δ＝(α−β)(β−γ)(γ−α) を変えない入れ替えは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">(α β), (β γ), (α γ) の3つ（互換）</button>
+          <button class="choice-btn">6つすべて</button>
+          <button class="choice-btn">e, (α β γ), (α γ β) の3つ（偶置換）</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 互換をすると、3つのかっこのうち符号が変わるものが奇数個出て −Δ になる。回転はかっこの順番が変わるだけ。Δ は偶置換で不変、奇置換で符号が変わる。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("galois", 2);</script>
+<script>
+/* x²−4x＋1 の2つの解の入れ替え */
+(function(){
+  var tab=document.getElementById('sw2-tab'), ro=document.getElementById('sw2-ro'), swapped=false;
+  var rows=[['α',['2＋√3','2−√3']],['β',['2−√3','2＋√3']],['α＋β',['4','4']],['αβ',['1','1']],['α²＋β²',['14','14']],['α−β',['2√3','−2√3']],['(α−β)²',['12','12']]];
+  function draw(){
+    var h='<tr><th>式</th><th>はじめ</th><th>いま</th></tr>';
+    rows.forEach(function(r){var now=r[1][swapped?1:0], chg=now!==r[1][0];
+      h+='<tr><td>'+r[0]+'</td><td>'+r[1][0]+'</td><td'+(chg?' class="chg"':'')+'>'+now+'</td></tr>';});
+    tab.innerHTML=h;
+    ro.innerHTML='<span>いまの状態：<b>'+(swapped?'α と β を入れ替えた':'はじめのまま')+'</b></span>';
+  }
+  document.getElementById('sw2-btn').addEventListener('click',function(){swapped=!swapped;draw();});
+  document.getElementById('sw2-reset').addEventListener('click',function(){swapped=false;draw();});
+  draw();
+})();
+
+/* x³−7x＋6 の3つの解の6通りの入れ替え */
+(function(){
+  var box=document.getElementById('p3-btns'), tab=document.getElementById('p3-tab');
+  var R=[1,2,-3];
+  /* 入れ替え：p[i]＝i 番目の文字（0:α,1:β,2:γ）の付け替え先 */
+  var P=[{n:'e',p:[0,1,2]},{n:'(α β γ)',p:[1,2,0]},{n:'(α γ β)',p:[2,0,1]},{n:'(α β)',p:[1,0,2]},{n:'(β γ)',p:[0,2,1]},{n:'(α γ)',p:[2,1,0]}];
+  var E=[
+    ['α＋β＋γ',function(a,b,c){return a+b+c;}],
+    ['αβ＋βγ＋γα',function(a,b,c){return a*b+b*c+c*a;}],
+    ['αβγ',function(a,b,c){return a*b*c;}],
+    ['α²＋β²＋γ²',function(a,b,c){return a*a+b*b+c*c;}],
+    ['Δ＝(α−β)(β−γ)(γ−α)',function(a,b,c){return (a-b)*(b-c)*(c-a);}],
+    ['α²β＋β²γ＋γ²α',function(a,b,c){return a*a*b+b*b*c+c*c*a;}],
+    ['α',function(a){return a;}]
+  ];
+  var cur=0;
+  function val(f,p){return f(R[p[0]],R[p[1]],R[p[2]]);}
+  function sg(x){return String(x).replace('-','−');}
+  P.forEach(function(q,i){var b=document.createElement('button');b.className='btn';b.textContent=q.n;b.setAttribute('aria-pressed',i===0?'true':'false');
+    b.addEventListener('click',function(){cur=i;box.querySelectorAll('.btn').forEach(function(x,j){x.setAttribute('aria-pressed',j===i?'true':'false');});draw();});box.appendChild(b);});
+  function draw(){
+    var p=P[cur].p;
+    var h='<tr><th>式</th><th>'+P[cur].n+' のあと</th><th>値の種類</th></tr>';
+    h+='<tr><td>(α, β, γ)</td><td>('+sg(R[p[0]])+', '+sg(R[p[1]])+', '+sg(R[p[2]])+')</td><td>—</td></tr>';
+    E.forEach(function(e){var v=val(e[1],p), v0=val(e[1],P[0].p);
+      var kinds={};P.forEach(function(q){kinds[val(e[1],q.p)]=1;});
+      h+='<tr><td>'+e[0]+'</td><td'+(v!==v0?' class="chg"':'')+'>'+sg(v)+'</td><td>'+Object.keys(kinds).length+'</td></tr>';});
+    tab.innerHTML=h;
+  }
+  draw();
+})();
+</script>
+</body>
+</html>

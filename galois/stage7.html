@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第4章 STAGE7 解けない5次方程式（x⁵−6x＋3 がべき根で解けない証明） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="5次方程式に解の公式がないことを中学生向けに証明。x⁵−6x＋3 が既約であること、実数解がちょうど3つであることを示し、ガロア群が5つ組の巡回と互換を含むので5つの入れ替え全体になり、べき根で解けないことを導く。群・環・体のまとめも。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/galois/stage7">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第4章 STAGE7 解けない5次方程式（x⁵−6x＋3 がべき根で解けない証明） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="x⁵−6x＋3＝0 の5つの解は、√ や ∛ をどう組み合わせても書けない。実数解の個数と複素共役から、ガロア群が5つの入れ替え全体になることを示す。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/galois/stage7">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE7 解けない5次方程式",
+      "description": "5次方程式に解の公式がないことを中学生向けに証明。x⁵−6x＋3 が既約であること、実数解がちょうど3つであることを示し、ガロア群が5つ組の巡回と互換を含むので5つの入れ替え全体になり、べき根で解けないことを導く。群・環・体のまとめも。",
+      "url": "https://algebra.habatakijuku.com/galois/stage7",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 7,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第4章 方程式の対称性",
+        "url": "https://algebra.habatakijuku.com/galois/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第4章 方程式の対称性",
+          "item": "https://algebra.habatakijuku.com/galois/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE7 解けない5次方程式",
+          "item": "https://algebra.habatakijuku.com/galois/stage7"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+.gn-list{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:10px;min-height:34px}
+  .gn-chip{padding:4px 10px;border-radius:999px;border:1.5px solid #9a88d6;background:#fff;font-weight:900;font-size:13px;color:#221d33}
+  .gn-chip.new{border-color:#a63f6f;background:#fbe9f1;color:#a63f6f}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第4章 方程式の対称性 ／ STAGE 7 ― 解けない5次方程式 ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第4章 STAGE 7</span><h1 class="chapter-title">解けない5次方程式</h1>
+        <div class="chapter-sub">x⁵−6x＋3 のガロア群と旅のまとめ</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">x⁵−6x＋3 が既約で、実数解がちょうど3つあることを示そう。そこからガロア群が5つ組の巡回と互換を含み、5つの入れ替え全体になることを説明できれば、5次方程式に解の公式がないことの証明が完成して合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いよいよ最後のステージだ。前のステージで、5つの解の入れ替え全体は可解群でないと分かった。あとは、具体的な方程式 x⁵−6x＋3＝0 のガロア群が、5つの入れ替え全体になることを示せばいい。そうすれば、この方程式はべき根で解けず、どんな5次方程式にも使える解の公式もないことが確定する。必要な材料は3つ。<strong>①既約であること ②実数解の個数 ③群の性質</strong>だ。まず①から。x⁵−6x＋3 が有理数の解をもたないことを、第3章の判定で確かめてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">最高次の係数が 1 なので、有理数の解があるなら定数項 3 の約数で、±1, ±3 のどれかです。x＝1 で 1−6＋3＝−2、x＝−1 で −1＋6＋3＝8、x＝3 で 243−18＋3＝228、x＝−3 で −243＋18＋3＝−222。どれも 0 にならないので、有理数の解はありません。でも5次式だと、2次式と3次式の積に分かれるかもしれません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。そこで別の判定法を使う。まず事実を1つ。有理数係数の2つの多項式の積に分けられるなら、最高次の係数が 1 の<strong>整数係数</strong>の多項式の積にも分けられる。<strong>ガウスの補題</strong>と呼ばれるものだ。だから、整数係数で x⁵−6x＋3＝g(x)h(x) と分かれたとして矛盾を導けばいい。g(x)＝x<sup>k</sup>＋…＋b₁x＋b₀、h(x)＝x<sup>5−k</sup>＋…＋c₁x＋c₀（1≦k≦4）とおく。定数項を比べるとどうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">b₀c₀＝3 です。3 は素数なので、b₀ と c₀ のうち、ちょうど一方だけが 3 で割り切れます。b₀ のほうが割り切れて、c₀ は割り切れないとします。次に x の係数を比べると、b₀c₁＋b₁c₀＝−6 です。b₀c₁ も −6 も 3 で割り切れるので、b₁c₀ も割り切れます。c₀ は 3 で割り切れないので、第2章で学んだ「素数は素元」から、<strong>b₁ が 3 で割り切れます</strong>。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。x² の係数でも同じことをしてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">x² の係数は b₀c₂＋b₁c₁＋b₂c₀＝0 です。b₀ と b₁ は 3 で割り切れるので、b₂c₀ も 3 で割り切れて、b₂ が 3 で割り切れます。x³, x⁴ の係数も 0 なので、同じように続けると、b₀, b₁, …, b<sub>k</sub> がみんな 3 で割り切れます。でも b<sub>k</sub> は g(x) の最高次の係数で 1 です。<strong>1 は 3 で割り切れないので矛盾</strong>です。だから x⁵−6x＋3 は既約です。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">x⁵−6x＋3＝g(x)h(x) と整数係数で分かれたとする（ガウスの補題）。<span class="nw">g(x)＝x<sup>k</sup>＋…＋b₁x＋b₀</span>、<span class="nw">h(x)＝x<sup>5−k</sup>＋…＋c₀</span>、ただし 1≦k≦4</span>
+        <span class="step">定数項：<span class="nw">b₀c₀＝3</span> → b₀ だけが 3 で割り切れるとしてよい</span>
+        <span class="step">x の係数：<span class="nw">b₀c₁＋b₁c₀＝−6</span> → b₁c₀ が 3 で割り切れる → b₁ が 3 で割り切れる（3 は素元、c₀ は割り切れない）</span>
+        <span class="step">x², x³, x⁴ の係数はどれも 0 → 同じ理由で b₂, b₃, … も 3 で割り切れる</span>
+        <span class="step">b<sub>k</sub>＝1 も 3 で割り切れることになり矛盾 → <strong>x⁵−6x＋3 は既約</strong></span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。いまの議論は、「最高次以外の係数がすべて素数 p で割り切れ、定数項は p² では割り切れない」ならいつでも使える。<strong>アイゼンシュタインの判定法</strong>という。x⁵−6x＋3 は p＝3 でこの条件をみたしている。次は②、実数解の個数だ。x に −2, −1, 0, 1, 2 を入れて、値の符号を調べてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">x＝−2 で −32＋12＋3＝−17、x＝−1 で 8、x＝0 で 3、x＝1 で −2、x＝2 で 32−12＋3＝23 です。符号は −, ＋, ＋, −, ＋ で、−2 と −1 の間、0 と 1 の間、1 と 2 の間で符号が変わります。グラフはつながっているので、それぞれの間で x 軸を横切ります。<strong>実数解は少なくとも3つ</strong>あります。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。では5つ全部が実数解ということはあるかな？ 解と係数の関係を使ってごらん。x⁴ と x³ の項がないことに注目するといい。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">5つの解を x₁, …, x₅ とすると、x⁴ の係数が 0 なので、解の和 x₁＋…＋x₅＝0。x³ の係数が 0 なので、2つずつ掛けた積の和も 0 です。解の2乗の和は (和)²−2×(2つずつの積の和)＝0−0＝0。もし5つとも実数なら、2乗はどれも 0 以上なので、和が 0 になるのは全部 0 のときだけです。でも x＝0 は解ではありません。だから<strong>5つ全部が実数ということはありません</strong>。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。もう1つ思い出そう。複素数 a＋bi に対して、i を −i にかえた a−bi を<strong>共役</strong>な複素数というんだったね。係数がすべて実数の方程式で、z が解なら、共役な <span style="text-decoration:overline">z</span> も解になる。f(z) を計算する足し算と掛け算は、共役をとっても成り立つから、f(<span style="text-decoration:overline">z</span>) は f(z)＝0 の共役で 0 になるんだ。ここから実数解の個数が決まるよ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">実数でない解は、共役どうしの組で出てくるので、実数でない解の個数は偶数です。5−(実数解の数) が 0, 2, 4 のどれかなので、実数解は 5, 3, 1 個のどれか。少なくとも3つで、5つではないので、<strong>実数解はちょうど3つ、実数でない解は共役な2つ</strong>です。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap wide"><canvas id="cv-q5" aria-label="左に y＝x⁵−6x＋3 のグラフと3つの実数解、右に複素数平面での5つの解を描いた図"></canvas></div>
+        <div class="sim-controls"><button class="btn" id="q5-conj">複素共役をとる</button></div>
+        <div class="readout" id="q5-ro"></div>
+        <div class="diagram-caption"><strong>x⁵−6x＋3＝0 の5つの解</strong>。左は y＝x⁵−6x＋3 のグラフで、x 軸と交わる3点（赤）が実数解。右は5つの解を複素数平面に描いたもの。実数解3つは実軸の上、残りの2つ（青）は実軸をはさんで上下対称の位置にある。「複素共役をとる」を押すと、実軸での折り返しで青の2つが入れ替わり、赤の3つは動かない</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">これで材料①②がそろった。いよいよ③、ガロア群 G を調べよう。まず、複素共役をとる操作、つまり i を −i にかえる操作は、5つの解をどう入れ替えるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">実数解3つは動かさず、実数でない2つを入れ替えます。そして、解の間の関係式が 0 なら、共役をとっても 0 のままなので、関係式を保ちます。だから<strong>ガロア群は互換を1つ含みます</strong>。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。次は5つ組の巡回だ。α を解の1つとすると、x⁵−6x＋3 は既約だから、第3章で学んだ通り ℚ(α) の次数は 5。分解体 L は ℚ(α) を含む。次数の積の法則から何が言えるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">L の ℚ の上の次数は、(L の ℚ(α) の上の次数)×5 です。ガロア群の個数は L の次数と等しいので、<strong>ガロア群の個数は 5 で割り切れます</strong>。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">ここで、もう1つ事実を使う。群の個数が素数 p で割り切れるなら、その群には位数がちょうど p の元がある。1845年ごろにコーシーが示したので、<strong>コーシーの定理</strong>と呼ばれる。ラグランジュの定理の逆向きの一部にあたるものだ。だから G には位数 5 の入れ替え σ がある。5つの番号の入れ替えで位数が 5 になるのは、どんな形かな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">入れ替えは、いくつかの巡回に分けて書けます。長さ L の巡回は L 回くり返すともとにもどります。σ を5回くり返して全部がもとにもどるには、どの巡回の長さも 5 を割り切るので、1 か 5 です。全部長さ 1 なら e なので、長さ 5 の巡回が1つあります。σ は<strong>5つ組の巡回</strong>です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。最後に、5つ組の巡回と互換が両方入っていると、5つの入れ替え全部が出てくることを示そう。互換が (a b) のとき、σ を何回かくり返した σ<sup>k</sup> で a が b に行くものがある。σ<sup>k</sup> も5つ組の巡回になるから、解に番号をつけ直して、σ<sup>k</sup>＝(1 2 3 4 5)、互換を (1 2) としてよい。改めて σ＝(1 2 3 4 5)、τ＝(1 2) として、σ⁻¹τσ、つまり σ をもどして、τ をして、σ をする入れ替えを計算してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">σ⁻¹ は 2→1、3→2、… と1つずつ戻す入れ替えです。2 は σ⁻¹ で 1、τ で 2、σ で 3。3 は σ⁻¹ で 2、τ で 1、σ で 2。ほかの番号、たとえば 1 は σ⁻¹ で 5、τ で 5、σ で 1 と、もとにもどります。だから σ⁻¹τσ＝<strong>(2 3)</strong>。同じことをもう一度すると (3 4)、さらに (4 5) が出てきます。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。(1 2), (2 3), (3 4), (4 5) という、となりどうしの入れ替えが全部そろった。第1章で、どんな互換もとなりどうしの入れ替えを続けて作れること、どんな入れ替えも互換の積で書けることを学んだね。実際に作ってみよう。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="sim-controls">
+          <button class="btn" id="gn-conj">σ⁻¹（いま）σ を作る</button>
+          <button class="btn" id="gn-all">組み合わせてできる入れ替えを数える</button>
+          <button class="btn" id="gn-reset">はじめから</button>
+        </div>
+        <div class="gn-list" id="gn-list"></div>
+        <div class="readout" id="gn-ro"></div>
+        <div class="diagram-caption"><strong>5つ組の巡回と互換から、5つの入れ替え全体を作る</strong>。σ＝(1 2 3 4 5)、τ＝(1 2) から始める。「σ⁻¹（いま）σ を作る」を押すたびに、最後に作った互換を σ でずらした互換ができ、(2 3), (3 4), (4 5) と、となりどうしの入れ替えがそろう。「数える」を押すと、σ と τ をくり返し組み合わせてできる入れ替えを全部数え、120 個、つまり5つの入れ替え全体になることを確かめる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">ガロア群は σ と τ を含み、群なのでそれを組み合わせたものも全部含みます。となりどうしの入れ替えが全部そろえば、どんな互換も、どんな入れ替えも作れるので、<strong>x⁵−6x＋3 のガロア群は5つの入れ替え全体</strong>です。前のステージで、これは可解群ではないと分かっているので、x⁵−6x＋3＝0 は<strong>べき根で解けません</strong>。5次方程式の解の公式があれば、この方程式にも使えるはずなので、<strong>5次方程式に解の公式はありません</strong>。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">① アイゼンシュタインの判定法（p＝3）で <strong>x⁵−6x＋3 は既約</strong> → ℚ(α) の次数は 5</span>
+        <span class="step">② 符号の変化で実数解は 3 つ以上。解の2乗の和＝0 なので 5 つ全部は実数でない。共役の組で → <strong>実数解 3 つ、実数でない解 2 つ</strong></span>
+        <span class="step">③-1 複素共役は実数でない2つの解を入れ替え、ほかを動かさない → G は<strong>互換</strong>を含む</span>
+        <span class="step">③-2 G の個数＝L の次数は 5 で割り切れる → コーシーの定理で位数 5 の元 → G は<strong>5つ組の巡回</strong>を含む</span>
+        <span class="step">③-3 <span class="nw">σ⁻¹τσ＝(2 3)</span> などでとなりどうしの入れ替えがそろう → <strong>G は5つの入れ替え全体</strong></span>
+        <span class="step">5つの入れ替え全体は可解群でない → <strong>x⁵−6x＋3＝0 はべき根で解けない</strong> → 5次方程式に解の公式はない</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">300年かかった謎が、群・環・体を全部使って解けました。第1章の置換と剰余類、第2章の素元、第3章の次数と既約多項式。どれか1つでも欠けていたら、たどり着けませんでした。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そうだね。どの章の道具がどこで使われたか、振り返っておこう。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 340 360" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="群・環・体の各章の道具がガロア理論の証明のどこで使われたかをまとめた図">
+          <defs><marker id="ar7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#a63f6f"/></marker></defs>
+          <g font-weight="800" fill="#221d33" font-size="11.5">
+            <rect x="6" y="6" width="328" height="66" rx="10" fill="#e6f0f6" stroke="#2f6f8f"/>
+            <text x="16" y="26" font-size="13" fill="#2f6f8f" font-weight="900">第1章 群</text>
+            <text x="16" y="45">置換・互換・偶奇／部分群と剰余類</text>
+            <text x="16" y="63">ラグランジュの定理／巡回群・位数</text>
+            <rect x="6" y="80" width="328" height="66" rx="10" fill="#efe9f9" stroke="#5b3fa6"/>
+            <text x="16" y="100" font-size="13" fill="#5b3fa6" font-weight="900">第2章 環</text>
+            <text x="16" y="119">既約元と素元／互除法</text>
+            <text x="16" y="137">素数は素元（アイゼンシュタインの判定法で使う）</text>
+            <rect x="6" y="154" width="328" height="66" rx="10" fill="#eaf7ef" stroke="#2f8f65"/>
+            <text x="16" y="174" font-size="13" fill="#2f8f65" font-weight="900">第3章 体</text>
+            <text x="16" y="193">体の拡大と次数／既約多項式</text>
+            <text x="16" y="211">有理根の判定／次数の積の法則</text>
+          </g>
+          <line x1="170" y1="222" x2="170" y2="250" stroke="#a63f6f" stroke-width="2.2" marker-end="url(#ar7)"/>
+          <rect x="6" y="254" width="328" height="100" rx="12" fill="#fbe9f1" stroke="#a63f6f" stroke-width="1.6"/>
+          <g font-weight="800" fill="#221d33" text-anchor="middle" font-size="12">
+            <text x="170" y="277" font-size="13.5" fill="#a63f6f" font-weight="900">第4章 ガロア理論</text>
+            <text x="170" y="299">ガロア群＝関係式を保つ解の入れ替え</text>
+            <text x="170" y="320">中間の体 ↔ 部分群（ガロアの基本定理）</text>
+            <text x="170" y="341">べき根で解ける ⇔ ガロア群が可解群</text>
+          </g>
+        </svg>
+        <div class="diagram-caption"><strong>群・環・体からガロア理論へ</strong>。上の3つの箱は各章で学んだ道具、いちばん下の箱はそれを合わせてできたガロア理論。5次方程式の証明では、既約性に第2章と第3章、実数解の個数に対称式、ガロア群の決定に第1章と第3章の道具を使った</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">アイゼンシュタインの判定法の中で、第2章の「素数は素元」が使われていました。ガロアは、自分の理論が正しいことに自信があったんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">あったようだね。ガロアは決闘の前夜の手紙の最後に、自分の定理が正しいかどうかではなく、それが<strong>重要かどうか</strong>について、ヤコビやガウスに意見を聞いてほしいと書いた。その答えは、歴史が出したといえる。ガロアの考えは、方程式を解く話を越えて、数学のあちこちで使われている。第3章の QR コードで使った有限の体は、<strong>ガロア体</strong>とも呼ばれる。そして、350年以上解けなかったフェルマーの最終定理を1995年にワイルズが証明したとき、その中心にあったのも、ガロア群が数の世界に対称性として働く様子（ガロア表現）だった。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">フェルマーの最終定理にも、ガロア群がつながっているんですね。第2章のラメの誤証明やクンマーの話とも関係していそうです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。その続きは<a href="https://fermat.habatakijuku.com/" target="_blank" rel="noopener" style="color:var(--gold-dark);text-decoration:underline">『フェルマーの最終定理、証明への道』</a>で、楕円曲線やモジュラー形式とともにたどれる。この章で身につけた「解の入れ替えを見て、方程式の性質を読む」という見方は、そこでも道しるべになる。これで、群・環・体からガロア理論への旅はおしまいだ。よくがんばったね。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">既約性：有理数の解 ±1, ±3 はない。ガウスの補題とアイゼンシュタインの判定法（p＝3）で、2次と3次の積にも分かれない</span>
+        <span class="step">実数解の個数：<span class="nw">f(−2)＜0, f(−1)＞0, f(1)＜0, f(2)＞0</span> で3つ以上。解の2乗の和が 0 なので5つ全部は実数でない。共役の組で、ちょうど3つ</span>
+        <span class="step">ガロア群は、複素共役から互換を、5 で割り切れる個数とコーシーの定理から5つ組の巡回を含む</span>
+        <span class="step"><span class="nw">σ＝(1 2 3 4 5)</span>、<span class="nw">τ＝(1 2)</span> から <span class="nw">σ⁻¹τσ＝(2 3)</span>…となりどうしの入れ替えがそろい、5つの入れ替え全体（120個）になる</span>
+        <span class="step">5つの入れ替え全体は可解群でない → x⁵−6x＋3＝0 はべき根で解けない → 5次方程式に解の公式はない</span>
+        <span class="step">ガロアの考えは、有限の体（ガロア体）やフェルマーの最終定理の証明（ガロア表現）にもつながっている</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. x⁵−6x＋3 の実数解がちょうど3つだと言える理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">5次方程式の実数解はいつも3つだから</button>
+          <button class="choice-btn">x＝1, 2, 3 が解だから</button>
+          <button class="choice-btn">符号の変化で3つ以上あり、解の2乗の和が 0 なので5つ全部は実数でなく、実数でない解は共役の組で偶数個だから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ f(−2)＜0＜f(−1)、f(0)＞0＞f(1)、f(1)＜0＜f(2) で3つ以上。解の和も2つずつの積の和も 0 なので、2乗の和は 0。5つとも実数なら全部 0 になるが、0 は解でない。実数でない解は偶数個なので、実数解は 3 つ。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. x⁵−6x＋3 のガロア群が互換を含む理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">複素共役をとる操作が、実数でない2つの解だけを入れ替え、解の間の関係式を保つから</button>
+          <button class="choice-btn">ガロア群の個数が 5 で割り切れるから</button>
+          <button class="choice-btn">x⁵−6x＋3 が既約だから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ i を −i にかえても足し算・掛け算の結果は共役になるだけなので、関係式 0 は 0 のまま。実数解は動かず、実数でない2つの解が入れ替わる。5 で割り切れることから出てくるのは5つ組の巡回。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. σ＝(1 2 3 4 5)、τ＝(1 2) のとき、σ⁻¹τσ（σ をもどして、τ をして、σ をする）は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">(1 2)</button>
+          <button class="choice-btn">(2 3)</button>
+          <button class="choice-btn">(1 3)</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 2 は σ⁻¹ で 1、τ で 2、σ で 3。3 は σ⁻¹ で 2、τ で 1、σ で 2。ほかはもとにもどる。くり返すと (3 4), (4 5) もできて、となりどうしの入れ替えがそろう。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("galois", 7);</script>
+<script>
+/* x⁵−6x＋3 のグラフと複素数解 */
+(function(){
+  function m(a,b){return [a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]];}
+  function d(a,b){var q=b[0]*b[0]+b[1]*b[1];return [(a[0]*b[0]+a[1]*b[1])/q,(a[1]*b[0]-a[0]*b[1])/q];}
+  function F(z){var z5=m(z,m(z,m(z,m(z,z))));return [z5[0]-6*z[0]+3,z5[1]-6*z[1]];}
+  var z=[],p=[1,0];for(var k=0;k<5;k++){z.push(p);p=m(p,[0.4,0.9]);}
+  for(var it=0;it<300;it++){z=z.map(function(zi,i){var den=[1,0];z.forEach(function(zj,j){if(j!==i)den=m(den,[zi[0]-zj[0],zi[1]-zj[1]]);});var q=d(F(zi),den);return [zi[0]-q[0],zi[1]-q[1]];});}
+  z=z.map(function(r){return [r[0],Math.abs(r[1])<1e-9?0:r[1]];});
+  var real=z.filter(function(r){return r[1]===0;}).sort(function(a,b){return a[0]-b[0];}), cx=z.filter(function(r){return r[1]!==0;}).sort(function(a,b){return b[1]-a[1];});
+  var flip=false, t=1, timer=null, ro=document.getElementById('q5-ro');
+  function f(x){return Math.pow(x,5)-6*x+3;}
+  function stacked(w){return w<480;}
+  var st=FL.canvas('cv-q5',function(w){return stacked(w)?1.5:0.52;},draw);
+  function fmt(r){var a=r[0].toFixed(3).replace('-','−');return r[1]===0?a:a+(r[1]<0?'−':'＋')+Math.abs(r[1]).toFixed(3)+'i';}
+  function draw(st){
+    var ctx=st.ctx;ctx.clearRect(0,0,st.W,st.H);ctx.fillStyle=FL.C.paper;ctx.fillRect(0,0,st.W,st.H);
+    var sk=stacked(st.W), pw=sk?st.W:st.W/2-6, ph=sk?st.H/2-6:st.H, x2=sk?0:st.W/2+6, y2=sk?st.H/2+6:0;
+    ctx.strokeStyle=FL.C.grid;ctx.strokeRect(0.5,0.5,pw-1,ph-1);ctx.strokeRect(x2+0.5,y2+0.5,pw-1,ph-1);
+    /* 左：グラフ（x は −2.3〜2.3、y は −30〜30） */
+    var X=function(x){return pw/2+x*(pw-20)/4.6;}, Y=function(y){return ph/2-y*(ph-30)/60;};
+    FL.line(ctx,0,Y(0),pw,Y(0),FL.C.axis,1.2);FL.line(ctx,X(0),0,X(0),ph,FL.C.axis,1.2);
+    for(var k=-2;k<=2;k++){if(k){FL.line(ctx,X(k),Y(0)-3,X(k),Y(0)+3,FL.C.axis,1);FL.text(ctx,String(k).replace('-','−'),X(k),Y(0)+15,{size:10,color:FL.C.muted,align:'center',weight:600});}}
+    [-20,20].forEach(function(v){FL.line(ctx,X(0)-3,Y(v),X(0)+3,Y(v),FL.C.axis,1);FL.text(ctx,String(v).replace('-','−'),X(0)+6,Y(v)+4,{size:10,color:FL.C.muted,weight:600});});
+    ctx.save();ctx.beginPath();ctx.rect(0,0,pw,ph);ctx.clip();ctx.strokeStyle=FL.C.theme;ctx.lineWidth=2.2;ctx.beginPath();
+    for(var i=0;i<=400;i++){var x=-2.3+4.6*i/400,y=f(x);if(i)ctx.lineTo(X(x),Y(y));else ctx.moveTo(X(x),Y(y));}ctx.stroke();ctx.restore();
+    real.forEach(function(r){FL.dot(ctx,X(r[0]),Y(0),6,FL.C.red,'#fff');});
+    FL.text(ctx,'y＝x⁵−6x＋3',8,18,{size:12,color:FL.C.themeDark});
+    /* 右：複素数平面 */
+    var s=Math.min(pw,ph)/4.4, CX=function(x){return x2+pw/2+x*s;}, CY=function(y){return y2+ph/2-y*s;};
+    FL.line(ctx,x2,CY(0),x2+pw,CY(0),FL.C.axis,1.2);FL.line(ctx,CX(0),y2,CX(0),y2+ph,FL.C.axis,1.2);
+    FL.text(ctx,'複素数平面',x2+8,y2+18,{size:12,color:FL.C.themeDark});
+    FL.text(ctx,'実軸',x2+pw-6,CY(0)-6,{size:10.5,color:FL.C.muted,align:'right'});
+    real.forEach(function(r){FL.dot(ctx,CX(r[0]),CY(0),6,FL.C.red,'#fff');});
+    var ang=Math.PI*(1-t);
+    cx.forEach(function(r,j){var yy=r[1]*(flip?-1:1)*Math.cos(ang), px=CX(r[0]), py=CY(yy);
+      FL.dot(ctx,px,py,7,FL.C.blue,'#fff');FL.text(ctx,j===0?'P':'Q',px+10,py+5,{size:13,color:FL.C.blue,halo:true});});
+    ro.innerHTML='<span>実数解：<b>'+real.map(fmt).join(', ')+'</b></span><span>実数でない解：<b>'+cx.map(fmt).join(', ')+'</b></span>';
+  }
+  document.getElementById('q5-conj').addEventListener('click',function(){if(timer)return;flip=!flip;
+    if(FL.reducedMotion()){t=1;st.redraw();return;}t=0;timer=setInterval(function(){t=Math.min(1,t+0.07);st.redraw();if(t>=1){clearInterval(timer);timer=null;}},30);});
+})();
+
+/* 5つ組の巡回と互換から5つの入れ替え全体を作る */
+(function(){
+  function cyc(c){var p=[0,1,2,3,4,5];for(var i=0;i<c.length;i++)p[c[i]]=c[(i+1)%c.length];return p;}
+  function mul(a,b){var p=[0];for(var i=1;i<=5;i++)p.push(b[a[i]]);return p;}
+  function inv(a){var q=[0];for(var i=1;i<=5;i++)q[a[i]]=i;return q;}
+  function name(p){var seen={},out='';for(var k=1;k<=5;k++){if(seen[k]||p[k]===k)continue;var c=[k];seen[k]=1;var j=p[k];while(j!==k){c.push(j);seen[j]=1;j=p[j];}out+='('+c.join(' ')+')';}return out||'e';}
+  var S=cyc([1,2,3,4,5]), T=cyc([1,2]), list, last, counted;
+  var box=document.getElementById('gn-list'), ro=document.getElementById('gn-ro');
+  function reset(){list=[['σ',name(S)],['τ',name(T)]];last=T;counted=null;draw(-1);}
+  function draw(nw){
+    box.innerHTML=list.map(function(x,i){return '<span class="gn-chip'+(i===nw?' new':'')+'">'+x[0]+'＝'+x[1]+'</span>';}).join('');
+    ro.innerHTML=counted?'<span class="ok">σ と τ を組み合わせてできる入れ替え：<b>'+counted+'</b> 個（5つの入れ替え全体は 5×4×3×2×1＝120 個）</span>':'<span>いま作った互換の数：<b>'+(list.length-1)+'</b></span>';
+  }
+  document.getElementById('gn-conj').addEventListener('click',function(){
+    if(list.length>=5)return; last=mul(mul(inv(S),last),S);list.push(['σ⁻¹（いま）σ',name(last)]);draw(list.length-1);});
+  document.getElementById('gn-all').addEventListener('click',function(){
+    var seen={},fr=[[0,1,2,3,4,5]];seen[name(fr[0])]=1;
+    while(fr.length){var nf=[];fr.forEach(function(p){[S,T].forEach(function(g){var q=mul(p,g),k=name(q);if(!seen[k]){seen[k]=1;nf.push(q);}});});fr=nf;}
+    counted=Object.keys(seen).length;draw(-1);});
+  document.getElementById('gn-reset').addEventListener('click',reset);
+  reset();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第1章 STAGE1 解けない15パズル（群論とは何か・対称性と操作の合成） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="群論の入口を中学生向けに解説。14 と 15 を入れ替えた15パズルはなぜそろわないのか。謎を解く道具「群」で何ができるようになるかを示し、正三角形を回す・裏返す6つの操作と、操作を続けて行う「積」を計算する。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/groups/stage1">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第1章 STAGE1 解けない15パズル（群論とは何か・対称性と操作の合成） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="14 と 15 を入れ替えた15パズルは、どう動かしてもそろわない。それを言い切るための道具「群」への入口。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/groups/stage1">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE1 解けない15パズル",
+      "description": "群論の入口を中学生向けに解説。14 と 15 を入れ替えた15パズルはなぜそろわないのか。謎を解く道具「群」で何ができるようになるかを示し、正三角形を回す・裏返す6つの操作と、操作を続けて行う「積」を計算する。",
+      "url": "https://algebra.habatakijuku.com/groups/stage1",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 1,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第1章 対称性を計算する",
+        "url": "https://algebra.habatakijuku.com/groups/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第1章 対称性を計算する",
+          "item": "https://algebra.habatakijuku.com/groups/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE1 解けない15パズル",
+          "item": "https://algebra.habatakijuku.com/groups/stage1"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+.pz-board{position:relative;width:min(100%,300px);aspect-ratio:1/1;margin:4px auto 0;background:#2f2652;border-radius:12px;padding:6px;box-sizing:border-box}
+.pz-in{position:relative;width:100%;height:100%}
+.pz-cell{position:absolute;width:25%;height:25%;box-sizing:border-box;border-radius:7px}
+.pz-par .pz-cell.c0{background:#e3bd6a}
+.pz-par .pz-cell.c1{background:#9a88d6}
+.pz-tile{position:absolute;width:25%;height:25%;padding:3px;box-sizing:border-box;border:0;background:transparent;cursor:pointer;transition:left .12s,top .12s;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.pz-par .pz-tile{padding:7px}
+.pz-tile span{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:7px;background:linear-gradient(#fdfbf6,#efe9f9);box-shadow:inset 0 -3px 0 #c9bfe6;font:900 22px var(--f);color:#2a2245}
+.pz-par .pz-tile span{font-size:19px}
+.pz-tile.sel span{background:#fbe9e8;box-shadow:inset 0 0 0 3px #c8433f}
+@media (prefers-reduced-motion:reduce){.pz-tile{transition:none}}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第1章 対称性を計算する ／ STAGE 1 ― 解けない15パズル ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第1章 STAGE 1</span><h1 class="chapter-title">解けない15パズル</h1>
+        <div class="chapter-sub">謎と、正三角形の6つの動かし方</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">15パズルの謎を体験し、正三角形を枠にぴったりはめ直す動かし方が6つあること、2つの操作を続けて行うと6つのどれかになること（r のあとに s₁ をすると s₂）を確かめよう。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">この章では、ある有名なパズルの謎を解く。<strong>15パズル</strong>を知っているかな？ 4×4 のマスに、1 から 15 のタイルと空白が1つある。できるのは、空白のとなりのタイルを空白へすべらせることだけだ。1880年ごろ、アメリカで大流行したパズルなんだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">知っています。左上から 1, 2, 3, … と順に並べて、右下を空白にすれば「そろった状態」です。タイルは取り外せないので、空白を少しずつ動かしながら並べていくんですよね。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。では、こんな問題を考えよう。そろった状態から、14 と 15 のタイルだけを取り外して、入れ替えてはめ直す。この配置から、すべらせる動きだけで、そろった状態に戻せるかな？</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="pz-board" id="pz-p1" role="group" aria-label="15パズルの盤。空白と同じ行か列のタイルをタップすると、空白のほうへすべる"></div>
+        <div class="sim-controls" id="ctl-p1"></div>
+        <div class="readout" id="ro-p1"></div>
+        <div class="diagram-caption"><strong>15パズル</strong>。空白と同じ行か列にあるタイルをタップすると、空白のほうへすべる。「14 と 15 を入れ替えた配置」を押してから、そろった状態に戻せるか試してみよう。「よく混ぜる」は、そろった状態からタイルをすべらせて混ぜた配置を作る（こちらはそろえ直せる）</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">混ぜた配置はそろえ直せるのに、14 と 15 を入れ替えた配置は、ほかをそろえると、最後にどうしても 15, 14 の順で残ってしまいます。でも、動かし方は何通りでもあるので、まだ試していない動かし方でうまくいくかもしれません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">当時の人たちも、そう考えて挑戦し続けた。パズル作家のサム・ロイドは、この配置をそろえた人に 1000 ドルの賞金を出すと宣伝したと、のちに書き残している。けれど、賞金を受け取った人はいない。その前の1879年に、ジョンソンとストーリーという2人の数学者が、この配置は<strong>どう動かしてもそろわない</strong>ことを証明していたんだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbitThink.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">動かし方は限りなくあるのに、全部を試さないで「できない」と言い切れるんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">全部は試さない。そのかわりに、<strong>どう動かしても変わらない性質</strong>を見つけるんだ。そろった状態はその性質をもっていて、14 と 15 を入れ替えた配置はもっていない。そういう性質が見つかれば、どれだけ動かしてもたどり着けないと言い切れる。そのためには、「タイルを動かす」という<strong>操作そのものを、数のように計算する</strong>道具が要る。それが、この章で学ぶ<strong>群（ぐん）</strong>だ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">数なら足したり掛けたりできますが、「動かす」は数ではありません。操作どうしで計算するとは、どういうことですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">操作を続けて行うことを、掛け算のように考えるんだ。「空白を右に1つ動かしてから、上に1つ動かす」は、2つの操作から新しい1つの操作を作っているね。数の掛け算が 2 と 3 から 6 を作るのと同じ形だ。この考え方はパズルだけのものではない。インターネットの通信を守ってきた <strong>RSA 暗号</strong>は、「時計の算術」と呼ばれる群の性質で動いている。そして第4章では、「5次方程式には、なぜ解の公式がないのか」という大問題を、方程式の解を入れ替える操作の群で解き明かす。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">パズルの「入れ替え」と、時計の「回ってもとに戻る」と、方程式の解の「入れ替え」が、同じ道具で計算できるということですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。どれも「操作を続けて行う」「もとに戻す」という計算の仲間なんだ。この章でできるようになることを、まとめておこう。</div>
+        </div>
+      </div>
+
+      <div class="note-box"><span class="nb-title">この章でできるようになること</span>・回す・裏返す・入れ替えるといった操作を、掛け算のように計算できる<br>・操作の集まりがもつ共通の性質（群の4つの条件）を見分けられる<br>・時計の算術（mod）で、余りの世界の足し算・掛け算ができる<br>・群を等分割する考え方（ラグランジュの定理）から、フェルマーの小定理を証明できる<br>・RSA 暗号で、小さな数を実際に暗号化・復号できる<br>・入れ替えの偶数・奇数を使って、15パズルの謎を証明できる</div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">まず何から計算するんですか？ 15パズルは 16 マスにタイルと空白を並べるので、並べ方は 16×15×14×…×2×1 通りもあって、いきなり扱うには大きすぎます。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そうだね。だから、いちばん小さな例から始めよう。正三角形の板があって、頂点に 1, 2, 3 の番号が書いてある。はじめは、上の頂点に 1、左下に 2、右下に 3 がある。この板を持ち上げて、動かして、もとの三角形の枠にぴったりはめ直す。はめ直し方は何通りあるかな？ 板の表と裏も区別するよ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">頂点 1 をどの角に置くかで 3 通りです。頂点 1 の場所を決めると、残りの 2 と 3 の置き方は、表を上にした置き方と、裏返した置き方の 2 通りに決まります。だから 3×2＝<strong>6 通り</strong>です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。この6つの動かし方に名前をつけよう。何もしない動かし方を <strong>e</strong>、左回り（時計の針と逆向き）に 120° 回すのを <strong>r</strong>、240° 回すのを <strong>r²</strong> と書く。r を2回することだからね。裏返しは3つある。枠の上の角を通る縦の軸を<strong>軸1</strong>、左下の角を通る軸を<strong>軸2</strong>、右下の角を通る軸を<strong>軸3</strong> として、軸1, 2, 3 で裏返すのを <strong>s₁, s₂, s₃</strong> と書く。軸は枠のほうに固定されていて、板を動かしても動かない。この6つのように、形をぴったり重ねる動かし方の全体を、正三角形の<strong>対称性</strong>という。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 480 300" style="width:100%;max-width:500px;display:block;margin:0 auto" role="img" aria-label="正三角形の置き方の一覧"><polygon points="80.0,18.0 41.9,84.0 118.1,84.0" fill="#e9e4f7" stroke="#5b4a9e" stroke-width="2.4"/><text x="80" y="67" text-anchor="middle" font-size="13" font-weight="800" fill="#5b4a9e" stroke="#e9e4f7" stroke-width="5" paint-order="stroke">表</text><circle cx="80.0" cy="18.0" r="13" fill="#c8433f" stroke="#fff" stroke-width="1.5"/><text x="80.0" y="23.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">1</text><circle cx="41.9" cy="84.0" r="13" fill="#fff" stroke="#44377a" stroke-width="1.5"/><text x="41.9" y="89.5" text-anchor="middle" font-size="15" font-weight="900" fill="#221d33">2</text><circle cx="118.1" cy="84.0" r="13" fill="#fff" stroke="#44377a" stroke-width="1.5"/><text x="118.1" y="89.5" text-anchor="middle" font-size="15" font-weight="900" fill="#221d33">3</text><text x="80" y="124" text-anchor="middle" font-size="16" font-weight="900" fill="#221d33">e：(1, 2, 3)</text><polygon points="240.0,18.0 201.9,84.0 278.1,84.0" fill="#e9e4f7" stroke="#5b4a9e" stroke-width="2.4"/><text x="240" y="67" text-anchor="middle" font-size="13" font-weight="800" fill="#5b4a9e" stroke="#e9e4f7" stroke-width="5" paint-order="stroke">表</text><circle cx="240.0" cy="18.0" r="13" fill="#fff" stroke="#44377a" stroke-width="1.5"/><text x="240.0" y="23.5" text-anchor="middle" font-size="15" font-weight="900" fill="#221d33">3</text><circle cx="201.9" cy="84.0" r="13" fill="#c8433f" stroke="#fff" stroke-width="1.5"/><text x="201.9" y="89.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">1</text><circle cx="278.1" cy="84.0" r="13" fill="#fff" stroke="#44377a" stroke-width="1.5"/><text x="278.1" y="89.5" text-anchor="middle" font-size="15" font-weight="900" fill="#221d33">2</text><text x="240" y="124" text-anchor="middle" font-size="16" font-weight="900" fill="#221d33">r：(3, 1, 2)</text><polygon points="400.0,18.0 361.9,84.0 438.1,84.0" fill="#e9e4f7" stroke="#5b4a9e" stroke-width="2.4"/><text x="400" y="67" text-anchor="middle" font-size="13" font-weight="800" fill="#5b4a9e" stroke="#e9e4f7" stroke-width="5" paint-order="stroke">表</text><circle cx="400.0" cy="18.0" r="13" fill="#fff" stroke="#44377a" stroke-width="1.5"/><text x="400.0" y="23.5" text-anchor="middle" font-size="15" font-weight="900" fill="#221d33">2</text><circle cx="361.9" cy="84.0" r="13" fill="#fff" stroke="#44377a" stroke-width="1.5"/><text x="361.9" y="89.5" text-anchor="middle" font-size="15" font-weight="900" fill="#221d33">3</text><circle cx="438.1" cy="84.0" r="13" fill="#c8433f" stroke="#fff" stroke-width="1.5"/><text x="438.1" y="89.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">1</text><text x="400" y="124" text-anchor="middle" font-size="16" font-weight="900" fill="#221d33">r²：(2, 3, 1)</text><polygon points="80.0,168.0 41.9,234.0 118.1,234.0" fill="#f6e7c2" stroke="#9a6a1c" stroke-width="2.4"/><line x1="80.0" y1="154.8" x2="80.0" y2="245.0" stroke="#9a6a1c" stroke-width="1.6" stroke-dasharray="5 4"/><text x="80" y="217" text-anchor="middle" font-size="13" font-weight="800" fill="#9a6a1c" stroke="#f6e7c2" stroke-width="5" paint-order="stroke">裏</text><circle cx="80.0" cy="168.0" r="13" fill="#c8433f" stroke="#fff" stroke-width="1.5"/><text x="80.0" y="173.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">1</text><circle cx="41.9" cy="234.0" r="13" fill="#fff" stroke="#44377a" stroke-width="1.5"/><text x="41.9" y="239.5" text-anchor="middle" font-size="15" font-weight="900" fill="#221d33">3</text><circle cx="118.1" cy="234.0" r="13" fill="#fff" stroke="#44377a" stroke-width="1.5"/><text x="118.1" y="239.5" text-anchor="middle" font-size="15" font-weight="900" fill="#221d33">2</text><text x="80" y="274" text-anchor="middle" font-size="16" font-weight="900" fill="#221d33">s₁：(1, 3, 2)</text><polygon points="240.0,168.0 201.9,234.0 278.1,234.0" fill="#f6e7c2" stroke="#9a6a1c" stroke-width="2.4"/><line x1="190.5" y1="240.6" x2="268.6" y2="195.5" stroke="#9a6a1c" stroke-width="1.6" stroke-dasharray="5 4"/><text x="240" y="217" text-anchor="middle" font-size="13" font-weight="800" fill="#9a6a1c" stroke="#f6e7c2" stroke-width="5" paint-order="stroke">裏</text><circle cx="240.0" cy="168.0" r="13" fill="#fff" stroke="#44377a" stroke-width="1.5"/><text x="240.0" y="173.5" text-anchor="middle" font-size="15" font-weight="900" fill="#221d33">3</text><circle cx="201.9" cy="234.0" r="13" fill="#fff" stroke="#44377a" stroke-width="1.5"/><text x="201.9" y="239.5" text-anchor="middle" font-size="15" font-weight="900" fill="#221d33">2</text><circle cx="278.1" cy="234.0" r="13" fill="#c8433f" stroke="#fff" stroke-width="1.5"/><text x="278.1" y="239.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">1</text><text x="240" y="274" text-anchor="middle" font-size="16" font-weight="900" fill="#221d33">s₂：(3, 2, 1)</text><polygon points="400.0,168.0 361.9,234.0 438.1,234.0" fill="#f6e7c2" stroke="#9a6a1c" stroke-width="2.4"/><line x1="449.5" y1="240.6" x2="371.4" y2="195.5" stroke="#9a6a1c" stroke-width="1.6" stroke-dasharray="5 4"/><text x="400" y="217" text-anchor="middle" font-size="13" font-weight="800" fill="#9a6a1c" stroke="#f6e7c2" stroke-width="5" paint-order="stroke">裏</text><circle cx="400.0" cy="168.0" r="13" fill="#fff" stroke="#44377a" stroke-width="1.5"/><text x="400.0" y="173.5" text-anchor="middle" font-size="15" font-weight="900" fill="#221d33">2</text><circle cx="361.9" cy="234.0" r="13" fill="#c8433f" stroke="#fff" stroke-width="1.5"/><text x="361.9" y="239.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">1</text><circle cx="438.1" cy="234.0" r="13" fill="#fff" stroke="#44377a" stroke-width="1.5"/><text x="438.1" y="239.5" text-anchor="middle" font-size="15" font-weight="900" fill="#221d33">3</text><text x="400" y="274" text-anchor="middle" font-size="16" font-weight="900" fill="#221d33">s₃：(2, 1, 3)</text></svg>
+        <div class="diagram-caption"><strong>正三角形の6つの置き方</strong>。それぞれの動かし方をしたあと、上・左下・右下の角にある頂点の番号を (上, 左下, 右下) の順に書いた。上の段は回転（表のまま）、下の段は裏返し（点線が裏返しの軸）。赤い丸が頂点 1</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">r をすると、上にあった 1 は左下へ、左下の 2 は右下へ、右下の 3 は上へ行きます。上・左下・右下の順に番号を書くと (3, 1, 2) です。r² はそれをもう一度回すので (2, 3, 1) です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。では、2つの操作を続けて行ってみよう。r をしてから s₁ をすると、全体ではどの動かし方になるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">r で (3, 1, 2) になります。s₁ は上の角を通る縦の軸での裏返しなので、上の 3 はそのままで、左下と右下が入れ替わって (3, 2, 1)。2 が最初と同じ左下にあって、板は裏返っています。左下を通る軸2 で裏返したのと同じ置き方なので、<strong>s₂</strong> です。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">はじめ：<span class="nw">(1, 2, 3)</span>（上・左下・右下の角にある頂点の番号）</span>
+        <span class="step">r（左回りに 120°）：上の頂点は左下へ、左下は右下へ、右下は上へ → <span class="nw">(3, 1, 2)</span></span>
+        <span class="step">続けて s₁（軸1 で裏返す）：上はそのまま、左下と右下が入れ替わる → <span class="nw">(3, 2, 1)</span></span>
+        <span class="step">頂点 2 だけがもとの角にあり、板は裏 → 軸2 での裏返しと同じ。r のあとに s₁ をすると <span class="nw">s₂</span></span>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-tri1" aria-label="正三角形の板。ボタンで左回りに120°回したり、軸1から3で裏返したりできる"></canvas></div>
+        <div class="sim-controls" id="ctl-tri1"></div>
+        <div class="readout" id="ro-tri1"></div>
+        <div class="diagram-caption"><strong>正三角形を動かす</strong>。ボタンで r（左回りに 120°）と、軸1〜3 での裏返し s₁, s₂, s₃ を続けて行える。点線の軸は枠に固定されていて動かない。赤い丸が頂点 1。いまの並び（上・左下・右下の番号）と、これまでの操作を1つにまとめると e, r, r², s₁, s₂, s₃ のどれになるかを表示する</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。「操作 a のあとに操作 b をする」ことを <strong>ab</strong> と書いて、a と b の<strong>積</strong>と呼ぶ。左から順に行う、という約束だ。いまの計算は rs₁＝s₂ と書ける。では、順番を逆にして、s₁ のあとに r をすると？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">s₁ で (1, 3, 2)。r で、上の 1 が左下へ、左下の 3 が右下へ、右下の 2 が上へ行くので (2, 1, 3)。3 だけがもとの右下にあって裏返っているので s₃ です。<strong>s₁r＝s₃</strong> で、rs₁＝s₂ と違います。数の掛け算は 2×3＝3×2 なのに、操作の積は順番で結果が変わるんですね。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。靴下をはいてから靴をはくのと、靴をはいてから靴下をはくのとでは、結果が違うね。操作は順番が大事なんだ。もう1つ大事なことがある。6つのうちのどの2つを続けて行っても、結果は必ず6つのどれかと同じになる。なぜかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">1回目の操作のあと、板は枠にぴったりはまっています。そこから2回目の操作をしても、やはりぴったりはまります。ぴったりはまる置き方は全部で6通りしかないので、2回続けた結果も、6つのどれか1つの操作をしたときと同じ置き方になります。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。このことを、6つの操作は積について<strong>閉じている</strong>という。そして e は、数の 1 のような役割をする。e のあとに a をしても、a のあとに e をしても、a だけをしたのと同じだからね。では、r をしたあと、もとに戻すには何をすればいいかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">あと 240° 回せば合わせて 360° でひと回りなので、r² をすれば戻ります。rr²＝e です。s₁ は、同じ軸でもう一度裏返せば戻るので s₁s₁＝e。どの操作にも、もとに戻す操作がこの6つの中にあります。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。操作 a を打ち消してもとに戻す操作を、a の<strong>逆</strong>と呼んで <strong>a⁻¹</strong> と書く。r⁻¹＝r²、s₁⁻¹＝s₁ だ。積が6つの中で閉じていること、何もしない e があること、どれにも逆があること。この3つが、次のステージで定義する「群」の中心になる。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">15パズルの1手にも、もとに戻す操作がありますね。空白を右に動かしたら、左に動かせばもとに戻ります。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。正三角形の6つの操作は、3つの頂点の置き場所の入れ替えになっている。15パズルの1手も、空白とタイルの置き場所の入れ替えだ。どちらも「入れ替え」の計算として、同じ道具で扱えるんだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">3つの頂点の並べ方は 3×2×1＝6 通りで、正三角形の操作も6つなので、正三角形の動かし方で、3つの頂点のどんな並べ方も作れるということですね。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。次のステージでは、6つの操作どうしの積を全部計算して<strong>掛け算表</strong>を作り、そこから群の正確な定義に進もう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">14 と 15 を入れ替えた15パズルは、すべらせるだけではそろわない（1879年に証明）。全部を試すかわりに「どう動かしても変わらない性質」を探す</span>
+        <span class="step">操作そのものを計算する道具が群。パズル・暗号（RSA）・方程式の解の公式（第4章）につながる</span>
+        <span class="step">正三角形を枠にはめ直す動かし方は 3×2＝6 通り：e, r, r²（回転）と s₁, s₂, s₃（裏返し）</span>
+        <span class="step">「a のあとに b」を積 ab と書く。<span class="nw">rs₁＝s₂</span>、<span class="nw">s₁r＝s₃</span> で、順番を変えると結果が変わる</span>
+        <span class="step">6つの操作は積について閉じていて、何もしない e があり、どれにも逆（<span class="nw">r⁻¹＝r²</span>、<span class="nw">s₁⁻¹＝s₁</span>）がある</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. 正三角形の板を、枠にぴったりはめ直す動かし方（表と裏も区別する）は何通り？</p>
+        <div class="choice-list">
+          <button class="choice-btn">3 通り</button>
+          <button class="choice-btn">9 通り</button>
+          <button class="choice-btn">6 通り</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 頂点 1 を置く角が 3 通り、そのたびに表のままか裏返すかの 2 通りで、3×2＝6 通り。回転 e, r, r² と裏返し s₁, s₂, s₃。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. r（左回りに 120°）のあとに s₁（上の角を通る軸1 で裏返す）をした積 rs₁ は、6つの操作のどれと同じ？</p>
+        <div class="choice-list">
+          <button class="choice-btn">s₂</button>
+          <button class="choice-btn">s₃</button>
+          <button class="choice-btn">r²</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ (1, 2, 3) が r で (3, 1, 2)、s₁ で (3, 2, 1)。左下の 2 だけがもとの位置で裏返っているので、軸2 での裏返し s₂。逆順の s₁r は s₃ になる。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. 14 と 15 を入れ替えた15パズルが「どう動かしてもそろわない」と言い切るために、この章でとる方法は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">すべての動かし方を順に試す</button>
+          <button class="choice-btn">どう動かしても変わらない性質を見つける</button>
+          <button class="choice-btn">タイルを取り外して並べ直す</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 動かし方は限りなくあるので全部は試せない。そろった状態はもっていて、14 と 15 を入れ替えた配置はもっていない「動かしても変わらない性質」を、群の道具で見つける。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("groups", 1);</script>
+<script>
+(function puzzle(cfg) {
+  const host = document.getElementById("pz-" + cfg.id), ro = document.getElementById("ro-" + cfg.id), ctl = document.getElementById("ctl-" + cfg.id);
+  const inner = document.createElement("div"); inner.className = "pz-in"; host.appendChild(inner);
+  if (cfg.parity) host.classList.add("pz-par");
+  const SOLVED = []; for (let i = 1; i <= 15; i++) SOLVED.push(i); SOLVED.push(0);
+  let s = SOLVED.slice(), moves = 0, sticker = false, sel = null, busy = false, swapped = 0;
+  const tiles = {};
+  for (let i = 0; i < 16; i++) {
+    const c = document.createElement("div"); c.className = "pz-cell " + (((i >> 2) + (i & 3)) % 2 ? "c1" : "c0");
+    c.style.left = (i % 4) * 25 + "%"; c.style.top = Math.floor(i / 4) * 25 + "%"; inner.appendChild(c);
+  }
+  for (let t = 1; t <= 15; t++) {
+    const b = document.createElement("button"); b.type = "button"; b.className = "pz-tile"; b.setAttribute("aria-label", "タイル " + t);
+    b.innerHTML = "<span>" + t + "</span>";
+    b.addEventListener("click", () => onTile(t));
+    inner.appendChild(b); tiles[t] = b;
+  }
+  const layout = () => {
+    s.forEach((t, i) => { if (t) { tiles[t].style.left = (i % 4) * 25 + "%"; tiles[t].style.top = Math.floor(i / 4) * 25 + "%"; tiles[t].classList.toggle("sel", sel === t); } });
+    show();
+  };
+  const blank = () => s.indexOf(0);
+  const stepTo = (cell) => { const b = blank(); s[b] = s[cell]; s[cell] = 0; moves++; };
+  function onTile(t) {
+    if (busy) return;
+    if (sticker) {
+      if (sel === null) { sel = t; layout(); return; }
+      if (sel !== t) { const i = s.indexOf(sel), j = s.indexOf(t); s[i] = t; s[j] = sel; swapped++; }
+      sel = null; layout(); return;
+    }
+    const i = s.indexOf(t), b = blank();
+    const ri = Math.floor(i / 4), ci = i % 4, rb = Math.floor(b / 4), cb = b % 4;
+    if (ri !== rb && ci !== cb) return;
+    const d = ri === rb ? (ci > cb ? 1 : -1) : (ri > rb ? 4 : -4);
+    while (blank() !== i) stepTo(blank() + d);
+    layout();
+  }
+  function inv() { const a = s.map((x) => x || 16); let c = 0; for (let i = 0; i < 16; i++) for (let j = i + 1; j < 16; j++) if (a[i] > a[j]) c++; return c; }
+  function show() {
+    const b = blank(), dist = (3 - Math.floor(b / 4)) + (3 - b % 4);
+    const solved = s.every((x, i) => x === SOLVED[i]);
+    let h = "<span>動かした回数：<b>" + moves + "</b></span>";
+    if (cfg.parity) {
+      const iv = inv();
+      h += "<span>転倒数（空白を16として）：<b>" + iv + "</b>（" + (iv % 2 ? "奇数" : "偶数") + "）</span>";
+      h += "<span>空白の右下からの距離：<b>" + dist + "</b>（" + (dist % 2 ? "奇数" : "偶数") + "）</span>";
+      const ok = (iv + dist) % 2 === 0;
+      h += "<span class=\"" + (ok ? "ok" : "ng") + "\">2つの和は<b>" + (ok ? "偶数 → そろえられる配置" : "奇数 → そろえられない配置") + "</b></span>";
+    }
+    if (solved) h += "<span class=\"ok\"><b>そろった！</b></span>";
+    else if (s[13] === 15 && s[14] === 14 && s.every((x, i) => i === 13 || i === 14 || x === SOLVED[i])) h += "<span class=\"ng\"><b>14 と 15 だけが入れ替わっている</b></span>";
+    if (sticker) h += "<span>シール貼り替えモード：入れ替える2枚を順にタップ</span>";
+    ro.innerHTML = h;
+  }
+  const btn = (label, fn) => { const b = document.createElement("button"); b.type = "button"; b.className = "btn"; b.textContent = label; b.addEventListener("click", fn); ctl.appendChild(b); return b; };
+  btn("そろった状態", () => { s = SOLVED.slice(); moves = 0; sel = null; layout(); });
+  btn("14 と 15 を入れ替えた配置", () => { s = SOLVED.slice(); s[13] = 15; s[14] = 14; moves = 0; sel = null; layout(); });
+  btn("よく混ぜる", () => {
+    let prev = -1;
+    for (let k = 0; k < 300; k++) {
+      const b = blank(), r = Math.floor(b / 4), c = b % 4, opt = [];
+      if (r > 0) opt.push(b - 4); if (r < 3) opt.push(b + 4); if (c > 0) opt.push(b - 1); if (c < 3) opt.push(b + 1);
+      const cand = opt.filter((x) => x !== prev), pick = cand[Math.floor(Math.random() * cand.length)];
+      prev = b; stepTo(pick);
+    }
+    moves = 0; sel = null; layout();
+  });
+  if (cfg.loop) {
+    btn("空白で右下の2×2を1周", () => {
+      if (busy || sticker) return;
+      if (blank() !== 15) { ro.innerHTML += "<span class=\"ng\">空白を右下のマスに置いてから押してね</span>"; return; }
+      busy = true; const path = [11, 10, 14, 15]; let k = 0;
+      const go = () => { stepTo(path[k]); layout(); k++; if (k < path.length) setTimeout(go, FL.reducedMotion() ? 0 : 320); else busy = false; };
+      go();
+    });
+  }
+  if (cfg.sticker) {
+    const sb = btn("シールを貼り替える", () => { sticker = !sticker; sel = null; sb.setAttribute("aria-pressed", sticker ? "true" : "false"); layout(); });
+    sb.setAttribute("aria-pressed", "false");
+  }
+  layout();
+})({"id":"p1"});
+(function polyWidget(cfg) {
+  const cvId = "cv-" + cfg.id, ro = document.getElementById("ro-" + cfg.id), ctl = document.getElementById("ctl-" + cfg.id);
+  const n = cfg.n, A = [];
+  for (let k = 0; k < n; k++) A.push(cfg.start + k * 360 / n);
+  const norm = (d) => ((d % 360) + 360) % 360;
+  const nearest = (deg) => { let best = 0, bd = 999; for (let k = 0; k < n; k++) { const d = Math.abs(norm(A[k] - deg + 180) - 180); if (d < bd) { bd = d; best = k; } } return best; };
+  // 位置の写し方（位置 k の中身が移る先の位置）
+  const mapOf = (key) => {
+    const o = cfg.ops[key], m = [];
+    for (let k = 0; k < n; k++) m.push(o.kind === "rot" ? (k + 1) % n : nearest(2 * o.axis - A[k]));
+    return m;
+  };
+  const MAPS = {}; Object.keys(cfg.ops).forEach((k) => { MAPS[k] = mapOf(k); });
+  const compose = (m1, m2) => m1.map((p) => m2[p]);
+  const ident = () => { const m = []; for (let k = 0; k < n; k++) m.push(k); return m; };
+  const named = (cfg.named || []).map((x) => ({ name: x.name, m: x.seq.reduce((acc, key) => compose(acc, MAPS[key]), ident()) }));
+  const nameOf = (m) => { const f = named.find((x) => x.m.every((v, i) => v === m[i])); return f ? f.name : "?"; };
+
+  let pos = ident();        // pos[j]：もともと位置 j にあった頂点（番号 j+1）がいまいる位置
+  let front = true, M = ident(), hist = [], seen = {}, busy = false, queue = [];
+  let anim = null;          // {key, t}
+
+  const st = FL.canvas(cvId, cfg.aspect || 0.78, draw);
+  function pt(deg, R, v) { const r = deg * Math.PI / 180; return [v.X(R * Math.cos(r)), v.Y(R * Math.sin(r))]; }
+  function draw(st) {
+    const ctx = st.ctx; ctx.clearRect(0, 0, st.W, st.H); ctx.fillStyle = FL.C.paper; ctx.fillRect(0, 0, st.W, st.H);
+    const v = FL.view(st, cfg.span || 3.3, 0, cfg.cy || 0);
+    const R = 1;
+    // 頂点の座標（アニメーション中は途中の形）
+    let cosF = 1;
+    const P = [];
+    for (let j = 0; j < n; j++) {
+      const deg = A[pos[j]];
+      let x = Math.cos(deg * Math.PI / 180) * R, y = Math.sin(deg * Math.PI / 180) * R;
+      if (anim) {
+        const o = cfg.ops[anim.key];
+        if (o.kind === "rot") {
+          const t = anim.t * 2 * Math.PI / n, c = Math.cos(t), s = Math.sin(t);
+          const nx = x * c - y * s, ny = x * s + y * c; x = nx; y = ny;
+        } else {
+          const u = [Math.cos(o.axis * Math.PI / 180), Math.sin(o.axis * Math.PI / 180)];
+          const d = x * u[0] + y * u[1];
+          cosF = Math.cos(Math.PI * anim.t);
+          const px = x - d * u[0], py = y - d * u[1];
+          x = d * u[0] + cosF * px; y = d * u[1] + cosF * py;
+        }
+      }
+      P.push([v.X(x), v.Y(y)]);
+    }
+    const showFront = cosF >= 0 ? front : !front;
+    ctx.beginPath(); P.forEach((p, i) => (i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]))); ctx.closePath();
+    ctx.fillStyle = showFront ? "#e9e4f7" : "#f6e7c2"; ctx.fill();
+    ctx.strokeStyle = showFront ? FL.C.theme : FL.C.gold; ctx.lineWidth = 2.5; ctx.stroke();
+    // 軸（空間に固定）
+    (cfg.axisLabels || []).forEach((ax) => {
+      const a = pt(ax.deg, 1.22, v), b = pt(ax.deg + 180, cfg.n === 3 ? 0.72 : 1.22, v);
+      FL.line(ctx, a[0], a[1], b[0], b[1], "rgba(91,74,158,.45)", 1.4, [5, 4]);
+      const l = pt(ax.deg, 1.4, v);
+      FL.text(ctx, ax.text, l[0], l[1], { size: 12, color: FL.C.muted, align: "center", base: "middle", halo: true });
+    });
+    let cx = 0, cy = 0; P.forEach((p) => { cx += p[0] / n; cy += p[1] / n; });
+    ctx.save(); ctx.fillStyle = showFront ? "#e9e4f7" : "#f6e7c2"; ctx.beginPath(); ctx.arc(cx, cy, 12, 0, 7); ctx.fill(); ctx.restore();
+    FL.text(ctx, showFront ? "表" : "裏", cx, cy, { size: 15, color: showFront ? FL.C.theme : FL.C.gold, align: "center", base: "middle" });
+    P.forEach((p, j) => {
+      FL.dot(ctx, p[0], p[1], 14, j === 0 ? FL.C.red : "#fff", j === 0 ? "#fff" : FL.C.themeDark);
+      FL.text(ctx, String(j + 1), p[0], p[1] + 1, { size: 15, color: j === 0 ? "#fff" : FL.C.ink, align: "center", base: "middle" });
+    });
+  }
+  function readout() {
+    if (cfg.hideReadout || !ro) return;
+    const order = []; for (let k = 0; k < n; k++) order.push(pos.indexOf(k) + 1);
+    let html = "";
+    if (cfg.posNames) html += "<span>並び（" + cfg.posNames.join("・") + "）：<b>(" + order.join(", ") + ")</b>" + (front ? "" : "　裏") + "</span>";
+    if (cfg.collect) {
+      const key = order.join("") + (front ? "+" : "-");
+      seen[key] = 1;
+      html += "<span>見つけた置き方：<b>" + Object.keys(seen).length + " / " + (2 * n) + "</b></span>";
+    } else {
+      const h = hist.length ? hist.map((k) => cfg.ops[k].short).join(" ") : "（まだ何もしていない）";
+      html += "<span>した操作：<b>" + h + "</b></span>";
+      if (hist.length) html += "<span>1つにまとめると：<b>" + nameOf(M) + "</b></span>";
+    }
+    ro.innerHTML = html;
+  }
+  function apply(key, done) {
+    const fin = () => {
+      pos = pos.map((p) => MAPS[key][p]);
+      if (cfg.ops[key].kind === "flip") front = !front;
+      M = compose(M, MAPS[key]); hist.push(key); if (hist.length > 10) hist = hist.slice(-10);
+      anim = null; st.redraw(); readout(); done && done();
+    };
+    if (FL.reducedMotion()) { fin(); return; }
+    anim = { key: key, t: 0 };
+    const steps = 16; let i = 0;
+    const tick = () => { i++; anim.t = Math.min(1, i / steps); st.redraw(); if (i < steps) setTimeout(tick, 22); else fin(); };
+    setTimeout(tick, 22);
+  }
+  function next() {
+    if (busy || !queue.length) return;
+    busy = true; const job = queue.shift();
+    apply(job.key, () => { busy = false; job.done && job.done(); next(); });
+  }
+  const api = {
+    push: (key, done) => { queue.push({ key: key, done: done }); next(); },
+    play: (seq, done) => { api.reset(); seq.forEach((k, i) => queue.push({ key: k, done: i === seq.length - 1 ? done : null })); setTimeout(next, 250); },
+    reset: () => { queue = []; pos = ident(); front = true; M = ident(); hist = []; anim = null; st.redraw(); readout(); }
+  };
+  if (ctl) {
+    cfg.buttons.forEach((key) => {
+      const b = document.createElement("button"); b.className = "btn"; b.type = "button"; b.innerHTML = cfg.ops[key].label;
+      b.addEventListener("click", () => api.push(key)); ctl.appendChild(b);
+    });
+    const r = document.createElement("button"); r.className = "btn"; r.type = "button"; r.textContent = cfg.resetLabel || "最初の置き方に戻す";
+    r.addEventListener("click", () => { api.reset(); }); ctl.appendChild(r);
+  }
+  readout();
+  return api;
+})({"id":"tri1","n":3,"start":90,"span":2.7,"cy":0.36,"aspect":0.66,"ops":{"r":{"label":"r（左回りに120°）","kind":"rot","short":"r"},"s1":{"label":"s₁（軸1で裏返す）","kind":"flip","axis":90,"short":"s₁"},"s2":{"label":"s₂（軸2で裏返す）","kind":"flip","axis":210,"short":"s₂"},"s3":{"label":"s₃（軸3で裏返す）","kind":"flip","axis":330,"short":"s₃"}},"buttons":["r","s1","s2","s3"],"named":[{"name":"e","seq":[]},{"name":"r","seq":["r"]},{"name":"r²","seq":["r","r"]},{"name":"s₁","seq":["s1"]},{"name":"s₂","seq":["s2"]},{"name":"s₃","seq":["s3"]}],"posNames":["上","左下","右下"],"axisLabels":[{"deg":90,"text":"軸1"},{"deg":210,"text":"軸2"},{"deg":330,"text":"軸3"}]});
+</script>
+</body>
+</html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第1章 STAGE3 時計の算術（mod の計算と巡回群） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="mod（合同式）の計算を中学生向けに解説。時計のように割った余りで計算する世界を作り、mod n の足し算が群になること、p が素数なら mod p の 0 以外の掛け算も群になる理由を確かめる。位数と巡回群も学ぶ。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/groups/stage3">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第1章 STAGE3 時計の算術（mod の計算と巡回群） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="9 時の 5 時間後は 2 時。割った余りで計算する「時計の算術」が群になるしくみと、mod 6 では掛け算がうまくいかない理由。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/groups/stage3">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE3 時計の算術",
+      "description": "mod（合同式）の計算を中学生向けに解説。時計のように割った余りで計算する世界を作り、mod n の足し算が群になること、p が素数なら mod p の 0 以外の掛け算も群になる理由を確かめる。位数と巡回群も学ぶ。",
+      "url": "https://algebra.habatakijuku.com/groups/stage3",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 3,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第1章 対称性を計算する",
+        "url": "https://algebra.habatakijuku.com/groups/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第1章 対称性を計算する",
+          "item": "https://algebra.habatakijuku.com/groups/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE3 時計の算術",
+          "item": "https://algebra.habatakijuku.com/groups/stage3"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+.mt-wrap{overflow-x:auto;max-width:100%;margin-top:6px}
+.num-table.mt{font-size:14px}
+.num-table.mt th,.num-table.mt td{padding:3px 6px;min-width:1.7em}
+@media(max-width:480px){.num-table.mt{font-size:11.5px}.num-table.mt th,.num-table.mt td{padding:2px 3px}}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第1章 対称性を計算する ／ STAGE 3 ― 時計の算術 ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第1章 STAGE 3</span><h1 class="chapter-title">時計の算術</h1>
+        <div class="chapter-sub">余りの世界の足し算と掛け算</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">mod n の足し算が群になること、p が素数なら mod p の 0 以外の数が掛け算で群になる理由（掛け算表のどの行にも 1 が1回）を説明しよう。mod 7 で 3 の累乗が 1 から 6 を全部回る（3 は生成元）ことを確かめれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">この章の最後に15パズルを解くときも、STAGE5 で暗号を作るときも、「何回かくり返すと、もとに戻る」計算が要る。いちばん身近な例は時計だ。いま 9 時だとして、5 時間後は何時かな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">9＋5＝14 ですが、時計は 12 でひと回りするので、14−12＝2 で 2 時です。12 時間ごとに同じ時刻に戻るので、足した結果を 12 で割った余りを見ればいいです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。時計の 12 時を 0 と読みかえると、時刻は 0 から 11 の 12 個で、足し算は「足してから 12 で割った余りをとる」ことになる。2つの整数 a と b を n で割った余りが等しいとき、<strong>a ≡ b (mod n)</strong> と書いて、「mod n で a と b は合同」と読む。mod は、ラテン語で「尺度」を意味する modulus（モジュラス）を略した言葉だ。たとえば 14 ≡ 2 (mod 12) だ。そして、余りだけで計算する世界を「<strong>mod n の世界</strong>」と呼ぼう。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">a を n で割った商を q、余りを r とすると a＝qn＋r です。b も余りが同じ r なら b＝q′n＋r。引くと a−b＝(q−q′)n なので、a ≡ b (mod n) は「a−b が n で割り切れる」と言いかえられます。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。その言いかえは便利だから覚えておこう。では、余りだけで計算してよい理由を確かめよう。a を n で割った余りが r、b を n で割った余りが r′ のとき、a＋b や ab を n で割った余りは、r と r′ だけで決まるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">a＝qn＋r、b＝q′n＋r′ とします。a＋b＝(q＋q′)n＋(r＋r′) なので、a＋b と r＋r′ の差は n の倍数です。掛け算は、ab＝qq′n²＋qr′n＋q′rn＋rr′＝(qq′n＋qr′＋q′r)n＋rr′ なので、ab と rr′ の差も n の倍数です。どちらも、余り r, r′ だけで決まります。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">a を n で割った余りを r、b を n で割った余りを r′ とする：<span class="nw">a＝qn＋r</span>、<span class="nw">b＝q′n＋r′</span></span>
+        <span class="step">足し算：<span class="nw">a＋b＝(q＋q′)n＋(r＋r′)</span> → <span class="nw">a＋b ≡ r＋r′ (mod n)</span></span>
+        <span class="step">掛け算：<span class="nw">ab＝qq′n²＋qr′n＋q′rn＋rr′</span><br><span class="nw">＝(qq′n＋qr′＋q′r)n＋rr′</span>（n でくくる） → <span class="nw">ab ≡ rr′ (mod n)</span></span>
+        <span class="step">だから、大きな数も先に余りに置きかえてから計算してよい</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。たとえば、100×100 を 7 で割った余りを、10000 を割らずに求めてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">100＝7×14＋2 なので 100 ≡ 2 (mod 7)。だから 100×100 ≡ 2×2＝4 (mod 7) です。確かめると、10000＝7×1428＋4 で、余りは 4 です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。では、mod n の足し算が群になっているか確かめよう。集まりは 0, 1, …, n−1 の n 個、計算は「足して n で割った余り」だ。群の4つの条件は、閉じている・結合法則・単位元・逆元だったね。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">足して余りをとれば 0 から n−1 のどれかなので、閉じています。結合法則は、ふつうの足し算で成り立っていて、余りだけで計算しても結果が変わらないので成り立ちます。単位元は 0。a の逆元は n−a で、a＋(n−a)＝n ≡ 0 です。0 の逆元は 0 です。群になっています。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。これを「mod n の足し算の群」と呼ぼう。数が n 個ある群だ。では掛け算はどうか。0 を掛けるといつも 0 になって、もとに戻せない。だから 0 を除いた 1 から n−1 で考える。mod 7 と mod 6 で掛け算表を作って比べてごらん。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="sim-controls">
+          <label>mod <select id="sel-mtn"><option value="5">5</option><option value="6">6</option><option value="7" selected>7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select></label>
+          <label>計算 <select id="sel-mtm"><option value="mul">掛け算（0 を除く）</option><option value="add">足し算</option></select></label>
+        </div>
+        <div id="tb-mt" class="mt-wrap"></div>
+        <div class="readout" id="ro-mt"></div>
+        <div class="diagram-caption"><strong>mod n の掛け算表</strong>。行の数と列の数を掛けて n で割った余りを書いた。緑のマスが 1、赤のマスが 0。mod 7 や mod 11 のように n が素数なら、どの行にも 1 から n−1 がちょうど1回ずつ出る。mod 6 や mod 8 では 0 が出て、1 のない行がある。「足し算」に切りかえると、mod n の足し算の表（緑が 0）になる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">mod 7 の表では、どの行にも 1 から 6 がちょうど1回ずつ出ていて、1 もどの行にもあります。だから、どの数にも、掛けて 1 になる相手がいます。たとえば 3×5＝15 ≡ 1 なので、3 の逆元は 5 です。mod 6 の表では、2×3＝6 ≡ 0 で、0 が出てきてしまいます。2 の行は 2, 4, 0, 2, 4 で、1 がありません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。mod 6 では、0 でない数どうしを掛けても 0 になることがあるから、1 から 5 の中で閉じていないし、2 には逆元もない。群にならないんだ。では、mod 7 ではなぜいつもうまくいくのか。7 が素数であることが効いてくる。p を素数として、1 から p−1 のある数 a の行を考えよう。その行に同じ数が2回出たとする。つまり、1 から p−1 の異なる x, y（x＞y とする）で a×x ≡ a×y (mod p) になったとする。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbitThink.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">a×x−a×y＝a(x−y) が p で割り切れます。a(x−y) を素因数分解すると p が出てきます。素因数分解はただ1通りなので、その p は、a の素因数分解か x−y の素因数分解のどちらかから来ているはずです。でも、a も x−y も 1 以上 p−1 以下で、p で割り切れません。矛盾です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。素因数分解がただ1通りであることは、中学校から使ってきたね。なぜただ1通りなのかは、第2章でじっくり調べる。これで、a の行に同じ数が2回出ないことが分かった。それから、a×x が 0 になることもないね。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">a も x も p で割り切れないので、同じ理由で a×x も p で割り切れません。だから a の行の p−1 個のマスには、1 から p−1 の p−1 個の数が、重ならずに全部入ります。1 も必ず1回入るので、a×x ≡ 1 となる x、つまり a の逆元があります。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。だから、<strong>p が素数なら、mod p の 1 から p−1 は掛け算で群になる</strong>。単位元は 1 だ。これを「mod p の掛け算の群」と呼ぼう。数が p−1 個ある群だね。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">mod 6 でうまくいかなかったのは、6＝2×3 と分けられるので、6 で割り切れない 2 と 3 を掛けた積が、6 で割り切れてしまうからですね。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。次は、1つの数をくり返し掛けていこう。mod 7 で、3, 3², 3³, … を順に計算してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">3、3²＝9 ≡ 2、3³ ≡ 2×3＝6、3⁴ ≡ 6×3＝18 ≡ 4、3⁵ ≡ 4×3＝12 ≡ 5、3⁶ ≡ 5×3＝15 ≡ 1。6 回目で 1 に戻りました。途中で 1 から 6 が全部1回ずつ出ています。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">mod 7 で 3 をくり返し掛ける（1つ前の余りに 3 を掛けて、7 で割った余りをとる）</span>
+        <span class="step"><span class="nw">3¹ ≡ 3</span>、<span class="nw">3² ≡ 9 ≡ 2</span>、<span class="nw">3³ ≡ 2×3＝6</span>、<span class="nw">3⁴ ≡ 6×3＝18 ≡ 4</span>、<span class="nw">3⁵ ≡ 4×3＝12 ≡ 5</span>、<span class="nw">3⁶ ≡ 5×3＝15 ≡ 1</span></span>
+        <span class="step">1 から 6 が全部出て、6 回目で 1 に戻る → 3 の位数は 6、3 は生成元</span>
+        <span class="step">2 なら <span class="nw">2¹ ≡ 2</span>、<span class="nw">2² ≡ 4</span>、<span class="nw">2³ ≡ 8 ≡ 1</span> → 3 回で戻る。2 の位数は 3</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。群の要素 a をくり返し掛けて、はじめて単位元になる回数を、a の<strong>位数（いすう）</strong>という。mod 7 の掛け算の群で、3 の位数は 6 だ。では 2 はどうかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">2, 4, 8 ≡ 1。3 回で 1 に戻るので、2 の位数は 3 です。2 を掛け続けても 2, 4, 1 しか出てこなくて、3, 5, 6 には行きません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。3 のように、くり返し掛けるだけで群の要素を全部作れる要素を<strong>生成元</strong>という。そして、1つの生成元の累乗で全部が書ける群を<strong>巡回群</strong>と呼ぶ。くるくる回って全部を巡るからだ。mod 7 の掛け算の群は、3 を生成元とする巡回群なんだ。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-ck" aria-label="mod n の数を時計のように円周に並べ、選んだ数をくり返し足す、または掛けるときの行き先を矢印で結ぶ図"></canvas></div>
+        <div class="sim-controls">
+          <label>mod <input type="range" id="in-ckn" min="2" max="13" value="7"><output id="out-ckn">7</output></label>
+          <label>計算 <select id="sel-ckm"><option value="mul">×a をくり返す（1 から）</option><option value="add">＋a をくり返す（0 から）</option></select></label>
+          <label>a <input type="range" id="in-cka" min="0" max="6" value="3"><output id="out-cka">3</output></label>
+        </div>
+        <div class="readout" id="ro-ck"></div>
+        <div class="diagram-caption"><strong>mod n の時計</strong>。0 から n−1 を時計のように並べ、1 から「×a」を（または 0 から「＋a」を）くり返したときの行き先を矢印で結んだ。金の点が出発点、紫の点が通った数。何回で出発点に戻るか（位数）と、全部の数を通るか（生成元か）を表示する</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">mod n の足し算の群も、0 から 1 を足し続ければ 0 から n−1 を全部通るので、1 が生成元の巡回群です。正三角形の回転 e, r, r² も、r をくり返すだけで全部出てくるので巡回群です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。では、正三角形の6つの操作の群全体は、巡回群かな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">巡回群なら、位数が 6 の操作が1つあるはずです。でも r と r² は3回で e に戻るので位数 3、s₁, s₂, s₃ は2回で戻るので位数 2、e は位数 1 です。位数 6 の操作がないので、巡回群ではありません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。巡回群では a<sup>m</sup>a<sup>n</sup>＝a<sup>m＋n</sup>＝a<sup>n</sup>a<sup>m</sup> だから、いつでも順番を入れかえられる。順番で結果が変わる正三角形の群は、その点からも巡回群ではないと分かるね。最後に、ここまでに出てきた位数を並べてみよう。mod 7 の掛け算の群は 6 個の数からなり、位数は 1, 2, 3, 6 のどれかになる。正三角形の群も 6 個で、位数は 1, 2, 3 だ。どちらも、位数が群の個数 6 の約数になっている。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">mod 7 の掛け算の群で全部の位数を出すと、1 は 1、2 は 3、3 は 6、4 は 3、5 は 6、6 は 2 です。6²＝36 ≡ 1 だからです。確かに全部 6 の約数で、位数 4 や 5 の数はありません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。これは偶然ではない。次のステージで、その理由を証明する。そこから、暗号のもとになる「フェルマーの小定理」が出てくるんだ。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step"><span class="nw">a ≡ b (mod n)</span>：a と b を n で割った余りが等しい ⇔ a−b が n で割り切れる</span>
+        <span class="step">足し算・掛け算の結果の余りは、もとの数の余りだけで決まる → 余りに置きかえて計算してよい</span>
+        <span class="step">mod n の足し算は群（単位元 0、a の逆元 n−a）</span>
+        <span class="step">p が素数なら mod p の 1〜p−1 は掛け算で群：a の行に同じ数が2回出ない（素因数分解の一意性）→ 1 が必ず1回出る。mod 6 では 2×3 ≡ 0 で群にならない</span>
+        <span class="step">位数：くり返して初めて単位元になる回数。mod 7 で 3 の位数は 6（生成元）→ 巡回群。正三角形の群は位数 6 の操作がなく巡回群でない</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. mod 7 で 3 の逆元（掛けて 1 になる数）は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">4</button>
+          <button class="choice-btn">5</button>
+          <button class="choice-btn">3</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 3×5＝15＝7×2＋1 なので 3×5 ≡ 1 (mod 7)。mod 7 の掛け算表の 3 の行で、1 が出るのは 5 の列。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. mod 6 の 1〜5 が掛け算で群にならない理由として正しいものは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">2×3 ≡ 0 となり閉じておらず、2 の行に 1 がない（逆元がない）から</button>
+          <button class="choice-btn">6 が偶数だから</button>
+          <button class="choice-btn">掛け算の結合法則が成り立たないから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 6＝2×3 なので 2×3＝6 ≡ 0 となり、0 が出る。2 の行は 2, 4, 0, 2, 4 で 1 がなく、2 には逆元がない。p が素数なら、こういうことは起きない。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. mod 7 で 2 の位数（2 をくり返し掛けて、初めて 1 になる回数）は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">6</button>
+          <button class="choice-btn">2</button>
+          <button class="choice-btn">3</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 2, 2²＝4, 2³＝8 ≡ 1。3 回目で初めて 1 になるので位数は 3。2 は 1, 2, 4 しか作れず、生成元ではない（生成元は 3 や 5）。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("groups", 3);</script>
+<script>
+(function modTable(cfg) {
+  const selN = document.getElementById("sel-mtn"), selM = document.getElementById("sel-mtm"), host = document.getElementById("tb-mt"), ro = document.getElementById("ro-mt");
+  function draw() {
+    const n = +selN.value, mul = selM.value === "mul";
+    const xs = []; for (let i = mul ? 1 : 0; i < n; i++) xs.push(i);
+    let h = "<table class=\"num-table mt\"><tr><th>" + (mul ? "×" : "＋") + "</th>" + xs.map((x) => "<th>" + x + "</th>").join("") + "</tr>";
+    const noOne = []; let zero = false;
+    xs.forEach((a) => {
+      let has = false;
+      h += "<tr><th>" + a + "</th>" + xs.map((b) => {
+        const c = mul ? (a * b) % n : (a + b) % n;
+        let cls = "";
+        if (mul && c === 1) { cls = "hit"; has = true; }
+        if (mul && c === 0) { cls = "miss"; zero = true; }
+        if (!mul && c === 0) { cls = "hit"; has = true; }
+        return "<td class=\"" + cls + "\">" + c + "</td>";
+      }).join("") + "</tr>";
+      if (!has) noOne.push(a);
+    });
+    host.innerHTML = h + "</table>";
+    if (mul) {
+      ro.innerHTML = (zero ? "<span class=\"ng\">0 が出る → 1 から " + (n - 1) + " の中で<b>閉じていない</b></span>" : "<span class=\"ok\">0 は出ない → 閉じている</span>") +
+        (noOne.length ? "<span class=\"ng\">1 がない行：<b>" + noOne.join(", ") + "</b>（逆元がない）</span>" : "<span class=\"ok\">どの行にも 1 がちょうど1回 → <b>どの数にも逆元がある</b></span>");
+    } else {
+      ro.innerHTML = "<span class=\"ok\">どの行にも 0 がちょうど1回 → どの数にも逆元（足して 0 になる数）がある</span>";
+    }
+  }
+  selN.addEventListener("change", draw); selM.addEventListener("change", draw);
+  draw();
+})(null);
+(function modClock(cfg) {
+  const inN = document.getElementById("in-ckn"), outN = document.getElementById("out-ckn"), inA = document.getElementById("in-cka"), outA = document.getElementById("out-cka"), selM = document.getElementById("sel-ckm"), ro = document.getElementById("ro-ck");
+  const st = FL.canvas("cv-ck", 0.78, draw);
+  function seqOf(n, a, mul) {
+    const s = [mul ? 1 % n : 0], seen = {}; seen[s[0]] = 1;
+    for (;;) { const x = mul ? (s[s.length - 1] * a) % n : (s[s.length - 1] + a) % n; s.push(x); if (seen[x]) break; seen[x] = 1; }
+    return s;
+  }
+  function draw(st) {
+    const n = +inN.value; inA.max = n - 1; if (+inA.value > n - 1) inA.value = n - 1;
+    const a = +inA.value, mul = selM.value === "mul";
+    outN.textContent = n; outA.textContent = a;
+    const ctx = st.ctx; ctx.clearRect(0, 0, st.W, st.H); ctx.fillStyle = FL.C.paper; ctx.fillRect(0, 0, st.W, st.H);
+    const cx = st.W / 2, cy = st.H / 2, R = Math.min(st.W, st.H) * 0.41;
+    const P = (k) => { const t = -Math.PI / 2 + 2 * Math.PI * k / n; return [cx + R * Math.cos(t), cy + R * Math.sin(t)]; };
+    ctx.strokeStyle = FL.C.grid; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
+    const s = seqOf(n, a, mul), vis = {}; s.forEach((x) => { vis[x] = 1; });
+    // 矢印
+    for (let i = 0; i + 1 < s.length; i++) {
+      const p = P(s[i]), q = P(s[i + 1]);
+      if (s[i] === s[i + 1]) {
+        ctx.strokeStyle = FL.C.red; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(p[0] + (p[0] - cx) * 0.12, p[1] + (p[1] - cy) * 0.12, 11, 0, Math.PI * 2); ctx.stroke(); continue;
+      }
+      const dx = q[0] - p[0], dy = q[1] - p[1], L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L;
+      const x1 = p[0] + ux * 13, y1 = p[1] + uy * 13, x2 = q[0] - ux * 15, y2 = q[1] - uy * 15;
+      FL.line(ctx, x1, y1, x2, y2, FL.C.red, 2);
+      ctx.fillStyle = FL.C.red; ctx.beginPath(); ctx.moveTo(x2 + ux * 4, y2 + uy * 4); ctx.lineTo(x2 - ux * 8 - uy * 5, y2 - uy * 8 + ux * 5); ctx.lineTo(x2 - ux * 8 + uy * 5, y2 - uy * 8 - ux * 5); ctx.closePath(); ctx.fill();
+    }
+    for (let k = 0; k < n; k++) {
+      const p = P(k), start = k === s[0];
+      FL.dot(ctx, p[0], p[1], 12, start ? FL.C.gold : (vis[k] ? FL.C.theme : "#fff"), vis[k] || start ? "#fff" : FL.C.axis);
+      FL.text(ctx, String(k), p[0], p[1] + 1, { size: 13, color: vis[k] || start ? "#fff" : FL.C.muted, align: "center", base: "middle" });
+    }
+    const back = s[s.length - 1] === s[0], steps = s.length - 1;
+    const cnt = Object.keys(vis).length, all = mul ? n - 1 : n;
+    let h = "<span>" + s.map((x, i) => (i === s.length - 1 ? "<b>" + x + "</b>" : x)).join(" → ") + "</span>";
+    if (back) {
+      h += "<span>" + steps + " 回で " + s[0] + " に戻る（" + a + " の位数は <b>" + steps + "</b>）</span>";
+      h += cnt === all ? "<span class=\"ok\"><b>全部の数を通る → " + a + " は生成元</b></span>" : "<span>通った数：" + cnt + " 個 / 全部で " + all + " 個</span>";
+    } else {
+      h += "<span class=\"ng\">" + s[0] + " に戻らない（" + a + " と " + n + " の最大公約数が 1 でない）</span>";
+    }
+    ro.innerHTML = h;
+  }
+  [inN, inA].forEach((el) => el.addEventListener("input", () => st.redraw()));
+  selM.addEventListener("change", () => st.redraw());
+})(null);
+</script>
+</body>
+</html>

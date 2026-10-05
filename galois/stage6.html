@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第4章 STAGE6 5つの入れ替え（S5 が可解群でない証明と交換子） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="5つのものの入れ替え全体（S5）が可解群でないことを中学生向けに証明。割った群が可換なら交換子 aba⁻¹b⁻¹ はすべて部分群に入ることを示し、5文字あれば3つ組の巡回 (1 2 3) が交換子で作れることを実際に確かめる。4文字では作れない理由も。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/galois/stage6">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第4章 STAGE6 5つの入れ替え（S5 が可解群でない証明と交換子） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="a をして b をして、a を戻して b を戻す。この「交換子」で3つ組の巡回が作れるかどうかが、4次と5次の分かれ目だった。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/galois/stage6">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE6 5つの入れ替え",
+      "description": "5つのものの入れ替え全体（S5）が可解群でないことを中学生向けに証明。割った群が可換なら交換子 aba⁻¹b⁻¹ はすべて部分群に入ることを示し、5文字あれば3つ組の巡回 (1 2 3) が交換子で作れることを実際に確かめる。4文字では作れない理由も。",
+      "url": "https://algebra.habatakijuku.com/galois/stage6",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 6,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第4章 方程式の対称性",
+        "url": "https://algebra.habatakijuku.com/galois/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第4章 方程式の対称性",
+          "item": "https://algebra.habatakijuku.com/galois/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE6 5つの入れ替え",
+          "item": "https://algebra.habatakijuku.com/galois/stage6"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+.cm-slots{display:flex;justify-content:center;gap:10px;margin:12px 0 4px;flex-wrap:wrap}
+  .cm-slot{width:54px;text-align:center}
+  .cm-slot .bx{height:54px;border:2px solid #9a88d6;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:950;color:#221d33;transition:background .3s}
+  .cm-slot .bx.chg{background:#fbe9e8;border-color:#c8433f;color:#c8433f}
+  .cm-slot .lb{font-size:11px;font-weight:800;color:#77708c;margin-top:3px}
+  .cm-steps{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-top:6px}
+  #cm-ab .now{background:#efecf8;border-radius:6px;padding:0 4px}
+  #ct-tab td:first-child{text-align:left}
+  @media(max-width:480px){.cm-slot{width:46px}.cm-slot .bx{height:46px;font-size:20px}.cm-slots{gap:6px}}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第4章 方程式の対称性 ／ STAGE 6 ― 5つの入れ替え ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第4章 STAGE 6</span><h1 class="chapter-title">5つの入れ替え</h1>
+        <div class="chapter-sub">交換子で3つ組の巡回を作る</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">「割った群が可換なら、交換子 aba⁻¹b⁻¹ はすべて部分群に入る」ことを示し、5文字では (1 2 3)＝aba⁻¹b⁻¹ となる3つ組の巡回 a, b があることを確かめよう。これで5つの解の入れ替え全体が可解群でないことを説明できれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">前のステージで、5つの解の120通りの入れ替えは、偶置換の60個までは1段降りられると分かった。でも、そこから先の正規部分群を1つずつ探していては終わらない。今日は、<strong>どの段にも必ず残ってしまう入れ替え</strong>を見つけて、5つの入れ替え全体が可解群でないことを証明する。これができれば、5次方程式の謎まであと1歩だ。まず言葉を1つ用意しよう。どの2つの元 a, b についても ab＝ba となる群を<strong>可換群</strong>という。「順番を交換できる群」という意味だ。巡回群はいつも可換群になる。なぜかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">巡回群は、1つの元 g をくり返し掛けると全部が出てくる群でした。だから元はどれも g を何回か掛けたもので、gᵐ と gⁿ なら gᵐgⁿ＝gᵐ⁺ⁿ＝gⁿgᵐ です。どちらの順番でも、g を合わせて m＋n 回掛けるだけです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。可解群の段々では、割った群がどれも巡回群だったから、どれも可換群だ。ここで、ab と ba がどれだけちがうかを測る入れ替えを考える。<strong>a をして、b をして、a を逆にもどして、b を逆にもどす</strong>。これを a と b の<strong>交換子</strong>といい、aba⁻¹b⁻¹ と書く。ab＝ba なら、交換子はどうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">ab＝ba なら、aba⁻¹b⁻¹＝baa⁻¹b⁻¹ です。aa⁻¹ は何もしないのと同じなので、bb⁻¹ になって e です。順番を交換できるなら、交換子は e になります。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。交換子が e でないことが、順番を交換できないことの印になる。では、本題だ。H が G の正規部分群で、G を H で割った群が可換群だとする。このとき、G のどんな a, b についても、交換子 aba⁻¹b⁻¹ が H に入ることを示そう。割った群が可換だから (aH)(bH)＝(bH)(aH)、つまり abH＝baH だね。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">abH＝baH なら、ab は baH に入るので、H の h を使って ab＝bah と書けます。両辺の左から (ba)⁻¹ を掛けると、h＝(ba)⁻¹ab です。ba を逆にもどすには、後からした a を先にもどして、次に b をもどすので、(ba)⁻¹＝a⁻¹b⁻¹。だから a⁻¹b⁻¹ab＝h は H に入ります。これは a⁻¹ と b⁻¹ の交換子です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。a と b は G のどれでもよかったから、a のかわりに a⁻¹、b のかわりに b⁻¹ を使えば？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(a⁻¹)⁻¹＝a なので、a⁻¹b⁻¹ab の a を a⁻¹、b を b⁻¹ にかえると aba⁻¹b⁻¹ です。<strong>G のどんな a, b でも、交換子 aba⁻¹b⁻¹ は H に入ります</strong>。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step"><strong>交換子</strong>：<span class="nw">aba⁻¹b⁻¹</span>（a をして、b をして、a をもどして、b をもどす）。ab＝ba なら e</span>
+        <span class="step">H が G の正規部分群で、G を H で割った群が可換群なら：<span class="nw">abH＝baH</span></span>
+        <span class="step"><span class="nw">ab＝bah</span>（h は H の元）→ <span class="nw">h＝(ba)⁻¹ab＝a⁻¹b⁻¹ab</span>（(ba)⁻¹＝a⁻¹b⁻¹）</span>
+        <span class="step">a, b を a⁻¹, b⁻¹ にかえて：G のどんな a, b でも <span class="nw">aba⁻¹b⁻¹</span> は H に入る</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">これを可解群の段々にあてはめよう。G₀ ⊃ G₁ ⊃ G₂ ⊃ … ⊃ {e} の各段で、割った群は巡回群、つまり可換群だった。何が言えるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">G₁ は、G₀ のどの2つの元の交換子も含みます。G₂ は、G₁ のどの2つの元の交換子も含みます。1つ下の段は、1つ上の段の元どうしの交換子を全部含む、ということです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。ここで<strong>3つ組の巡回</strong>、つまり (1 2 3) のように3つの番号を順に付け替える入れ替えに注目する。5つの番号 1, 2, 3, 4, 5 があれば、3つ組の巡回はどれも、3つ組の巡回どうしの交換子で書けるんだ。たとえば a＝(1 4 3)、b＝(1 5 2) として、交換子 aba⁻¹b⁻¹ を計算してごらん。a⁻¹ と b⁻¹ は、矢印を逆にして a⁻¹＝(1 3 4)、b⁻¹＝(1 2 5) だね。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">番号を1つずつ追います。1 は a で 4、b で 4 のまま、a⁻¹ で 1、b⁻¹ で 2。だから 1→2。2 は a で 2、b で 1、a⁻¹ で 3、b⁻¹ で 3 のまま。2→3。3 は a で 1、b で 5、a⁻¹ で 5 のまま、b⁻¹ で 1。3→1。4 は a で 3、b で 3、a⁻¹ で 4、b⁻¹ で 4。4→4。5 は a で 5、b で 2、a⁻¹ で 2、b⁻¹ で 5。5→5。結果は 1→2→3→1 で、<strong>(1 2 3)</strong> です！</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step"><span class="nw">a＝(1 4 3)</span>、<span class="nw">b＝(1 5 2)</span>、<span class="nw">a⁻¹＝(1 3 4)</span>、<span class="nw">b⁻¹＝(1 2 5)</span></span>
+        <span class="step">1：<span class="nw">1 →(a) 4 →(b) 4 →(a⁻¹) 1 →(b⁻¹) 2</span></span>
+        <span class="step">2：<span class="nw">2 →(a) 2 →(b) 1 →(a⁻¹) 3 →(b⁻¹) 3</span></span>
+        <span class="step">3：<span class="nw">3 →(a) 1 →(b) 5 →(a⁻¹) 5 →(b⁻¹) 1</span></span>
+        <span class="step">4 と 5 は動かない → <span class="nw">aba⁻¹b⁻¹＝(1 2 3)</span></span>
+        <span class="step">一般に、x, y, z, d, e がすべてちがう番号なら <span class="nw">(x y z)＝aba⁻¹b⁻¹</span>、ただし <span class="nw">a＝(x d z)</span>、<span class="nw">b＝(x e y)</span></span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。一般に、ちがう5つの番号 x, y, z, d, e があれば、a＝(x d z)、b＝(x e y) の交換子が (x y z) になる。どの3つ組の巡回でも作れることを、実際に動かして確かめよう。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="sim-controls">
+          <span class="grp-label">作りたい巡回</span>
+          <label>( <select id="cm-x"></select></label><select id="cm-y"></select><label><select id="cm-z"></select> )</label>
+        </div>
+        <div class="readout" id="cm-ab"></div>
+        <div class="cm-slots" id="cm-slots"></div>
+        <div class="sim-controls">
+          <button class="btn" id="cm-step">次の操作をする</button>
+          <button class="btn" id="cm-reset">はじめから</button>
+        </div>
+        <div class="readout" id="cm-ro"></div>
+        <div class="diagram-caption"><strong>交換子で3つ組の巡回を作る</strong>。5つの箱には、はじめ 1〜5 の番号が入っている。操作 a, b, a⁻¹, b⁻¹ を順にすると、箱の中の番号が付け替わる（変わった箱が赤くなる）。4回終わったとき、箱 x に y、箱 y に z、箱 z に x が入り、残り2つの箱はもとのまま。つまり交換子が (x y z) になる。上で作りたい巡回を選ぶと、使う a＝(x d z)、b＝(x e y) が変わる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">d と e には、x, y, z 以外の2つの番号を使うんですね。だから番号が5つ要ります。4つしかないと、この作り方はできないということですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。4つの番号では、3つ組の巡回は (1 2 3) のように4つのうち3つを使うから、余りが1つしかない。実際、4つの番号の3つ組の巡回8個のどの2つの交換子を計算しても、出てくるのは e と、(1 2)(3 4) のような「2組の入れ替え」だけで、3つ組の巡回は1つも出てこない。前のステージの V に入るものばかりだ。全部の組を計算して比べてみよう。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="sim-controls" id="ct-btns">
+          <button class="btn" data-n="4" aria-pressed="true">番号 4 つ</button>
+          <button class="btn" data-n="5">番号 5 つ</button>
+        </div>
+        <table class="num-table" id="ct-tab"></table>
+        <div class="readout" id="ct-ro"></div>
+        <div class="diagram-caption"><strong>3つ組の巡回どうしの交換子を全部計算する</strong>。番号が4つのとき、3つ組の巡回は 8 個あり、8×8＝64 組の交換子を計算すると、e と2組の入れ替え3つしか出てこない。番号が5つのとき、3つ組の巡回は 20 個あり、20×20＝400 組の交換子の中に、3つ組の巡回 20 個がすべて現れる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">4つの番号では、3つ組の巡回から交換子を作ると V に落ちて、V の交換子はみんな e なので、24→12→4→… と降りていけたんですね。5つの番号ではそうならない。では、5つの入れ替え全体 G₀ には、3つ組の巡回が全部入っているので、G₁ は G₀ の3つ組の巡回どうしの交換子を全部含みます。それは3つ組の巡回全部です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。続けてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">G₁ に3つ組の巡回が全部入っているので、G₂ も G₁ の3つ組の巡回どうしの交換子、つまり3つ組の巡回を全部含みます。同じことがどこまでも続くので、どの段にも3つ組の巡回 20 個が全部残ります。最後の {e} には (1 2 3) が入っていないので、<strong>{e} まで降りられません</strong>。5つの入れ替え全体は、可解群ではありません。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 340 290" style="width:100%;max-width:440px;display:block;margin:0 auto" role="img" aria-label="5つの入れ替えの段々で、どの段にも3つ組の巡回が残り、e に届かないことを示す図">
+          <defs><marker id="ar6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b4a9e"/></marker></defs>
+          <g font-size="12.5" font-weight="800" text-anchor="middle" fill="#221d33">
+            <rect x="6" y="8" width="150" height="44" rx="9" fill="#efecf8" stroke="#9a88d6"/><text x="81" y="26">G₀＝入れ替え全体</text><text x="81" y="44" font-size="11.5">（120個）</text>
+            <rect x="6" y="90" width="150" height="40" rx="9" fill="#f4f1fb" stroke="#9a88d6"/><text x="81" y="115">G₁</text>
+            <rect x="6" y="168" width="150" height="40" rx="9" fill="#f8f6fc" stroke="#9a88d6"/><text x="81" y="193">G₂</text>
+            <rect x="6" y="246" width="150" height="36" rx="9" fill="#fdfbf6" stroke="#c8433f" stroke-dasharray="5 4"/><text x="81" y="269" fill="#c8433f">{e} には届かない</text>
+          </g>
+          <g stroke="#5b4a9e" stroke-width="2"><line x1="81" y1="52" x2="81" y2="88" marker-end="url(#ar6)"/><line x1="81" y1="130" x2="81" y2="166" marker-end="url(#ar6)"/></g>
+          <text x="81" y="232" font-size="14" text-anchor="middle" fill="#77708c">⋮</text>
+          <g font-size="11.5" font-weight="800" fill="#a63f6f">
+            <text x="166" y="27">3つ組の巡回 20 個が</text><text x="166" y="44">すべて入る</text>
+            <text x="166" y="106">G₀ の交換子として</text><text x="166" y="123">20 個すべて入る</text>
+            <text x="166" y="184">G₁ の交換子として</text><text x="166" y="201">20 個すべて入る</text>
+          </g>
+          <text x="166" y="269" font-size="11.5" fill="#77708c" font-weight="700">(1 2 3) が入らない</text>
+        </svg>
+        <div class="diagram-caption"><strong>5つの入れ替え全体が可解群でない理由</strong>。可解群の段々では、下の段は上の段の元どうしの交換子をすべて含む。5つの番号があれば3つ組の巡回はどれも3つ組の巡回どうしの交換子なので、3つ組の巡回 20 個はどの段にも残る。だから {e} まで降りられない</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">よくたどり着いたね。同じ議論は、番号が6つ以上でもそのまま使える。番号が5つ以上あれば、入れ替え全体は可解群にならないんだ。そして、係数を文字のままにした「一般の5次方程式」のガロア群は、5つの解の入れ替え全体になることが知られている。だから、どんな5次方程式にも使える解の公式はない。これがアーベルの定理を、ガロアの見方で言い直したものだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">一般の5次方程式に公式がないことは分かりました。でも、x⁵−6x＋3＝0 のような、数が決まった1つの方程式が解けないことを言うには、その方程式のガロア群が5つの入れ替え全体だと示さないといけません。x⁵−1 のように解ける5次方程式もあるので、そこは方程式ごとに確かめるんですね。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。ガロア群が可解群でなければ、たとえば3つ組の巡回を全部含んでいれば、その方程式はべき根では解けない。次のステージでは、x⁵−6x＋3 のガロア群が5つの入れ替え全体になることを示し、この章の謎に決着をつける。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">可換群：どの a, b でも ab＝ba となる群。巡回群は可換群（<span class="nw">gᵐgⁿ＝gⁿgᵐ</span>）</span>
+        <span class="step">交換子 <span class="nw">aba⁻¹b⁻¹</span>：a, b をして、a, b の順にもどす入れ替え。ab＝ba なら e</span>
+        <span class="step">G を正規部分群 H で割った群が可換なら、G のどんな a, b でも交換子は H に入る（<span class="nw">abH＝baH</span> から）</span>
+        <span class="step">5つの番号があれば <span class="nw">(x y z)＝aba⁻¹b⁻¹</span>（<span class="nw">a＝(x d z)</span>、<span class="nw">b＝(x e y)</span>）。例：<span class="nw">(1 4 3) と (1 5 2) の交換子＝(1 2 3)</span></span>
+        <span class="step">4つの番号では、3つ組の巡回どうしの交換子は e と2組の入れ替えだけ。だから 24→12→4→2→1 と降りられる</span>
+        <span class="step">可解群の段々のどの段にも3つ組の巡回が全部残るので、5つの入れ替え全体は可解群でない。一般の5次方程式に解の公式はない</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. G を正規部分群 H で割った群が可換群なら、何が言える？</p>
+        <div class="choice-list">
+          <button class="choice-btn">G 自身も可換群になる</button>
+          <button class="choice-btn">G のどんな a, b についても、交換子 aba⁻¹b⁻¹ は H に入る</button>
+          <button class="choice-btn">H は e だけになる</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ abH＝baH から ab＝bah、h＝a⁻¹b⁻¹ab が H に入る。a, b を a⁻¹, b⁻¹ にかえれば aba⁻¹b⁻¹ も H に入る。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. a＝(1 4 3)、b＝(1 5 2) の交換子 aba⁻¹b⁻¹ は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">e</button>
+          <button class="choice-btn">(1 4)(2 5)</button>
+          <button class="choice-btn">(1 2 3)</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 1→4→4→1→2、2→2→1→3→3、3→1→5→5→1、4 と 5 は動かない。1→2→3→1 なので (1 2 3)。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. 4次方程式には解の公式があるのに、5つの入れ替え全体が可解群でない議論が4つの番号では使えない理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">3つ組の巡回を交換子で作るには、x, y, z のほかに2つの番号 d, e が必要だから</button>
+          <button class="choice-btn">4 は偶数だから</button>
+          <button class="choice-btn">4つの番号には3つ組の巡回がないから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ (x y z)＝aba⁻¹b⁻¹ には a＝(x d z)、b＝(x e y) と5つのちがう番号を使う。4つの番号では、3つ組の巡回どうしの交換子は e と2組の入れ替えだけになる。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("galois", 6);</script>
+<script>
+/* 交換子で3つ組の巡回を作る */
+(function(){
+  var sx=document.getElementById('cm-x'), sy=document.getElementById('cm-y'), sz=document.getElementById('cm-z');
+  var slots=document.getElementById('cm-slots'), ab=document.getElementById('cm-ab'), ro=document.getElementById('cm-ro');
+  [sx,sy,sz].forEach(function(s,i){for(var k=1;k<=5;k++){var o=document.createElement('option');o.value=k;o.textContent=k;s.appendChild(o);}s.value=i+1;});
+  function cyc(c){var p=[0,1,2,3,4,5];for(var i=0;i<c.length;i++)p[c[i]]=c[(i+1)%c.length];return p;}
+  function inv(p){var q=[0];for(var i=1;i<=5;i++)q[p[i]]=i;return q;}
+  function cs(c){return '('+c.join(' ')+')';}
+  var cur=[0,1,2,3,4,5], step=0, ops=[], prev=null;
+  function setup(){
+    var x=+sx.value,y=+sy.value,z=+sz.value;
+    if(x===y||y===z||x===z){ab.innerHTML='<span class="ng">3つのちがう番号を選んでください</span>';ops=[];reset();return;}
+    var rest=[1,2,3,4,5].filter(function(k){return k!==x&&k!==y&&k!==z;}), d=rest[0], e=rest[1];
+    var A=[x,d,z],B=[x,e,y],a=cyc(A),b=cyc(B);
+    ops=[{n:'a',c:cs(A),p:a},{n:'b',c:cs(B),p:b},{n:'a⁻¹',c:cs([x,z,d]),p:inv(a)},{n:'b⁻¹',c:cs([x,y,e]),p:inv(b)}];
+    reset();
+  }
+  function reset(){cur=[0,1,2,3,4,5];step=0;prev=null;draw();}
+  function draw(){
+    ab.innerHTML=ops.length?ops.map(function(o,i){return '<span'+(i===step-1?' class="now"':'')+'>'+o.n+'＝<b>'+o.c+'</b></span>';}).join(''):ab.innerHTML;
+    slots.innerHTML='';
+    for(var i=1;i<=5;i++){var d=document.createElement('div');d.className='cm-slot';
+      d.innerHTML='<div class="bx'+(prev&&prev[i]!==cur[i]?' chg':'')+'">'+cur[i]+'</div><div class="lb">箱 '+i+'</div>';slots.appendChild(d);}
+    if(!ops.length){ro.innerHTML='';return;}
+    if(step<4){ro.innerHTML='<span>次の操作：<b>'+ops[step].n+'＝'+ops[step].c+'</b></span><span>済んだ操作：'+(step?ops.slice(0,step).map(function(o){return o.n;}).join(' → '):'なし')+'</span>';}
+    else{
+      var seen={},out='';for(var k=1;k<=5;k++){if(seen[k]||cur[k]===k)continue;var c=[k];seen[k]=1;var j=cur[k];while(j!==k){c.push(j);seen[j]=1;j=cur[j];}out+=cs(c);}
+      ro.innerHTML='<span class="ok">aba⁻¹b⁻¹＝<b>'+(out||'e')+'</b></span>';
+    }
+    document.getElementById('cm-step').disabled=!ops.length||step>=4;
+  }
+  document.getElementById('cm-step').addEventListener('click',function(){if(step>=4||!ops.length)return;var p=ops[step].p;prev=cur.slice();cur=cur.map(function(v,i){return i?p[v]:0;});step++;draw();});
+  document.getElementById('cm-reset').addEventListener('click',reset);
+  [sx,sy,sz].forEach(function(s){s.addEventListener('change',setup);});
+  setup();
+})();
+
+/* 3つ組の巡回どうしの交換子を全部計算する */
+(function(){
+  var tab=document.getElementById('ct-tab'), ro=document.getElementById('ct-ro');
+  function mul(a,b){var p=[0];for(var i=1;i<a.length;i++)p.push(b[a[i]]);return p;}
+  function inv(a){var q=[0];for(var i=1;i<a.length;i++)q[a[i]]=i;return q;}
+  function cyc(n,c){var p=[0];for(var i=1;i<=n;i++)p.push(i);for(var k=0;k<c.length;k++)p[c[k]]=c[(k+1)%c.length];return p;}
+  function shape(p){var seen={},ls=[];for(var i=1;i<p.length;i++){if(seen[i])continue;var l=0,j=i;while(!seen[j]){seen[j]=1;j=p[j];l++;}if(l>1)ls.push(l);}ls.sort();return ls.join(',');}
+  function name(p){var seen={},out='';for(var k=1;k<p.length;k++){if(seen[k]||p[k]===k)continue;var c=[k];seen[k]=1;var j=p[k];while(j!==k){c.push(j);seen[j]=1;j=p[j];}out+='('+c.join(' ')+')';}return out||'e';}
+  var LAB={'':'何もしない e','2,2':'2組の入れ替え','3':'3つ組の巡回','5':'5つ組の巡回','2':'互換','2,3':'互換と3つ組','4':'4つ組の巡回'};
+  function run(n){
+    var T=[];for(var a=1;a<=n;a++)for(var b=1;b<=n;b++)for(var c=1;c<=n;c++)if(a<b&&a<c&&b!==c)T.push(cyc(n,[a,b,c]));
+    var res={},cnt=0;
+    T.forEach(function(x){T.forEach(function(y){var z=mul(mul(mul(x,y),inv(x)),inv(y));res[name(z)]=shape(z);cnt++;});});
+    var by={};Object.keys(res).forEach(function(k){var s=res[k];(by[s]=by[s]||[]).push(k);});
+    var h='<tr><th>出てきた交換子の形</th><th>種類の数</th><th>例</th></tr>';
+    ['','2,2','3','5'].forEach(function(s){if(!by[s]&&s!=='3')return;var L=by[s]||[];
+      h+='<tr><td>'+LAB[s]+'</td><td class="'+(s==='3'?(L.length?'hit':'miss'):'')+'">'+L.length+'</td><td>'+(L.slice(0,3).join(', ')||'なし')+(L.length>3?' …':'')+'</td></tr>';});
+    tab.innerHTML=h;
+    ro.innerHTML='<span>3つ組の巡回：<b>'+T.length+'</b> 個</span><span>計算した組：<b>'+cnt+'</b></span><span class="'+((by['3']||[]).length===T.length?'ok':'ng')+'">'+((by['3']||[]).length===T.length?'3つ組の巡回が全部、交換子として出てくる':'3つ組の巡回は交換子として出てこない')+'</span>';
+  }
+  document.querySelectorAll('#ct-btns .btn').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('#ct-btns .btn').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});run(+b.dataset.n);});});
+  run(4);
+})();
+</script>
+</body>
+</html>

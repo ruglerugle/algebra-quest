@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第2章 STAGE5 2つの平方数の和（フェルマーの2平方定理とウィルソンの定理） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="フェルマーの2平方定理を中学生向けに証明。4で割って3余る素数が平方数の和にならない理由、ウィルソンの定理を逆元のペアで示して x²≡−1 を作る方法、そしてガウス整数の一意性から 4で割って1余る素数が a²＋b² になることまで。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/rings/stage5">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第2章 STAGE5 2つの平方数の和（フェルマーの2平方定理とウィルソンの定理） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="4 で割って 1 余る素数は、必ず2つの平方数の和になる。逆元のペアとガウス整数の一意性で、フェルマーの主張を証明する。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/rings/stage5">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE5 2つの平方数の和",
+      "description": "フェルマーの2平方定理を中学生向けに証明。4で割って3余る素数が平方数の和にならない理由、ウィルソンの定理を逆元のペアで示して x²≡−1 を作る方法、そしてガウス整数の一意性から 4で割って1余る素数が a²＋b² になることまで。",
+      "url": "https://algebra.habatakijuku.com/rings/stage5",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 5,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第2章 素因数分解の世界",
+        "url": "https://algebra.habatakijuku.com/rings/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第2章 素因数分解の世界",
+          "item": "https://algebra.habatakijuku.com/rings/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE5 2つの平方数の和",
+          "item": "https://algebra.habatakijuku.com/rings/stage5"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+.tbl-scroll{overflow-x:auto;max-width:100%}
+  #tb-fs td{white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第2章 素因数分解の世界 ／ STAGE 5 ― 2つの平方数の和 ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 8</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第2章 STAGE 5</span><h1 class="chapter-title">2つの平方数の和</h1>
+        <div class="chapter-sub">1つ目の謎を解く</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">4 で割って 3 余る素数が2つの平方数の和にならない理由を説明し、ウィルソンの定理 (p−1)!≡−1 から x²≡−1 (mod p) となる x を作ろう。p が x²＋1＝(x＋i)(x−i) を割り切ることから、p＝a²＋b² を導ければ合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いよいよ1つ目の謎を解こう。これまでに2つの道具がそろった。STAGE2 で示した「素数 p が2つの平方数の和で書ける ⇔ p はガウス整数の世界で既約元（これ以上分けられない数）でない」。そして前のステージで示した「ガウス整数の既約元は、どれも素元（ab を割り切れば a か b を割り切る数）」。まず易しいほうから片づけよう。4 で割って 3 余る素数は、なぜ2つの平方数の和で書けないのかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">平方数を 4 で割った余りを調べます。偶数は 2k と書けて (2k)²＝4k² なので余り 0。奇数は 2k＋1 と書けて (2k＋1)²＝4k²＋4k＋1＝4(k²＋k)＋1 なので余り 1。平方数の余りは 0 か 1 だけです。だから2つの平方数の和の余りは 0＋0, 0＋1, 1＋1 の 0, 1, 2 のどれかで、3 には絶対になりません。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<table class="num-table">
+          <tr><th>n</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+          <tr><th>n²</th><td>0</td><td>1</td><td>4</td><td>9</td><td>16</td><td>25</td><td>36</td><td>49</td></tr>
+          <tr><th>4 で割った余り</th><td class="">0</td><td class="hit">1</td><td class="">0</td><td class="hit">1</td><td class="">0</td><td class="hit">1</td><td class="">0</td><td class="hit">1</td></tr>
+        </table>
+        <table class="num-table" style="margin-top:12px">
+          <tr><th>a² の余り＼b² の余り</th><th>0</th><th>1</th></tr>
+          <tr><th>0</th><td>0</td><td>1</td></tr>
+          <tr><th>1</th><td>1</td><td>2</td></tr>
+        </table>
+        <div class="diagram-caption"><strong>平方数を 4 で割った余り</strong>。上の表：偶数の2乗は余り 0、奇数の2乗（緑）は余り 1 で、平方数の余りは 0 か 1 しかない。下の表：2つの平方数の和の余りは 0, 1, 2 のどれかで、3 にはならない</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。ここまではフェルマーの時代にも簡単だった。難しいのは、<strong>4 で割って 1 余る素数が、必ず書けること</strong>のほうだ。作戦を先に立てよう。ある整数 x について、p が x²＋1 を割り切ったとする。x²＋1 をガウス整数で因数分解すると？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">x²＋1＝x²−i²＝(x＋i)(x−i) です。p はこの積を割り切ります。でも、(x＋i)÷p＝x/p＋(1/p)i で、1/p は整数ではないので、これはガウス整数ではありません。p は x＋i を割り切りません。x−i も同じです。……積を割り切るのにどちらの因数も割り切らないので、p は素元ではありません！ ガウス整数では既約元はどれも素元なので、p は既約元でもなく、STAGE2 の結果から、p は2つの平方数の和で書けます。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。だから残る仕事は、<strong>p が x²＋1 を割り切るような x を見つけること</strong>だけだ。第1章の言葉で言えば、x²≡−1 (mod p) となる x だね。いくつかの p で探してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">p＝5 なら 2²＝4≡−1 なので x＝2。p＝13 なら、1, 4, 9, 16≡3, 25≡12 で、5²≡12≡−1 なので x＝5。p＝17 なら 4²＝16≡−1 で x＝4。比べるために p＝7 で試すと、1², 2², …, 6² の余りは 1, 4, 2, 2, 4, 1 で、−1 にあたる 6 は出てきません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。4 で割って 1 余る素数ではいつも見つかり、3 余る素数では見つからない。でも p が大きいと、1 つずつ試すのは大変だ。そこで、どの p にも使える方法を作る。手がかりは意外なところにある。1 から p−1 までを全部掛けた (p−1)! を、p で割った余りを調べてごらん。p＝5 と p＝7 で。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">p＝5 なら 4!＝24＝5×4＋4 で、余り 4。p＝7 なら 6!＝720＝7×102＋6 で、余り 6。どちらも p−1、つまり <strong>(p−1)!≡−1 (mod p)</strong> になっています。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">これを<strong>ウィルソンの定理</strong>という。1770年にウォーリングが弟子のウィルソンの発見として本に書き、翌1771年にラグランジュが証明した。証明には第1章の<strong>逆元</strong>を使う。mod p の世界では、1 から p−1 までのどの数 a にも、掛けて 1 になる相手 a⁻¹ がちょうど1つあったね。p＝13 で、1 から 12 を「掛けて 1 になる相手」どうしでペアにしてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">2×7＝14≡1、3×9＝27≡1、4×10＝40≡1、5×8＝40≡1、6×11＝66≡1。ペアは (2, 7), (3, 9), (4, 10), (5, 8), (6, 11) の5組です。残る 1 と 12 は、1×1＝1、12×12＝144＝13×11＋1≡1 で、自分自身が相手です。だから 12!≡1×(1×1×1×1×1)×12≡12≡−1 です。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-wil" aria-label="1 から p−1 までの数を円周に並べ、mod p で掛けて 1 になる相手どうしを線で結んだ図。自分自身が相手になるのは 1 と p−1 だけ"></canvas></div>
+        <div class="sim-controls">
+          <label>素数 p <select id="sel-wil"></select></label>
+        </div>
+        <div class="readout" id="ro-wil"></div>
+        <div class="diagram-caption"><strong>逆元のペアでウィルソンの定理を見る</strong>。1 から p−1 を円周に並べ、mod p で掛けて 1 になる2つの数を線で結んだ。どの数もちょうど1本の線でつながる（第1章：逆元はちょうど1つ）。ペアの積はどれも 1 なので、(p−1)! は自分自身とペアになる数（金）だけの積になる。それは 1 と p−1 の2つだけなので、(p−1)!≡1×(p−1)≡−1</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。ペアの積は 1 だから消えて、自分自身が相手になる数だけが残る。どんな素数でも、それが 1 と p−1 の2つだけだと言えれば、ウィルソンの定理が証明できる。x×x≡1 (mod p) となる x を考えよう。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">x²≡1 なので、p は x²−1＝(x−1)(x＋1) を割り切ります。前のステージで、整数の素数は素元だと証明したので、p は x−1 か x＋1 を割り切ります。1 から p−1 の範囲では、x−1 が p で割り切れるのは x＝1、x＋1 が割り切れるのは x＝p−1 だけです。だから自分自身が相手になるのは 1 と p−1 だけで、残りはすべて2つずつのペアになります。<strong>(p−1)!≡1×(p−1)≡−1</strong>。どんな素数でも成り立ちます。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">mod p の世界で、1, 2, …, p−1 のどの数にも、掛けて 1 になる相手（逆元）がちょうど1つある（第1章）</span>
+        <span class="step">自分自身が相手になる x：<span class="nw">x²≡1</span> → p が <span class="nw">(x−1)(x＋1)</span> を割り切る → 素数は素元なので x−1 か x＋1 を割り切る → <span class="nw">x＝1</span> か <span class="nw">x＝p−1</span></span>
+        <span class="step">ほかの数は、相手と2つずつのペアになり、ペアの積は 1</span>
+        <span class="step"><strong><span class="nw">(p−1)!≡1×(p−1)≡−1 (mod p)</span></strong>（ウィルソンの定理）</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。ここでも、前のステージの「素数は素元」が効いているね。さて、ウィルソンの定理から x²≡−1 の x を作ろう。p＝13 で、12! を前半 1×2×…×6 と後半 7×8×…×12 に分けてごらん。後半の数は、13 からいくつ引いた数かな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">7＝13−6、8＝13−5、…、12＝13−1 です。mod 13 では 13 は 0 と同じなので、7≡−6、8≡−5、9≡−4、10≡−3、11≡−2、12≡−1。後半は (−6)(−5)(−4)(−3)(−2)(−1)＝(−1)⁶×6!＝6! です。だから 12!≡6!×6!＝(6!)²。ウィルソンの定理で 12!≡−1 なので、<strong>(6!)²≡−1 (mod 13)</strong>。6!＝720＝13×55＋5 なので x＝5 で、さっき見つけた 5²≡−1 と一致します！</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。一般の p でやってごらん。p＝4k＋1 として。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(p−1)! を前半 1×2×…×(p−1)/2 と後半に分けると、後半の数は p−1, p−2, … で、それぞれ −1, −2, …, −(p−1)/2 と同じです。後半は (−1)<sup>(p−1)/2</sup>×((p−1)/2)! で、p＝4k＋1 なら (p−1)/2＝2k は偶数なので、(−1) の偶数乗は 1 です。だから (p−1)!≡((p−1)/2)!²。ウィルソンの定理と合わせて、<strong>x＝((p−1)/2)! とすれば x²≡−1 (mod p)</strong> です。……p＝4k＋3 だと (p−1)/2＝2k＋1 が奇数なので符号が残って、((p−1)/2)!²≡1 になってしまいます。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">p＝4k＋1 のとき、<span class="nw">(p−1)/2＝2k</span>（偶数）</span>
+        <span class="step"><span class="nw">(p−1)!＝1×2×…×(p−1)/2 × (p−1)/2＋1 × … × (p−1)</span></span>
+        <span class="step">後半の数は mod p で <span class="nw">−(p−1)/2, …, −2, −1</span> と同じ（p から引いた数だから）</span>
+        <span class="step"><span class="nw">(p−1)!≡((p−1)/2)! × (−1)<sup>2k</sup> × ((p−1)/2)!＝((p−1)/2)!²</span>（−1 の偶数乗は 1）</span>
+        <span class="step">ウィルソンの定理と合わせて <strong><span class="nw">((p−1)/2)!²≡−1 (mod p)</span></strong>。x＝((p−1)/2)! とすれば p は x²＋1 を割り切る</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。これで証明が完成した。4 で割って 1 余る素数 p では、x＝((p−1)/2)! とすると p が x²＋1＝(x＋i)(x−i) を割り切るのに、x＋i も x−i も割り切らない。だから p は素元でなく、既約元でもなく、2つの平方数の和で書ける。フェルマーの主張は正しかったんだ。</div>
+        </div>
+      </div>
+
+      <div class="note-box"><span class="nb-title">フェルマーの2平方定理</span>奇数の素数 p について<br>・p が 4 で割って 1 余るなら、p は2つの平方数の和 a²＋b² で書ける<br>・p が 4 で割って 3 余るなら、書けない<br>（2＝1²＋1² も書ける）。証明の流れ：ウィルソンの定理 → x＝((p−1)/2)! で x²≡−1 → p は (x＋i)(x−i) を割り切るがどちらも割り切らない → p は素元でない → 既約元でない → p＝a²＋b²</div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">証明はできましたが、a と b が実際にいくつになるかは、まだ分かりません。p＝13 なら 2²＋3² と知っていますが、p が大きいと探すのが大変です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いい質問だね。互除法がそのまま使えるんだ。p は ππ' と2つの既約元（ノルムが p の数）に分かれる。p が (x＋i)(x−i) を割り切るから、π は x＋i か x−i のどちらかを割り切る。x−i を割り切るなら、掛け算の式の i をすべて −i に変えても式は成り立つから、π の i を −i に変えた数（これもノルム p）が x＋i を割り切る。どちらにしてもノルム p の数が p と x＋i の両方を割り切る。p と x＋i に互除法をすると、最後の余り d は「p×（ガウス整数）＋(x＋i)×（ガウス整数）」の形だから、両方を割り切るその数で d も割り切れる。一方で d は p を割り切り、p が x＋i を割り切らないので d は p そのものではない。だから d のノルムはちょうど p になって、d＝a＋bi から p＝a²＋b² が読み取れる。p＝13、x＝5 でやってごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">13÷(5＋i)＝13(5−i)/26＝(5−i)/2＝2.5−0.5i。いちばん近いガウス整数のひとつとして q＝3 を選ぶと、余りは 13−3(5＋i)＝−2−3i で、ノルム 4＋9＝13 は N(5＋i)＝26 より小さいです。次に (5＋i)÷(−2−3i)＝(5＋i)(−2＋3i)/13＝(−10＋15i−2i＋3i²)/13＝(−13＋13i)/13＝−1＋i で割り切れました。最後の余りは −2−3i で、<strong>13＝2²＋3²</strong> です！</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="sim-controls">
+          <label>4 で割って 1 余る素数 p <select id="sel-fs"></select></label>
+        </div>
+        <div class="tbl-scroll"><table class="num-table" id="tb-fs"></table></div>
+        <div class="readout" id="ro-fs"></div>
+        <div class="diagram-caption"><strong>2つの平方数を互除法で見つける</strong>。p を選ぶと、まず x＝((p−1)/2)! を p で割った余りを求め、x²≡−1 を確かめる。次に p と x＋i にガウス整数の互除法を行う（商は割り算の答えにいちばん近いガウス整数）。最後の 0 でない余り a＋bi のノルムが p になり、p＝a²＋b² が読み取れる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。1640年にフェルマーが手紙に書いた主張は、整数の問題なのに、ガウス整数の世界の一意性を使うと、こうして証明できる。整数より広い世界を見ることで、整数の性質が分かったんだ。ところが、どの世界でもうまくいくわけではない。次のステージでは、2つ目の謎、a＋b√−5 の世界を調べよう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">平方数を 4 で割った余りは 0 か 1 → 2つの平方数の和は 4 で割って 3 余らない</span>
+        <span class="step">p が x²＋1＝(x＋i)(x−i) を割り切るのに x±i を割り切らない → p は素元でない → 既約元でない → p＝a²＋b²</span>
+        <span class="step">ウィルソンの定理 <span class="nw">(p−1)!≡−1 (mod p)</span>：逆元どうしのペアの積は 1。自分自身が相手になるのは 1 と p−1 だけ（素数は素元だから）</span>
+        <span class="step">p＝4k＋1 なら後半の数を −1, −2, … と見て <span class="nw">((p−1)/2)!²≡−1</span>。例：<span class="nw">6!≡5</span>、<span class="nw">5²≡−1 (mod 13)</span></span>
+        <span class="step">フェルマーの2平方定理：4 で割って 1 余る素数は2つの平方数の和。p と x＋i の互除法で a, b が求まる（13 → −2−3i → 13＝2²＋3²）</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. 4 で割って 3 余る数が、2つの平方数の和で書けない理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">4 で割って 3 余る数はすべて素数だから</button>
+          <button class="choice-btn">平方数を 4 で割った余りは 0 か 1 なので、2つの和の余りは 0, 1, 2 のどれかだから</button>
+          <button class="choice-btn">平方数はすべて偶数だから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ (2k)²＝4k² は余り 0、(2k＋1)²＝4(k²＋k)＋1 は余り 1。和の余りは 0, 1, 2 で、3 にはならない。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. mod 13 で、1 から 12 のうち自分自身が逆元（x×x≡1）になる数は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">1 だけ</button>
+          <button class="choice-btn">1, 5, 8, 12</button>
+          <button class="choice-btn">1 と 12</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ x²≡1 なら 13 が (x−1)(x＋1) を割り切り、素数は素元なので x−1 か x＋1 を割り切る。1〜12 では x＝1, 12 だけ。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. p＝4k＋1 のとき、x²≡−1 (mod p) となる x として使えるものは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">((p−1)/2)!</button>
+          <button class="choice-btn">(p−1)!</button>
+          <button class="choice-btn">p−1</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ (p−1)! の後半の数は −1, −2, … と同じで、個数 (p−1)/2＝2k が偶数なので符号が消え、(p−1)!≡((p−1)/2)!²。ウィルソンの定理でこれが −1。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("rings", 5);</script>
+<script>
+/* 逆元のペア（ウィルソンの定理） */
+(function(){
+  var sel=document.getElementById('sel-wil'), ro=document.getElementById('ro-wil');
+  [5,7,11,13,17,19,23,29,31].forEach(function(p){ var o=document.createElement('option'); o.value=p; o.textContent=p; if(p===13) o.selected=true; sel.appendChild(o); });
+  function inv(a,p){ for(var x=1;x<p;x++) if((a*x)%p===1) return x; return 0; }
+  var PAL=['#5b4a9e','#3f6fb5','#c8433f','#2f8f65','#a63f6f','#2f6f8f','#7a5bc4','#b0632a','#44377a','#3f8fb5','#8f3f8f','#5b7a2f','#6f4ac0','#1f6f6f','#9a3f3f'];
+  var st=FL.canvas('cv-wil',0.86,draw);
+  function draw(st){
+    var p=+sel.value, ctx=st.ctx; ctx.clearRect(0,0,st.W,st.H); ctx.fillStyle=FL.C.paper; ctx.fillRect(0,0,st.W,st.H);
+    var cx=st.W/2, cy=st.H/2, R=Math.min(st.W,st.H)*0.40;
+    function pos(k){ var t=-Math.PI/2+2*Math.PI*(k-1)/(p-1); return [cx+R*Math.cos(t), cy+R*Math.sin(t)]; }
+    ctx.save(); ctx.strokeStyle=FL.C.grid; ctx.lineWidth=1; ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2); ctx.stroke(); ctx.restore();
+    var pairs=[], c=0;
+    for(var a=1;a<p;a++){ var b=inv(a,p); if(a<b){ var A=pos(a), B=pos(b); FL.line(ctx,A[0],A[1],B[0],B[1],PAL[c%PAL.length],2); pairs.push('('+a+', '+b+')'); c++; } }
+    var fs=Math.max(9,Math.min(14,R*0.9/(p-1)*2.2));
+    for(a=1;a<p;a++){
+      var P=pos(a), self=(inv(a,p)===a), r=Math.max(8,fs*0.95);
+      FL.dot(ctx,P[0],P[1],r,self?FL.C.goldLight:'#fff',self?FL.C.gold:FL.C.themeLight);
+      FL.text(ctx,String(a),P[0],P[1]+fs*0.36,{align:'center',size:fs,color:self?'#5a3d0c':FL.C.ink});
+    }
+    ro.innerHTML='<span>ペア：'+pairs.join(' ')+'</span><span>自分自身が相手：<b>1 と '+(p-1)+'</b></span><span class="ok">'+(p-1)+'!≡1×'+(p-1)+'≡−1 (mod '+p+')</span>';
+  }
+  sel.addEventListener('change',function(){st.redraw();});
+})();
+
+/* 2つの平方数を互除法で見つける */
+(function(){
+  var sel=document.getElementById('sel-fs'), tb=document.getElementById('tb-fs'), ro=document.getElementById('ro-fs');
+  FL.primes(200).filter(function(p){return p%4===1;}).forEach(function(p){ var o=document.createElement('option'); o.value=p; o.textContent=p; if(p===13) o.selected=true; sel.appendChild(o); });
+  function name(a,b){ if(b===0) return FL.signed(a); var s=(a!==0?FL.signed(a):''); var bb=Math.abs(b); return s+(b>0?(a!==0?'＋':''):'−')+(bb===1?'':bb)+'i'; }
+  function draw(){
+    var p=+sel.value, h=(p-1)/2, x=1;
+    for(var k=1;k<=h;k++) x=(x*k)%p;
+    var rows='<tr><th colspan="4">x＝'+h+'! を '+p+' で割った余り＝<b>'+x+'</b>、 '+x+'²＝'+(x*x)+'＝'+p+'×'+Math.floor(x*x/p)+'＋'+((x*x)%p)+'≡−1</th></tr>';
+    rows+='<tr><th>割られる数</th><th>割る数</th><th>商 q</th><th>余り r（ノルム）</th></tr>';
+    var A=[p,0], B=[x,1], last=B;
+    while(B[0]!==0||B[1]!==0){
+      var n=B[0]*B[0]+B[1]*B[1];
+      var re=(A[0]*B[0]+A[1]*B[1])/n, im=(A[1]*B[0]-A[0]*B[1])/n;
+      var q=[Math.round(re),Math.round(im)];
+      var r=[A[0]-(q[0]*B[0]-q[1]*B[1]), A[1]-(q[0]*B[1]+q[1]*B[0])];
+      rows+='<tr><td>'+name(A[0],A[1])+'</td><td>'+name(B[0],B[1])+'</td><td>'+name(q[0],q[1])+'</td><td>'+name(r[0],r[1])+'（'+(r[0]*r[0]+r[1]*r[1])+'）</td></tr>';
+      last=B; A=B; B=r;
+    }
+    tb.innerHTML=rows;
+    var a=Math.abs(last[0]), b=Math.abs(last[1]); if(a>b){var t=a;a=b;b=t;}
+    ro.innerHTML='<span>最後の 0 でない余り：<b>'+name(last[0],last[1])+'</b></span><span class="ok"><b>'+p+'＝'+a+'²＋'+b+'²</b></span>';
+  }
+  sel.addEventListener('change',draw); draw();
+})();
+</script>
+</body>
+</html>

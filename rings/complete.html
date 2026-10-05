@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<meta name="robots" content="noindex">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第2章 環 クリア ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="第2章「環 ― 素因数分解の世界」のまとめ。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/rings/complete">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第2章 環 クリア ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="第2章「環 ― 素因数分解の世界」のまとめ。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/rings/complete">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+  .chapter-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
+  .riddle{max-width:560px;margin:14px auto 0;background:rgba(0,0,0,.22);border:1px solid rgba(227,189,106,.45);border-radius:12px;padding:10px 14px;color:#f6e7c2;font-size:13.5px;font-weight:800;line-height:1.8}
+  .riddle b{display:block;font-size:11px;letter-spacing:.12em;color:var(--gold);margin-bottom:2px}
+
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav class="topbar" aria-label="サイト情報">
+    <a class="brand-badge" href="../" title="トップへ" aria-label="トップへ" style="text-decoration:none">🔷</a>
+    <span class="brand-copy">
+      <strong>群・環・体からガロア理論へ</strong>
+      <small>ALGEBRA QUEST</small>
+    </span>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-copy">
+      <p style="font-weight:900;color:var(--gold);letter-spacing:.08em;margin-bottom:4px">第2章 ／ RINGS</p>
+      <h1><span class="line">第2章「環」をクリア！</span></h1>
+      <div class="riddle"><b>この章で解いた謎</b>整数の素因数分解はただ1通りなのに、6＝2×3＝(1＋√−5)(1−√−5) となる世界がある。</div>
+      <p>次の第3章では、新しい謎が待っている。定規とコンパスでは、角の三等分も、体積が2倍の立方体も作図できない。2000年かかった証明とは？</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="board" aria-labelledby="recap-heading">
+      <div class="board-head">
+        <div><h2 id="recap-heading">この章を振り返ろう</h2></div>
+      </div>
+      <div class="recap-list">
+        <div class="recap-item">
+          <span class="recap-num">1</span>
+          <div class="recap-body"><span class="recap-title">2つの謎と数の世界。</span> <span class="recap-desc">謎1：100 未満の素数では、4 で割って 1 余る素数と 2 は2つの平方数の和で書け、3 余る素数は書けない（フェルマー 1640年、オイラーの証明 1749年） ／ <span class="nw">13＝2²＋3²＝(3＋2i)(3−2i)</span>：平方数の和は、i を使ってよい世界での掛け算への分解に言いかえられる</span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">2</span>
+          <div class="recap-body"><span class="recap-title">単数と既約元。</span> <span class="recap-desc">単数：掛けて 1 になる相手が同じ世界にいる数。単数を掛けるだけの分け方は、分けたうちに数えない ／ ノルム＝原点からの長さの2乗。<span class="nw">N(a＋bi)＝a²＋b²</span>、<span class="nw">N(a＋b√−5)＝a²＋5b²</span>。展開して <span class="nw">N(zw)＝N(z)N(w)</span> を確かめた</span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">3</span>
+          <div class="recap-body"><span class="recap-title">「ただ1通り」の正体。</span> <span class="recap-desc">素因数分解の一意性：既約元の積への分け方は、並べる順番と単数を掛ける違いを除いて1通り（例：<span class="nw">5＝(2＋i)(2−i)＝(1−2i)(1＋2i)</span> は同じ分け方） ／ 分解が必ず終わるのは、分けるたびにノルム（1 より大きい整数）が小さくなるから</span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">4</span>
+          <div class="recap-body"><span class="recap-title">余りのある割り算。</span> <span class="recap-desc">余りのある割り算：<span class="nw">a＝qb＋r</span>（0≦r＜b）。くり返すのがユークリッドの互除法 ／ 割り算のたびに公約数の集まりは変わらない → 最後の 0 でない余りが最大公約数（長方形を正方形で切り取る図でも見える）</span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">5</span>
+          <div class="recap-body"><span class="recap-title">2つの平方数の和。</span> <span class="recap-desc">平方数を 4 で割った余りは 0 か 1 → 2つの平方数の和は 4 で割って 3 余らない ／ p が x²＋1＝(x＋i)(x−i) を割り切るのに x±i を割り切らない → p は素元でない → 既約元でない → p＝a²＋b²</span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">6</span>
+          <div class="recap-body"><span class="recap-title">こわれた素因数分解。</span> <span class="recap-desc">a＋b√−5 の格子は横 1・縦 √5。真ん中から角まで √6/2＞1 なので、余りのある割り算ができないことがある（例：(1＋√−5)÷2 はどの商でも余りのノルム 6＞4） ／ a＋b√−5 にはノルム 2, 3 の数がない → 2, 3, 1±√−5 は4つとも既約元。単数は ±1 だけでノルムも違う → <span class="nw">6＝2×3＝(1＋√−5)(1−√−5)</span> は本当に2通り</span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">7</span>
+          <div class="recap-body"><span class="recap-title">数の代わりに倍数の集まり。</span> <span class="recap-desc">「2 が 6 を割り切る」⇔「6 の倍数の集まり (6) が 2 の倍数の集まり (2) に含まれる」。割る数ほど大きな集まり ／ 整数では <span class="nw">{ax＋by}＝(最大公約数の倍数)</span>。例：<span class="nw">{4x＋6y}＝(2)</span></span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">8</span>
+          <div class="recap-body"><span class="recap-title">部品の掛け算。</span> <span class="recap-desc">イデアルの積 IJ：I の数と J の数の積を足し合わせた数全体。<span class="nw">(a)(b)＝(ab)</span>、<span class="nw">(a₁, a₂)(b₁, b₂)＝(a₁b₁, a₁b₂, a₂b₁, a₂b₂)</span> ／ <span class="nw">A×A＝(4, 2＋2√−5, −4＋2√−5)</span>：どれも 2 の倍数で、<span class="nw">(2＋2√−5)−(−4＋2√−5)＝6</span>、<span class="nw">6−4＝2</span> → <span class="nw">A×A＝(2)</span></span></div>
+        </div>
+      </div>
+      <div class="complete-actions">
+        <a class="btn btn-primary" href="../fields/">第3章「体」へ進む →</a>
+        <a class="btn" href="../">🗺️ 地図に戻る</a>
+        <button class="btn" id="btn-reset-all">🔄 この章を最初から</button>
+      </div>
+    </section>
+
+    <div id="book-recommend"></div>
+  </main>
+
+  <footer>
+    <p>NO DOWNLOAD. NO REGISTRATION. JUST LEARN. &nbsp;© <span id="year"></span> ruglerugle</p>
+    <div class="footer-suits" aria-hidden="true"><span>🔺</span><span>🧩</span><span>📐</span><span>👑</span></div>
+  </footer>
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script>AQ.initCompletePage("rings");</script>
+</body>
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第1章 STAGE4 部分群とラグランジュの定理（剰余類とフェルマーの小定理） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="ラグランジュの定理を中学生向けに解説。部分群をずらしたコピー（剰余類）が群をきれいに等分割することを確かめ、部分群の個数や要素の位数が群の個数を割り切ることを証明する。そこからフェルマーの小定理を導く。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/groups/stage4">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第1章 STAGE4 部分群とラグランジュの定理（剰余類とフェルマーの小定理） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="群は、部分群のずらしたコピーで、ぴったり等分割できる。そこからフェルマーの小定理が数行で証明できる。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/groups/stage4">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE4 部分群とラグランジュの定理",
+      "description": "ラグランジュの定理を中学生向けに解説。部分群をずらしたコピー（剰余類）が群をきれいに等分割することを確かめ、部分群の個数や要素の位数が群の個数を割り切ることを証明する。そこからフェルマーの小定理を導く。",
+      "url": "https://algebra.habatakijuku.com/groups/stage4",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 4,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第1章 対称性を計算する",
+        "url": "https://algebra.habatakijuku.com/groups/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第1章 対称性を計算する",
+          "item": "https://algebra.habatakijuku.com/groups/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE4 部分群とラグランジュの定理",
+          "item": "https://algebra.habatakijuku.com/groups/stage4"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+.lg-rows{display:flex;flex-direction:column;gap:6px;align-items:center;margin-top:8px}
+.lg-row{display:flex;flex-wrap:wrap;align-items:center;gap:5px;justify-content:center}
+.lg-lab{min-width:3.6em;font-size:13px;font-weight:900;color:var(--c);text-align:right;margin-right:4px}
+.lg-chip{display:inline-flex;align-items:center;justify-content:center;min-width:2.1em;height:2.1em;padding:0 6px;border-radius:999px;background:var(--c);color:#fff;font-size:14px;font-weight:900}
+.pw-wrap{overflow-x:auto;max-width:100%;margin-top:6px}
+.num-table.pw{font-size:13.5px}
+.num-table.pw th,.num-table.pw td{padding:3px 6px;min-width:1.7em}
+.num-table.pw th.last,.num-table.pw td.last{box-shadow:inset 0 0 0 2px #9a6a1c}
+.num-table.pw th.ord{background:#f6e7c2;color:#7a5a08}
+@media(max-width:480px){.num-table.pw{font-size:11px}.num-table.pw th,.num-table.pw td{padding:2px 2px;min-width:1.45em}}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第1章 対称性を計算する ／ STAGE 4 ― 部分群とラグランジュの定理 ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第1章 STAGE 4</span><h1 class="chapter-title">部分群とラグランジュの定理</h1>
+        <div class="chapter-sub">群をきれいに等分割する</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">剰余類が群を同じ個数ずつ重ならずに分けることを3段階で説明し、ラグランジュの定理（部分群の個数は群の個数を割り切る）から、フェルマーの小定理 a<sup>p−1</sup> ≡ 1 (mod p) を導こう。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">前のステージの終わりで、要素の位数（くり返して初めて単位元になる回数）が、いつも群の個数の約数になっていた。今日はその理由を証明する。これが分かると、mod p（p で割った余りで考える世界）の累乗について、フェルマーの小定理という強い道具が手に入る。次のステージの暗号の心臓部になる定理だ。まず、群の中の小さな群を考えよう。正三角形の6つの操作のうち、回転だけを集めた e, r, r² を調べてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">回転どうしの積はまた回転で、rr²＝e、r²r²＝r のように、e, r, r² の中に収まっています。単位元 e も入っていて、r の逆元 r² も、r² の逆元 r も入っています。結合法則は、もとの6つの操作で成り立っているので、この3つでも成り立ちます。3つだけで、群の4つの条件がそろっています。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。群 G の一部分で、同じ計算でそれだけで群になっているものを、G の<strong>部分群</strong>という。e, r, r² は正三角形の群の部分群だ。部分群を調べるのは、大きな群を、小さな群の組み合わせとして理解するためだよ。整数を素因数に分けて調べるのに似ているね。では、e と s₁ の2つは部分群かな？ e と r の2つはどうかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">s₁s₁＝e なので、e と s₁ の2つは閉じていて、s₁ の逆元は s₁ 自身です。部分群です。e と r の2つは、rr＝r² が入っていないので閉じていません。部分群ではありません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。mod 12 の足し算の群でも探してみよう。0 から 11 を「足して 12 で割った余り」で計算する群だったね。集まりを { } でくくって書くことにしよう。H＝{0, 4, 8} は部分群かな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">4＋4＝8、4＋8＝12 ≡ 0、8＋8＝16 ≡ 4 で、閉じています。単位元 0 が入っていて、4 の逆元は 8、8 の逆元は 4 です。部分群です。同じように調べると、{0, 6} や {0, 3, 6, 9} も部分群です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。では、H＝{0, 4, 8} の全部に 1 を足してみよう。2 を足したら？ 3 を足したら？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">1 を足すと {1, 5, 9}、2 を足すと {2, 6, 10}、3 を足すと {3, 7, 11} です。4 を足すと {4, 8, 0} で、H に戻ります。0 から 11 の 12 個が、3 個ずつの 4 つの組に、重ならずにぴったり分かれました。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 360 300" style="width:100%;max-width:420px;display:block;margin:0 auto" role="img" aria-label="mod 12 の時計を、0,4,8 と 1,5,9 と 2,6,10 と 3,7,11 の4組に色分けした図"><circle cx="180" cy="150" r="112" fill="none" stroke="#e6e0d6" stroke-width="2"/><polygon points="180.0,38.0 277.0,206.0 83.0,206.0" fill="#5b4a9e" fill-opacity=".08" stroke="#5b4a9e" stroke-width="2" stroke-opacity=".75"/><polygon points="236.0,53.0 236.0,247.0 68.0,150.0" fill="#c8433f" fill-opacity=".08" stroke="#c8433f" stroke-width="2" stroke-opacity=".75"/><polygon points="277.0,94.0 180.0,262.0 83.0,94.0" fill="#3f6fb5" fill-opacity=".08" stroke="#3f6fb5" stroke-width="2" stroke-opacity=".75"/><polygon points="292.0,150.0 124.0,247.0 124.0,53.0" fill="#9a6a1c" fill-opacity=".08" stroke="#9a6a1c" stroke-width="2" stroke-opacity=".75"/><circle cx="180.0" cy="38.0" r="15" fill="#5b4a9e" stroke="#fff" stroke-width="2"/><text x="180.0" y="43.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">0</text><circle cx="236.0" cy="53.0" r="15" fill="#c8433f" stroke="#fff" stroke-width="2"/><text x="236.0" y="58.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">1</text><circle cx="277.0" cy="94.0" r="15" fill="#3f6fb5" stroke="#fff" stroke-width="2"/><text x="277.0" y="99.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">2</text><circle cx="292.0" cy="150.0" r="15" fill="#9a6a1c" stroke="#fff" stroke-width="2"/><text x="292.0" y="155.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">3</text><circle cx="277.0" cy="206.0" r="15" fill="#5b4a9e" stroke="#fff" stroke-width="2"/><text x="277.0" y="211.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">4</text><circle cx="236.0" cy="247.0" r="15" fill="#c8433f" stroke="#fff" stroke-width="2"/><text x="236.0" y="252.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">5</text><circle cx="180.0" cy="262.0" r="15" fill="#3f6fb5" stroke="#fff" stroke-width="2"/><text x="180.0" y="267.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">6</text><circle cx="124.0" cy="247.0" r="15" fill="#9a6a1c" stroke="#fff" stroke-width="2"/><text x="124.0" y="252.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">7</text><circle cx="83.0" cy="206.0" r="15" fill="#5b4a9e" stroke="#fff" stroke-width="2"/><text x="83.0" y="211.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">8</text><circle cx="68.0" cy="150.0" r="15" fill="#c8433f" stroke="#fff" stroke-width="2"/><text x="68.0" y="155.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">9</text><circle cx="83.0" cy="94.0" r="15" fill="#3f6fb5" stroke="#fff" stroke-width="2"/><text x="83.0" y="99.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">10</text><circle cx="124.0" cy="53.0" r="15" fill="#9a6a1c" stroke="#fff" stroke-width="2"/><text x="124.0" y="58.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">11</text><text x="8" y="22" text-anchor="start" font-size="14" font-weight="900" fill="#5b4a9e">H＝{0, 4, 8}</text><text x="352" y="22" text-anchor="end" font-size="14" font-weight="900" fill="#c8433f">1＋H＝{1, 5, 9}</text><text x="8" y="288" text-anchor="start" font-size="14" font-weight="900" fill="#3f6fb5">2＋H＝{2, 6, 10}</text><text x="352" y="288" text-anchor="end" font-size="14" font-weight="900" fill="#9a6a1c">3＋H＝{3, 7, 11}</text></svg>
+        <div class="diagram-caption"><strong>mod 12 の時計の等分割</strong>。部分群 H＝{0, 4, 8} と、それに 1, 2, 3 を足した組を色分けした。どの組も 3 個ずつで、時計の上では向きの違う正三角形になる。12 個が 4 組にぴったり分かれるので 12＝4×3</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。部分群 H を「ずらしたコピー」で、群全体がきれいに等分割されたね。H の全部の要素の前に同じ g をつけた集まりを、H の<strong>剰余類（じょうよるい）</strong>という。積で書く群なら gH＝{gh（h は H の要素）}、つまり「g をしてから、H のどれかをする」操作の集まりだ。足し算の群なら g＋H と書く。正三角形の群で、H＝{e, s₁} の剰余類を全部作ってごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">eH＝{e, s₁}。rH＝{r, rs₁}＝{r, s₂}。r²H＝{r², r²s₁}＝{r², s₃}。s₁H＝{s₁, s₁s₁}＝{s₁, e} は H と同じ。s₂H＝{s₂, s₂s₁}＝{s₂, r} は rH と同じで、s₃H＝{s₃, s₃s₁}＝{s₃, r²} は r²H と同じです。6 個が、2 個ずつの 3 つの組に分かれます。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="sim-controls">
+          <label>群 <select id="sel-lgg"><option value="z12">mod 12 の足し算</option><option value="tri">正三角形の6つの操作</option><option value="m7">mod 7 の掛け算</option></select></label>
+          <label>部分群 H <select id="sel-lgh"></select></label>
+        </div>
+        <div id="lg-rows" class="lg-rows"></div>
+        <div class="readout" id="ro-lg"></div>
+        <div class="diagram-caption"><strong>ラグランジュの等分割</strong>。群と部分群 H を選ぶと、剰余類（H をずらしたコピー）を1行ずつ色分けして並べる。どの行も H と同じ個数で、群の要素はちょうど1回ずつどこかの行に入る。だから「群の個数＝剰余類の個数×H の個数」になる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。どんな群でも、どんな部分群でも、こうなる。それを3つの段階で確かめよう。1つ目。剰余類 gH の要素の個数は、いつも H と同じかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">H の要素を h₁, h₂, … とすると、gH は gh₁, gh₂, … です。もし gh₁＝gh₂ なら、両方の前に g⁻¹ をすると、結合法則で (g⁻¹g)h₁＝(g⁻¹g)h₂、つまり h₁＝h₂ です。だから、異なる h からは異なる gh ができて、gH の個数は H の個数と同じです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。2つ目。群のどの要素 g も、どこかの剰余類に入っているかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">H は部分群なので単位元 e を含みます。g＝ge なので、g は gH に入っています。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。3つ目がいちばん大事だ。2つの剰余類 gH と kH が1つでも共通の要素をもったら、2つはまったく同じ集まりになる。これを確かめよう。共通の要素を x とすると、x＝gh＝kh′ と書ける。h と h′ は H の要素だ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbitThink.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">gh＝kh′ の両辺のうしろに h⁻¹ をすると、g＝kh′h⁻¹ です。h⁻¹ も h′ も H に入っていて、H は閉じているので、h′h⁻¹ も H の要素です。それを h″ と書くと g＝kh″。すると、gH の要素 gh₁ は kh″h₁ と書けて、h″h₁ も H の要素なので、gh₁ は kH に入ります。gH は kH にふくまれます。g と k の役目を入れかえて同じことをすれば kH も gH にふくまれるので、gH＝kH です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。まとめると、剰余類はどれも H と同じ個数で、群の全部をおおい、1つでも重なるなら丸ごと一致する。だから群全体は、H と同じ個数の組に、重ならずにぴったり分かれる。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">① どの剰余類 gH も、H と同じ個数（<span class="nw">gh₁＝gh₂</span> なら前に g⁻¹ をして <span class="nw">h₁＝h₂</span>）</span>
+        <span class="step">② どの要素 g も、自分の剰余類 gH に入る（<span class="nw">g＝ge</span>）</span>
+        <span class="step">③ 剰余類どうしは、重ならないか、丸ごと一致する（共通の要素があれば <span class="nw">g＝kh″</span> と書けて <span class="nw">gH＝kH</span>）</span>
+        <span class="step">よって群は、H と同じ個数の剰余類に、重ならずに分かれる：<br><span class="nw">（群の個数）＝（剰余類の個数）×（H の個数）</span></span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">群の個数は、部分群の個数と剰余類の個数の積です。だから、<strong>部分群の個数は、群の個数を割り切ります</strong>。正三角形の群は 6 個なので、部分群の個数は 1, 2, 3, 6 のどれかで、4 個や 5 個の部分群はありません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。これを<strong>ラグランジュの定理</strong>という。ラグランジュは1770年ごろ、方程式の解の入れ替えを研究するなかで、この定理のもとになる事実を見つけた。だから彼の名前で呼ばれている。では、前のステージの謎に戻ろう。群の個数が有限なら、a, a², a³, … と掛けていくと、いつか同じものが出てくる。a<sup>i</sup>＝a<sup>j</sup>（i＜j）となったら、両辺の前に a⁻¹ を i 回すれば a<sup>j−i</sup>＝e。だから、くり返せばいつか必ず e になり、位数が決まる。a の位数が k なら、e, a, a², …, a<sup>k−1</sup> の k 個は、どんな集まりになるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">まず、この k 個は全部違います。もし a<sup>i</sup>＝a<sup>j</sup>（0≦i＜j＜k）なら、さっきと同じように a<sup>j−i</sup>＝e となって、k より少ない回数で e に戻ってしまうからです。それから、a<sup>k</sup>＝e なので、a<sup>i</sup>a<sup>j</sup>＝a<sup>i＋j</sup> は、i＋j が k 以上なら k を引いた回数と同じで、また e, a, …, a<sup>k−1</sup> のどれかです。閉じています。e が入っていて、a<sup>i</sup> の逆元は a<sup>k−i</sup> です。だから k 個の部分群で、ラグランジュの定理から、<strong>位数 k は群の個数を割り切ります</strong>。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。群の個数を m とすると、m は k で割り切れる。すると a<sup>m</sup> はどうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">m＝kt と書けるので、a<sup>m</sup>＝(a<sup>k</sup>)<sup>t</sup>＝e<sup>t</sup>＝e です。<strong>どの要素も、群の個数の回数だけ掛けると単位元になります</strong>。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。これを、mod p の掛け算の群（p は素数）にあてはめてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">mod p の掛け算の群は 1 から p−1 の p−1 個なので、p で割り切れないどの整数 a についても <strong>a<sup>p−1</sup> ≡ 1 (mod p)</strong> です。p＝7 で確かめると、2⁶＝64＝7×9＋1 で余り 1、3⁶＝729＝7×104＋1 で余り 1。本当です。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">mod p の掛け算の群：1 から p−1 の <span class="nw">p−1</span> 個</span>
+        <span class="step">a の位数を k とすると、e, a, …, a<sup>k−1</sup> は k 個の部分群 → ラグランジュの定理で、k は <span class="nw">p−1</span> を割り切る：<span class="nw">p−1＝kt</span></span>
+        <span class="step"><span class="nw">a<sup>p−1</sup>＝a<sup>kt</sup>＝(a<sup>k</sup>)<sup>t</sup> ≡ 1<sup>t</sup>＝1 (mod p)</span>（a<sup>k</sup> ≡ 1 を t 回掛ける）</span>
+        <span class="step"><strong>フェルマーの小定理</strong>：p が素数で、a が p で割り切れないとき <span class="nw">a<sup>p−1</sup> ≡ 1 (mod p)</span></span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">それが<strong>フェルマーの小定理</strong>だ。1640年、フェルマーは友人への手紙にこの事実を書いた。証明は書かなかったけれど、群の考え方を使うと、いまのように数行で示せる。使い道を1つ見てみよう。3¹⁰⁰ を 7 で割った余りは？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">3⁶ ≡ 1 で、100＝6×16＋4 なので、3¹⁰⁰＝(3⁶)¹⁶×3⁴ ≡ 1×81＝81 です。81＝7×11＋4 なので、余りは 4 です。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="sim-controls">
+          <label>素数 p <select id="sel-pw"><option value="5">5</option><option value="7" selected>7</option><option value="11">11</option><option value="13">13</option></select></label>
+        </div>
+        <div id="tb-pw" class="pw-wrap"></div>
+        <div class="readout" id="ro-pw"></div>
+        <div class="diagram-caption"><strong>累乗の表</strong>。a の k 乗を p で割った余りを並べた（行が a、列が k）。緑のマスが 1。右の「位数」の列は、その行で初めて 1 になる k。位数はどれも p−1 の約数で、いちばん右の列（k＝p−1）はどの行も 1 になる。これがフェルマーの小定理</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。巨大な累乗の余りも、指数を p−1 で割った余りまで縮められる。次のステージでは、素数でない n についても同じことを考え、それを鍵にした暗号を作ろう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">部分群：群の一部分で、同じ計算でそれだけで群になっているもの（例：{e, r, r²}、{e, s₁}、mod 12 の {0, 4, 8}）</span>
+        <span class="step">剰余類 gH：部分群 H をずらしたコピー。どれも H と同じ個数で、重ならないか丸ごと一致する → 群をぴったり等分割する</span>
+        <span class="step">ラグランジュの定理：部分群の個数は群の個数を割り切る（正三角形の群に 4 個や 5 個の部分群はない）</span>
+        <span class="step">要素 a の位数 k は群の個数を割り切る（e, a, …, a<sup>k−1</sup> が部分群）→ 群の個数を m とすると <span class="nw">a<sup>m</sup>＝e</span></span>
+        <span class="step">フェルマーの小定理：<span class="nw">a<sup>p−1</sup> ≡ 1 (mod p)</span>。例：<span class="nw">3¹⁰⁰ ≡ 3⁴ ≡ 4 (mod 7)</span></span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. 12 個の要素からなる群に、部分群としてありえない個数は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">4 個</button>
+          <button class="choice-btn">6 個</button>
+          <button class="choice-btn">5 個</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ ラグランジュの定理から、部分群の個数は群の個数 12 を割り切る。12 の約数は 1, 2, 3, 4, 6, 12 なので、5 個の部分群はない。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. 剰余類 gH と kH に共通の要素が1つでもあると、どうなる？</p>
+        <div class="choice-list">
+          <button class="choice-btn">共通の要素は1つだけになる</button>
+          <button class="choice-btn">gH と kH はまったく同じ集まりになる</button>
+          <button class="choice-btn">gH は H と同じになる</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 共通の要素を gh＝kh′ とすると、g＝kh′h⁻¹ で、h′h⁻¹ は H の要素。だから gH の要素はすべて kH に入り、逆も同じなので gH＝kH。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. フェルマーの小定理を使うと、2²⁰ を 7 で割った余りは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">4</button>
+          <button class="choice-btn">1</button>
+          <button class="choice-btn">2</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 2⁶ ≡ 1 (mod 7)。20＝6×3＋2 なので 2²⁰＝(2⁶)³×2² ≡ 1×4＝4。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("groups", 4);</script>
+<script>
+(function lagrange(cfg) {
+  const selG = document.getElementById("sel-lgg"), selH = document.getElementById("sel-lgh"), host = document.getElementById("lg-rows"), ro = document.getElementById("ro-lg");
+  const tri = cfg.triNames;
+  const G = {
+    z12: { name: "mod 12 の足し算", els: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], op: (a, b) => (a + b) % 12, e: 0, lab: (g) => (g === 0 ? "H" : g + "＋H"), str: String,
+      subs: [[0], [0, 6], [0, 4, 8], [0, 3, 6, 9], [0, 2, 4, 6, 8, 10], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]] },
+    tri: { name: "正三角形の6つの操作", els: tri, op: (a, b) => cfg.triTab[tri.indexOf(a)][tri.indexOf(b)], e: "e", lab: (g) => (g === "e" ? "H" : g + "H"), str: String,
+      subs: [["e"], ["e", "s₁"], ["e", "s₂"], ["e", "s₃"], ["e", "r", "r²"], tri] },
+    m7: { name: "mod 7 の掛け算", els: [1, 2, 3, 4, 5, 6], op: (a, b) => (a * b) % 7, e: 1, lab: (g) => (g === 1 ? "H" : g + "H"), str: String,
+      subs: [[1], [1, 6], [1, 2, 4], [1, 2, 3, 4, 5, 6]] }
+  };
+  function fillH() {
+    const g = G[selG.value];
+    selH.innerHTML = g.subs.map((h, i) => "<option value=\"" + i + "\">{" + h.map(g.str).join(", ") + "}</option>").join("");
+    selH.value = String(Math.min(2, g.subs.length - 2));
+  }
+  function draw() {
+    const g = G[selG.value], Hs = g.subs[+selH.value];
+    const used = {}, rows = [];
+    g.els.forEach((x) => {
+      if (used[x]) return;
+      const c = Hs.map((h) => g.op(x, h));
+      c.forEach((y) => { used[y] = 1; });
+      rows.push({ rep: x, els: c });
+    });
+    host.innerHTML = rows.map((r, i) => "<div class=\"lg-row\" style=\"--c:" + cfg.col[i % cfg.col.length] + "\"><span class=\"lg-lab\">" + g.lab(r.rep) + "</span>" + r.els.map((y) => "<span class=\"lg-chip\">" + g.str(y) + "</span>").join("") + "</div>").join("");
+    ro.innerHTML = "<span>群の個数 <b>" + g.els.length + "</b> ＝ 剰余類の個数 <b>" + rows.length + "</b> × 部分群の個数 <b>" + Hs.length + "</b></span>";
+  }
+  selG.addEventListener("change", () => { fillH(); draw(); });
+  selH.addEventListener("change", draw);
+  fillH(); draw();
+})({"triNames":["e","r","r²","s₁","s₂","s₃"],"triTab":[["e","r","r²","s₁","s₂","s₃"],["r","r²","e","s₂","s₃","s₁"],["r²","e","r","s₃","s₁","s₂"],["s₁","s₃","s₂","e","r²","r"],["s₂","s₁","s₃","r","e","r²"],["s₃","s₂","s₁","r²","r","e"]],"col":["#5b4a9e","#c8433f","#3f6fb5","#9a6a1c","#2f8f65","#a63f6f"]});
+(function powTable(cfg) {
+  const sel = document.getElementById("sel-pw"), host = document.getElementById("tb-pw"), ro = document.getElementById("ro-pw");
+  function draw() {
+    const p = +sel.value;
+    let h = "<table class=\"num-table pw\"><tr><th>a＼k</th>";
+    for (let k = 1; k < p; k++) h += "<th" + (k === p - 1 ? " class=\"last\"" : "") + ">" + k + "</th>";
+    h += "<th>位数</th></tr>";
+    const ords = [];
+    for (let a = 1; a < p; a++) {
+      let x = 1, ord = 0; h += "<tr><th>" + a + "</th>";
+      for (let k = 1; k < p; k++) {
+        x = (x * a) % p;
+        if (x === 1 && !ord) ord = k;
+        h += "<td class=\"" + (x === 1 ? "hit" : "") + (k === p - 1 ? " last" : "") + "\">" + x + "</td>";
+      }
+      ords.push(ord); h += "<th class=\"ord\">" + ord + "</th></tr>";
+    }
+    host.innerHTML = h + "</table>";
+    const ds = []; for (let d = 1; d < p; d++) if ((p - 1) % d === 0) ds.push(d);
+    ro.innerHTML = "<span>出てきた位数：<b>" + Array.from(new Set(ords)).sort((a, b) => a - b).join(", ") + "</b></span><span>p−1＝" + (p - 1) + " の約数：" + ds.join(", ") + "</span><span class=\"ok\">いちばん右の列（k＝" + (p - 1) + "）はすべて 1</span>";
+  }
+  sel.addEventListener("change", draw); draw();
+})(null);
+</script>
+</body>
+</html>

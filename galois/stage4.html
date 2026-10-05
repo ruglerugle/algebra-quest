@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第4章 STAGE4 ガロア群（ガロア群とガロアの基本定理） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="ガロア群を中学生向けに解説。解の間の有理数係数の関係式をすべて保つ入れ替えとしてガロア群を定義し、x²−2, x⁴−5x²＋6, x³−3x＋1, x³−2 で実際に求める。解を含む体の次数との一致と、中間の体と部分群が対応するガロアの基本定理まで。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/galois/stage4">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第4章 STAGE4 ガロア群（ガロア群とガロアの基本定理） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="方程式の解の入れ替えのうち、有理数の計算では見分けられないものだけを集めると群になる。x³−2 では正三角形の対称性と同じ群が現れる。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/galois/stage4">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE4 ガロア群",
+      "description": "ガロア群を中学生向けに解説。解の間の有理数係数の関係式をすべて保つ入れ替えとしてガロア群を定義し、x²−2, x⁴−5x²＋6, x³−3x＋1, x³−2 で実際に求める。解を含む体の次数との一致と、中間の体と部分群が対応するガロアの基本定理まで。",
+      "url": "https://algebra.habatakijuku.com/galois/stage4",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 4,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第4章 方程式の対称性",
+        "url": "https://algebra.habatakijuku.com/galois/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第4章 方程式の対称性",
+          "item": "https://algebra.habatakijuku.com/galois/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE4 ガロア群",
+          "item": "https://algebra.habatakijuku.com/galois/stage4"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+.g4-roots{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:4px 0 6px}
+  .g4-root{min-width:5.6em;padding:6px 8px;border:2px solid #cfc6ea;border-radius:10px;background:#fff;font-weight:900;font-size:14px;color:#221d33;cursor:pointer}
+  .g4-root small{display:block;font-size:11px;color:#77708c;font-weight:800}
+  .g4-root.sel{border-color:#5b4a9e;background:#efecf8}
+  #g4-tab td:first-child{text-align:left}
+  #g4-tower text{font-family:var(--f)}
+  #g4-tower .nd rect{fill:#fdfbf6;stroke:#9a88d6;stroke-width:1.4}
+  #g4-tower .nd.on rect{fill:#fbe9f1;stroke:#a63f6f;stroke-width:2.4}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第4章 方程式の対称性 ／ STAGE 4 ― ガロア群 ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第4章 STAGE 4</span><h1 class="chapter-title">ガロア群</h1>
+        <div class="chapter-sub">方程式ごとに決まる入れ替えの群</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">「解の間の有理数係数の関係式をすべて保つ入れ替え」としてガロア群を定義し、x⁴−5x²＋6 では4個、x³−3x＋1 では3個、x³−2 では6個になることを確かめよう。x³−2 で、中間の体と部分群の対応を説明できれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">前のステージでは、3つの解の6通りの入れ替えを全部使った。でも、方程式によっては、入れ替えてはいけない組がある。たとえば x³−15x−4＝0 の解は 4, −2＋√3, −2−√3 だった。α＝4 とすると、α−4＝0 という式が成り立つね。α と β を入れ替えると、この式はどうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">β−4＝0 になりますが、β＝−2＋√3 なので成り立ちません。4 は有理数なので、ほかの解と入れ替えると、もとは正しかった式が正しくなくなります。β と γ だけを入れ替えるなら、β＋γ＝−4 や βγ＝(−2)²−3＝1 は、入れ替えても成り立ったままです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。そこで、方程式にとって意味のある入れ替えだけを選び出す。解 α, β, … に、有理数を係数とする足し算・引き算・掛け算をほどこした式が 0 になるとき、それを<strong>解の間の関係式</strong>と呼ぶ。α−4＝0 や β＋γ＋4＝0 がそうだ。そして、<strong>成り立つ関係式を1つ残らず、成り立ったままにする入れ替え</strong>を集めたものを、その方程式の<strong>ガロア群</strong>という。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">どうして「有理数を係数とする」関係式に限るんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いい質問だね。解の公式で使ってよいのは、係数から四則とべき根で計算することだった。係数は有理数だから、出発点で分かっている数は有理数だけだ。ガロア群は、<strong>有理数の計算だけでは区別のつかない解どうしの入れ替え</strong>を集めたものなんだ。√2 と −√2 は、どちらも「2乗すると 2」で、有理数だけの式では区別できない。だから入れ替えてよい。4 と −2＋√3 は α−4＝0 で区別できるから、入れ替えてはいけない。ガロア群が小さいほど、解は区別しやすい、つまり求めやすい。x³−15x−4 のガロア群は e と (β γ) の2つになる。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">ガロア群の入れ替えを2つ続けて行っても、関係式は成り立ったままです。それに、関係式を保つ入れ替えを逆にもどす入れ替えも、関係式を保ちそうです。だから、ガロア群は第1章の意味で群になっているということですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。逆にもどす入れ替えも、同じ入れ替えを何回か続けたものになる。入れ替えは有限個しかないから、同じ入れ替えをくり返すと、いつかもとにもどるからね。第1章の位数の考え方だ。では、いちばん簡単な x²−2 のガロア群を求めよう。解は α＝√2, β＝−√2 だ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">α＋β＝0, αβ＝−2, α²＝2 などが関係式です。入れ替えると β＋α＝0, βα＝−2, β²＝2 で、どれも成り立ちます。でも、関係式は無限にあるので、全部を確かめるにはどうすればいいんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">第3章を思い出そう。√2 と −√2 を有理数と組み合わせた式は、計算すると必ず a＋b√2（a, b は有理数）の形にまとまる。だから関係式は a＋b√2＝0 の形だ。√2 は有理数ではないから、そうなるのは a＝b＝0 のときだけだね。入れ替えると √2 が −√2 になって、式は a−b√2 になる。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">a＝b＝0 なので、a−b√2 も 0 です。だから、どんな関係式も入れ替えたあとで成り立ちます。x²−2 のガロア群は、e と (α β) の2つです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。次は x⁴−5x²＋6＝0 だ。x⁴−5x²＋6＝(x²−2)(x²−3) だから、解は α＝√2, β＝−√2, γ＝√3, δ＝−√3（δ はデルタ）の4つ。4つの入れ替えは全部で 4×3×2×1＝24 通りある。このうち、どれがガロア群に入るかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">α²−2＝0 が関係式なので、α の行き先も2乗して 2 になる数でなければいけません。だから α は α か β にしか行けません。同じように γ²−3＝0 なので、γ は γ か δ にしか行けません。それに α＋β＝0 なので、α の行き先が決まると β の行き先も決まります。残るのは e, (α β), (γ δ), (α β)(γ δ) の4つです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">よく絞り込んだね。この4つが本当にすべての関係式を保つことは、第3章 STAGE2 の事実から分かる。関係式は計算すると a＋b√2＋c√3＋d√6＝0（a, b, c, d は有理数）の形にまとまり、1, √2, √3, √6 の4つで書く書き方はただ1通りだから、a＝b＝c＝d＝0 しかない。√2 の符号を変えても、√3 の符号を変えても、各項の符号が変わるだけで、0 は 0 のままだ。だからガロア群は4つ。入れ替えを自分で作って、関係式が崩れるかどうかを確かめてみよう。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="g4-roots" id="g4-roots"></div>
+        <div class="sim-controls"><button class="btn" id="g4-reset">もとに戻す</button></div>
+        <div class="readout" id="g4-perm"></div>
+        <table class="num-table" id="g4-tab"></table>
+        <div class="readout" id="g4-found"></div>
+        <div class="diagram-caption"><strong>x⁴−5x²＋6 の解の入れ替えと関係式</strong>。解の箱を2つ続けて押すと、その2つの値を入れ替える。くり返せば24通りのどの入れ替えも作れる。下の表は代表的な関係式が入れ替えのあとも成り立つか（成り立つと緑、崩れると赤）。すべて緑になる入れ替えが、ガロア群に入る。見つけた入れ替えは下に記録され、ちょうど4つになる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">ガロア群の個数は、x²−2 で 2、x⁴−5x²＋6 で 4 でした。第3章で、ℚ(√2) の次数は 2、ℚ(√2, √3) の次数は 4 でした。同じ数です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いいところに気づいたね。ここで ℚ は有理数全体、ℚ(√2) は有理数に √2 を加えて四則でできる数全体だったね。方程式の解をすべて ℚ に加えてできる体を、その方程式の<strong>分解体</strong>と呼ぶ。ガロアが示したことの1つは、<strong>ガロア群の個数は、分解体の次数と等しい</strong>ということだ。一般の証明は難しいので、ここでは事実として使い、例で確かめていこう。次は x³−3x＋1＝0 だ。解は α＝2cos 40°, β＝2cos 80°, γ＝2cos 160° の3つになる。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">第3章では、(cos θ＋i sin θ)³ を展開して cos 3θ の式を出しました。(cos θ＋i sin θ)² なら、実部を比べて cos 2θ＝cos²θ−sin²θ＝2cos²θ−1 です。だから (2cos θ)²−2＝4cos²θ−2＝2cos 2θ。α²−2＝2cos 80°＝β、β²−2＝2cos 160°＝γ、γ²−2＝2cos 320°＝2cos 40°＝α です。<strong>β＝α²−2</strong> は関係式です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。その関係式を使って、ガロア群に入る入れ替えを探してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(β γ) をすると、β＝α²−2 が γ＝α²−2 になりますが、γ は β ではないので崩れます。(α β) をすると α＝β²−2 になりますが、β²−2＝γ なので崩れます。(α γ) も同じです。回転 (α β γ) なら、β＝α²−2 が γ＝β²−2 になって成り立ちます。残るのは e, (α β γ), (α γ β) の3つです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。分解体で確かめよう。x³−3x＋1 は有理数の解をもたない（±1 を入れても 0 にならない）3次式だから、第3章の判定で既約で、ℚ(α) の次数は 3。そして β＝α²−2, γ＝β²−2 も ℚ(α) に入るから、分解体は ℚ(α) そのもので、次数は 3。ガロア群の個数 3 と一致する。前のステージの判別式でも確かめられるよ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">p＝−3, q＝1 なので Δ²＝−4×(−27)−27×1＝108−27＝81 です。Δ＝±9 は有理数です。Δ が有理数なら、Δ＝9 のような関係式を互換は崩してしまうので、ガロア群には偶置換しか入れません。3つの回転だけ、と合っています。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。最後に x³−2＝0 だ。解は α＝∛2, β＝∛2ω, γ＝∛2ω² の3つ。分解体の次数を求めてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">分解体には α と β が入るので、ω＝β/α も入ります。逆に ∛2 と ω があれば3つの解は全部作れるので、分解体は ℚ(∛2, ω) です。x³−2 は既約なので ℚ(∛2) の次数は 3。ℚ(∛2) は実数だけでできていますが、ω は実数でないので入っていません。ω は x²＋x＋1＝0 の解なので、ℚ(∛2) に ω を加えると次数が 2 増えます。次数の積の法則で 3×2＝6。ガロア群は <strong>6つ</strong>、つまり3つの解の入れ替えが全部入ります。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step"><strong>ガロア群</strong>：解の間の有理数係数の関係式を、すべて成り立ったままにする入れ替えの集まり</span>
+        <span class="step">ガロア群の個数＝分解体（解をすべて ℚ に加えた体）の次数</span>
+        <span class="step"><span class="nw">x²−2</span>：分解体 ℚ(√2)、次数 2 → e, (α β) の 2 つ</span>
+        <span class="step"><span class="nw">x⁴−5x²＋6</span>：分解体 ℚ(√2, √3)、次数 4 → e, (α β), (γ δ), (α β)(γ δ) の 4 つ</span>
+        <span class="step"><span class="nw">x³−3x＋1</span>：分解体 ℚ(2cos 40°)、次数 3 → e, (α β γ), (α γ β) の 3 つ（β＝α²−2）</span>
+        <span class="step"><span class="nw">x³−2</span>：分解体 ℚ(∛2, ω)、次数 3×2＝6 → 6 つすべて</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">x³−2 の3つの解を複素数平面に描くと、原点を中心とする正三角形の頂点に並ぶ。ガロア群の6つの入れ替えは、第1章の正三角形の6つの対称性とちょうど同じ形の群なんだ。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 300 260" style="width:100%;max-width:300px;display:block;margin:0 auto" role="img" aria-label="x³−2 の3つの解が正三角形の頂点に並ぶ図">
+          <defs><marker id="ar4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9a6a1c"/></marker>
+          <marker id="ar4b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3f6fb5"/></marker></defs>
+          <line x1="16" y1="130" x2="284" y2="130" stroke="#b9b0a3" stroke-width="1.3"/>
+          <line x1="150" y1="12" x2="150" y2="248" stroke="#b9b0a3" stroke-width="1.3"/>
+          <polygon points="250,130 100,43.4 100,216.6" fill="rgba(154,136,214,.14)" stroke="#5b4a9e" stroke-width="1.6"/>
+          <path d="M 236 92 A 105 105 0 0 0 150 26" fill="none" stroke="#9a6a1c" stroke-width="1.8" marker-end="url(#ar4)"/>
+          <text x="216" y="40" font-size="11.5" fill="#9a6a1c" font-weight="800">ω 倍</text>
+          <path d="M 74 70 C 50 110, 50 150, 74 190" fill="none" stroke="#3f6fb5" stroke-width="1.8" marker-end="url(#ar4b)"/>
+          <path d="M 74 190 C 50 150, 50 110, 74 70" fill="none" stroke="#3f6fb5" stroke-width="1.8" marker-end="url(#ar4b)"/>
+          <text x="20" y="134" font-size="11" fill="#3f6fb5" font-weight="800">共役</text>
+          <circle cx="250" cy="130" r="6.5" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="100" cy="43.4" r="6.5" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="100" cy="216.6" r="6.5" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <text x="256" y="152" font-size="13" font-weight="900" fill="#221d33">α＝∛2</text>
+          <text x="110" y="36" font-size="13" font-weight="900" fill="#221d33">β＝∛2ω</text>
+          <text x="110" y="238" font-size="13" font-weight="900" fill="#221d33">γ＝∛2ω²</text>
+        </svg>
+        <div class="diagram-caption"><strong>x³−2 の3つの解</strong>。∛2 を ω 倍するごとに 120° 回り、3つの解は正三角形の頂点に並ぶ。実軸での折り返し（複素共役、i を −i にかえる操作）は α を動かさず β と γ を入れ替える。ガロア群は、この正三角形の6つの対称性と同じ形をしている</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">実軸での折り返しは、i を −i にする操作なので、足し算や掛け算の結果も折り返すだけです。だから関係式が 0 なら、折り返したあとも 0 で、(β γ) はガロア群に入るとすぐ分かりますね。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。ここからがガロア理論のいちばん大事な部分だ。ℚ と分解体 L＝ℚ(∛2, ω) の間には、ℚ(∛2) や ℚ(ω) のような<strong>中間の体</strong>がある。中間の体 M ごとに、「M の数を1つも動かさないガロア群の入れ替え」を集めてみよう。M の数を動かさないとは、M の数 m について、m を解の式で書いたとき、入れ替えてもその値が変わらないことだ。ℚ(∛2) ではどうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">ℚ(∛2) の数は α＝∛2 の式なので、α を動かさない入れ替えです。e と (β γ) の2つです。ℚ(ω) では、ω＝β/α を動かさない入れ替えを探します。(α β γ) をすると β/α は γ/β＝∛2ω²/(∛2ω)＝ω になって変わりません。(β γ) をすると γ/α＝ω² になって変わります。だから e, (α β γ), (α γ β) の3つです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。体が大きくなるほど、動かしてはいけない数が増えるから、入れ替えの集まりは小さくなる。ガロアは、この対応が<strong>中間の体と、ガロア群の部分群とを、1つずつ過不足なく結ぶ</strong>ことを示した。しかも、L の M の上での次数は、対応する部分群の個数に等しい。これを<strong>ガロアの基本定理</strong>という。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg id="g4-tower" viewBox="0 0 360 340" style="width:100%;max-width:480px;display:block;margin:0 auto" role="img" aria-label="x³−2 の分解体の中間の体と、ガロア群の部分群の対応図"></svg>
+        <div class="sim-controls" id="g4-pairs"></div>
+        <div class="readout" id="g4-tro"></div>
+        <div class="diagram-caption"><strong>ガロアの基本定理（x³−2 の場合）</strong>。左は ℚ から分解体 L＝ℚ(∛2, ω) までの中間の体で、上の段ほど次数が大きい（ℚ(∛2) などの3つは次数 3、ℚ(ω) は次数 2）。右は、同じ高さの体の数を動かさない入れ替えの部分群で、上の段ほど個数が少ない。ボタンで体を選ぶと、対応する部分群と線で結ばれ、下に次数と個数が出る。左で上の体ほど、右では小さい部分群になる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">ℚ(ω) は次数 2 で、対応する部分群は 3 個。ℚ(∛2) は次数 3 で、部分群は 2 個。どちらも掛けると 6 です。L の ℚ(ω) の上の次数は 6÷2＝3 で、部分群の個数 3 と同じですね。前のステージで、√ や ∛ を使えるようにするたびに入れ替えが減っていったのは、体を段々大きくすると、対応する部分群が段々小さくなる、ということですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。べき根で解くとは、ℚ から始めて √ や ∛ を1つずつ加え、体を段々大きくして、最後に分解体まで届くことだ。それをガロア群の側から見ると、ガロア群から始めて部分群を段々小さくし、最後に e だけになることになる。では、√ や ∛ を1つ加えるとき、部分群はどんなふうに小さくなるのか。次のステージで、その形を突き止めよう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">解の間の関係式：解に有理数係数の四則（割り算以外）をほどこした式が 0 になるもの。ガロア群＝すべての関係式を成り立ったままにする入れ替えの集まり（群になる）</span>
+        <span class="step">ガロア群の個数＝分解体（解をすべて ℚ に加えた体）の次数</span>
+        <span class="step">x²−2 は 2 個、x⁴−5x²＋6＝(x²−2)(x²−3) は 4 個（√2 と √3 は混ぜられない）、x³−3x＋1 は 3 個（β＝α²−2、Δ＝±9）</span>
+        <span class="step">x³−2 の分解体は ℚ(∛2, ω)、次数 6。ガロア群は6つの入れ替え全部で、正三角形の対称性と同じ群</span>
+        <span class="step">ガロアの基本定理：中間の体 M ↔ M の数を動かさない部分群 H。体が大きいほど部分群は小さく、L の M の上の次数＝H の個数</span>
+        <span class="step">x³−2：ℚ(∛2) ↔ {e, (β γ)}、ℚ(ω) ↔ {e, (α β γ), (α γ β)}</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. x⁴−5x²＋6 の解 √2, −√2, √3, −√3 で、√2 を √3 に移す入れ替えがガロア群に入らない理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">√3 のほうが √2 より大きいから</button>
+          <button class="choice-btn">4つの解の入れ替えは全部で 24 通りあるから</button>
+          <button class="choice-btn">α²−2＝0 という関係式が、入れ替えると (√3)²−2＝1 となって崩れるから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ √2 の行き先も2乗して 2 になる数でなければならない。だから √2 は ±√2 にしか行けず、ガロア群は e, (α β), (γ δ), (α β)(γ δ) の4つ。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. x³−2 のガロア群が、3つの解の入れ替え6つすべてになる理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">分解体 ℚ(∛2, ω) の次数が 3×2＝6 で、ガロア群の個数は分解体の次数に等しいから</button>
+          <button class="choice-btn">x³−2 が3次式だから</button>
+          <button class="choice-btn">x³−2 の解がすべて実数だから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ ℚ(∛2) の次数は 3。ω は実数でないので ℚ(∛2) に入らず、x²＋x＋1＝0 の解なので次数が2倍になる。3次式でも x³−3x＋1 のガロア群は 3 個。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. x³−2 で、中間の体 ℚ(ω) に対応する部分群（ω を動かさない入れ替え）は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">e, (β γ) の2つ</button>
+          <button class="choice-btn">e, (α β γ), (α γ β) の3つ</button>
+          <button class="choice-btn">e だけ</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ ω＝β/α。回転 (α β γ) で β/α は γ/β＝ω のまま。互換 (β γ) では γ/α＝ω² に変わる。L の ℚ(ω) の上の次数 3 と、部分群の個数 3 が一致する。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("galois", 4);</script>
+<script>
+/* x⁴−5x²＋6 の入れ替えと関係式 */
+(function(){
+  var NM=['α','β','γ','δ'], VAL=[Math.SQRT2,-Math.SQRT2,Math.sqrt(3),-Math.sqrt(3)], VS=['√2','−√2','√3','−√3'];
+  var arr=[0,1,2,3], sel=-1, found={};
+  var box=document.getElementById('g4-roots'), tab=document.getElementById('g4-tab'), pr=document.getElementById('g4-perm'), fd=document.getElementById('g4-found');
+  var REL=[
+    ['α²＝2',function(v){return v[0]*v[0]-2;}],
+    ['γ²＝3',function(v){return v[2]*v[2]-3;}],
+    ['α＋β＝0',function(v){return v[0]+v[1];}],
+    ['γ＋δ＝0',function(v){return v[2]+v[3];}],
+    ['αγ＝βδ',function(v){return v[0]*v[2]-v[1]*v[3];}],
+    ['α＋β＋γ＋δ＝0',function(v){return v[0]+v[1]+v[2]+v[3];}]
+  ];
+  function cyc(){var seen=[],out='';for(var i=0;i<4;i++){if(seen[i]||arr[i]===i)continue;var c=[NM[i]];seen[i]=1;var j=arr[i];while(j!==i){c.push(NM[j]);seen[j]=1;j=arr[j];}out+='('+c.join(' ')+')';}return out||'e';}
+  function draw(){
+    box.innerHTML='';
+    NM.forEach(function(n,i){var b=document.createElement('button');b.className='g4-root'+(sel===i?' sel':'');
+      b.innerHTML='<small>'+n+' の値</small>'+VS[arr[i]];
+      b.addEventListener('click',function(){if(sel<0){sel=i;}else{if(sel!==i){var t=arr[sel];arr[sel]=arr[i];arr[i]=t;}sel=-1;}draw();});box.appendChild(b);});
+    var v=arr.map(function(k){return VAL[k];}), all=true, h='<tr><th>関係式</th><th>いま</th></tr>';
+    REL.forEach(function(r){var ok=Math.abs(r[1](v))<1e-9;if(!ok)all=false;h+='<tr><td>'+r[0]+'</td><td class="'+(ok?'hit':'miss')+'">'+(ok?'成り立つ':'崩れる')+'</td></tr>';});
+    tab.innerHTML=h;
+    var c=cyc();if(all)found[c]=1;
+    pr.innerHTML='<span>いまの入れ替え：<b>'+c+'</b></span><span class="'+(all?'ok':'ng')+'">'+(all?'ガロア群に入る':'ガロア群に入らない')+'</span>';
+    var ks=Object.keys(found);fd.innerHTML='<span>見つけたガロア群の入れ替え（'+ks.length+'/4）：<b>'+ks.join('、')+'</b></span>';
+  }
+  document.getElementById('g4-reset').addEventListener('click',function(){arr=[0,1,2,3];sel=-1;draw();});
+  draw();
+})();
+
+/* ガロアの基本定理（x³−2） */
+(function(){
+  var svg=document.getElementById('g4-tower'), pb=document.getElementById('g4-pairs'), ro=document.getElementById('g4-tro'), NS='http://www.w3.org/2000/svg';
+  /* 左：中間の体（上ほど大きい）、右：対応する部分群（上ほど小さい）。同じ番号どうしが対応 */
+  var F=[{t:'L＝ℚ(∛2, ω)',d:6,y:46},{t:'ℚ(∛2)',d:3,y:106},{t:'ℚ(∛2ω)',d:3,y:142},{t:'ℚ(∛2ω²)',d:3,y:178},{t:'ℚ(ω)',d:2,y:238},{t:'ℚ',d:1,y:302}];
+  var G=['{e}','{e, (β γ)}','{e, (α γ)}','{e, (α β)}','{e, (α β γ), (α γ β)}','6つすべて'], GS=[1,2,2,2,3,6];
+  var XL=88, XR=268, FS=12;
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;}
+  function tw(s){return s.length*FS*0.6+16;}
+  el('text',{x:XL,y:16,'font-size':12.5,'text-anchor':'middle',fill:'#44377a','font-weight':900}).textContent='中間の体';
+  el('text',{x:XR,y:16,'font-size':12.5,'text-anchor':'middle',fill:'#44377a','font-weight':900}).textContent='部分群';
+  el('text',{x:XL,y:332,'font-size':10.5,'text-anchor':'middle',fill:'#77708c'}).textContent='上ほど大きい体';
+  el('text',{x:XR,y:332,'font-size':10.5,'text-anchor':'middle',fill:'#77708c'}).textContent='上ほど小さい部分群';
+  var links=[], nodes=[];
+  function node(t,x,y){var g=el('g',{'class':'nd'}),w=tw(t);
+    el('rect',{x:x-w/2,y:y-12,width:w,height:24,rx:7},g);
+    var tx=el('text',{x:x,y:y+4,'font-size':FS,'text-anchor':'middle',fill:'#221d33','font-weight':800},g);tx.textContent=t;return g;}
+  F.forEach(function(f,i){
+    var xa=XL+tw(f.t)/2, xb=XR-tw(G[i])/2;
+    links.push(el('line',{x1:xa,y1:f.y,x2:xb,y2:f.y,stroke:'#e0d6ea','stroke-width':1.4,'stroke-dasharray':'4 4'}));
+  });
+  F.forEach(function(f,i){nodes.push([node(f.t,XL,f.y),node(G[i],XR,f.y)]);});
+  function pick(i){
+    nodes.forEach(function(n,j){n[0].setAttribute('class','nd'+(j===i?' on':''));n[1].setAttribute('class','nd'+(j===i?' on':''));});
+    links.forEach(function(l,j){l.setAttribute('stroke',j===i?'#a63f6f':'#e0d6ea');l.setAttribute('stroke-width',j===i?2.4:1.4);});
+    ro.innerHTML='<span>'+F[i].t+'：ℚ の上の次数 <b>'+F[i].d+'</b>、L のこの体の上の次数 <b>'+(6/F[i].d)+'</b></span><span>'+G[i]+'：<b>'+GS[i]+'</b> 個</span>';
+    pb.querySelectorAll('.btn').forEach(function(x,j){x.setAttribute('aria-pressed',j===i?'true':'false');});
+  }
+  F.forEach(function(f,i){var b=document.createElement('button');b.className='btn';b.textContent=f.t.replace('L＝','');b.addEventListener('click',function(){pick(i);});pb.appendChild(b);});
+  pick(1);
+})();
+</script>
+</body>
+</html>

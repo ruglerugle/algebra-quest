@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第1章 群 ― 対称性を計算する（全7ステージ） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="群を中学生にもわかるように解説。回す・裏返す・入れ替えるといった「操作」そのものを計算の対象にする。時計の算術、ラグランジュの定理、RSA暗号のしくみ、そして置換の偶奇で15パズルの謎を解く。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/groups/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第1章 群 ― 対称性を計算する（全7ステージ） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="15パズルで 14 と 15 を入れ替えた配置は、どう動かしても解けない。なぜ言い切れるのか？">
+<meta property="og:url" content="https://algebra.habatakijuku.com/groups/">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": "第1章 群 ― 対称性を計算する",
+  "description": "回す・裏返す・入れ替えるといった「操作」そのものを計算の対象にする。時計の算術、ラグランジュの定理、RSA暗号のしくみ、そして置換の偶奇で15パズルの謎を解く。",
+  "url": "https://algebra.habatakijuku.com/groups/",
+  "inLanguage": "ja",
+  "learningResourceType": "learning activity",
+  "educationalLevel": "中学生以上",
+  "isAccessibleForFree": true,
+  "isPartOf": {
+    "@type": "LearningResource",
+    "name": "群・環・体からガロア理論へ",
+    "url": "https://algebra.habatakijuku.com/"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "ruglerugle"
+  },
+  "hasPart": [
+    {
+      "@type": "LearningResource",
+      "position": 1,
+      "name": "STAGE1 解けない15パズル",
+      "url": "https://algebra.habatakijuku.com/groups/stage1"
+    },
+    {
+      "@type": "LearningResource",
+      "position": 2,
+      "name": "STAGE2 操作の掛け算表",
+      "url": "https://algebra.habatakijuku.com/groups/stage2"
+    },
+    {
+      "@type": "LearningResource",
+      "position": 3,
+      "name": "STAGE3 時計の算術",
+      "url": "https://algebra.habatakijuku.com/groups/stage3"
+    },
+    {
+      "@type": "LearningResource",
+      "position": 4,
+      "name": "STAGE4 部分群とラグランジュの定理",
+      "url": "https://algebra.habatakijuku.com/groups/stage4"
+    },
+    {
+      "@type": "LearningResource",
+      "position": 5,
+      "name": "STAGE5 秘密の鍵 ― RSA暗号",
+      "url": "https://algebra.habatakijuku.com/groups/stage5"
+    },
+    {
+      "@type": "LearningResource",
+      "position": 6,
+      "name": "STAGE6 入れ替えの偶奇",
+      "url": "https://algebra.habatakijuku.com/groups/stage6"
+    },
+    {
+      "@type": "LearningResource",
+      "position": 7,
+      "name": "STAGE7 15パズルの謎を解く",
+      "url": "https://algebra.habatakijuku.com/groups/stage7"
+    }
+  ]
+}
+</script>
+<style>
+  .chapter-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
+  .riddle{max-width:560px;margin:14px auto 0;background:rgba(0,0,0,.22);border:1px solid rgba(227,189,106,.45);border-radius:12px;padding:10px 14px;color:#f6e7c2;font-size:13.5px;font-weight:800;line-height:1.8}
+  .riddle b{display:block;font-size:11px;letter-spacing:.12em;color:var(--gold);margin-bottom:2px}
+
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav class="topbar" aria-label="サイト情報">
+    <a class="brand-badge" href="../" title="トップへ" aria-label="トップへ" style="text-decoration:none">🔷</a>
+    <span class="brand-copy">
+      <strong>群・環・体からガロア理論へ</strong>
+      <small>ALGEBRA QUEST</small>
+    </span>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-copy">
+      <p style="font-weight:900;color:var(--gold);letter-spacing:.08em;margin-bottom:4px">第1章 ／ GROUPS</p>
+      <h1><span class="line">群 ― 対称性を計算する</span></h1>
+      <div class="riddle"><b>この章で解く謎</b>15パズルで 14 と 15 を入れ替えた配置は、どう動かしても解けない。なぜ言い切れるのか？</div>
+      <p>回す・裏返す・入れ替えるといった「操作」そのものを計算の対象にする。時計の算術、ラグランジュの定理、RSA暗号のしくみ、そして置換の偶奇で15パズルの謎を解く。</p>
+      <div class="chapter-nav"><a class="btn" href="../">🗺️ 地図に戻る</a></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="board" aria-labelledby="quest-heading">
+      <div class="board-head">
+        <div><h2 id="quest-heading">ステージを選ぼう！</h2></div>
+        <p>STAGE1 から順番にクリアしよう（前のステージをクリアすると次が解放されます）</p>
+      </div>
+      <div class="quest-grid">
+        <a class="quest-card" href="stage1.html" data-stage="1" style="--accent:#2f6f8f;--accent-bg:#e6f0f6">
+          <div class="q-top"><span class="q-num">1</span><span class="q-suit" aria-hidden="true">🔹</span></div>
+          <div class="q-meta"><span class="q-tag">群論とは何か</span><span class="q-time">⏱ 約20分</span></div>
+          <div class="q-title">解けない15パズル</div>
+          <p class="q-desc">14 と 15 を入れ替えた15パズルは、どう動かしてもそろわない。それを言い切るための道具「群」への入口。</p>
+          <span class="q-cta">はじめる →</span>
+        </a>
+
+        <a class="quest-card" href="stage2.html" data-stage="2" style="--accent:#5b3fa6;--accent-bg:#efe9f9">
+          <div class="q-top"><span class="q-num">2</span><span class="q-suit" aria-hidden="true">🔸</span></div>
+          <div class="q-meta"><span class="q-tag">ケイリー表と群の定義</span><span class="q-time">⏱ 約20分</span></div>
+          <div class="q-title">操作の掛け算表</div>
+          <p class="q-desc">正三角形の6つの操作の掛け算表から、群の4つの条件が生まれる。なぜこの4つなのかを、方程式を解く計算から確かめる。</p>
+          <span class="q-cta">はじめる →</span>
+        </a>
+
+        <a class="quest-card" href="stage3.html" data-stage="3" style="--accent:#2f8f65;--accent-bg:#eaf7ef">
+          <div class="q-top"><span class="q-num">3</span><span class="q-suit" aria-hidden="true">🔷</span></div>
+          <div class="q-meta"><span class="q-tag">mod の計算と巡回群</span><span class="q-time">⏱ 約20分</span></div>
+          <div class="q-title">時計の算術</div>
+          <p class="q-desc">9 時の 5 時間後は 2 時。割った余りで計算する「時計の算術」が群になるしくみと、mod 6 では掛け算がうまくいかない理由。</p>
+          <span class="q-cta">はじめる →</span>
+        </a>
+
+        <a class="quest-card" href="stage4.html" data-stage="4" style="--accent:#9a6a1c;--accent-bg:#fbf2df">
+          <div class="q-top"><span class="q-num">4</span><span class="q-suit" aria-hidden="true">🔶</span></div>
+          <div class="q-meta"><span class="q-tag">剰余類とフェルマーの小定理</span><span class="q-time">⏱ 約20分</span></div>
+          <div class="q-title">部分群とラグランジュの定理</div>
+          <p class="q-desc">群は、部分群のずらしたコピーで、ぴったり等分割できる。そこからフェルマーの小定理が数行で証明できる。</p>
+          <span class="q-cta">はじめる →</span>
+        </a>
+
+        <a class="quest-card" href="stage5.html" data-stage="5" style="--accent:#3f5fa6;--accent-bg:#e9eef9">
+          <div class="q-top"><span class="q-num">5</span><span class="q-suit" aria-hidden="true">💠</span></div>
+          <div class="q-meta"><span class="q-tag">オイラーの定理とRSA暗号のしく</span><span class="q-time">⏱ 約20分</span></div>
+          <div class="q-title">秘密の鍵 ― RSA暗号</div>
+          <p class="q-desc">鍵を公開しても破られない暗号。群の個数 φ(n) とオイラーの定理で、RSA暗号を小さな数で組み立てて動かす。</p>
+          <span class="q-cta">はじめる →</span>
+        </a>
+
+        <a class="quest-card" href="stage6.html" data-stage="6" style="--accent:#a63f6f;--accent-bg:#fbe9f1">
+          <div class="q-top"><span class="q-num">6</span><span class="q-suit" aria-hidden="true">🔺</span></div>
+          <div class="q-meta"><span class="q-tag">置換</span><span class="q-time">⏱ 約20分</span></div>
+          <div class="q-title">入れ替えの偶奇</div>
+          <p class="q-desc">並べ替えを2つずつの入れ替えに分けると、回数は変わっても偶数か奇数かは変わらない。転倒数でその理由を証明する。</p>
+          <span class="q-cta">はじめる →</span>
+        </a>
+
+        <a class="quest-card" href="stage7.html" data-stage="7" style="--accent:#7a6a2f;--accent-bg:#f7f3e2">
+          <div class="q-top"><span class="q-num">7</span><span class="q-suit" aria-hidden="true">🔻</span></div>
+          <div class="q-meta"><span class="q-tag">15パズルが解けない理由と置換の</span><span class="q-time">⏱ 約20分</span></div>
+          <div class="q-title">15パズルの謎を解く</div>
+          <p class="q-desc">1手は互換、市松模様で空白は偶数手で戻る。だから全体は偶置換。14 と 15 の入れ替えが不可能な理由をついに証明する。</p>
+          <span class="q-cta">はじめる →</span>
+        </a>
+      </div>
+    </section>
+
+    <div id="book-recommend"></div>
+  </main>
+
+  <footer>
+    <p>NO DOWNLOAD. NO REGISTRATION. JUST LEARN. &nbsp;© <span id="year"></span> ruglerugle</p>
+    <div class="footer-suits" aria-hidden="true"><span>🔺</span><span>🧩</span><span>📐</span><span>👑</span></div>
+  </footer>
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+<script src="../js/progress.js?v=20261005a"></script>
+<script>AQ.initCoverPage("groups");</script>
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第2章 STAGE7 数の代わりに倍数の集まり（イデアルとは・a＋b√−5 の見えない部品） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="イデアルとは何かを中学生向けに解説。「割り切る」を倍数の集まりの包含で言いかえ、最大公約数を ax＋by の形の数の集まりとして見る。a＋b√−5 では 2 と 1＋√−5 の最大公約数にあたる数がないのに、集まり A は作れることを示す。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/rings/stage7">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第2章 STAGE7 数の代わりに倍数の集まり（イデアルとは・a＋b√−5 の見えない部品） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="最大公約数にあたる数がない世界でも、「倍数の集まり」なら作れる。クンマーとデデキントの見えない部品、イデアルの正体。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/rings/stage7">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE7 数の代わりに倍数の集まり",
+      "description": "イデアルとは何かを中学生向けに解説。「割り切る」を倍数の集まりの包含で言いかえ、最大公約数を ax＋by の形の数の集まりとして見る。a＋b√−5 では 2 と 1＋√−5 の最大公約数にあたる数がないのに、集まり A は作れることを示す。",
+      "url": "https://algebra.habatakijuku.com/rings/stage7",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 7,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第2章 素因数分解の世界",
+        "url": "https://algebra.habatakijuku.com/rings/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第2章 素因数分解の世界",
+          "item": "https://algebra.habatakijuku.com/rings/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE7 数の代わりに倍数の集まり",
+          "item": "https://algebra.habatakijuku.com/rings/stage7"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+.tbl-scroll{overflow-x:auto;max-width:100%}
+  .id-ex td.lft{text-align:left}
+  .id-ex{font-size:12.5px}
+  @media (max-width:520px){.id-ex{font-size:11px}.id-ex th,.id-ex td{padding:3px 4px}}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第2章 素因数分解の世界 ／ STAGE 7 ― 数の代わりに倍数の集まり ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 8</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第2章 STAGE 7</span><h1 class="chapter-title">数の代わりに倍数の集まり</h1>
+        <div class="chapter-sub">イデアルという「部品」</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">「a が b を割り切る」を倍数の集まりの包含で言いかえ、a＋b√−5 の集まり A＝{2x＋(1＋√−5)y} が「a＋b が偶数の数全体」と一致することを両方向から示そう。A がどの1つの数の倍数の集まりでもないこと、イデアルの定義を説明できれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">前のステージで、a＋b√−5 の世界では、2 が既約元（これ以上分けられない数）なのに素元（積を割り切れば因数のどちらかを割り切る数）でないために、6＝2×3＝(1＋√−5)(1−√−5) と分解が2通りになることを確かめた。クンマーの考えは、2 や 1＋√−5 は本当はまだ分けられるのに、それを分ける「部品」がこの世界の<strong>数</strong>の中にないだけだ、というものだった。部品が数として存在しないなら、どうやって扱えばいいか。手がかりは、「割り切る」を<strong>倍数の集まり</strong>で言いかえることにある。まず整数で考えよう。n の倍数全体の集まりを (n) と書くことにする。2 が 6 を割り切ることと、(6) と (2) の関係を考えてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">6＝2×3 なので、6 の倍数 6k は 2×(3k) と書けて、2 の倍数です。だから (6) は (2) の中に入っています。逆に (6) が (2) の中に入っているなら、6 自身が (6) の数なので 2 の倍数で、2 は 6 を割り切ります。<strong>「2 が 6 を割り切る」と「(6) が (2) に含まれる」は同じこと</strong>です。割る数のほうが、大きな集まりになるんですね。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 150" role="img" aria-label="数直線の −9 から 9。2 の倍数を青い点、6 の倍数を赤い点で示す。6 の倍数はすべて 2 の倍数の中に含まれている">
+          <text x="10" y="22" font-size="12.5" font-weight="900" fill="#3f6fb5">● 2 の倍数（2）</text>
+          <text x="170" y="22" font-size="12.5" font-weight="900" fill="#c8433f">● 6 の倍数（6）</text>
+          <line x1="20" y1="70" x2="418" y2="70" stroke="#b9b0a3" stroke-width="1.5"/>
+          <line x1="30" y1="65" x2="30" y2="75" stroke="#b9b0a3"/><text x="30" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">−9</text><line x1="51" y1="65" x2="51" y2="75" stroke="#b9b0a3"/><circle cx="51" cy="70" r="6" fill="#3f6fb5" stroke="#fff" stroke-width="1.5"/><text x="51" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#3f6fb5">−8</text><line x1="72" y1="65" x2="72" y2="75" stroke="#b9b0a3"/><text x="72" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">−7</text><line x1="93" y1="65" x2="93" y2="75" stroke="#b9b0a3"/><circle cx="93" cy="70" r="9" fill="#c8433f" stroke="#fff" stroke-width="1.5"/><text x="93" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#c8433f">−6</text><line x1="114" y1="65" x2="114" y2="75" stroke="#b9b0a3"/><text x="114" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">−5</text><line x1="135" y1="65" x2="135" y2="75" stroke="#b9b0a3"/><circle cx="135" cy="70" r="6" fill="#3f6fb5" stroke="#fff" stroke-width="1.5"/><text x="135" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#3f6fb5">−4</text><line x1="156" y1="65" x2="156" y2="75" stroke="#b9b0a3"/><text x="156" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">−3</text><line x1="177" y1="65" x2="177" y2="75" stroke="#b9b0a3"/><circle cx="177" cy="70" r="6" fill="#3f6fb5" stroke="#fff" stroke-width="1.5"/><text x="177" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#3f6fb5">−2</text><line x1="198" y1="65" x2="198" y2="75" stroke="#b9b0a3"/><text x="198" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">−1</text><line x1="219" y1="65" x2="219" y2="75" stroke="#b9b0a3"/><circle cx="219" cy="70" r="9" fill="#c8433f" stroke="#fff" stroke-width="1.5"/><text x="219" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#c8433f">0</text><line x1="240" y1="65" x2="240" y2="75" stroke="#b9b0a3"/><text x="240" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">1</text><line x1="261" y1="65" x2="261" y2="75" stroke="#b9b0a3"/><circle cx="261" cy="70" r="6" fill="#3f6fb5" stroke="#fff" stroke-width="1.5"/><text x="261" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#3f6fb5">2</text><line x1="282" y1="65" x2="282" y2="75" stroke="#b9b0a3"/><text x="282" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">3</text><line x1="303" y1="65" x2="303" y2="75" stroke="#b9b0a3"/><circle cx="303" cy="70" r="6" fill="#3f6fb5" stroke="#fff" stroke-width="1.5"/><text x="303" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#3f6fb5">4</text><line x1="324" y1="65" x2="324" y2="75" stroke="#b9b0a3"/><text x="324" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">5</text><line x1="345" y1="65" x2="345" y2="75" stroke="#b9b0a3"/><circle cx="345" cy="70" r="9" fill="#c8433f" stroke="#fff" stroke-width="1.5"/><text x="345" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#c8433f">6</text><line x1="366" y1="65" x2="366" y2="75" stroke="#b9b0a3"/><text x="366" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">7</text><line x1="387" y1="65" x2="387" y2="75" stroke="#b9b0a3"/><circle cx="387" cy="70" r="6" fill="#3f6fb5" stroke="#fff" stroke-width="1.5"/><text x="387" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#3f6fb5">8</text><line x1="408" y1="65" x2="408" y2="75" stroke="#b9b0a3"/><text x="408" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">9</text>
+          <text x="220" y="132" text-anchor="middle" font-size="12.5" font-weight="800" fill="#44377a">6 の倍数はどれも 2 の倍数 ⇔ 2 は 6 を割り切る</text>
+        </svg>
+        <div class="diagram-caption"><strong>割り切る＝含む</strong>。数直線の上で、2 の倍数を青、6 の倍数を赤で示した（赤は青の一部でもある）。6 の倍数はどれも 2 の倍数の中に入っている。「2 が 6 を割り切る」ことは「6 の倍数の集まりが 2 の倍数の集まりに含まれる」ことと同じ。割る数ほど大きな集まりになる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。数そのものの代わりに、倍数の集まりで「割り切る」を言いかえられる。次は最大公約数だ。4 と 6 に整数を掛けて足した数 4x＋6y を全部集めた集まりを考える。これはどんな集まりかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">4x も 6y も偶数なので、4x＋6y はいつも偶数です。逆に、4×(−1)＋6×1＝2 なので 2 が作れて、x と y を k 倍すれば 4×(−k)＋6×k＝2k で、どんな偶数も作れます。だから {4x＋6y} は (2) とちょうど同じ集まりで、2 は 4 と 6 の最大公約数です。STAGE4 で、最大公約数はいつも ax＋by の形に書けると分かったので、どんな a, b でも {ax＋by} は最大公約数の倍数の集まりです。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-comb" aria-label="a と b に整数を掛けて足した数 ax＋by を数直線の上に並べた図。どれも最大公約数の倍数になり、最大公約数の倍数はすべて現れる"></canvas></div>
+        <div class="sim-controls">
+          <label>a <input type="number" id="in-ca" min="1" max="30" value="4"></label>
+          <label>b <input type="number" id="in-cb" min="1" max="30" value="6"></label>
+        </div>
+        <div class="readout" id="ro-comb"></div>
+        <div class="diagram-caption"><strong>ax＋by の形の数を全部集める</strong>。x, y を −12 から 12 まで動かしたときの ax＋by を、数直線の −24〜24 の範囲に点で示した（同じ数は1つの点）。現れる数は最大公約数の倍数ばかりで、最大公約数の倍数はひとつ残らず現れる。{ax＋by} は、最大公約数 g の倍数の集まり (g) そのもの</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。つまり整数の世界では、「2つの数の最大公約数」と「ax＋by の形の数の集まり」は同じ情報をもっている。では a＋b√−5 の世界で、2 と 1＋√−5 の最大公約数を考えよう。2 と 1＋√−5 の両方を割り切る数 d は何があるかな？ STAGE2 のノルムを使ってごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">d が 2 を割り切るなら、2＝d×c で N(d)×N(c)＝N(2)＝4 なので、N(d) は 4 の約数です。d が 1＋√−5 を割り切るなら、同じように N(d) は 6 の約数です。4 と 6 の公約数は 1 と 2 で、この世界にノルム 2 の数はないので N(d)＝1、つまり d＝±1 です。公約数は単数 ±1 だけです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。整数の世界なら、公約数が ±1 だけなら ax＋by＝1 と書けるはずだった。ここでも 2x＋(1＋√−5)y＝1 となる x, y がこの世界にあるか、調べよう。x, y をこの世界のどんな数にしてもよいとして、2x＋(1＋√−5)y の形の数を全部集めたものを <strong>A</strong> と書く。x＝c＋d√−5 として、2x と (1＋√−5)x を計算してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">2x＝2c＋2d√−5。(1＋√−5)(c＋d√−5)＝c＋d√−5＋c√−5＋d(√−5)²＝(c−5d)＋(c＋d)√−5。どちらも a＋b√−5 の形で書くと、a＋b が 2c＋2d と (c−5d)＋(c＋d)＝2c−4d で、どちらも<strong>偶数</strong>です。a＋b が偶数の数どうしを足しても、a どうし b どうしを足すので a＋b はやはり偶数です。だから A の数は、どれも a＋b が偶数です。1 は 1＋0＝1 で奇数なので、<strong>1 は A に入りません</strong>。2x＋(1＋√−5)y＝1 は作れません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">よく調べたね。逆に、a＋b が偶数の数は、全部 A に入るかな？ a＋b√−5 を、1＋√−5 の何倍かと残りに分けてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">a＋b√−5＝(a−b)＋b(1＋√−5) です。a−b＝(a＋b)−2b で、a＋b が偶数なら a−b も偶数なので、a−b＝2×((a−b)/2) と書けます。だから a＋b√−5＝2×((a−b)/2)＋(1＋√−5)×b で、A の形です。<strong>A は「a＋b が偶数の数」全体とちょうど一致</strong>します。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step"><span class="nw">A＝{2x＋(1＋√−5)y}</span>（x, y は a＋b√−5 の世界の数）</span>
+        <span class="step">【A の数は a＋b が偶数】<span class="nw">2(c＋d√−5)＝2c＋2d√−5</span>：a＋b＝2c＋2d（偶数）</span>
+        <span class="step"><span class="nw">(1＋√−5)(c＋d√−5)＝(c−5d)＋(c＋d)√−5</span>：a＋b＝2c−4d（偶数）。偶数どうしの和も偶数</span>
+        <span class="step">【a＋b が偶数なら A の数】<span class="nw">a＋b√−5＝(a−b)＋b(1＋√−5)</span><span class="nw">＝2×((a−b)/2)＋(1＋√−5)×b</span>（a−b＝(a＋b)−2b も偶数）</span>
+        <span class="step">→ <strong>A＝{a＋b√−5 ｜ a＋b が偶数}</strong>。1 は入らない（1＋0 は奇数）</span>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-ideal7" aria-label="a＋b√−5 の格子点のうち、2x＋(1＋√−5)y の形で作れた数を色つきで示す図。作れる数を増やしていくと、a＋b が偶数の点（市松模様）がすべて埋まり、1 や 3 は入らない"></canvas></div>
+        <div class="sim-controls">
+          <span class="grp-label">x, y の範囲</span>
+          <button class="btn" type="button" data-r7="0" aria-pressed="false">2 と 1＋√−5 だけ</button>
+          <button class="btn" type="button" data-r7="1" aria-pressed="false">±1 まで</button>
+          <button class="btn" type="button" data-r7="3" aria-pressed="true">±3 まで</button>
+        </div>
+        <div class="readout" id="ro-ideal7"></div>
+        <div class="diagram-caption"><strong>A＝{2x＋(1＋√−5)y} を格子の上で作る</strong>。a＋b√−5 を横 a・縦 b√5 の点として並べ、x, y（どちらも c＋d√−5 の形で、c, d を選んだ範囲で動かす）から作れた数を紫の点で示した。範囲を広げると、a＋b が偶数の点（市松模様の半分）が埋まっていく。2 と 1＋√−5 は入り、1 と 3 は入らない</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">さて、整数の世界では {ax＋by} は最大公約数の倍数の集まりだった。A も、何かの数 d の倍数の集まり (d) になっているかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbitThink.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">もし A＝(d) なら、2 は A に入るので d の倍数、つまり d は 2 を割り切ります。1＋√−5 も A に入るので、d は 1＋√−5 も割り切ります。d は公約数なので、さっき調べたとおり d＝±1 です。でも (±1) はこの世界の数全部で、1 も入ります。A には 1 が入らないので、矛盾です。<strong>A は、どの数の倍数の集まりでもありません</strong>。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">それが大事な発見なんだ。整数の世界では「数」と「倍数の集まり」は1対1に対応していた。a＋b√−5 の世界では、A のように、<strong>どの数の倍数の集まりでもないのに、倍数の集まりと同じ性質をもつ集まり</strong>がある。A は 2 も 1＋√−5 も 6 も含み、3 は含まない。数としては存在しない「2 と 1＋√−5 の最大公約数」が、集まりとしては存在している。これがクンマーの「見えない部品」の正体だ。1871年にデデキントは、こういう集まりを<strong>イデアル</strong>と名づけた。では、「倍数の集まりと同じ性質」とは何か。d の倍数の集まり (d) には、どんな性質があるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">d の倍数どうしを足しても引いても d の倍数です。dx±dy＝d(x±y) だからです。それと、d の倍数に世界のどんな数を掛けても、やはり d の倍数です。(dx)×r＝d(xr) だからです。A も、2x＋(1＋√−5)y どうしを足し引きすると x どうし y どうしをまとめられて、どんな数 r を掛けても 2(xr)＋(1＋√−5)(yr) なので、同じ2つの性質をもっています。</div>
+        </div>
+      </div>
+
+      <div class="note-box"><span class="nb-title">イデアル</span>環（数の世界）の数の集まり I が次の2つをみたすとき、I を<strong>イデアル</strong>という（ここでは 0 以外の数も含むものを考える）。<br>・I の2つの数を足しても引いても、I に入る<br>・I の数に、世界のどんな数を掛けても、I に入る<br>例：数 d の倍数の集まり (d)、A＝{2x＋(1＋√−5)y}。2つの数 a, b から作る {ax＋by} を (a, b) と書く。A＝(2, 1＋√−5)</div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。この2つの性質は、「ある部品で割り切れる数の集まり」がもつべき性質そのものだ。部品で割り切れる数どうしの和や差は割り切れるし、割り切れる数の倍数も割り切れる。だからこの2つを、部品の定義にするんだ。例と、当てはまらない例を見ておこう。STAGE1 で、偶数全体は 1 を含まないから環ではない、と言ったね。整数の世界で、偶数全体はイデアルかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">偶数どうしの和も差も偶数で、偶数にどんな整数を掛けても偶数です。偶数全体 (2) はイデアルです。奇数全体は 1＋1＝2 が奇数でないので、イデアルではありません。2 の倍数と 3 の倍数を合わせた集まりも、2＋3＝5 がどちらの倍数でもないので、イデアルではありません。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="tbl-scroll"><table class="num-table id-ex">
+          <tr><th>世界</th><th>集まり</th><th>足し算・引き算</th><th>世界の数を掛ける</th><th>判定</th></tr>
+          <tr><td>整数の世界</td><td class="lft">2 の倍数（偶数）全体</td><td class="hit">○</td><td class="hit">○</td><td class="hit"><b>イデアル</b></td></tr>
+          <tr><td>整数の世界</td><td class="lft">n の倍数全体</td><td class="hit">○</td><td class="hit">○</td><td class="hit"><b>イデアル</b></td></tr>
+          <tr><td>整数の世界</td><td class="lft">奇数全体</td><td class="miss">×（1＋1＝2）</td><td class="miss">×（2×1＝2）</td><td class="miss"><b>でない</b></td></tr>
+          <tr><td>整数の世界</td><td class="lft">2 の倍数と 3 の倍数を合わせた集まり</td><td class="miss">×（2＋3＝5）</td><td class="hit">○</td><td class="miss"><b>でない</b></td></tr>
+          <tr><td>整数の世界</td><td class="lft">0 以上の整数全体</td><td class="miss">×（2−5＝−3）</td><td class="miss">×（(−1)×2）</td><td class="miss"><b>でない</b></td></tr>
+          <tr><td>a＋b√−5</td><td class="lft">A＝{2x＋(1＋√−5)y}</td><td class="hit">○</td><td class="hit">○</td><td class="hit"><b>イデアル</b></td></tr>
+        </table></div>
+        <div class="diagram-caption"><strong>イデアルの例と、当てはまらない例</strong>。「足し算・引き算で閉じる」「世界の数を掛けても外に出ない」の2つを両方みたすものがイデアル。0 以上の整数全体は、−1 を掛けると外に出るのでイデアルではない</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。最後に、整数の世界のイデアルはどれも、ある数 d の倍数の集まり (d) になることを確かめておこう。そうすれば、A のようなものが現れるのは整数より広い世界ならではだと分かる。I を整数のイデアルとして、I に入っている正の数のうちいちばん小さいものを d とする。I の数 m を d で割ってごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">m＝qd＋r（0≦r＜d）と書けます。m は I に入っていて、qd は d に整数 q を掛けたので I に入ります。だから差の r＝m−qd も I に入ります。r は d より小さく、d は I の正の数でいちばん小さいので、r は正の数ではありえず、r＝0 です。だから m＝qd で、I の数はどれも d の倍数です。逆に d の倍数は d に整数を掛けたものなので I に入ります。<strong>整数のイデアルは (d) の形だけ</strong>です。ここでも余りのある割り算が効いているんですね。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。余りのある割り算ができる世界では、イデアルはどれも1つの数の倍数の集まりになり、「数」と「部品」の区別はいらない。a＋b√−5 の世界では割り算がうまくいかないから、A のような「数で書けない部品」が現れる。次のステージでは、このイデアルどうしを<strong>掛け算</strong>して、こわれた素因数分解 6＝2×3＝(1＋√−5)(1−√−5) を修理しよう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">「2 が 6 を割り切る」⇔「6 の倍数の集まり (6) が 2 の倍数の集まり (2) に含まれる」。割る数ほど大きな集まり</span>
+        <span class="step">整数では <span class="nw">{ax＋by}＝(最大公約数の倍数)</span>。例：<span class="nw">{4x＋6y}＝(2)</span></span>
+        <span class="step">a＋b√−5 の世界で、2 と 1＋√−5 の公約数は ±1 だけ（ノルム 2 の数がない）なのに、2x＋(1＋√−5)y＝1 は作れない</span>
+        <span class="step"><span class="nw">A＝(2, 1＋√−5)＝{a＋b√−5 ｜ a＋b が偶数}</span>（両方向から証明）。A はどの数の倍数の集まりでもない＝数で書けない部品</span>
+        <span class="step">イデアル：足し算・引き算で閉じ、世界の数を掛けても外に出ない集まり（1871年 デデキントの命名）。偶数全体 (2) は整数のイデアル</span>
+        <span class="step">整数のイデアルはすべて (d) の形（いちばん小さい正の数 d で割った余りが 0 になる）</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. 整数の世界で「2 が 6 を割り切る」と同じことは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">6 の倍数の集まり (6) が、2 の倍数の集まり (2) に含まれる</button>
+          <button class="choice-btn">2 の倍数の集まり (2) が、6 の倍数の集まり (6) に含まれる</button>
+          <button class="choice-btn">(2) と (6) は共通の数をもたない</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 6＝2×3 なので 6k＝2(3k) はどれも 2 の倍数。逆に 6 が (2) に入れば 2 は 6 を割り切る。割る数のほうが大きな集まりになる。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. A＝{2x＋(1＋√−5)y}＝{a＋b√−5 ｜ a＋b が偶数} に入らない数は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">6</button>
+          <button class="choice-btn">1−√−5</button>
+          <button class="choice-btn">3</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 3＝3＋0√−5 は a＋b＝3 で奇数。6 は 6＋0＝6、1−√−5 は 1＋(−1)＝0 で、どちらも偶数なので A に入る。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. A がどの1つの数 d の倍数の集まりでもない理由は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">A には数が無限にあるから</button>
+          <button class="choice-btn">A＝(d) なら d は 2 と 1＋√−5 の公約数で ±1 しかなく、(±1) は 1 を含むが A は 1 を含まないから</button>
+          <button class="choice-btn">A は足し算で閉じていないから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 2 と 1＋√−5 が A に入るので d は両方を割り切る。ノルム 2 の数がないので d＝±1。すると (d) は世界全体で 1 を含むが、1＋0 は奇数なので 1 は A に入らない。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("rings", 7);</script>
+<script>
+/* ax＋by の形の数を全部集める */
+(function(){
+  var ia=document.getElementById('in-ca'), ib=document.getElementById('in-cb'), ro=document.getElementById('ro-comb');
+  var st=FL.canvas('cv-comb',0.3,draw);
+  function draw(st){
+    var a=Math.max(1,Math.min(30,parseInt(ia.value,10)||1)), b=Math.max(1,Math.min(30,parseInt(ib.value,10)||1));
+    var g=FL.gcdN(a,b), M=24, got={};
+    for(var x=-12;x<=12;x++) for(var y=-12;y<=12;y++){ var v=a*x+b*y; if(Math.abs(v)<=M) got[v]=true; }
+    var ctx=st.ctx; ctx.clearRect(0,0,st.W,st.H); ctx.fillStyle=FL.C.paper; ctx.fillRect(0,0,st.W,st.H);
+    var pad=14, s=(st.W-2*pad)/(2*M), y0=st.H*0.42;
+    function X(n){ return pad+(n+M)*s; }
+    FL.line(ctx,X(-M)-6,y0,X(M)+6,y0,FL.C.axis,1.4);
+    var fs=st.W<420?9:10.5;
+    for(var n=-M;n<=M;n++){
+      FL.line(ctx,X(n),y0-4,X(n),y0+4,FL.C.axis,1);
+      if(got[n]) FL.dot(ctx,X(n),y0,Math.max(2.6,Math.min(5,s*0.38)),n===g||n===-g?FL.C.red:FL.C.theme);
+      var step=st.W<420?6:3;
+      if(n%step===0) FL.text(ctx,FL.signed(n),X(n),y0+20,{align:'center',size:fs,color:FL.C.muted});
+    }
+    FL.text(ctx,'a＝'+a+'、b＝'+b+' から作れる数（紫）',pad,16,{size:11.5,color:FL.C.themeDark});
+    ro.innerHTML='<span>現れた数はどれも <b>'+g+'</b> の倍数</span><span>いちばん小さい正の数 <b class="ng">'+g+'</b>（a と b の最大公約数）</span>';
+  }
+  [ia,ib].forEach(function(el){el.addEventListener('input',function(){st.redraw();});});
+})();
+
+/* A＝{2x＋(1＋√−5)y} を格子の上で作る */
+(function(){
+  var btns=document.querySelectorAll('[data-r7]'), ro=document.getElementById('ro-ideal7'), R=3;
+  var S5=Math.sqrt(5);
+  function name(a,b){ if(b===0) return FL.signed(a); var s=(a!==0?FL.signed(a):''); var bb=Math.abs(b); return s+(b>0?(a!==0?'＋':''):'−')+(bb===1?'':bb)+'√−5'; }
+  var st=FL.canvas('cv-ideal7',0.8,draw);
+  function draw(st){
+    var got={};
+    function add(a,b){ got[a+','+b]=true; }
+    if(R===0){ add(2,0); add(1,1); }
+    else {
+      for(var c1=-R;c1<=R;c1++) for(var d1=-R;d1<=R;d1++) for(var c2=-R;c2<=R;c2++) for(var d2=-R;d2<=R;d2++){
+        /* 2(c1＋d1√−5)＋(1＋√−5)(c2＋d2√−5) */
+        add(2*c1+(c2-5*d2), 2*d1+(c2+d2));
+      }
+    }
+    var ctx=st.ctx; ctx.clearRect(0,0,st.W,st.H); ctx.fillStyle=FL.C.paper; ctx.fillRect(0,0,st.W,st.H);
+    var v=FL.view(st,12,1,0);
+    FL.axes(ctx,st,v,0,{labels:false});
+    for(var a=-9;a<=11;a++) for(var b=-3;b<=3;b++){
+      var x=v.X(a), y=v.Y(b*S5); if(x<-6||x>st.W+6||y<-6||y>st.H+6) continue;
+      var even=((a+b)%2+2)%2===0, on=got[a+','+b];
+      if(even&&!on){ ctx.save(); ctx.strokeStyle=FL.C.themeLight; ctx.lineWidth=1.3; ctx.beginPath(); ctx.arc(x,y,5,0,Math.PI*2); ctx.stroke(); ctx.restore(); }
+      else FL.dot(ctx,x,y,on?5.5:2.4,on?FL.C.theme:'#c9c2b4');
+    }
+    [[2,0,'2',-9],[1,1,'1＋√−5',-9],[1,0,'1',18],[3,0,'3',18],[1,-1,'1−√−5',18]].forEach(function(t){
+      var on=((t[0]+t[1])%2+2)%2===0;
+      FL.text(ctx,t[2]+(on?' ○':' ×'),v.X(t[0])+7,v.Y(t[1]*S5)+t[3],{color:on?FL.C.themeDark:FL.C.red,size:12,halo:true});
+    });
+    var cnt=0, tot=0;
+    for(a=-9;a<=11;a++) for(b=-3;b<=3;b++){ if(((a+b)%2+2)%2===0){ tot++; if(got[a+','+b]) cnt++; } }
+    ro.innerHTML='<span>紫の点：作れた数　白い丸：a＋b が偶数でまだ作れていない数</span><span>表示範囲の a＋b が偶数の点 '+tot+' 個のうち <b>'+cnt+' 個</b>を作れた</span>';
+  }
+  btns.forEach(function(bt){bt.addEventListener('click',function(){R=+bt.getAttribute('data-r7');btns.forEach(function(x){x.setAttribute('aria-pressed',x===bt?'true':'false');});st.redraw();});});
+})();
+</script>
+</body>
+</html>

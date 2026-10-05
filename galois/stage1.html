@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第4章 STAGE1 解の公式の歴史（5次方程式に解の公式がない謎） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="5次方程式に解の公式がない謎を中学生向けに解説。バビロニアの2次、カルダノの3次、フェラーリの4次から、ルフィニ、アーベル、ガロアまでの歴史をたどり、2次方程式の解の公式を平方完成で導いて解と係数の関係を確かめる。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/galois/stage1">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第4章 STAGE1 解の公式の歴史（5次方程式に解の公式がない謎） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="2次・3次・4次には解の公式があるのに、5次にはない。300年かかった謎の歴史と、ガロアが見つけた「解の入れ替え」という視点の入り口。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/galois/stage1">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE1 解の公式の歴史",
+      "description": "5次方程式に解の公式がない謎を中学生向けに解説。バビロニアの2次、カルダノの3次、フェラーリの4次から、ルフィニ、アーベル、ガロアまでの歴史をたどり、2次方程式の解の公式を平方完成で導いて解と係数の関係を確かめる。",
+      "url": "https://algebra.habatakijuku.com/galois/stage1",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 1,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第4章 方程式の対称性",
+        "url": "https://algebra.habatakijuku.com/galois/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第4章 方程式の対称性",
+          "item": "https://algebra.habatakijuku.com/galois/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE1 解の公式の歴史",
+          "item": "https://algebra.habatakijuku.com/galois/stage1"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+.tl{max-width:560px;margin:0 auto;text-align:left;border-left:3px solid #d9c6d1;padding-left:2px}
+  .tl-row{display:flex;gap:10px;align-items:baseline;padding:6px 8px;border-bottom:1px dashed #e3dbe6;font-size:13px;line-height:1.6}
+  .tl-row:last-child{border-bottom:none}
+  .tl-y{flex:0 0 6.6em;font-weight:900;color:#44377a;font-variant-numeric:tabular-nums}
+  .tl-t{flex:1;color:#221d33}
+  .tl-row.five{background:#fbe9f1}
+  .tl-row.five .tl-y{color:#a63f6f}
+  #deg-list{margin-top:8px}
+  #deg-list table{margin:0 auto}
+  #deg-list td{text-align:left}
+  #deg-list td.num{text-align:right;color:#77708c}
+  @media(max-width:480px){.tl-y{flex-basis:6.2em;font-size:11.5px}.tl-row{font-size:12.5px;gap:6px;padding:6px 4px}}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第4章 方程式の対称性 ／ STAGE 1 ― 解の公式の歴史 ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第4章 STAGE 1</span><h1 class="chapter-title">解の公式の歴史</h1>
+        <div class="chapter-sub">2次から5次へ、300年の謎</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">「解の公式がある」とはどういう意味かを説明し、2次方程式の解の公式を平方完成で導こう。2つの解の和と積が係数で書け、α と β を入れ替えても変わらないことを確かめられれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いよいよ最後の章だ。第1章から第3章で、群・環・体という3つの道具をそろえてきた。この章では、それを全部使って、数学の歴史に残る大きな謎を解く。まず、中学で学んだ<strong>2次方程式の解の公式</strong>を思い出してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">ax²＋bx＋c＝0 の解は x＝(−b±√(b²−4ac))/(2a) です。たとえば x²−5x＋6＝0 なら、a＝1, b＝−5, c＝6 を入れて (5±√(25−24))/2＝(5±1)/2 なので、x＝3 と x＝2 です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。解の公式のよいところは、方程式ごとに工夫しなくても、<strong>係数を入れるだけで解が出てくる</strong>ことだ。ここで「解の公式」の意味をはっきりさせておこう。係数から、足し算・引き算・掛け算・割り算と、「何乗根か」をとる操作だけを、有限回使って解を書き表す式のことだ。n 乗して a になる数を a の <strong>n 乗根</strong>といい、√ は2乗根、∛ は3乗根だね。こうした「何乗根」をまとめて<strong>べき根</strong>と呼ぶ。そして、ある方程式の解がすべて、係数からこのやり方で書けるとき、その方程式は<strong>べき根で解ける</strong>という。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">2次方程式の公式は、√ を1回だけ使っています。3次方程式なら ∛ を使う公式があるんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">ある。2次方程式の解き方は、紀元前1800年ごろのバビロニアの粘土板にすでに書かれている。3次方程式は、16世紀のイタリアで解かれた。1545年、カルダノが『アルス・マグナ（偉大な術）』という本で3次方程式の公式を発表し、同じ本に弟子のフェラーリが見つけた<strong>4次方程式</strong>の解き方も載せた。ところが、<strong>5次方程式</strong>の公式は、そこから300年近く、だれにも見つけられなかったんだ。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="tl" id="tl-hist">
+          <div class="tl-row"><span class="tl-y">前1800年ごろ</span><span class="tl-t"><b>バビロニア</b>：粘土板に、2次方程式にあたる問題の解き方</span></div>
+          <div class="tl-row"><span class="tl-y">9世紀</span><span class="tl-t"><b>アル＝フワーリズミー</b>：2次方程式の解き方を整理した本（「代数」を表す英語 algebra の語源）</span></div>
+          <div class="tl-row"><span class="tl-y">1515年ごろ</span><span class="tl-t"><b>デル・フェッロ</b>：3次方程式の解き方を見つけるが、秘密にする</span></div>
+          <div class="tl-row"><span class="tl-y">1535年</span><span class="tl-t"><b>タルタリア</b>：3次方程式の解き方を自力で見つける</span></div>
+          <div class="tl-row"><span class="tl-y">1545年</span><span class="tl-t"><b>カルダノ</b>『アルス・マグナ』：3次方程式の公式と、弟子フェラーリによる4次方程式の解き方を出版</span></div>
+          <div class="tl-row"><span class="tl-y">1572年</span><span class="tl-t"><b>ボンベリ</b>：3次の公式の途中に出る「負の数の √」の計算のしかたを示す</span></div>
+          <div class="tl-row five"><span class="tl-y">1770年</span><span class="tl-t"><b>ラグランジュ</b>：これまでの解き方がなぜうまくいくのかを、解の入れ替えから分析する</span></div>
+          <div class="tl-row five"><span class="tl-y">1799年</span><span class="tl-t"><b>ルフィニ</b>：5次方程式に解の公式はないと主張し、証明を発表（すき間が残る）</span></div>
+          <div class="tl-row five"><span class="tl-y">1824年</span><span class="tl-t"><b>アーベル</b>：一般の5次方程式に、べき根による解の公式はないことを証明</span></div>
+          <div class="tl-row five"><span class="tl-y">1832年</span><span class="tl-t"><b>ガロア</b>：決闘の前夜、方程式がべき根で解けるかどうかを判定する理論を友人への手紙に書く（20歳）</span></div>
+          <div class="tl-row five"><span class="tl-y">1846年</span><span class="tl-t"><b>リウヴィル</b>：ガロアの論文を雑誌に載せ、世に広める</span></div>
+        </div>
+        <div class="diagram-caption"><strong>解の公式の年表</strong>。2次方程式は紀元前から、3次・4次方程式は16世紀に解かれた。色のついた行が5次方程式をめぐる動き。5次の公式は300年近く見つからず、19世紀に「ない」ことが証明された</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">5次方程式には解がない、ということですか？ でも、たとえば x⁵−6x＋3 は、x＝0 のとき 3、x＝1 のとき 1−6＋3＝−2 です。0 と 1 の間で、値が正から負に変わるので、そこで 0 になる x がありそうです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう、解はある。1799年にガウスが、どんな n 次方程式にも、複素数の中に解が n 個（重なりも数えて）あることを示した。x⁵−6x＋3＝0 にも解は5個あって、計算機を使えば 0.5055… のように、いくらでも細かく近似できる。ないのは「解」ではなく、解を係数から<strong>べき根で書き表す式</strong>のほうなんだ。同じ5次でも、x⁵−1＝0 の5つの解は正5角形の頂点にあたる複素数で、第3章で求めた cos 72°＝(√5−1)/4 を使うと √ だけで書ける。一方、x⁵−6x＋3＝0 の解は、べき根では書けない。いくつかの方程式で、解の書き方を比べてみよう。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="sim-controls" id="deg-btns">
+          <button class="btn" data-k="0" aria-pressed="true">x²−2</button>
+          <button class="btn" data-k="1">x³−2</button>
+          <button class="btn" data-k="2">x⁴−5x²＋6</button>
+          <button class="btn" data-k="3">x⁵−1</button>
+          <button class="btn" data-k="4">x⁵−6x＋3</button>
+        </div>
+        <div class="cv-wrap"><canvas id="cv-deg" aria-label="選んだ方程式の解を複素数平面の点として描いた図"></canvas></div>
+        <div id="deg-list"></div>
+        <div class="diagram-caption"><strong>方程式と、その解の書き方</strong>。方程式を選ぶと、解を複素数平面の点として描き、べき根で書いた形と近似値を並べる。x⁵−1 の解は正5角形の頂点で、第3章で求めた cos 72° を使って √ で書ける。x⁵−6x＋3 の5個の解は、近似値は分かるが、べき根で書いた形はない</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">x⁵−1 は書けて、x⁵−6x＋3 は書けない。でも、「書けない」とどうやって言い切るんですか？ 公式を探して見つからなかった、というだけでは証明になりません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そこがこの章の中心だ。「できない」ことの証明は、これまでの章でも2回やったね。15パズルの 14 と 15 の入れ替えは、置換の偶奇で不可能だと分かった。角の三等分は、拡大の次数が 2 の累乗にならないことで不可能だと分かった。どちらも、「どう工夫しても変わらない量」をつかまえて、それで判定した。方程式の場合、それにあたるのが<strong>解どうしの入れ替えがつくる群</strong>なんだ。これを見つけたのがガロアだ。</div>
+        </div>
+      </div>
+
+      <div class="note-box"><span class="nb-title">この章でできるようになること</span>・2次方程式の公式がなぜ √ 1回で済むのかを、2つの解の入れ替えから説明できる<br>・3次方程式の解の公式（カルダノの公式）を、解の入れ替えを手がかりに自分で導ける<br>・方程式ごとに「ガロア群」を求め、解を含む体のひろがり方と群の部分群を対応させられる<br>・「べき根で解ける」ことを「群を段々に降りていける」ことに言いかえられる<br>・x⁵−6x＋3＝0 がべき根で解けないこと、つまり5次方程式に解の公式がないことを証明できる</div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">入れ替えなら、第1章で学んだ置換や部分群が使えそうです。でも、5次方程式の解は値が分からないのに、どうやって入れ替えるんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">値が分からなくても、解に α, β, γ, … と名前をつけて、<strong>名前を入れ替える</strong>ことはできる。そして、入れ替えても変わらない式・変わる式を調べるんだ。まずはいちばん簡単な2次方程式で、解の公式がどう作られるかを自分の手で確かめよう。ax²＋bx＋c＝0（a≠0）を、両辺を a で割ってから、左辺が「何かの2乗」になるように変形してごらん。これを<strong>平方完成</strong>という。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">x²＋(b/a)x＋c/a＝0 です。(x＋b/(2a))²＝x²＋(b/a)x＋b²/(4a²) なので、両辺に b²/(4a²) を足して c/a を右辺に移すと、(x＋b/(2a))²＝b²/(4a²)−c/a＝(b²−4ac)/(4a²) になります。2乗して右辺になる数は2つあるので、x＋b/(2a)＝±√(b²−4ac)/(2a)。これで公式が出ました。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step"><span class="nw">ax²＋bx＋c＝0</span>、ただし a≠0</span>
+        <span class="step"><span class="nw">x²＋(b/a)x＋c/a＝0</span>（両辺を a で割る）</span>
+        <span class="step"><span class="nw">x²＋(b/a)x＋b²/(4a²)＝b²/(4a²)−c/a</span>（両辺に b²/(4a²) を足し、c/a を右辺へ移す）</span>
+        <span class="step"><span class="nw">(x＋b/(2a))²＝(b²−4ac)/(4a²)</span>（左辺を2乗の形にまとめ、右辺を通分する）</span>
+        <span class="step"><span class="nw">x＋b/(2a)＝±√(b²−4ac)/(2a)</span>（2乗して右辺になる数は、符号違いの2つ）</span>
+        <span class="step"><span class="nw">x＝(−b±√(b²−4ac))/(2a)</span></span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。では、＋のほうの解を α、−のほうの解を β として、α＋β と αβ を計算してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">α＋β は、±√ の部分が打ち消し合って、−2b/(2a)＝−b/a です。αβ は (−b)²−(√(b²−4ac))² を (2a)² で割ったものなので、(b²−b²＋4ac)/(4a²)＝c/a です。どちらも √ が消えて、係数だけで書けました。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。これを<strong>解と係数の関係</strong>という。逆の向きからも見てみよう。α と β が解なら、ax²＋bx＋c は a(x−α)(x−β) と因数分解できる。これを展開すると？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">a(x−α)(x−β)＝ax²−a(α＋β)x＋aαβ です。係数を比べると b＝−a(α＋β)、c＝aαβ なので、さっきと同じ関係になります。それと、α と β を入れ替えても、α＋β も αβ も変わりません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いいところに気づいたね。<strong>係数は、2つの解を入れ替えても変わらない式で書けている</strong>。一方、解の公式の中で2つの解を区別しているのは、± の符号だけだ。2つの解は、√ の符号を変えるだけで入れ替わる。b と c を動かして確かめてみよう。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-quad" aria-label="x²＋bx＋c＝0 の2つの解を複素数平面に描き、入れ替えボタンで2つの解のラベルを入れ替える図"></canvas></div>
+        <div class="sim-controls">
+          <label>b <input type="range" id="q-b" min="-6" max="6" value="-4"><output id="q-bo">−4</output></label>
+          <label>c <input type="range" id="q-c" min="-5" max="9" value="1"><output id="q-co">1</output></label>
+          <button class="btn" id="q-swap">α と β を入れ替える</button>
+        </div>
+        <div class="readout" id="q-ro"></div>
+        <div class="diagram-caption"><strong>x²＋bx＋c＝0 の2つの解</strong>。2つの解を複素数平面の点として描いた（赤が α、青が β）。入れ替えボタンを押すと、√ の前の符号が入れ替わり、α と β が場所を交換する。α−β は符号が変わるが、α＋β と αβ はいつも −b と c のまま。b²−4c が負になるように c を大きくすると、2つの解は実軸をはさんで上下に並ぶ</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">b²−4c が負のときは、√ の中が負になるので i が出て、2つの解は実軸をはさんで対称な位置に来ます。入れ替えると、実軸についての折り返しになるんですね。それでも α＋β と αβ は実数のままです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。ここまでが2次方程式の話だ。最後に、この謎を解いた人のことを少し話しておこう。エヴァリスト・ガロアは1811年にフランスで生まれた。10代で方程式の研究を始め、論文を科学アカデミーに何度も送ったが、なくされたり、「よく分からない」と返されたりして、認められなかった。そして1832年5月30日、20歳で決闘に臨み、翌日亡くなった。その前の晩、友人シュヴァリエにあてて、自分の理論の要点を書き残したんだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">アーベルが1824年に「一般の5次方程式に公式はない」と証明していたのなら、ガロアはそこに何を付け加えたんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いい質問だね。アーベルが示したのは、「どんな5次方程式にも使える公式はない」ということだ。ガロアは、<strong>1つ1つの方程式</strong>について、べき根で解けるかどうかを見分ける方法を作った。x⁵−1 は解けて、x⁵−6x＋3 は解けない。その違いを、解の入れ替えの群の形で説明したんだ。ガロアの手紙と論文は、1846年にリウヴィルが雑誌に載せて、ようやく世に知られた。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">2次方程式では、α＋β と αβ が入れ替えで変わらないことと、± で2つの解が区別されることが出てきました。3次や5次でも、入れ替えで変わる式と変わらない式を調べるんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。次のステージでは、入れ替えで変わらない式が係数で書けることを確かめ、2次方程式の解の公式を「入れ替え」の見方で作り直す。その見方が、3次方程式を解く道具になるんだ。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">解の公式：係数から、四則と「何乗根」（べき根）を有限回使って解を書き表す式。2次は紀元前から、3次・4次は1545年のカルダノの本で出版された</span>
+        <span class="step">5次方程式にも解は5個ある（ガウス、1799年）。ないのは解ではなく、解をべき根で書く公式。ルフィニ（1799年）、アーベル（1824年）、ガロア（1832年）</span>
+        <span class="step">平方完成：<span class="nw">(x＋b/(2a))²＝(b²−4ac)/(4a²)</span> から <span class="nw">x＝(−b±√(b²−4ac))/(2a)</span></span>
+        <span class="step">解と係数の関係：<span class="nw">α＋β＝−b/a</span>、<span class="nw">αβ＝c/a</span>。係数は、2つの解を入れ替えても変わらない式で書ける</span>
+        <span class="step">2つの解は、√ の前の符号 ± だけで区別される。「できない」ことの証明には、変わらない量（偶奇・次数）にあたるものとして、解の入れ替えの群を使う</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. この章でいう「解の公式」とは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">解の近似値をいくらでも細かく計算する手順</button>
+          <button class="choice-btn">解が存在することを保証する定理</button>
+          <button class="choice-btn">係数から、四則と何乗根をとる操作を有限回使って解を書き表す式</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ x⁵−6x＋3＝0 にも解は5個あり、近似値も計算できる。ないのは、解を係数から四則とべき根で書き表す式のほう。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. ax²＋bx＋c＝0 の2つの解を α, β とするとき、α＋β と αβ は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">α＋β＝b/a、αβ＝c/a</button>
+          <button class="choice-btn">α＋β＝−b/a、αβ＝c/a</button>
+          <button class="choice-btn">α＋β＝−b/a、αβ＝−c/a</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ a(x−α)(x−β)＝ax²−a(α＋β)x＋aαβ を ax²＋bx＋c と比べると、b＝−a(α＋β)、c＝aαβ。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. アーベルの仕事に対して、ガロアが付け加えたことは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">1つ1つの方程式について、べき根で解けるかどうかを解の入れ替えの群で見分ける方法</button>
+          <button class="choice-btn">5次方程式にも解が5個あることの証明</button>
+          <button class="choice-btn">4次方程式の解の公式</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ アーベルは「どんな5次方程式にも使える公式はない」ことを示した。ガロアは、x⁵−1 は解けて x⁵−6x＋3 は解けない、という違いを群で説明した。解が n 個あることはガウス、4次の公式はフェラーリ。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("galois", 1);</script>
+<script>
+/* 方程式と解の書き方 */
+(function(){
+  var S5=Math.sqrt(5), c72=(S5-1)/4, s72=Math.sqrt(10+2*S5)/4, c144=-(S5+1)/4, s144=Math.sqrt(10-2*S5)/4, cb=Math.cbrt(2), r3=Math.sqrt(3)/2;
+  var EQ=[
+    {roots:[[Math.SQRT2,0],[-Math.SQRT2,0]], ex:['√2','−√2']},
+    {roots:[[cb,0],[-cb/2,cb*r3],[-cb/2,-cb*r3]], ex:['∛2','∛2×(−1＋√3 i)/2','∛2×(−1−√3 i)/2']},
+    {roots:[[Math.SQRT2,0],[-Math.SQRT2,0],[Math.sqrt(3),0],[-Math.sqrt(3),0]], ex:['√2','−√2','√3','−√3']},
+    {roots:[[1,0],[c72,s72],[c72,-s72],[c144,s144],[c144,-s144]], ex:['1','(√5−1)/4＋i√(10＋2√5)/4','(√5−1)/4−i√(10＋2√5)/4','−(√5＋1)/4＋i√(10−2√5)/4','−(√5＋1)/4−i√(10−2√5)/4']},
+    {roots:null, ex:null}
+  ];
+  /* x⁵−6x＋3 の解（Durand–Kerner 法で求める） */
+  (function(){
+    function m(a,b){return [a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]];}
+    function d(a,b){var q=b[0]*b[0]+b[1]*b[1];return [(a[0]*b[0]+a[1]*b[1])/q,(a[1]*b[0]-a[0]*b[1])/q];}
+    function f(z){var z5=m(z,m(z,m(z,m(z,z))));return [z5[0]-6*z[0]+3,z5[1]-6*z[1]];}
+    var z=[],p=[1,0];for(var k=0;k<5;k++){z.push(p);p=m(p,[0.4,0.9]);}
+    for(var it=0;it<300;it++){z=z.map(function(zi,i){var den=[1,0];z.forEach(function(zj,j){if(j!==i)den=m(den,[zi[0]-zj[0],zi[1]-zj[1]]);});var q=d(f(zi),den);return [zi[0]-q[0],zi[1]-q[1]];});}
+    z.sort(function(a,b){return Math.abs(a[1])-Math.abs(b[1])||b[0]-a[0];});
+    EQ[4].roots=z.map(function(r){return [r[0],Math.abs(r[1])<1e-9?0:r[1]];});
+    EQ[4].ex=z.map(function(){return '？';});
+  })();
+  var cur=0, list=document.getElementById('deg-list');
+  function fmt(r){var a=r[0].toFixed(4).replace('-','−'), b=Math.abs(r[1]).toFixed(4);return Math.abs(r[1])<1e-9?a:a+(r[1]<0?'−':'＋')+b+'i';}
+  var st=FL.canvas('cv-deg',0.56,draw);
+  function draw(st){
+    var ctx=st.ctx,e=EQ[cur];ctx.clearRect(0,0,st.W,st.H);ctx.fillStyle=FL.C.paper;ctx.fillRect(0,0,st.W,st.H);
+    var v=FL.view(st,4.6,0,0);
+    FL.axes(ctx,st,v,1,{labels:false});
+    FL.text(ctx,'実軸',st.W-6,v.Y(0)-6,{color:FL.C.muted,align:'right',size:11});
+    FL.text(ctx,'虚軸',v.X(0)+6,13,{color:FL.C.muted,size:11});
+    for(var k=-2;k<=2;k++){ if(k) FL.text(ctx,String(k).replace('-','−'),v.X(k),v.Y(0)+14,{color:FL.C.muted,size:10,align:'center',weight:600}); }
+    if(cur===3){ctx.strokeStyle=FL.C.themeLight;ctx.setLineDash([4,4]);ctx.beginPath();ctx.arc(v.X(0),v.Y(0),v.s,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);
+      ctx.strokeStyle=FL.C.theme;ctx.beginPath();[0,1,3,4,2].forEach(function(i,j){var r=e.roots[i];if(j)ctx.lineTo(v.X(r[0]),v.Y(r[1]));else ctx.moveTo(v.X(r[0]),v.Y(r[1]));});ctx.closePath();ctx.stroke();}
+    e.roots.forEach(function(r){FL.dot(ctx,v.X(r[0]),v.Y(r[1]),6,cur===4?FL.C.red:FL.C.theme,'#fff');});
+    var html='<table class="num-table"><tr><th>べき根で書いた形</th><th>近似値</th></tr>';
+    e.roots.forEach(function(r,i){html+='<tr><td'+(cur===4?' class="miss"':'')+'>'+(cur===4?'書けない':e.ex[i])+'</td><td class="num">'+fmt(r)+'</td></tr>';});
+    list.innerHTML=html+'</table>';
+  }
+  document.querySelectorAll('#deg-btns .btn').forEach(function(b){b.addEventListener('click',function(){
+    cur=+b.dataset.k;document.querySelectorAll('#deg-btns .btn').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});st.redraw();});});
+})();
+
+/* x²＋bx＋c＝0 の2つの解の入れ替え */
+(function(){
+  var ib=document.getElementById('q-b'), ic=document.getElementById('q-c'), ob=document.getElementById('q-bo'), oc=document.getElementById('q-co'), ro=document.getElementById('q-ro'), bs=document.getElementById('q-swap');
+  var sgn=1, t=1, timer=null;
+  function sg(x){return String(x).replace('-','−');}
+  function roots(){var b=+ib.value,c=+ic.value,D=b*b-4*c;
+    if(D>=0){var s=Math.sqrt(D);return {D:D,p:[(-b+s)/2,0],m:[(-b-s)/2,0]};}
+    var s2=Math.sqrt(-D);return {D:D,p:[-b/2,s2/2],m:[-b/2,-s2/2]};}
+  function cs(z){var a=(Math.round(z[0]*1000)/1000), b=Math.round(Math.abs(z[1])*1000)/1000;return (b===0?sg(a):sg(a)+(z[1]<0?'−':'＋')+b+'i');}
+  var st=FL.canvas('cv-quad',0.62,draw);
+  function draw(st){
+    var b=+ib.value,c=+ic.value;ob.textContent=sg(b);oc.textContent=sg(c);
+    var R=roots(), ctx=st.ctx;ctx.clearRect(0,0,st.W,st.H);ctx.fillStyle=FL.C.paper;ctx.fillRect(0,0,st.W,st.H);
+    var v=FL.view(st,9,0,0);FL.axes(ctx,st,v,1,{labels:false});
+    FL.text(ctx,'実軸',st.W-6,v.Y(0)-6,{color:FL.C.muted,align:'right',size:11});
+    FL.text(ctx,'虚軸',v.X(0)+6,13,{color:FL.C.muted,size:11});
+    /* t は 1 のとき α＝＋側。入れ替え中は両者が中点を回って入れ替わる */
+    var A=sgn>0?R.p:R.m, B=sgn>0?R.m:R.p, mx=(A[0]+B[0])/2, my=(A[1]+B[1])/2;
+    var ang=Math.PI*(1-t);
+    function rot(P){var dx=P[0]-mx,dy=P[1]-my;return [mx+dx*Math.cos(ang)-dy*Math.sin(ang),my+dx*Math.sin(ang)+dy*Math.cos(ang)];}
+    var a=rot(A), bb=rot(B);
+    FL.dot(ctx,v.X(mx),v.Y(my),3,FL.C.gold);
+    FL.text(ctx,'−b/2',v.X(mx),v.Y(my)+(Math.abs(A[1])>0.3?4:22),{color:FL.C.gold,size:11,align:'center',base:'middle',halo:true});
+    FL.dot(ctx,v.X(a[0]),v.Y(a[1]),7,FL.C.red,'#fff');FL.dot(ctx,v.X(bb[0]),v.Y(bb[1]),7,FL.C.blue,'#fff');
+    var off=Math.abs(A[1])>0.3?0:-14;
+    FL.text(ctx,'α',v.X(a[0])+9,v.Y(a[1])+off-6,{color:FL.C.red,size:15,halo:true});
+    FL.text(ctx,'β',v.X(bb[0])+9,v.Y(bb[1])+off-6,{color:FL.C.blue,size:15,halo:true});
+    var D=R.D, sq=D>=0?'√'+D:'√('+sg(D)+')';
+    ro.innerHTML='<span>α＝('+sg(-b)+(sgn>0?'＋':'−')+sq+')/2＝<b>'+cs(A)+'</b></span><span>β＝('+sg(-b)+(sgn>0?'−':'＋')+sq+')/2＝<b>'+cs(B)+'</b></span><span>α＋β＝<b>'+sg(-b)+'</b></span><span>αβ＝<b>'+sg(c)+'</b></span><span>α−β＝<b>'+cs([A[0]-B[0],A[1]-B[1]])+'</b></span>';
+  }
+  function upd(){t=1;st.redraw();}
+  ib.addEventListener('input',upd);ic.addEventListener('input',upd);
+  bs.addEventListener('click',function(){
+    if(timer)return; sgn=-sgn;
+    if(FL.reducedMotion()){t=1;st.redraw();return;}
+    t=0;timer=setInterval(function(){t=Math.min(1,t+0.08);st.redraw();if(t>=1){clearInterval(timer);timer=null;}},30);
+  });
+})();
+</script>
+</body>
+</html>

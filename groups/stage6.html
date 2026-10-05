@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第1章 STAGE6 入れ替えの偶奇（置換・互換・偶置換と奇置換） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="置換の偶奇を中学生向けに解説。どんな並べ替えも2つずつの入れ替え（互換）の積で書けるが、その個数が偶数か奇数かは書き方によらない。順番が逆のペアの数（転倒数）で証明し、偶置換が全体のちょうど半分の群になることも確かめる。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/groups/stage6">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第1章 STAGE6 入れ替えの偶奇（置換・互換・偶置換と奇置換） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="並べ替えを2つずつの入れ替えに分けると、回数は変わっても偶数か奇数かは変わらない。転倒数でその理由を証明する。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/groups/stage6">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE6 入れ替えの偶奇",
+      "description": "置換の偶奇を中学生向けに解説。どんな並べ替えも2つずつの入れ替え（互換）の積で書けるが、その個数が偶数か奇数かは書き方によらない。順番が逆のペアの数（転倒数）で証明し、偶置換が全体のちょうど半分の群になることも確かめる。",
+      "url": "https://algebra.habatakijuku.com/groups/stage6",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 6,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第1章 対称性を計算する",
+        "url": "https://algebra.habatakijuku.com/groups/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第1章 対称性を計算する",
+          "item": "https://algebra.habatakijuku.com/groups/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE6 入れ替えの偶奇",
+          "item": "https://algebra.habatakijuku.com/groups/stage6"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+.num-table.s3t{font-size:13px}
+.num-table.s3t th,.num-table.s3t td{padding:4px 6px;white-space:nowrap}
+@media(max-width:480px){.num-table.s3t{font-size:11px}.num-table.s3t th,.num-table.s3t td{padding:3px 3px}}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第1章 対称性を計算する ／ STAGE 6 ― 入れ替えの偶奇 ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第1章 STAGE 6</span><h1 class="chapter-title">入れ替えの偶奇</h1>
+        <div class="chapter-sub">転倒数で偶奇を見分ける</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">どんな置換も互換の積で書けること、そして互換の個数の偶奇は書き方によらないこと（となりどうしの入れ替えで転倒数がちょうど1増減する）を説明しよう。偶置換が部分群で、全体のちょうど半分であることを示せれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いよいよ15パズルの謎に向けた準備だ。15パズルの1手は、空白とタイルの入れ替えだったね。何手か動かすと、タイルが並べ替えられる。この「並べ替え」そのものを計算する道具を作ろう。1 から n の番号を、重ならないように別の番号に付け替えることを<strong>置換</strong>という。たとえば、1 を 2 に、2 を 3 に、3 を 1 に付け替える置換を <strong>(1 2 3)</strong> と書く。かっこの中の番号を右どなりの番号に付け替え、いちばん右の番号は左はしの番号に付け替える。かっこに入っていない番号はそのままだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">1, 2, 3, 4 と並んだカードの番号を (1 2 3) で付け替えると、2, 3, 1, 4 になるということですね。(1 2 3) を3回くり返すと、1 は 2→3→1 と回って、もとに戻ります。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。置換も、続けて行うことを積として、群になる。何もしない置換が単位元で、付け替えを逆にたどるのが逆元だ。n 個の番号の置換は、全部で何個あるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">1 の付け替え先が n 通り、2 の付け替え先は残りの n−1 通り、…と考えると、n×(n−1)×…×2×1 個です。3 個の番号なら 6 個、4 個なら 24 個です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。その数を n! と書いて「n の階乗」と読む。n 個の番号の置換全体の群を、n 次の<strong>対称群</strong>といい、Sₙ と書く。正三角形の6つの操作は、頂点の位置 1, 2, 3 の付け替えと見ると、S₃ そのものだ。r は位置を 1→2→3→1 と付け替えるから (1 2 3)、s₁ は位置 2 と 3 を入れ替えるから (2 3) だね。この (2 3) のように、2つの番号だけを入れ替える置換を<strong>互換</strong>という。互換を組み合わせると、どんな置換が作れるかな。(1 2) のあとに (1 3) をしてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">1 は (1 2) で 2 になり、(1 3) では動かないので 2 です。2 は (1 2) で 1 になり、(1 3) で 3 になります。3 は (1 2) では動かず、(1 3) で 1 になります。1→2、2→3、3→1 なので、(1 2)(1 3)＝(1 2 3) です。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">(1 2)(1 3)：まず (1 2)、続けて (1 3) をする</span>
+        <span class="step">1：(1 2) で 2 → (1 3) では動かない → <strong>2</strong></span>
+        <span class="step">2：(1 2) で 1 → (1 3) で 3 → <strong>3</strong></span>
+        <span class="step">3：(1 2) では動かない → (1 3) で 1 → <strong>1</strong></span>
+        <span class="step">よって <span class="nw">(1 2)(1 3)＝(1 2 3)</span></span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。同じように考えると、k 個の番号が回る (1 2 … k) は、(1 2)(1 3)…(1 k) と k−1 個の互換の積で書ける。では、どんな置換でも互換の積で書けるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">置換で、1 の付け替え先、その付け替え先、…とたどっていきます。番号は有限個なので、いつか同じ番号に戻ります。付け替え先は重ならないので、最初に戻ってくるのは 1 です。こうして1つの回る組ができます。残った番号から同じことをくり返せば、全部の番号が回る組に分かれます。それぞれの組は互換の積で書けるので、<strong>どんな置換も互換の積で書けます</strong>。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。ただし、書き方は1通りではない。互換の個数も、書き方で変わる。では、個数が<strong>偶数か奇数か</strong>は、書き方で変わるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">(1 2 3) は (1 2)(1 3) の 2 個で書けて、同じ互換を2回続けると何もしないのと同じなので、(1 2)(1 3)(1 2)(1 2) のように 4 個でも書けます。同じ互換を2回足すと個数は 2 増えるので、偶奇は変わりません。でも、まったく違う書き方をしたときに奇数個になることがないかは、これだけでは分かりません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。それを確かめる道具が<strong>転倒数</strong>だ。カードを1列に並べたとき、左にあるカードのほうが大きい番号になっている2枚の組、つまり<strong>順番が逆になっているペアの個数</strong>をいう。2, 3, 1, 4 の転倒数を数えてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">2 と 1、3 と 1 の 2 組が逆になっています。ほかの組は小さいほうが左にあるので、転倒数は 2 です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。では、となりどうしの2枚を入れ替えると、転倒数はどう変わるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">入れ替えた2枚どうしの順番は逆になります。でも、ほかのカードとの左右の関係は変わりません。ほかのカードは、2枚の両方より左にあるか、両方より右にあるかのどちらかで、それは入れ替えても同じだからです。だから転倒数は、<strong>ちょうど 1 増えるか、1 減ります</strong>。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="cv-wrap"><canvas id="cv-iv" aria-label="番号を書いたカードの列。2枚を順にタップすると入れ替わり、順番が逆になっているペアを弧で結んで表示する"></canvas></div>
+        <div class="sim-controls" id="ctl-iv"><label>カードの枚数 <select id="sel-ivn"><option>3</option><option>4</option><option selected>5</option><option>6</option><option>7</option></select></label></div>
+        <div class="readout" id="ro-iv"></div>
+        <div class="diagram-caption"><strong>転倒数を数える</strong>。カードを2枚、順にタップすると入れ替わる。順番が逆になっているペア（左のほうが大きい番号の2枚）を赤い弧で結び、その本数（転倒数）と、これまでに入れ替えた回数を表示する。どの2枚を入れ替えても、2つの数の偶奇はいつも一致する</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。では、となりどうしでない2枚の入れ替えはどうかな。左から i 番目と j 番目（i＜j）のカードを入れ替えることを、となりどうしの入れ替えだけで行ってごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">i 番目のカードを右どなりと入れ替えていくと、j−i 回で j 番目まで行きます。そのとき、もとの j 番目のカードは1つ左の j−1 番目にずれています。それを左どなりと入れ替えていけば、j−1−i 回で i 番目に着きます。合わせて (j−i)＋(j−i−1)＝2(j−i)−1 回で、いつも<strong>奇数回</strong>です。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 272" style="width:100%;max-width:500px;display:block;margin:0 auto" role="img" aria-label="左から2番目と5番目のカードの入れ替えを、となりどうしの入れ替え5回で行う様子"><rect x="12" y="6" width="38" height="34" rx="6" fill="#fff" stroke="#5b4a9e" stroke-width="2"/><text x="31" y="29" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">1</text><rect x="56" y="6" width="38" height="34" rx="6" fill="#fbe9e8" stroke="#c8433f" stroke-width="2"/><text x="75" y="29" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">2</text><rect x="100" y="6" width="38" height="34" rx="6" fill="#fff" stroke="#5b4a9e" stroke-width="2"/><text x="119" y="29" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">3</text><rect x="144" y="6" width="38" height="34" rx="6" fill="#fff" stroke="#5b4a9e" stroke-width="2"/><text x="163" y="29" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">4</text><rect x="188" y="6" width="38" height="34" rx="6" fill="#e7eef9" stroke="#3f6fb5" stroke-width="2"/><text x="207" y="29" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">5</text><text x="240" y="29" font-size="13.5" font-weight="800" fill="#44377a">はじめ</text><rect x="12" y="50" width="38" height="34" rx="6" fill="#fff" stroke="#5b4a9e" stroke-width="2"/><text x="31" y="73" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">1</text><rect x="56" y="50" width="38" height="34" rx="6" fill="#fff" stroke="#5b4a9e" stroke-width="2"/><text x="75" y="73" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">3</text><rect x="100" y="50" width="38" height="34" rx="6" fill="#fbe9e8" stroke="#c8433f" stroke-width="2"/><text x="119" y="73" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">2</text><rect x="144" y="50" width="38" height="34" rx="6" fill="#fff" stroke="#5b4a9e" stroke-width="2"/><text x="163" y="73" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">4</text><rect x="188" y="50" width="38" height="34" rx="6" fill="#e7eef9" stroke="#3f6fb5" stroke-width="2"/><text x="207" y="73" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">5</text><text x="240" y="73" font-size="13.5" font-weight="800" fill="#44377a">① 2 を右へ</text><rect x="12" y="94" width="38" height="34" rx="6" fill="#fff" stroke="#5b4a9e" stroke-width="2"/><text x="31" y="117" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">1</text><rect x="56" y="94" width="38" height="34" rx="6" fill="#fff" stroke="#5b4a9e" stroke-width="2"/><text x="75" y="117" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">3</text><rect x="100" y="94" width="38" height="34" rx="6" fill="#fff" stroke="#5b4a9e" stroke-width="2"/><text x="119" y="117" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">4</text><rect x="144" y="94" width="38" height="34" rx="6" fill="#fbe9e8" stroke="#c8433f" stroke-width="2"/><text x="163" y="117" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">2</text><rect x="188" y="94" width="38" height="34" rx="6" fill="#e7eef9" stroke="#3f6fb5" stroke-width="2"/><text x="207" y="117" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">5</text><text x="240" y="117" font-size="13.5" font-weight="800" fill="#44377a">② 2 を右へ</text><rect x="12" y="138" width="38" height="34" rx="6" fill="#fff" stroke="#5b4a9e" stroke-width="2"/><text x="31" y="161" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">1</text><rect x="56" y="138" width="38" height="34" rx="6" fill="#fff" stroke="#5b4a9e" stroke-width="2"/><text x="75" y="161" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">3</text><rect x="100" y="138" width="38" height="34" rx="6" fill="#fff" stroke="#5b4a9e" stroke-width="2"/><text x="119" y="161" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">4</text><rect x="144" y="138" width="38" height="34" rx="6" fill="#e7eef9" stroke="#3f6fb5" stroke-width="2"/><text x="163" y="161" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">5</text><rect x="188" y="138" width="38" height="34" rx="6" fill="#fbe9e8" stroke="#c8433f" stroke-width="2"/><text x="207" y="161" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">2</text><text x="240" y="161" font-size="13.5" font-weight="800" fill="#44377a">③ 2 を右へ</text><rect x="12" y="182" width="38" height="34" rx="6" fill="#fff" stroke="#5b4a9e" stroke-width="2"/><text x="31" y="205" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">1</text><rect x="56" y="182" width="38" height="34" rx="6" fill="#fff" stroke="#5b4a9e" stroke-width="2"/><text x="75" y="205" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">3</text><rect x="100" y="182" width="38" height="34" rx="6" fill="#e7eef9" stroke="#3f6fb5" stroke-width="2"/><text x="119" y="205" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">5</text><rect x="144" y="182" width="38" height="34" rx="6" fill="#fff" stroke="#5b4a9e" stroke-width="2"/><text x="163" y="205" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">4</text><rect x="188" y="182" width="38" height="34" rx="6" fill="#fbe9e8" stroke="#c8433f" stroke-width="2"/><text x="207" y="205" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">2</text><text x="240" y="205" font-size="13.5" font-weight="800" fill="#44377a">④ 5 を左へ</text><rect x="12" y="226" width="38" height="34" rx="6" fill="#fff" stroke="#5b4a9e" stroke-width="2"/><text x="31" y="249" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">1</text><rect x="56" y="226" width="38" height="34" rx="6" fill="#e7eef9" stroke="#3f6fb5" stroke-width="2"/><text x="75" y="249" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">5</text><rect x="100" y="226" width="38" height="34" rx="6" fill="#fff" stroke="#5b4a9e" stroke-width="2"/><text x="119" y="249" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">3</text><rect x="144" y="226" width="38" height="34" rx="6" fill="#fff" stroke="#5b4a9e" stroke-width="2"/><text x="163" y="249" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">4</text><rect x="188" y="226" width="38" height="34" rx="6" fill="#fbe9e8" stroke="#c8433f" stroke-width="2"/><text x="207" y="249" text-anchor="middle" font-size="17" font-weight="900" fill="#221d33">2</text><text x="240" y="249" font-size="13.5" font-weight="800" fill="#c8433f">⑤ 5 を左へ（完成）</text></svg>
+        <div class="diagram-caption"><strong>離れた2枚の入れ替え</strong>。左から 2 番目のカード（赤）と 5 番目のカード（青）を入れ替えるのに、となりどうしの入れ替えを使うと、赤を右へ 3 回、青を左へ 2 回の、合わせて 5 回（2×(5−2)−1 回）かかる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。となりどうしの入れ替えを1回するたびに、転倒数は 1 増えるか 1 減る。すると、どの2枚を入れ替えても、転倒数の偶奇はどうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">1 回ごとに転倒数の偶奇が入れ替わり、それを奇数回くり返すので、最後は偶奇が逆になります。<strong>どの2枚を入れ替えても、転倒数の偶奇は必ず変わります</strong>。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。では仕上げだ。1, 2, …, n と並んだカードに、互換を k 回続けて行ったとしよう。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">はじめの転倒数は 0 で偶数です。互換1回ごとに偶奇が変わるので、k 回のあとの転倒数の偶奇は、k の偶奇と同じです。同じ置換なら、並べ替えた結果は同じで、転倒数も同じです。だから、<strong>同じ置換をどんなふうに互換の積で書いても、個数の偶奇は同じ</strong>です！</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">となりどうしの入れ替え：転倒数はちょうど 1 増えるか 1 減る（ほかのカードとの左右の関係は変わらない）</span>
+        <span class="step">i 番目と j 番目（i＜j）の入れ替え＝となりどうしの入れ替え <span class="nw">(j−i)＋(j−i−1)＝2(j−i)−1</span> 回（奇数回）→ 転倒数の偶奇が必ず変わる</span>
+        <span class="step">1, 2, …, n（転倒数 0）に互換を k 回 → 転倒数の偶奇＝k の偶奇</span>
+        <span class="step">転倒数は並び方だけで決まる → 同じ置換をどう互換の積で書いても、個数の偶奇は同じ</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。偶数個の互換の積で書ける置換を<strong>偶置換</strong>、奇数個の互換の積で書ける置換を<strong>奇置換</strong>という。どの置換も、どちらか一方にだけなる。1, 2, …, n に置換をしてできる並びの転倒数が偶数なら偶置換、奇数なら奇置換だ。S₃ の6つを分けてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">e は互換 0 個なので偶置換。(1 2 3)＝(1 2)(1 3) と、(1 3 2)＝(1 3)(1 2) は偶置換です。(1 2), (1 3), (2 3) は奇置換です。正三角形でいうと、回転 e, r, r² が偶置換で、裏返し s₁, s₂, s₃ が奇置換です。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<table class="num-table s3t">
+          <tr><th>置換</th><th>1, 2, 3 に<br>すると</th><th>互換の積</th><th>転倒数</th><th>偶奇</th><th>正三角形</th></tr>
+          <tr><th>e</th><td>1, 2, 3</td><td>（0 個）</td><td>0</td><td class="hit">偶</td><td>e</td></tr>
+          <tr><th>(1 2 3)</th><td>2, 3, 1</td><td>(1 2)(1 3)</td><td>2</td><td class="hit">偶</td><td>r</td></tr>
+          <tr><th>(1 3 2)</th><td>3, 1, 2</td><td>(1 3)(1 2)</td><td>2</td><td class="hit">偶</td><td>r²</td></tr>
+          <tr><th>(2 3)</th><td>1, 3, 2</td><td>(2 3)</td><td>1</td><td class="miss">奇</td><td>s₁</td></tr>
+          <tr><th>(1 3)</th><td>3, 2, 1</td><td>(1 3)</td><td>3</td><td class="miss">奇</td><td>s₂</td></tr>
+          <tr><th>(1 2)</th><td>2, 1, 3</td><td>(1 2)</td><td>1</td><td class="miss">奇</td><td>s₃</td></tr>
+        </table>
+        <div class="diagram-caption"><strong>S₃ の6つの置換の偶奇</strong>。並び 1, 2, 3 の番号を付け替えた結果と、その転倒数。転倒数が偶数のものが偶置換（緑）、奇数のものが奇置換（赤）。正三角形の頂点の位置の付け替えと見ると、回転が偶置換、裏返しが奇置換になっている</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。偶置換を全部集めると、部分群になる。確かめてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">偶置換と偶置換の積は、偶数個の互換のあとに偶数個の互換を並べたものなので、偶数個で、偶置換です。e は偶置換です。偶置換を互換 t₁t₂…t₂ₘ と書くと、互換は2回続けるともとに戻るので、逆の順番の t₂ₘ…t₂t₁ が逆元になり、これも偶数個です。部分群です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。これを<strong>交代群</strong>といい、Aₙ と書く。そして Aₙ は、Sₙ のちょうど半分の大きさだ。n が 2 以上なら、なぜそうなるか分かるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">偶置換のあとに (1 2) をすると、互換が1つ増えて奇置換になります。奇置換のあとに (1 2) をすると偶置換になります。(1 2) を2回すればもとに戻るので、偶置換と奇置換が1つずつペアになります。だから同じ個数で、ちょうど半分です。S₃ なら 3 個ずつ、S₄ なら 24 の半分で 12 個ずつです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。STAGE4 のラグランジュの等分割でいうと、Sₙ が、偶置換の部分群 Aₙ と、それをずらしたコピーである奇置換全体の、2つの組にぴったり分かれているんだ。これで15パズルの謎を解く準備がそろった。次のステージで、15パズルの1手1手を互換として数えよう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">置換：番号の付け替え。(1 2 3) は 1→2→3→1。n 個の置換全体は n! 個の群（対称群 Sₙ）</span>
+        <span class="step">互換：2つだけの入れ替え。<span class="nw">(1 2)(1 3)＝(1 2 3)</span>。どんな置換も、回る組に分けて互換の積で書ける</span>
+        <span class="step">転倒数：順番が逆のペアの数。となりどうしの入れ替えでちょうど 1 増減し、離れた2枚の入れ替えは <span class="nw">2(j−i)−1</span> 回（奇数回）のとなりどうしの入れ替え</span>
+        <span class="step">互換の個数の偶奇は書き方によらない → 偶置換・奇置換が決まる。S₃ では回転が偶置換、裏返しが奇置換</span>
+        <span class="step">偶置換全体は部分群（交代群 Aₙ）で、(1 2) をするペアで奇置換と1対1 → ちょうど半分</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. 並び 3, 1, 4, 2 の転倒数（順番が逆のペアの数）は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">2</button>
+          <button class="choice-btn">3</button>
+          <button class="choice-btn">4</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 逆のペアは (3, 1)、(3, 2)、(4, 2) の 3 組。転倒数は奇数なので、1, 2, 3, 4 からこの並びを作る置換は奇置換。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. 左から 1 番目と 4 番目のカードを入れ替えるのに、となりどうしの入れ替えは何回かかる？</p>
+        <div class="choice-list">
+          <button class="choice-btn">3 回</button>
+          <button class="choice-btn">4 回</button>
+          <button class="choice-btn">5 回</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 1 番目のカードを右へ 3 回、ずれた 4 番目のカードを左へ 2 回で、2×(4−1)−1＝5 回。いつも奇数回なので、転倒数の偶奇は必ず変わる。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. 4 個の番号の偶置換（交代群 A₄）は何個ある？</p>
+        <div class="choice-list">
+          <button class="choice-btn">12 個</button>
+          <button class="choice-btn">24 個</button>
+          <button class="choice-btn">6 個</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 4 個の置換は 4!＝24 個。偶置換のあとに (1 2) をすると奇置換になり、これで偶置換と奇置換が1対1にペアになるので、ちょうど半分の 12 個。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261005a"></script>
+<script src="../js/algebra.js?v=20261005a"></script>
+<script>AQ.initStagePage("groups", 6);</script>
+<script>
+(function inversions(cfg) {
+  const selN = document.getElementById("sel-ivn"), ro = document.getElementById("ro-iv"), ctl = document.getElementById("ctl-iv");
+  let n = 5, a = [], swaps = 0, sel = -1;
+  const reset = () => { n = +selN.value; a = []; for (let i = 1; i <= n; i++) a.push(i); swaps = 0; sel = -1; st.redraw(); };
+  const geo = (st) => { const cw = Math.min(58, (st.W - 20) / n - 8), gap = (st.W - n * cw) / (n + 1), ch = Math.min(64, cw * 1.25); return { cw: cw, gap: gap, ch: ch, x: (i) => gap + i * (cw + gap), y: st.H - ch - 12 }; };
+  const st = FL.canvas("cv-iv", 0.62, draw);
+  function draw(st) {
+    const ctx = st.ctx; ctx.clearRect(0, 0, st.W, st.H); ctx.fillStyle = FL.C.paper; ctx.fillRect(0, 0, st.W, st.H);
+    if (!a.length) return;
+    const g = geo(st), pairs = [];
+    for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) if (a[i] > a[j]) pairs.push([i, j]);
+    const top = 16, base = g.y - 6, maxH = base - top;
+    pairs.forEach((p) => {
+      const x1 = g.x(p[0]) + g.cw / 2, x2 = g.x(p[1]) + g.cw / 2, h = maxH * (0.25 + 0.75 * (p[1] - p[0]) / (n - 1));
+      ctx.strokeStyle = "rgba(200,67,63,.55)"; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(x1, base); ctx.bezierCurveTo(x1, base - h * 1.3, x2, base - h * 1.3, x2, base); ctx.stroke();
+    });
+    for (let i = 0; i < n; i++) {
+      const x = g.x(i), on = i === sel;
+      ctx.fillStyle = on ? "#fbe9e8" : "#fff"; ctx.strokeStyle = on ? FL.C.red : FL.C.theme; ctx.lineWidth = on ? 3 : 2;
+      ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, g.y, g.cw, g.ch, 8); else ctx.rect(x, g.y, g.cw, g.ch); ctx.fill(); ctx.stroke();
+      FL.text(ctx, String(a[i]), x + g.cw / 2, g.y + g.ch / 2 + 1, { size: Math.round(g.cw * 0.48), color: FL.C.ink, align: "center", base: "middle", weight: 900 });
+    }
+    const inv = pairs.length, par = (k) => (k % 2 ? "奇数" : "偶数");
+    ro.innerHTML = "<span>転倒数：<b>" + inv + "</b>（" + par(inv) + "）</span><span>入れ替えた回数：<b>" + swaps + "</b>（" + par(swaps) + "）</span><span class=\"ok\">偶奇は<b>" + (inv % 2 === swaps % 2 ? "一致" : "不一致") + "</b></span>";
+  }
+  st.cv.addEventListener("click", (ev) => {
+    const r = st.cv.getBoundingClientRect(), x = ev.clientX - r.left, y = ev.clientY - r.top, g = geo(st);
+    if (y < g.y - 10) return;
+    let hit = -1; for (let i = 0; i < n; i++) if (x >= g.x(i) - g.gap / 2 && x <= g.x(i) + g.cw + g.gap / 2) hit = i;
+    if (hit < 0) return;
+    if (sel < 0) sel = hit; else { if (sel !== hit) { const t = a[sel]; a[sel] = a[hit]; a[hit] = t; swaps++; } sel = -1; }
+    st.redraw();
+  });
+  const btn = (label, fn) => { const b = document.createElement("button"); b.type = "button"; b.className = "btn"; b.textContent = label; b.addEventListener("click", fn); ctl.appendChild(b); };
+  btn("1, 2, … の順に戻す", reset);
+  btn("ランダムに2枚を入れ替える", () => { const i = Math.floor(Math.random() * n); let j = Math.floor(Math.random() * (n - 1)); if (j >= i) j++; const t = a[i]; a[i] = a[j]; a[j] = t; swaps++; sel = -1; st.redraw(); });
+  selN.addEventListener("change", reset);
+  reset();
+  // はじめは2回入れ替えた状態から（弧が見えるように）
+  [[0, 2], [3, 4]].forEach((p) => { const t = a[p[0]]; a[p[0]] = a[p[1]]; a[p[1]] = t; swaps++; });
+  st.redraw();
+})(null);
+</script>
+</body>
+</html>

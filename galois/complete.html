@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<meta name="robots" content="noindex">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第4章 ガロア理論 クリア ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="第4章「ガロア理論 ― 方程式の対称性」のまとめ。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/galois/complete">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第4章 ガロア理論 クリア ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="第4章「ガロア理論 ― 方程式の対称性」のまとめ。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/galois/complete">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<style>
+  .chapter-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
+  .riddle{max-width:560px;margin:14px auto 0;background:rgba(0,0,0,.22);border:1px solid rgba(227,189,106,.45);border-radius:12px;padding:10px 14px;color:#f6e7c2;font-size:13.5px;font-weight:800;line-height:1.8}
+  .riddle b{display:block;font-size:11px;letter-spacing:.12em;color:var(--gold);margin-bottom:2px}
+
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav class="topbar" aria-label="サイト情報">
+    <a class="brand-badge" href="../" title="トップへ" aria-label="トップへ" style="text-decoration:none">🔷</a>
+    <span class="brand-copy">
+      <strong>群・環・体からガロア理論へ</strong>
+      <small>ALGEBRA QUEST</small>
+    </span>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-copy">
+      <p style="font-weight:900;color:var(--gold);letter-spacing:.08em;margin-bottom:4px">第4章 ／ GALOIS THEORY</p>
+      <h1><span class="line">第4章「ガロア理論」をクリア！</span></h1>
+      <div class="riddle"><b>この章で解いた謎</b>2次・3次・4次方程式には解の公式があるのに、5次方程式にはない。なぜか？</div>
+      <p>群・環・体の道具をそろえ、5次方程式に解の公式がない理由までたどり着いた。旅の記録で振り返ろう。</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="board" aria-labelledby="recap-heading">
+      <div class="board-head">
+        <div><h2 id="recap-heading">この章を振り返ろう</h2></div>
+      </div>
+      <div class="recap-list">
+        <div class="recap-item">
+          <span class="recap-num">1</span>
+          <div class="recap-body"><span class="recap-title">解の公式の歴史。</span> <span class="recap-desc">解の公式：係数から、四則と「何乗根」（べき根）を有限回使って解を書き表す式。2次は紀元前から、3次・4次は1545年のカルダノの本で出版された ／ 5次方程式にも解は5個ある（ガウス、1799年）。ないのは解ではなく、解をべき根で書く公式。ルフィニ（1799年）、アーベル（1824年）、ガロア（1832年）</span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">2</span>
+          <div class="recap-body"><span class="recap-title">解を入れ替える。</span> <span class="recap-desc">対称式：解をどう入れ替えても変わらない式。<span class="nw">αⁿ＋βⁿ＝(α＋β)(αⁿ⁻¹＋βⁿ⁻¹)−αβ(αⁿ⁻²＋βⁿ⁻²)</span> などで、係数だけで書ける（対称式の基本定理） ／ α−β は入れ替えで符号だけ変わる。<span class="nw">(α−β)²＝(b²−4ac)/a²</span> は対称式で、分子が判別式 D</span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">3</span>
+          <div class="recap-body"><span class="recap-title">3次方程式を解く。</span> <span class="recap-desc">1 の3乗根 ω：長さ 1・角度 120° の複素数。<span class="nw">ω³＝1</span>、<span class="nw">1＋ω＋ω²＝0</span>、<span class="nw">ω＝(−1＋√−3)/2</span> ／ <span class="nw">u＝α＋ωβ＋ω²γ</span> は回転で ω 倍・ω² 倍になり、互換で <span class="nw">v＝α＋ω²β＋ωγ</span> に移る。u³ は u³ と v³ の2つの値しかとらない</span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">4</span>
+          <div class="recap-body"><span class="recap-title">ガロア群。</span> <span class="recap-desc">解の間の関係式：解に有理数係数の四則（割り算以外）をほどこした式が 0 になるもの。ガロア群＝すべての関係式を成り立ったままにする入れ替えの集まり（群になる） ／ ガロア群の個数＝分解体（解をすべて ℚ に加えた体）の次数</span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">5</span>
+          <div class="recap-body"><span class="recap-title">べき根で解けるとは。</span> <span class="recap-desc">√ を加えると、Δ のような数を変えない入れ替え H が残る。g, h に対して ghg⁻¹ もまた H に入る ／ 正規部分群：どの g でも <span class="nw">gH＝Hg</span>（左右どちらからずらしても同じ分け方）。{e, (α β γ), (α γ β)} は正規、{e, (α β)} は正規でない</span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">6</span>
+          <div class="recap-body"><span class="recap-title">5つの入れ替え。</span> <span class="recap-desc">可換群：どの a, b でも ab＝ba となる群。巡回群は可換群（<span class="nw">gᵐgⁿ＝gⁿgᵐ</span>） ／ 交換子 <span class="nw">aba⁻¹b⁻¹</span>：a, b をして、a, b の順にもどす入れ替え。ab＝ba なら e</span></div>
+        </div>
+        <div class="recap-item">
+          <span class="recap-num">7</span>
+          <div class="recap-body"><span class="recap-title">解けない5次方程式。</span> <span class="recap-desc">既約性：有理数の解 ±1, ±3 はない。ガウスの補題とアイゼンシュタインの判定法（p＝3）で、2次と3次の積にも分かれない ／ 実数解の個数：<span class="nw">f(−2)＜0, f(−1)＞0, f(1)＜0, f(2)＞0</span> で3つ以上。解の2乗の和が 0 なので5つ全部は実数でない。共役の組で、ちょうど3つ</span></div>
+        </div>
+      </div>
+      <div class="complete-actions">
+        <a class="btn btn-primary" id="btn-share" href="#" target="_blank" rel="noopener">𝕏 クリアをシェアする</a>
+        <a class="btn" href="../">🗺️ 地図に戻る</a>
+        <button class="btn" id="btn-reset-all">🔄 この章を最初から</button>
+      </div>
+    </section>
+
+    <section class="board" aria-labelledby="next-heading" style="margin-top:16px">
+      <div class="board-head">
+        <div><h2 id="next-heading">バックナンバー</h2></div>
+        <p>同じねこ博士とうさ美が案内する、姉妹サイトの学習クエスト</p>
+      </div>
+      <div class="quest-grid">
+        <a class="quest-card" href="https://fermat.habatakijuku.com/" target="_blank" rel="noopener" style="--accent:#2f6f8f;--accent-bg:#e6f0f6">
+          <div class="q-top"><span class="q-num">ⁿ</span><span class="q-suit" aria-hidden="true">📜</span></div>
+          <div class="q-meta"><span class="q-tag">数論</span><span class="q-time">全4章</span></div>
+          <div class="q-title">フェルマーの最終定理、証明への道</div>
+          <p class="q-desc">第2章の環とイデアルが活躍する。無限降下法から楕円曲線とモジュラー形式、ワイルズの証明まで。</p>
+          <span class="q-cta">読む →</span>
+        </a>
+        <a class="quest-card" href="https://complex-number.habatakijuku.com/" target="_blank" rel="noopener" style="--accent:#5b3fa6;--accent-bg:#efe9f9">
+          <div class="q-top"><span class="q-num">i</span><span class="q-suit" aria-hidden="true">🌀</span></div>
+          <div class="q-meta"><span class="q-tag">複素数</span><span class="q-time">全8ステージ</span></div>
+          <div class="q-title">本当はおもしろい複素数の世界</div>
+          <p class="q-desc">この旅で使う複素数の出どころ。数直線から i の誕生、回転としての掛け算、極形式、そしてオイラーの等式まで。</p>
+          <span class="q-cta">読む →</span>
+        </a>
+        <a class="quest-card" href="https://quantum-mechanics.habatakijuku.com/" target="_blank" rel="noopener" style="--accent:#1f7488;--accent-bg:#e4f2f5">
+          <div class="q-top"><span class="q-num">⚛</span><span class="q-suit" aria-hidden="true">🌌</span></div>
+          <div class="q-meta"><span class="q-tag">量子力学</span><span class="q-time">全9クエスト</span></div>
+          <div class="q-title">量子力学、冒険の書</div>
+          <p class="q-desc">二重スリットから量子コンピュータの回路作りまで、9つのクエストでたどる量子力学のシリーズマップ。</p>
+          <span class="q-cta">読む →</span>
+        </a>
+      </div>
+    </section>
+
+    <div id="book-recommend"></div>
+  </main>
+
+  <footer>
+    <p>NO DOWNLOAD. NO REGISTRATION. JUST LEARN. &nbsp;© <span id="year"></span> ruglerugle</p>
+    <div class="footer-suits" aria-hidden="true"><span>🔺</span><span>🧩</span><span>📐</span><span>👑</span></div>
+  </footer>
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+<script>
+  document.getElementById("btn-share").href =
+    "https://twitter.com/intent/tweet?text=" +
+    encodeURIComponent("群・環・体からガロア理論へ、全4章をクリア！ 15パズルの謎から5次方程式に解の公式がない理由まで、自分の手でたどりました🔷") +
+    "&url=" + encodeURIComponent("https://algebra.habatakijuku.com/");
+</script>
+<script src="../js/progress.js?v=20261005a"></script>
+<script>AQ.initCompletePage("galois");</script>
+</body>
+</html>
