@@ -179,22 +179,31 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">よく見たね。ab と ba が等しくならない組があることを、「<strong>交換法則が成り立たない</strong>」という。では、どの行にも各操作がちょうど1回ずつ出るのはなぜか。r の行で考えよう。r の行に同じ操作が2回出たとする。つまり、異なる x と y で rx＝ry になったとする。</div>
+          <div class="dialog-bubble">よく見たね。ab と ba が等しくならない組があることを、「<strong>交換法則が成り立たない</strong>」という。では、どの行にも各操作がちょうど1回ずつ出るのはなぜか。r の行で考えよう。r の行に同じ操作が2回出たとする。つまり、異なる x と y で rx＝ry になったとする。rx＝ry の両方の左に、r を打ち消す r² をしてごらん。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">rx と ry の前に、r の逆の r² をします。すると r²(rx)＝r²(ry)。r²r＝e なので、左辺は ex＝x、右辺は ey＝y で、x＝y になります。x と y は異なると言ったことと矛盾します。だから同じ操作は2回出ません。6つのマスに6つの操作が重ならずに入るので、ちょうど1回ずつです。</div>
+          <div class="dialog-bubble">r²(rx)＝r²(ry) で、r²(rx) は (r²r)x、r²r＝e なので、左辺は ex＝x、右辺は ey＝y です。x＝y になって、x と y は異なるという仮定と矛盾する、ということですか？</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。いまの計算で、r²(rx) を (r²r)x と、かっこの位置を変えたね。それはなぜ許されるのかな？</div>
+          <div class="dialog-bubble">そう。だから同じ操作は2回出ない。6つのマスに6つの操作が重ならずに入るから、ちょうど1回ずつだ。ところで、いまの計算で、r²(rx) を (r²r)x と、かっこの位置を変えたね。それはなぜ許されるのかな？</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 316" style="width:100%;max-width:520px;display:block;margin:0 auto" role="img" aria-label="r の行に同じ操作が2回出ないことの証明の流れ。rx＝ry と仮定し、左に r² をして結合法則を使うと x＝y になり矛盾する">
+          <defs><marker id="rp-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b4a9e"/></marker></defs><rect x="12" y="14" width="236" height="46" rx="4" fill="#f2effa" stroke="#5b4a9e" stroke-width="1.6"/><text x="130" y="33" font-size="12" fill="#77708c" text-anchor="middle">仮定：異なる x, y で</text><text x="130" y="51" font-size="13" font-weight="800" fill="#221d33" text-anchor="middle">rx＝ry</text><line x1="130" y1="61" x2="130" y2="87" stroke="#5b4a9e" stroke-width="1.6" marker-end="url(#rp-ar)"/><text x="140" y="79" font-size="11" fill="#77708c">r を打ち消す操作</text><rect x="12" y="90" width="236" height="46" rx="4" fill="#f2effa" stroke="#5b4a9e" stroke-width="1.6"/><text x="130" y="109" font-size="12" fill="#77708c" text-anchor="middle">両方の左に r² をする</text><text x="130" y="127" font-size="13" font-weight="800" fill="#221d33" text-anchor="middle">r²(rx)＝r²(ry)</text><line x1="130" y1="137" x2="130" y2="163" stroke="#5b4a9e" stroke-width="1.6" marker-end="url(#rp-ar)"/><text x="140" y="155" font-size="11" fill="#77708c">続ける順番は同じ</text><rect x="12" y="166" width="236" height="46" rx="4" fill="#f2effa" stroke="#5b4a9e" stroke-width="1.6"/><text x="130" y="185" font-size="12" fill="#77708c" text-anchor="middle">結合法則でかっこを変える</text><text x="130" y="203" font-size="13" font-weight="800" fill="#221d33" text-anchor="middle">(r²r)x＝(r²r)y、r²r＝e</text><line x1="130" y1="213" x2="130" y2="239" stroke="#5b4a9e" stroke-width="1.6" marker-end="url(#rp-ar)"/><text x="140" y="231" font-size="11" fill="#77708c">e は何もしない</text><rect x="12" y="242" width="236" height="46" rx="4" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.6"/><text x="130" y="261" font-size="12" fill="#77708c" text-anchor="middle">ex＝x、ey＝y なので</text><text x="130" y="279" font-size="13" font-weight="800" fill="#c8433f" text-anchor="middle">x＝y　→ 仮定と矛盾</text><text x="356" y="22" font-size="11.5" font-weight="800" fill="#221d33" text-anchor="middle">r の行に同じ操作が2回？</text><text x="276" y="59" font-size="12" font-weight="800" fill="#5b4a9e" text-anchor="middle">r</text><text x="298" y="37" font-size="11" font-weight="800" fill="#77708c" text-anchor="middle">·</text><rect x="286" y="42" width="24" height="26" rx="4" fill="#fdfbf6" stroke="#9a88d6" stroke-width="1"/><text x="298" y="60" font-size="12" font-weight="900" fill="#b0a8c6" text-anchor="middle">·</text><text x="322" y="37" font-size="11" font-weight="800" fill="#c8433f" text-anchor="middle">x</text><rect x="310" y="42" width="24" height="26" rx="4" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.6"/><text x="322" y="60" font-size="12" font-weight="900" fill="#c8433f" text-anchor="middle">●</text><text x="346" y="37" font-size="11" font-weight="800" fill="#77708c" text-anchor="middle">·</text><rect x="334" y="42" width="24" height="26" rx="4" fill="#fdfbf6" stroke="#9a88d6" stroke-width="1"/><text x="346" y="60" font-size="12" font-weight="900" fill="#b0a8c6" text-anchor="middle">·</text><text x="370" y="37" font-size="11" font-weight="800" fill="#c8433f" text-anchor="middle">y</text><rect x="358" y="42" width="24" height="26" rx="4" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.6"/><text x="370" y="60" font-size="12" font-weight="900" fill="#c8433f" text-anchor="middle">●</text><text x="394" y="37" font-size="11" font-weight="800" fill="#77708c" text-anchor="middle">·</text><rect x="382" y="42" width="24" height="26" rx="4" fill="#fdfbf6" stroke="#9a88d6" stroke-width="1"/><text x="394" y="60" font-size="12" font-weight="900" fill="#b0a8c6" text-anchor="middle">·</text><text x="418" y="37" font-size="11" font-weight="800" fill="#77708c" text-anchor="middle">·</text><rect x="406" y="42" width="24" height="26" rx="4" fill="#fdfbf6" stroke="#9a88d6" stroke-width="1"/><text x="418" y="60" font-size="12" font-weight="900" fill="#b0a8c6" text-anchor="middle">·</text><text x="356" y="90" font-size="11" fill="#77708c" text-anchor="middle">x の列と y の列に同じ操作（●）</text><line x1="356" y1="100" x2="356" y2="226" stroke="#9a88d6" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#rp-ar)"/><text x="356" y="166" font-size="11" fill="#77708c" text-anchor="middle">x＝y になるので</text><text x="276" y="265" font-size="12" font-weight="800" fill="#5b4a9e" text-anchor="middle">r</text><text x="298" y="243" font-size="11" font-weight="800" fill="#77708c" text-anchor="middle">·</text><rect x="286" y="248" width="24" height="26" rx="4" fill="#fdfbf6" stroke="#9a88d6" stroke-width="1"/><text x="298" y="266" font-size="12" font-weight="900" fill="#b0a8c6" text-anchor="middle">·</text><text x="322" y="243" font-size="11" font-weight="800" fill="#c8433f" text-anchor="middle">x</text><rect x="310" y="248" width="24" height="26" rx="4" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.6"/><text x="322" y="266" font-size="12" font-weight="900" fill="#c8433f" text-anchor="middle">●</text><text x="346" y="243" font-size="11" font-weight="800" fill="#77708c" text-anchor="middle">·</text><rect x="334" y="248" width="24" height="26" rx="4" fill="#fdfbf6" stroke="#9a88d6" stroke-width="1"/><text x="346" y="266" font-size="12" font-weight="900" fill="#b0a8c6" text-anchor="middle">·</text><text x="370" y="243" font-size="11" font-weight="800" fill="#c8433f" text-anchor="middle">y</text><rect x="358" y="248" width="24" height="26" rx="4" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.6"/><text x="370" y="266" font-size="12" font-weight="900" fill="#c8433f" text-anchor="middle">●</text><text x="394" y="243" font-size="11" font-weight="800" fill="#77708c" text-anchor="middle">·</text><rect x="382" y="248" width="24" height="26" rx="4" fill="#fdfbf6" stroke="#9a88d6" stroke-width="1"/><text x="394" y="266" font-size="12" font-weight="900" fill="#b0a8c6" text-anchor="middle">·</text><text x="418" y="243" font-size="11" font-weight="800" fill="#77708c" text-anchor="middle">·</text><rect x="406" y="248" width="24" height="26" rx="4" fill="#fdfbf6" stroke="#9a88d6" stroke-width="1"/><text x="418" y="266" font-size="12" font-weight="900" fill="#b0a8c6" text-anchor="middle">·</text><line x1="302" y1="240" x2="404" y2="282" stroke="#c8433f" stroke-width="3"/><line x1="404" y1="240" x2="302" y2="282" stroke="#c8433f" stroke-width="3"/><text x="356" y="300" font-size="11.5" font-weight="800" fill="#c8433f" text-anchor="middle">こんな行はできない</text></svg>
+        <div class="diagram-caption"><strong>r の行に同じ操作は2回出ない</strong>。左は証明の流れ。右上のように、もし x の列と y の列に同じ操作（●）が出たとすると、rx＝ry の両方の左に r² をして、結合法則と r²r＝e を使うと x＝y になってしまう。x と y は異なる列なので、こんな行はできない（右下の×）。同じ手は、どの行にも、どの群にも使える</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
@@ -569,9 +578,10 @@ var polyWidget=function polyWidget(cfg) {
       anim = null; st.redraw(); readout(); done && done();
     };
     if (FL.reducedMotion()) { fin(); return; }
-    anim = { key: key, t: 0 };
+    const me = { key: key, t: 0 }; anim = me;
     const steps = 16; let i = 0;
-    const tick = () => { i++; anim.t = Math.min(1, i / steps); st.redraw(); if (i < steps) setTimeout(tick, 22); else fin(); };
+    // 再生中にリセットされたら（anim が差し替わっていたら）このアニメは打ち切る
+    const tick = () => { if (anim !== me) { busy = false; return; } i++; me.t = Math.min(1, i / steps); st.redraw(); if (i < steps) setTimeout(tick, 22); else fin(); };
     setTimeout(tick, 22);
   }
   function next() {
@@ -582,7 +592,7 @@ var polyWidget=function polyWidget(cfg) {
   const api = {
     push: (key, done) => { queue.push({ key: key, done: done }); next(); },
     play: (seq, done) => { api.reset(); seq.forEach((k, i) => queue.push({ key: k, done: i === seq.length - 1 ? done : null })); setTimeout(next, 250); },
-    reset: () => { queue = []; pos = ident(); front = true; M = ident(); hist = []; anim = null; st.redraw(); readout(); }
+    reset: () => { queue = []; busy = false; pos = ident(); front = true; M = ident(); hist = []; anim = null; st.redraw(); readout(); }
   };
   if (ctl) {
     cfg.buttons.forEach((key) => {
@@ -709,9 +719,10 @@ var polyWidget=function polyWidget(cfg) {
       anim = null; st.redraw(); readout(); done && done();
     };
     if (FL.reducedMotion()) { fin(); return; }
-    anim = { key: key, t: 0 };
+    const me = { key: key, t: 0 }; anim = me;
     const steps = 16; let i = 0;
-    const tick = () => { i++; anim.t = Math.min(1, i / steps); st.redraw(); if (i < steps) setTimeout(tick, 22); else fin(); };
+    // 再生中にリセットされたら（anim が差し替わっていたら）このアニメは打ち切る
+    const tick = () => { if (anim !== me) { busy = false; return; } i++; me.t = Math.min(1, i / steps); st.redraw(); if (i < steps) setTimeout(tick, 22); else fin(); };
     setTimeout(tick, 22);
   }
   function next() {
@@ -722,7 +733,7 @@ var polyWidget=function polyWidget(cfg) {
   const api = {
     push: (key, done) => { queue.push({ key: key, done: done }); next(); },
     play: (seq, done) => { api.reset(); seq.forEach((k, i) => queue.push({ key: k, done: i === seq.length - 1 ? done : null })); setTimeout(next, 250); },
-    reset: () => { queue = []; pos = ident(); front = true; M = ident(); hist = []; anim = null; st.redraw(); readout(); }
+    reset: () => { queue = []; busy = false; pos = ident(); front = true; M = ident(); hist = []; anim = null; st.redraw(); readout(); }
   };
   if (ctl) {
     cfg.buttons.forEach((key) => {

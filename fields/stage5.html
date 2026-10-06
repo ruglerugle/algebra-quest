@@ -236,8 +236,86 @@
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">4x³−3x＝1/2 なので、両辺を 2 倍して <strong>8x³−6x−1＝0</strong> です。有理根の判定をすると、候補は ±1, ±1/2, ±1/4, ±1/8 の8つです。……もっと簡単にするには、y＝2x とおくと 8x³＝y³、6x＝3y なので、y³−3y−1＝0。こちらの候補は ±1 だけで、1−3−1＝−3、−1＋3−1＝1 とどちらも 0 にならないので、既約です。</div>
+          <div class="dialog-bubble">4x³−3x＝1/2 なので、両辺を 2 倍して <strong>8x³−6x−1＝0</strong> です。有理根の判定をすると、候補は ±1, ±1/2, ±1/4, ±1/8 の8つです。</div>
         </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">8つ調べてもいいけれど、y＝2x とおくと簡単になる。書き直してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">8x³＝y³、6x＝3y なので、y³−3y−1＝0。こちらの候補は ±1 だけで、1−3−1＝−3、−1＋3−1＝1 とどちらも 0 にならないので、既約です。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 480 340" role="img" aria-label="8x³−6x−1 の有理数の根の候補8個を数直線に並べ、y＝2x で y³−3y−1 に直すと候補が ±1 だけになること、そのグラフで y＝±1 の値が −3 と 1 で 0 にならないことを示す図" style="width:100%;max-width:520px;display:block;margin:0 auto">
+          <rect x="0" y="0" width="480" height="340" fill="#fdfbf6"/>
+          <!-- 左：8x³−6x−1 の候補 -->
+          <text x="20" y="22" font-size="12.5" font-weight="700" fill="#221d33">8x³−6x−1：候補 8 個</text>
+          <text x="20" y="40" font-size="11" fill="#77708c">分子は 1 の約数、分母は 8 の約数</text>
+          <line x1="20" y1="70" x2="240" y2="70" stroke="#77708c" stroke-width="1.2"/>
+          <line x1="130" y1="65" x2="130" y2="75" stroke="#77708c" stroke-width="1"/>
+          <text x="130" y="58" font-size="11" fill="#77708c" text-anchor="middle">0</text>
+          <circle cx="40" cy="70" r="4" fill="#c8433f"/><circle cx="85" cy="70" r="4" fill="#c8433f"/>
+          <circle cx="107.5" cy="70" r="4" fill="#c8433f"/><circle cx="118.75" cy="70" r="4" fill="#c8433f"/>
+          <circle cx="141.25" cy="70" r="4" fill="#c8433f"/><circle cx="152.5" cy="70" r="4" fill="#c8433f"/>
+          <circle cx="175" cy="70" r="4" fill="#c8433f"/><circle cx="220" cy="70" r="4" fill="#c8433f"/>
+          <text x="40" y="87" font-size="11" fill="#c8433f" text-anchor="middle">−1</text>
+          <text x="220" y="87" font-size="11" fill="#c8433f" text-anchor="middle">1</text>
+          <text x="85" y="87" font-size="11" fill="#c8433f" text-anchor="middle">−1/2</text>
+          <text x="175" y="87" font-size="11" fill="#c8433f" text-anchor="middle">1/2</text>
+          <text x="107.5" y="101" font-size="11" fill="#c8433f" text-anchor="middle">−1/4</text>
+          <text x="152.5" y="101" font-size="11" fill="#c8433f" text-anchor="middle">1/4</text>
+          <text x="116" y="115" font-size="11" fill="#c8433f" text-anchor="end">−1/8</text>
+          <text x="144" y="115" font-size="11" fill="#c8433f" text-anchor="start">1/8</text>
+          <!-- 矢印 y＝2x -->
+          <line x1="248" y1="70" x2="278" y2="70" stroke="#5b4a9e" stroke-width="2"/>
+          <polygon points="276,64 286,70 276,76" fill="#5b4a9e"/>
+          <text x="265" y="58" font-size="12" font-weight="700" fill="#5b4a9e" text-anchor="middle">y＝2x</text>
+          <!-- 右：y³−3y−1 の候補 -->
+          <text x="290" y="22" font-size="12.5" font-weight="700" fill="#221d33">y³−3y−1：候補 2 個</text>
+          <text x="290" y="40" font-size="11" fill="#77708c">最高次の係数が 1 → 分母は 1 だけ</text>
+          <line x1="290" y1="70" x2="460" y2="70" stroke="#77708c" stroke-width="1.2"/>
+          <line x1="375" y1="65" x2="375" y2="75" stroke="#77708c" stroke-width="1"/>
+          <text x="375" y="58" font-size="11" fill="#77708c" text-anchor="middle">0</text>
+          <circle cx="315" cy="70" r="4" fill="#c8433f"/><circle cx="435" cy="70" r="4" fill="#c8433f"/>
+          <text x="315" y="87" font-size="11" fill="#c8433f" text-anchor="middle">−1</text>
+          <text x="435" y="87" font-size="11" fill="#c8433f" text-anchor="middle">1</text>
+          <!-- まとめ -->
+          <rect x="40" y="128" width="400" height="24" rx="8" fill="#5b4a9e"/>
+          <text x="240" y="144" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">±1 を入れても 0 にならない → 有理数の根がない → 既約</text>
+          <!-- 下：y³−3y−1 のグラフ -->
+          <text x="112" y="170" font-size="11.5" fill="#77708c">y³−3y−1 のグラフ</text>
+          <line x1="100" y1="211.7" x2="400" y2="211.7" stroke="#77708c" stroke-width="1"/>
+          <line x1="250" y1="160" x2="250" y2="315" stroke="#77708c" stroke-width="1"/>
+          <line x1="116.7" y1="208" x2="116.7" y2="215" stroke="#77708c" stroke-width="1"/>
+          <line x1="183.3" y1="208" x2="183.3" y2="215" stroke="#77708c" stroke-width="1"/>
+          <line x1="316.7" y1="208" x2="316.7" y2="215" stroke="#77708c" stroke-width="1"/>
+          <line x1="383.3" y1="208" x2="383.3" y2="215" stroke="#77708c" stroke-width="1"/>
+          <text x="116.7" y="226" font-size="11" fill="#77708c" text-anchor="middle">−2</text>
+          <text x="183.3" y="226" font-size="11" fill="#77708c" text-anchor="middle">−1</text>
+          <text x="316.7" y="226" font-size="11" fill="#77708c" text-anchor="middle">1</text>
+          <text x="383.3" y="226" font-size="11" fill="#77708c" text-anchor="middle">2</text>
+          <text x="404" y="216" font-size="10.5" fill="#77708c">横軸＝値 0</text>
+          <polyline fill="none" stroke="#5b4a9e" stroke-width="2" points="110,314.2 116.7,289.3 123.3,267.6 130,248.8 136.7,232.7 143.3,219.4 150,208.5 156.7,199.9 163.3,193.5 170,189.2 176.7,186.7 183.3,185.9 190,186.6 196.7,188.8 203.3,192.1 210,196.6 216.7,202 223.3,208.2 230,215 236.7,222.3 243.3,229.9 250,237.6 256.7,245.3 263.3,252.9 270,260.2 276.7,267 283.3,273.1 290,278.6 296.7,283 303.3,286.4 310,288.6 316.7,289.3 323.3,288.5 330,286 336.7,281.6 343.3,275.2 350,266.7 356.7,255.8 363.3,242.4 370,226.4 376.7,207.6 383.3,185.9 390,161"/>
+          <line x1="183.3" y1="211.7" x2="183.3" y2="185.9" stroke="#c8433f" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <line x1="316.7" y1="211.7" x2="316.7" y2="289.3" stroke="#c8433f" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <circle cx="183.3" cy="185.9" r="5" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="316.7" cy="289.3" r="5" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <text x="192" y="180" font-size="11.5" font-weight="700" fill="#c8433f" text-anchor="start">y＝−1 のとき 1</text>
+          <text x="322" y="312" font-size="11.5" font-weight="700" fill="#c8433f" text-anchor="start">y＝1 のとき −3</text>
+        </svg>
+        <div class="diagram-caption"><strong>有理数の根の候補が ±1 だけになる</strong>。上の左は 8x³−6x−1 の候補。分子は定数項 1 の約数、分母は最高次の係数 8 の約数なので、±1, ±1/2, ±1/4, ±1/8 の 8 個（赤い点）。y＝2x とおいて y³−3y−1 にすると、最高次の係数が 1 になるので分母は 1 だけ、候補は ±1 の 2 個に減る。下は y³−3y−1 のグラフで、y＝−1 のとき値は 1、y＝1 のとき −3。どちらも横軸の上にないので有理数の根はなく、3次式だからこれで既約と分かる</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>

@@ -606,9 +606,10 @@
       anim = null; st.redraw(); readout(); done && done();
     };
     if (FL.reducedMotion()) { fin(); return; }
-    anim = { key: key, t: 0 };
+    const me = { key: key, t: 0 }; anim = me;
     const steps = 16; let i = 0;
-    const tick = () => { i++; anim.t = Math.min(1, i / steps); st.redraw(); if (i < steps) setTimeout(tick, 22); else fin(); };
+    // 再生中にリセットされたら（anim が差し替わっていたら）このアニメは打ち切る
+    const tick = () => { if (anim !== me) { busy = false; return; } i++; me.t = Math.min(1, i / steps); st.redraw(); if (i < steps) setTimeout(tick, 22); else fin(); };
     setTimeout(tick, 22);
   }
   function next() {
@@ -619,7 +620,7 @@
   const api = {
     push: (key, done) => { queue.push({ key: key, done: done }); next(); },
     play: (seq, done) => { api.reset(); seq.forEach((k, i) => queue.push({ key: k, done: i === seq.length - 1 ? done : null })); setTimeout(next, 250); },
-    reset: () => { queue = []; pos = ident(); front = true; M = ident(); hist = []; anim = null; st.redraw(); readout(); }
+    reset: () => { queue = []; busy = false; pos = ident(); front = true; M = ident(); hist = []; anim = null; st.redraw(); readout(); }
   };
   if (ctl) {
     cfg.buttons.forEach((key) => {

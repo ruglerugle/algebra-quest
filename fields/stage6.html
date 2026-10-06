@@ -203,8 +203,84 @@
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">MB は三平方の定理で √((1/2)²＋1²)＝√5/2 です。N は M から右へ √5/2 進んだ点なので、ON＝−1/2＋√5/2＝(√5−1)/2。さっきの t です！ BN は三平方の定理で BN²＝t²＋1。t²＋t−1＝0 から t²＝1−t なので、BN²＝2−t です。正5角形の1辺は、B と、そのとなりの 18° の方向の頂点 (cos 18°, sin 18°) の距離で、2乗すると cos²18°＋(sin 18°−1)²＝2−2sin 18°。sin 18°＝cos 72°＝t/2 なので 2−t です。<strong>BN は正5角形の1辺の長さ</strong>です！</div>
+          <div class="dialog-bubble">MB は三平方の定理で √((1/2)²＋1²)＝√5/2 です。N は M から右へ √5/2 進んだ点なので、ON＝−1/2＋√5/2＝(√5−1)/2。さっきの t です！ BN は三平方の定理で BN²＝t²＋1。t²＋t−1＝0 から t²＝1−t なので、BN²＝2−t です。</div>
         </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。では正5角形の1辺はどうかな。B と、そのとなりの 18° の方向の頂点 (cos 18°, sin 18°) との距離を2乗してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">cos²18°＋(sin 18°−1)²＝cos²18°＋sin²18°−2 sin 18°＋1＝2−2 sin 18° です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">sin 18° は cos 72° と同じ値だね。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">cos 72°＝t/2 なので、2−t。BN² と同じです。<strong>BN は正5角形の1辺の長さ</strong>だということですか？</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 480 290" role="img" aria-label="単位円の上の点 B、M、N と正5角形のとなりの頂点 P。BN（赤）と BP（緑）の長さの2乗がどちらも 2−t になることを示す図" style="width:100%;max-width:520px;display:block;margin:0 auto">
+          <rect x="0" y="0" width="480" height="290" fill="#fdfbf6"/>
+          <!-- 左：単位円 -->
+          <line x1="20" y1="150" x2="258" y2="150" stroke="#77708c" stroke-width="1"/>
+          <line x1="135" y1="30" x2="135" y2="270" stroke="#77708c" stroke-width="1"/>
+          <circle cx="135" cy="150" r="108" fill="none" stroke="#9a88d6" stroke-width="1.6"/>
+          <polygon points="135,42 32.3,116.6 71.5,237.4 198.5,237.4 237.7,116.6" fill="none" stroke="#9a88d6" stroke-width="1" stroke-dasharray="3 3"/>
+          <path d="M 135 42 A 120.7 120.7 0 0 1 201.7 150" fill="none" stroke="#77708c" stroke-width="1" stroke-dasharray="4 3"/>
+          <line x1="81" y1="150" x2="135" y2="42" stroke="#77708c" stroke-width="1.2"/>
+          <line x1="135" y1="42" x2="201.7" y2="150" stroke="#c8433f" stroke-width="3"/>
+          <line x1="135" y1="42" x2="237.7" y2="116.6" stroke="#2f9e5c" stroke-width="3"/>
+          <circle cx="135" cy="150" r="3" fill="#221d33"/>
+          <circle cx="27" cy="150" r="3" fill="#221d33"/>
+          <circle cx="81" cy="150" r="3.5" fill="#5b4a9e"/>
+          <circle cx="135" cy="42" r="4" fill="#221d33"/>
+          <circle cx="201.7" cy="150" r="4" fill="#c8433f"/>
+          <circle cx="237.7" cy="116.6" r="4" fill="#2f9e5c"/>
+          <text x="139" y="164" font-size="12" fill="#221d33">O</text>
+          <text x="135" y="34" font-size="12.5" font-weight="700" fill="#221d33" text-anchor="middle">B＝(0, 1)</text>
+          <text x="27" y="165" font-size="11" fill="#77708c" text-anchor="middle">(−1, 0)</text>
+          <text x="81" y="165" font-size="12" font-weight="700" fill="#5b4a9e" text-anchor="middle">M</text>
+          <text x="204" y="165" font-size="12.5" font-weight="700" fill="#c8433f" text-anchor="middle">N</text>
+          <text x="168" y="143" font-size="11" fill="#c8433f" text-anchor="middle">ON＝t</text>
+          <text x="244" y="113" font-size="12.5" font-weight="700" fill="#2f9e5c">P</text>
+          <text x="100" y="104" font-size="11" fill="#77708c" text-anchor="end">MB＝√5/2</text>
+          <text x="135" y="284" font-size="11.5" fill="#77708c" text-anchor="middle">P＝(cos 18°, sin 18°)、t＝(√5−1)/2</text>
+          <!-- 右：2つの長さの2乗 -->
+          <rect x="272" y="26" width="196" height="84" rx="8" fill="#f2effa"/>
+          <text x="282" y="46" font-size="12.5" font-weight="700" fill="#c8433f">BN（赤）：作図した長さ</text>
+          <text x="282" y="68" font-size="12.5" fill="#221d33">BN²＝1²＋t²＝1＋(1−t)</text>
+          <text x="282" y="90" font-size="12.5" fill="#221d33">　　＝<tspan font-weight="700">2−t</tspan></text>
+          <text x="458" y="104" font-size="10.5" fill="#77708c" text-anchor="end">t²＝1−t を使った</text>
+          <rect x="272" y="118" width="196" height="84" rx="8" fill="#f2effa"/>
+          <text x="282" y="138" font-size="12.5" font-weight="700" fill="#2f9e5c">BP（緑）：正5角形の1辺</text>
+          <text x="282" y="160" font-size="12.5" fill="#221d33">BP²＝2−2 sin 18°＝2−t</text>
+          <text x="458" y="180" font-size="10.5" fill="#77708c" text-anchor="end">sin 18°＝cos 72°＝t/2</text>
+          <text x="458" y="196" font-size="10.5" fill="#77708c" text-anchor="end">を使った</text>
+          <line x1="370" y1="110" x2="370" y2="118" stroke="#5b4a9e" stroke-width="1.5"/>
+          <line x1="370" y1="202" x2="370" y2="218" stroke="#5b4a9e" stroke-width="1.5"/>
+          <polygon points="364,216 376,216 370,226" fill="#5b4a9e"/>
+          <rect x="272" y="230" width="196" height="40" rx="8" fill="#5b4a9e"/>
+          <text x="370" y="247" font-size="12.5" font-weight="700" fill="#fff" text-anchor="middle">2乗が同じ → BN＝BP</text>
+          <text x="370" y="263" font-size="11.5" fill="#fff" text-anchor="middle">BN は正5角形の1辺の長さ</text>
+        </svg>
+        <div class="diagram-caption"><strong>BN が正5角形の1辺になる理由</strong>。左は半径 1 の円。M を中心に B を通る円（点線の弧）が横の直線と交わる点が N で、ON＝t。赤い BN と、B からとなりの頂点 P＝(cos 18°, sin 18°) までの緑の BP の長さを、それぞれ2乗して比べる。右の2つの計算はどちらも 2−t になるので、2本の長さは等しい。途中で使ったのは t²＝1−t（t の方程式）と sin 18°＝cos 72°＝t/2 の2つ</div>
       </div>
 
       <div class="diagram-box">

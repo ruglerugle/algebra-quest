@@ -247,22 +247,49 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">よし。でも本当の問題は、どの値が壊れているのか、受け取った人には分からないことだ。たとえば x＝2 と x＝5 の値が壊れて、2, 5, 6, 4, 0, 1, 6 が届いたとしよう。鍵になるのは、「違う2本の直線は、mod 7 の世界でも1点でしか一致しない」という性質だ。ここで直線とは、a＋bx の形の式のこと。なぜ成り立つかな？</div>
+          <div class="dialog-bubble">よし。でも本当の問題は、どの値が壊れているのか、受け取った人には分からないことだ。たとえば x＝2 と x＝5 の値が壊れて、2, 5, 6, 4, 0, 1, 6 が届いたとしよう。鍵になるのは、「違う2本の直線は、mod 7 の世界でも1点でしか一致しない」という性質だ。ここで直線とは、a＋bx の形の式のこと。確かめよう。2本の直線 f と g が2つの点 x₁, x₂ で同じ値になったとしよう。差 h＝f−g を考えてごらん。h はどんな式で、x₁, x₂ でどうなるかな？</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">f と g が2つの点 x₁, x₂ で同じ値になったとします。h＝f−g も a＋bx の形で、h(x₁)≡h(x₂)≡0 です。b≢0 なら h(x)≡0 は x≡−a×(b の逆数) のただ1つしか解がないので、2つの点で 0 になれません。b≡0 なら h＝a で、0 になるには a≡0。どちらにしても h は 0、つまり f と g は同じ直線です。ここでも、b の逆数があること、つまり体であることを使っています。</div>
+          <div class="dialog-bubble">h も a＋bx の形で、h(x₁)≡h(x₂)≡0 です。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">その通り。だから受け取った人は、ありうる 7×7＝49 本の直線を全部調べて、届いた値といちばん多く一致する直線を選べばいい。2か所までの誤りなら、必ず正しい直線が選ばれる。理由を説明してごらん。</div>
+          <div class="dialog-bubble">b≢0 のとき、h(x)≡0 の解はいくつあるかな？ b の逆数を使うといい。</div>
         </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">x≡−a×(b の逆数) のただ1つなので、2つの点で 0 になれません。b≡0 なら h＝a で、0 になるには a≡0。どちらにしても h は 0、つまり f と g は同じ直線です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。ここで b の逆数があること、つまり体であることを使ったね。だから受け取った人は、ありうる 7×7＝49 本の直線を全部調べて、届いた値といちばん多く一致する直線を選べばいい。2か所までの誤りなら、必ず正しい直線が選ばれる。理由を説明してごらん。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="sim-controls">
+          <label>f＝<select id="l2-a"></select>＋<select id="l2-b"></select>x</label>
+          <label>g＝<select id="l2-c"></select>＋<select id="l2-d"></select>x</label>
+        </div>
+        <svg id="svg-l2" viewBox="0 0 460 300" role="img" aria-label="mod 7 の 7×7 の格子に2本の直線 f, g の値を描いた図。一致する点は1か所だけで、差 h＝f−g の値も下に並べてある" style="width:100%;max-width:520px;display:block;margin:0 auto"></svg>
+        <div class="readout" id="ro-l2"></div>
+        <div class="diagram-caption"><strong>違う直線は1点でしか一致しない（mod 7）</strong>。横が x＝0〜6、縦が値 0〜6 の格子に、直線 f＝a＋bx の値を青、g＝c＋dx の値を赤で打った。両方が同じ値になる点は緑の輪で囲んである。下の行は差 h＝f−g の値で、0 になる場所が一致する点。h も a′＋b′x の形の直線で、b′≢0 なら x≡−a′×(b′ の逆数) の1か所だけで 0 になる。上の a, b, c, d を変えて、一致が2か所以上になる組み合わせがないことを確かめられる（b≡d のときは平行で一致なし、さらに a≡c なら同じ直線で全部一致）</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
@@ -512,6 +539,75 @@
   document.getElementById('rs-clear').addEventListener('click',function(){ err=[0,0,0,0,0,0,0]; render(); });
   [inA,inB].forEach(function(el){ el.addEventListener('input',render); });
   err=[0,0,5,0,0,5,0];
+  render();
+})();
+/* 違う直線は1点でしか一致しない（mod 7） */
+(function(){
+  var ids=['l2-a','l2-b','l2-c','l2-d'], defs=[2,3,5,1], sel=[];
+  var svg=document.getElementById('svg-l2'), ro=document.getElementById('ro-l2');
+  if(!svg) return;
+  ids.forEach(function(id,i){
+    var s=document.getElementById(id);
+    for(var v=0;v<7;v++){ var o=document.createElement('option'); o.value=v; o.textContent=v; if(v===defs[i]) o.selected=true; s.appendChild(o); }
+    s.addEventListener('change',render); sel.push(s);
+  });
+  var X0=46, Y0=24, C=26, BLUE='#3f6fb5', RED='#c8433f', GRN='#2f9e5c', INK='#221d33', MUT='#77708c', TH='#5b4a9e';
+  function px(x){ return X0+C*x; } function py(v){ return Y0+C*(6-v); }
+  function m7(n){ return ((n%7)+7)%7; }
+  function lin(a,b){ return a===0 ? (b===0?'0':(b===1?'x':b+'x')) : (b===0?''+a:(b===1?a+'＋x':a+'＋'+b+'x')); }
+  function t(x,y,s,o){ o=o||{}; return '<text x="'+x+'" y="'+y+'" font-size="'+(o.size||12)+'" fill="'+(o.col||INK)+'"'+(o.w?' font-weight="700"':'')+(o.anc?' text-anchor="'+o.anc+'"':'')+'>'+s+'</text>'; }
+  function render(){
+    var a=+sel[0].value, b=+sel[1].value, c=+sel[2].value, d=+sel[3].value;
+    var ap=m7(a-c), bp=m7(b-d), out=[], hit=[];
+    out.push('<rect x="0" y="0" width="460" height="300" fill="#fdfbf6"/>');
+    for(var i=0;i<7;i++){
+      out.push('<line x1="'+px(i)+'" y1="'+py(6)+'" x2="'+px(i)+'" y2="'+py(0)+'" stroke="#e4def3" stroke-width="1"/>');
+      out.push('<line x1="'+px(0)+'" y1="'+py(i)+'" x2="'+px(6)+'" y2="'+py(i)+'" stroke="#e4def3" stroke-width="1"/>');
+      out.push(t(px(i),py(0)+18,i,{col:MUT,anc:'middle',size:11.5}));
+      out.push(t(X0-12,py(i)+4,i,{col:MUT,anc:'end',size:11.5}));
+    }
+    out.push(t(px(6)+18,py(0)+18,'x',{col:MUT,anc:'middle',size:11.5}));
+    out.push(t(X0-14,Y0-8,'値',{col:MUT,anc:'end',size:11.5}));
+    for(var x=0;x<7;x++){
+      var fv=m7(a+b*x), gv=m7(c+d*x), hv=m7(fv-gv);
+      if(fv===gv){ hit.push(x); out.push('<circle cx="'+px(x)+'" cy="'+py(fv)+'" r="10" fill="none" stroke="'+GRN+'" stroke-width="2.5"/>'); }
+      out.push('<circle cx="'+(fv===gv?px(x)-3:px(x))+'" cy="'+py(fv)+'" r="4.5" fill="'+BLUE+'"/>');
+      out.push('<circle cx="'+(fv===gv?px(x)+3:px(x))+'" cy="'+py(gv)+'" r="4.5" fill="'+RED+'"/>');
+      if(hv===0) out.push('<circle cx="'+px(x)+'" cy="232" r="10" fill="none" stroke="'+GRN+'" stroke-width="2.5"/>');
+      out.push(t(px(x),236,hv,{anc:'middle',w:true,col:hv===0?GRN:INK}));
+    }
+    out.push(t(X0-12,236,'h',{col:MUT,anc:'end',w:true}));
+    out.push('<line x1="'+(X0-8)+'" y1="214" x2="'+(px(6)+12)+'" y2="214" stroke="#cfc6ea" stroke-width="1"/>');
+    var msg = hit.length===0 ? '0 になる場所がない（平行）' : (hit.length===7 ? '全部 0（同じ直線）' : '0 は x＝'+hit[0]+' の 1 か所だけ');
+    out.push(t(px(3),266,msg,{anc:'middle',w:true,col:hit.length===1?GRN:(hit.length===0?MUT:RED),size:12}));
+    // 右パネル
+    out.push('<circle cx="246" cy="36" r="4.5" fill="'+BLUE+'"/>'+t(258,40,'f＝'+lin(a,b),{col:BLUE,w:true,size:12.5}));
+    out.push('<circle cx="246" cy="60" r="4.5" fill="'+RED+'"/>'+t(258,64,'g＝'+lin(c,d),{col:RED,w:true,size:12.5}));
+    out.push('<circle cx="246" cy="84" r="7" fill="none" stroke="'+GRN+'" stroke-width="2.5"/>'+t(258,88,'一致する点',{col:GRN,w:true,size:12.5}));
+    out.push('<rect x="232" y="106" width="218" height="112" rx="8" fill="#f2effa"/>');
+    out.push(t(242,126,'h＝f−g＝(a−c)＋(b−d)x',{size:12}));
+    out.push(t(242,146,'　＝'+lin(ap,bp)+'　（mod 7）',{size:12,w:true}));
+    if(bp!==0){
+      var inv=1; while(m7(bp*inv)!==1) inv++;
+      var x0=m7(-ap*inv);
+      out.push(t(242,168,'h≡0 になるのは '+bp+'x≡'+m7(-ap),{size:12}));
+      out.push(t(242,188,bp+' の逆数は '+inv+' → x≡'+m7(-ap)+'×'+inv+'≡'+x0,{size:12}));
+      out.push(t(242,208,'解はこの 1 つだけ',{size:12,col:TH,w:true}));
+    } else if(ap!==0){
+      out.push(t(242,168,'x の係数が 0 で h＝'+ap,{size:12}));
+      out.push(t(242,188,'0 にならない → 一致なし',{size:12}));
+      out.push(t(242,208,'（b≡d なので平行）',{size:12,col:TH,w:true}));
+    } else {
+      out.push(t(242,168,'h＝0（ずっと 0）',{size:12}));
+      out.push(t(242,188,'f と g は同じ直線',{size:12}));
+      out.push(t(242,208,'（a≡c かつ b≡d）',{size:12,col:TH,w:true}));
+    }
+    var res = hit.length===1 ? '一致は x＝'+hit[0]+' の 1 点だけ' : (hit.length===0 ? '一致する点はない' : '7 点すべて一致（同じ直線）');
+    out.push('<rect x="232" y="232" width="218" height="34" rx="8" fill="'+TH+'"/>');
+    out.push(t(341,254,res,{col:'#fff',w:true,anc:'middle',size:12.5}));
+    svg.innerHTML=out.join('');
+    ro.innerHTML='<span>f の値：'+[0,1,2,3,4,5,6].map(function(x){return m7(a+b*x);}).join(' ')+'</span><span>g の値：'+[0,1,2,3,4,5,6].map(function(x){return m7(c+d*x);}).join(' ')+'</span><span>一致：<b>'+hit.length+' か所</b></span>';
+  }
   render();
 })();
 </script>

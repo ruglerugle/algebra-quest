@@ -387,15 +387,64 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">よく確かめたね。ガウス整数でも余りのある割り算ができるから、互除法が使える。割るたびに余りのノルムが小さくなるから、必ず止まる。そして、整数のときと同じ理由で、最後の 0 でない余り d は2つの数の公約数で、しかも「z×（ガウス整数）＋w×（ガウス整数）」の形に書ける。では、π をガウス整数の既約元、a を π で割り切れないガウス整数としよう。π と a で互除法をすると、最後の余り d について何が言えるかな？</div>
+          <div class="dialog-bubble">よく確かめたね。ガウス整数でも余りのある割り算ができるから、互除法が使える。割るたびに余りのノルムが小さくなるから、必ず止まる。そして、整数のときと同じ理由で、最後の 0 でない余り d は2つの数の公約数で、しかも「z×（ガウス整数）＋w×（ガウス整数）」の形に書ける。では、π をガウス整数の既約元、a を π で割り切れないガウス整数としよう。π と a で互除法をすると、最後の余り d は π を割り切る。π は既約元だから、π＝d×c と書いたとき何が言えるかな？</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">d は π を割り切るので、π＝d×c と書けます。π は既約元なので、d か c のどちらかは単数です。もし c が単数なら、d は π に単数を掛けただけの数で、d は a を割り切るので、π も a を割り切ってしまいます。だから d が単数です。d に、掛けて 1 になる相手を掛ければ、<strong>πx＋ay＝1</strong> の形の式が作れます。あとは整数と同じで、両辺に b を掛ければ、π が ab を割り切るとき b を割り切ります。<strong>ガウス整数の既約元は、どれも素元</strong>です！</div>
+          <div class="dialog-bubble">d か c のどちらかが単数です。</div>
         </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">c が単数だとすると、d は π に単数を掛けただけの数だ。d は a も割り切るね。すると？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">π も a を割り切ってしまい、仮定に反します。だから d が単数です。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。d に、掛けて 1 になる相手を掛ければ、<strong>πx＋ay＝1</strong> の形の式が作れる。あとは整数のときと同じだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">両辺に b を掛ければ、π が ab を割り切るとき b を割り切ります。<strong>ガウス整数の既約元は、どれも素元</strong>です！</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 350" style="width:100%;max-width:520px;display:block;margin:0 auto" role="img" aria-label="流れ図。π と a の互除法で最後の余り d を得る。π＝d×c で π は既約元なので d か c が単数。c が単数なら π が a を割り切ってしまい仮定に反する。d が単数なら πx＋ay＝1 が作れ、b を掛けて π が ab を割り切れば b を割り切る">
+          <defs><marker id="ar-pf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#77708c"/></marker></defs>
+          <rect x="20" y="12" width="400" height="44" rx="9" fill="#f2effa" stroke="#9a88d6" stroke-width="1.8"/><text x="220" y="30.5" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">π（既約元）と a（π で割り切れない）で互除法</text><text x="220" y="47.5" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">→ 最後の余り d は π と a の公約数</text>
+          <line x1="220" y1="56" x2="220" y2="72" stroke="#77708c" stroke-width="1.8" marker-end="url(#ar-pf)"/>
+          <rect x="20" y="74" width="400" height="44" rx="9" fill="#f2effa" stroke="#9a88d6" stroke-width="1.8"/><text x="220" y="92.5" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">d は π を割り切る：π＝d×c</text><text x="220" y="109.5" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">π は既約元 → d か c が単数</text>
+          <line x1="150" y1="118" x2="115" y2="150" stroke="#77708c" stroke-width="1.8" marker-end="url(#ar-pf)"/><line x1="290" y1="118" x2="325" y2="150" stroke="#77708c" stroke-width="1.8" marker-end="url(#ar-pf)"/>
+          <text x="100" y="140" text-anchor="end" font-size="12" font-weight="900" fill="#c8433f">c が単数</text>
+          <text x="340" y="140" font-size="12" font-weight="900" fill="#2f9e5c">d が単数</text>
+          <rect x="20" y="152" width="190" height="88" rx="9" fill="#fdf1f0" stroke="#c8433f" stroke-width="1.8"/><text x="115" y="175.5" text-anchor="middle" font-size="12" font-weight="800" fill="#c8433f">d＝π×（単数）</text><text x="115" y="192.5" text-anchor="middle" font-size="12" font-weight="800" fill="#c8433f">d は a を割り切るので</text><text x="115" y="209.5" text-anchor="middle" font-size="12" font-weight="800" fill="#c8433f">π も a を割り切る</text><text x="115" y="226.5" text-anchor="middle" font-size="12" font-weight="800" fill="#c8433f">→ 仮定に反する ×</text>
+          <rect x="230" y="152" width="190" height="88" rx="9" fill="#eef8f1" stroke="#2f9e5c" stroke-width="1.8"/><text x="325" y="175.5" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">d＝πx′＋ay′ の両辺を</text><text x="325" y="192.5" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">d で割って πx＋ay＝1</text><text x="325" y="209.5" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">両辺に b を掛ける</text><text x="325" y="226.5" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">πbx＋aby＝b</text>
+          <line x1="325" y1="240" x2="325" y2="262" stroke="#77708c" stroke-width="1.8" marker-end="url(#ar-pf)"/>
+          <rect x="230" y="264" width="190" height="44" rx="9" fill="#eef8f1" stroke="#2f9e5c" stroke-width="1.8"/><text x="325" y="282.5" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">π が ab を割り切るなら</text><text x="325" y="299.5" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">左辺は π で割り切れる → π｜b</text>
+          <text x="220" y="338" text-anchor="middle" font-size="13" font-weight="900" fill="#5b4a9e">π は a か b を割り切る：ガウス整数の既約元は素元</text>
+        </svg>
+        <div class="diagram-caption"><strong>既約元が素元である理由の流れ</strong>。π が ab を割り切り、a を割り切らないとする。π と a の互除法の最後の余り d は π を割り切るので π＝d×c。π は既約元だから d か c が単数で、左の道（c が単数）は π が a を割り切ることになって行き止まり。残る右の道（d が単数）では πx＋ay＝1 が作れ、b を掛けると π が b を割り切る。整数の素数のときとまったく同じ道筋</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>

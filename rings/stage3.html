@@ -140,15 +140,51 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">前のステージで、「これ以上分けられない数」＝<strong>既約元</strong>（0 でも単数でもなく、単数でない2つの数の積に書けない数）を、ノルムで見分けられるようになった。ここで、ラメがつまずいた問いに戻ろう。新しい世界でも素因数分解は「ただ1通り」になるのか。それを判定するには、まず整数の世界で「ただ1通り」が<strong>なぜ</strong>成り立つのか、そのしくみを突き止める必要がある。しくみが分かれば、あとはそれぞれの世界で、そのしくみが働くかを確かめればいいからね。最初に、そもそも分解が最後までできるかを確かめておこう。ガウス整数 z が 0 でも単数でもないとき、既約元の積に必ず分けられるかな？</div>
+          <div class="dialog-bubble">前のステージで、「これ以上分けられない数」＝<strong>既約元</strong>（0 でも単数でもなく、単数でない2つの数の積に書けない数）を、ノルムで見分けられるようになった。ここで、ラメがつまずいた問いに戻ろう。新しい世界でも素因数分解は「ただ1通り」になるのか。それを判定するには、まず整数の世界で「ただ1通り」が<strong>なぜ</strong>成り立つのか、そのしくみを突き止める必要がある。しくみが分かれば、あとはそれぞれの世界で、そのしくみが働くかを確かめればいいからね。最初に、そもそも分解が最後までできるかを確かめておこう。ガウス整数 z が 0 でも単数でもないとき、既約元の積に必ず分けられるかな？ z が既約元ならそれで終わりだ。既約元でなければ、単数でない x, y で z＝xy と分けられる。このとき、N(x) と N(z) を比べてごらん。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">z が既約元ならそれで終わりです。既約元でなければ、単数でない x, y で z＝xy と分けられます。N(z)＝N(x)N(y) で、N(x) も N(y) も 2 以上なので、N(x) も N(y) も N(z) より小さくなります。x や y がまた分けられるなら、同じように分けます。分けるたびにノルムが小さくなり、ノルムは 1 より大きい整数なので、いつまでも小さくなり続けることはできません。だから必ず既約元の積で止まります。</div>
+          <div class="dialog-bubble">N(z)＝N(x)N(y) で、N(y) は 2 以上なので、N(x) は N(z) より小さくなります。N(y) も同じです。</div>
         </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">分けるたびにノルムが小さくなる。x や y がまた分けられるなら、同じように分ければいい。ノルムは 1 より大きい整数だから、どうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">いつまでも小さくなり続けることはできないので、必ず既約元の積で止まります。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 300" style="width:100%;max-width:520px;display:block;margin:0 auto" role="img" aria-label="ガウス整数 10 を分けていく木。10（ノルム 100）＝2×5（ノルム 4 と 25）、2＝(1＋i)(1−i)（ノルム 2 と 2）、5＝(2＋i)(2−i)（ノルム 5 と 5）。下の数直線では、ノルムが 100→25→5→2 と減り、1 より大きい整数なので必ず止まる">
+          <defs><marker id="ar-dsc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b4a9e"/></marker></defs>
+          <line x1="220" y1="47" x2="120" y2="87" stroke="#b9b0a3" stroke-width="1.6"/><line x1="220" y1="47" x2="320" y2="87" stroke="#b9b0a3" stroke-width="1.6"/>
+          <line x1="120" y1="117" x2="60" y2="157" stroke="#b9b0a3" stroke-width="1.6"/><line x1="120" y1="117" x2="180" y2="157" stroke="#b9b0a3" stroke-width="1.6"/><line x1="320" y1="117" x2="260" y2="157" stroke="#b9b0a3" stroke-width="1.6"/><line x1="320" y1="117" x2="380" y2="157" stroke="#b9b0a3" stroke-width="1.6"/>
+          <rect x="184" y="17" width="72" height="30" rx="8" fill="#44377a"/><text x="220" y="37" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">10</text><text x="220" y="63" text-anchor="middle" font-size="11.5" font-weight="800" fill="#77708c">N＝100</text>
+          <rect x="84" y="87" width="72" height="30" rx="8" fill="#5b4a9e"/><text x="120" y="107" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">2</text><text x="120" y="133" text-anchor="middle" font-size="11.5" font-weight="800" fill="#77708c">N＝4</text><rect x="284" y="87" width="72" height="30" rx="8" fill="#5b4a9e"/><text x="320" y="107" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">5</text><text x="320" y="133" text-anchor="middle" font-size="11.5" font-weight="800" fill="#77708c">N＝25</text>
+          <rect x="24" y="157" width="72" height="30" rx="8" fill="#3f6fb5"/><text x="60" y="177" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">1＋i</text><text x="60" y="203" text-anchor="middle" font-size="11.5" font-weight="800" fill="#77708c">N＝2</text><rect x="144" y="157" width="72" height="30" rx="8" fill="#3f6fb5"/><text x="180" y="177" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">1−i</text><text x="180" y="203" text-anchor="middle" font-size="11.5" font-weight="800" fill="#77708c">N＝2</text><rect x="224" y="157" width="72" height="30" rx="8" fill="#3f6fb5"/><text x="260" y="177" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">2＋i</text><text x="260" y="203" text-anchor="middle" font-size="11.5" font-weight="800" fill="#77708c">N＝5</text><rect x="344" y="157" width="72" height="30" rx="8" fill="#3f6fb5"/><text x="380" y="177" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">2−i</text><text x="380" y="203" text-anchor="middle" font-size="11.5" font-weight="800" fill="#77708c">N＝5</text>
+          <text x="220" y="236" text-anchor="middle" font-size="12" font-weight="900" fill="#5b4a9e">分けるたびにノルムは減る（2 以上の整数）→ 必ず止まる</text>
+          <line x1="400" y1="250" x2="121" y2="250" stroke="#5b4a9e" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ar-dsc)"/>
+          <line x1="30" y1="266" x2="420" y2="266" stroke="#b9b0a3" stroke-width="1.5"/>
+          <circle cx="400" cy="266" r="5.5" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="400" y="288" text-anchor="middle" font-size="11.5" font-weight="800" fill="#44377a">100</text><circle cx="298" cy="266" r="5.5" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="298" y="288" text-anchor="middle" font-size="11.5" font-weight="800" fill="#44377a">25</text><circle cx="179" cy="266" r="5.5" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="179" y="288" text-anchor="middle" font-size="11.5" font-weight="800" fill="#44377a">5</text><circle cx="162" cy="266" r="5.5" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="162" y="288" text-anchor="middle" font-size="11.5" font-weight="800" fill="#44377a">4</text><circle cx="111" cy="266" r="5.5" fill="#3f6fb5" stroke="#fff" stroke-width="1.5"/><text x="111" y="288" text-anchor="middle" font-size="11.5" font-weight="800" fill="#44377a">2</text>
+          <circle cx="60" cy="266" r="5.5" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <text x="60" y="288" text-anchor="middle" font-size="11.5" font-weight="800" fill="#c8433f">1（単数）</text>
+          <text x="56" y="262" font-size="10.5" font-weight="800" fill="#c8433f">ここより下はない</text>
+        </svg>
+        <div class="diagram-caption"><strong>分けるたびにノルムが減る</strong>。ガウス整数 10（ノルム 100）を分けると 2×5（ノルム 4 と 25）、さらに 2＝(1＋i)(1−i)、5＝(2＋i)(2−i)（ノルム 2, 2, 5, 5）で、どれもノルムが素数なのでここで止まる。下の数直線：分けるたびにノルムは小さくなるが、ノルムは 2 以上の整数で、1（単数）より下には行けない。だから分解は必ず止まる</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
@@ -263,7 +299,35 @@
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">p₁ は左辺を割り切るので、右辺の q₁q₂…q<sub>s</sub> も割り切ります。右辺を q₁ と、残りの q₂…q<sub>s</sub> の積と見て素元の性質を使うと、p₁ は q₁ を割り切るか、残りを割り切ります。残りを割り切るなら、また q₂ と残りに分けて同じことをします。くり返すと、p₁ は q₁, q₂, …, q<sub>s</sub> のどれかを割り切ります。それを q<sub>j</sub> とすると q<sub>j</sub>＝p₁×c と書けて、q<sub>j</sub> は既約元で p₁ は単数ではないので、c は単数です。</div>
+          <div class="dialog-bubble">p₁ は左辺を割り切るので、右辺の q₁q₂…q<sub>s</sub> も割り切ります。右辺を q₁ と、残りの q₂…q<sub>s</sub> の積と見て素元の性質を使うと、p₁ は q₁ を割り切るか、残りを割り切ります。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">残りを割り切るなら、また q₂ と残りに分けて同じことをくり返せばいい。最後にはどうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">p₁ は q₁, q₂, …, q<sub>s</sub> のどれかを割り切ります。それを q<sub>j</sub> とすると q<sub>j</sub>＝p₁×c と書けます。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">q<sub>j</sub> は既約元で、p₁ は単数ではない。すると c は？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">c は単数です。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
@@ -272,6 +336,22 @@
           </div>
           <div class="dialog-bubble">そう。つまり p₁ と q<sub>j</sub> は、単数を掛けただけの違いの同じ部品だ。そのあとはどうするかな？</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 290" style="width:100%;max-width:520px;display:block;margin:0 auto" role="img" aria-label="p₁ が q₁q₂…qs を割り切るとき、素元の性質で p₁ は q₁ を割り切るか残りを割り切る。残りなら q₂ か残り、と順に進み、最後にどれかの qj を割り切る。qj＝p₁×c で c は単数">
+          <rect x="22" y="22" width="44" height="28" rx="7" fill="#c8433f"/><text x="44" y="41" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">p₁</text><text x="84" y="41" text-anchor="middle" font-size="13" font-weight="900" fill="#221d33">｜</text><rect x="100" y="22" width="44" height="28" rx="7" fill="#5b4a9e" stroke="#e3bd6a" stroke-width="3"/><text x="122" y="41" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">q₁</text><rect x="152" y="22" width="44" height="28" rx="7" fill="#9a88d6"/><text x="174" y="41" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">q₂</text><rect x="204" y="22" width="44" height="28" rx="7" fill="#9a88d6"/><text x="226" y="41" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">q₃</text><rect x="296" y="22" width="44" height="28" rx="7" fill="#9a88d6"/><text x="318" y="41" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">q<tspan dy="4" font-size="9">s</tspan><tspan dy="-4"> </tspan></text><text x="272" y="41" text-anchor="middle" font-size="13" font-weight="900" fill="#44377a">…</text><path d="M152,54 v6 H340 v-6" fill="none" stroke="#9a88d6" stroke-width="1.5"/><text x="246" y="72" text-anchor="middle" font-size="11" font-weight="800" fill="#9a88d6">残り</text>
+          <text x="220" y="92" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">p₁ は q₁ を割り切るか、残り q₂…q<tspan dy="4" font-size="9">s</tspan><tspan dy="-4"> </tspan>を割り切る</text>
+          <rect x="22" y="112" width="44" height="28" rx="7" fill="#c8433f"/><text x="44" y="131" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">p₁</text><text x="84" y="131" text-anchor="middle" font-size="13" font-weight="900" fill="#221d33">｜</text><rect x="100" y="112" width="44" height="28" rx="7" fill="#e6e0f2"/><text x="122" y="131" text-anchor="middle" font-size="13" font-weight="900" fill="#b3abc6">q₁</text><rect x="152" y="112" width="44" height="28" rx="7" fill="#5b4a9e" stroke="#e3bd6a" stroke-width="3"/><text x="174" y="131" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">q₂</text><rect x="204" y="112" width="44" height="28" rx="7" fill="#9a88d6"/><text x="226" y="131" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">q₃</text><rect x="296" y="112" width="44" height="28" rx="7" fill="#9a88d6"/><text x="318" y="131" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">q<tspan dy="4" font-size="9">s</tspan><tspan dy="-4"> </tspan></text><text x="272" y="131" text-anchor="middle" font-size="13" font-weight="900" fill="#44377a">…</text><path d="M204,144 v6 H340 v-6" fill="none" stroke="#9a88d6" stroke-width="1.5"/><text x="272" y="162" text-anchor="middle" font-size="11" font-weight="800" fill="#9a88d6">残り</text>
+          <text x="220" y="182" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">q₁ でなければ：q₂ を割り切るか、残り q₃…q<tspan dy="4" font-size="9">s</tspan><tspan dy="-4"> </tspan>を割り切る</text>
+          <rect x="22" y="202" width="44" height="28" rx="7" fill="#c8433f"/><text x="44" y="221" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">p₁</text><text x="84" y="221" text-anchor="middle" font-size="13" font-weight="900" fill="#221d33">｜</text><rect x="100" y="202" width="44" height="28" rx="7" fill="#e6e0f2"/><text x="122" y="221" text-anchor="middle" font-size="13" font-weight="900" fill="#b3abc6">q₁</text><rect x="152" y="202" width="44" height="28" rx="7" fill="#e6e0f2"/><text x="174" y="221" text-anchor="middle" font-size="13" font-weight="900" fill="#b3abc6">q₂</text><rect x="204" y="202" width="44" height="28" rx="7" fill="#e6e0f2"/><text x="226" y="221" text-anchor="middle" font-size="13" font-weight="900" fill="#b3abc6">q₃</text><rect x="296" y="202" width="44" height="28" rx="7" fill="#5b4a9e" stroke="#e3bd6a" stroke-width="3"/><text x="318" y="221" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">q<tspan dy="4" font-size="9">j</tspan><tspan dy="-4"> </tspan></text><text x="272" y="221" text-anchor="middle" font-size="13" font-weight="900" fill="#44377a">…</text>
+          <text x="220" y="256" text-anchor="middle" font-size="12" font-weight="900" fill="#5b4a9e">くり返すと、最後にどれかの q<tspan dy="4" font-size="9">j</tspan><tspan dy="-4"> </tspan>に当たる</text>
+          <text x="220" y="278" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">q<tspan dy="4" font-size="9">j</tspan><tspan dy="-4"> </tspan>＝p₁×c　q<tspan dy="4" font-size="9">j</tspan><tspan dy="-4"> </tspan>は既約元で p₁ は単数でない → c は単数</text>
+        </svg>
+        <div class="diagram-caption"><strong>p₁ はどれかの q<sub>j</sub> を割り切る</strong>。p₁ は右辺の積 q₁q₂…q<sub>s</sub> を割り切る。積を「q₁ と残り」に分けて素元の性質を使うと、p₁ は q₁ を割り切るか残りを割り切る（1段目）。q₁ でなければ残りを「q₂ と残り」に分けて同じことをする（2段目）。部品は有限個なので、最後にどれかの q<sub>j</sub>（金の枠）に当たる。q<sub>j</sub> は既約元だから、q<sub>j</sub>＝p₁×c と書くと c は単数</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>

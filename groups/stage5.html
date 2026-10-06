@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="群・環・体からガロア理論へ">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="第1章 STAGE5 秘密の鍵 ― RSA暗号（オイラーの定理とRSA暗号のしくみ） ― 群・環・体からガロア理論へ">
-<meta property="og:description" content="鍵を公開しても破られない暗号。群の個数 φ(n) とオイラーの定理で、RSA暗号を小さな数で組み立てて動かす。">
+<meta property="og:description" content="鍵を公開しても破られない暗号。群の要素の数 φ(n) とオイラーの定理で、RSA暗号を小さな数で組み立てて動かす。">
 <meta property="og:url" content="https://algebra.habatakijuku.com/groups/stage5">
 <meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
 <meta property="og:image:width" content="1200">
@@ -154,7 +154,7 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。そこで1977年に、リベスト、シャミア、エーデルマンの3人が、「暗号にする鍵はみんなに公開してしまい、元に戻す鍵は受け取る人だけが持つ」という方法を考えた。3人の頭文字をとって RSA 暗号という。公開した鍵から、元に戻す鍵は作れない。その仕組みの中心にあるのが、群の個数なんだ。まず道具を用意しよう。2つの整数の最大公約数が 1 のとき、2つは<strong>互いに素</strong>であるという。1 から n−1 のうち、n と互いに素な数だけを集めると、mod n の掛け算で群になる。n＝15 で、その数を集めてごらん。</div>
+          <div class="dialog-bubble">そう。そこで1977年に、リベスト、シャミア、エーデルマンの3人が、「暗号にする鍵はみんなに公開してしまい、元に戻す鍵は受け取る人だけが持つ」という方法を考えた。3人の頭文字をとって RSA 暗号という。公開した鍵から、元に戻す鍵は作れない。その仕組みの中心にあるのが、群の要素の数なんだ。まず道具を用意しよう。2つの整数の最大公約数が 1 のとき、2つは<strong>互いに素</strong>であるという。1 から n−1 のうち、n と互いに素な数だけを集めると、mod n の掛け算で群になる。n＝15 で、その数を集めてごらん。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -168,29 +168,66 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。なぜいつも中に入るのかな？</div>
+          <div class="dialog-bubble">そう。なぜいつも中に入るのかな？ ab を 15 で割った余りを r として、ab＝15q＋r と書く。もし r が 3 で割り切れたら、ab はどうなるかな？</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">a も b も 3 と 5 を素因数にもちません。素因数分解はただ1通りなので、ab も 3 と 5 を素因数にもちません。ab を 15 で割った余りを r とすると、ab＝15q＋r なので r＝ab−15q です。もし r が 3 で割り切れたら、ab＝15q＋r も 3 で割り切れてしまいます。5 でも同じなので、r も 3 や 5 で割り切れず、15 と互いに素です。</div>
+          <div class="dialog-bubble">15q も 3 で割り切れるので、ab＝15q＋r も 3 で割り切れてしまいます。でも a も b も 3 を素因数にもたないので、素因数分解はただ1通りだから、ab は 3 で割り切れません。5 でも同じなので、r は 3 でも 5 でも割り切れず、15 と互いに素です。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 300" style="width:100%;max-width:520px;display:block;margin:0 auto" role="img" aria-label="ab＝15q＋r を棒で表し、r が 3 で割り切れると ab 全体が 3 で割り切れてしまうこと、a, b の素因数の箱に 3 も 5 もないので ab の箱にもないことを示す図">
+          <text x="220" y="18" font-size="13" font-weight="800" fill="#221d33" text-anchor="middle">ab＝7×8＝56 を 15 で割る：56＝15×3＋11</text>
+          <rect x="20" y="30" width="321.4" height="26" fill="#9a88d6" stroke="#5b4a9e" stroke-width="1.4"/>
+          <rect x="341.4" y="30" width="78.6" height="26" fill="#bfe6cc" stroke="#2f9e5c" stroke-width="1.4"/><line x1="127.1" y1="30" x2="127.1" y2="56" stroke="#fdfbf6" stroke-width="1.5"/><line x1="234.3" y1="30" x2="234.3" y2="56" stroke="#fdfbf6" stroke-width="1.5"/><text x="73.6" y="48" font-size="12.5" font-weight="800" fill="#fff" text-anchor="middle">15</text><text x="180.7" y="48" font-size="12.5" font-weight="800" fill="#fff" text-anchor="middle">15</text><text x="287.9" y="48" font-size="12.5" font-weight="800" fill="#fff" text-anchor="middle">15</text>
+          <text x="380.7" y="48" font-size="12.5" font-weight="800" fill="#221d33" text-anchor="middle">r＝11</text>
+          <text x="180.7" y="72" font-size="11" fill="#77708c" text-anchor="middle">15q＝45：15 の倍数なので 3 でも 5 でも割り切れる</text>
+          <text x="220" y="100" font-size="12" font-weight="800" fill="#c8433f" text-anchor="middle">もし r が 3 で割り切れたら、15q も r も 3 で割り切れるので</text>
+          <text x="220" y="117" font-size="12" font-weight="800" fill="#c8433f" text-anchor="middle">ab＝15q＋r 全体が 3 で割り切れてしまう</text><rect x="20" y="134" width="96" height="60" rx="10" fill="#f2effa" stroke="#5b4a9e" stroke-width="1.6"/><text x="68" y="151" font-size="11.5" font-weight="800" fill="#221d33" text-anchor="middle">a＝7 の素因数</text><circle cx="68" cy="176" r="11" fill="#fdfbf6" stroke="#9a88d6" stroke-width="1.4"/><text x="68" y="180" font-size="12" font-weight="900" fill="#5b4a9e" text-anchor="middle">7</text><text x="130" y="170" font-size="14" font-weight="800" fill="#77708c" text-anchor="middle">×</text><rect x="144" y="134" width="110" height="60" rx="10" fill="#f2effa" stroke="#5b4a9e" stroke-width="1.6"/><text x="199" y="151" font-size="11.5" font-weight="800" fill="#221d33" text-anchor="middle">b＝8 の素因数</text><circle cx="173" cy="176" r="11" fill="#fdfbf6" stroke="#9a88d6" stroke-width="1.4"/><text x="173" y="180" font-size="12" font-weight="900" fill="#5b4a9e" text-anchor="middle">2</text><circle cx="199" cy="176" r="11" fill="#fdfbf6" stroke="#9a88d6" stroke-width="1.4"/><text x="199" y="180" font-size="12" font-weight="900" fill="#5b4a9e" text-anchor="middle">2</text><circle cx="225" cy="176" r="11" fill="#fdfbf6" stroke="#9a88d6" stroke-width="1.4"/><text x="225" y="180" font-size="12" font-weight="900" fill="#5b4a9e" text-anchor="middle">2</text><text x="268" y="170" font-size="14" font-weight="800" fill="#77708c" text-anchor="middle">＝</text><rect x="282" y="134" width="138" height="60" rx="10" fill="#f2effa" stroke="#5b4a9e" stroke-width="1.6"/><text x="351" y="151" font-size="11.5" font-weight="800" fill="#221d33" text-anchor="middle">ab＝56 の素因数</text><circle cx="312" cy="176" r="11" fill="#fdfbf6" stroke="#9a88d6" stroke-width="1.4"/><text x="312" y="180" font-size="12" font-weight="900" fill="#5b4a9e" text-anchor="middle">2</text><circle cx="338" cy="176" r="11" fill="#fdfbf6" stroke="#9a88d6" stroke-width="1.4"/><text x="338" y="180" font-size="12" font-weight="900" fill="#5b4a9e" text-anchor="middle">2</text><circle cx="364" cy="176" r="11" fill="#fdfbf6" stroke="#9a88d6" stroke-width="1.4"/><text x="364" y="180" font-size="12" font-weight="900" fill="#5b4a9e" text-anchor="middle">2</text><circle cx="390" cy="176" r="11" fill="#fdfbf6" stroke="#9a88d6" stroke-width="1.4"/><text x="390" y="180" font-size="12" font-weight="900" fill="#5b4a9e" text-anchor="middle">7</text><text x="220" y="214" font-size="11" fill="#77708c" text-anchor="middle">素因数分解はただ1通りなので、ab の素因数は a の箱と b の箱の中身を合わせたもの</text>
+          <text x="220" y="230" font-size="11" fill="#77708c" text-anchor="middle">a にも b にも 3 がない → ab の箱にも 3 はない</text>
+          <circle cx="40" cy="258" r="11" fill="none" stroke="#c8433f" stroke-width="2.2"/><line x1="33" y1="251" x2="47" y2="265" stroke="#c8433f" stroke-width="2.2"/><line x1="47" y1="251" x2="33" y2="265" stroke="#c8433f" stroke-width="2.2"/>
+          <text x="60" y="262" font-size="12" font-weight="800" fill="#221d33">ab は 3 で割り切れない → 「r が 3 で割り切れる」はありえない</text>
+          <text x="220" y="289" font-size="12.5" font-weight="800" fill="#2f9e5c" text-anchor="middle">5 でも同じ → r は 3 でも 5 でも割り切れず、15 と互いに素</text>
+        </svg>
+        <div class="diagram-caption"><strong>a, b が 15 と互いに素なら、ab を 15 で割った余り r も互いに素</strong>。a＝7、b＝8 の例。上の棒が ab＝56 で、紫の部分 15q＝45 は 15 の倍数、緑が余り r＝11。もし r が 3 で割り切れたら、ab 全体が 3 で割り切れてしまう。ところが下の箱のように、a の素因数にも b の素因数にも 3 がないので、ab の素因数にも 3 はない（素因数分解はただ1通り）。だから r は 3 で割り切れず、5 についても同じ</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。逆元があることも、前のステージまでの mod p と同じ考え方で示せる。a の行に同じ数が2回出たとすると、a×x ≡ a×y、つまり a(x−y) が n で割り切れる。</div>
+          <div class="dialog-bubble">そう。逆元があることも、前のステージまでの mod p と同じ考え方で示せる。a の行に同じ数が2回出たとすると、a×x ≡ a×y、つまり a(x−y) が n で割り切れる。素因数分解はただ1通りで、n の素因数は a に入っていないから、n の素因数は、出てくる回数もふくめて、どこに入っていないといけないかな？</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">n の素因数は、どれも a には入っていません。素因数分解はただ1通りなので、n の素因数分解に出てくる素数は、出てくる回数もふくめて全部 x−y のほうに入っていないといけません。つまり x−y が n で割り切れます。でも x と y は 1 から n−1 の異なる数なので、差が n で割り切れることはありません。だから a の行には同じ数が出てこなくて、全部の数がちょうど1回ずつ出ます。1 も出るので、逆元があります。</div>
+          <div class="dialog-bubble">x−y のほうです。だから x−y が n で割り切れますが、x と y は 1 から n−1 の異なる数なので、差が n で割り切れることはありません。だから a の行には同じ数が出ず、全部の数がちょうど1回ずつ出て、1 も出るので逆元がある、ということですか？</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 284" style="width:100%;max-width:520px;display:block;margin:0 auto" role="img" aria-label="a(x−y) が 15 で割り切れるとすると、15 の素因数 3 と 5 は a の箱にないので x−y の箱に入り、x−y が 15 の倍数になるが、0 と 15 の間に 15 の倍数はないので矛盾する図">
+          <text x="220" y="18" font-size="12.5" font-weight="800" fill="#221d33" text-anchor="middle">a×x ≡ a×y (mod 15) と仮定 → a(x−y) が 15 で割り切れる</text>
+          <text x="220" y="40" font-size="11" fill="#77708c" text-anchor="middle">→ a(x−y) の素因数の箱に、15 の素因数 3 と 5 が入っている</text><rect x="20" y="56" width="170" height="80" rx="10" fill="#f2effa" stroke="#5b4a9e" stroke-width="1.6"/><text x="105" y="73" font-size="11.5" font-weight="800" fill="#221d33" text-anchor="middle">a の素因数（例：a＝4）</text><circle cx="92" cy="98" r="11" fill="#fdfbf6" stroke="#9a88d6" stroke-width="1.4"/><text x="92" y="102" font-size="12" font-weight="900" fill="#5b4a9e" text-anchor="middle">2</text><circle cx="118" cy="98" r="11" fill="#fdfbf6" stroke="#9a88d6" stroke-width="1.4"/><text x="118" y="102" font-size="12" font-weight="900" fill="#5b4a9e" text-anchor="middle">2</text><text x="105" y="128" font-size="11" font-weight="800" fill="#2f9e5c" text-anchor="middle">3 も 5 もない</text><text x="204" y="100" font-size="14" font-weight="800" fill="#77708c" text-anchor="middle">×</text><rect x="218" y="56" width="202" height="80" rx="10" fill="#f2effa" stroke="#c8433f" stroke-width="1.6"/><text x="319" y="73" font-size="11.5" font-weight="800" fill="#221d33" text-anchor="middle">x−y の素因数</text><circle cx="293" cy="98" r="11" fill="#fdfbf6" stroke="#c8433f" stroke-width="1.4"/><text x="293" y="102" font-size="12" font-weight="900" fill="#c8433f" text-anchor="middle">3</text><circle cx="319" cy="98" r="11" fill="#fdfbf6" stroke="#c8433f" stroke-width="1.4"/><text x="319" y="102" font-size="12" font-weight="900" fill="#c8433f" text-anchor="middle">5</text><circle cx="345" cy="98" r="11" fill="#fdfbf6" stroke="#c8433f" stroke-width="1.4"/><text x="345" y="102" font-size="12" font-weight="900" fill="#c8433f" text-anchor="middle">…</text><text x="319" y="128" font-size="11" font-weight="800" fill="#c8433f" text-anchor="middle">3 と 5 はこちらに入るしかない</text>
+          <text x="220" y="162" font-size="12.5" font-weight="800" fill="#221d33" text-anchor="middle">→ x−y は 3×5＝15 の倍数</text>
+          <rect x="52" y="180" width="336" height="22" rx="6" fill="#fbe9e8"/>
+          <line x1="40" y1="191" x2="400" y2="191" stroke="#5b4a9e" stroke-width="1.6"/>
+          <circle cx="40" cy="191" r="5" fill="#5b4a9e"/><circle cx="400" cy="191" r="5" fill="#5b4a9e"/>
+          <text x="40" y="214" font-size="12" font-weight="800" fill="#5b4a9e" text-anchor="middle">0</text>
+          <text x="400" y="214" font-size="12" font-weight="800" fill="#5b4a9e" text-anchor="middle">15</text>
+          <text x="220" y="230" font-size="11.5" font-weight="800" fill="#c8433f" text-anchor="middle">x−y はこの赤い範囲（0 より大きく 15 より小さい）にあり、15 の倍数はない</text>
+          <text x="220" y="250" font-size="11" fill="#77708c" text-anchor="middle">x, y は 1 から 14 の異なる数なので、x−y は 0 でも 15 でもない（x＞y としてよい）</text>
+          <text x="220" y="275" font-size="12.5" font-weight="800" fill="#2f9e5c" text-anchor="middle">矛盾 → a の行に同じ数は出ない（1 もちょうど1回出る）</text>
+        </svg>
+        <div class="diagram-caption"><strong>a の行に同じ数は出ない</strong>。n＝15、a＝4 の例。a×x と a×y の余りが同じだとすると、a(x−y) は 15 で割り切れるので、素因数 3 と 5 が a(x−y) の箱に入っている。a の箱には 3 も 5 もないので、両方とも x−y の箱に入るしかなく、x−y は 15 の倍数になる。ところが x−y は 0 と 15 の間の数で、そこに 15 の倍数はない（下の数直線）。だから同じ数は出ない</div>
       </div>
 
       <div class="diagram-box">
@@ -209,7 +246,7 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。この群の個数を <strong>φ(n)</strong> と書いて、オイラーの φ（ファイ）関数と呼ぶ。φ(15)＝8 だ。p と q が異なる素数で n＝pq のとき、φ(n) を p と q で表してごらん。</div>
+          <div class="dialog-bubble">そう。この群の要素の数を <strong>φ(n)</strong> と書いて、オイラーの φ（ファイ）関数と呼ぶ。φ(15)＝8 だ。p と q が異なる素数で n＝pq のとき、φ(n) を p と q で表してごらん。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -233,14 +270,14 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。そして前のステージの「どの要素も、群の個数の回数だけ掛けると単位元になる」を、この群にあてはめると？</div>
+          <div class="dialog-bubble">そう。そして前のステージの「どの要素も、群の要素の数の回数だけ掛けると単位元になる」を、この群にあてはめると？</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">群の個数は φ(n) なので、n と互いに素な a について <strong>a<sup>φ(n)</sup> ≡ 1 (mod n)</strong> です。15 なら a⁸ ≡ 1 で、たとえば 2⁸＝256＝15×17＋1。合っています。</div>
+          <div class="dialog-bubble">群の要素の数は φ(n) なので、n と互いに素な a について <strong>a<sup>φ(n)</sup> ≡ 1 (mod n)</strong> です。15 なら a⁸ ≡ 1 で、たとえば 2⁸＝256＝15×17＋1。合っています。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
@@ -416,7 +453,7 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。φ(n) を知ることは、n を素因数分解することと同じくらい難しい。群の個数 φ(n) を知っている人だけが、累乗をもとに戻せる。秘密鍵を守っているのは、素因数分解の難しさなんだ。次のステージでは、15パズルに戻るために、入れ替えそのものがつくる群を調べよう。</div>
+          <div class="dialog-bubble">そう。φ(n) を知ることは、n を素因数分解することと同じくらい難しい。群の要素の数 φ(n) を知っている人だけが、累乗をもとに戻せる。秘密鍵を守っているのは、素因数分解の難しさなんだ。次のステージでは、15パズルに戻るために、入れ替えそのものがつくる群を調べよう。</div>
         </div>
       </div>
 
@@ -424,7 +461,7 @@
         <span class="step">【このステージの成果】</span>
         <span class="step">n と互いに素な数（最大公約数が 1）は、mod n の掛け算で群になる。その個数が φ(n)</span>
         <span class="step">p, q が異なる素数なら <span class="nw">φ(pq)＝(p−1)(q−1)</span>（例：φ(15)＝8、φ(33)＝20）</span>
-        <span class="step">オイラーの定理：n と互いに素な a について <span class="nw">a<sup>φ(n)</sup> ≡ 1 (mod n)</span>（群の個数だけ掛けると単位元）</span>
+        <span class="step">オイラーの定理：n と互いに素な a について <span class="nw">a<sup>φ(n)</sup> ≡ 1 (mod n)</span>（群の要素の数だけ掛けると単位元）</span>
         <span class="step">RSA：公開鍵 n, e、秘密鍵 d（<span class="nw">ed ≡ 1 (mod φ(n))</span>）。暗号 <span class="nw">c＝m<sup>e</sup> mod n</span>、復号 <span class="nw">c<sup>d</sup> ≡ m<sup>ed</sup> ≡ m</span></span>
         <span class="step">n＝33、e＝3、d＝7 で 2 → 8 → 2。安全性は n の素因数分解の難しさ（φ(n) が分かれば p, q が分かる）</span>
       </div>

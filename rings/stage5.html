@@ -131,14 +131,28 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">いよいよ1つ目の謎を解こう。これまでに2つの道具がそろった。STAGE2 で示した「素数 p が2つの平方数の和で書ける ⇔ p はガウス整数の世界で既約元（これ以上分けられない数）でない」。そして前のステージで示した「ガウス整数の既約元は、どれも素元（ab を割り切れば a か b を割り切る数）」。まず易しいほうから片づけよう。4 で割って 3 余る素数は、なぜ2つの平方数の和で書けないのかな？</div>
+          <div class="dialog-bubble">いよいよ1つ目の謎を解こう。これまでに2つの道具がそろった。STAGE2 で示した「素数 p が2つの平方数の和で書ける ⇔ p はガウス整数の世界で既約元（これ以上分けられない数）でない」。そして前のステージで示した「ガウス整数の既約元は、どれも素元（ab を割り切れば a か b を割り切る数）」。まず易しいほうから片づけよう。4 で割って 3 余る素数は、なぜ2つの平方数の和で書けないのかな？ まず、平方数を 4 で割った余りを調べてごらん。偶数と奇数に分けるといい。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">平方数を 4 で割った余りを調べます。偶数は 2k と書けて (2k)²＝4k² なので余り 0。奇数は 2k＋1 と書けて (2k＋1)²＝4k²＋4k＋1＝4(k²＋k)＋1 なので余り 1。平方数の余りは 0 か 1 だけです。だから2つの平方数の和の余りは 0＋0, 0＋1, 1＋1 の 0, 1, 2 のどれかで、3 には絶対になりません。</div>
+          <div class="dialog-bubble">偶数は 2k と書けて (2k)²＝4k² なので余り 0。奇数は 2k＋1 と書けて (2k＋1)²＝4k²＋4k＋1＝4(k²＋k)＋1 なので余り 1。平方数の余りは 0 か 1 だけです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">では、2つの平方数の和を 4 で割った余りは？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">0＋0, 0＋1, 1＋1 の 0, 1, 2 のどれかで、3 には絶対になりません。</div>
         </div>
       </div>
 
@@ -169,14 +183,72 @@
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">x²＋1＝x²−i²＝(x＋i)(x−i) です。p はこの積を割り切ります。でも、(x＋i)÷p＝x/p＋(1/p)i で、1/p は整数ではないので、これはガウス整数ではありません。p は x＋i を割り切りません。x−i も同じです。……積を割り切るのにどちらの因数も割り切らないので、p は素元ではありません！ ガウス整数では既約元はどれも素元なので、p は既約元でもなく、STAGE2 の結果から、p は2つの平方数の和で書けます。</div>
+          <div class="dialog-bubble">x²＋1＝x²−i²＝(x＋i)(x−i) です。p はこの積を割り切ります。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">その通り。だから残る仕事は、<strong>p が x²＋1 を割り切るような x を見つけること</strong>だけだ。第1章の言葉で言えば、x²≡−1 (mod p) となる x だね。いくつかの p で探してごらん。</div>
+          <div class="dialog-bubble">では p は x＋i を割り切るかな？ (x＋i)÷p を計算してごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">x/p＋(1/p)i で、1/p は整数ではないので、これはガウス整数ではありません。p は x＋i を割り切りません。x−i も同じです。……積を割り切るのにどちらの因数も割り切らないので、p は素元ではない、ということですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。ガウス整数では既約元はどれも素元だったから、p は既約元でもない。STAGE2 の結果と合わせると？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">p は2つの平方数の和で書けます！</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 330" style="width:100%;max-width:520px;display:block;margin:0 auto" role="img" aria-label="左：ガウス整数の格子に 5＋i と 5−i を描いた図。13 は積 (5＋i)(5−i)＝26 を割り切る。右：(5＋i)÷13＝5/13＋(1/13)i は 1辺 1 の正方形の内側に落ちて、格子点に乗らない。だから 13 は素元でなく、既約元でもなく、13＝(3＋2i)(3−2i)＝3²＋2²">
+          <text x="14" y="22" font-size="12.5" font-weight="900" fill="#221d33">13 は (5＋i)(5−i)＝26 を割り切る</text>
+          <line x1="24" y1="180" x2="188" y2="180" stroke="#b9b0a3" stroke-width="1.2"/>
+          <line x1="34" y1="122" x2="34" y2="214" stroke="#b9b0a3" stroke-width="1.2"/>
+          <circle cx="34" cy="204" r="2.6" fill="#b9b0a3"/><circle cx="34" cy="180" r="2.6" fill="#b9b0a3"/><circle cx="34" cy="156" r="2.6" fill="#b9b0a3"/><circle cx="34" cy="132" r="2.6" fill="#b9b0a3"/><circle cx="58" cy="204" r="2.6" fill="#b9b0a3"/><circle cx="58" cy="180" r="2.6" fill="#b9b0a3"/><circle cx="58" cy="156" r="2.6" fill="#b9b0a3"/><circle cx="58" cy="132" r="2.6" fill="#b9b0a3"/><circle cx="82" cy="204" r="2.6" fill="#b9b0a3"/><circle cx="82" cy="180" r="2.6" fill="#b9b0a3"/><circle cx="82" cy="156" r="2.6" fill="#b9b0a3"/><circle cx="82" cy="132" r="2.6" fill="#b9b0a3"/><circle cx="106" cy="204" r="2.6" fill="#b9b0a3"/><circle cx="106" cy="180" r="2.6" fill="#b9b0a3"/><circle cx="106" cy="156" r="2.6" fill="#b9b0a3"/><circle cx="106" cy="132" r="2.6" fill="#b9b0a3"/><circle cx="130" cy="204" r="2.6" fill="#b9b0a3"/><circle cx="130" cy="180" r="2.6" fill="#b9b0a3"/><circle cx="130" cy="156" r="2.6" fill="#b9b0a3"/><circle cx="130" cy="132" r="2.6" fill="#b9b0a3"/><circle cx="154" cy="204" r="2.6" fill="#b9b0a3"/><circle cx="154" cy="180" r="2.6" fill="#b9b0a3"/><circle cx="154" cy="156" r="2.6" fill="#b9b0a3"/><circle cx="154" cy="132" r="2.6" fill="#b9b0a3"/><circle cx="178" cy="204" r="2.6" fill="#b9b0a3"/><circle cx="178" cy="180" r="2.6" fill="#b9b0a3"/><circle cx="178" cy="156" r="2.6" fill="#b9b0a3"/><circle cx="178" cy="132" r="2.6" fill="#b9b0a3"/>
+          <circle cx="154" cy="156" r="6" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="154" cy="204" r="6" fill="#3f6fb5" stroke="#fff" stroke-width="1.5"/>
+          <text x="158" y="146" text-anchor="middle" font-size="12" font-weight="900" fill="#5b4a9e">5＋i</text>
+          <text x="158" y="224" text-anchor="middle" font-size="12" font-weight="900" fill="#3f6fb5">5−i</text>
+          <text x="28" y="196" text-anchor="end" font-size="11" font-weight="800" fill="#77708c">0</text>
+          <text x="184" y="196" text-anchor="end" font-size="11" font-weight="800" fill="#77708c">6</text>
+          <text x="240" y="22" font-size="12.5" font-weight="900" fill="#221d33">(5＋i)÷13 は格子点に乗らない</text>
+          <rect x="258" y="78" width="120" height="120" fill="#f2effa" stroke="#9a88d6" stroke-width="1.8"/>
+          <circle cx="258" cy="198" r="5" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="250" y="215" text-anchor="end" font-size="11.5" font-weight="800" fill="#44377a">0</text><circle cx="378" cy="198" r="5" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="386" y="215" text-anchor="start" font-size="11.5" font-weight="800" fill="#44377a">1</text><circle cx="258" cy="78" r="5" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="250" y="69" text-anchor="end" font-size="11.5" font-weight="800" fill="#44377a">i</text><circle cx="378" cy="78" r="5" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="386" y="69" text-anchor="start" font-size="11.5" font-weight="800" fill="#44377a">1＋i</text>
+          <circle cx="304.2" cy="188.8" r="6" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <text x="318" y="176.8" text-anchor="middle" font-size="11.5" font-weight="900" fill="#c8433f">5/13＋(1/13)i</text>
+          <text x="318" y="140" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">正方形の角が</text>
+          <text x="318" y="156" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">ガウス整数</text>
+          <line x1="20" y1="234" x2="420" y2="234" stroke="#e6e0d6" stroke-width="1.5"/>
+          <text x="220" y="258" text-anchor="middle" font-size="12.5" font-weight="900" fill="#221d33">13 は積を割り切るのに、5＋i も 5−i も割り切らない</text>
+          <text x="220" y="282" text-anchor="middle" font-size="12.5" font-weight="900" fill="#c8433f">→ 13 は素元でない → 既約元でもない（既約元なら素元のはず）</text>
+          <text x="220" y="312" text-anchor="middle" font-size="13" font-weight="900" fill="#5b4a9e">→ 13＝(3＋2i)(3−2i)＝3²＋2²</text>
+        </svg>
+        <div class="diagram-caption"><strong>p が2つの平方数の和になる筋道（p＝13, x＝5 の例）</strong>。左：5²＋1＝26＝13×2 なので、13 はガウス整数の積 (5＋i)(5−i) を割り切る。右：ところが (5＋i)÷13＝5/13＋(1/13)i（赤）は、ガウス整数が並ぶ正方形の角に乗らないので、13 は 5＋i を割り切らない（5−i も同じ）。積を割り切るのに因数を割り切らないから 13 は素元でなく、ガウス整数では既約元はどれも素元だったから既約元でもない。だから 13 は分けられて、STAGE2 のとおり 13＝(3＋2i)(3−2i)＝3²＋2²</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。だから残る仕事は、<strong>p が x²＋1 を割り切るような x を見つけること</strong>だけだ。第1章の言葉で言えば、x²≡−1 (mod p) となる x だね。いくつかの p で探してごらん。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">

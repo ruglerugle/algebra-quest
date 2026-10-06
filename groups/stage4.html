@@ -13,7 +13,7 @@
   gtag('config', 'G-9RTQCP2HXM');
 </script>
 <title>第1章 STAGE4 部分群とラグランジュの定理（剰余類とフェルマーの小定理） ― 群・環・体からガロア理論へ</title>
-<meta name="description" content="ラグランジュの定理を中学生向けに解説。部分群をずらしたコピー（剰余類）が群をきれいに等分割することを確かめ、部分群の個数や要素の位数が群の個数を割り切ることを証明する。そこからフェルマーの小定理を導く。">
+<meta name="description" content="ラグランジュの定理を中学生向けに解説。部分群をずらしたコピー（剰余類）が群をきれいに等分割することを確かめ、部分群の要素の数や要素の位数が群の要素の数を割り切ることを証明する。そこからフェルマーの小定理を導く。">
 <link rel="canonical" href="https://algebra.habatakijuku.com/groups/stage4">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="群・環・体からガロア理論へ">
@@ -35,7 +35,7 @@
     {
       "@type": "LearningResource",
       "name": "STAGE4 部分群とラグランジュの定理",
-      "description": "ラグランジュの定理を中学生向けに解説。部分群をずらしたコピー（剰余類）が群をきれいに等分割することを確かめ、部分群の個数や要素の位数が群の個数を割り切ることを証明する。そこからフェルマーの小定理を導く。",
+      "description": "ラグランジュの定理を中学生向けに解説。部分群をずらしたコピー（剰余類）が群をきれいに等分割することを確かめ、部分群の要素の数や要素の位数が群の要素の数を割り切ることを証明する。そこからフェルマーの小定理を導く。",
       "url": "https://algebra.habatakijuku.com/groups/stage4",
       "inLanguage": "ja",
       "learningResourceType": "learning activity",
@@ -129,7 +129,7 @@
       </div>
       <div class="mission-box">
         <div class="mission-label">🎯 ミッション</div>
-        <div class="mission-text">剰余類が群を同じ個数ずつ重ならずに分けることを3段階で説明し、ラグランジュの定理（部分群の個数は群の個数を割り切る）から、フェルマーの小定理 a<sup>p−1</sup> ≡ 1 (mod p) を導こう。</div>
+        <div class="mission-text">剰余類が群を同じ数の要素ずつ重ならずに分けることを3段階で説明し、ラグランジュの定理（部分群の要素の数は群の要素の数を割り切る）から、フェルマーの小定理 a<sup>p−1</sup> ≡ 1 (mod p) を導こう。</div>
         <span class="mission-status" id="mission-status">未達成</span>
       </div>
 
@@ -139,7 +139,7 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">前のステージの終わりで、要素の位数（くり返して初めて単位元になる回数）が、いつも群の個数の約数になっていた。今日はその理由を証明する。これが分かると、mod p（p で割った余りで考える世界）の累乗について、フェルマーの小定理という強い道具が手に入る。次のステージの暗号の心臓部になる定理だ。まず、群の中の小さな群を考えよう。正三角形の6つの操作のうち、回転だけを集めた e, r, r² を調べてごらん。</div>
+          <div class="dialog-bubble">前のステージの終わりで、要素の位数（くり返して初めて単位元になる回数）が、いつも群の要素の数の約数になっていた。今日はその理由を証明する。これが分かると、mod p（p で割った余りで考える世界）の累乗について、フェルマーの小定理という強い道具が手に入る。次のステージの暗号の心臓部になる定理だ。まず、群の中の小さな群を考えよう。正三角形の6つの操作のうち、回転だけを集めた e, r, r² を調べてごらん。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -221,7 +221,7 @@
         </div>
         <div id="lg-rows" class="lg-rows"></div>
         <div class="readout" id="ro-lg"></div>
-        <div class="diagram-caption"><strong>ラグランジュの等分割</strong>。群と部分群 H を選ぶと、剰余類（H をずらしたコピー）を1行ずつ色分けして並べる。どの行も H と同じ個数で、群の要素はちょうど1回ずつどこかの行に入る。だから「群の個数＝剰余類の個数×H の個数」になる</div>
+        <div class="diagram-caption"><strong>ラグランジュの等分割</strong>。群と部分群 H を選ぶと、剰余類（H をずらしたコピー）を1行ずつ色分けして並べる。どの行も H と同じ数の要素をもちをもちで、群の要素はちょうど1回ずつどこかの行に入る。だから「群の要素の数＝剰余類の数×H の要素の数」になる</div>
       </div>
 
       <div class="dialogue-scene">
@@ -230,7 +230,7 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。どんな群でも、どんな部分群でも、こうなる。それを3つの段階で確かめよう。1つ目。剰余類 gH の要素の個数は、いつも H と同じかな？ H の要素を h₁, h₂, … とすると、gH は gh₁, gh₂, … だ。個数が H より減るとしたら、どういうときかな？</div>
+          <div class="dialog-bubble">そう。どんな群でも、どんな部分群でも、こうなる。それを3つの段階で確かめよう。1つ目。剰余類 gH の要素の数は、いつも H と同じかな？ H の要素を h₁, h₂, … とすると、gH は gh₁, gh₂, … だ。要素の数が H より減るとしたら、どういうときかな？</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -251,7 +251,7 @@
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">g⁻¹(gh₁)＝g⁻¹(gh₂) で、結合法則で (g⁻¹g)h₁＝(g⁻¹g)h₂、つまり h₁＝h₂ です。違う h からは必ず違う gh ができるので、gH の個数は H の個数と同じです。</div>
+          <div class="dialog-bubble">g⁻¹(gh₁)＝g⁻¹(gh₂) で、結合法則で (g⁻¹g)h₁＝(g⁻¹g)h₂、つまり h₁＝h₂ です。違う h からは必ず違う gh ができるので、gH の要素の数は H の要素の数と同じです。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
@@ -300,15 +300,15 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">その通り。そして g と k の役目を入れかえて同じことをすれば、kH も gH にふくまれる。だから gH＝kH だ。まとめると、剰余類はどれも H と同じ個数で、群の全部をおおい、1つでも重なるなら丸ごと一致する。だから群全体は、H と同じ個数の組に、重ならずにぴったり分かれる。</div>
+          <div class="dialog-bubble">その通り。そして g と k の役目を入れかえて同じことをすれば、kH も gH にふくまれる。だから gH＝kH だ。まとめると、剰余類はどれも H と同じ数の要素をもち、群の全部をおおい、1つでも重なるなら丸ごと一致する。だから群全体は、H と同じ数の要素の組に、重ならずにぴったり分かれる。</div>
         </div>
       </div>
 
       <div class="formula-box">
-        <span class="step">① どの剰余類 gH も、H と同じ個数（<span class="nw">gh₁＝gh₂</span> なら前に g⁻¹ をして <span class="nw">h₁＝h₂</span>）</span>
+        <span class="step">① どの剰余類 gH も、H と同じ数の要素をもつ（<span class="nw">gh₁＝gh₂</span> なら前に g⁻¹ をして <span class="nw">h₁＝h₂</span>）</span>
         <span class="step">② どの要素 g も、自分の剰余類 gH に入る（<span class="nw">g＝ge</span>）</span>
         <span class="step">③ 剰余類どうしは、重ならないか、丸ごと一致する（共通の要素があれば <span class="nw">g＝kh″</span> と書けて <span class="nw">gH＝kH</span>）</span>
-        <span class="step">よって群は、H と同じ個数の剰余類に、重ならずに分かれる：<br><span class="nw">（群の個数）＝（剰余類の個数）×（H の個数）</span></span>
+        <span class="step">よって群は、H と同じ数の要素をもつ剰余類に、重ならずに分かれる：<br><span class="nw">（群の要素の数）＝（剰余類の数）×（H の要素の数）</span></span>
       </div>
 
       <div class="dialogue-scene">
@@ -317,35 +317,35 @@
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">群の個数は、部分群の個数と剰余類の個数の積です。だから、<strong>部分群の個数は、群の個数を割り切ります</strong>。正三角形の群は 6 個なので、部分群の個数は 1, 2, 3, 6 のどれかで、4 個や 5 個の部分群はありません。</div>
+          <div class="dialog-bubble">群の要素の数は、部分群の要素の数と剰余類の数の積です。だから、<strong>部分群の要素の数は、群の要素の数を割り切ります</strong>。正三角形の群は 6 個なので、部分群の要素の数は 1, 2, 3, 6 のどれかで、4 個や 5 個の部分群はありません。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。これを<strong>ラグランジュの定理</strong>という。ラグランジュは1770年ごろ、方程式の解の入れ替えを研究するなかで、この定理のもとになる事実を見つけた。だから彼の名前で呼ばれている。では、前のステージの謎に戻ろう。群の個数が有限なら、a, a², a³, … と掛けていくと、いつか同じものが出てくる。a<sup>i</sup>＝a<sup>j</sup>（i＜j）となったら、両辺の前に a⁻¹ を i 回すれば a<sup>j−i</sup>＝e。だから、くり返せばいつか必ず e になり、位数が決まる。a の位数が k なら、e, a, a², …, a<sup>k−1</sup> の k 個は、どんな集まりになるかな？</div>
+          <div class="dialog-bubble">そう。これを<strong>ラグランジュの定理</strong>という。ラグランジュは1770年ごろ、方程式の解の入れ替えを研究するなかで、この定理のもとになる事実を見つけた。だから彼の名前で呼ばれている。では、前のステージの謎に戻ろう。群の要素の数が有限なら、a, a², a³, … と掛けていくと、いつか同じものが出てくる。a<sup>i</sup>＝a<sup>j</sup>（i＜j）となったら、両辺の前に a⁻¹ を i 回すれば a<sup>j−i</sup>＝e。だから、くり返せばいつか必ず e になり、位数が決まる。a の位数が k なら、e, a, a², …, a<sup>k−1</sup> の k 個は、どんな集まりになるかな？</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">まず、この k 個は全部違います。もし a<sup>i</sup>＝a<sup>j</sup>（0≦i＜j＜k）なら、さっきと同じように a<sup>j−i</sup>＝e となって、k より少ない回数で e に戻ってしまうからです。それから、a<sup>k</sup>＝e なので、a<sup>i</sup>a<sup>j</sup>＝a<sup>i＋j</sup> は、i＋j が k 以上なら k を引いた回数と同じで、また e, a, …, a<sup>k−1</sup> のどれかです。閉じています。e が入っていて、a<sup>i</sup> の逆元は a<sup>k−i</sup> です。だから k 個の部分群で、ラグランジュの定理から、<strong>位数 k は群の個数を割り切ります</strong>。</div>
+          <div class="dialog-bubble">まず、この k 個は全部違います。もし a<sup>i</sup>＝a<sup>j</sup>（0≦i＜j＜k）なら、さっきと同じように a<sup>j−i</sup>＝e となって、k より少ない回数で e に戻ってしまうからです。それから、a<sup>k</sup>＝e なので、a<sup>i</sup>a<sup>j</sup>＝a<sup>i＋j</sup> は、i＋j が k 以上なら k を引いた回数と同じで、また e, a, …, a<sup>k−1</sup> のどれかです。閉じています。e が入っていて、a<sup>i</sup> の逆元は a<sup>k−i</sup> です。だから k 個の部分群で、ラグランジュの定理から、<strong>位数 k は群の要素の数を割り切ります</strong>。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。群の個数を m とすると、m は k で割り切れる。すると a<sup>m</sup> はどうなるかな？</div>
+          <div class="dialog-bubble">そう。群の要素の数を m とすると、m は k で割り切れる。すると a<sup>m</sup> はどうなるかな？</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">m＝kt と書けるので、a<sup>m</sup>＝(a<sup>k</sup>)<sup>t</sup>＝e<sup>t</sup>＝e です。<strong>どの要素も、群の個数の回数だけ掛けると単位元になります</strong>。</div>
+          <div class="dialog-bubble">m＝kt と書けるので、a<sup>m</sup>＝(a<sup>k</sup>)<sup>t</sup>＝e<sup>t</sup>＝e です。<strong>どの要素も、群の要素の数の回数だけ掛けると単位元になります</strong>。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
@@ -409,21 +409,21 @@
       <div class="formula-box">
         <span class="step">【このステージの成果】</span>
         <span class="step">部分群：群の一部分で、同じ計算でそれだけで群になっているもの（例：{e, r, r²}、{e, s₁}、mod 12 の {0, 4, 8}）</span>
-        <span class="step">剰余類 gH：部分群 H をずらしたコピー。どれも H と同じ個数で、重ならないか丸ごと一致する → 群をぴったり等分割する</span>
-        <span class="step">ラグランジュの定理：部分群の個数は群の個数を割り切る（正三角形の群に 4 個や 5 個の部分群はない）</span>
-        <span class="step">要素 a の位数 k は群の個数を割り切る（e, a, …, a<sup>k−1</sup> が部分群）→ 群の個数を m とすると <span class="nw">a<sup>m</sup>＝e</span></span>
+        <span class="step">剰余類 gH：部分群 H をずらしたコピー。どれも H と同じ数の要素をもち、重ならないか丸ごと一致する → 群をぴったり等分割する</span>
+        <span class="step">ラグランジュの定理：部分群の要素の数は群の要素の数を割り切る（正三角形の群に 4 個や 5 個の部分群はない）</span>
+        <span class="step">要素 a の位数 k は群の要素の数を割り切る（e, a, …, a<sup>k−1</sup> が部分群）→ 群の要素の数を m とすると <span class="nw">a<sup>m</sup>＝e</span></span>
         <span class="step">フェルマーの小定理：<span class="nw">a<sup>p−1</sup> ≡ 1 (mod p)</span>。例：<span class="nw">3¹⁰⁰ ≡ 3⁴ ≡ 4 (mod 7)</span></span>
       </div>
 
       <h2 class="quiz-head">確認クイズ</h2>
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q1. 12 個の要素からなる群に、部分群としてありえない個数は？</p>
+        <p class="quiz-q">Q1. 12 個の要素からなる群に、部分群の要素の数としてありえないものは？</p>
         <div class="choice-list">
           <button class="choice-btn">4 個</button>
           <button class="choice-btn">6 個</button>
           <button class="choice-btn">5 個</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ ラグランジュの定理から、部分群の個数は群の個数 12 を割り切る。12 の約数は 1, 2, 3, 4, 6, 12 なので、5 個の部分群はない。</div>
+        <div class="quiz-explain" hidden>正解！ ラグランジュの定理から、部分群の要素の数は群の要素の数 12 を割り切る。12 の約数は 1, 2, 3, 4, 6, 12 なので、5 個の部分群はない。</div>
       </div>
       <div class="quiz-card" data-quiz>
         <p class="quiz-q">Q2. 剰余類 gH と kH に共通の要素が1つでもあると、どうなる？</p>
@@ -484,7 +484,7 @@
       rows.push({ rep: x, els: c });
     });
     host.innerHTML = rows.map((r, i) => "<div class=\"lg-row\" style=\"--c:" + cfg.col[i % cfg.col.length] + "\"><span class=\"lg-lab\">" + g.lab(r.rep) + "</span>" + r.els.map((y) => "<span class=\"lg-chip\">" + g.str(y) + "</span>").join("") + "</div>").join("");
-    ro.innerHTML = "<span>群の個数 <b>" + g.els.length + "</b> ＝ 剰余類の個数 <b>" + rows.length + "</b> × 部分群の個数 <b>" + Hs.length + "</b></span>";
+    ro.innerHTML = "<span>群の要素の数 <b>" + g.els.length + "</b> ＝ 剰余類の数 <b>" + rows.length + "</b> × 部分群の要素の数 <b>" + Hs.length + "</b></span>";
   }
   selG.addEventListener("change", () => { fillH(); draw(); });
   selH.addEventListener("change", draw);

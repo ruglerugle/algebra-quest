@@ -176,7 +176,7 @@
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">ghg⁻¹＝h′（h′ は H の入れ替え）なら、右から g を掛けて gh＝h′g です。だから gH の入れ替えは、どれも Hg に入ります。gH と Hg は同じ個数なので、<strong>gH＝Hg</strong> です。</div>
+          <div class="dialog-bubble">ghg⁻¹＝h′（h′ は H の入れ替え）なら、右から g を掛けて gh＝h′g です。だから gH の入れ替えは、どれも Hg に入ります。gH と Hg は同じ数の要素をもつので、<strong>gH＝Hg</strong> です。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
@@ -238,7 +238,7 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。正規部分群なら、ずらしたコピーそのものを1つの「もの」と見て、掛け算ができる。gH と kH の掛け算は gkH と決めればいい。この掛け算でできる群を、G を H で<strong>割った群</strong>（割った残り）と呼ぶ。個数は、ラグランジュの定理で G の個数÷H の個数だ。いまの例は2個で、＋1 と −1 の掛け算と同じ形をしている。正規部分群でないとどうなるか、H＝{e, (α β)} で、コピー H と (α γ)H＝{(α γ), (α γ β)} から1つずつ選んで続けてごらん。</div>
+          <div class="dialog-bubble">そう。正規部分群なら、ずらしたコピーそのものを1つの「もの」と見て、掛け算ができる。gH と kH の掛け算は gkH と決めればいい。この掛け算でできる群を、G を H で<strong>割った群</strong>（割った残り）と呼ぶ。要素の数は、ラグランジュの定理で G の要素の数÷H の要素の数だ。いまの例は2個で、＋1 と −1 の掛け算と同じ形をしている。正規部分群でないとどうなるか、H＝{e, (α β)} で、コピー H と (α γ)H＝{(α γ), (α γ β)} から1つずつ選んで続けてごらん。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -252,7 +252,7 @@
       <div class="formula-box">
         <span class="step"><strong>正規部分群</strong>：どの g についても <span class="nw">gH＝Hg</span>（左右どちらからずらしても、同じ分け方になる）部分群 H</span>
         <span class="step">言いかえると、どの g, h についても <span class="nw">ghg⁻¹</span> が H に入る</span>
-        <span class="step">正規部分群なら、コピーどうしの掛け算 <span class="nw">(gH)(kH)＝gkH</span> が決まる → <strong>G を H で割った群</strong>（個数は G の個数÷H の個数）</span>
+        <span class="step">正規部分群なら、コピーどうしの掛け算 <span class="nw">(gH)(kH)＝gkH</span> が決まる → <strong>G を H で割った群</strong>（要素の数は G の要素の数÷H の要素の数）</span>
         <span class="step">例：{e, (α β γ), (α γ β)} は正規部分群。割った群は2個で、＋1, −1 の掛け算と同じ形</span>
         <span class="step">当てはまらない例：{e, (α β)}。<span class="nw">(α γ)H＝{(α γ), (α γ β)}</span>、<span class="nw">H(α γ)＝{(α γ), (α β γ)}</span></span>
       </div>
@@ -270,15 +270,55 @@
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">u³＝a は関係式なので、g で移った先も3乗すると a になります。3乗して a になる数は u, ωu, ω²u の3つなので、そのどれかです。それに ω は体に入っているので、g は ω を動かしません。だから、g で u が ωᵏu になるとすると、ghg⁻¹ は u を ωᵏu にして、h でそのまま、g⁻¹ で ω⁻ᵏ×ωᵏu＝u にもどします。√ のときと同じで、H は正規部分群です。</div>
+          <div class="dialog-bubble">u³＝a は関係式なので、g で移った先も3乗すると a になります。3乗して a になる数は u, ωu, ω²u の3つなので、そのどれかです。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。そして、g が u を ωᵏu に移すとき、g に 1, ω, ω² のどれかを対応させる。2つの入れ替えを続けると、ω の指数が足されるね。だから割った群は、1, ω, ω² の掛け算の一部と同じ形で、<strong>巡回群</strong>になる。第1章で学んだ、1つの元をくり返し掛けると全部が出てくる群だ。√ の場合も、割った群は ＋1, −1 の掛け算の一部だから巡回群になる。もっと一般に、1 の n 乗根がある体に ⁿ√a を加えると、割った群は巡回群になる。1 の n 乗根そのものを加える段でも、割った群は巡回群（の積み重ね）にできることが分かっている。</div>
+          <div class="dialog-bubble">そう。ω は体に入っているから、g は ω を動かさない。では g で u が ωᵏu になるとして、ghg⁻¹ が u をどこへ移すか追ってごらん。</div>
         </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">g で ωᵏu、h ではそのまま、g⁻¹ で ω⁻ᵏ×ωᵏu＝u にもどります。u は動きません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">√ のときと同じだ。だから H は正規部分群になる。そして、g が u を ωᵏu に移すとき、g に 1, ω, ω² のどれかを対応させる。2つの入れ替えを続けると、ω の指数が足されるね。だから割った群は、1, ω, ω² の掛け算の一部と同じ形で、<strong>巡回群</strong>になる。第1章で学んだ、1つの元をくり返し掛けると全部が出てくる群だ。√ の場合も、割った群は ＋1, −1 の掛け算の一部だから巡回群になる。もっと一般に、1 の n 乗根がある体に ⁿ√a を加えると、割った群は巡回群になる。1 の n 乗根そのものを加える段でも、割った群は巡回群（の積み重ね）にできることが分かっている。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg id="cb-svg" viewBox="0 0 340 300" style="width:100%;max-width:520px;display:block;margin:0 auto" role="img" aria-label="複素数平面上の u, ωu, ω²u と、g, h, g⁻¹ で u が動いてもどる様子">
+          <defs>
+            <marker id="cb-ap" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#5b4a9e"/></marker>
+            <marker id="cb-ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#c8433f"/></marker>
+            <marker id="cb-ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2f9e5c"/></marker>
+          </defs>
+          <line x1="40" y1="150" x2="300" y2="150" stroke="#d8d2ea" stroke-width="1"/>
+          <line x1="170" y1="30" x2="170" y2="270" stroke="#d8d2ea" stroke-width="1"/>
+          <text x="302" y="146" font-size="11" fill="#77708c">実軸</text>
+          <text x="174" y="28" font-size="11" fill="#77708c">虚軸</text>
+          <circle cx="170" cy="150" r="90" fill="none" stroke="#cfc8e6" stroke-width="1" stroke-dasharray="4 4"/>
+          <polygon points="260,150 125,72.06 125,227.94" fill="#f2effa" stroke="#9a88d6" stroke-width="1.5"/>
+          <g id="cb-arrows"></g>
+          <g font-size="13" font-weight="900" fill="#221d33">
+            <circle cx="260" cy="150" r="5" fill="#5b4a9e"/><text x="270" y="155">u</text>
+            <circle cx="125" cy="72.06" r="5" fill="#5b4a9e"/><text x="117" y="66" text-anchor="end">ωu</text>
+            <circle cx="125" cy="227.94" r="5" fill="#5b4a9e"/><text x="117" y="244" text-anchor="end">ω²u</text>
+          </g>
+          <text id="cb-step" x="170" y="296" font-size="12" font-weight="900" fill="#44377a" text-anchor="middle"></text>
+        </svg>
+        <div class="sim-controls"><span class="grp-label">g で u が</span><button class="btn" id="cb-k1">ωu に移る</button><button class="btn" id="cb-k2">ω²u に移る</button><span class="grp-label">たどる</span><button class="btn" id="cb-next">次へ</button><button class="btn" id="cb-reset">最初から</button></div>
+        <div class="readout" id="cb-ro"></div>
+        <div class="diagram-caption"><strong>∛ の段で ghg⁻¹ が u を動かさない理由</strong>。3乗して a になる数 u, ωu, ω²u は、複素数平面で正三角形の頂点に並ぶ。g が u を ωu に移す場合と ω²u に移す場合をボタンで選び、「次へ」を押すと、① g（紫の矢印）で u が ωᵏu へ行き、② h（緑の輪）では u も ω も変えないので ωᵏu はその場にとどまり、③ g⁻¹（赤の矢印）は g の逆なので ωᵏu を u へ連れもどす。3つを続けた ghg⁻¹ は u を動かさないので、H に入る</div>
       </div>
 
       <div class="note-box"><span class="nb-title">べき根を1つ加えると</span>ガロア群 G は、正規部分群 H に縮み、G を H で割った群は巡回群になる。<br>・√ を加える：割った群は ±1 の掛け算と同じ形（2個以下）<br>・ω がある体に ∛ を加える：割った群は 1, ω, ω² の掛け算と同じ形（3個以下）<br>・1 の n 乗根がある体に ⁿ√ を加える：割った群は巡回群</div>
@@ -310,28 +350,83 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">解に 1, 2, 3, 4 と番号をつけよう。まず、偶置換全部の12個の集まりがある。第1章で、偶置換はちょうど半分だと学んだね。その中に、<strong>V＝{e, (1 2)(3 4), (1 3)(2 4), (1 4)(2 3)}</strong> という4個の部分群がある。互換を2つ同時にする入れ替えだけの集まりだ。V の入れ替え h に ghg⁻¹ をすると、h と同じ「2組の入れ替え」の形で、組の番号だけが付け替わったものになる。たとえば g＝(1 2 3)、h＝(1 2)(3 4) なら ghg⁻¹＝(1 3)(2 4) だ。この形の入れ替えは V の3つで全部だから、V は正規部分群だよ。</div>
+          <div class="dialog-bubble">解に 1, 2, 3, 4 と番号をつけよう。まず、偶置換全部の12個の集まりがある。第1章で、偶置換はちょうど半分だと学んだね。その中に、<strong>V＝{e, (1 2)(3 4), (1 3)(2 4), (1 4)(2 3)}</strong> という4個の部分群がある。互換を2つ同時にする入れ替えだけの集まりだ。V の入れ替え h に ghg⁻¹ をすると、h と同じ「2組の入れ替え」の形で、組の番号だけが付け替わったものになる。たとえば g＝(1 2 3)、h＝(1 2)(3 4) なら ghg⁻¹＝(1 3)(2 4) だ。この形の入れ替えは V の3つで全部だから、V は正規部分群だよ。残りの段も確かめよう。まず偶置換 12 個の集まりは、全体の中で正規部分群かな？ ずらしたコピーがいくつできるかを考えるといい。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">偶置換の12個の集まりは、全体のちょうど半分なので、ずらしたコピーは「偶置換」と「奇置換」の2つしかありません。左からでも右からでも同じ分け方なので、正規部分群です。V の中は、たとえば (1 2)(3 4) のあとに (1 3)(2 4) をしても、逆の順でも (1 4)(2 3) になって、順番によりません。順番によらない群なら gh＝hg なので、gH＝Hg がいつも成り立ち、{e, (1 2)(3 4)} も V の正規部分群です。</div>
+          <div class="dialog-bubble">全体のちょうど半分なので、コピーは「偶置換」と「奇置換」の2つしかありません。左からでも右からでも同じ分け方なので、正規部分群です。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 340 300" style="width:100%;max-width:520px;display:block;margin:0 auto" role="img" aria-label="4つの解の入れ替え24個を偶置換と奇置換の2つの箱に分け、左右どちらからずらしても同じ箱になる様子">
+          <text x="170" y="14" font-size="12.5" font-weight="900" fill="#44377a" text-anchor="middle">4つの解の入れ替え 24個を2つの箱に分ける</text>
+          <rect x="8" y="24" width="158" height="120" rx="8" fill="#f2effa" stroke="#5b4a9e" stroke-width="1.5"/>
+          <text x="87" y="42" font-size="12" font-weight="900" fill="#44377a" text-anchor="middle">偶置換 12個 ＝ H</text>
+          <g font-size="11" font-weight="700" fill="#221d33"><text x="18" y="58">e</text><text x="18" y="72">(1 2 3)</text><text x="18" y="86">(1 3 2)</text><text x="18" y="100">(1 2 4)</text><text x="18" y="114">(1 4 2)</text><text x="18" y="128">(1 3 4)</text><text x="90" y="58">(1 4 3)</text><text x="90" y="72">(2 3 4)</text><text x="90" y="86">(2 4 3)</text><text x="90" y="100">(1 2)(3 4)</text><text x="90" y="114">(1 3)(2 4)</text><text x="90" y="128">(1 4)(2 3)</text></g>
+          <rect x="174" y="24" width="158" height="120" rx="8" fill="#fdf3f2" stroke="#c8433f" stroke-width="1.5"/>
+          <text x="253" y="42" font-size="12" font-weight="900" fill="#c8433f" text-anchor="middle">奇置換 12個</text>
+          <g font-size="11" font-weight="700" fill="#221d33"><text x="184" y="58">(1 2)</text><text x="184" y="72">(1 3)</text><text x="184" y="86">(1 4)</text><text x="184" y="100">(2 3)</text><text x="184" y="114">(2 4)</text><text x="184" y="128">(3 4)</text><text x="256" y="58">(1 2 3 4)</text><text x="256" y="72">(1 2 4 3)</text><text x="256" y="86">(1 3 2 4)</text><text x="256" y="100">(1 3 4 2)</text><text x="256" y="114">(1 4 2 3)</text><text x="256" y="128">(1 4 3 2)</text></g>
+          <g font-size="11.5" font-weight="900" fill="#44377a" text-anchor="middle">
+            <text x="165" y="170">左からずらした gH</text><text x="280" y="170">右からずらした Hg</text>
+          </g>
+          <g font-size="12" font-weight="900" fill="#221d33">
+            <text x="8" y="202">g が偶置換</text>
+            <rect x="120" y="184" width="90" height="28" rx="7" fill="#f2effa" stroke="#5b4a9e"/><text x="165" y="202" text-anchor="middle">偶の箱</text>
+            <rect x="235" y="184" width="90" height="28" rx="7" fill="#f2effa" stroke="#5b4a9e"/><text x="280" y="202" text-anchor="middle">偶の箱</text>
+            <text x="8" y="248">g が奇置換</text>
+            <rect x="120" y="230" width="90" height="28" rx="7" fill="#fdf3f2" stroke="#c8433f"/><text x="165" y="248" text-anchor="middle" fill="#c8433f">奇の箱</text>
+            <rect x="235" y="230" width="90" height="28" rx="7" fill="#fdf3f2" stroke="#c8433f"/><text x="280" y="248" text-anchor="middle" fill="#c8433f">奇の箱</text>
+          </g>
+          <text x="170" y="286" font-size="11.5" font-weight="900" fill="#c8433f" text-anchor="middle">左右で同じ分け方 → 偶置換 12個は正規部分群</text>
+        </svg>
+        <div class="diagram-caption"><strong>偶置換 12個が正規部分群である理由</strong>。24個の入れ替えは、偶置換の箱（H）と奇置換の箱にちょうど半分ずつ分かれる。偶置換のあとに偶置換をしても偶置換、偶置換と奇置換を続けると順番によらず奇置換なので、H を g でずらしたコピーは、g が偶置換なら偶の箱そのもの、g が奇置換なら奇の箱そのものになる。左から（gH）でも右から（Hg）でも行き先の箱は同じなので、分け方がそろい、H は正規部分群</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">その通り。割った群の個数を順に計算すると、24÷12＝2、12÷4＝3、4÷2＝2、2÷1＝2 だ。これが巡回群かどうかは、どうやって確かめられるかな？</div>
+          <div class="dialog-bubble">そう。次に V の中の {e, (1 2)(3 4)} だ。V では順番を入れかえても結果が同じになる。たとえば (1 2)(3 4) のあとに (1 3)(2 4) をするのと、逆の順を比べてごらん。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">第1章のラグランジュの定理で、元の位数は群の個数を割り切ります。個数が素数 p の群なら、e 以外の元の位数は p の約数で 1 ではないので p です。その元をくり返すと p 個全部が出てくるので巡回群です。2 も 3 も素数なので、どの段も巡回群です。<strong>4つの解の入れ替え全体は可解群</strong>です。</div>
+          <div class="dialog-bubble">どちらも (1 4)(2 3) になります。順番によらない群なら gh＝hg なので、gH＝Hg がいつも成り立ちます。{e, (1 2)(3 4)} も V の正規部分群ということですか？</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 340 360" style="width:100%;max-width:520px;display:block;margin:0 auto" role="img" aria-label="(1 2)(3 4) と (1 3)(2 4) をどちらの順に続けても (1 4)(2 3) になる様子">
+          <defs><marker id="fv-m0" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#c8433f"/></marker><marker id="fv-m1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#5b4a9e"/></marker><marker id="fv-m2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2f9e5c"/></marker><marker id="fv-m3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#9a6a1c"/></marker></defs>
+          <text x="170" y="14" font-size="12.5" font-weight="900" fill="#44377a" text-anchor="middle">(1 2)(3 4) のあとに (1 3)(2 4)</text><g font-size="11.5" font-weight="800" fill="#77708c"><text x="8" y="48">はじめ</text><text x="8" y="94">(1 2)(3 4) のあと</text><text x="8" y="140">(1 3)(2 4) のあと</text></g><line x1="140" y1="56" x2="195" y2="78" stroke="#c8433f" stroke-width="2.2" marker-end="url(#fv-m0)"/><line x1="195" y1="56" x2="140" y2="78" stroke="#5b4a9e" stroke-width="2.2" marker-end="url(#fv-m1)"/><line x1="250" y1="56" x2="305" y2="78" stroke="#2f9e5c" stroke-width="2.2" marker-end="url(#fv-m2)"/><line x1="305" y1="56" x2="250" y2="78" stroke="#9a6a1c" stroke-width="2.2" marker-end="url(#fv-m3)"/><line x1="195" y1="102" x2="305" y2="124" stroke="#c8433f" stroke-width="2.2" marker-end="url(#fv-m0)"/><line x1="140" y1="102" x2="250" y2="124" stroke="#5b4a9e" stroke-width="2.2" marker-end="url(#fv-m1)"/><line x1="305" y1="102" x2="195" y2="124" stroke="#2f9e5c" stroke-width="2.2" marker-end="url(#fv-m2)"/><line x1="250" y1="102" x2="140" y2="124" stroke="#9a6a1c" stroke-width="2.2" marker-end="url(#fv-m3)"/><circle cx="140" cy="44" r="11" fill="#fff" stroke="#c8433f" stroke-width="2.2"/><text x="140" y="48.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">1</text><circle cx="195" cy="44" r="11" fill="#fff" stroke="#5b4a9e" stroke-width="2.2"/><text x="195" y="48.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">2</text><circle cx="250" cy="44" r="11" fill="#fff" stroke="#2f9e5c" stroke-width="2.2"/><text x="250" y="48.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">3</text><circle cx="305" cy="44" r="11" fill="#fff" stroke="#9a6a1c" stroke-width="2.2"/><text x="305" y="48.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">4</text><circle cx="140" cy="90" r="11" fill="#fff" stroke="#9a88d6" stroke-width="1.5"/><text x="140" y="94.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">1</text><circle cx="195" cy="90" r="11" fill="#fff" stroke="#9a88d6" stroke-width="1.5"/><text x="195" y="94.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">2</text><circle cx="250" cy="90" r="11" fill="#fff" stroke="#9a88d6" stroke-width="1.5"/><text x="250" y="94.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">3</text><circle cx="305" cy="90" r="11" fill="#fff" stroke="#9a88d6" stroke-width="1.5"/><text x="305" y="94.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">4</text><circle cx="140" cy="136" r="11" fill="#fff" stroke="#9a88d6" stroke-width="1.5"/><text x="140" y="140.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">1</text><circle cx="195" cy="136" r="11" fill="#fff" stroke="#9a88d6" stroke-width="1.5"/><text x="195" y="140.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">2</text><circle cx="250" cy="136" r="11" fill="#fff" stroke="#9a88d6" stroke-width="1.5"/><text x="250" y="140.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">3</text><circle cx="305" cy="136" r="11" fill="#fff" stroke="#9a88d6" stroke-width="1.5"/><text x="305" y="140.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">4</text><text x="170" y="166" font-size="12" font-weight="900" fill="#221d33" text-anchor="middle"><tspan fill="#c8433f">1→4</tspan>、<tspan fill="#5b4a9e">2→3</tspan>、<tspan fill="#2f9e5c">3→2</tspan>、<tspan fill="#9a6a1c">4→1</tspan> なので <tspan fill="#c8433f">(1 4)(2 3)</tspan></text>
+          <line x1="20" y1="180" x2="320" y2="180" stroke="#d8d2ea" stroke-width="1"/>
+          <text x="170" y="198" font-size="12.5" font-weight="900" fill="#44377a" text-anchor="middle">(1 3)(2 4) のあとに (1 2)(3 4)</text><g font-size="11.5" font-weight="800" fill="#77708c"><text x="8" y="232">はじめ</text><text x="8" y="278">(1 3)(2 4) のあと</text><text x="8" y="324">(1 2)(3 4) のあと</text></g><line x1="140" y1="240" x2="250" y2="262" stroke="#c8433f" stroke-width="2.2" marker-end="url(#fv-m0)"/><line x1="195" y1="240" x2="305" y2="262" stroke="#5b4a9e" stroke-width="2.2" marker-end="url(#fv-m1)"/><line x1="250" y1="240" x2="140" y2="262" stroke="#2f9e5c" stroke-width="2.2" marker-end="url(#fv-m2)"/><line x1="305" y1="240" x2="195" y2="262" stroke="#9a6a1c" stroke-width="2.2" marker-end="url(#fv-m3)"/><line x1="250" y1="286" x2="305" y2="308" stroke="#c8433f" stroke-width="2.2" marker-end="url(#fv-m0)"/><line x1="305" y1="286" x2="250" y2="308" stroke="#5b4a9e" stroke-width="2.2" marker-end="url(#fv-m1)"/><line x1="140" y1="286" x2="195" y2="308" stroke="#2f9e5c" stroke-width="2.2" marker-end="url(#fv-m2)"/><line x1="195" y1="286" x2="140" y2="308" stroke="#9a6a1c" stroke-width="2.2" marker-end="url(#fv-m3)"/><circle cx="140" cy="228" r="11" fill="#fff" stroke="#c8433f" stroke-width="2.2"/><text x="140" y="232.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">1</text><circle cx="195" cy="228" r="11" fill="#fff" stroke="#5b4a9e" stroke-width="2.2"/><text x="195" y="232.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">2</text><circle cx="250" cy="228" r="11" fill="#fff" stroke="#2f9e5c" stroke-width="2.2"/><text x="250" y="232.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">3</text><circle cx="305" cy="228" r="11" fill="#fff" stroke="#9a6a1c" stroke-width="2.2"/><text x="305" y="232.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">4</text><circle cx="140" cy="274" r="11" fill="#fff" stroke="#9a88d6" stroke-width="1.5"/><text x="140" y="278.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">1</text><circle cx="195" cy="274" r="11" fill="#fff" stroke="#9a88d6" stroke-width="1.5"/><text x="195" y="278.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">2</text><circle cx="250" cy="274" r="11" fill="#fff" stroke="#9a88d6" stroke-width="1.5"/><text x="250" y="278.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">3</text><circle cx="305" cy="274" r="11" fill="#fff" stroke="#9a88d6" stroke-width="1.5"/><text x="305" y="278.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">4</text><circle cx="140" cy="320" r="11" fill="#fff" stroke="#9a88d6" stroke-width="1.5"/><text x="140" y="324.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">1</text><circle cx="195" cy="320" r="11" fill="#fff" stroke="#9a88d6" stroke-width="1.5"/><text x="195" y="324.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">2</text><circle cx="250" cy="320" r="11" fill="#fff" stroke="#9a88d6" stroke-width="1.5"/><text x="250" y="324.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">3</text><circle cx="305" cy="320" r="11" fill="#fff" stroke="#9a88d6" stroke-width="1.5"/><text x="305" y="324.5" font-size="12.5" font-weight="900" fill="#221d33" text-anchor="middle">4</text><text x="170" y="350" font-size="12" font-weight="900" fill="#221d33" text-anchor="middle"><tspan fill="#c8433f">1→4</tspan>、<tspan fill="#5b4a9e">2→3</tspan>、<tspan fill="#2f9e5c">3→2</tspan>、<tspan fill="#9a6a1c">4→1</tspan> なので <tspan fill="#c8433f">(1 4)(2 3)</tspan></text>
+        </svg>
+        <div class="diagram-caption"><strong>V では順番によらない</strong>。上は (1 2)(3 4) のあとに (1 3)(2 4)、下は逆の順に続けたとき、1, 2, 3, 4 の番号がどこへ行くかを色つきの矢印で追ったもの（番号 1 は赤、2 は紫、3 は緑、4 は金色）。たとえば上では 1 は 2 へ行き、次に 4 へ行く。どちらの順でも最後の行き先は 1→4, 2→3, 3→2, 4→1 で、結果は同じ (1 4)(2 3)。V ではどの2つを選んでも順番によらず gh＝hg なので、V の中の部分群 {e, (1 2)(3 4)} は、左右どちらからずらしても同じコピーになり、正規部分群</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。割った群の要素の数を順に計算すると、24÷12＝2、12÷4＝3、4÷2＝2、2÷1＝2 だ。これが巡回群かどうかは、どうやって確かめられるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">第1章のラグランジュの定理で、元の位数は群の要素の数を割り切ります。要素の数が素数 p の群なら、e 以外の元の位数は p の約数で 1 ではないので p です。その元をくり返すと p 個全部が出てくるので巡回群です。2 も 3 も素数なので、どの段も巡回群です。<strong>4つの解の入れ替え全体は可解群</strong>です。</div>
         </div>
       </div>
 
@@ -359,7 +454,7 @@
             <text x="218" y="83">2個</text><text x="218" y="155">3個</text><text x="218" y="227">2個</text><text x="218" y="300">2個</text>
           </g>
         </svg>
-        <div class="diagram-caption"><strong>可解群の段々</strong>。左は3つの解、右は4つの解の入れ替え全体から {e} まで、正規部分群を1段ずつ降りる列。赤い数字は各段の割った群の個数で、どれも素数なので巡回群になる。2個の段は √、3個の段は ∛ を1つ加えることにあたる</div>
+        <div class="diagram-caption"><strong>可解群の段々</strong>。左は3つの解、右は4つの解の入れ替え全体から {e} まで、正規部分群を1段ずつ降りる列。赤い数字は各段の割った群の要素の数で、どれも素数なので巡回群になる。2個の段は √、3個の段は ∛ を1つ加えることにあたる</div>
       </div>
 
       <div class="dialogue-scene">
@@ -390,10 +485,10 @@
         <span class="step">【このステージの成果】</span>
         <span class="step">√ を加えると、Δ のような数を変えない入れ替え H が残る。g, h に対して ghg⁻¹ もまた H に入る</span>
         <span class="step">正規部分群：どの g でも <span class="nw">gH＝Hg</span>（左右どちらからずらしても同じ分け方）。{e, (α β γ), (α γ β)} は正規、{e, (α β)} は正規でない</span>
-        <span class="step">正規部分群なら <span class="nw">(gH)(kH)＝gkH</span> と掛け算でき、G を H で割った群ができる。個数は G の個数÷H の個数</span>
+        <span class="step">正規部分群なら <span class="nw">(gH)(kH)＝gkH</span> と掛け算でき、G を H で割った群ができる。要素の数は G の要素の数÷H の要素の数</span>
         <span class="step">べき根を1つ加えると、ガロア群は正規部分群に縮み、割った群は巡回群（√ なら ±1、ω があるときの ∛ なら 1, ω, ω² の形）</span>
         <span class="step">可解群：割った群が巡回群になる正規部分群の列で {e} まで降りられる群。べき根で解ける ⇔ ガロア群が可解群（ガロア）</span>
-        <span class="step">3つの解：6→3→1。4つの解：24→12→4→2→1（V＝{e, (1 2)(3 4), (1 3)(2 4), (1 4)(2 3)}）。個数が素数の群は巡回群なので、どちらも可解群</span>
+        <span class="step">3つの解：6→3→1。4つの解：24→12→4→2→1（V＝{e, (1 2)(3 4), (1 3)(2 4), (1 4)(2 3)}）。要素の数が素数の群は巡回群なので、どちらも可解群</span>
       </div>
 
       <h2 class="quiz-head">確認クイズ</h2>
@@ -401,7 +496,7 @@
         <p class="quiz-q">Q1. H＝{e, (α β)} が、3つの解の入れ替え全体の正規部分群でない理由は？</p>
         <div class="choice-list">
           <button class="choice-btn">(α γ)H＝{(α γ), (α γ β)} と H(α γ)＝{(α γ), (α β γ)} が一致しないから</button>
-          <button class="choice-btn">H の個数 2 が 6 を割り切らないから</button>
+          <button class="choice-btn">H の要素の数 2 が 6 を割り切らないから</button>
           <button class="choice-btn">H が e を含まないから</button>
         </div>
         <div class="quiz-explain" hidden>正解！ 正規部分群は、どの g でも gH＝Hg となる部分群。g＝(α γ) で左右のずらしたコピーがずれるので、{e, (α β)} は正規でない。</div>
@@ -419,10 +514,10 @@
         <p class="quiz-q">Q3. 4つの解の入れ替え全体（24個）が可解群である理由は？</p>
         <div class="choice-list">
           <button class="choice-btn">24 が 5 で割り切れないから</button>
-          <button class="choice-btn">24→12→4→2→1 と正規部分群を降りられ、割った群の個数 2, 3, 2, 2 がどれも素数で巡回群だから</button>
+          <button class="choice-btn">24→12→4→2→1 と正規部分群を降りられ、割った群の要素の数 2, 3, 2, 2 がどれも素数で巡回群だから</button>
           <button class="choice-btn">4つの解の入れ替えはどれも偶置換だから</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ 偶置換 12 個、V＝{e, (1 2)(3 4), (1 3)(2 4), (1 4)(2 3)}、{e, (1 2)(3 4)}、{e} と降りる。個数が素数の群は、e 以外の元をくり返すと全部が出てくる巡回群。</div>
+        <div class="quiz-explain" hidden>正解！ 偶置換 12 個、V＝{e, (1 2)(3 4), (1 3)(2 4), (1 4)(2 3)}、{e, (1 2)(3 4)}、{e} と降りる。要素の数が素数の群は、e 以外の元をくり返すと全部が出てくる巡回群。</div>
       </div>
 
       <div class="stage-nav">
@@ -480,6 +575,47 @@
     ro.innerHTML='<span>H＝<b>'+SUB[cur].h.map(name).join(', ')+'</b>（'+H.length+'個）</span><span>コピーの数 '+nc+'</span><span class="'+(normal?'ok':'ng')+'">'+(normal?'左右の分け方が同じ → 正規部分群':'左右の分け方がちがう → 正規部分群でない')+'</span>';
     box.querySelectorAll('.btn').forEach(function(x,j){x.setAttribute('aria-pressed',j===cur?'true':'false');});
   }
+  draw();
+})();
+
+/* ∛ の段：ghg⁻¹ が u をもどす様子 */
+(function(){
+  var ar=document.getElementById('cb-arrows'), ro=document.getElementById('cb-ro'), st=document.getElementById('cb-step');
+  if(!ar)return;
+  var CX=170, CY=150, R=90, k=1, step=0;
+  function pt(deg,r){var a=deg*Math.PI/180;return [CX+r*Math.cos(a), CY-r*Math.sin(a)];}
+  function f(v){return v.toFixed(1);}
+  function el(tag,attrs,txt){var e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(var a in attrs)e.setAttribute(a,attrs[a]);if(txt)e.textContent=txt;return e;}
+  function draw(){
+    while(ar.firstChild)ar.removeChild(ar.firstChild);
+    var ak=k===1?120:-120, sweep=k===1?0:1, am=ak/2;
+    if(step>=1){
+      var a1=pt(k===1?9:-9,R+8), a2=pt(k===1?ak-9:ak+9,R+8);
+      ar.appendChild(el('path',{d:'M'+f(a1[0])+' '+f(a1[1])+' A'+(R+8)+' '+(R+8)+' 0 0 '+sweep+' '+f(a2[0])+' '+f(a2[1]),fill:'none',stroke:'#5b4a9e','stroke-width':'2.5','marker-end':'url(#cb-ap)'}));
+      var lg=pt(am,R+26);ar.appendChild(el('text',{x:f(lg[0]),y:f(lg[1]+4),'font-size':'12','font-weight':'900',fill:'#5b4a9e','text-anchor':'middle'},'① g'));
+    }
+    if(step>=2){
+      var c=pt(ak,R+22), r=9;
+      ar.appendChild(el('path',{d:'M'+f(c[0]+r)+' '+f(c[1]+3)+' A'+r+' '+r+' 0 1 0 '+f(c[0]+r)+' '+f(c[1]-3),fill:'none',stroke:'#2f9e5c','stroke-width':'2.2','marker-end':'url(#cb-ag)'}));
+      ar.appendChild(el('text',{x:f(c[0]-22),y:f(c[1]+(k===1?-16:22)),'font-size':'12','font-weight':'900',fill:'#2f9e5c','text-anchor':'middle'},'② h'));
+    }
+    if(step>=3){
+      var b1=pt(k===1?ak-7:ak+7,R-8), b2=pt(k===1?7:-7,R-8), cm=pt(am,22);
+      ar.appendChild(el('path',{d:'M'+f(b1[0])+' '+f(b1[1])+' Q'+f(cm[0])+' '+f(cm[1])+' '+f(b2[0])+' '+f(b2[1]),fill:'none',stroke:'#c8433f','stroke-width':'2.5','marker-end':'url(#cb-ar)'}));
+      var lr=pt(am,R-30);ar.appendChild(el('text',{x:f(lr[0]),y:f(lr[1]+4),'font-size':'12','font-weight':'900',fill:'#c8433f','text-anchor':'middle'},'③ g⁻¹'));
+    }
+    var W=k===1?'ωu':'ω²u';
+    var msg=['g は u を '+W+' に移すとする','① g：u → '+W,'② h：u を変えないので '+W+' もそのまま','③ g⁻¹：'+W+' → u にもどる'][step];
+    st.textContent=msg;
+    ro.innerHTML='<span>'+(step<3?'「次へ」で g, h, g⁻¹ の順にたどる':'ghg⁻¹ は <b>u を動かさない</b> → H に入る')+'</span>';
+    document.getElementById('cb-k1').setAttribute('aria-pressed',k===1?'true':'false');
+    document.getElementById('cb-k2').setAttribute('aria-pressed',k===2?'true':'false');
+    document.getElementById('cb-next').disabled=step>=3;
+  }
+  document.getElementById('cb-k1').addEventListener('click',function(){k=1;draw();});
+  document.getElementById('cb-k2').addEventListener('click',function(){k=2;draw();});
+  document.getElementById('cb-next').addEventListener('click',function(){if(step<3)step++;draw();});
+  document.getElementById('cb-reset').addEventListener('click',function(){step=0;draw();});
   draw();
 })();
 </script>

@@ -332,7 +332,7 @@
             <div class="dialog-avatar student"><img src="../images/rabbitThink.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">xy＝(ac−5bd)＋(ad＋bc)√−5 なので、a＋b にあたる数は ac−5bd＋ad＋bc です。(a＋b)(c＋d)＝ac＋ad＋bc＋bd なので、ac−5bd＋ad＋bc＝(a＋b)(c＋d)−6bd。6bd は偶数なので、xy が A に入る（これが偶数）のは、(a＋b)(c＋d) が偶数のときです。整数の 2 は素元なので、a＋b か c＋d が偶数、つまり x か y が A に入ります。−6bd は 3 の倍数でもあるので、C でも同じことが言えます。B なら a−b にあたる数が (a−b)(c−d)−6bd になります。</div>
+          <div class="dialog-bubble">xy＝(ac−5bd)＋(ad＋bc)√−5 なので、a＋b にあたる数は ac−5bd＋ad＋bc です。(a＋b)(c＋d)＝ac＋ad＋bc＋bd なので、ac−5bd＋ad＋bc＝(a＋b)(c＋d)−6bd。6bd は偶数なので、xy が A に入る（これが偶数）のは、(a＋b)(c＋d) が偶数のときです。整数の 2 は素元なので、a＋b か c＋d が偶数、つまり x か y が A に入ります。</div>
         </div>
       </div>
 
@@ -344,13 +344,33 @@
         <span class="step">→ A, B, C は「素元の性質」をもつ部品（<strong>素イデアル</strong>）</span>
       </div>
 
+      <div class="diagram-box">
+<svg viewBox="0 0 440 290" style="width:100%;max-width:520px;display:block;margin:0 auto" role="img" aria-label="xy の a＋b にあたる数は (a＋b)(c＋d)−6bd で、6bd は偶数。a＋b と c＋d の偶奇の2×2の表：偶×偶、偶×奇、奇×偶は偶数で xy は A に入り、奇×奇だけ奇数で入らない。xy が A に入る3マスでは、どれも a＋b か c＋d が偶数">
+          <text x="220" y="24" text-anchor="middle" font-size="13" font-weight="900" fill="#221d33">xy の「a＋b」＝(a＋b)(c＋d)−6bd</text>
+          <text x="220" y="44" text-anchor="middle" font-size="11.5" font-weight="800" fill="#77708c">6bd は偶数なので、偶奇は (a＋b)(c＋d) だけで決まる</text>
+          <text x="258" y="74" text-anchor="middle" font-size="12" font-weight="900" fill="#3f6fb5">y の c＋d</text>
+          <text x="48" y="166" text-anchor="middle" font-size="12" font-weight="900" fill="#5b4a9e" transform="rotate(-90 48 166)">x の a＋b</text>
+          <rect x="146" y="82" width="110" height="30" rx="6" fill="#dfe8f6"/><text x="201" y="102" text-anchor="middle" font-size="12.5" font-weight="900" fill="#3f6fb5">偶数</text>
+          <rect x="260" y="82" width="110" height="30" rx="6" fill="#dfe8f6"/><text x="315" y="102" text-anchor="middle" font-size="12.5" font-weight="900" fill="#3f6fb5">奇数</text>
+          <rect x="72" y="116" width="70" height="48" rx="6" fill="#e6e0f2"/><text x="107" y="145" text-anchor="middle" font-size="12.5" font-weight="900" fill="#5b4a9e">偶数</text>
+          <rect x="72" y="168" width="70" height="48" rx="6" fill="#e6e0f2"/><text x="107" y="197" text-anchor="middle" font-size="12.5" font-weight="900" fill="#5b4a9e">奇数</text>
+          <rect x="146" y="116" width="110" height="48" rx="6" fill="#dff3e6"/><text x="201" y="137" text-anchor="middle" font-size="12" font-weight="900" fill="#2f9e5c">偶×偶＝偶</text><text x="201" y="155" text-anchor="middle" font-size="11" font-weight="800" fill="#2f9e5c">xy は A の数</text>
+          <rect x="260" y="116" width="110" height="48" rx="6" fill="#dff3e6"/><text x="315" y="137" text-anchor="middle" font-size="12" font-weight="900" fill="#2f9e5c">偶×奇＝偶</text><text x="315" y="155" text-anchor="middle" font-size="11" font-weight="800" fill="#2f9e5c">xy は A の数</text>
+          <rect x="146" y="168" width="110" height="48" rx="6" fill="#dff3e6"/><text x="201" y="189" text-anchor="middle" font-size="12" font-weight="900" fill="#2f9e5c">奇×偶＝偶</text><text x="201" y="207" text-anchor="middle" font-size="11" font-weight="800" fill="#2f9e5c">xy は A の数</text>
+          <rect x="260" y="168" width="110" height="48" rx="6" fill="#fdf1f0"/><text x="315" y="189" text-anchor="middle" font-size="12" font-weight="900" fill="#c8433f">奇×奇＝奇</text><text x="315" y="207" text-anchor="middle" font-size="11" font-weight="800" fill="#c8433f">xy は A に入らない</text>
+          <text x="220" y="246" text-anchor="middle" font-size="12.5" font-weight="900" fill="#221d33">xy が A に入る（緑）のは、a＋b か c＋d が偶数のときだけ</text>
+          <text x="220" y="270" text-anchor="middle" font-size="12.5" font-weight="900" fill="#5b4a9e">→ xy∈A なら x∈A か y∈A：A は素イデアル</text>
+        </svg>
+        <div class="diagram-caption"><strong>A が素イデアルである理由を偶奇の表で見る</strong>。x＝a＋b√−5 が A に入るかどうかは a＋b の偶奇で決まり、積 xy の「a＋b」は (a＋b)(c＋d)−6bd。6bd は偶数なので、xy が A に入るかどうかは (a＋b)(c＋d) の偶奇だけで決まる。表の緑のマス（xy が A の数）は3つあるが、どれも行か列が「偶数」、つまり x か y が A に入っている。奇×奇のときだけ xy は A の外。例：x＝1, y＝√−5 はどちらも A の外で、積 √−5 も外（a＋b＝1）</div>
+      </div>
+
       <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">その通り。こういうイデアルを<strong>素イデアル</strong>という。数の世界では 2 は素元の性質をもたなかったけれど、部品 A は素元の性質をもっている。そして、デデキントは1870年代に次のことを証明した。a＋b√−5 やガウス整数、ラメが使った 1 の p 乗根の世界のような「整数を広げた世界」では、<strong>0 でないどのイデアルも、素イデアルの積に、順番を除いてただ1通りに分けられる</strong>。これをデデキントの定理という。証明はこの章の道具だけでは長くなるので省くけれど、6 の例で見たとおり、数ではこわれた素因数分解が、部品のレベルでは元どおり1通りになるんだ。</div>
+          <div class="dialog-bubble">その通り。−6bd は 3 の倍数でもあるので、C でも同じことが言える。B なら a−b にあたる数が (a−b)(c−d)−6bd になって、やはり同じだ。こういうイデアルを<strong>素イデアル</strong>という。数の世界では 2 は素元の性質をもたなかったけれど、部品 A は素元の性質をもっている。そして、デデキントは1870年代に次のことを証明した。a＋b√−5 やガウス整数、ラメが使った 1 の p 乗根の世界のような「整数を広げた世界」では、<strong>0 でないどのイデアルも、素イデアルの積に、順番を除いてただ1通りに分けられる</strong>。これをデデキントの定理という。証明はこの章の道具だけでは長くなるので省くけれど、6 の例で見たとおり、数ではこわれた素因数分解が、部品のレベルでは元どおり1通りになるんだ。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">

@@ -258,14 +258,14 @@
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">L の ℚ の上の次数は、(L の ℚ(α) の上の次数)×5 です。ガロア群の個数は L の次数と等しいので、<strong>ガロア群の個数は 5 で割り切れます</strong>。</div>
+          <div class="dialog-bubble">L の ℚ の上の次数は、(L の ℚ(α) の上の次数)×5 です。ガロア群の要素の数は L の次数と等しいので、<strong>ガロア群の要素の数は 5 で割り切れます</strong>。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">ここで、もう1つ事実を使う。群の個数が素数 p で割り切れるなら、その群には位数がちょうど p の元がある。1845年ごろにコーシーが示したので、<strong>コーシーの定理</strong>と呼ばれる。ラグランジュの定理の逆向きの一部にあたるものだ。だから G には位数 5 の入れ替え σ がある。5つの番号の入れ替えで位数が 5 になるのは、どんな形かな？</div>
+          <div class="dialog-bubble">ここで、もう1つ事実を使う。群の要素の数が素数 p で割り切れるなら、その群には位数がちょうど p の元がある。1845年ごろにコーシーが示したので、<strong>コーシーの定理</strong>と呼ばれる。ラグランジュの定理の逆向きの一部にあたるものだ。だから G には位数 5 の入れ替え σ がある。5つの番号の入れ替えで位数が 5 になるのは、どんな形かな？</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -322,7 +322,7 @@
         <span class="step">① アイゼンシュタインの判定法（p＝3）で <strong>x⁵−6x＋3 は既約</strong> → ℚ(α) の次数は 5</span>
         <span class="step">② 符号の変化で実数解は 3 つ以上。解の2乗の和＝0 なので 5 つ全部は実数でない。共役の組で → <strong>実数解 3 つ、実数でない解 2 つ</strong></span>
         <span class="step">③-1 複素共役は実数でない2つの解を入れ替え、ほかを動かさない → G は<strong>互換</strong>を含む</span>
-        <span class="step">③-2 G の個数＝L の次数は 5 で割り切れる → コーシーの定理で位数 5 の元 → G は<strong>5つ組の巡回</strong>を含む</span>
+        <span class="step">③-2 G の要素の数＝L の次数は 5 で割り切れる → コーシーの定理で位数 5 の元 → G は<strong>5つ組の巡回</strong>を含む</span>
         <span class="step">③-3 <span class="nw">σ⁻¹τσ＝(2 3)</span> などでとなりどうしの入れ替えがそろう → <strong>G は5つの入れ替え全体</strong></span>
         <span class="step">5つの入れ替え全体は可解群でない → <strong>x⁵−6x＋3＝0 はべき根で解けない</strong> → 5次方程式に解の公式はない</span>
       </div>
@@ -408,7 +408,7 @@
         <span class="step">【このステージの成果】</span>
         <span class="step">既約性：有理数の解 ±1, ±3 はない。ガウスの補題とアイゼンシュタインの判定法（p＝3）で、2次と3次の積にも分かれない</span>
         <span class="step">実数解の個数：<span class="nw">f(−2)＜0, f(−1)＞0, f(1)＜0, f(2)＞0</span> で3つ以上。解の2乗の和が 0 なので5つ全部は実数でない。共役の組で、ちょうど3つ</span>
-        <span class="step">ガロア群は、複素共役から互換を、5 で割り切れる個数とコーシーの定理から5つ組の巡回を含む</span>
+        <span class="step">ガロア群は、複素共役から互換を、5 で割り切れる要素の数とコーシーの定理から5つ組の巡回を含む</span>
         <span class="step"><span class="nw">σ＝(1 2 3 4 5)</span>、<span class="nw">τ＝(1 2)</span> から <span class="nw">σ⁻¹τσ＝(2 3)</span>…となりどうしの入れ替えがそろい、5つの入れ替え全体（120個）になる</span>
         <span class="step">5つの入れ替え全体は可解群でない → x⁵−6x＋3＝0 はべき根で解けない → 5次方程式に解の公式はない</span>
         <span class="step">ガロアの考えは、有限の体（ガロア体）やフェルマーの最終定理の証明（ガロア表現）にもつながっている</span>
@@ -428,7 +428,7 @@
         <p class="quiz-q">Q2. x⁵−6x＋3 のガロア群が互換を含む理由は？</p>
         <div class="choice-list">
           <button class="choice-btn">複素共役をとる操作が、実数でない2つの解だけを入れ替え、解の間の関係式を保つから</button>
-          <button class="choice-btn">ガロア群の個数が 5 で割り切れるから</button>
+          <button class="choice-btn">ガロア群の要素の数が 5 で割り切れるから</button>
           <button class="choice-btn">x⁵−6x＋3 が既約だから</button>
         </div>
         <div class="quiz-explain" hidden>正解！ i を −i にかえても足し算・掛け算の結果は共役になるだけなので、関係式 0 は 0 のまま。実数解は動かず、実数でない2つの解が入れ替わる。5 で割り切れることから出てくるのは5つ組の巡回。</div>
