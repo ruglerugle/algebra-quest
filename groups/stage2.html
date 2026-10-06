@@ -227,6 +227,65 @@
 
       <div class="note-box"><span class="nb-title">群の定義</span>ものの集まり G と、G の2つのもの a, b から G のもの ab を作る計算（積）があり、次の4つが成り立つとき、G を<strong>群</strong>という。<br>① <strong>閉じている</strong>：G のどの a, b についても、ab も G に入っている<br>② <strong>結合法則</strong>：どの a, b, c についても (ab)c＝a(bc)<br>③ <strong>単位元</strong>がある：どの a についても ae＝ea＝a となる e が G にある<br>④ <strong>逆元</strong>がある：どの a にも、aa⁻¹＝a⁻¹a＝e となる a⁻¹ が G にある</div>
 
+      <div class="diagram-box">
+<svg viewBox="0 0 520 330" style="width:100%;max-width:520px;display:block;margin:0 auto" aria-label="群の4つの条件を正三角形の6つの操作で見た図">
+          <defs><marker id="gd-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b4a9e"/></marker></defs>
+          <!-- ① 閉じている -->
+          <text x="10" y="18" font-size="13" font-weight="800" fill="#221d33">① 閉じている</text>
+          <rect x="10" y="26" width="240" height="118" rx="12" fill="#f2effa" stroke="#9a88d6" stroke-width="1.5"/>
+          <text x="22" y="44" font-size="11" fill="#77708c">G＝正三角形の6つの操作</text>
+          <g font-size="12" font-weight="800" text-anchor="middle" fill="#221d33">
+            <circle cx="50" cy="80" r="14" fill="#fdfbf6" stroke="#9a88d6"/><text x="50" y="84">e</text>
+            <circle cx="95" cy="80" r="14" fill="#9a88d6" stroke="#5b4a9e"/><text x="95" y="84" fill="#fff">r</text>
+            <circle cx="140" cy="80" r="14" fill="#fdfbf6" stroke="#9a88d6"/><text x="140" y="84">r²</text>
+            <circle cx="50" cy="120" r="14" fill="#9a88d6" stroke="#5b4a9e"/><text x="50" y="124" fill="#fff">s₁</text>
+            <circle cx="95" cy="120" r="14" fill="#fdfbf6" stroke="#c8433f" stroke-width="2.5"/><text x="95" y="124" fill="#c8433f">s₂</text>
+            <circle cx="140" cy="120" r="14" fill="#fdfbf6" stroke="#9a88d6"/><text x="140" y="124">s₃</text>
+          </g>
+          <path d="M109,84 Q 170,100 109,116" fill="none" stroke="#c8433f" stroke-width="1.5" marker-end="url(#gd-ar)"/>
+          <text x="165" y="70" font-size="11" fill="#221d33" font-weight="800">r のあと s₁</text>
+          <text x="165" y="86" font-size="11" fill="#221d33">＝ s₂</text>
+          <text x="165" y="110" font-size="10.5" fill="#77708c">積はいつも</text>
+          <text x="165" y="124" font-size="10.5" fill="#77708c">6つの中にある</text>
+          <!-- ② 結合法則 -->
+          <text x="270" y="18" font-size="13" font-weight="800" fill="#221d33">② 結合法則</text>
+          <rect x="270" y="26" width="240" height="118" rx="12" fill="#f2effa" stroke="#9a88d6" stroke-width="1.5"/>
+          <g font-size="11.5" font-weight="800" fill="#221d33" text-anchor="middle">
+            <rect x="282" y="50" width="52" height="22" rx="6" fill="#fdfbf6" stroke="#9a88d6"/><text x="308" y="65">(ab) c</text>
+            <rect x="282" y="100" width="52" height="22" rx="6" fill="#fdfbf6" stroke="#9a88d6"/><text x="308" y="115">a (bc)</text>
+            <rect x="420" y="75" width="80" height="22" rx="6" fill="#fdfbf6" stroke="#2f9e5c" stroke-width="2"/><text x="460" y="90" fill="#2f9e5c">同じ操作</text>
+          </g>
+          <path d="M336,61 Q 380,61 418,82" fill="none" stroke="#5b4a9e" stroke-width="1.5" marker-end="url(#gd-ar)"/>
+          <path d="M336,111 Q 380,111 418,90" fill="none" stroke="#5b4a9e" stroke-width="1.5" marker-end="url(#gd-ar)"/>
+          <text x="350" y="46" font-size="10.5" fill="#77708c">先に ab を1つにまとめる</text>
+          <text x="350" y="136" font-size="10.5" fill="#77708c">先に bc を1つにまとめる</text>
+          <!-- ③ 単位元 -->
+          <text x="10" y="184" font-size="13" font-weight="800" fill="#221d33">③ 単位元 e がある</text>
+          <rect x="10" y="192" width="240" height="118" rx="12" fill="#f2effa" stroke="#9a88d6" stroke-width="1.5"/>
+          <g font-size="12" font-weight="800" text-anchor="middle" fill="#221d33">
+            <circle cx="60" cy="252" r="16" fill="#9a88d6" stroke="#5b4a9e"/><text x="60" y="256" fill="#fff">a</text>
+            <circle cx="190" cy="252" r="16" fill="#9a88d6" stroke="#5b4a9e"/><text x="190" y="256" fill="#fff">a</text>
+          </g>
+          <path d="M78,252 L172,252" fill="none" stroke="#5b4a9e" stroke-width="1.5" marker-end="url(#gd-ar)"/>
+          <text x="125" y="244" font-size="11" font-weight="800" fill="#221d33" text-anchor="middle">e をする</text>
+          <text x="125" y="282" font-size="11" fill="#221d33" text-anchor="middle">ae＝a、ea＝a</text>
+          <text x="125" y="298" font-size="10.5" fill="#77708c" text-anchor="middle">何もしない操作 e は、どの a も変えない</text>
+          <!-- ④ 逆元 -->
+          <text x="270" y="184" font-size="13" font-weight="800" fill="#221d33">④ 逆元がある</text>
+          <rect x="270" y="192" width="240" height="118" rx="12" fill="#f2effa" stroke="#9a88d6" stroke-width="1.5"/>
+          <g font-size="12" font-weight="800" text-anchor="middle" fill="#221d33">
+            <circle cx="310" cy="252" r="16" fill="#fdfbf6" stroke="#9a88d6"/><text x="310" y="256">e</text>
+            <circle cx="470" cy="252" r="16" fill="#9a88d6" stroke="#5b4a9e"/><text x="470" y="256" fill="#fff">r</text>
+          </g>
+          <path d="M326,244 Q 390,215 454,244" fill="none" stroke="#5b4a9e" stroke-width="1.5" marker-end="url(#gd-ar)"/>
+          <path d="M454,260 Q 390,289 326,260" fill="none" stroke="#c8433f" stroke-width="1.5" marker-end="url(#gd-ar)"/>
+          <text x="390" y="222" font-size="11" font-weight="800" fill="#221d33" text-anchor="middle">r（120° 回す）</text>
+          <text x="390" y="294" font-size="11" font-weight="800" fill="#c8433f" text-anchor="middle">r⁻¹＝r²（さらに 240° 回す）</text>
+          <text x="390" y="258" font-size="10.5" fill="#77708c" text-anchor="middle">a のあと a⁻¹ で e に戻る</text>
+        </svg>
+        <div class="diagram-caption"><strong>群の4つの条件</strong>を、正三角形の6つの操作で見る。① 2つの操作の積は、いつも6つの中のどれかになる（r のあと s₁ は s₂）。② 3つ続けるとき、先に前の2つをまとめても、後ろの2つをまとめても同じ操作になる。③ 何もしない操作 e は、どの操作と組んでも相手を変えない。④ どの操作にも、それを打ち消して e に戻す逆元がある（r の逆元は r²）</div>
+      </div>
+
       <div class="formula-box">
         <span class="step"><strong>なぜこの4つか</strong>：G の中で ax＝b を x について解く</span>
         <span class="step">両辺の前に a⁻¹ をする：<span class="nw">a⁻¹(ax)＝a⁻¹b</span>（④ で a⁻¹ があり、① で結果も G に入る）</span>
