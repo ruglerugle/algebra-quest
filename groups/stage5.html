@@ -440,21 +440,35 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。だから実際には、300 桁ほどの素数を2つ掛けた、600 桁を超える n を使う。2つの素数を掛けるのはコンピュータなら一瞬だけれど、600 桁の数を素因数分解する速い方法は見つかっていない。2020年に 250 桁の数が素因数分解されたときは、たくさんのコンピュータを使って、計算時間を合計すると、計算する部品（コア）1つで約 2700 年分にもなったんだ。</div>
+          <div class="dialog-bubble">そう。だから実際には、300 桁ほどの素数を2つ掛けた、600 桁を超える n を使う。2つの素数を掛けるのはコンピュータなら一瞬だけれど、600 桁の数を素因数分解する速い方法は見つかっていない。2020年に 250 桁の数が素因数分解されたときは、たくさんのコンピュータを使って、計算時間を合計すると、計算する部品（コア）1つで約 2700 年分にもなったんだ。では逆に、盗み見る人が φ(n) のほうを先に知ってしまったら、どうなるかな。φ(n)＝(p−1)(q−1) を展開してごらん。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">逆に、φ(n) が分かってしまったら、n の素因数分解も分かってしまいます。(p−1)(q−1)＝pq−(p＋q)＋1 なので、p＋q＝n−φ(n)＋1 です。和と積が分かれば、p と q は2次方程式 x²−(p＋q)x＋pq＝0 の2つの解です。33 なら p＋q＝33−20＋1＝14 で、x²−14x＋33＝(x−3)(x−11)＝0 から 3 と 11 です。</div>
+          <div class="dialog-bubble">(p−1)(q−1)＝pq−p−q＋1＝n−(p＋q)＋1 です。移項すると p＋q＝n−φ(n)＋1 なので、n と φ(n) から、p と q の和が分かります。積は n そのものです。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。φ(n) を知ることは、n を素因数分解することと同じくらい難しい。群の要素の数 φ(n) を知っている人だけが、累乗をもとに戻せる。秘密鍵を守っているのは、素因数分解の難しさなんだ。次のステージでは、15パズルに戻るために、入れ替えそのものがつくる群を調べよう。</div>
+          <div class="dialog-bubble">そう。和と積が分かっている2つの数は、2次方程式 x²−(和)x＋(積)＝0 の2つの解だ。中学で習った解と係数の関係だね。n＝33、φ(n)＝20 でやってごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">p＋q＝33−20＋1＝14 なので、x²−14x＋33＝0。因数分解すると (x−3)(x−11)＝0 で、3 と 11 です。φ(n) が分かると、n の素因数分解も分かってしまう、ということですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。だから φ(n) を知ることは、n を素因数分解することと同じくらい難しい。群の要素の数 φ(n) を知っている人だけが、累乗をもとに戻せる。秘密鍵を守っているのは、素因数分解の難しさなんだ。次のステージでは、15パズルに戻るために、入れ替えそのものがつくる群を調べよう。</div>
         </div>
       </div>
 
