@@ -257,6 +257,21 @@
           </div>
           <div class="dialog-bubble">p＝5 なら 2²＝4≡−1 なので x＝2。p＝13 なら、1, 4, 9, 16≡3, 25≡12 で、5²≡12≡−1 なので x＝5。p＝17 なら 4²＝16≡−1 で x＝4。比べるために p＝7 で試すと、1², 2², …, 6² の余りは 1, 4, 2, 2, 4, 1 で、−1 にあたる 6 は出てきません。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<table class="num-table">
+          <tr><th>x</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+          <tr><th>x² を 13 で割った余り</th><td class="">1</td><td class="">4</td><td class="">9</td><td class="">3</td><td class="hit">12<br>＝−1</td><td class="">10</td></tr>
+        </table>
+        <table class="num-table" style="margin-top:12px">
+          <tr><th>x</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+          <tr><th>x² を 7 で割った余り</th><td class="miss">1</td><td class="miss">4</td><td class="miss">2</td><td class="miss">2</td><td class="miss">4</td><td class="miss">1</td></tr>
+        </table>
+        <div class="diagram-caption"><strong>x² を p で割った余り</strong>。上：p＝13 では x＝5 のとき余りが 12、つまり −1 になる（緑）。下：p＝7 では余りは 1, 4, 2 しか現れず、−1 にあたる 6 は出ない。x が 7 以上のときは (13−x)²＝13²−26x＋x² が x² と同じ余りになるので、1 から 6 だけ調べれば十分</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
@@ -335,6 +350,25 @@
           </div>
           <div class="dialog-bubble">7＝13−6、8＝13−5、…、12＝13−1 です。mod 13 では 13 は 0 と同じなので、7≡−6、8≡−5、9≡−4、10≡−3、11≡−2、12≡−1。後半は (−6)(−5)(−4)(−3)(−2)(−1)＝(−1)⁶×6!＝6! です。だから 12!≡6!×6!＝(6!)²。ウィルソンの定理で 12!≡−1 なので、<strong>(6!)²≡−1 (mod 13)</strong>。6!＝720＝13×55＋5 なので x＝5 で、さっき見つけた 5²≡−1 と一致します！</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 206" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="1 から 12 を並べ、後半の 7 から 12 の下に −6 から −1 を対応させた図。7＝13−6 なので mod 13 では 7 と −6 は同じ。後半の積は (−1)⁶×6! で、6 が偶数なので 6! に等しく、12!≡(6!)²">
+          <defs><marker id="ar-g5h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9a88d6"/></marker></defs>
+          <text x="16" y="22" font-size="12.5" font-weight="900" fill="#221d33">12!＝1×2×…×12 を前半と後半に分ける（mod 13）</text>
+          <rect x="16" y="40" width="28" height="28" rx="7" fill="#5b4a9e"/><text x="30" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">1</text><rect x="50" y="40" width="28" height="28" rx="7" fill="#5b4a9e"/><text x="64" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">2</text><rect x="84" y="40" width="28" height="28" rx="7" fill="#5b4a9e"/><text x="98" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">3</text><rect x="118" y="40" width="28" height="28" rx="7" fill="#5b4a9e"/><text x="132" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">4</text><rect x="152" y="40" width="28" height="28" rx="7" fill="#5b4a9e"/><text x="166" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">5</text><rect x="186" y="40" width="28" height="28" rx="7" fill="#5b4a9e"/><text x="200" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">6</text><rect x="220" y="40" width="28" height="28" rx="7" fill="#3f6fb5"/><text x="234" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">7</text><rect x="254" y="40" width="28" height="28" rx="7" fill="#3f6fb5"/><text x="268" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">8</text><rect x="288" y="40" width="28" height="28" rx="7" fill="#3f6fb5"/><text x="302" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">9</text><rect x="322" y="40" width="28" height="28" rx="7" fill="#3f6fb5"/><text x="336" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">10</text><rect x="356" y="40" width="28" height="28" rx="7" fill="#3f6fb5"/><text x="370" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">11</text><rect x="390" y="40" width="28" height="28" rx="7" fill="#3f6fb5"/><text x="404" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">12</text>
+          <line x1="217" y1="34" x2="217" y2="130" stroke="#c9c2b4" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <line x1="234" y1="70" x2="234" y2="92" stroke="#9a88d6" stroke-width="1.6" marker-end="url(#ar-g5h)"/><rect x="219" y="96" width="30" height="28" rx="7" fill="#c8433f"/><text x="234" y="115" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">−6</text><line x1="268" y1="70" x2="268" y2="92" stroke="#9a88d6" stroke-width="1.6" marker-end="url(#ar-g5h)"/><rect x="253" y="96" width="30" height="28" rx="7" fill="#c8433f"/><text x="268" y="115" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">−5</text><line x1="302" y1="70" x2="302" y2="92" stroke="#9a88d6" stroke-width="1.6" marker-end="url(#ar-g5h)"/><rect x="287" y="96" width="30" height="28" rx="7" fill="#c8433f"/><text x="302" y="115" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">−4</text><line x1="336" y1="70" x2="336" y2="92" stroke="#9a88d6" stroke-width="1.6" marker-end="url(#ar-g5h)"/><rect x="321" y="96" width="30" height="28" rx="7" fill="#c8433f"/><text x="336" y="115" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">−3</text><line x1="370" y1="70" x2="370" y2="92" stroke="#9a88d6" stroke-width="1.6" marker-end="url(#ar-g5h)"/><rect x="355" y="96" width="30" height="28" rx="7" fill="#c8433f"/><text x="370" y="115" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">−2</text><line x1="404" y1="70" x2="404" y2="92" stroke="#9a88d6" stroke-width="1.6" marker-end="url(#ar-g5h)"/><rect x="389" y="96" width="30" height="28" rx="7" fill="#c8433f"/><text x="404" y="115" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">−1</text>
+          <text x="114" y="86" text-anchor="middle" font-size="11.5" font-weight="800" fill="#5b4a9e">前半：1×2×…×6＝6!</text>
+          <text x="114" y="114" text-anchor="middle" font-size="11.5" font-weight="800" fill="#c8433f">後半は 13 を引いた数と同じ</text>
+          <text x="114" y="130" text-anchor="middle" font-size="11.5" font-weight="800" fill="#c8433f">（7＝13−6 ≡ −6 など）</text>
+          <text x="220" y="162" text-anchor="middle" font-size="12.5" font-weight="900" fill="#221d33">後半＝(−6)(−5)(−4)(−3)(−2)(−1)＝(−1)⁶×6!＝6!</text>
+          <text x="220" y="186" text-anchor="middle" font-size="13" font-weight="900" fill="#5b4a9e">12!≡6!×6!＝(6!)²　→ ウィルソンの定理で (6!)²≡−1</text>
+        </svg>
+        <div class="diagram-caption"><strong>後半は前半の符号を変えたもの</strong>。1 から 12 を前半（紫）と後半（青）に分ける。後半の数は 13 から前半の数を引いたもの（7＝13−6 など）なので、mod 13 では −6, −5, …, −1（赤）と同じ。後半の積は (−1)⁶×6! で、6 が偶数だから 6! に等しい。だから 12!≡(6!)²</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
@@ -367,6 +401,24 @@
           </div>
           <div class="dialog-bubble">その通り。これで証明が完成した。4 で割って 1 余る素数 p では、x＝((p−1)/2)! とすると p が x²＋1＝(x＋i)(x−i) を割り切るのに、x＋i も x−i も割り切らない。だから p は素元でなく、既約元でもなく、2つの平方数の和で書ける。フェルマーの主張は正しかったんだ。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 326" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="フェルマーの2平方定理の証明の流れ。ウィルソンの定理から x＝((p−1)/2)! で x²≡−1。p は (x＋i)(x−i) を割り切るが、x±i は割り切らない。だから p は素元でなく、既約元でもなく、p＝zw で N(z)＝p、つまり p＝a²＋b²">
+          <defs><marker id="ar-g5f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#77708c"/></marker></defs>
+          <rect x="20" y="6" width="400" height="32" rx="9" fill="#f2effa" stroke="#9a88d6" stroke-width="1.8"/><text x="220" y="27" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">ウィルソンの定理：(p−1)!≡−1 (mod p)</text>
+          <line x1="220" y1="38" x2="220" y2="50" stroke="#77708c" stroke-width="1.8" marker-end="url(#ar-g5f)"/>
+          <rect x="20" y="52" width="400" height="44" rx="9" fill="#f2effa" stroke="#9a88d6" stroke-width="1.8"/><text x="220" y="70.5" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">p＝4k＋1 なら、後半を −1, −2, … と見て</text><text x="220" y="87.5" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">x＝((p−1)/2)! のとき x²≡−1 (mod p)</text>
+          <line x1="220" y1="96" x2="220" y2="108" stroke="#77708c" stroke-width="1.8" marker-end="url(#ar-g5f)"/>
+          <rect x="20" y="110" width="400" height="32" rx="9" fill="#f2effa" stroke="#9a88d6" stroke-width="1.8"/><text x="220" y="131" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">p は x²＋1＝(x＋i)(x−i) を割り切る</text>
+          <line x1="220" y1="142" x2="220" y2="154" stroke="#77708c" stroke-width="1.8" marker-end="url(#ar-g5f)"/>
+          <rect x="20" y="156" width="400" height="44" rx="9" fill="#fdf1f0" stroke="#c8433f" stroke-width="1.8"/><text x="220" y="174.5" text-anchor="middle" font-size="12" font-weight="800" fill="#c8433f">(x±i)÷p＝x/p±(1/p)i はガウス整数でない</text><text x="220" y="191.5" text-anchor="middle" font-size="12" font-weight="800" fill="#c8433f">→ p は x＋i も x−i も割り切らない</text>
+          <line x1="220" y1="200" x2="220" y2="212" stroke="#77708c" stroke-width="1.8" marker-end="url(#ar-g5f)"/>
+          <rect x="20" y="214" width="400" height="44" rx="9" fill="#fdf1f0" stroke="#c8433f" stroke-width="1.8"/><text x="220" y="232.5" text-anchor="middle" font-size="12" font-weight="800" fill="#c8433f">p は素元でない → 既約元でもない</text><text x="220" y="249.5" text-anchor="middle" font-size="12" font-weight="800" fill="#c8433f">（ガウス整数では既約元＝素元：STAGE4）</text>
+          <line x1="220" y1="258" x2="220" y2="270" stroke="#77708c" stroke-width="1.8" marker-end="url(#ar-g5f)"/>
+          <rect x="20" y="272" width="400" height="44" rx="9" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.8"/><text x="220" y="290.5" text-anchor="middle" font-size="12" font-weight="800" fill="#1f6f3f">p＝zw と分けられ、N(z)＝p（STAGE2）</text><text x="220" y="307.5" text-anchor="middle" font-size="12" font-weight="800" fill="#1f6f3f">→ z＝a＋bi とすれば p＝a²＋b²</text>
+        </svg>
+        <div class="diagram-caption"><strong>証明の流れ</strong>。ウィルソンの定理から x²≡−1 となる x を作り（p＝4k＋1 のときだけ符号が消える）、p が (x＋i)(x−i) を割り切るのに x±i を割り切らないことから、p は素元でなく、ガウス整数では既約元でもない。あとは STAGE2 の「分けられる ⇔ 平方数の和」で p＝a²＋b² になる</div>
       </div>
 
       <div class="note-box"><span class="nb-title">フェルマーの2平方定理</span>奇数の素数 p について<br>・p が 4 で割って 1 余るなら、p は2つの平方数の和 a²＋b² で書ける<br>・p が 4 で割って 3 余るなら、書けない<br>（2＝1²＋1² も書ける）。証明の流れ：ウィルソンの定理 → x＝((p−1)/2)! で x²≡−1 → p は (x＋i)(x−i) を割り切るがどちらも割り切らない → p は素元でない → 既約元でない → p＝a²＋b²</div>

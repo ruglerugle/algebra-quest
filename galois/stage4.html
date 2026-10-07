@@ -167,6 +167,36 @@
           </div>
           <div class="dialog-bubble">いい質問だね。解の公式で使ってよいのは、係数から四則とべき根で計算することだった。係数は有理数だから、出発点で分かっている数は有理数だけだ。ガロア群は、<strong>有理数の計算だけでは区別のつかない解どうしの入れ替え</strong>を集めたものなんだ。√2 と −√2 は、どちらも「2乗すると 2」で、有理数だけの式では区別できない。だから入れ替えてよい。4 と −2＋√3 は α−4＝0 で区別できるから、入れ替えてはいけない。ガロア群が小さいほど、解は区別しやすい、つまり求めやすい。x³−15x−4 のガロア群は e と (β γ) の2つになる。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 340 262" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="x³−15x−4 の3つの解を数直線に描き、関係式を保つ入れ替えと保たない入れ替えを並べた図">
+          <line x1="12" y1="60" x2="328" y2="60" stroke="#221d33" stroke-width="1.4"/>
+          <g stroke="#b9b0a3" stroke-width="1"><line x1="22" y1="55" x2="22" y2="65"/><line x1="86" y1="55" x2="86" y2="65"/><line x1="150" y1="55" x2="150" y2="65"/><line x1="214" y1="55" x2="214" y2="65"/><line x1="278" y1="55" x2="278" y2="65"/></g>
+          <g font-size="10" fill="#77708c" font-weight="700" text-anchor="middle"><text x="22" y="78">−4</text><text x="86" y="78">−2</text><text x="150" y="78">0</text><text x="214" y="78">2</text><text x="278" y="78">4</text></g>
+          <path d="M 36 44 Q 86 10 136 44" fill="none" stroke="#2f9e5c" stroke-width="2"/>
+          <g fill="#2f9e5c"><path d="M 36 44 l -2 -9 l 9 2 z"/><path d="M 136 44 l 2 -9 l -9 2 z"/></g>
+          <text x="86" y="22" font-size="11" font-weight="900" fill="#2f9e5c" text-anchor="middle">入れ替えてよい</text>
+          <rect x="258" y="42" width="40" height="36" rx="8" fill="none" stroke="#c8433f" stroke-width="1.8" stroke-dasharray="4 3"/>
+          <text x="278" y="32" font-size="11" font-weight="900" fill="#c8433f" text-anchor="middle">有理数、動かせない</text>
+          <circle cx="30.6" cy="60" r="6" fill="#2f9e5c" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="141.4" cy="60" r="6" fill="#2f9e5c" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="278" cy="60" r="6" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <g font-size="11.5" font-weight="900" fill="#221d33"><text x="8" y="98">γ＝−2−√3</text><text x="141.4" y="98" text-anchor="middle">β＝−2＋√3</text><text x="278" y="98" text-anchor="middle" fill="#c8433f">α＝4</text></g>
+          <g font-size="11.5" font-weight="800" fill="#221d33">
+            <text x="8" y="134" fill="#44377a" font-weight="900">関係式</text><text x="96" y="134">α−4＝0</text><text x="172" y="134">β＋γ＋4＝0</text><text x="280" y="134">βγ＝1</text>
+            <line x1="8" y1="144" x2="332" y2="144" stroke="#d8d2ea"/>
+            <text x="8" y="168" font-size="11">(β γ) のあと</text><text x="96" y="168" fill="#2f9e5c">α−4＝0 ○</text><text x="172" y="168" fill="#2f9e5c">γ＋β＋4＝0 ○</text><text x="280" y="168" fill="#2f9e5c">γβ＝1 ○</text>
+            <text x="8" y="200" font-size="11">(α β) のあと</text><text x="96" y="200" fill="#c8433f">β−4＝0 ×</text><text x="172" y="200" fill="#2f9e5c">α＋γ＋4＝0 ○</text><text x="280" y="200" fill="#2f9e5c">αγ＝1 ○</text>
+          </g>
+          <text x="8" y="186" font-size="10.5" font-weight="800" fill="#2f9e5c">→ ガロア群に入る</text>
+          <text x="8" y="218" font-size="10.5" font-weight="800" fill="#c8433f">→ 1つでも崩れるので入らない</text>
+          <text x="170" y="250" font-size="11" font-weight="800" fill="#44377a" text-anchor="middle">x³−15x−4 のガロア群＝{e, (β γ)}</text>
+        </svg>
+        <div class="diagram-caption"><strong>ガロア群の定義を x³−15x−4 で見る</strong>。上は3つの解の数直線。α＝4 は有理数なので α−4＝0 という関係式があり、ほかの解と入れ替えるとこの式が崩れる。β と γ は、β＋γ＋4＝0 や βγ＝1 のような関係式をすべて保ったまま入れ替えられる。下の表は、代表的な関係式が入れ替えのあとも成り立つか（○）崩れるか（×）。1つでも崩れる入れ替えはガロア群に入らない</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
@@ -249,6 +279,28 @@
           </div>
           <div class="dialog-bubble">いいところに気づいたね。ここで ℚ は有理数全体、ℚ(√2) は有理数に √2 を加えて四則でできる数全体だったね。方程式の解をすべて ℚ に加えてできる体を、その方程式の<strong>分解体</strong>と呼ぶ。ガロアが示したことの1つは、<strong>ガロア群の要素の数は、分解体の次数と等しい</strong>ということだ。一般の証明は難しいので、ここでは事実として使い、例で確かめていこう。次は x³−3x＋1＝0 だ。解は α＝2cos 40°, β＝2cos 80°, γ＝2cos 160° の3つになる。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 340 268" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="x⁴−5x²＋6 の分解体 ℚ(√2, √3) の次数と、ガロア群の要素の数が段ごとに一致する図">
+          <text x="170" y="16" font-size="12.5" font-weight="900" fill="#44377a" text-anchor="middle">x⁴−5x²＋6＝(x²−2)(x²−3) の場合</text>
+          <g font-size="11.5" font-weight="900" text-anchor="middle" fill="#44377a"><text x="100" y="44">体（解を加えていく）</text><text x="262" y="44">関係式を保つ入れ替え</text></g>
+          <g font-size="12" font-weight="900" text-anchor="middle" fill="#221d33">
+            <rect x="14" y="56" width="172" height="46" rx="8" fill="#efecf8" stroke="#5b4a9e" stroke-width="1.5"/><text x="100" y="75">分解体 ℚ(√2, √3)</text><text x="100" y="93" font-size="11" fill="#77708c">ℚ の上の次数 4（4つの解を全部含む）</text>
+            <rect x="14" y="134" width="172" height="46" rx="8" fill="#f4f1fb" stroke="#9a88d6"/><text x="100" y="153">ℚ(√2)</text><text x="100" y="171" font-size="11" fill="#77708c">次数 2（√2, −√2 を含む）</text>
+            <rect x="14" y="212" width="172" height="46" rx="8" fill="#fdfbf6" stroke="#9a88d6"/><text x="100" y="231">ℚ（有理数）</text><text x="100" y="249" font-size="11" fill="#77708c">次数 1（解を1つも含まない）</text>
+            <rect x="202" y="56" width="124" height="46" rx="8" fill="#fbe9f1" stroke="#a63f6f" stroke-width="1.5"/><text x="264" y="75" fill="#a63f6f">ガロア群 4個</text><text x="264" y="93" font-size="10.5" fill="#77708c">e, (α β), (γ δ), (α β)(γ δ)</text>
+            <rect x="202" y="134" width="124" height="46" rx="8" fill="#fdfbf6" stroke="#9a88d6"/><text x="264" y="153">x²−2 なら 2個</text><text x="264" y="171" font-size="10.5" fill="#77708c">e, (α β)</text>
+            <rect x="202" y="212" width="124" height="46" rx="8" fill="#fdfbf6" stroke="#9a88d6"/><text x="264" y="231">1個</text><text x="264" y="249" font-size="10.5" fill="#77708c">e</text>
+          </g>
+          <g stroke="#9a88d6" stroke-width="1.6"><line x1="100" y1="104" x2="100" y2="132"/><line x1="100" y1="182" x2="100" y2="210"/></g>
+          <g font-size="10.5" font-weight="800" fill="#5b4a9e"><text x="106" y="122">√3 を加える</text><text x="106" y="200">√2 を加える</text></g>
+          <g stroke="#e0d6ea" stroke-width="1.4" stroke-dasharray="4 4"><line x1="186" y1="79" x2="202" y2="79"/><line x1="186" y1="157" x2="202" y2="157"/><line x1="186" y1="235" x2="202" y2="235"/></g>
+        </svg>
+        <div class="diagram-caption"><strong>分解体の次数とガロア群の要素の数</strong>。左は、有理数 ℚ に √2、√3 を順に加えて分解体 ℚ(√2, √3) まで広げる段々で、各段の ℚ の上の次数は 1, 2, 4。右は、同じ段の方程式（ℚ(√2) は x²−2 の分解体）のガロア群の要素の数で、1, 2, 4。方程式ごとに、分解体の次数とガロア群の要素の数は等しい</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
@@ -256,6 +308,28 @@
           </div>
           <div class="dialog-bubble">第3章では、(cos θ＋i sin θ)³ を展開して cos 3θ の式を出しました。(cos θ＋i sin θ)² なら、実部を比べて cos 2θ＝cos²θ−sin²θ＝2cos²θ−1 です。だから (2cos θ)²−2＝4cos²θ−2＝2cos 2θ。α²−2＝2cos 80°＝β、β²−2＝2cos 160°＝γ、γ²−2＝2cos 320°＝2cos 40°＝α です。<strong>β＝α²−2</strong> は関係式です。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 340 166" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="x³−3x＋1 の3つの解 2cos40°, 2cos80°, 2cos160° を数直線に描き、2乗して2を引く操作で順にめぐる図">
+          <defs><marker id="ar4c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b4a9e"/></marker></defs>
+          <line x1="14" y1="96" x2="326" y2="96" stroke="#221d33" stroke-width="1.4"/>
+          <g stroke="#b9b0a3" stroke-width="1"><line x1="50" y1="91" x2="50" y2="101"/><line x1="110" y1="91" x2="110" y2="101"/><line x1="170" y1="91" x2="170" y2="101"/><line x1="230" y1="91" x2="230" y2="101"/><line x1="290" y1="91" x2="290" y2="101"/></g>
+          <g font-size="10" fill="#77708c" font-weight="700" text-anchor="middle"><text x="50" y="114">−2</text><text x="110" y="114">−1</text><text x="170" y="114">0</text><text x="230" y="114">1</text><text x="290" y="114">2</text></g>
+          <path d="M 256 84 Q 226 40 197 84" fill="none" stroke="#5b4a9e" stroke-width="2" marker-end="url(#ar4c)"/>
+          <path d="M 185 84 Q 124 20 63 84" fill="none" stroke="#5b4a9e" stroke-width="2" marker-end="url(#ar4c)"/>
+          <path d="M 62 108 Q 160 160 257 108" fill="none" stroke="#5b4a9e" stroke-width="2" marker-end="url(#ar4c)"/>
+          <g font-size="10.5" font-weight="900" fill="#5b4a9e" text-anchor="middle"><text x="226" y="56">α²−2＝β</text><text x="124" y="46">β²−2＝γ</text><text x="160" y="146">γ²−2＝α</text></g>
+          <circle cx="57.3" cy="96" r="6" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="190.8" cy="96" r="6" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="261.9" cy="96" r="6" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <g font-size="11.5" font-weight="900" fill="#221d33" text-anchor="middle"><text x="57" y="130">γ＝2cos160°</text><text x="190" y="130">β＝2cos80°</text><text x="282" y="130">α＝2cos40°</text></g>
+          <g font-size="10" font-weight="700" fill="#77708c" text-anchor="middle"><text x="57" y="162">≈ −1.879</text><text x="190" y="162">≈ 0.347</text><text x="282" y="162">≈ 1.532</text></g>
+        </svg>
+        <div class="diagram-caption"><strong>x³−3x＋1 の3つの解は「2乗して 2 を引く」でめぐる</strong>。3つの解はどれも実数で、α≈1.532 を2乗して 2 を引くと β≈0.347、β からは γ≈−1.879、γ からは α にもどる。だから β＝α²−2 のような関係式があり、3つの解は有理数の計算でつながっている</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>

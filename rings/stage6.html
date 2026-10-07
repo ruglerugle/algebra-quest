@@ -200,6 +200,20 @@
           </div>
           <div class="dialog-bubble">a＋b√−2 なら √(1/4＋2/4)＝√3/2≒0.87 で 1 より小さいので、割り算ができます。でも、割り算ができないからといって、すぐに素因数分解が崩れるとは限りませんよね。STAGE4 の証明が使えなくなるだけで、別の理由でただ1通りになっているかもしれません。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 220" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="左：余りのある割り算ができる世界では、互除法、既約元はどれも素元、素因数分解はただ1通り、と進む。右：できない世界では STAGE4 の証明が使えないだけで、1通りかどうかは実例で確かめる必要がある">
+          <defs><marker id="ar-g6l" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#77708c"/></marker></defs>
+          <text x="115" y="22" text-anchor="middle" font-size="12.5" font-weight="900" fill="#1f6f3f">ガウス整数・a＋b√−2</text>
+          <text x="325" y="22" text-anchor="middle" font-size="12.5" font-weight="900" fill="#c8433f">a＋b√−5</text>
+          <rect x="16" y="36" width="198" height="30" rx="8" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.8"/><text x="115" y="56" text-anchor="middle" font-size="12" font-weight="800" fill="#1f6f3f">余りのある割り算ができる</text><line x1="115" y1="66" x2="115" y2="80" stroke="#77708c" stroke-width="1.8" marker-end="url(#ar-g6l)"/><rect x="16" y="82" width="198" height="30" rx="8" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.8"/><text x="115" y="102" text-anchor="middle" font-size="12" font-weight="800" fill="#1f6f3f">互除法で πx＋ay＝1 が作れる</text><line x1="115" y1="112" x2="115" y2="126" stroke="#77708c" stroke-width="1.8" marker-end="url(#ar-g6l)"/><rect x="16" y="128" width="198" height="30" rx="8" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.8"/><text x="115" y="148" text-anchor="middle" font-size="12" font-weight="800" fill="#1f6f3f">既約元はどれも素元</text><line x1="115" y1="158" x2="115" y2="172" stroke="#77708c" stroke-width="1.8" marker-end="url(#ar-g6l)"/><rect x="16" y="174" width="198" height="30" rx="8" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.8"/><text x="115" y="194" text-anchor="middle" font-size="12" font-weight="800" fill="#1f6f3f">素因数分解はただ1通り</text>
+          <rect x="226" y="36" width="198" height="30" rx="8" fill="#fdf1f0" stroke="#c8433f" stroke-width="1.8"/><text x="325" y="56" text-anchor="middle" font-size="12" font-weight="800" fill="#c8433f">余りのある割り算ができない</text><line x1="325" y1="66" x2="325" y2="80" stroke="#77708c" stroke-width="1.8" marker-end="url(#ar-g6l)"/><rect x="226" y="82" width="198" height="30" rx="8" fill="#fdf1f0" stroke="#c8433f" stroke-width="1.8"/><text x="325" y="102" text-anchor="middle" font-size="12" font-weight="800" fill="#c8433f">STAGE4 の証明が使えない</text><line x1="325" y1="112" x2="325" y2="126" stroke="#77708c" stroke-width="1.8" marker-end="url(#ar-g6l)"/><rect x="226" y="128" width="198" height="30" rx="8" fill="#fdf1f0" stroke="#c8433f" stroke-width="1.8"/><text x="325" y="148" text-anchor="middle" font-size="12" font-weight="800" fill="#c8433f">別の理由で1通りかもしれない</text><line x1="325" y1="158" x2="325" y2="172" stroke="#77708c" stroke-width="1.8" marker-end="url(#ar-g6l)"/><rect x="226" y="174" width="198" height="30" rx="8" fill="#fdf1f0" stroke="#c8433f" stroke-width="1.8"/><text x="325" y="194" text-anchor="middle" font-size="12" font-weight="800" fill="#c8433f">→ 実例で確かめる</text>
+        </svg>
+        <div class="diagram-caption"><strong>割り算ができる世界と、できない世界</strong>。左：余りのある割り算ができる世界では、STAGE4 の道筋で「既約元はどれも素元」が示せて、素因数分解はただ1通りになる。右：a＋b√−5 の世界では、この道筋が使えないだけで、1通りでないと決まったわけではない。だから実例で確かめる</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
@@ -230,6 +244,20 @@
         </div>
       </div>
 
+      <div class="diagram-box">
+<table class="num-table">
+          <tr><th>a²＋5b²</th><th>a＝0</th><th>a＝1</th><th>a＝2</th><th>a＝3</th><th>a＝4</th></tr>
+          <tr><th>b＝0</th><td class="">0</td><td class="hit">1</td><td class="hit">4</td><td class="hit">9</td><td class="">16</td></tr><tr><th>b＝1</th><td class="">5</td><td class="hit">6</td><td class="hit">9</td><td class="">14</td><td class="">21</td></tr><tr><th>b＝2</th><td class="">20</td><td class="">21</td><td class="">24</td><td class="">29</td><td class="">36</td></tr>
+        </table>
+        <table class="num-table" style="margin-top:12px">
+          <tr><th>数</th><th>ノルム</th><th>分けるのに必要なノルム</th><th>判定</th></tr>
+          <tr><td><b>2</b></td><td>4＝2×2</td><td class="miss">2 → ない</td><td class="hit"><b>既約元</b></td></tr>
+          <tr><td><b>3</b></td><td>9＝3×3</td><td class="miss">3 → ない</td><td class="hit"><b>既約元</b></td></tr>
+          <tr><td><b>1±√−5</b></td><td>6＝2×3</td><td class="miss">2 と 3 → ない</td><td class="hit"><b>既約元</b></td></tr>
+        </table>
+        <div class="diagram-caption"><strong>a＋b√−5 の世界にある数のノルム</strong>。上：a²＋5b² の値の表。1（単数）、4（2 のノルム）、6（1±√−5 のノルム）、9（3 のノルム）は現れる（緑）が、2 と 3 はどこにもない。下：4つの数を単数でない2つの数に分けるには、ノルム 2 か 3 の数が要るので、どれも既約元</div>
+      </div>
+
       <div class="formula-box">
         <span class="step">ノルム：<span class="nw">N(a＋b√−5)＝a²＋5b²</span>。b≠0 なら 5 以上なので、<strong>ノルム 2, 3 の数はない</strong></span>
         <span class="step"><span class="nw">N(2)＝4＝2×2</span>、<span class="nw">N(3)＝9＝3×3</span>、<span class="nw">N(1±√−5)＝6＝2×3</span> → どれも分けるにはノルム 2 か 3 の数が要る → 4つとも既約元</span>
@@ -252,6 +280,31 @@
           </div>
           <div class="dialog-bubble">2 は (1＋√−5)(1−√−5)＝6 を割り切ります。でも、(1＋√−5)÷2＝1/2＋(1/2)√−5 はこの世界の数ではないので、2 は 1＋√−5 を割り切りません。1−√−5 も同じです。2 は<strong>既約元なのに素元ではない</strong>。STAGE3 で、既約元がどれも素元なら一意だと分かりましたが、ここではそれが成り立っていないので、部品を打ち消し合わせられなくなっています。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 250" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="左：整数やガウス整数では既約元と素元は同じ集まり。右：a＋b√−5 の世界では素元の集まりが既約元の集まりの内側にあり、2, 3, 1＋√−5, 1−√−5 は既約元だが素元ではない">
+          <text x="112" y="24" text-anchor="middle" font-size="13" font-weight="900" fill="#221d33">整数・ガウス整数</text>
+          <ellipse cx="112" cy="120" rx="96" ry="72" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="2"/>
+          <text x="112" y="76" text-anchor="middle" font-size="12.5" font-weight="900" fill="#1f6f3f">既約元 ＝ 素元</text>
+          <text x="112" y="112" text-anchor="middle" font-size="12.5" font-weight="800" fill="#44377a">2, 3, 5, 7, …</text>
+          <text x="112" y="134" text-anchor="middle" font-size="12.5" font-weight="800" fill="#44377a">1＋i, 2＋i, 3, …</text>
+          <text x="112" y="164" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">同じ集まり</text>
+          <text x="112" y="214" text-anchor="middle" font-size="11.5" font-weight="800" fill="#1f6f3f">余りのある割り算がある</text>
+          <line x1="222" y1="36" x2="222" y2="226" stroke="#e6e0d6" stroke-width="1.5"/>
+          <text x="330" y="24" text-anchor="middle" font-size="13" font-weight="900" fill="#221d33">a＋b√−5 の世界</text>
+          <ellipse cx="330" cy="124" rx="100" ry="84" fill="#fdf1f0" stroke="#c8433f" stroke-width="2"/>
+          <text x="330" y="60" text-anchor="middle" font-size="12.5" font-weight="900" fill="#c8433f">既約元</text>
+          <text x="330" y="82" text-anchor="middle" font-size="12" font-weight="900" fill="#c8433f">2, 3, 1＋√−5, 1−√−5</text>
+          <text x="330" y="98" text-anchor="middle" font-size="11" font-weight="800" fill="#c8433f">（素元ではない）</text>
+          <ellipse cx="330" cy="156" rx="60" ry="40" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="2"/>
+          <text x="330" y="161" text-anchor="middle" font-size="12.5" font-weight="900" fill="#1f6f3f">素元</text>
+          <text x="330" y="240" text-anchor="middle" font-size="11.5" font-weight="800" fill="#c8433f">既約元なのに素元でない数がある</text>
+        </svg>
+        <div class="diagram-caption"><strong>既約元と素元の関係</strong>。左：整数やガウス整数では、既約元（これ以上分けられない数）と素元（積を割り切れば因数のどちらかを割り切る数）は同じ集まりになる。右：a＋b√−5 の世界では、素元はつねに既約元だが、2, 3, 1±√−5 のように、既約元なのに素元でない数がある。このすきまが、分解を2通りにする</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>

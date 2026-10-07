@@ -181,6 +181,31 @@
         <span class="step">だから対称式は、α＋β と αβ、つまり係数だけで書ける</span>
       </div>
 
+      <div class="diagram-box">
+<svg viewBox="0 0 340 196" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="αⁿ＋βⁿ が1つ前と2つ前から順に決まっていく様子を矢印でつないだ図">
+          <defs><marker id="ar2c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b4a9e"/></marker></defs>
+          <text x="170" y="16" font-size="12.5" font-weight="900" fill="#44377a" text-anchor="middle">αⁿ＋βⁿ は、1つ前と2つ前から決まる</text>
+          <g font-size="11.5" font-weight="900" text-anchor="middle" fill="#221d33">
+            <rect x="6" y="60" width="60" height="34" rx="7" fill="#fdfbf6" stroke="#9a88d6"/><text x="36" y="76">α⁰＋β⁰</text><text x="36" y="89" font-size="10.5" fill="#77708c">＝2</text>
+            <rect x="74" y="60" width="60" height="34" rx="7" fill="#fdfbf6" stroke="#9a88d6"/><text x="104" y="76">α＋β</text><text x="104" y="89" font-size="10.5" fill="#77708c">＝4</text>
+            <rect x="142" y="60" width="60" height="34" rx="7" fill="#efecf8" stroke="#9a88d6"/><text x="172" y="76">α²＋β²</text><text x="172" y="89" font-size="10.5" fill="#77708c">＝14</text>
+            <rect x="210" y="60" width="60" height="34" rx="7" fill="#efecf8" stroke="#9a88d6"/><text x="240" y="76">α³＋β³</text><text x="240" y="89" font-size="10.5" fill="#77708c">＝52</text>
+            <rect x="278" y="60" width="60" height="34" rx="7" fill="#efecf8" stroke="#9a88d6"/><text x="308" y="76">α⁴＋β⁴</text><text x="308" y="89" font-size="10.5" fill="#77708c">＝194</text>
+          </g>
+          <g fill="none" stroke="#5b4a9e" stroke-width="1.8" marker-end="url(#ar2c)">
+            <path d="M 104 58 Q 138 34 170 56"/><path d="M 172 58 Q 206 34 238 56"/><path d="M 240 58 Q 274 34 306 56"/>
+            <path d="M 36 96 Q 104 130 168 97"/><path d="M 104 96 Q 172 130 236 97"/><path d="M 172 96 Q 240 130 304 97"/>
+          </g>
+          <text x="170" y="40" font-size="10.5" font-weight="800" fill="#5b4a9e" text-anchor="middle">×(α＋β)</text>
+          <text x="170" y="128" font-size="10.5" font-weight="800" fill="#5b4a9e" text-anchor="middle">−αβ×(2つ前)</text>
+          <g font-size="11.5" font-weight="800" fill="#221d33" text-anchor="middle">
+            <text x="170" y="160">例（x²−4x＋1＝0、α＋β＝4、αβ＝1）</text>
+            <text x="170" y="182">α³＋β³＝4×14−1×4＝52、α⁴＋β⁴＝4×52−1×14＝194</text>
+          </g>
+        </svg>
+        <div class="diagram-caption"><strong>αⁿ＋βⁿ の連鎖</strong>。各箱は、1つ前の箱に α＋β を掛け、2つ前の箱に αβ を掛けたものを引いて作る（上の矢印が1つ前、下の矢印が2つ前）。出発点の 2 と α＋β はどちらも係数で分かるので、連鎖のどこまで進んでも係数だけで書ける。数値は x²−4x＋1＝0 の場合</div>
+      </div>
+
       <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
@@ -217,6 +242,27 @@
         <span class="step">② 入れ替えで符号だけ変わる式 α−β は、2乗すると対称式：<span class="nw">(α−β)²＝(b²−4ac)/a²</span></span>
         <span class="step">③ √ を1回とる：<span class="nw">α−β＝√(b²−4ac)/a</span></span>
         <span class="step">④ <span class="nw">α＝((α＋β)＋(α−β))/2＝(−b＋√(b²−4ac))/(2a)</span>（和と差から α を取り出す）</span>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 340 150" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="数直線の上で、2つの解の真ん中が (α＋β)/2、真ん中から両端までが (α−β)/2 であることを示す図">
+          <line x1="14" y1="86" x2="326" y2="86" stroke="#221d33" stroke-width="1.4"/>
+          <g stroke="#b9b0a3" stroke-width="1"><line x1="30" y1="81" x2="30" y2="91"/><line x1="100" y1="81" x2="100" y2="91"/><line x1="170" y1="81" x2="170" y2="91"/><line x1="240" y1="81" x2="240" y2="91"/><line x1="310" y1="81" x2="310" y2="91"/></g>
+          <g font-size="10.5" fill="#77708c" font-weight="700" text-anchor="middle"><text x="30" y="104">0</text><text x="100" y="104">1</text><text x="170" y="104">2</text><text x="240" y="104">3</text><text x="310" y="104">4</text></g>
+          <path d="M 170 70 L 170 40" stroke="#9a6a1c" stroke-width="1.6" stroke-dasharray="3 3"/>
+          <circle cx="170" cy="86" r="4" fill="#9a6a1c"/>
+          <text x="170" y="34" font-size="11.5" font-weight="900" fill="#9a6a1c" text-anchor="middle">真ん中 (α＋β)/2＝2</text>
+          <line x1="48.8" y1="60" x2="166" y2="60" stroke="#c8433f" stroke-width="2"/><line x1="174" y1="60" x2="291.2" y2="60" stroke="#c8433f" stroke-width="2"/>
+          <g stroke="#c8433f" stroke-width="2"><line x1="48.8" y1="55" x2="48.8" y2="65"/><line x1="291.2" y1="55" x2="291.2" y2="65"/></g>
+          <text x="107" y="53" font-size="11" font-weight="900" fill="#c8433f" text-anchor="middle">(α−β)/2＝√3</text>
+          <text x="233" y="53" font-size="11" font-weight="900" fill="#c8433f" text-anchor="middle">(α−β)/2＝√3</text>
+          <circle cx="48.8" cy="86" r="6" fill="#3f6fb5" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="291.2" cy="86" r="6" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <text x="48.8" y="126" font-size="12" font-weight="900" fill="#3f6fb5" text-anchor="middle">β＝2−√3</text>
+          <text x="291.2" y="126" font-size="12" font-weight="900" fill="#c8433f" text-anchor="middle">α＝2＋√3</text>
+          <text x="170" y="144" font-size="11" font-weight="800" fill="#221d33" text-anchor="middle">α＝(真ん中)＋(半分の差)、β＝(真ん中)−(半分の差)</text>
+        </svg>
+        <div class="diagram-caption"><strong>和と差から解を取り出す</strong>（x²−4x＋1＝0 の場合）。2つの解は、真ん中 (α＋β)/2＝2 から、半分の差 (α−β)/2＝√3 だけ左右に離れた位置にある。真ん中は対称式なので係数で分かり、半分の差は (α−β)² に √ を1回とって分かる。足せば α、引けば β</div>
       </div>
 
       <div class="dialogue-scene">
@@ -289,6 +335,40 @@
           </div>
           <div class="dialog-bubble">(α β) をすると、(β−α)(α−γ)(γ−β) です。β−α＝−(α−β)、α−γ＝−(γ−α)、γ−β＝−(β−γ) なので、マイナスが3つ出て −Δ になります。(α β γ) をすると (β−γ)(γ−α)(α−β) で、掛ける順番が変わっただけなので Δ のままです。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 340 206" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="Δ の3つの因数が、互換 (α β) では3つとも符号が変わり、回転 (α β γ) では順番が変わるだけである様子">
+          <defs><marker id="ar2d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#77708c"/></marker></defs>
+          <g font-size="12" font-weight="900" text-anchor="middle" fill="#221d33">
+            <text x="60" y="30" font-size="11.5" fill="#44377a" text-anchor="start">Δ の3つの因数</text>
+            <rect x="130" y="14" width="62" height="26" rx="6" fill="#fdfbf6" stroke="#9a88d6"/><text x="161" y="32">α−β</text>
+            <rect x="202" y="14" width="62" height="26" rx="6" fill="#fdfbf6" stroke="#9a88d6"/><text x="233" y="32">β−γ</text>
+            <rect x="274" y="14" width="62" height="26" rx="6" fill="#fdfbf6" stroke="#9a88d6"/><text x="305" y="32">γ−α</text>
+          </g>
+          <g stroke="#77708c" stroke-width="1.5" marker-end="url(#ar2d)">
+            <line x1="161" y1="42" x2="161" y2="72"/><line x1="233" y1="42" x2="233" y2="72"/><line x1="305" y1="42" x2="305" y2="72"/>
+          </g>
+          <g font-size="12" font-weight="900" text-anchor="middle" fill="#221d33">
+            <text x="6" y="94" font-size="11.5" fill="#c8433f" text-anchor="start">(α β) のあと</text>
+            <rect x="130" y="76" width="62" height="26" rx="6" fill="#fbe9e8" stroke="#c8433f"/><text x="161" y="94" fill="#c8433f">β−α</text>
+            <rect x="202" y="76" width="62" height="26" rx="6" fill="#fbe9e8" stroke="#c8433f"/><text x="233" y="94" fill="#c8433f">α−γ</text>
+            <rect x="274" y="76" width="62" height="26" rx="6" fill="#fbe9e8" stroke="#c8433f"/><text x="305" y="94" fill="#c8433f">γ−β</text>
+          </g>
+          <text x="233" y="118" font-size="11" font-weight="800" fill="#c8433f" text-anchor="middle">3つとも符号が変わる → −Δ</text>
+          <g font-size="12" font-weight="900" text-anchor="middle" fill="#221d33">
+            <text x="6" y="156" font-size="11.5" fill="#2f9e5c" text-anchor="start">(α β γ) のあと</text>
+            <rect x="130" y="138" width="62" height="26" rx="6" fill="#e6f5ec" stroke="#2f9e5c"/><text x="161" y="156" fill="#2f9e5c">β−γ</text>
+            <rect x="202" y="138" width="62" height="26" rx="6" fill="#e6f5ec" stroke="#2f9e5c"/><text x="233" y="156" fill="#2f9e5c">γ−α</text>
+            <rect x="274" y="138" width="62" height="26" rx="6" fill="#e6f5ec" stroke="#2f9e5c"/><text x="305" y="156" fill="#2f9e5c">α−β</text>
+          </g>
+          <text x="233" y="180" font-size="11" font-weight="800" fill="#2f9e5c" text-anchor="middle">順番が変わるだけ → Δ</text>
+          <text x="170" y="198" font-size="10.5" font-weight="700" fill="#77708c" text-anchor="middle">（緑の箱は、上の段の箱を1つずつ左へずらしたもの）</text>
+        </svg>
+        <div class="diagram-caption"><strong>Δ＝(α−β)(β−γ)(γ−α) の因数の行き先</strong>。上の段は Δ の3つの因数。互換 (α β) をすると（赤）、3つの因数がそれぞれ −(α−β), −(γ−α), −(β−γ) になり、−1 が3つ出て −Δ。回転 (α β γ) をすると（緑）、3つの因数の顔ぶれは同じで順番が変わるだけなので Δ のまま</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>

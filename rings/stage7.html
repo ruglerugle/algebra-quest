@@ -197,6 +197,27 @@
           </div>
           <div class="dialog-bubble">d が 2 を割り切るなら、2＝d×c で N(d)×N(c)＝N(2)＝4 なので、N(d) は 4 の約数です。d が 1＋√−5 を割り切るなら、同じように N(d) は 6 の約数です。4 と 6 の公約数は 1 と 2 で、この世界にノルム 2 の数はないので N(d)＝1、つまり d＝±1 です。公約数は単数 ±1 だけです。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 218" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="4 の約数 1, 2, 4 と 6 の約数 1, 2, 3, 6 を2つの円で描き、重なりに 1 と 2 がある図。ノルム 2 の数はないので、公約数 d のノルムは 1、つまり d＝±1">
+          <circle cx="160" cy="98" r="72" fill="rgba(63,111,181,.16)" stroke="#3f6fb5" stroke-width="2"/>
+          <circle cx="262" cy="98" r="72" fill="rgba(154,106,28,.16)" stroke="#9a6a1c" stroke-width="2"/>
+          <text x="130" y="36" text-anchor="middle" font-size="12.5" font-weight="900" fill="#3f6fb5">N(d) は 4 の約数</text>
+          <text x="300" y="36" text-anchor="middle" font-size="12.5" font-weight="900" fill="#9a6a1c">N(d) は 6 の約数</text>
+          <text x="116" y="104" text-anchor="middle" font-size="16" font-weight="900" fill="#3f6fb5">4</text>
+          <text x="296" y="90" text-anchor="middle" font-size="16" font-weight="900" fill="#9a6a1c">3</text>
+          <text x="306" y="120" text-anchor="middle" font-size="16" font-weight="900" fill="#9a6a1c">6</text>
+          <circle cx="211" cy="80" r="14" fill="#2f9e5c"/><text x="211" y="85" text-anchor="middle" font-size="14" font-weight="900" fill="#fff">1</text>
+          <circle cx="211" cy="120" r="14" fill="#fff" stroke="#c8433f" stroke-width="2"/><text x="211" y="125" text-anchor="middle" font-size="14" font-weight="900" fill="#c8433f">2</text>
+          <line x1="200" y1="109" x2="222" y2="131" stroke="#c8433f" stroke-width="2.5"/>
+          <text x="211" y="186" text-anchor="middle" font-size="11.5" font-weight="800" fill="#c8433f">2 は消える（ノルム 2 の数はない）</text>
+          <text x="220" y="206" text-anchor="middle" font-size="12.5" font-weight="900" fill="#221d33">残るのは N(d)＝1 だけ → d は単数 ±1</text>
+        </svg>
+        <div class="diagram-caption"><strong>公約数のノルムを絞りこむ</strong>。d が 2 を割り切れば N(d) は 4 の約数（青の円）、1＋√−5 を割り切れば N(d) は 6 の約数（金の円）。両方に入るのは 1 と 2 だが、a²＋5b²＝2 となる数はないので 2 は消える。残るのは N(d)＝1、つまり d は単数 ±1</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
@@ -313,6 +334,30 @@
         </div>
       </div>
 
+      <div class="diagram-box">
+<svg viewBox="0 0 440 236" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="世界の数全部を表す大きな四角の中に、イデアル I の集まりがある図。I の2つの数 x, y を足した x＋y、引いた x−y は I の中に戻る。I の外の数 r を x に掛けた r×x も I の中に入る">
+          <defs><marker id="ar-g7i" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b4a9e"/></marker><marker id="ar-g7r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c8433f"/></marker></defs>
+          <rect x="16" y="28" width="408" height="192" rx="12" fill="#fdfbf6" stroke="#b9b0a3" stroke-width="1.6"/>
+          <text x="30" y="50" font-size="12.5" font-weight="900" fill="#77708c">世界（環）の数全部</text>
+          <rect x="40" y="66" width="230" height="140" rx="14" fill="#f2effa" stroke="#9a88d6" stroke-width="2"/>
+          <text x="54" y="88" font-size="13" font-weight="900" fill="#44377a">イデアル I</text>
+          <circle cx="90" cy="130" r="7" fill="#5b4a9e"/><text x="90" y="118" text-anchor="middle" font-size="12.5" font-weight="900" fill="#5b4a9e">x</text>
+          <circle cx="140" cy="130" r="7" fill="#5b4a9e"/><text x="140" y="118" text-anchor="middle" font-size="12.5" font-weight="900" fill="#5b4a9e">y</text>
+          <line x1="100" y1="138" x2="190" y2="160" stroke="#5b4a9e" stroke-width="1.8" marker-end="url(#ar-g7i)"/>
+          <line x1="150" y1="138" x2="190" y2="160" stroke="#5b4a9e" stroke-width="1.8" marker-end="url(#ar-g7i)"/>
+          <circle cx="200" cy="164" r="7" fill="#5b4a9e"/><text x="214" y="160" font-size="12.5" font-weight="900" fill="#5b4a9e">x＋y</text>
+          <circle cx="200" cy="192" r="7" fill="#5b4a9e"/><text x="214" y="196" font-size="12.5" font-weight="900" fill="#5b4a9e">x−y</text>
+          <circle cx="350" cy="96" r="7" fill="#c8433f"/><text x="350" y="84" text-anchor="middle" font-size="12.5" font-weight="900" fill="#c8433f">r（I の外でもよい）</text>
+          <line x1="342" y1="100" x2="248" y2="98" stroke="#c8433f" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ar-g7r)"/>
+          <circle cx="238" cy="98" r="7" fill="#c8433f"/><text x="226" y="103" text-anchor="end" font-size="12.5" font-weight="900" fill="#c8433f">r×x</text>
+          <text x="350" y="146" text-anchor="middle" font-size="11.5" font-weight="800" fill="#5b4a9e">① 足しても引いても</text>
+          <text x="350" y="162" text-anchor="middle" font-size="11.5" font-weight="800" fill="#5b4a9e">I の中に戻る</text>
+          <text x="350" y="186" text-anchor="middle" font-size="11.5" font-weight="800" fill="#c8433f">② 世界のどんな数を</text>
+          <text x="350" y="202" text-anchor="middle" font-size="11.5" font-weight="800" fill="#c8433f">掛けても I の中に入る</text>
+        </svg>
+        <div class="diagram-caption"><strong>イデアルの2つの性質</strong>。世界の数全部（外の四角）の中にある集まり I について、① I の2つの数 x, y の和 x＋y と差 x−y が I の中に戻る、② I の数 x に世界のどんな数 r（I の外の数でもよい）を掛けても、積 r×x が I の中に入る。d の倍数の集まり (d) も、A＝{2x＋(1＋√−5)y} も、この2つをみたす</div>
+      </div>
+
       <div class="note-box"><span class="nb-title">イデアル</span>環（数の世界）の数の集まり I が次の2つをみたすとき、I を<strong>イデアル</strong>という（ここでは 0 以外の数も含むものを考える）。<br>・I の2つの数を足しても引いても、I に入る<br>・I の数に、世界のどんな数を掛けても、I に入る<br>例：数 d の倍数の集まり (d)、A＝{2x＋(1＋√−5)y}。2つの数 a, b から作る {ax＋by} を (a, b) と書く。A＝(2, 1＋√−5)</div>
 
       <div class="dialogue-scene">
@@ -360,6 +405,23 @@
           </div>
           <div class="dialog-bubble">m＝qd＋r（0≦r＜d）と書けます。m は I に入っていて、qd は d に整数 q を掛けたので I に入ります。だから差の r＝m−qd も I に入ります。r は d より小さく、d は I の正の数でいちばん小さいので、r は正の数ではありえず、r＝0 です。だから m＝qd で、I の数はどれも d の倍数です。逆に d の倍数は d に整数を掛けたものなので I に入ります。<strong>整数のイデアルは (d) の形だけ</strong>です。ここでも余りのある割り算が効いているんですね。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 160" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="数直線に 0, d, 2d, 3d, 4d を並べ、I の数 m が 3d と 4d の間にある図。m−3d＝r も I の数で、0 以上 d 未満。d は I の正の数でいちばん小さいので r は 0 しかなく、m＝3d">
+          <line x1="22" y1="70" x2="418" y2="70" stroke="#b9b0a3" stroke-width="1.5"/>
+          <circle cx="50" cy="70" r="6.5" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="50" y="94" text-anchor="middle" font-size="12" font-weight="900" fill="#5b4a9e">0</text><circle cx="130" cy="70" r="6.5" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="130" y="94" text-anchor="middle" font-size="12" font-weight="900" fill="#5b4a9e">d</text><circle cx="210" cy="70" r="6.5" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="210" y="94" text-anchor="middle" font-size="12" font-weight="900" fill="#5b4a9e">2d</text><circle cx="290" cy="70" r="6.5" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="290" y="94" text-anchor="middle" font-size="12" font-weight="900" fill="#5b4a9e">3d</text><circle cx="370" cy="70" r="6.5" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="370" y="94" text-anchor="middle" font-size="12" font-weight="900" fill="#5b4a9e">4d</text>
+          <circle cx="322" cy="70" r="7" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <text x="322" y="50" text-anchor="middle" font-size="12" font-weight="900" fill="#c8433f">m（I の数）</text>
+          <path d="M292,106 v6 H320 v-6" fill="none" stroke="#c8433f" stroke-width="1.6"/>
+          <text x="306" y="128" text-anchor="middle" font-size="11.5" font-weight="900" fill="#c8433f">r＝m−3d</text>
+          <text x="220" y="26" text-anchor="middle" font-size="12" font-weight="800" fill="#44377a">d：I の正の数でいちばん小さいもの（紫の点は d の倍数で、どれも I の数）</text>
+          <text x="220" y="152" text-anchor="middle" font-size="12.5" font-weight="900" fill="#221d33">r も I の数で 0≦r＜d → d より小さい正の数は I にない → r＝0、m＝3d</text>
+        </svg>
+        <div class="diagram-caption"><strong>整数のイデアルは (d) になる理由</strong>。I の正の数でいちばん小さいものを d とすると、d の倍数（紫）はどれも I の数。I の数 m を d で割った余り r＝m−3d も、I の2つの数の差だから I の数。ところが r は 0 以上 d 未満で、d より小さい正の数は I にないので、r＝0。つまり I の数はすべて d の倍数</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>

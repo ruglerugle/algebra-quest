@@ -177,6 +177,46 @@
           </div>
           <div class="dialog-bubble">90° を三等分すると 30° です。正三角形をかけば 60° が作れて、それを二等分すれば 30° です。だから 90° は三等分できます。数で言えば、半径 1 の円の上の 30° の点の横の座標は cos 30°＝√3/2 で、次数 2 です。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 460 236" role="img" aria-label="直角を三等分する作図。正三角形で 60° を作り、二等分して 30° にする" style="width:100%;max-width:460px;display:block;margin:0 auto">
+          <rect x="0" y="0" width="460" height="236" fill="#fdfbf6"/>
+
+          <line x1="60" y1="200" x2="240" y2="200" stroke="#221d33" stroke-width="2"/>
+          <line x1="60" y1="200" x2="60" y2="30" stroke="#221d33" stroke-width="2"/>
+          <path d="M 60 184 L 76 184 L 76 200" fill="none" stroke="#77708c" stroke-width="1.2"/>
+          <path d="M 190 200 A 130 130 0 0 0 60 70" fill="none" stroke="#9a88d6" stroke-width="1.4" stroke-dasharray="5 4"/>
+          <path d="M 167.4 72 A 130 130 0 0 0 77.4 135" fill="none" stroke="#9a88d6" stroke-width="1.4" stroke-dasharray="5 4"/>
+          <line x1="60" y1="200" x2="125" y2="87.4" stroke="#5b4a9e" stroke-width="2.5"/>
+          <line x1="190" y1="200" x2="125" y2="87.4" stroke="#9a88d6" stroke-width="1.5"/>
+          <line x1="60" y1="200" x2="204" y2="117" stroke="#c8433f" stroke-width="2" stroke-dasharray="6 4"/>
+          <path d="M 90 200 A 30 30 0 0 0 75 174" fill="none" stroke="#5b4a9e" stroke-width="1.5"/>
+          <path d="M 105 200 A 45 45 0 0 0 99 177.5" fill="none" stroke="#c8433f" stroke-width="1.5"/>
+          <g fill="#221d33" stroke="#fff" stroke-width="1.5"><circle cx="60" cy="200" r="4.5"/><circle cx="190" cy="200" r="4.5"/><circle cx="125" cy="87.4" r="4.5"/></g>
+          <g font-size="12.5" font-weight="800">
+            <text x="48" y="218" fill="#221d33">O</text>
+            <text x="186" y="218" fill="#221d33">A</text>
+            <text x="131" y="84" fill="#221d33">C</text>
+            <text x="118" y="186" fill="#c8433f">30°</text>
+            <text x="98" y="160" fill="#c8433f">30°</text>
+            <text x="134" y="118" fill="#5b4a9e">∠AOC＝60°</text>
+          </g>
+          <g font-size="12" font-weight="700" fill="#221d33">
+            <text x="258" y="60">① O を中心に円をかき、</text>
+            <text x="270" y="78">　横の辺との交点を A とする</text>
+            <text x="258" y="106">② A を中心に同じ半径の円を</text>
+            <text x="270" y="124">　かき、交点を C とする</text>
+            <text x="258" y="152" fill="#5b4a9e">③ OA＝AC＝OC → 正三角形</text>
+            <text x="270" y="170" fill="#5b4a9e">　→ ∠AOC＝60°</text>
+            <text x="258" y="198" fill="#c8433f">④ ∠AOC を二等分 → 30°</text>
+            <text x="270" y="216" fill="#c8433f">　90° が 30° ずつに分かれた</text>
+          </g>
+        </svg>
+        <div class="diagram-caption"><strong>90° の三等分</strong>。直角の頂点 O を中心にした円と、その交点 A を中心にした同じ半径の円の交点 C をとると、三角形 OAC は正三角形で ∠AOC＝60°。それを二等分すれば 30° で、直角が3つの 30° に分かれる。使ったのは正三角形と二等分だけ</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
@@ -350,6 +390,52 @@
           </div>
           <div class="dialog-bubble">いいところに気づいたね。この方程式には根が3つあって、cos 20° のほかに cos 140° と cos 260° も根だ。3倍すると 420° と 780° で、どちらも 360° の倍数を引けば 60° になるからね。方程式からは、この3つを区別できない。では、90° の三等分がうまくいく理由を、同じ方法で確かめてごらん。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 460 272" role="img" aria-label="単位円の上の 20°, 140°, 260° の3点と、それぞれの横の座標、3倍するとどれも 60° の点になることを示す図" style="width:100%;max-width:460px;display:block;margin:0 auto">
+          <rect x="0" y="0" width="460" height="272" fill="#fdfbf6"/>
+
+          <line x1="14" y1="130" x2="226" y2="130" stroke="#77708c" stroke-width="1"/>
+          <line x1="120" y1="28" x2="120" y2="232" stroke="#77708c" stroke-width="1"/>
+          <circle cx="120" cy="130" r="95" fill="none" stroke="#9a88d6" stroke-width="1.6"/>
+          <g stroke-width="1.2" stroke-dasharray="3 3">
+            <line x1="209.3" y1="97.5" x2="209.3" y2="130" stroke="#c8433f"/>
+            <line x1="47.2" y1="68.9" x2="47.2" y2="130" stroke="#2f9e5c"/>
+            <line x1="103.5" y1="223.6" x2="103.5" y2="130" stroke="#3f6fb5"/>
+          </g>
+          <g stroke-width="1.5"><line x1="120" y1="130" x2="209.3" y2="97.5" stroke="#c8433f"/><line x1="120" y1="130" x2="47.2" y2="68.9" stroke="#2f9e5c"/><line x1="120" y1="130" x2="103.5" y2="223.6" stroke="#3f6fb5"/></g>
+          <g stroke="#fff" stroke-width="1.5"><circle cx="209.3" cy="97.5" r="5.5" fill="#c8433f"/><circle cx="47.2" cy="68.9" r="5.5" fill="#2f9e5c"/><circle cx="103.5" cy="223.6" r="5.5" fill="#3f6fb5"/></g>
+          <g font-size="12" font-weight="800">
+            <text x="196" y="88" fill="#c8433f">20°</text>
+            <text x="22" y="60" fill="#2f9e5c">140°</text>
+            <text x="110" y="246" fill="#3f6fb5" text-anchor="middle">260°</text>
+          </g>
+          <g font-size="11" font-weight="700" text-anchor="middle">
+            <text x="209.3" y="146" fill="#c8433f">0.94</text>
+            <text x="47.2" y="146" fill="#2f9e5c">−0.77</text>
+            <text x="97" y="146" fill="#3f6fb5">−0.17</text>
+          </g>
+          <text x="120" y="262" font-size="11.5" fill="#77708c" text-anchor="middle">横の座標が 8x³−6x−1＝0 の3つの根</text>
+          <line x1="236" y1="130" x2="268" y2="130" stroke="#77708c" stroke-width="2"/>
+          <polygon points="266,124 278,130 266,136" fill="#77708c"/>
+          <text x="257" y="118" font-size="11.5" font-weight="800" fill="#77708c" text-anchor="middle">3倍</text>
+          <line x1="290" y1="130" x2="440" y2="130" stroke="#77708c" stroke-width="1"/>
+          <line x1="365" y1="60" x2="365" y2="200" stroke="#77708c" stroke-width="1"/>
+          <circle cx="365" cy="130" r="65" fill="none" stroke="#9a88d6" stroke-width="1.6"/>
+          <line x1="365" y1="130" x2="397.5" y2="73.7" stroke="#9a6a1c" stroke-width="2"/>
+          <circle cx="397.5" cy="73.7" r="6" fill="#9a6a1c" stroke="#fff" stroke-width="1.5"/>
+          <text x="404" y="66" font-size="12.5" font-weight="800" fill="#9a6a1c">60°</text>
+          <g font-size="11.5" font-weight="700" text-anchor="middle">
+            <text x="365" y="222" fill="#c8433f">20°×3＝60°</text>
+            <text x="365" y="240" fill="#2f9e5c">140°×3＝420°＝60°＋360°</text>
+            <text x="365" y="258" fill="#3f6fb5">260°×3＝780°＝60°＋720°</text>
+          </g>
+        </svg>
+        <div class="diagram-caption"><strong>3倍すると同じ 60° になる3つの角</strong>。左の円の上の 20°（赤）、140°（緑）、260°（青）の点は、角度を3倍するとどれも右の 60° の点に重なる。だから3つの横の座標 cos 20°≒0.94、cos 140°≒−0.77、cos 260°≒−0.17 は、すべて 8x³−6x−1＝0 の根になる</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
@@ -392,6 +478,38 @@
           </div>
           <div class="dialog-bubble">それが答えなんだ。1882年に、ドイツのリンデマンが「π は、有理数を係数とするどんな多項式の根にもならない」ことを証明した。こういう数を<strong>超越数（ちょうえつすう）</strong>という。最小多項式がないのだから、次数が 2 の累乗の体の塔のどこにも入らない。だから √π も π も作図できず、<strong>円積問題も不可能</strong>だ。この証明は高度なので、ここでは事実として受け取っておこう。こうして、ギリシャの3つの作図問題は、1837年と1882年に、すべて「不可能」という答えで決着したんだ。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 460 236" role="img" aria-label="実数の中の有理数、代数的数、超越数の関係を示す図" style="width:100%;max-width:460px;display:block;margin:0 auto">
+          <rect x="0" y="0" width="460" height="236" fill="#fdfbf6"/>
+
+          <rect x="10" y="12" width="440" height="214" rx="14" fill="#fdfbf6" stroke="#77708c" stroke-width="1.5"/>
+          <text x="24" y="34" font-size="12.5" font-weight="800" fill="#77708c">実数</text>
+          <rect x="24" y="48" width="288" height="166" rx="12" fill="#f2effa" stroke="#5b4a9e" stroke-width="2"/>
+          <text x="38" y="70" font-size="12.5" font-weight="800" fill="#5b4a9e">最小多項式をもつ数（代数的数）</text>
+          <rect x="38" y="84" width="118" height="118" rx="10" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="2"/>
+          <text x="97" y="106" font-size="12.5" font-weight="800" fill="#1f6b48" text-anchor="middle">有理数 ℚ</text>
+          <g font-size="12" font-weight="700" fill="#1f6b48" text-anchor="middle">
+            <text x="97" y="130">1/2、−3</text>
+            <text x="97" y="148">0.75</text>
+            <text x="97" y="174" font-size="11" fill="#77708c">次数 1</text>
+          </g>
+          <g font-size="12" font-weight="700" fill="#44377a">
+            <text x="170" y="106">√2（次数 2）</text>
+            <text x="170" y="128">∛2（次数 3）</text>
+            <text x="170" y="150">cos 20°（次数 3）</text>
+            <text x="170" y="172">√(1＋√2)（次数 4）</text>
+          </g>
+          <g font-size="12.5" font-weight="800" fill="#c8433f">
+            <text x="326" y="110">超越数</text>
+            <text x="326" y="134">π</text>
+            <text x="326" y="158">e</text>
+            <text x="326" y="186" font-size="11" fill="#77708c">最小多項式が</text>
+            <text x="326" y="202" font-size="11" fill="#77708c">そもそもない</text>
+          </g>
+        </svg>
+        <div class="diagram-caption"><strong>実数の分けかた</strong>。有理数係数の多項式の根になる数を代数的数といい、有理数（次数 1）も √2 や ∛2 も cos 20° もここに入る。π や e は、どんな多項式の根にもならない超越数。次数が定義できないので「2 の累乗」になりようがなく、作図できない</div>
       </div>
 
       <div class="note-box"><span class="nb-title">ギリシャの3大作図問題の答え</span>・<strong>立方体倍積</strong>：∛2 の最小多項式 x³−2 は既約 → 次数 3 → 不可能（ヴァンツェル、1837年）<br>・<strong>角の三等分</strong>：cos 20° は既約な 8x³−6x−1 の根 → 次数 3 → 60° は三等分できない（ヴァンツェル、1837年）。90° や 180° のように三等分できる角もある<br>・<strong>円積問題</strong>：π は超越数（どんな有理数係数の多項式の根でもない）→ 不可能（リンデマン、1882年）</div>

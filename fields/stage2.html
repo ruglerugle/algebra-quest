@@ -153,6 +153,39 @@
           </div>
           <div class="dialog-bubble">中学で習った分母の有理化です。分母と分子に 1−√2 を掛けると、(1−√2)/((1＋√2)(1−√2))＝(1−√2)/(1−2)＝−1＋√2。一般には、1/(a＋b√2) の分母と分子に a−b√2 を掛けて、(a−b√2)/(a²−2b²) です。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 460 206" role="img" aria-label="a＋b√2 と a−b√2 が数直線上で a をはさんで対称にあり、掛けると √2 が消える図" style="width:100%;max-width:460px;display:block;margin:0 auto">
+          <rect x="0" y="0" width="460" height="206" fill="#fdfbf6"/>
+
+          <line x1="30" y1="76" x2="430" y2="76" stroke="#77708c" stroke-width="1.5"/>
+          <g stroke="#77708c" stroke-width="1.2"><line x1="230" y1="69" x2="230" y2="83"/></g>
+          <path d="M 230 62 Q 280 30 330 62" fill="none" stroke="#c8433f" stroke-width="1.6"/>
+          <polygon points="326,54 332,63 322,63" fill="#c8433f"/>
+          <path d="M 230 62 Q 180 30 130 62" fill="none" stroke="#3f6fb5" stroke-width="1.6"/>
+          <polygon points="134,54 128,63 138,63" fill="#3f6fb5"/>
+          <text x="280" y="38" font-size="12" font-weight="700" fill="#c8433f" text-anchor="middle">＋b√2</text>
+          <text x="180" y="38" font-size="12" font-weight="700" fill="#3f6fb5" text-anchor="middle">−b√2</text>
+          <circle cx="230" cy="76" r="5" fill="#221d33" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="330" cy="76" r="5.5" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="130" cy="76" r="5.5" fill="#3f6fb5" stroke="#fff" stroke-width="1.5"/>
+          <g font-size="12.5" font-weight="800" text-anchor="middle">
+            <text x="230" y="100" fill="#221d33">a</text>
+            <text x="330" y="100" fill="#c8433f">a＋b√2</text>
+            <text x="130" y="100" fill="#3f6fb5">a−b√2</text>
+          </g>
+          <rect x="30" y="118" width="400" height="76" rx="10" fill="#f2effa"/>
+          <g font-size="12.5" font-weight="700" fill="#221d33" text-anchor="middle">
+            <text x="230" y="140">掛けると：(a＋b√2)(a−b√2)＝a²−2b²</text>
+            <text x="230" y="160" fill="#2f9e5c">√2 が消えて有理数になる</text>
+            <text x="230" y="182" fill="#77708c">例：(1＋√2)(1−√2)＝1−2＝−1</text>
+          </g>
+        </svg>
+        <div class="diagram-caption"><strong>分母の有理化のしくみ</strong>。a＋b√2 と、√2 の符号だけ変えた a−b√2 は、数直線上で a をはさんで対称の位置にある。この2つを掛けると √2 の項が打ち消し合って有理数 a²−2b² になる。分母と分子にこの相棒を掛けるのが有理化</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
@@ -253,6 +286,48 @@
           </div>
           <div class="dialog-bubble">それが理由なんだ。1, √2, 3＋√2 を使うと、3＋√2 は「1×(3＋√2)」とも「3×1＋1×√2」とも書けて、書き方が何通りもできる。むだな数が混じると、個数が水増しされてしまう。「ただ1通り」を条件にすれば、むだのない組だけを数えることになって、次数は体そのものの大きさを表す数になる。ℚ の数は1つの有理数で決まるから、ℚ を直線にたとえると、ℚ(√2) は2つの有理数で決まる平面のようなものだね。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 460 262" role="img" aria-label="ℚ を数直線、ℚ(√2) を 1 の向きと √2 の向きをもつ平面として描き、3＋√2 への道が基底 1, √2 では1通り、3＋√2 も加えると2通りになる図" style="width:100%;max-width:460px;display:block;margin:0 auto">
+          <rect x="0" y="0" width="460" height="262" fill="#fdfbf6"/>
+
+          <text x="80" y="24" font-size="12.5" font-weight="800" fill="#5b4a9e" text-anchor="middle">ℚ：1つの有理数で決まる</text>
+          <line x1="16" y1="150" x2="140" y2="150" stroke="#77708c" stroke-width="1.5"/>
+          <polygon points="140,145 150,150 140,155" fill="#77708c"/>
+          <line x1="40" y1="144" x2="40" y2="156" stroke="#77708c" stroke-width="1.2"/>
+          <text x="40" y="172" font-size="11.5" fill="#77708c" text-anchor="middle">0</text>
+          <circle cx="104" cy="150" r="5" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/>
+          <text x="104" y="136" font-size="12.5" font-weight="800" fill="#5b4a9e" text-anchor="middle">a</text>
+          <text x="310" y="24" font-size="12.5" font-weight="800" fill="#5b4a9e" text-anchor="middle">ℚ(√2)：有理数の組 (a, b) で決まる</text>
+          <line x1="190" y1="210" x2="440" y2="210" stroke="#77708c" stroke-width="1.5"/>
+          <polygon points="440,205 450,210 440,215" fill="#77708c"/>
+          <line x1="200" y1="220" x2="200" y2="52" stroke="#77708c" stroke-width="1.5"/>
+          <polygon points="195,52 200,42 205,52" fill="#77708c"/>
+          <text x="432" y="228" font-size="11.5" fill="#77708c" text-anchor="end">1 の向き</text>
+          <text x="208" y="50" font-size="11.5" fill="#77708c">√2 の向き</text>
+          <g fill="#d7d0ea">
+            <circle cx="255" cy="210" r="2.5"/><circle cx="310" cy="210" r="2.5"/><circle cx="365" cy="210" r="2.5"/><circle cx="420" cy="210" r="2.5"/>
+            <circle cx="200" cy="155" r="2.5"/><circle cx="255" cy="155" r="2.5"/><circle cx="310" cy="155" r="2.5"/><circle cx="420" cy="155" r="2.5"/>
+            <circle cx="200" cy="100" r="2.5"/><circle cx="255" cy="100" r="2.5"/><circle cx="310" cy="100" r="2.5"/><circle cx="365" cy="100" r="2.5"/><circle cx="420" cy="100" r="2.5"/>
+          </g>
+          <line x1="200" y1="210" x2="365" y2="210" stroke="#5b4a9e" stroke-width="3"/>
+          <line x1="365" y1="210" x2="365" y2="155" stroke="#2f9e5c" stroke-width="3"/>
+          <line x1="200" y1="210" x2="365" y2="155" stroke="#9a6a1c" stroke-width="2" stroke-dasharray="5 4"/>
+          <circle cx="365" cy="155" r="5.5" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <text x="372" y="146" font-size="12.5" font-weight="800" fill="#c8433f">3＋√2</text>
+          <text x="282" y="228" font-size="12" font-weight="700" fill="#5b4a9e" text-anchor="middle">3×1</text>
+          <text x="373" y="188" font-size="12" font-weight="700" fill="#2f9e5c">1×√2</text>
+          <text x="250" y="176" font-size="11.5" font-weight="700" fill="#9a6a1c" text-anchor="middle">1×(3＋√2)</text>
+          <text x="200" y="228" font-size="11.5" fill="#77708c" text-anchor="middle">0</text>
+          <g font-size="11.5" font-weight="700">
+            <text x="16" y="208" fill="#221d33">基底 1, √2：</text>
+            <text x="16" y="224" fill="#221d33">3＋√2 への道は1通り</text>
+            <text x="16" y="246" fill="#9a6a1c">3＋√2 も加えると</text>
+            <text x="16" y="260" fill="#9a6a1c">道が2通り（点線）になる</text>
+          </g>
+        </svg>
+        <div class="diagram-caption"><strong>ℚ は直線、ℚ(√2) は平面</strong>。右の平面では、横が 1 の向き、縦が √2 の向きで、数 3＋√2 は「1 の向きに 3、√2 の向きに 1」の点。基底 1, √2 だけなら、この点への行き方は紫→緑の1通り。3＋√2 を基底に加えると、金の点線の行き方もできて「ただ1通り」が崩れる。だから基底にむだな数は入れない</div>
       </div>
 
       <div class="note-box"><span class="nb-title">拡大体と次数</span>・K(α)：体 K に数 α を加え、K の数と α から四則で作れる数を全部集めた体<br>・基底：L のどの数も「K の数×u₁＋K の数×u₂＋…」と<strong>ただ1通りに</strong>書けるような数の組 u₁, u₂, …<br>・次数 [L：K]：基底の個数（L が K からどれだけひろがったか）<br>・例：ℚ(√2)＝{a＋b√2｜a, b は有理数}、基底 1, √2、<span class="nw">[ℚ(√2)：ℚ]＝2</span></div>
@@ -366,6 +441,35 @@
           </div>
           <div class="dialog-bubble">1/(√2＋√3) の分母と分子に √3−√2 を掛けると、(√3−√2)/(3−2)＝√3−√2 です。だから √2＋√3 と √3−√2 が両方 ℚ(√2＋√3) に入ります。足して 2 で割ると √3、引いて 2 で割ると √2。結局 √2 も √3 も入っているので、ℚ(√2＋√3)＝ℚ(√2, √3) です。1つの数を加えただけで、次数 4 の体になるんですね。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 460 246" role="img" aria-label="√2＋√3 から逆数をとって √3−√2 を作り、足し引きして √3 と √2 を取り出す流れの図" style="width:100%;max-width:460px;display:block;margin:0 auto">
+          <rect x="0" y="0" width="460" height="246" fill="#fdfbf6"/>
+
+          <g font-size="12.5" font-weight="800" text-anchor="middle">
+            <rect x="150" y="12" width="160" height="38" rx="10" fill="#efe9f9" stroke="#5b4a9e" stroke-width="2"/>
+            <text x="230" y="36" fill="#221d33">√2＋√3</text>
+            <rect x="110" y="86" width="240" height="38" rx="10" fill="#efe9f9" stroke="#5b4a9e" stroke-width="2"/>
+            <text x="230" y="110" fill="#221d33">1/(√2＋√3)＝√3−√2</text>
+            <rect x="24" y="162" width="190" height="38" rx="10" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="2"/>
+            <text x="119" y="186" fill="#1f6b48">足して 2 で割る → √3</text>
+            <rect x="246" y="162" width="190" height="38" rx="10" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="2"/>
+            <text x="341" y="186" fill="#1f6b48">引いて 2 で割る → √2</text>
+          </g>
+          <g stroke="#77708c" stroke-width="2" fill="#77708c">
+            <line x1="230" y1="52" x2="230" y2="76"/><polygon points="225,76 230,84 235,76"/>
+            <line x1="180" y1="126" x2="130" y2="152"/><polygon points="126,148 124,158 134,156"/>
+            <line x1="280" y1="126" x2="330" y2="152"/><polygon points="334,148 336,158 326,156"/>
+          </g>
+          <text x="300" y="70" font-size="11.5" font-weight="700" fill="#77708c">逆数（分母の有理化）</text>
+          <text x="230" y="222" font-size="12" font-weight="700" fill="#77708c" text-anchor="middle">体なので、逆数・和・差・2 で割る、がすべてできる</text>
+          <text x="230" y="240" font-size="12.5" font-weight="800" fill="#5b4a9e" text-anchor="middle">→ ℚ(√2＋√3) は √2 と √3 を両方含む＝ℚ(√2, √3)</text>
+        </svg>
+        <div class="diagram-caption"><strong>1つの数から √2 と √3 が両方出てくる</strong>。体の中では逆数がとれるので、√2＋√3 から √3−√2 が作れる。2つを足したり引いたりして 2 で割れば、√3 と √2 が別々に取り出せる。だから ℚ(√2＋√3) は ℚ(√2, √3) と同じ体で、次数は 4</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>

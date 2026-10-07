@@ -207,6 +207,33 @@
           </div>
           <div class="dialog-bubble"><a href="https://complex-number.habatakijuku.com/" target="_blank" rel="noopener" style="color:var(--gold-dark);text-decoration:underline">『本当はおもしろい複素数の世界』</a>で学んだとおりに計算します。和と差の積の公式で (3＋2i)(3−2i)＝3²−(2i)²＝9−4i²、i²＝−1 なので 9＋4＝13。……13 は整数の世界では素数ですが、i を使ってよい世界では、2つの数の掛け算に分かれるんですね。a²＋b² ＝ (a＋bi)(a−bi) なので、2つの平方数の和で書ける数はどれも、こうして分かれます。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 240" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="複素数の平面に 3＋2i と 3−2i を描いた図。どちらも原点からの長さは √13 で、掛けると実数の軸の上の 13 になる">
+          <line x1="30" y1="120" x2="350" y2="120" stroke="#b9b0a3" stroke-width="1.4"/>
+          <line x1="60" y1="30" x2="60" y2="210" stroke="#b9b0a3" stroke-width="1.4"/>
+          <line x1="60" y1="116" x2="60" y2="124" stroke="#b9b0a3"/><line x1="78" y1="116" x2="78" y2="124" stroke="#b9b0a3"/><line x1="96" y1="116" x2="96" y2="124" stroke="#b9b0a3"/><line x1="114" y1="116" x2="114" y2="124" stroke="#b9b0a3"/><line x1="132" y1="116" x2="132" y2="124" stroke="#b9b0a3"/><line x1="150" y1="116" x2="150" y2="124" stroke="#b9b0a3"/><line x1="168" y1="116" x2="168" y2="124" stroke="#b9b0a3"/><line x1="186" y1="116" x2="186" y2="124" stroke="#b9b0a3"/><line x1="204" y1="116" x2="204" y2="124" stroke="#b9b0a3"/><line x1="222" y1="116" x2="222" y2="124" stroke="#b9b0a3"/><line x1="240" y1="116" x2="240" y2="124" stroke="#b9b0a3"/><line x1="258" y1="116" x2="258" y2="124" stroke="#b9b0a3"/><line x1="276" y1="116" x2="276" y2="124" stroke="#b9b0a3"/><line x1="294" y1="116" x2="294" y2="124" stroke="#b9b0a3"/>
+          <line x1="60" y1="120" x2="114" y2="84" stroke="#5b4a9e" stroke-width="2.4"/>
+          <line x1="60" y1="120" x2="114" y2="156" stroke="#3f6fb5" stroke-width="2.4"/>
+          <line x1="60" y1="120" x2="294" y2="120" stroke="#c8433f" stroke-width="2.4" stroke-dasharray="6 4"/>
+          <circle cx="114" cy="84" r="6" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="114" cy="156" r="6" fill="#3f6fb5" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="294" cy="120" r="6" fill="#c8433f" stroke="#fff" stroke-width="1.5"/>
+          <text x="124" y="80" font-size="13" font-weight="900" fill="#5b4a9e">3＋2i</text>
+          <text x="124" y="170" font-size="13" font-weight="900" fill="#3f6fb5">3−2i</text>
+          <text x="294" y="106" text-anchor="middle" font-size="13" font-weight="900" fill="#c8433f">13</text>
+          <text x="66" y="96" font-size="11" font-weight="800" fill="#5b4a9e">√13</text>
+          <text x="66" y="150" font-size="11" font-weight="800" fill="#3f6fb5">√13</text>
+          <text x="52" y="134" text-anchor="end" font-size="11" font-weight="800" fill="#77708c">0</text>
+          <text x="200" y="44" font-size="12.5" font-weight="900" fill="#221d33">長さ：√13×√13＝13</text>
+          <text x="200" y="64" font-size="12.5" font-weight="900" fill="#221d33">向き：上に θ、下に θ → 足すと 0</text>
+          <text x="220" y="228" text-anchor="middle" font-size="13" font-weight="900" fill="#5b4a9e">13＝3²＋2²＝(3＋2i)(3−2i)</text>
+        </svg>
+        <div class="diagram-caption"><strong>平方数の和は、複素数の平面での掛け算</strong>。3＋2i（紫）と 3−2i（青）は、実数の軸をはさんで上下対称の位置にあり、原点からの長さはどちらも √(3²＋2²)＝√13。複素数の掛け算では長さどうしを掛けて向きの角度を足すので、積は長さ 13、角度 0、つまり実数の軸の上の 13（赤）になる</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
@@ -295,6 +322,39 @@
           </div>
           <div class="dialog-bubble">いい質問だね。それを決めよう。整数どうしを足しても、引いても、掛けても、答えはまた整数だね。こういう、計算しても集まりの外に出ないことを<strong>閉じている</strong>という。そして、<strong>0 と 1 を含み、足し算・引き算・掛け算で閉じた数の集まり</strong>を<strong>環（かん）</strong>と呼ぶ。この章では「数の世界」とも呼ぶよ。素因数分解の話をするには、掛け算をしても世界の外に出ないことがまず必要だからね。交換法則や分配法則のような計算の決まりは、もとの数（複素数や整数）から引き継がれるから、確かめるのは「閉じているか」だけでいい。ガウス整数、つまり a＋bi（a, b は整数）の形の数全体が環になるか、確かめてごらん。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 230" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="環の約束を図にしたもの。数の世界の箱の中に 0 と 1 があり、足し算・引き算・掛け算の結果は箱の中に戻る。割り算だけは箱の外に出ることがあるので、約束に入れない">
+          <text x="16" y="20" font-size="13" font-weight="900" fill="#221d33">環の約束は3つ</text>
+          <rect x="16" y="34" width="290" height="176" rx="14" fill="#f2effa" stroke="#9a88d6" stroke-width="2"/>
+          <text x="30" y="56" font-size="12.5" font-weight="900" fill="#44377a">数の世界（環）</text>
+          <circle cx="60" cy="96" r="14" fill="#5b4a9e"/><text x="60" y="101" text-anchor="middle" font-size="14" font-weight="900" fill="#fff">0</text>
+          <circle cx="104" cy="96" r="14" fill="#5b4a9e"/><text x="104" y="101" text-anchor="middle" font-size="14" font-weight="900" fill="#fff">1</text>
+          <text x="82" y="130" text-anchor="middle" font-size="11.5" font-weight="800" fill="#44377a">① 0 と 1 を含む</text>
+          <text x="160" y="90" font-size="13" font-weight="900" fill="#221d33">a＋b</text>
+          <text x="160" y="118" font-size="13" font-weight="900" fill="#221d33">a−b</text>
+          <text x="160" y="146" font-size="13" font-weight="900" fill="#221d33">a×b</text>
+          <path d="M208,86 q30,-16 50,0" fill="none" stroke="#2f9e5c" stroke-width="2" marker-end="url(#ar-g1r)"/>
+          <path d="M208,114 q30,-16 50,0" fill="none" stroke="#2f9e5c" stroke-width="2" marker-end="url(#ar-g1r)"/>
+          <path d="M208,142 q30,-16 50,0" fill="none" stroke="#2f9e5c" stroke-width="2" marker-end="url(#ar-g1r)"/>
+          <text x="270" y="90" font-size="11.5" font-weight="900" fill="#2f9e5c">中</text>
+          <text x="270" y="118" font-size="11.5" font-weight="900" fill="#2f9e5c">中</text>
+          <text x="270" y="146" font-size="11.5" font-weight="900" fill="#2f9e5c">中</text>
+          <text x="160" y="176" font-size="11.5" font-weight="800" fill="#44377a">② ③ 足し算・引き算・掛け算で閉じる</text>
+          <text x="160" y="196" font-size="13" font-weight="900" fill="#c8433f">a÷b</text>
+          <path d="M208,192 L330,192" fill="none" stroke="#c8433f" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar-g1x)"/>
+          <text x="336" y="184" font-size="11.5" font-weight="900" fill="#c8433f">外に出ることも</text>
+          <text x="336" y="202" font-size="11.5" font-weight="900" fill="#c8433f">→ 約束に入れない</text>
+          <defs>
+            <marker id="ar-g1r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f9e5c"/></marker>
+            <marker id="ar-g1x" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c8433f"/></marker>
+          </defs>
+        </svg>
+        <div class="diagram-caption"><strong>環の約束</strong>。① 0 と 1 が世界の中にある。②③ 世界の2つの数を足しても、引いても、掛けても、答えは世界の中に戻る（閉じている）。割り算だけは、答えが世界の外に出ることがあるので、約束に入れない</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
@@ -341,6 +401,21 @@
           </div>
           <div class="dialog-bubble">足し算については、第1章の<strong>群</strong>になっていますね。足し算の結果がまた世界の中にあって（閉じている）、結合法則が成り立ち、0 を足しても変わらず（単位元）、a の逆元は −a です。引き算で閉じているので、−a もちゃんと世界の中にあります。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 250" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="整数の足し算と掛け算を群の条件で比べた表。閉じている・結合法則・単位元は両方みたすが、逆元は足し算にはあり、掛け算では 2 の逆元 1/2 が整数でないのでない。足し算は群、掛け算は群ではない">
+          <text x="16" y="22" font-size="13" font-weight="900" fill="#221d33">整数の世界：環＝足し算の群＋掛け算</text>
+          <rect x="130" y="34" width="140" height="28" rx="7" fill="#5b4a9e"/><text x="200" y="53" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">足し算</text>
+          <rect x="280" y="34" width="144" height="28" rx="7" fill="#9a6a1c"/><text x="352" y="53" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">掛け算</text>
+          <text x="16" y="89" font-size="12.5" font-weight="900" fill="#44377a">閉じている</text><line x1="16" y1="101" x2="424" y2="101" stroke="#e6e0d6"/><text x="200" y="89" text-anchor="middle" font-size="12.5" font-weight="900" fill="#2f9e5c">○</text><text x="352" y="89" text-anchor="middle" font-size="12.5" font-weight="900" fill="#2f9e5c">○</text><text x="16" y="123" font-size="12.5" font-weight="900" fill="#44377a">結合法則</text><line x1="16" y1="135" x2="424" y2="135" stroke="#e6e0d6"/><text x="200" y="123" text-anchor="middle" font-size="12.5" font-weight="900" fill="#2f9e5c">○</text><text x="352" y="123" text-anchor="middle" font-size="12.5" font-weight="900" fill="#2f9e5c">○</text><text x="16" y="157" font-size="12.5" font-weight="900" fill="#44377a">単位元</text><line x1="16" y1="169" x2="424" y2="169" stroke="#e6e0d6"/><text x="200" y="157" text-anchor="middle" font-size="12.5" font-weight="900" fill="#221d33">0</text><text x="352" y="157" text-anchor="middle" font-size="12.5" font-weight="900" fill="#221d33">1</text><text x="16" y="191" font-size="12.5" font-weight="900" fill="#44377a">逆元</text><line x1="16" y1="203" x2="424" y2="203" stroke="#e6e0d6"/><text x="200" y="191" text-anchor="middle" font-size="12.5" font-weight="900" fill="#221d33">−a がある</text><text x="352" y="191" text-anchor="middle" font-size="10.5" font-weight="900" fill="#c8433f">2 の相手 1/2 は整数でない</text>
+          <rect x="150" y="214" width="100" height="26" rx="7" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.6"/><text x="200" y="232" text-anchor="middle" font-size="12.5" font-weight="900" fill="#2f9e5c">群になる</text>
+          <rect x="290" y="214" width="124" height="26" rx="7" fill="#fdf1f0" stroke="#c8433f" stroke-width="1.6"/><text x="352" y="232" text-anchor="middle" font-size="12.5" font-weight="900" fill="#c8433f">群にならない</text>
+        </svg>
+        <div class="diagram-caption"><strong>足し算は群、掛け算は群ではない</strong>。整数の世界を、第1章の群の条件で調べた表。足し算は4つの条件をすべてみたして群になる。掛け算は、閉じている・結合法則・単位元 1 まではそろうが、2 に掛けて 1 になる整数がないので、群にはならない</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
@@ -355,6 +430,24 @@
           </div>
           <div class="dialog-bubble">有理数の世界では 6＝(1/2)×12＝(3/7)×14 のように、0 でないどんな数 c を選んでも 6＝c×(6/c) と書けて、6/c も有理数です。どの数もどの数でも割り切れてしまうので、「これ以上分けられない数」が1つもありません。素因数分解を考えるなら、割り算がいつもはできない世界でないといけない、ということですか？</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 236" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="上：整数の数直線で 6 を割り切る正の数は 1, 2, 3, 6 だけ。下：有理数の世界では 0 でないどの数 c でも 6＝c×(6/c) と書けるので、どの数も 6 を割り切り、これ以上分けられない数がない">
+          <text x="16" y="20" font-size="13" font-weight="900" fill="#221d33">整数の世界：6 を割り切る数</text>
+          <line x1="24" y1="58" x2="416" y2="58" stroke="#b9b0a3" stroke-width="1.5"/>
+          <line x1="30" y1="53" x2="30" y2="63" stroke="#b9b0a3"/><circle cx="30" cy="58" r="2.5" fill="#c9c2b4"/><text x="30" y="82" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">0</text><line x1="60" y1="53" x2="60" y2="63" stroke="#b9b0a3"/><circle cx="60" cy="58" r="7" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="60" y="82" text-anchor="middle" font-size="11" font-weight="800" fill="#5b4a9e">1</text><line x1="90" y1="53" x2="90" y2="63" stroke="#b9b0a3"/><circle cx="90" cy="58" r="7" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="90" y="82" text-anchor="middle" font-size="11" font-weight="800" fill="#5b4a9e">2</text><line x1="120" y1="53" x2="120" y2="63" stroke="#b9b0a3"/><circle cx="120" cy="58" r="7" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="120" y="82" text-anchor="middle" font-size="11" font-weight="800" fill="#5b4a9e">3</text><line x1="150" y1="53" x2="150" y2="63" stroke="#b9b0a3"/><circle cx="150" cy="58" r="2.5" fill="#c9c2b4"/><text x="150" y="82" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">4</text><line x1="180" y1="53" x2="180" y2="63" stroke="#b9b0a3"/><circle cx="180" cy="58" r="2.5" fill="#c9c2b4"/><text x="180" y="82" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">5</text><line x1="210" y1="53" x2="210" y2="63" stroke="#b9b0a3"/><circle cx="210" cy="58" r="7" fill="#5b4a9e" stroke="#fff" stroke-width="1.5"/><text x="210" y="82" text-anchor="middle" font-size="11" font-weight="800" fill="#5b4a9e">6</text><line x1="240" y1="53" x2="240" y2="63" stroke="#b9b0a3"/><circle cx="240" cy="58" r="2.5" fill="#c9c2b4"/><text x="240" y="82" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">7</text><line x1="270" y1="53" x2="270" y2="63" stroke="#b9b0a3"/><circle cx="270" cy="58" r="2.5" fill="#c9c2b4"/><text x="270" y="82" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">8</text><line x1="300" y1="53" x2="300" y2="63" stroke="#b9b0a3"/><circle cx="300" cy="58" r="2.5" fill="#c9c2b4"/><text x="300" y="82" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">9</text><line x1="330" y1="53" x2="330" y2="63" stroke="#b9b0a3"/><circle cx="330" cy="58" r="2.5" fill="#c9c2b4"/><text x="330" y="82" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">10</text><line x1="360" y1="53" x2="360" y2="63" stroke="#b9b0a3"/><circle cx="360" cy="58" r="2.5" fill="#c9c2b4"/><text x="360" y="82" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">11</text><line x1="390" y1="53" x2="390" y2="63" stroke="#b9b0a3"/><circle cx="390" cy="58" r="2.5" fill="#c9c2b4"/><text x="390" y="82" text-anchor="middle" font-size="11" font-weight="800" fill="#77708c">12</text>
+          <text x="220" y="104" text-anchor="middle" font-size="12" font-weight="800" fill="#44377a">1, 2, 3, 6 だけ（符号を変えたものを除く）→ 2 と 3 が「分けられない数」</text>
+          <line x1="16" y1="118" x2="424" y2="118" stroke="#e6e0d6" stroke-width="1.5"/>
+          <text x="16" y="140" font-size="13" font-weight="900" fill="#221d33">有理数の世界：6 を割り切る数</text>
+          <line x1="24" y1="176" x2="416" y2="176" stroke="#c8433f" stroke-width="5"/>
+          <text x="30" y="200" text-anchor="middle" font-size="11" font-weight="800" fill="#c8433f">0</text><text x="60" y="200" text-anchor="middle" font-size="11" font-weight="800" fill="#c8433f">1</text><text x="90" y="200" text-anchor="middle" font-size="11" font-weight="800" fill="#c8433f">2</text><text x="120" y="200" text-anchor="middle" font-size="11" font-weight="800" fill="#c8433f">3</text><text x="150" y="200" text-anchor="middle" font-size="11" font-weight="800" fill="#c8433f">4</text><text x="180" y="200" text-anchor="middle" font-size="11" font-weight="800" fill="#c8433f">5</text><text x="210" y="200" text-anchor="middle" font-size="11" font-weight="800" fill="#c8433f">6</text><text x="240" y="200" text-anchor="middle" font-size="11" font-weight="800" fill="#c8433f">7</text><text x="270" y="200" text-anchor="middle" font-size="11" font-weight="800" fill="#c8433f">8</text><text x="300" y="200" text-anchor="middle" font-size="11" font-weight="800" fill="#c8433f">9</text><text x="330" y="200" text-anchor="middle" font-size="11" font-weight="800" fill="#c8433f">10</text><text x="360" y="200" text-anchor="middle" font-size="11" font-weight="800" fill="#c8433f">11</text><text x="390" y="200" text-anchor="middle" font-size="11" font-weight="800" fill="#c8433f">12</text>
+          <text x="220" y="222" text-anchor="middle" font-size="12" font-weight="800" fill="#c8433f">0 でない数は全部（6＝(1/2)×12＝(3/7)×14＝5×(6/5)…）→ 分けられない数がない</text>
+        </svg>
+        <div class="diagram-caption"><strong>割り算がいつでもできると、素因数分解が消える</strong>。上：整数の世界で 6 を割り切る正の数は 1, 2, 3, 6 だけ（紫）で、2 と 3 がそれ以上分けられない部品になる。下：有理数の世界では、0 でないどの数 c でも 6＝c×(6/c) と書けるので、どの数も 6 を割り切る（赤い線全体）。「これ以上分けられない数」がなくなり、素因数分解を考えられない</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>

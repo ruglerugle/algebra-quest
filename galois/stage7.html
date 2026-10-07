@@ -179,6 +179,31 @@
         <span class="step">b<sub>k</sub>＝1 も 3 で割り切れることになり矛盾 → <strong>x⁵−6x＋3 は既約</strong></span>
       </div>
 
+      <div class="diagram-box">
+<svg viewBox="0 0 340 236" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="g(x) の係数 b₀, b₁, b₂, … が順に 3 で割り切れると分かっていき、最高次の係数 1 で矛盾する図">
+          <defs><marker id="ar7e" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b4a9e"/></marker></defs>
+          <text x="170" y="18" font-size="12.5" font-weight="900" fill="#44377a" text-anchor="middle">g(x) の係数が、下の位から順に 3 で割り切れていく</text>
+          <g font-size="13" font-weight="900" text-anchor="middle" fill="#221d33">
+            <rect x="8" y="34" width="56" height="34" rx="8" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.5"/><text x="36" y="56">b₀</text>
+            <rect x="76" y="34" width="56" height="34" rx="8" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.5"/><text x="104" y="56">b₁</text>
+            <rect x="144" y="34" width="56" height="34" rx="8" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.5"/><text x="172" y="56">b₂</text>
+            <rect x="212" y="34" width="56" height="34" rx="8" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.5"/><text x="240" y="56">…</text>
+            <rect x="280" y="34" width="56" height="34" rx="8" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.8"/><text x="308" y="56" fill="#c8433f">b<tspan font-size="9" baseline-shift="sub">k</tspan>＝1</text>
+          </g>
+          <g stroke="#5b4a9e" stroke-width="2" marker-end="url(#ar7e)"><line x1="66" y1="51" x2="74" y2="51"/><line x1="134" y1="51" x2="142" y2="51"/><line x1="202" y1="51" x2="210" y2="51"/><line x1="270" y1="51" x2="278" y2="51"/></g>
+          <path d="M 8 74 L 8 80 L 268 80 L 268 74" fill="none" stroke="#2f9e5c" stroke-width="1.2"/><text x="138" y="94" font-size="10.5" font-weight="800" fill="#2f9e5c" text-anchor="middle">順に、どれも 3 で割り切れる</text>
+          <text x="308" y="94" font-size="10.5" font-weight="900" fill="#c8433f" text-anchor="middle">割り切れない！</text>
+          <g font-size="11.5" font-weight="800" fill="#221d33">
+            <text x="8" y="116"><tspan fill="#2f9e5c" font-weight="900">b₀</tspan>：b₀c₀＝3 → b₀ が 3 で割り切れる（c₀ は割り切れない）</text>
+            <text x="8" y="140"><tspan fill="#2f9e5c" font-weight="900">b₁</tspan>：b₀c₁＋b₁c₀＝−6 → b₁c₀ が割り切れる → b₁ も</text>
+            <text x="8" y="164"><tspan fill="#2f9e5c" font-weight="900">b₂</tspan>：b₀c₂＋b₁c₁＋b₂c₀＝0 → b₂c₀ が割り切れる → b₂ も</text>
+            <text x="8" y="188" font-size="10.5" fill="#77708c">（c₀ が割り切れないので「素数は素元」から b₁, b₂, … が割り切れる）</text>
+            <text x="8" y="218" fill="#c8433f" font-weight="900">最高次の係数 1 に届くと、1 が 3 で割り切れることになり矛盾</text>
+          </g>
+        </svg>
+        <div class="diagram-caption"><strong>アイゼンシュタインの判定法のしくみ</strong>。x⁵−6x＋3＝g(x)h(x) と分かれたとすると、定数項から b₀ が 3 で割り切れ、x の係数の式から b₁ が、x² の係数の式から b₂ が、と順に「3 で割り切れる」が上の位へ伝わっていく。各段で c₀ が 3 で割り切れないことと「素数は素元」を使う。最後に最高次の係数 1 に届いて矛盾する</div>
+      </div>
+
       <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
@@ -194,6 +219,25 @@
           </div>
           <div class="dialog-bubble">x＝−2 で −32＋12＋3＝−17、x＝−1 で 8、x＝0 で 3、x＝1 で −2、x＝2 で 32−12＋3＝23 です。符号は −, ＋, ＋, −, ＋ で、−2 と −1 の間、0 と 1 の間、1 と 2 の間で符号が変わります。グラフはつながっているので、それぞれの間で x 軸を横切ります。<strong>実数解は少なくとも3つ</strong>あります。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 340 150" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="x＝−2, −1, 0, 1, 2 での x⁵−6x＋3 の値の符号を数直線に並べ、符号が変わる3つの区間を示した図">
+          <line x1="14" y1="76" x2="326" y2="76" stroke="#221d33" stroke-width="1.4"/>
+          <g stroke="#b9b0a3" stroke-width="1"><line x1="42" y1="71" x2="42" y2="81"/><line x1="106" y1="71" x2="106" y2="81"/><line x1="170" y1="71" x2="170" y2="81"/><line x1="234" y1="71" x2="234" y2="81"/><line x1="298" y1="71" x2="298" y2="81"/></g>
+          <g font-size="11" fill="#77708c" font-weight="700" text-anchor="middle"><text x="42" y="96">x＝−2</text><text x="106" y="96">−1</text><text x="170" y="96">0</text><text x="234" y="96">1</text><text x="298" y="96">2</text></g>
+          <g font-size="12" font-weight="900" text-anchor="middle">
+            <text x="42" y="36" fill="#3f6fb5">−17</text><text x="106" y="36" fill="#c8433f">8</text><text x="170" y="36" fill="#c8433f">3</text><text x="234" y="36" fill="#3f6fb5">−2</text><text x="298" y="36" fill="#c8433f">23</text>
+            <text x="42" y="56" fill="#3f6fb5">−</text><text x="106" y="56" fill="#c8433f">＋</text><text x="170" y="56" fill="#c8433f">＋</text><text x="234" y="56" fill="#3f6fb5">−</text><text x="298" y="56" fill="#c8433f">＋</text>
+          </g>
+          <text x="8" y="18" font-size="11" font-weight="800" fill="#44377a">f(x)＝x⁵−6x＋3 の値と符号</text>
+          <g fill="#2f9e5c"><circle cx="74" cy="76" r="6" stroke="#fff" stroke-width="1.5"/><circle cx="202" cy="76" r="6" stroke="#fff" stroke-width="1.5"/><circle cx="266" cy="76" r="6" stroke="#fff" stroke-width="1.5"/></g>
+          <g font-size="10.5" font-weight="900" fill="#2f9e5c" text-anchor="middle"><text x="74" y="116">符号が変わる</text><text x="74" y="130">→ 解がある</text><text x="202" y="116">符号が変わる</text><text x="202" y="130">→ 解がある</text><text x="266" y="144">同じく解がある</text></g>
+        </svg>
+        <div class="diagram-caption"><strong>符号の変化で実数解を数える</strong>。x＝−2, −1, 0, 1, 2 での f(x) の値は −17, 8, 3, −2, 23 で、符号は −, ＋, ＋, −, ＋。符号が変わる区間（−2 と −1 の間、0 と 1 の間、1 と 2 の間）には、グラフが x 軸を横切る点（緑）が少なくとも1つずつある。だから実数解は少なくとも3つ</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
@@ -274,6 +318,28 @@
           </div>
           <div class="dialog-bubble">入れ替えは、いくつかの巡回に分けて書けます。長さ L の巡回は L 回くり返すともとにもどります。σ を5回くり返して全部がもとにもどるには、どの巡回の長さも 5 を割り切るので、1 か 5 です。全部長さ 1 なら e なので、長さ 5 の巡回が1つあります。σ は<strong>5つ組の巡回</strong>です。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 340 236" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="5つの番号の入れ替えを巡回の形で分類し、それぞれの位数を並べた表。位数 5 になるのは5つ組の巡回だけ">
+          <g font-size="11.5" font-weight="900" fill="#44377a"><text x="8" y="18">入れ替えの形（巡回の長さ）</text><text x="208" y="18">例</text><text x="296" y="18">位数</text></g>
+          <line x1="8" y1="26" x2="332" y2="26" stroke="#d8d2ea"/>
+          <g font-size="11.5" font-weight="800" fill="#221d33">
+            <text x="8" y="46">5つ組の巡回（5）</text><text x="208" y="46">(1 2 3 4 5)</text><text x="304" y="46" font-weight="900" fill="#c8433f">5</text>
+            <text x="8" y="72">4つ組の巡回（4＋1）</text><text x="208" y="72">(1 2 3 4)</text><text x="304" y="72">4</text>
+            <text x="8" y="98">3つ組と互換（3＋2）</text><text x="208" y="98">(1 2 3)(4 5)</text><text x="304" y="98">6</text>
+            <text x="8" y="124">3つ組の巡回（3＋1＋1）</text><text x="208" y="124">(1 2 3)</text><text x="304" y="124">3</text>
+            <text x="8" y="150">2組の入れ替え（2＋2＋1）</text><text x="208" y="150">(1 2)(3 4)</text><text x="304" y="150">2</text>
+            <text x="8" y="176">互換（2＋1＋1＋1）</text><text x="208" y="176">(1 2)</text><text x="304" y="176">2</text>
+            <text x="8" y="202">何もしない（1 が5つ）</text><text x="208" y="202">e</text><text x="304" y="202">1</text>
+          </g>
+          <rect x="4" y="32" width="332" height="20" rx="5" fill="none" stroke="#c8433f" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="170" y="228" font-size="11" font-weight="900" fill="#c8433f" text-anchor="middle">位数が 5 になる形は、5つ組の巡回だけ</text>
+        </svg>
+        <div class="diagram-caption"><strong>5つの番号の入れ替えの形と位数</strong>。入れ替えはいくつかの巡回に分かれ、位数（くり返してもとにもどる回数）は、巡回の長さの最小公倍数になる。たとえば (1 2 3)(4 5) は 3 と 2 の最小公倍数で 6。位数がちょうど 5 になるのは、長さ 5 の巡回1つだけの形</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
@@ -288,6 +354,33 @@
           </div>
           <div class="dialog-bubble">σ⁻¹ は 2→1、3→2、… と1つずつ戻す入れ替えです。2 は σ⁻¹ で 1、τ で 2、σ で 3。3 は σ⁻¹ で 2、τ で 1、σ で 2。ほかの番号、たとえば 1 は σ⁻¹ で 5、τ で 5、σ で 1 と、もとにもどります。だから σ⁻¹τσ＝<strong>(2 3)</strong>。同じことをもう一度すると (3 4)、さらに (4 5) が出てきます。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 340 212" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="番号 1〜5 が σ⁻¹, τ, σ で順にどこへ行くかを表にした図。2 と 3 だけが入れ替わる">
+          <g font-size="11.5" font-weight="900" text-anchor="middle" fill="#44377a">
+            <text x="56" y="20">はじめ</text><text x="128" y="20">σ⁻¹ のあと</text><text x="208" y="20">τ のあと</text><text x="288" y="20">σ のあと</text>
+          </g>
+          <g font-size="9.5" font-weight="700" text-anchor="middle" fill="#77708c">
+            <text x="128" y="33">1つ戻す</text><text x="208" y="33">(1 2)</text><text x="288" y="33">1つ進める</text>
+          </g>
+          <g stroke="#d8d2ea" stroke-width="1"><line x1="26" y1="40" x2="326" y2="40"/><line x1="90" y1="40" x2="90" y2="184"/></g>
+          <g font-size="13" font-weight="900" text-anchor="middle" fill="#221d33">
+            <text x="56" y="63" fill="#77708c">1</text><text x="128" y="63" fill="#77708c">5</text><text x="208" y="63" fill="#77708c">5</text><text x="288" y="63" fill="#77708c">1</text>
+            <text x="56" y="92">2</text><text x="128" y="92">1</text><text x="208" y="92">2</text><text x="288" y="92" fill="#c8433f">3</text>
+            <text x="56" y="121">3</text><text x="128" y="121">2</text><text x="208" y="121">1</text><text x="288" y="121" fill="#c8433f">2</text>
+            <text x="56" y="150" fill="#77708c">4</text><text x="128" y="150" fill="#77708c">3</text><text x="208" y="150" fill="#77708c">3</text><text x="288" y="150" fill="#77708c">4</text>
+            <text x="56" y="179" fill="#77708c">5</text><text x="128" y="179" fill="#77708c">4</text><text x="208" y="179" fill="#77708c">4</text><text x="288" y="179" fill="#77708c">5</text>
+          </g>
+          <g stroke="#e0d6ea" stroke-width="1"><line x1="26" y1="72" x2="326" y2="72"/><line x1="26" y1="101" x2="326" y2="101"/><line x1="26" y1="130" x2="326" y2="130"/><line x1="26" y1="159" x2="326" y2="159"/></g>
+          <rect x="30" y="76" width="52" height="52" rx="6" fill="none" stroke="#c8433f" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <rect x="262" y="76" width="52" height="52" rx="6" fill="none" stroke="#c8433f" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="170" y="208" font-size="11.5" font-weight="900" fill="#c8433f" text-anchor="middle">2→3、3→2、ほかはもとのまま → σ⁻¹τσ＝(2 3)</text>
+        </svg>
+        <div class="diagram-caption"><strong>σ⁻¹τσ の計算</strong>。各行は番号 1〜5 が、σ⁻¹（1つ戻す）、τ＝(1 2)、σ（1つ進める）を順に受けてどこへ行くか。右端が最終の行き先で、2 と 3 だけが入れ替わり、ほかはもとにもどる。τ の「1 と 2」が σ で1つずらされて「2 と 3」になった形</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>

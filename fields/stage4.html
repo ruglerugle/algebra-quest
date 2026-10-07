@@ -175,6 +175,43 @@
         </div>
       </div>
 
+      <div class="diagram-box">
+<svg viewBox="0 0 460 226" role="img" aria-label="M の K 上の基底と L の M 上の基底を縦横に並べ、掛け合わせた m×n 個が L の K 上の基底になることを示す格子の図" style="width:100%;max-width:460px;display:block;margin:0 auto">
+          <rect x="0" y="0" width="460" height="226" fill="#fdfbf6"/>
+
+          <text x="100" y="22" font-size="12.5" font-weight="800" fill="#77708c" text-anchor="middle">例：ℚ ⊂ ℚ(√2) ⊂ ℚ(√2, √3)</text>
+          <g font-size="12.5" font-weight="800" text-anchor="middle">
+            <text x="112" y="56" fill="#3f6fb5">1</text><text x="166" y="56" fill="#3f6fb5">√3</text>
+            <text x="58" y="88" fill="#5b4a9e">1</text><text x="58" y="142" fill="#5b4a9e">√2</text>
+            <rect x="86" y="68" width="52" height="40" rx="6" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.5"/><text x="112" y="93" fill="#1f6b48">1</text>
+            <rect x="140" y="68" width="52" height="40" rx="6" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.5"/><text x="166" y="93" fill="#1f6b48">√3</text>
+            <rect x="86" y="122" width="52" height="40" rx="6" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.5"/><text x="112" y="147" fill="#1f6b48">√2</text>
+            <rect x="140" y="122" width="52" height="40" rx="6" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.5"/><text x="166" y="147" fill="#1f6b48">√6</text>
+          </g>
+          <text x="30" y="40" font-size="11" font-weight="700" fill="#3f6fb5">L の M 上の基底 →</text>
+          <text x="22" y="186" font-size="11" font-weight="700" fill="#5b4a9e">↑ M の K 上の基底</text>
+          <text x="139" y="208" font-size="11.5" font-weight="700" fill="#1f6b48" text-anchor="middle">緑が L の K 上の基底：2×2＝4 個</text>
+          <text x="340" y="22" font-size="12.5" font-weight="800" fill="#77708c" text-anchor="middle">一般：K ⊂ M ⊂ L</text>
+          <g font-size="12" font-weight="800" text-anchor="middle">
+            <text x="284" y="56" fill="#3f6fb5">v₁</text><text x="326" y="56" fill="#3f6fb5">v₂</text><text x="368" y="56" fill="#3f6fb5">…</text><text x="410" y="56" fill="#3f6fb5">vₙ</text>
+            <text x="244" y="84" fill="#5b4a9e">u₁</text><text x="244" y="118" fill="#5b4a9e">u₂</text><text x="244" y="150" fill="#5b4a9e">⋮</text><text x="244" y="182" fill="#5b4a9e">uₘ</text>
+          </g>
+          <g fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.2">
+            <rect x="266" y="66" width="36" height="28" rx="5"/><rect x="308" y="66" width="36" height="28" rx="5"/><rect x="350" y="66" width="36" height="28" rx="5"/><rect x="392" y="66" width="36" height="28" rx="5"/>
+            <rect x="266" y="100" width="36" height="28" rx="5"/><rect x="308" y="100" width="36" height="28" rx="5"/><rect x="350" y="100" width="36" height="28" rx="5"/><rect x="392" y="100" width="36" height="28" rx="5"/>
+            <rect x="266" y="164" width="36" height="28" rx="5"/><rect x="308" y="164" width="36" height="28" rx="5"/><rect x="350" y="164" width="36" height="28" rx="5"/><rect x="392" y="164" width="36" height="28" rx="5"/>
+          </g>
+          <g font-size="11" font-weight="800" fill="#1f6b48" text-anchor="middle">
+            <text x="284" y="85">u₁v₁</text><text x="326" y="85">u₁v₂</text><text x="368" y="85">…</text><text x="410" y="85">u₁vₙ</text>
+            <text x="284" y="119">u₂v₁</text><text x="326" y="119">u₂v₂</text><text x="368" y="119">…</text><text x="410" y="119">u₂vₙ</text>
+            <text x="284" y="150">⋮</text><text x="326" y="150">⋮</text><text x="410" y="150">⋮</text>
+            <text x="284" y="183">uₘv₁</text><text x="326" y="183">uₘv₂</text><text x="368" y="183">…</text><text x="410" y="183">uₘvₙ</text>
+          </g>
+          <text x="347" y="214" font-size="11.5" font-weight="700" fill="#1f6b48" text-anchor="middle">全部で m×n 個 → [L：K]＝m×n</text>
+        </svg>
+        <div class="diagram-caption"><strong>基底を掛け合わせる</strong>。縦に M の K 上の基底 u₁, …, uₘ、横に L の M 上の基底 v₁, …, vₙ を並べ、交わるマスに積 uᵢvⱼ を書く。この m×n 個が L の K 上の基底になる。左は ℚ(√2, √3) の例で、1, √2 と 1, √3 から 1, √3, √2, √6 の 4 個ができる</div>
+      </div>
+
       <div class="formula-box">
         <span class="step"><strong>次数の積の法則</strong>：K ⊂ M ⊂ L のとき <span class="nw">[L：K]＝[L：M]×[M：K]</span></span>
         <span class="step">M の K 上の基底 u₁, …, uₘ、L の M 上の基底 v₁, …, vₙ → 積 uᵢvⱼ（m×n 個）が L の K 上の基底</span>
@@ -314,6 +351,45 @@
         </div>
       </div>
 
+      <div class="diagram-box">
+<svg viewBox="0 0 460 232" role="img" aria-label="ℚ ⊂ ℚ(α) ⊂ Kₙ の塔で、α の次数が 2 のm乗を割り切ることから、1, 2, 4, 8, … に限られることを示す図" style="width:100%;max-width:460px;display:block;margin:0 auto">
+          <rect x="0" y="0" width="460" height="232" fill="#fdfbf6"/>
+
+          <g font-size="12.5" font-weight="800" text-anchor="middle">
+            <rect x="50" y="16" width="130" height="36" rx="9" fill="#efe9f9" stroke="#5b4a9e" stroke-width="2"/><text x="115" y="39" fill="#221d33">Kₙ</text>
+            <rect x="50" y="98" width="130" height="36" rx="9" fill="#efe9f9" stroke="#5b4a9e" stroke-width="2"/><text x="115" y="121" fill="#221d33">ℚ(α)</text>
+            <rect x="50" y="180" width="130" height="36" rx="9" fill="#efe9f9" stroke="#5b4a9e" stroke-width="2"/><text x="115" y="203" fill="#221d33">ℚ</text>
+          </g>
+          <g stroke="#5b4a9e" stroke-width="2.5"><line x1="115" y1="54" x2="115" y2="96"/><line x1="115" y1="136" x2="115" y2="178"/></g>
+          <text x="123" y="79" font-size="12" font-weight="800" fill="#77708c">？</text>
+          <text x="123" y="162" font-size="12" font-weight="800" fill="#c8433f">α の次数 d</text>
+          <path d="M 42 34 Q 24 116 42 198" fill="none" stroke="#9a6a1c" stroke-width="2" stroke-dasharray="5 4"/>
+          <text x="14" y="116" font-size="12" font-weight="800" fill="#9a6a1c" text-anchor="middle" transform="rotate(-90 14 116)">2ᵐ（各段 1 か 2）</text>
+          <g font-size="12.5" font-weight="700">
+            <text x="196" y="40" fill="#221d33">積の法則：2ᵐ＝（？）×d</text>
+            <text x="196" y="60" fill="#221d33">→ d は 2ᵐ の約数</text>
+            <text x="196" y="92" fill="#77708c">2ᵐ＝2×2×…×2 の約数は</text>
+          </g>
+          <g font-size="13" font-weight="900" text-anchor="middle">
+            <rect x="196" y="104" width="40" height="30" rx="7" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.5"/><text x="216" y="124" fill="#1f6b48">1</text>
+            <rect x="242" y="104" width="40" height="30" rx="7" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.5"/><text x="262" y="124" fill="#1f6b48">2</text>
+            <rect x="288" y="104" width="40" height="30" rx="7" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.5"/><text x="308" y="124" fill="#1f6b48">4</text>
+            <rect x="334" y="104" width="40" height="30" rx="7" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.5"/><text x="354" y="124" fill="#1f6b48">8</text>
+            <rect x="380" y="104" width="40" height="30" rx="7" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.5"/><text x="400" y="124" fill="#1f6b48">…</text>
+          </g>
+          <text x="196" y="160" font-size="12" font-weight="700" fill="#77708c">だけ（素因数分解がただ1通りだから）</text>
+          <g font-size="13" font-weight="900" text-anchor="middle">
+            <rect x="196" y="172" width="40" height="30" rx="7" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.5"/><text x="216" y="192" fill="#c8433f">3</text>
+            <rect x="242" y="172" width="40" height="30" rx="7" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.5"/><text x="262" y="192" fill="#c8433f">5</text>
+            <rect x="288" y="172" width="40" height="30" rx="7" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.5"/><text x="308" y="192" fill="#c8433f">6</text>
+            <rect x="334" y="172" width="40" height="30" rx="7" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.5"/><text x="354" y="192" fill="#c8433f">7</text>
+          </g>
+          <text x="400" y="192" font-size="12" font-weight="700" fill="#c8433f" text-anchor="middle">はだめ</text>
+          <text x="310" y="226" font-size="12" font-weight="700" fill="#77708c" text-anchor="middle">約数でない次数の数は、塔のどこにも入れない</text>
+        </svg>
+        <div class="diagram-caption"><strong>α の次数は 2ᵐ の約数</strong>。作図できる数 α は、√ を1つずつ加えた塔のてっぺん Kₙ（次数 2ᵐ）に入る。積の法則から α の次数 d は 2ᵐ を割り切るので、d は 1, 2, 4, 8, … のどれか（緑）。3 や 5 や 6（赤）は 2ᵐ の約数にならないので、そういう次数の数は作図できない</div>
+      </div>
+
       <div class="note-box"><span class="nb-title">作図できる数の判定法</span>定規とコンパスで作図できる数 α は、√ を1つずつ加えた体の塔 <span class="nw">ℚ＝K₀ ⊂ K₁ ⊂ … ⊂ Kₙ</span>（各段の次数は 1 か 2）のどこかに入る。だから<br><strong>α が作図できる ⇒ α の次数（最小多項式の次数）は 1, 2, 4, 8, … のどれか</strong><br>言いかえると、次数が 3 や 5 や 6 の数は、どう工夫しても作図できない。</div>
 
       <div class="dialogue-scene">
@@ -352,6 +428,40 @@
           </div>
           <div class="dialog-bubble">そう。3回目まで続けると、点の数は 17 億個を超えることが計算機で確かめられている。それでも、どの点の座標も、√ を1つずつ加えた体の数で、次数は 2 の累乗だ。ただし注意しておくと、次数が 2 の累乗なら必ず作図できる、とまでは言えない。次数が 4 なのに作図できない数もあって、それを見分けるには第4章のガロア理論が必要になる。でも、「できない」ことを示すには、今日の判定法だけで十分なんだ。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 460 240" role="img" aria-label="次数が 2 の累乗の数の集まりの中に作図できる数の集まりが含まれ、次数 3 の数はその外にあることを示す図" style="width:100%;max-width:460px;display:block;margin:0 auto">
+          <rect x="0" y="0" width="460" height="240" fill="#fdfbf6"/>
+
+          <rect x="10" y="12" width="440" height="216" rx="14" fill="#fdfbf6" stroke="#77708c" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <text x="24" y="34" font-size="12.5" font-weight="800" fill="#77708c">最小多項式をもつ数（実数）</text>
+          <rect x="24" y="48" width="276" height="166" rx="12" fill="#f2effa" stroke="#5b4a9e" stroke-width="2"/>
+          <text x="38" y="70" font-size="12.5" font-weight="800" fill="#5b4a9e">次数が 2 の累乗の数</text>
+          <ellipse cx="128" cy="150" rx="92" ry="52" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="2"/>
+          <text x="128" y="118" font-size="12.5" font-weight="800" fill="#1f6b48" text-anchor="middle">作図できる数</text>
+          <g font-size="12" font-weight="700" fill="#1f6b48" text-anchor="middle">
+            <text x="128" y="142">√2、1＋√3</text>
+            <text x="128" y="160">√(1＋√2)（次数 4）</text>
+            <text x="128" y="178">有理数</text>
+          </g>
+          <g font-size="11.5" font-weight="700" fill="#5b4a9e">
+            <text x="224" y="128">次数 4 だが</text>
+            <text x="224" y="144">作図でき</text>
+            <text x="224" y="160">ない数も</text>
+            <text x="224" y="176">ある(第4章)</text>
+          </g>
+          <g font-size="12.5" font-weight="800" fill="#c8433f">
+            <text x="316" y="100">∛2（次数 3）</text>
+            <text x="316" y="124">cos 20°（次数 3）</text>
+            <text x="316" y="160" font-size="11.5" fill="#77708c">次数が 2 の累乗でない</text>
+            <text x="316" y="176" font-size="11.5" fill="#77708c">→ 作図できない</text>
+          </g>
+        </svg>
+        <div class="diagram-caption"><strong>作図できる数の居場所</strong>。作図できる数（緑）は、次数が 2 の累乗の数（紫）の中にすっぽり入る。だから、次数が 3 の ∛2 や cos 20°（赤）は作図できない。ただし紫の中には、次数が 2 の累乗なのに作図できない数もある。その見分け方は第4章で分かる</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>

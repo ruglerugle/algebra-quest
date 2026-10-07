@@ -164,6 +164,29 @@
           </div>
           <div class="dialog-bubble">g で Δ が εΔ になるとします（ε は 1 か −1）。h は Δ を変えないので、εΔ も変えません。最後の g⁻¹ は g を逆にもどすので、Δ を εΔ に、つまり εΔ を ε×εΔ＝Δ にもどします。だから ghg⁻¹ は Δ を変えません。<strong>ghg⁻¹ はまた H に入ります</strong>。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 340 166" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="Δ が g で εΔ になり、h でそのまま、g⁻¹ で Δ にもどる流れ図">
+          <defs><marker id="ar5d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b4a9e"/></marker></defs>
+          <text x="170" y="18" font-size="12.5" font-weight="900" fill="#44377a" text-anchor="middle">ghg⁻¹ は Δ を変えない</text>
+          <g font-size="14" font-weight="900" text-anchor="middle" fill="#221d33">
+            <rect x="8" y="48" width="60" height="38" rx="8" fill="#f2effa" stroke="#5b4a9e" stroke-width="1.5"/><text x="38" y="72">Δ</text>
+            <rect x="110" y="48" width="60" height="38" rx="8" fill="#fdfbf6" stroke="#9a88d6"/><text x="140" y="72">εΔ</text>
+            <rect x="212" y="48" width="60" height="38" rx="8" fill="#fdfbf6" stroke="#9a88d6"/><text x="242" y="72">εΔ</text>
+            <rect x="274" y="100" width="60" height="38" rx="8" fill="#f2effa" stroke="#5b4a9e" stroke-width="1.5"/><text x="304" y="124">Δ</text>
+          </g>
+          <g stroke="#5b4a9e" stroke-width="2.2" marker-end="url(#ar5d)" fill="none"><line x1="70" y1="67" x2="106" y2="67"/><line x1="172" y1="67" x2="208" y2="67"/><path d="M 274 67 L 304 67 L 304 96"/></g>
+          <g font-size="11.5" font-weight="900" text-anchor="middle">
+            <text x="88" y="44" fill="#5b4a9e">① g</text><text x="88" y="104" fill="#77708c">ε 倍（ε＝±1）</text>
+            <text x="190" y="44" fill="#2f9e5c">② h</text><text x="190" y="104" fill="#77708c">Δ を変えないので</text><text x="190" y="118" fill="#77708c">εΔ もそのまま</text>
+            <text x="296" y="44" fill="#c8433f">③ g⁻¹</text><text x="304" y="158" fill="#77708c">ε 倍をもどす</text>
+          </g>
+        </svg>
+        <div class="diagram-caption"><strong>ghg⁻¹ が Δ を変えない理由</strong>。g で Δ は εΔ（ε は 1 か −1）になる。h は Δ を変えない入れ替えなので、εΔ もそのまま。最後の g⁻¹ は g を逆にもどす操作なので、ε 倍をもどして Δ に返る。3つを続けた ghg⁻¹ は Δ を変えないので、H の仲間</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
@@ -249,6 +272,42 @@
         </div>
       </div>
 
+      <div class="diagram-box">
+<svg viewBox="0 0 340 300" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="正規部分群ならコピーどうしの掛け算表が作れ、正規部分群でないと作れない様子を並べた図">
+          <text x="8" y="18" font-size="12.5" font-weight="900" fill="#2f9e5c">正規部分群 H＝{e, (α β γ), (α γ β)} のとき</text>
+          <g font-size="11.5" font-weight="900" text-anchor="middle" fill="#221d33">
+            <rect x="8" y="30" width="60" height="28" rx="6" fill="#fdfbf6" stroke="#9a88d6"/><text x="38" y="49">あとに</text>
+            <rect x="72" y="30" width="80" height="28" rx="6" fill="#e6f5ec" stroke="#2f9e5c"/><text x="112" y="49">H（偶）</text>
+            <rect x="156" y="30" width="80" height="28" rx="6" fill="#fbe9f1" stroke="#a63f6f"/><text x="196" y="49">互換3つ（奇）</text>
+            <rect x="8" y="62" width="60" height="28" rx="6" fill="#e6f5ec" stroke="#2f9e5c"/><text x="38" y="81">H（偶）</text>
+            <rect x="72" y="62" width="80" height="28" rx="6" fill="#e6f5ec" stroke="#2f9e5c"/><text x="112" y="81">偶</text>
+            <rect x="156" y="62" width="80" height="28" rx="6" fill="#fbe9f1" stroke="#a63f6f"/><text x="196" y="81">奇</text>
+            <rect x="8" y="94" width="60" height="28" rx="6" fill="#fbe9f1" stroke="#a63f6f"/><text x="38" y="113">奇</text>
+            <rect x="72" y="94" width="80" height="28" rx="6" fill="#fbe9f1" stroke="#a63f6f"/><text x="112" y="113">奇</text>
+            <rect x="156" y="94" width="80" height="28" rx="6" fill="#e6f5ec" stroke="#2f9e5c"/><text x="196" y="113">偶</text>
+          </g>
+          <g font-size="12" font-weight="900" text-anchor="middle" fill="#221d33">
+            <text x="250" y="49">×</text><text x="286" y="81">＋1</text><text x="322" y="81">−1</text><text x="286" y="49">＋1</text><text x="322" y="49">−1</text>
+            <text x="250" y="81">＋1</text><text x="250" y="113">−1</text><text x="286" y="113">−1</text><text x="322" y="113">＋1</text>
+          </g>
+          <line x1="236" y1="40" x2="236" y2="120" stroke="#d8d2ea"/>
+          <text x="170" y="142" font-size="11" font-weight="800" fill="#2f9e5c" text-anchor="middle">どれを選んでも答えのコピーは決まる（±1 の表と同じ形）</text>
+          <line x1="8" y1="156" x2="332" y2="156" stroke="#d8d2ea"/>
+          <text x="8" y="176" font-size="12.5" font-weight="900" fill="#c8433f">正規部分群でない H＝{e, (α β)} のとき</text>
+          <g font-size="11.5" font-weight="800" fill="#221d33">
+            <text x="8" y="200">H の e のあとに (α γ) → <tspan font-weight="900">(α γ)</tspan>：コピー (α γ)H に入る</text>
+            <text x="8" y="222">H の (α β) のあとに (α γ) → <tspan font-weight="900">(α β γ)</tspan>：3つ目のコピーに入る</text>
+          </g>
+          <g font-size="11" font-weight="900" text-anchor="middle">
+            <rect x="8" y="238" width="100" height="26" rx="6" fill="#e6f5ec" stroke="#2f9e5c"/><text x="58" y="255" fill="#221d33">H＝{e, (α β)}</text>
+            <rect x="120" y="238" width="100" height="26" rx="6" fill="#fff4d9" stroke="#e3bd6a"/><text x="170" y="255" fill="#221d33">{(α γ), (α γ β)}</text>
+            <rect x="232" y="238" width="100" height="26" rx="6" fill="#e7eefa" stroke="#9ab4e0"/><text x="282" y="255" fill="#221d33">{(β γ), (α β γ)}</text>
+          </g>
+          <text x="170" y="288" font-size="11" font-weight="800" fill="#c8433f" text-anchor="middle">選ぶものによって答えのコピーが変わる → 掛け算が決まらない</text>
+        </svg>
+        <div class="diagram-caption"><strong>コピーどうしの掛け算ができるかどうか</strong>。上：H が正規部分群なら、2つのコピーからどれを選んで続けても、答えの入るコピーは決まる（偶×偶＝偶、偶×奇＝奇、奇×奇＝偶）。これは ＋1 と −1 の掛け算表と同じ形。下：H＝{e, (α β)} では、同じコピー H から e を選ぶか (α β) を選ぶかで、(α γ) を続けた結果が別のコピーに入ってしまい、掛け算が決まらない</div>
+      </div>
+
       <div class="formula-box">
         <span class="step"><strong>正規部分群</strong>：どの g についても <span class="nw">gH＝Hg</span>（左右どちらからずらしても、同じ分け方になる）部分群 H</span>
         <span class="step">言いかえると、どの g, h についても <span class="nw">ghg⁻¹</span> が H に入る</span>
@@ -293,6 +352,30 @@
           </div>
           <div class="dialog-bubble">√ のときと同じだ。だから H は正規部分群になる。そして、g が u を ωᵏu に移すとき、g に 1, ω, ω² のどれかを対応させる。2つの入れ替えを続けると、ω の指数が足されるね。だから割った群は、1, ω, ω² の掛け算の一部と同じ形で、<strong>巡回群</strong>になる。第1章で学んだ、1つの元をくり返し掛けると全部が出てくる群だ。√ の場合も、割った群は ＋1, −1 の掛け算の一部だから巡回群になる。もっと一般に、1 の n 乗根がある体に ⁿ√a を加えると、割った群は巡回群になる。1 の n 乗根そのものを加える段でも、割った群は巡回群（の積み重ね）にできることが分かっている。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 340 258" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="G の入れ替えを、u の行き先に応じて 1, ω, ω² の3つに対応させると、続けることが指数の足し算になる図">
+          <defs><marker id="ar5w" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9a88d6"/></marker></defs>
+          <g font-size="11.5" font-weight="900" text-anchor="middle" fill="#44377a"><text x="80" y="18">G の入れ替え</text><text x="190" y="18">u の行き先</text><text x="290" y="18">対応させる数</text></g>
+          <g font-size="11.5" font-weight="800" text-anchor="middle" fill="#221d33">
+            <rect x="10" y="30" width="140" height="30" rx="7" fill="#e6f5ec" stroke="#2f9e5c"/><text x="80" y="49">H（u を変えない）</text>
+            <rect x="10" y="70" width="140" height="30" rx="7" fill="#fff4d9" stroke="#e3bd6a"/><text x="80" y="89">コピー gH</text>
+            <rect x="10" y="110" width="140" height="30" rx="7" fill="#e7eefa" stroke="#9ab4e0"/><text x="80" y="129">コピー g²H</text>
+            <text x="190" y="49">u</text><text x="190" y="89">ωu</text><text x="190" y="129">ω²u</text>
+            <rect x="260" y="30" width="60" height="30" rx="7" fill="#f2effa" stroke="#5b4a9e"/><text x="290" y="49" font-size="13" font-weight="900">1</text>
+            <rect x="260" y="70" width="60" height="30" rx="7" fill="#f2effa" stroke="#5b4a9e"/><text x="290" y="89" font-size="13" font-weight="900">ω</text>
+            <rect x="260" y="110" width="60" height="30" rx="7" fill="#f2effa" stroke="#5b4a9e"/><text x="290" y="129" font-size="13" font-weight="900">ω²</text>
+          </g>
+          <g stroke="#9a88d6" stroke-width="1.5" marker-end="url(#ar5w)"><line x1="152" y1="45" x2="172" y2="45"/><line x1="152" y1="85" x2="172" y2="85"/><line x1="152" y1="125" x2="172" y2="125"/><line x1="212" y1="45" x2="256" y2="45"/><line x1="212" y1="85" x2="256" y2="85"/><line x1="212" y1="125" x2="256" y2="125"/></g>
+          <line x1="10" y1="156" x2="330" y2="156" stroke="#d8d2ea"/>
+          <g font-size="11.5" font-weight="800" fill="#221d33">
+            <text x="10" y="180">u を ωu に移す入れ替えのあとに、u を ω²u に移す入れ替え</text>
+            <text x="10" y="200">→ u は ω×ω²u＝ω³u＝u に移る：<tspan fill="#5b4a9e" font-weight="900">ω¹×ω²＝ω³＝1</tspan></text>
+            <text x="10" y="226" fill="#a63f6f" font-weight="900">続けて行う ＝ 対応する数を掛け合わせる</text><text x="10" y="246" fill="#a63f6f" font-weight="900">→ 割った群は 1, ω, ω² の掛け算と同じ形（巡回群）</text>
+          </g>
+        </svg>
+        <div class="diagram-caption"><strong>割った群が巡回群になる理由（∛ の段）</strong>。G の入れ替えを、u の行き先が u, ωu, ω²u のどれかによって 1, ω, ω² に対応させる。u を変えない H は 1、同じコピーに入る入れ替えは同じ数に対応する。2つの入れ替えを続けると、u の行き先の ω の指数は足されるので、対応する数は掛け算される。だから割った群は 1, ω, ω² の掛け算（1 の3乗根の群）と同じ形の巡回群</div>
       </div>
 
       <div class="diagram-box">
