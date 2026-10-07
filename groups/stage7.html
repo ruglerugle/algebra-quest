@@ -177,6 +177,60 @@
           </div>
           <div class="dialog-bubble">1手ごとに空白はとなりのマスに動くので、空白のいるマスの色は必ず変わります。右下から出発して右下に戻ってくるには、色がもとに戻らないといけないので、動かした回数は<strong>偶数</strong>です。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 460 250" style="width:100%;max-width:460px;display:block;margin:0 auto" aria-label="市松模様の盤で、空白が1手ごとに色の違うマスへ移り、右下に戻るには偶数手かかることを示す図">
+          <defs><marker id="ck-ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c8433f"/></marker></defs>
+          <text x="12" y="18" font-size="12.5" font-weight="800" fill="#221d33">空白の動きを市松模様で追う（右下から出発して右下に戻る例）</text>
+          <rect x="14" y="36" width="44" height="44" fill="#fdfbf6" stroke="#dcd8ea"/>
+          <rect x="58" y="36" width="44" height="44" fill="#cbc2e6" stroke="#dcd8ea"/>
+          <rect x="102" y="36" width="44" height="44" fill="#fdfbf6" stroke="#dcd8ea"/>
+          <rect x="146" y="36" width="44" height="44" fill="#cbc2e6" stroke="#dcd8ea"/>
+          <rect x="14" y="80" width="44" height="44" fill="#cbc2e6" stroke="#dcd8ea"/>
+          <rect x="58" y="80" width="44" height="44" fill="#fdfbf6" stroke="#dcd8ea"/>
+          <rect x="102" y="80" width="44" height="44" fill="#cbc2e6" stroke="#dcd8ea"/>
+          <rect x="146" y="80" width="44" height="44" fill="#fdfbf6" stroke="#dcd8ea"/>
+          <rect x="14" y="124" width="44" height="44" fill="#fdfbf6" stroke="#dcd8ea"/>
+          <rect x="58" y="124" width="44" height="44" fill="#cbc2e6" stroke="#dcd8ea"/>
+          <rect x="102" y="124" width="44" height="44" fill="#fdfbf6" stroke="#dcd8ea"/>
+          <rect x="146" y="124" width="44" height="44" fill="#cbc2e6" stroke="#dcd8ea"/>
+          <rect x="14" y="168" width="44" height="44" fill="#cbc2e6" stroke="#dcd8ea"/>
+          <rect x="58" y="168" width="44" height="44" fill="#fdfbf6" stroke="#dcd8ea"/>
+          <rect x="102" y="168" width="44" height="44" fill="#cbc2e6" stroke="#dcd8ea"/>
+          <rect x="146" y="168" width="44" height="44" fill="#fdfbf6" stroke="#dcd8ea"/>
+          <rect x="146" y="168" width="44" height="44" fill="none" stroke="#c8433f" stroke-width="2.5"/>
+          <text x="168" y="194" font-size="10" font-weight="800" fill="#c8433f" text-anchor="middle">空白</text>
+          <line x1="160.1" y1="190.0" x2="131.9" y2="190.0" stroke="#c8433f" stroke-width="2" marker-end="url(#ck-ar)"/>
+          <circle cx="146.0" cy="181.0" r="8" fill="#fff" stroke="#c8433f" stroke-width="1.2"/><text x="146.0" y="184.5" font-size="9.5" font-weight="900" fill="#c8433f" text-anchor="middle">1</text>
+          <line x1="124.0" y1="182.1" x2="124.0" y2="153.9" stroke="#c8433f" stroke-width="2" marker-end="url(#ck-ar)"/>
+          <circle cx="134.0" cy="168.0" r="8" fill="#fff" stroke="#c8433f" stroke-width="1.2"/><text x="134.0" y="171.5" font-size="9.5" font-weight="900" fill="#c8433f" text-anchor="middle">2</text>
+          <line x1="131.9" y1="146.0" x2="160.1" y2="146.0" stroke="#c8433f" stroke-width="2" marker-end="url(#ck-ar)"/>
+          <circle cx="146.0" cy="137.0" r="8" fill="#fff" stroke="#c8433f" stroke-width="1.2"/><text x="146.0" y="140.5" font-size="9.5" font-weight="900" fill="#c8433f" text-anchor="middle">3</text>
+          <line x1="168.0" y1="153.9" x2="168.0" y2="182.1" stroke="#c8433f" stroke-width="2" marker-end="url(#ck-ar)"/>
+          <circle cx="178.0" cy="168.0" r="8" fill="#fff" stroke="#c8433f" stroke-width="1.2"/><text x="178.0" y="171.5" font-size="9.5" font-weight="900" fill="#c8433f" text-anchor="middle">4</text>
+          <text x="220" y="52" font-size="11.5" font-weight="800" fill="#221d33">空白のいるマスの色</text>
+          <rect x="222" y="62" width="30" height="30" rx="4" fill="#fdfbf6" stroke="#9a88d6"/>
+          <text x="237" y="106" font-size="9.5" fill="#77708c" text-anchor="middle">出発</text>
+          <rect x="262" y="62" width="30" height="30" rx="4" fill="#cbc2e6" stroke="#9a88d6"/>
+          <text x="277" y="106" font-size="9.5" fill="#77708c" text-anchor="middle">1手</text>
+          <rect x="302" y="62" width="30" height="30" rx="4" fill="#fdfbf6" stroke="#9a88d6"/>
+          <text x="317" y="106" font-size="9.5" fill="#77708c" text-anchor="middle">2手</text>
+          <rect x="342" y="62" width="30" height="30" rx="4" fill="#cbc2e6" stroke="#9a88d6"/>
+          <text x="357" y="106" font-size="9.5" fill="#77708c" text-anchor="middle">3手</text>
+          <rect x="382" y="62" width="30" height="30" rx="4" fill="#fdfbf6" stroke="#9a88d6"/>
+          <text x="397" y="106" font-size="9.5" fill="#77708c" text-anchor="middle">4手</text>
+          <text x="220" y="128" font-size="10.5" fill="#221d33">1手ごとに、白 → 紫 → 白 → … と必ず色が変わる</text>
+          <rect x="214" y="142" width="236" height="60" rx="8" fill="#f2effa" stroke="#5b4a9e" stroke-width="1.2"/>
+          <text x="332" y="160" font-size="11" font-weight="800" fill="#221d33" text-anchor="middle">奇数手のあと：出発と違う色のマス</text>
+          <text x="332" y="176" font-size="11" font-weight="800" fill="#221d33" text-anchor="middle">偶数手のあと：出発と同じ色のマス</text>
+          <text x="332" y="194" font-size="11" font-weight="800" fill="#c8433f" text-anchor="middle">右下（白）に戻るのは偶数手のときだけ</text>
+          <text x="220" y="228" font-size="10.5" fill="#77708c">この例は 4 手。どんな道筋でも、戻るときの手数は偶数</text>
+          </svg>
+        <div class="diagram-caption"><strong>市松模様で空白の手数を数える</strong>。盤を白と紫の市松模様にぬると、空白は1手ごとにとなりのマスへ移るので、必ず色の違うマスへ行く。右の列は、例の道筋（赤い矢印、4手）で空白のいるマスの色を手数ごとに並べたもの。白から出発して白に戻るには、色が「白→紫→白→…」と偶数回変わらないといけないので、右下に戻ってきたときの手数はどんな道筋でも偶数になる</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
