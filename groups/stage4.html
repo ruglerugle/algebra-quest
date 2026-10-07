@@ -344,12 +344,14 @@
 <svg viewBox="0 0 440 372" style="width:100%;max-width:440px;display:block;margin:0 auto" aria-label="部分群 H と、共通の要素をもつ2つの剰余類 gH, kH が一致することの図">
           <defs><marker id="s4b-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b4a9e"/></marker><marker id="s4b-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f9e5c"/></marker><marker id="s4b-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c8433f"/></marker></defs>
           <text x="12" y="18" font-size="12.5" font-weight="800" fill="#221d33">gH と kH が共通の要素 x をもつとする</text>
-          <ellipse cx="220" cy="58" rx="86" ry="30" fill="#fdfbf6" stroke="#9a6a1c" stroke-width="1.5"/>
-          <text x="150" y="44" font-size="12" font-weight="900" fill="#9a6a1c" font-style="italic">H</text>
-          <text x="220" y="40" font-size="10" fill="#77708c" text-anchor="middle">部分群</text>
+          <ellipse cx="220" cy="60" rx="150" ry="36" fill="#fdfbf6" stroke="#9a6a1c" stroke-width="1.5"/>
+          <text x="86" y="44" font-size="12" font-weight="900" fill="#9a6a1c" font-style="italic">H</text>
+          <text x="220" y="36" font-size="10" fill="#77708c" text-anchor="middle">部分群：逆元も積も H の中にある</text>
           <g font-size="11.5" font-weight="800" text-anchor="middle" fill="#221d33">
             <circle cx="190" cy="62" r="12" fill="#fdfbf6" stroke="#9a6a1c"/><text x="190" y="66">h</text>
             <circle cx="250" cy="62" r="12" fill="#fdfbf6" stroke="#9a6a1c"/><text x="250" y="66">h′</text>
+            <circle cx="120" cy="66" r="12" fill="#fdfbf6" stroke="#9a6a1c" stroke-dasharray="3 2"/><text x="120" y="70">h⁻¹</text>
+            <circle cx="320" cy="66" r="12" fill="#fdfbf6" stroke="#9a6a1c" stroke-dasharray="3 2"/><text x="320" y="70">h″</text>
           </g>
           <ellipse cx="150" cy="160" rx="95" ry="42" fill="#f2effa" stroke="#5b4a9e" stroke-width="1.5"/>
           <ellipse cx="290" cy="160" rx="95" ry="42" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.5"/>
@@ -357,15 +359,17 @@
           <text x="345" y="132" font-size="12" font-weight="900" fill="#2f9e5c" font-style="italic">kH</text>
           <path d="M184,74 Q 190,120 209,150" fill="none" stroke="#5b4a9e" stroke-width="1.5" marker-end="url(#s4b-p)"/>
           <path d="M256,74 Q 250,120 231,150" fill="none" stroke="#2f9e5c" stroke-width="1.5" marker-end="url(#s4b-g)"/>
-          <text x="150" y="108" font-size="10.5" fill="#5b4a9e" font-weight="800" text-anchor="end">左に g をつける</text>
-          <text x="290" y="108" font-size="10.5" fill="#2f9e5c" font-weight="800">左に k をつける</text>
+          <text x="150" y="112" font-size="10.5" fill="#5b4a9e" font-weight="800" text-anchor="end">左に g をつける</text>
+          <text x="120" y="50" font-size="9.5" fill="#9a6a1c" text-anchor="middle">h の逆元</text>
+          <text x="320" y="50" font-size="9.5" fill="#9a6a1c" text-anchor="middle">h″＝h′h⁻¹</text>
+          <text x="290" y="112" font-size="10.5" fill="#2f9e5c" font-weight="800">左に k をつける</text>
           <circle cx="220" cy="160" r="13" fill="#fdfbf6" stroke="#c8433f" stroke-width="2"/>
           <text x="220" y="164" font-size="12" font-weight="800" fill="#c8433f" text-anchor="middle">x</text>
           <text x="112" y="166" font-size="11" fill="#221d33" text-anchor="middle">x＝gh</text>
           <text x="328" y="166" font-size="11" fill="#221d33" text-anchor="middle">x＝kh′</text>
           <g font-size="11.5" font-weight="800" fill="#221d33">
             <rect x="12" y="214" width="416" height="26" rx="6" fill="#fdfbf6" stroke="#9a88d6"/>
-            <text x="220" y="231" text-anchor="middle">gh＝kh′ → 右に h⁻¹ → g＝k(h′h⁻¹)＝kh″　（h″ は H の要素）</text>
+            <text x="220" y="231" text-anchor="middle">gh＝kh′ → 右に h⁻¹ → g＝k(h′h⁻¹)＝kh″　（h⁻¹ も h″ も H の要素）</text>
             <rect x="12" y="256" width="416" height="26" rx="6" fill="#fdfbf6" stroke="#9a88d6"/>
             <text x="220" y="273" text-anchor="middle">gH のどの要素も gh₁＝k(h″h₁) → kH に入る → gH ⊂ kH</text>
             <rect x="12" y="298" width="416" height="26" rx="6" fill="#fdfbf6" stroke="#9a88d6"/>
@@ -376,7 +380,7 @@
           <path d="M220,324 L220,340" stroke="#2f9e5c" stroke-width="1.5" marker-end="url(#s4b-g)"/>
           <text x="220" y="362" font-size="12.5" fill="#2f9e5c" font-weight="800" text-anchor="middle">gH＝kH：1つでも重なれば丸ごと一致する</text>
         </svg>
-        <div class="diagram-caption"><strong>共通の要素をもつ剰余類は一致する</strong>。上の H が部分群で、その要素 h の左に g をつけたものを全部集めると gH、h′ の左に k をつけたものを全部集めると kH になる。x が gH にも kH にも入っているなら、x＝gh＝kh′ と2通りに書ける。右に h⁻¹ をして g を「k と H の要素の積」に直すと、gH のどの要素も kH に入ると分かる。役目を入れかえれば逆も言えるので、2つの剰余類は同じ集まりになる。mod 12 の例なら、1＋H＝{1, 5, 9} と 5＋H＝{5, 9, 1} は 5 を共有していて、実際に同じ集まり</div>
+        <div class="diagram-caption"><strong>共通の要素をもつ剰余類は一致する</strong>。上の H が部分群で、その要素 h の左に g をつけたものを全部集めると gH、h′ の左に k をつけたものを全部集めると kH になる。H は部分群なので、h の逆元 h⁻¹ も、積 h″＝h′h⁻¹ も H の中にある（点線の丸）。x が gH にも kH にも入っているなら、x＝gh＝kh′ と2通りに書ける。右に h⁻¹ をして g を「k と H の要素の積」に直すと、gH のどの要素も kH に入ると分かる。役目を入れかえれば逆も言えるので、2つの剰余類は同じ集まりになる。mod 12 の例なら、1＋H＝{1, 5, 9} と 5＋H＝{5, 9, 1} は 5 を共有していて、実際に同じ集まり</div>
       </div>
 
       <div class="formula-box">
