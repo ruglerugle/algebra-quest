@@ -36,7 +36,7 @@
       "@type": "LearningResource",
       "name": "STAGE7 15パズルの謎を解く",
       "description": "15パズルで14と15を入れ替えた配置が解けない理由を中学生向けに解説。1手は空白との互換で、市松模様から空白が戻るには偶数手かかる。だから全体は偶置換で、奇置換の14-15入れ替えには届かない。逆も確かめる。",
-      "url": "https://<span class="up">algebra</span>.habatakijuku.com/groups/stage7",
+      "url": "https://algebra.habatakijuku.com/groups/stage7",
       "inLanguage": "ja",
       "learningResourceType": "learning activity",
       "educationalLevel": "中学生以上",
@@ -45,11 +45,11 @@
       "isPartOf": {
         "@type": "LearningResource",
         "name": "第1章 対称性を計算する",
-        "url": "https://<span class="up">algebra</span>.habatakijuku.com/groups/",
+        "url": "https://algebra.habatakijuku.com/groups/",
         "isPartOf": {
           "@type": "LearningResource",
           "name": "群・環・体からガロア理論へ",
-          "url": "https://<span class="up">algebra</span>.habatakijuku.com/"
+          "url": "https://algebra.habatakijuku.com/"
         }
       },
       "author": {
@@ -64,26 +64,26 @@
           "@type": "ListItem",
           "position": 1,
           "name": "群・環・体からガロア理論へ",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/"
+          "item": "https://algebra.habatakijuku.com/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "第1章 対称性を計算する",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/groups/"
+          "item": "https://algebra.habatakijuku.com/groups/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "STAGE7 15パズルの謎を解く",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/groups/stage7"
+          "item": "https://algebra.habatakijuku.com/groups/stage7"
         }
       ]
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="../design-system.css?v=20261008b">
+<link rel="stylesheet" href="../design-system.css?v=20261009a">
 <style>
 .pz-board{position:relative;width:min(100%,300px);aspect-ratio:1/1;margin:4px auto 0;background:#2f2652;border-radius:12px;padding:6px;box-sizing:border-box}
 .pz-in{position:relative;width:100%;height:100%}
@@ -106,8 +106,8 @@
       <div class="brand-sub">第1章 対称性を計算する ／ STAGE 7 ― 15パズルの謎を解く ―</div>
     </div>
     <div class="head-progress-wrap">
-      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
-      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <div class="head-progress-label" id="progress-label">クリア 0 / 8</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
     </div>
     <div class="header-actions">
       <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
@@ -404,7 +404,7 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">その通り。そして、どの3枚のタイルでも、まず3枚を右下の 2×2 に運び込み、空白で1周させて回し、運び込んだ手順を逆にたどって戻すと、その3枚だけを回すことができる。運び込む手順と戻す手順が打ち消し合うからね。細かい手順の確かめは省くけれど、こうして、和が偶数の配置には、どれもたどり着けるんだ。</div>
+          <div class="dialog-bubble">その通り。そして、どの3枚のタイルでも、まず3枚を右下の 2×2 に運び込み、空白で1周させて回し、運び込んだ手順を逆にたどって戻すと、その3枚だけを回すことができる。運び込む手順と戻す手順が打ち消し合うからね。細かい確かめは次のステージでするけれど、こうして、和が偶数の配置には、どれもたどり着けるんだ。</div>
         </div>
       </div>
 
@@ -426,62 +426,7 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。16! の半分は 10461394944000、約 10 兆 4600 億通りだ。ここで、この章の道具が謎のどこで使われたか、振り返ってごらん。</div>
-        </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">操作を積として計算できるので、k 手の動きを k 個の互換の積と書けました。互換の個数の偶奇が書き方によらないことは、転倒数で証明しました。市松模様の色で、空白が戻るには偶数手かかることが分かりました。偶置換が全体のちょうど半分で、3巡回で全部作れることから、たどり着ける配置がちょうど半分だと分かりました。</div>
-        </div>
-      </div>
-
-      <div class="diagram-box">
-<svg viewBox="0 0 400 352" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="第1章で学んだことのつながりの図">
-  <defs><marker id="ar7b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#77708c"/></marker></defs>
-  <rect x="70" y="4" width="260" height="42" rx="9" fill="#5b4a9e" stroke="#5b4a9e" stroke-width="1.6"/><text x="200" y="30.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">群：操作を積として計算（1・2）</text>
-  <line x1="160" y1="48" x2="105" y2="74" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar7b)"/>
-  <line x1="240" y1="48" x2="295" y2="74" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar7b)"/>
-  <text x="100" y="92" text-anchor="middle" font-size="14.5" font-weight="900" fill="#9a6a1c">数の群</text><text x="300" y="92" text-anchor="middle" font-size="14.5" font-weight="900" fill="#c8433f">入れ替えの群</text>
-  <rect x="6" y="102" width="184" height="42" rx="9" fill="#fdf4dd" stroke="#9a6a1c" stroke-width="1.6"/><text x="98" y="128.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33"><tspan class="up">mod</tspan> の群・巡回群（3）</text>
-  <rect x="210" y="102" width="184" height="42" rx="9" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.6"/><text x="302" y="128.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33">置換・転倒数（6）</text>
-  <line x1="98" y1="146" x2="98" y2="162" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar7b)"/>
-  <line x1="302" y1="146" x2="302" y2="162" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar7b)"/>
-  <rect x="6" y="164" width="184" height="42" rx="9" fill="#fdf4dd" stroke="#9a6a1c" stroke-width="1.6"/><text x="98" y="190.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33">ラグランジュ（4）</text>
-  <rect x="210" y="164" width="184" height="42" rx="9" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.6"/><text x="302" y="190.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33">偶置換・交代群（6）</text>
-  <line x1="98" y1="208" x2="98" y2="224" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar7b)"/>
-  <line x1="302" y1="208" x2="302" y2="224" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar7b)"/>
-  <rect x="6" y="226" width="184" height="42" rx="9" fill="#fdf4dd" stroke="#9a6a1c" stroke-width="1.6"/><text x="98" y="252.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33">オイラー・RSA（5）</text>
-  <rect x="210" y="226" width="184" height="42" rx="9" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.6"/><text x="302" y="252.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33">15パズルの謎（7）</text>
-  <line x1="190" y1="185" x2="210" y2="185" stroke="#77708c" stroke-width="1.5" stroke-dasharray="3 3"/>
-  <line x1="302" y1="270" x2="302" y2="290" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar7b)"/>
-  <rect x="150" y="294" width="244" height="44" rx="9" fill="#e9e4f7" stroke="#5b4a9e" stroke-width="1.6"/><text x="272" y="321.5" text-anchor="middle" font-size="15" font-weight="900" fill="#44377a">第4章：解を入れ替える群</text>
-</svg>
-        <div class="diagram-caption"><strong>第1章のまとめ</strong>。操作を積として計算する「群」から、数の群（<span class="up">mod</span>、ラグランジュの定理、RSA 暗号）と、入れ替えの群（置換の偶奇、15パズル）の2本の道に分かれた。かっこ内の数はステージの番号。入れ替えの群は、第4章で方程式の解の入れ替えとして再び主役になる</div>
-      </div>
-
-      <div class="dialogue-scene">
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">そう。群の考え方の本当の力は、もの自体ではなく、<strong>ものを動かす操作</strong>に目を向けるところにある。この考え方を最初に大きく使ったのが、フランスのガロアだ。1832年に 20 歳で亡くなったガロアは、方程式の解を入れ替える置換の群を調べて、5次方程式に解の公式がない理由を明らかにした。</div>
-        </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">方程式の解の入れ替えも置換なら、15パズルのように「どう入れ替えても変わらない性質」を使って、できないことを言い切るんですか？</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">そう。第4章では、方程式の解の入れ替えのうち、解の間の関係を保つものの群（ガロア群）を調べ、その群の形で、√ や ∛ だけで解けるかどうかが決まることを見る。今日の交代群 Aₙ も、そこでまた主役になる。その前に、第2章では、足し算と掛け算の両方をもつ「環」という道具で、素因数分解がただ1通りになるしくみを調べよう。この章で何度も使った「素因数分解はただ1通り」の正体だ。</div>
+          <div class="dialog-bubble">そう。16! の半分は 10461394944000、約 10 兆 4600 億通りだ。では、たどり着けると分かった配置を、実際にそろえる手順は作れるかな？ 次のステージで、群の道具を使って組み立てよう。</div>
         </div>
       </div>
 
@@ -491,7 +436,7 @@
         <span class="step">市松模様：1手ごとに空白のマスの色が変わる → 空白が右下に戻るのは偶数手 → たどり着ける配置は偶置換</span>
         <span class="step">14 と 15 を入れ替えた配置は奇置換 → どう動かしてもたどり着けない（転倒数＋空白の距離の偶奇が変わらない）</span>
         <span class="step">空白を 2×2 で1周すると3枚が回る（3巡回）。偶置換は3巡回の積なので、和が偶数の配置にはすべてたどり着ける</span>
-        <span class="step">16! 通りの配置は、たどり着ける半分とたどり着けない半分に分かれる。入れ替えの群は第4章（ガロア理論）へ続く</span>
+        <span class="step">16! 通りの配置は、たどり着ける半分とたどり着けない半分に分かれる</span>
       </div>
 
       <h2 class="quiz-head">確認クイズ</h2>
@@ -533,8 +478,8 @@
   </div>
 </div>
 
-<script src="../js/progress.js?v=20261008b"></script>
-<script src="../js/algebra.js?v=20261008b"></script>
+<script src="../js/progress.js?v=20261009a"></script>
+<script src="../js/algebra.js?v=20261009a"></script>
 <script>AQ.initStagePage("groups", 7);</script>
 <script>
 (function puzzle(cfg) {

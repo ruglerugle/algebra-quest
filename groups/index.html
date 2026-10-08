@@ -12,13 +12,13 @@
   gtag('js', new Date());
   gtag('config', 'G-9RTQCP2HXM');
 </script>
-<title>第1章 群 ― 対称性を計算する（全7ステージ） ― 群・環・体からガロア理論へ</title>
+<title>第1章 群 ― 対称性を計算する（全8ステージ） ― 群・環・体からガロア理論へ</title>
 <meta name="description" content="群を中学生にもわかるように解説。回す・裏返す・入れ替えるといった「操作」そのものを計算の対象にする。時計の算術、ラグランジュの定理、RSA暗号のしくみ、そして置換の偶奇で15パズルの謎を解く。">
 <link rel="canonical" href="https://algebra.habatakijuku.com/groups/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="群・環・体からガロア理論へ">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:title" content="第1章 群 ― 対称性を計算する（全7ステージ） ― 群・環・体からガロア理論へ">
+<meta property="og:title" content="第1章 群 ― 対称性を計算する（全8ステージ） ― 群・環・体からガロア理論へ">
 <meta property="og:description" content="15パズルで 14 と 15 を入れ替えた配置は、どう動かしても解けない。なぜ言い切れるのか？">
 <meta property="og:url" content="https://algebra.habatakijuku.com/groups/">
 <meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
@@ -28,7 +28,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="../images/favicon.png">
 <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-<link rel="stylesheet" href="../design-system.css?v=20261008b">
+<link rel="stylesheet" href="../design-system.css?v=20261009a">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -91,6 +91,12 @@
       "position": 7,
       "name": "STAGE7 15パズルの謎を解く",
       "url": "https://algebra.habatakijuku.com/groups/stage7"
+    },
+    {
+      "@type": "LearningResource",
+      "position": 8,
+      "name": "STAGE8 15パズルを解く",
+      "url": "https://algebra.habatakijuku.com/groups/stage8"
     }
   ]
 }
@@ -184,6 +190,14 @@
           <p class="q-desc">1手は互換、市松模様で空白は偶数手で戻る。だから全体は偶置換。14 と 15 の入れ替えが不可能な理由をついに証明する。</p>
           <span class="q-cta">はじめる →</span>
         </a>
+
+        <a class="quest-card" href="stage8.html" data-stage="8" style="--accent:#2f7f8f;--accent-bg:#e5f4f5">
+          <div class="q-top"><span class="q-num">8</span><span class="q-suit" aria-hidden="true">⬡</span></div>
+          <div class="q-meta"><span class="q-tag">15パズルの解き方と共役</span><span class="q-time">⏱ 約20分</span></div>
+          <div class="q-title">15パズルを解く</div>
+          <p class="q-desc">運び込んで、回して、戻す。共役 XAX⁻¹ で好きな3枚だけを回せば、15パズルは必ずそろう。最短手順は群だけでは決まらない。</p>
+          <span class="q-cta">はじめる →</span>
+        </a>
       </div>
     </section>
 
@@ -199,7 +213,7 @@
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
-<script src="../js/progress.js?v=20261008b"></script>
+<script src="../js/progress.js?v=20261009a"></script>
 <script>AQ.initCoverPage("groups");</script>
 </body>
 </html>

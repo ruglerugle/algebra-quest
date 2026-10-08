@@ -36,7 +36,7 @@
       "@type": "LearningResource",
       "name": "STAGE2 操作の掛け算表",
       "description": "群の定義を中学生向けに解説。正三角形を回す・裏返す6つの操作の掛け算表（ケイリー表）を作り、各行に各操作が1回ずつ出る理由から、閉じている・結合法則・単位元・逆元の4条件を導く。整数の足し算や正方形の対称性も調べる。",
-      "url": "https://<span class="up">algebra</span>.habatakijuku.com/groups/stage2",
+      "url": "https://algebra.habatakijuku.com/groups/stage2",
       "inLanguage": "ja",
       "learningResourceType": "learning activity",
       "educationalLevel": "中学生以上",
@@ -45,11 +45,11 @@
       "isPartOf": {
         "@type": "LearningResource",
         "name": "第1章 対称性を計算する",
-        "url": "https://<span class="up">algebra</span>.habatakijuku.com/groups/",
+        "url": "https://algebra.habatakijuku.com/groups/",
         "isPartOf": {
           "@type": "LearningResource",
           "name": "群・環・体からガロア理論へ",
-          "url": "https://<span class="up">algebra</span>.habatakijuku.com/"
+          "url": "https://algebra.habatakijuku.com/"
         }
       },
       "author": {
@@ -64,26 +64,26 @@
           "@type": "ListItem",
           "position": 1,
           "name": "群・環・体からガロア理論へ",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/"
+          "item": "https://algebra.habatakijuku.com/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "第1章 対称性を計算する",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/groups/"
+          "item": "https://algebra.habatakijuku.com/groups/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "STAGE2 操作の掛け算表",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/groups/stage2"
+          "item": "https://algebra.habatakijuku.com/groups/stage2"
         }
       ]
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="../design-system.css?v=20261008b">
+<link rel="stylesheet" href="../design-system.css?v=20261009a">
 <style>
 .cay-wrap{overflow-x:auto;max-width:100%}
 .num-table.cay{font-size:14px}
@@ -106,8 +106,8 @@
       <div class="brand-sub">第1章 対称性を計算する ／ STAGE 2 ― 操作の掛け算表 ―</div>
     </div>
     <div class="head-progress-wrap">
-      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
-      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <div class="head-progress-label" id="progress-label">クリア 0 / 8</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
     </div>
     <div class="header-actions">
       <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
@@ -502,8 +502,8 @@
   </div>
 </div>
 
-<script src="../js/progress.js?v=20261008b"></script>
-<script src="../js/algebra.js?v=20261008b"></script>
+<script src="../js/progress.js?v=20261009a"></script>
+<script src="../js/algebra.js?v=20261009a"></script>
 <script>AQ.initStagePage("groups", 2);</script>
 <script>
 (function(){
@@ -530,7 +530,7 @@ var polyWidget=function polyWidget(cfg) {
   let anim = null;          // {key, t}
 
   const st = FL.canvas(cvId, cfg.aspect || 0.78, draw);
-  function pt(deg, R, v) { const r = deg * Math.PI / 180; return [v.X(R * Math.<span class="up">cos</span>(r)), v.Y(R * Math.<span class="up">sin</span>(r))]; }
+  function pt(deg, R, v) { const r = deg * Math.PI / 180; return [v.X(R * Math.cos(r)), v.Y(R * Math.sin(r))]; }
   function draw(st) {
     const ctx = st.ctx; ctx.clearRect(0, 0, st.W, st.H); ctx.fillStyle = FL.C.paper; ctx.fillRect(0, 0, st.W, st.H);
     const v = FL.view(st, cfg.span || 3.3, 0, cfg.cy || 0);
@@ -671,7 +671,7 @@ var polyWidget=function polyWidget(cfg) {
   let anim = null;          // {key, t}
 
   const st = FL.canvas(cvId, cfg.aspect || 0.78, draw);
-  function pt(deg, R, v) { const r = deg * Math.PI / 180; return [v.X(R * Math.<span class="up">cos</span>(r)), v.Y(R * Math.<span class="up">sin</span>(r))]; }
+  function pt(deg, R, v) { const r = deg * Math.PI / 180; return [v.X(R * Math.cos(r)), v.Y(R * Math.sin(r))]; }
   function draw(st) {
     const ctx = st.ctx; ctx.clearRect(0, 0, st.W, st.H); ctx.fillStyle = FL.C.paper; ctx.fillRect(0, 0, st.W, st.H);
     const v = FL.view(st, cfg.span || 3.3, 0, cfg.cy || 0);

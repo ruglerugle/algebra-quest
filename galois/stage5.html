@@ -36,7 +36,7 @@
       "@type": "LearningResource",
       "name": "STAGE5 べき根で解けるとは",
       "description": "正規部分群と可解群を中学生向けに解説。√ や ∛ を1つ加えるたびに、ガロア群は「割った残りが巡回群になる」部分群へ1段小さくなる。左右のずらしたコピーが一致する部分群（正規部分群）を具体例で調べ、S3 と S4 が可解群であることを確かめる。",
-      "url": "https://<span class="up">algebra</span>.habatakijuku.com/galois/stage5",
+      "url": "https://algebra.habatakijuku.com/galois/stage5",
       "inLanguage": "ja",
       "learningResourceType": "learning activity",
       "educationalLevel": "中学生以上",
@@ -45,11 +45,11 @@
       "isPartOf": {
         "@type": "LearningResource",
         "name": "第4章 方程式の対称性",
-        "url": "https://<span class="up">algebra</span>.habatakijuku.com/galois/",
+        "url": "https://algebra.habatakijuku.com/galois/",
         "isPartOf": {
           "@type": "LearningResource",
           "name": "群・環・体からガロア理論へ",
-          "url": "https://<span class="up">algebra</span>.habatakijuku.com/"
+          "url": "https://algebra.habatakijuku.com/"
         }
       },
       "author": {
@@ -64,26 +64,26 @@
           "@type": "ListItem",
           "position": 1,
           "name": "群・環・体からガロア理論へ",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/"
+          "item": "https://algebra.habatakijuku.com/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "第4章 方程式の対称性",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/galois/"
+          "item": "https://algebra.habatakijuku.com/galois/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "STAGE5 べき根で解けるとは",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/galois/stage5"
+          "item": "https://algebra.habatakijuku.com/galois/stage5"
         }
       ]
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="../design-system.css?v=20261008b">
+<link rel="stylesheet" href="../design-system.css?v=20261009a">
 <style>
 .cs-rows{max-width:520px;margin:8px auto 0;text-align:left}
   .cs-lab{font-size:12px;font-weight:900;color:#44377a;margin:8px 0 4px}
@@ -613,8 +613,8 @@
   </div>
 </div>
 
-<script src="../js/progress.js?v=20261008b"></script>
-<script src="../js/algebra.js?v=20261008b"></script>
+<script src="../js/progress.js?v=20261009a"></script>
+<script src="../js/algebra.js?v=20261009a"></script>
 <script>AQ.initStagePage("galois", 5);</script>
 <script>
 /* ずらしたコピーへの分け方（3つの解の入れ替え） */
@@ -666,7 +666,7 @@
   var ar=document.getElementById('cb-arrows'), ro=document.getElementById('cb-ro'), st=document.getElementById('cb-step');
   if(!ar)return;
   var CX=170, CY=150, R=90, k=1, step=0;
-  function pt(deg,r){var a=deg*Math.PI/180;return [CX+r*Math.<span class="up">cos</span>(a), CY-r*Math.<span class="up">sin</span>(a)];}
+  function pt(deg,r){var a=deg*Math.PI/180;return [CX+r*Math.cos(a), CY-r*Math.sin(a)];}
   function f(v){return v.toFixed(1);}
   function el(tag,attrs,txt){var e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(var a in attrs)e.setAttribute(a,attrs[a]);if(txt)e.textContent=txt;return e;}
   function draw(){

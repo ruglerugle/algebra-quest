@@ -35,8 +35,8 @@
     {
       "@type": "LearningResource",
       "name": "STAGE7 有限の体と QR コード",
-      "description": "有限体と誤り訂正を中学生向けに解説。要素4個の体を <span class="up">mod</span> 2 の多項式 x²＋x＋1 から作り、<span class="up">mod</span> 4 との違いを確かめる。データを多項式の係数にして値を多めに送ると、一部が壊れても元に戻せる。QR コードのリード・ソロモン符号のしくみを <span class="up">mod</span> 7 の例で体験する。",
-      "url": "https://<span class="up">algebra</span>.habatakijuku.com/fields/stage7",
+      "description": "有限体と誤り訂正を中学生向けに解説。要素4個の体を mod 2 の多項式 x²＋x＋1 から作り、mod 4 との違いを確かめる。データを多項式の係数にして値を多めに送ると、一部が壊れても元に戻せる。QR コードのリード・ソロモン符号のしくみを mod 7 の例で体験する。",
+      "url": "https://algebra.habatakijuku.com/fields/stage7",
       "inLanguage": "ja",
       "learningResourceType": "learning activity",
       "educationalLevel": "中学生以上",
@@ -45,11 +45,11 @@
       "isPartOf": {
         "@type": "LearningResource",
         "name": "第3章 四則演算と作図",
-        "url": "https://<span class="up">algebra</span>.habatakijuku.com/fields/",
+        "url": "https://algebra.habatakijuku.com/fields/",
         "isPartOf": {
           "@type": "LearningResource",
           "name": "群・環・体からガロア理論へ",
-          "url": "https://<span class="up">algebra</span>.habatakijuku.com/"
+          "url": "https://algebra.habatakijuku.com/"
         }
       },
       "author": {
@@ -64,26 +64,26 @@
           "@type": "ListItem",
           "position": 1,
           "name": "群・環・体からガロア理論へ",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/"
+          "item": "https://algebra.habatakijuku.com/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "第3章 四則演算と作図",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/fields/"
+          "item": "https://algebra.habatakijuku.com/fields/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "STAGE7 有限の体と QR コード",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/fields/stage7"
+          "item": "https://algebra.habatakijuku.com/fields/stage7"
         }
       ]
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="../design-system.css?v=20261008b">
+<link rel="stylesheet" href="../design-system.css?v=20261009a">
 <style>
 .g4-wrap{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;margin-top:8px}
 .g4-cap{font-size:12.5px;font-weight:900;color:#44377a;margin-bottom:2px}
@@ -590,11 +590,11 @@
   </div>
 </div>
 
-<script src="../js/progress.js?v=20261008b"></script>
-<script src="../js/algebra.js?v=20261008b"></script>
+<script src="../js/progress.js?v=20261009a"></script>
+<script src="../js/algebra.js?v=20261009a"></script>
 <script>AQ.initStagePage("fields", 7);</script>
 <script>
-/* 要素4個の体と <span class="up">mod</span> 4 */
+/* 要素4個の体と mod 4 */
 (function(){
   var mode='gf', ta=document.getElementById('tb-g4a'), tm=document.getElementById('tb-g4m'), ro=document.getElementById('ro-g4');
   // GF(4)：a＋bα を 2ビット (b,a) で表す
@@ -627,7 +627,7 @@
   render();
 })();
 
-/* <span class="up">mod</span> 7 のリード・ソロモン符号 */
+/* mod 7 のリード・ソロモン符号 */
 (function(){
   var inA=document.getElementById('rs-a'), inB=document.getElementById('rs-b'), tb=document.getElementById('tb-rs'), ro=document.getElementById('ro-rs');
   var err=[0,0,0,0,0,0,0];
@@ -685,7 +685,7 @@
   err=[0,0,5,0,0,5,0];
   render();
 })();
-/* 違う直線は1点でしか一致しない（<span class="up">mod</span> 7） */
+/* 違う直線は1点でしか一致しない（mod 7） */
 (function(){
   var ids=['l2-a','l2-b','l2-c','l2-d'], defs=[2,3,5,1], sel=[];
   var svg=document.getElementById('svg-l2'), ro=document.getElementById('ro-l2');
@@ -730,7 +730,7 @@
     out.push('<circle cx="246" cy="84" r="7" fill="none" stroke="'+GRN+'" stroke-width="2.5"/>'+t(258,88,'一致する点',{col:GRN,w:true,size:12.5}));
     out.push('<rect x="232" y="106" width="218" height="112" rx="8" fill="#f2effa"/>');
     out.push(t(242,126,'h＝f−g＝(a−c)＋(b−d)x',{size:12}));
-    out.push(t(242,146,'　＝'+lin(ap,bp)+'　（<span class="up">mod</span> 7）',{size:12,w:true}));
+    out.push(t(242,146,'　＝'+lin(ap,bp)+'　（mod 7）',{size:12,w:true}));
     if(bp!==0){
       var inv=1; while(m7(bp*inv)!==1) inv++;
       var x0=m7(-ap*inv);

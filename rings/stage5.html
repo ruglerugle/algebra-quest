@@ -36,7 +36,7 @@
       "@type": "LearningResource",
       "name": "STAGE5 2つの平方数の和",
       "description": "フェルマーの2平方定理を中学生向けに証明。4で割って3余る素数が平方数の和にならない理由、ウィルソンの定理を逆元のペアで示して x²≡−1 を作る方法、そしてガウス整数の一意性から 4で割って1余る素数が a²＋b² になることまで。",
-      "url": "https://<span class="up">algebra</span>.habatakijuku.com/rings/stage5",
+      "url": "https://algebra.habatakijuku.com/rings/stage5",
       "inLanguage": "ja",
       "learningResourceType": "learning activity",
       "educationalLevel": "中学生以上",
@@ -45,11 +45,11 @@
       "isPartOf": {
         "@type": "LearningResource",
         "name": "第2章 素因数分解の世界",
-        "url": "https://<span class="up">algebra</span>.habatakijuku.com/rings/",
+        "url": "https://algebra.habatakijuku.com/rings/",
         "isPartOf": {
           "@type": "LearningResource",
           "name": "群・環・体からガロア理論へ",
-          "url": "https://<span class="up">algebra</span>.habatakijuku.com/"
+          "url": "https://algebra.habatakijuku.com/"
         }
       },
       "author": {
@@ -64,26 +64,26 @@
           "@type": "ListItem",
           "position": 1,
           "name": "群・環・体からガロア理論へ",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/"
+          "item": "https://algebra.habatakijuku.com/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "第2章 素因数分解の世界",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/rings/"
+          "item": "https://algebra.habatakijuku.com/rings/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "STAGE5 2つの平方数の和",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/rings/stage5"
+          "item": "https://algebra.habatakijuku.com/rings/stage5"
         }
       ]
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="../design-system.css?v=20261008b">
+<link rel="stylesheet" href="../design-system.css?v=20261009a">
 <style>
 .tbl-scroll{overflow-x:auto;max-width:100%}
   #tb-fs td{white-space:nowrap}
@@ -514,8 +514,8 @@
   </div>
 </div>
 
-<script src="../js/progress.js?v=20261008b"></script>
-<script src="../js/algebra.js?v=20261008b"></script>
+<script src="../js/progress.js?v=20261009a"></script>
+<script src="../js/algebra.js?v=20261009a"></script>
 <script>AQ.initStagePage("rings", 5);</script>
 <script>
 /* 逆元のペア（ウィルソンの定理） */
@@ -538,7 +538,7 @@
       FL.dot(ctx,P[0],P[1],r,self?FL.C.goldLight:'#fff',self?FL.C.gold:FL.C.themeLight);
       FL.text(ctx,String(a),P[0],P[1]+fs*0.36,{align:'center',size:fs,color:self?'#5a3d0c':FL.C.ink});
     }
-    ro.innerHTML='<span>ペア：'+pairs.join(' ')+'</span><span>自分自身が相手：<b>1 と '+(p-1)+'</b></span><span class="ok">'+(p-1)+'!≡1×'+(p-1)+'≡−1 (<span class="up">mod</span> '+p+')</span>';
+    ro.innerHTML='<span>ペア：'+pairs.join(' ')+'</span><span>自分自身が相手：<b>1 と '+(p-1)+'</b></span><span class="ok">'+(p-1)+'!≡1×'+(p-1)+'≡−1 (mod '+p+')</span>';
   }
   sel.addEventListener('change',function(){st.redraw();});
 })();

@@ -36,7 +36,7 @@
       "@type": "LearningResource",
       "name": "STAGE1 作図の約束と体",
       "description": "定規とコンパスの作図と「体」を中学生向けに解説。角の三等分・立方体倍積がなぜ2000年も解けなかったのかを示し、作図できる長さが和・差・積・商と √ で作れる数であること、割り算までできる数の世界「体」の定義と例を学ぶ。",
-      "url": "https://<span class="up">algebra</span>.habatakijuku.com/fields/stage1",
+      "url": "https://algebra.habatakijuku.com/fields/stage1",
       "inLanguage": "ja",
       "learningResourceType": "learning activity",
       "educationalLevel": "中学生以上",
@@ -45,11 +45,11 @@
       "isPartOf": {
         "@type": "LearningResource",
         "name": "第3章 四則演算と作図",
-        "url": "https://<span class="up">algebra</span>.habatakijuku.com/fields/",
+        "url": "https://algebra.habatakijuku.com/fields/",
         "isPartOf": {
           "@type": "LearningResource",
           "name": "群・環・体からガロア理論へ",
-          "url": "https://<span class="up">algebra</span>.habatakijuku.com/"
+          "url": "https://algebra.habatakijuku.com/"
         }
       },
       "author": {
@@ -64,26 +64,26 @@
           "@type": "ListItem",
           "position": 1,
           "name": "群・環・体からガロア理論へ",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/"
+          "item": "https://algebra.habatakijuku.com/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "第3章 四則演算と作図",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/fields/"
+          "item": "https://algebra.habatakijuku.com/fields/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "STAGE1 作図の約束と体",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/fields/stage1"
+          "item": "https://algebra.habatakijuku.com/fields/stage1"
         }
       ]
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="../design-system.css?v=20261008b">
+<link rel="stylesheet" href="../design-system.css?v=20261009a">
 <style>
 #cv-board{cursor:crosshair}
 #tb-inv td,#tb-inv th{min-width:24px;padding:4px 5px}
@@ -544,8 +544,8 @@
   </div>
 </div>
 
-<script src="../js/progress.js?v=20261008b"></script>
-<script src="../js/algebra.js?v=20261008b"></script>
+<script src="../js/progress.js?v=20261009a"></script>
+<script src="../js/algebra.js?v=20261009a"></script>
 <script>AQ.initStagePage("fields", 1);</script>
 <script>
 /* 作図板：60° の角から直線と円で点を増やす */
@@ -555,7 +555,7 @@
   var ro=document.getElementById('ro-board');
   var bL=document.getElementById('bd-line'), bC=document.getElementById('bd-circ');
   function init(){
-    var B=[Math.<span class="up">cos</span>(60*D),Math.<span class="up">sin</span>(60*D)];
+    var B=[Math.cos(60*D),Math.sin(60*D)];
     pts=[[0,0],[1,0],B];
     objs=[{t:'L',a:[0,0],b:[1,0]},{t:'L',a:[0,0],b:B}];
     hist=[]; pick=null; last=null;
@@ -642,7 +642,7 @@
 
 /* 四則と √ の作図をステップ再生 */
 (function(){
-  var a=2, b=1.5, D=Math.PI/180, u=[Math.<span class="up">cos</span>(35*D),Math.<span class="up">sin</span>(35*D)];
+  var a=2, b=1.5, D=Math.PI/180, u=[Math.cos(35*D),Math.sin(35*D)];
   function U(k){ return [k*u[0],k*u[1]]; }
   var G='#2f8f65';
   // 部品: seg(線分), line(直線), ray(半直線), circ(円/弧), pt(点), lab(文字)
@@ -740,7 +740,7 @@
       if(inv===null){ r2+='<td class="miss">なし</td>'; bad.push(a); } else r2+='<td class="hit">'+inv+'</td>';
     }
     tb.innerHTML=r1+'</tr>'+r2+'</tr>';
-    ro.innerHTML=bad.length?'<span class="ng"><b><span class="up">mod</span> '+n+' は体ではない</b></span><span>逆数がない数：'+bad.join(', ')+'</span>':'<span class="ok"><b><span class="up">mod</span> '+n+' は体（'+n+' は素数）</b></span><span>0 以外のどの数にも逆数がある</span>';
+    ro.innerHTML=bad.length?'<span class="ng"><b>mod '+n+' は体ではない</b></span><span>逆数がない数：'+bad.join(', ')+'</span>':'<span class="ok"><b>mod '+n+' は体（'+n+' は素数）</b></span><span>0 以外のどの数にも逆数がある</span>';
   }
   inp.addEventListener('input',render); render();
 })();

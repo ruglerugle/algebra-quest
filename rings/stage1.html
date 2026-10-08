@@ -36,7 +36,7 @@
       "@type": "LearningResource",
       "name": "STAGE1 2つの謎と数の世界",
       "description": "環とは何かを中学生向けに解説。どんな素数が2つの平方数の和になるか、6＝2×3＝(1＋√−5)(1−√−5) となる世界はなぜあるか、という2つの謎から出発し、足し算・引き算・掛け算で閉じた数の世界（環）を定義する。",
-      "url": "https://<span class="up">algebra</span>.habatakijuku.com/rings/stage1",
+      "url": "https://algebra.habatakijuku.com/rings/stage1",
       "inLanguage": "ja",
       "learningResourceType": "learning activity",
       "educationalLevel": "中学生以上",
@@ -45,11 +45,11 @@
       "isPartOf": {
         "@type": "LearningResource",
         "name": "第2章 素因数分解の世界",
-        "url": "https://<span class="up">algebra</span>.habatakijuku.com/rings/",
+        "url": "https://algebra.habatakijuku.com/rings/",
         "isPartOf": {
           "@type": "LearningResource",
           "name": "群・環・体からガロア理論へ",
-          "url": "https://<span class="up">algebra</span>.habatakijuku.com/"
+          "url": "https://algebra.habatakijuku.com/"
         }
       },
       "author": {
@@ -64,26 +64,26 @@
           "@type": "ListItem",
           "position": 1,
           "name": "群・環・体からガロア理論へ",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/"
+          "item": "https://algebra.habatakijuku.com/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "第2章 素因数分解の世界",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/rings/"
+          "item": "https://algebra.habatakijuku.com/rings/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "STAGE1 2つの謎と数の世界",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/rings/stage1"
+          "item": "https://algebra.habatakijuku.com/rings/stage1"
         }
       ]
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="../design-system.css?v=20261008b">
+<link rel="stylesheet" href="../design-system.css?v=20261009a">
 <style>
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:6px;max-width:500px;margin:0 auto}
   .pgrid button{font:inherit;font-size:14px;font-weight:900;color:#221d33;background:#fff;border:2px solid #d9d1ee;border-radius:9px;padding:6px 0 4px;cursor:pointer;line-height:1.15;min-height:46px}
@@ -91,9 +91,9 @@
   .pgrid button.yes small{color:#2e7d4f}
   .pgrid button.no small{color:#c8433f}
   .pgrid button.sel{box-shadow:0 0 0 3px #9a88d6}
-  .pgrid.<span class="up">mod</span> button.r1{background:#e7eefa;border-color:#3f6fb5}
-  .pgrid.<span class="up">mod</span> button.r3{background:#fbe9e8;border-color:#c8433f}
-  .pgrid.<span class="up">mod</span> button.r2{background:#f7eedb;border-color:#9a6a1c}
+  .pgrid.mod button.r1{background:#e7eefa;border-color:#3f6fb5}
+  .pgrid.mod button.r3{background:#fbe9e8;border-color:#c8433f}
+  .pgrid.mod button.r2{background:#f7eedb;border-color:#9a6a1c}
   .ring-ex td.lft{text-align:left}
   .ring-ex{font-size:12.5px}
   @media (max-width:520px){.ring-ex{font-size:11px}.ring-ex th,.ring-ex td{padding:3px 4px}}
@@ -579,14 +579,14 @@
   </div>
 </div>
 
-<script src="../js/progress.js?v=20261008b"></script>
-<script src="../js/algebra.js?v=20261008b"></script>
+<script src="../js/progress.js?v=20261009a"></script>
+<script src="../js/algebra.js?v=20261009a"></script>
 <script>AQ.initStagePage("rings", 1);</script>
 <script>
 /* 2つの平方数の和で書ける素数を探す */
 (function(){
   var grid=document.getElementById('pgrid'), ro=document.getElementById('ro-pg');
-  var bAll=document.getElementById('pg-all'), bMod=document.getElementById('pg-<span class="up">mod</span>'), bReset=document.getElementById('pg-reset');
+  var bAll=document.getElementById('pg-all'), bMod=document.getElementById('pg-mod'), bReset=document.getElementById('pg-reset');
   var ps=FL.primes(100), cells={};
   function two(p){ for(var a=1;a*a<=p;a++){ var b=Math.round(Math.sqrt(p-a*a)); if(b>=a&&a*a+b*b===p) return [a,b]; } return null; }
   ps.forEach(function(p){
@@ -606,9 +606,9 @@
     ro.innerHTML='<span>'+tries.join('、')+'</span><span>'+(t?'<b class="ok">'+p+'＝'+t[0]+'²＋'+t[1]+'²</b>':'<b class="ng">'+p+' は2つの平方数の和で書けない</b>')+'</span>';
   }
   bAll.addEventListener('click',function(){ ps.forEach(function(p){mark(p);}); var y=ps.filter(function(p){return two(p);}).length; ro.innerHTML='<span>100 未満の素数 '+ps.length+' 個のうち、書けるものは <b>'+y+' 個</b>、書けないものは <b>'+(ps.length-y)+' 個</b></span>'; });
-  bMod.addEventListener('click',function(){ var on=bMod.getAttribute('aria-pressed')!=='true'; bMod.setAttribute('aria-pressed',on?'true':'false'); grid.classList.toggle('<span class="up">mod</span>',on);
+  bMod.addEventListener('click',function(){ var on=bMod.getAttribute('aria-pressed')!=='true'; bMod.setAttribute('aria-pressed',on?'true':'false'); grid.classList.toggle('mod',on);
     if(on) ro.innerHTML='<span style="color:#3f6fb5">青：4 で割って 1 余る</span><span style="color:#c8433f">赤：4 で割って 3 余る</span><span style="color:#9a6a1c">金：2</span>'; });
-  bReset.addEventListener('click',function(){ ps.forEach(function(p){ var b=cells[p]; b.classList.remove('yes','no','sel'); b.querySelector('small').textContent=''; }); bMod.setAttribute('aria-pressed','false'); grid.classList.remove('<span class="up">mod</span>'); ro.innerHTML='<span>素数を1つ選んでごらん</span>'; });
+  bReset.addEventListener('click',function(){ ps.forEach(function(p){ var b=cells[p]; b.classList.remove('yes','no','sel'); b.querySelector('small').textContent=''; }); bMod.setAttribute('aria-pressed','false'); grid.classList.remove('mod'); ro.innerHTML='<span>素数を1つ選んでごらん</span>'; });
 })();
 
 /* 数の世界を点の並びで見る */

@@ -29,7 +29,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="../images/favicon.png">
 <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-<link rel="stylesheet" href="../design-system.css?v=20261008b">
+<link rel="stylesheet" href="../design-system.css?v=20261009a">
 <style>
   .chapter-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
   .riddle{max-width:560px;margin:14px auto 0;background:rgba(0,0,0,.22);border:1px solid rgba(227,189,106,.45);border-radius:12px;padding:10px 14px;color:#f6e7c2;font-size:13.5px;font-weight:800;line-height:1.8}
@@ -90,6 +90,10 @@
           <span class="recap-num">7</span>
           <div class="recap-body"><span class="recap-title">15パズルの謎を解く。</span> <span class="recap-desc">15パズルの配置を、16 マスを読む順の番号の並び（空白は 16 番）と見る。1手は空白との互換 ／ 市松模様：1手ごとに空白のマスの色が変わる → 空白が右下に戻るのは偶数手 → たどり着ける配置は偶置換</span></div>
         </div>
+        <div class="recap-item">
+          <span class="recap-num">8</span>
+          <div class="recap-body"><span class="recap-title">15パズルを解く。</span> <span class="recap-desc">右下の 2×2 で空白を1周させる A は、位置の番号で書くと3巡回 (11 12 15) ／ X で3枚を右下の 2×2 に運び込み、A で回し、X⁻¹ で戻す XAX⁻¹（A の共役）は3巡回 (p q r)。ほかのタイルはすべてもとに戻る</span></div>
+        </div>
       </div>
       <div class="complete-actions">
         <a class="btn btn-primary" href="../rings/">第2章「環」へ進む →</a>
@@ -111,7 +115,7 @@
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
-<script src="../js/progress.js?v=20261008b"></script>
+<script src="../js/progress.js?v=20261009a"></script>
 <script>AQ.initCompletePage("groups");</script>
 </body>
 </html>

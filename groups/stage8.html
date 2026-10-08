@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241c3d">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>第1章 STAGE8 15パズルを解く（15パズルの解き方と共役・交換子） ― 群・環・体からガロア理論へ</title>
+<meta name="description" content="15パズルの解き方を群の考え方で組み立てる中学生向け解説。空白の1周でできる3巡回を、運び込む手順 X と戻す手順 X⁻¹ ではさむ共役 XAX⁻¹ で好きな3枚だけを回し、1枚ずつそろえる。最短手順と交換子にも触れる。">
+<link rel="canonical" href="https://algebra.habatakijuku.com/groups/stage8">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="群・環・体からガロア理論へ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第1章 STAGE8 15パズルを解く（15パズルの解き方と共役・交換子） ― 群・環・体からガロア理論へ">
+<meta property="og:description" content="運び込んで、回して、戻す。共役 XAX⁻¹ で好きな3枚だけを回せば、15パズルは必ずそろう。最短手順は群だけでは決まらない。">
+<meta property="og:url" content="https://algebra.habatakijuku.com/groups/stage8">
+<meta property="og:image" content="https://algebra.habatakijuku.com/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="群・環・体からガロア理論へ：5次方程式に解の公式がない理由まで">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "STAGE8 15パズルを解く",
+      "description": "15パズルの解き方を群の考え方で組み立てる中学生向け解説。空白の1周でできる3巡回を、運び込む手順 X と戻す手順 X⁻¹ ではさむ共役 XAX⁻¹ で好きな3枚だけを回し、1枚ずつそろえる。最短手順と交換子にも触れる。",
+      "url": "https://algebra.habatakijuku.com/groups/stage8",
+      "inLanguage": "ja",
+      "learningResourceType": "learning activity",
+      "educationalLevel": "中学生以上",
+      "isAccessibleForFree": true,
+      "position": 8,
+      "isPartOf": {
+        "@type": "LearningResource",
+        "name": "第1章 対称性を計算する",
+        "url": "https://algebra.habatakijuku.com/groups/",
+        "isPartOf": {
+          "@type": "LearningResource",
+          "name": "群・環・体からガロア理論へ",
+          "url": "https://algebra.habatakijuku.com/"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "ruglerugle"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "群・環・体からガロア理論へ",
+          "item": "https://algebra.habatakijuku.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "第1章 対称性を計算する",
+          "item": "https://algebra.habatakijuku.com/groups/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "STAGE8 15パズルを解く",
+          "item": "https://algebra.habatakijuku.com/groups/stage8"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../design-system.css?v=20261009a">
+<style>
+.pz-board{position:relative;width:min(100%,300px);aspect-ratio:1/1;margin:4px auto 0;background:#2f2652;border-radius:12px;padding:6px;box-sizing:border-box}
+.pz-in{position:relative;width:100%;height:100%}
+.pz-cell{position:absolute;width:25%;height:25%;box-sizing:border-box;border-radius:7px}
+.pz-par .pz-cell.c0{background:#e3bd6a}
+.pz-par .pz-cell.c1{background:#9a88d6}
+.pz-tile{position:absolute;width:25%;height:25%;padding:3px;box-sizing:border-box;border:0;background:transparent;cursor:pointer;transition:left .12s,top .12s;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.pz-par .pz-tile{padding:7px}
+.pz-tile span{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:7px;background:linear-gradient(#fdfbf6,#efe9f9);box-shadow:inset 0 -3px 0 #c9bfe6;font:900 22px var(--f);color:#2a2245}
+.pz-par .pz-tile span{font-size:19px}
+.pz-tile.sel span{background:#fbe9e8;box-shadow:inset 0 0 0 3px #c8433f}
+@media (prefers-reduced-motion:reduce){.pz-tile{transition:none}}
+
+.cj-frame{position:absolute;left:50%;top:50%;width:50%;height:50%;box-sizing:border-box;border:2.5px dashed #c8433f;border-radius:8px;pointer-events:none;z-index:2}
+.pz-tile.cj-a span{background:#fbe9e8;box-shadow:inset 0 0 0 3px #c8433f}
+.pz-tile.cj-b span{background:#e7eef9;box-shadow:inset 0 0 0 3px #3f6fb5}
+.pz-tile.cj-c span{background:#fdf4dd;box-shadow:inset 0 0 0 3px #9a6a1c}
+.pz-tile.cj-away span{background:#eef8f2;outline:2.5px dashed #2f9e5c;outline-offset:-5px}
+.cj-k{position:absolute;top:8px;left:10px;font-style:normal;font-weight:800;font-size:12px;line-height:1;color:#77708c;pointer-events:none}
+.p8-board{position:relative;width:min(100%,240px);aspect-ratio:1/1;margin:4px auto 0;background:#2f2652;border-radius:12px;padding:6px;box-sizing:border-box}
+.p8-in{position:relative;width:100%;height:100%}
+.p8-tile{position:absolute;width:33.3333%;height:33.3333%;padding:3px;box-sizing:border-box;transition:left .07s,top .07s}
+.p8-tile span{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:8px;background:linear-gradient(#fdfbf6,#efe9f9);box-shadow:inset 0 -3px 0 #c9bfe6;font:900 26px var(--f);color:#2a2245}
+.p8-frame{position:absolute;left:33.3333%;top:33.3333%;width:66.6667%;height:66.6667%;box-sizing:border-box;border:2.5px dashed #c8433f;border-radius:8px;pointer-events:none;z-index:2}
+@media (prefers-reduced-motion:reduce){.p8-tile{transition:none}}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="../" title="トップへ" aria-label="トップへ">🔷</a> <span>群・環・体からガロア理論へ</span></div>
+      <div class="brand-sub">第1章 対称性を計算する ／ STAGE 8 ― 15パズルを解く ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 8</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">第1章 STAGE 8</span><h1 class="chapter-title">15パズルを解く</h1>
+        <div class="chapter-sub">共役で3枚だけを回してそろえる</div>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">共役 XAX⁻¹ で好きな3枚だけを回せる理由を確かめ、1枚ずつ定位置へ入れる手順で15パズルがそろうこと、最後に 14 と 15 だけが入れ替わって残らない理由を説明しよう。8パズルで、3巡回だけの方法と最短手順の手数を比べれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">STAGE7 では、14 と 15 を入れ替えた配置には<strong>たどり着けない</strong>ことを証明した。転倒数と、空白の右下からの距離 d の和の偶奇が、どう動かしても変わらないからだったね。今日は逆向きだ。和が偶数の、たどり着けるはずの配置を、<strong>実際にそろえる手順</strong>を群の考え方で組み立てよう。たどり着けると分かっても、手順がなければパズルはそろわないからね。道具は2つ。3枚だけを回す<strong>3巡回</strong>と、それを盤のどこででも使えるようにする<strong>共役</strong>という組み立て方だ。まず1つ目を確かめよう。そろった状態で、空白を右下の 2×2 のマスの中で、上、左、下、右と1周させる。この動きを置換で書いてごらん。STAGE7 と同じく、16 マスに左上から右へ、1段ずつ下へ読む順に番号をつけた<strong>位置の番号</strong>で考える。置換は、各位置のタイルが<strong>どの位置へ行くか</strong>で書く約束だったね。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">1周すると、位置 11 のタイルは位置 12 へ、位置 12 のタイルは位置 15 へ、位置 15 のタイルは位置 11 へ移ります。だから (11 12 15) です。空白は位置 16 に戻っていて、ほかの 12 枚は動いていません。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 250" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="16 マスの位置の番号と、右下の 2×2 の拡大。空白を1周させると、位置 11 のタイルは位置 12 へ、位置 12 のタイルは位置 15 へ、位置 15 のタイルは位置 11 へ移る。3巡回 (11 12 15)"><defs><marker id="s8a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c8433f"/></marker></defs><text x="94" y="22" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">位置の番号（読む順）</text><rect x="15" y="35" width="38" height="38" rx="5" fill="#f2effa" stroke="#dcd8ea"/><text x="34" y="59" text-anchor="middle" font-size="14" font-weight="700" fill="#77708c">1</text><rect x="55" y="35" width="38" height="38" rx="5" fill="#f2effa" stroke="#dcd8ea"/><text x="74" y="59" text-anchor="middle" font-size="14" font-weight="700" fill="#77708c">2</text><rect x="95" y="35" width="38" height="38" rx="5" fill="#f2effa" stroke="#dcd8ea"/><text x="114" y="59" text-anchor="middle" font-size="14" font-weight="700" fill="#77708c">3</text><rect x="135" y="35" width="38" height="38" rx="5" fill="#f2effa" stroke="#dcd8ea"/><text x="154" y="59" text-anchor="middle" font-size="14" font-weight="700" fill="#77708c">4</text><rect x="15" y="75" width="38" height="38" rx="5" fill="#f2effa" stroke="#dcd8ea"/><text x="34" y="99" text-anchor="middle" font-size="14" font-weight="700" fill="#77708c">5</text><rect x="55" y="75" width="38" height="38" rx="5" fill="#f2effa" stroke="#dcd8ea"/><text x="74" y="99" text-anchor="middle" font-size="14" font-weight="700" fill="#77708c">6</text><rect x="95" y="75" width="38" height="38" rx="5" fill="#f2effa" stroke="#dcd8ea"/><text x="114" y="99" text-anchor="middle" font-size="14" font-weight="700" fill="#77708c">7</text><rect x="135" y="75" width="38" height="38" rx="5" fill="#f2effa" stroke="#dcd8ea"/><text x="154" y="99" text-anchor="middle" font-size="14" font-weight="700" fill="#77708c">8</text><rect x="15" y="115" width="38" height="38" rx="5" fill="#f2effa" stroke="#dcd8ea"/><text x="34" y="139" text-anchor="middle" font-size="14" font-weight="700" fill="#77708c">9</text><rect x="55" y="115" width="38" height="38" rx="5" fill="#f2effa" stroke="#dcd8ea"/><text x="74" y="139" text-anchor="middle" font-size="14" font-weight="700" fill="#77708c">10</text><rect x="95" y="115" width="38" height="38" rx="5" fill="#fbe9e8" stroke="#dcd8ea"/><text x="114" y="139" text-anchor="middle" font-size="14" font-weight="900" fill="#c8433f">11</text><rect x="135" y="115" width="38" height="38" rx="5" fill="#fbe9e8" stroke="#dcd8ea"/><text x="154" y="139" text-anchor="middle" font-size="14" font-weight="900" fill="#c8433f">12</text><rect x="15" y="155" width="38" height="38" rx="5" fill="#f2effa" stroke="#dcd8ea"/><text x="34" y="179" text-anchor="middle" font-size="14" font-weight="700" fill="#77708c">13</text><rect x="55" y="155" width="38" height="38" rx="5" fill="#f2effa" stroke="#dcd8ea"/><text x="74" y="179" text-anchor="middle" font-size="14" font-weight="700" fill="#77708c">14</text><rect x="95" y="155" width="38" height="38" rx="5" fill="#fbe9e8" stroke="#dcd8ea"/><text x="114" y="179" text-anchor="middle" font-size="14" font-weight="900" fill="#c8433f">15</text><rect x="135" y="155" width="38" height="38" rx="5" fill="#2f2652" stroke="#dcd8ea"/><text x="154" y="179" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">16</text><rect x="92" y="112" width="84" height="84" rx="6" fill="none" stroke="#c8433f" stroke-width="2.5"/><text x="94" y="214" text-anchor="middle" font-size="11.5" fill="#77708c">位置 16（黒）に空白</text><text x="328" y="22" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">右下の 2×2 を拡大</text><path d="M178,154 L254,100" stroke="#c8433f" stroke-width="1.4" stroke-dasharray="4 3" fill="none"/><rect x="263.5" y="35.5" width="63" height="63" rx="7" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.2"/><text x="295" y="52" text-anchor="middle" font-size="12" font-weight="800" fill="#c8433f">位置 11</text><rect x="329.5" y="35.5" width="63" height="63" rx="7" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.2"/><text x="361" y="52" text-anchor="middle" font-size="12" font-weight="800" fill="#c8433f">位置 12</text><rect x="263.5" y="101.5" width="63" height="63" rx="7" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.2"/><text x="295" y="157" text-anchor="middle" font-size="12" font-weight="800" fill="#c8433f">位置 15</text><rect x="329.5" y="101.5" width="63" height="63" rx="7" fill="#2f2652" stroke="#c8433f" stroke-width="1.2"/><text x="361" y="157" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">位置 16</text><text x="361" y="130" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">空白</text><line x1="292" y1="74" x2="364" y2="74" stroke="#c8433f" stroke-width="2.4" marker-end="url(#s8a)"/><line x1="352" y1="80" x2="302" y2="122" stroke="#c8433f" stroke-width="2.4" marker-end="url(#s8a)"/><line x1="288" y1="132" x2="288" y2="86" stroke="#c8433f" stroke-width="2.4" marker-end="url(#s8a)"/><text x="328" y="188" text-anchor="middle" font-size="11.5" fill="#77708c">矢印＝1周でタイルが移る先</text><rect x="40" y="204" width="360" height="36" rx="9" fill="#f2effa" stroke="#5b4a9e" stroke-width="1.4"/><text x="220" y="227" text-anchor="middle" font-size="13.5" font-weight="900" fill="#221d33">位置 11 → 12 → 15 → 11　＝　3巡回 <tspan fill="#c8433f">(11 12 15)</tspan></text></svg>
+        <div class="diagram-caption"><strong>空白の1周は3巡回 (11 12 15)</strong>。左は 16 マスの位置の番号（読む順）。赤枠の右下 2×2 を右に拡大した。空白（位置 16）を上・左・下・右と1周させると、位置 11 のタイルは位置 12 へ、位置 12 のタイルは位置 15 へ、位置 15 のタイルは位置 11 へ移る（赤い矢印）。行き先で書くと3巡回 (11 12 15)。空白は位置 16 に戻り、ほかの位置のタイルは動かない</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。この1周を A と呼ぼう。A で回せるのは、位置 11, 12, 15 にある3枚だけだ。でも、そろえるときに回したいのは、盤のあちこちにある3枚だね。たとえば、そろった状態で3段目に並ぶ 10, 11, 12 を回したいとしよう。STAGE7 の最後で見たように、まずこの3枚を右下の 2×2 に運び込む。空白を、上、左、左、下、右、右と6手動かしてごらん。この6手を X と呼ぶ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">空白が上へ行くと、12 が位置 16 へ下ります。左へ2回行くと、11 と 10 が1つずつ右へずれて、11 は位置 12 へ、10 は位置 11 へ移ります。下へ行くと 14 が位置 10 へ上がり、右へ2回で 15 が位置 14 へ、12 が位置 15 へ移ります。10, 11, 12 が位置 11, 12, 15 に入って、空白も位置 16 に戻りました。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。そこで A をして3枚を回し、最後に X を逆にたどって、運び込む前の位置へ戻す。X を逆にたどる手順を X⁻¹ と書く。X⁻¹ では、空白をどの順に動かせばいいかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">最後にした手から先に戻します。X は空白を上・左・左・下・右・右と動かしたので、順番を逆にして、向きも逆にすると、左・左・上・右・右・下です。STAGE1 の靴下と靴でいえば、あとからはいた靴を先に脱ぐのと同じです。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 402" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="そろった状態から、X で 10, 11, 12 を右下の 2×2 に運び込み、A で1周させ、X⁻¹ で戻すと、3段目が 9, 12, 10, 11 になり、途中で動いた 14 と 15 はもとに戻る様子"><defs><marker id="s8b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b4a9e"/></marker></defs><text x="92" y="28" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">はじめ（そろった状態）</text><rect x="34" y="38" width="116" height="116" rx="7" fill="#2f2652"/><rect x="39.5" y="43.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="51.5" y="60.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">1</text><rect x="66.5" y="43.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="78.5" y="60.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">2</text><rect x="93.5" y="43.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="105.5" y="60.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">3</text><rect x="120.5" y="43.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="132.5" y="60.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">4</text><rect x="39.5" y="70.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="51.5" y="87.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">5</text><rect x="66.5" y="70.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="78.5" y="87.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">6</text><rect x="93.5" y="70.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="105.5" y="87.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">7</text><rect x="120.5" y="70.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="132.5" y="87.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">8</text><rect x="39.5" y="97.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="51.5" y="114.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">9</text><rect x="66.5" y="97.5" width="24" height="24" rx="4" fill="#fbe9e8" stroke="#c8433f" stroke-width="2"/><text x="78.5" y="114.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#221d33">10</text><rect x="93.5" y="97.5" width="24" height="24" rx="4" fill="#e7eef9" stroke="#3f6fb5" stroke-width="2"/><text x="105.5" y="114.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#221d33">11</text><rect x="120.5" y="97.5" width="24" height="24" rx="4" fill="#fdf4dd" stroke="#9a6a1c" stroke-width="2"/><text x="132.5" y="114.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#221d33">12</text><rect x="39.5" y="124.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="51.5" y="141.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">13</text><rect x="66.5" y="124.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="78.5" y="141.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">14</text><rect x="93.5" y="124.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="105.5" y="141.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">15</text><text x="348" y="28" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">X のあと</text><rect x="290" y="38" width="116" height="116" rx="7" fill="#2f2652"/><rect x="295.5" y="43.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="307.5" y="60.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">1</text><rect x="322.5" y="43.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="334.5" y="60.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">2</text><rect x="349.5" y="43.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="361.5" y="60.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">3</text><rect x="376.5" y="43.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="388.5" y="60.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">4</text><rect x="295.5" y="70.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="307.5" y="87.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">5</text><rect x="322.5" y="70.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="334.5" y="87.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">6</text><rect x="349.5" y="70.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="361.5" y="87.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">7</text><rect x="376.5" y="70.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="388.5" y="87.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">8</text><rect x="295.5" y="97.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="307.5" y="114.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">9</text><rect x="322.5" y="97.5" width="24" height="24" rx="4" fill="#efecf8" stroke="#2f9e5c" stroke-width="2" stroke-dasharray="4 2.5"/><text x="334.5" y="114.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">14</text><rect x="349.5" y="97.5" width="24" height="24" rx="4" fill="#fbe9e8" stroke="#c8433f" stroke-width="2"/><text x="361.5" y="114.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#221d33">10</text><rect x="376.5" y="97.5" width="24" height="24" rx="4" fill="#e7eef9" stroke="#3f6fb5" stroke-width="2"/><text x="388.5" y="114.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#221d33">11</text><rect x="295.5" y="124.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="307.5" y="141.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">13</text><rect x="322.5" y="124.5" width="24" height="24" rx="4" fill="#efecf8" stroke="#2f9e5c" stroke-width="2" stroke-dasharray="4 2.5"/><text x="334.5" y="141.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">15</text><rect x="349.5" y="124.5" width="24" height="24" rx="4" fill="#fdf4dd" stroke="#9a6a1c" stroke-width="2"/><text x="361.5" y="141.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#221d33">12</text><text x="348" y="234" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">A のあと</text><rect x="290" y="244" width="116" height="116" rx="7" fill="#2f2652"/><rect x="295.5" y="249.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="307.5" y="266.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">1</text><rect x="322.5" y="249.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="334.5" y="266.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">2</text><rect x="349.5" y="249.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="361.5" y="266.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">3</text><rect x="376.5" y="249.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="388.5" y="266.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">4</text><rect x="295.5" y="276.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="307.5" y="293.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">5</text><rect x="322.5" y="276.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="334.5" y="293.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">6</text><rect x="349.5" y="276.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="361.5" y="293.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">7</text><rect x="376.5" y="276.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="388.5" y="293.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">8</text><rect x="295.5" y="303.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="307.5" y="320.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">9</text><rect x="322.5" y="303.5" width="24" height="24" rx="4" fill="#efecf8" stroke="#2f9e5c" stroke-width="2" stroke-dasharray="4 2.5"/><text x="334.5" y="320.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">14</text><rect x="349.5" y="303.5" width="24" height="24" rx="4" fill="#fdf4dd" stroke="#9a6a1c" stroke-width="2"/><text x="361.5" y="320.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#221d33">12</text><rect x="376.5" y="303.5" width="24" height="24" rx="4" fill="#fbe9e8" stroke="#c8433f" stroke-width="2"/><text x="388.5" y="320.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#221d33">10</text><rect x="295.5" y="330.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="307.5" y="347.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">13</text><rect x="322.5" y="330.5" width="24" height="24" rx="4" fill="#efecf8" stroke="#2f9e5c" stroke-width="2" stroke-dasharray="4 2.5"/><text x="334.5" y="347.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">15</text><rect x="349.5" y="330.5" width="24" height="24" rx="4" fill="#e7eef9" stroke="#3f6fb5" stroke-width="2"/><text x="361.5" y="347.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#221d33">11</text><text x="92" y="234" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">X⁻¹ のあと</text><rect x="34" y="244" width="116" height="116" rx="7" fill="#2f2652"/><rect x="39.5" y="249.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="51.5" y="266.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">1</text><rect x="66.5" y="249.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="78.5" y="266.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">2</text><rect x="93.5" y="249.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="105.5" y="266.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">3</text><rect x="120.5" y="249.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="132.5" y="266.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">4</text><rect x="39.5" y="276.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="51.5" y="293.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">5</text><rect x="66.5" y="276.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="78.5" y="293.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">6</text><rect x="93.5" y="276.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="105.5" y="293.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">7</text><rect x="120.5" y="276.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="132.5" y="293.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">8</text><rect x="39.5" y="303.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="51.5" y="320.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">9</text><rect x="66.5" y="303.5" width="24" height="24" rx="4" fill="#fdf4dd" stroke="#9a6a1c" stroke-width="2"/><text x="78.5" y="320.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#221d33">12</text><rect x="93.5" y="303.5" width="24" height="24" rx="4" fill="#fbe9e8" stroke="#c8433f" stroke-width="2"/><text x="105.5" y="320.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#221d33">10</text><rect x="120.5" y="303.5" width="24" height="24" rx="4" fill="#e7eef9" stroke="#3f6fb5" stroke-width="2"/><text x="132.5" y="320.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#221d33">11</text><rect x="39.5" y="330.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="51.5" y="347.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">13</text><rect x="66.5" y="330.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="78.5" y="347.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">14</text><rect x="93.5" y="330.5" width="24" height="24" rx="4" fill="#efecf8"/><text x="105.5" y="347.5" text-anchor="middle" font-size="12.959999999999999" font-weight="900" fill="#77708c">15</text><rect x="347" y="95" width="56" height="56" rx="4" fill="none" stroke="#c8433f" stroke-width="2" stroke-dasharray="5 3"/><rect x="347" y="301" width="56" height="56" rx="4" fill="none" stroke="#c8433f" stroke-width="2" stroke-dasharray="5 3"/><line x1="158" y1="96" x2="282" y2="96" stroke="#5b4a9e" stroke-width="2" marker-end="url(#s8b)"/><text x="220" y="74" text-anchor="middle" font-size="13" font-weight="900" fill="#5b4a9e">① X</text><text x="220" y="88" text-anchor="middle" font-size="11" fill="#221d33">空白を</text><text x="220" y="114" text-anchor="middle" font-size="11" fill="#221d33">上左左下右右</text><line x1="348" y1="162" x2="348" y2="218" stroke="#5b4a9e" stroke-width="2" marker-end="url(#s8b)"/><text x="338" y="188" text-anchor="end" font-size="13" font-weight="900" fill="#5b4a9e">② A</text><text x="338" y="204" text-anchor="end" font-size="11" fill="#221d33">空白で1周</text><line x1="282" y1="302" x2="158" y2="302" stroke="#5b4a9e" stroke-width="2" marker-end="url(#s8b)"/><text x="220" y="280" text-anchor="middle" font-size="13" font-weight="900" fill="#5b4a9e">③ X⁻¹</text><text x="220" y="294" text-anchor="middle" font-size="11" fill="#221d33">空白を</text><text x="220" y="320" text-anchor="middle" font-size="11" fill="#221d33">左左上右右下</text><text x="220" y="394" text-anchor="middle" font-size="11.5" font-weight="800" fill="#2f9e5c">緑の点線＝途中で動いたほかのタイル（最後はもとの位置）</text></svg>
+        <div class="diagram-caption"><strong>XAX⁻¹ で 10, 11, 12 だけを回す</strong>。左上から時計回りに進む。① X（空白を上・左・左・下・右・右）で、10, 11, 12 を右下の 2×2（赤の点線）に運び込む。このとき 14 と 15（緑の点線）も動く。② A（空白で1周）で3枚を回す。③ X⁻¹（空白を左・左・上・右・右・下）で X を逆にたどる。14 と 15 はもとの位置に戻り、3段目は 9, 12, 10, 11 になる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。X、A、X⁻¹ の順に行う手順を、積の記法で <strong>XAX⁻¹</strong> と書く。積は左から順に行う約束だったね。これを、A の<strong>共役（きょうやく）</strong>という。A と同じ「3枚を回す」働きを、場所を移して行わせる手順で、A と組になったものという意味の名前だ。結果は、そろった状態からどう変わったかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">3段目が 9, 12, 10, 11 になりました。10 は 11 がいた位置へ、11 は 12 がいた位置へ、12 は 10 がいた位置へ移って、3枚が回っています。X の途中で動いた 14 と 15 は、もとの位置に戻っています。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。これは、この例だけの偶然ではない。どの3枚でも同じことが起きる理由を確かめよう。まず、X で右下の 2×2 に入らなかったタイルを1枚追いかけてごらん。X で、そのタイルが位置 u から位置 v へ移ったとしよう。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">右下の 2×2 には、運び込んだ3枚と空白が入っているので、v は 11, 12, 15, 16 のどれでもありません。だから A では動きません。X⁻¹ は X をちょうど逆にたどるので、位置 v のタイルを位置 u へ戻します。そのタイルは、もとの位置 u に戻ります。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。では、運び込んだ3枚はどうかな。10 は X で位置 11 に入り、A で位置 12 へ進む。X⁻¹ で、位置 12 のタイルはどこへ行くかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">X⁻¹ は、X で位置 12 に入ったタイルを、それがもといた位置へ戻す動きです。X で位置 12 に入ったのは 11 なので、位置 12 にいる 10 は、11 がもといた位置へ行きます。X で位置 11, 12, 15 に入るタイルがもとはどの位置にいたかで、回り方が決まるということですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。X が位置 p, q, r のタイルを位置 11, 12, 15 へ運ぶなら、XAX⁻¹ は3巡回 (p q r) で、ほかのタイルはすべてもとに戻る。STAGE7 で「運び込む手順と戻す手順が打ち消し合う」と言ったのは、このことだ。しかも、ほかの 12 枚が自由に動けるので、どの3枚でも、どんな順でも、X は必ず作れる。いちばん短い X は、コンピュータに空白の動かし方を短い順に調べさせれば見つかる。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">A：右下の 2×2 で空白を1周＝3巡回 <span class="nw">(11 12 15)</span></span>
+        <span class="step">X：位置 p, q, r のタイルを位置 11, 12, 15 へ、空白を位置 16 へ運ぶ手順</span>
+        <span class="step">X⁻¹：X を、最後の手から順に、向きを逆にしてたどる手順</span>
+        <span class="step">p, q, r 以外のタイル：X で動いても A では動かず、X⁻¹ でもとの位置に戻る</span>
+        <span class="step">位置 p のタイル：X で位置 11 → A で位置 12 → X⁻¹ で位置 q（q, r のタイルも同じように r, p へ）</span>
+        <span class="step">よって <strong>XAX⁻¹＝(p q r)</strong>（A の共役）</span>
+      </div>
+
+      <div class="diagram-box">
+<div class="pz-board cj" id="pz-cj8" role="group" aria-label="15パズルの盤。タイルを3枚選ぶと、XAX⁻¹ でその3枚だけを回す様子を再生する"></div>
+        <div class="sim-controls" id="ctl-cj8"></div>
+        <div class="readout" id="ro-cj8"></div>
+        <div class="diagram-caption"><strong>好きな3枚を XAX⁻¹ で回す</strong>。回したいタイルを3枚、順にタップして選び（赤・青・金の順。はじめは 10, 11, 12 を選んである）、「選んだ3枚を回す」を押す。空白を動かすいちばん短い X をその場で計算し、① X で3枚を右下の 2×2（赤の点線）へ運び込み、② A で1周させ、③ X⁻¹ で戻す様子を再生する。途中で動いたほかのタイルは緑の点線で示され、最後にはすべてもとの位置に戻る。1枚目は2枚目の位置へ、2枚目は3枚目の位置へ、3枚目は1枚目の位置へ移る</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">どの3枚でも回せるなら、混ぜた盤も、3巡回をくり返せばそろえられそうです。でも、どの3枚を、どの順に回していけばいいんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">1枚ずつ、1, 2, 3, … の順に定位置へ入れていく。入れたタイルは、あとで崩さない。はじめに空白を右下へ動かしておく。それから、1 を左上の定位置、つまり位置 1 へ入れるには、どんな3巡回を使えばいいかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">1 がいま位置 p にいるなら、p のタイルを位置 1 へ移す (p 1 r) を使います。r は、p でも 1 でも 16 でもない位置なら、どこでもかまいません。2 を入れるときも (p 2 r) の形で、p, 2, r に位置 1 を使わなければ、XAX⁻¹ ではそれ以外のタイルはもとに戻るので、1 は動きません。でも、最後に 14 と 15 だけが入れ替わって残ったら、3つの位置を使う3巡回では直せません。そういうことは起きないんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">起きない。13 まで入れたあとで 14 と 15 だけが入れ替わっていたら、空白が右下にあって、そろった状態から互換 (14 15) 1個だけずれた配置、つまり奇置換だ。STAGE7 で見たとおり、たどり着ける配置のうち空白が右下にあるものは、どれも偶置換だった。だから、その配置はどの手順の途中にも現れない。13 まで入れた時点で、14 と 15 は必ずそろっているんだ。この方法なら、たどり着ける配置はどれも必ずそろう。ただし、1枚入れるたびに X と X⁻¹ で往復するので、手数は多い。15パズルでは、ふつう 300 手から 500 手ほどかかる。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 440 262" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="15パズルを1枚ずつそろえる手順。空白を右下へ動かし、1 から 13 を3巡回で順に定位置へ入れると、14 と 15 は必ずそろう。14 と 15 が入れ替わった配置は奇置換でたどり着けない"><text x="98" y="20" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">入れる順番</text><rect x="15.5" y="31.5" width="39" height="39" rx="5" fill="#efecf8" stroke="#c9bfe6"/><text x="35" y="57" text-anchor="middle" font-size="16" font-weight="900" fill="#44377a">1</text><rect x="57.5" y="31.5" width="39" height="39" rx="5" fill="#efecf8" stroke="#c9bfe6"/><text x="77" y="57" text-anchor="middle" font-size="16" font-weight="900" fill="#44377a">2</text><rect x="99.5" y="31.5" width="39" height="39" rx="5" fill="#efecf8" stroke="#c9bfe6"/><text x="119" y="57" text-anchor="middle" font-size="16" font-weight="900" fill="#44377a">3</text><rect x="141.5" y="31.5" width="39" height="39" rx="5" fill="#efecf8" stroke="#c9bfe6"/><text x="161" y="57" text-anchor="middle" font-size="16" font-weight="900" fill="#44377a">4</text><rect x="15.5" y="73.5" width="39" height="39" rx="5" fill="#efecf8" stroke="#c9bfe6"/><text x="35" y="99" text-anchor="middle" font-size="16" font-weight="900" fill="#44377a">5</text><rect x="57.5" y="73.5" width="39" height="39" rx="5" fill="#efecf8" stroke="#c9bfe6"/><text x="77" y="99" text-anchor="middle" font-size="16" font-weight="900" fill="#44377a">6</text><rect x="99.5" y="73.5" width="39" height="39" rx="5" fill="#efecf8" stroke="#c9bfe6"/><text x="119" y="99" text-anchor="middle" font-size="16" font-weight="900" fill="#44377a">7</text><rect x="141.5" y="73.5" width="39" height="39" rx="5" fill="#efecf8" stroke="#c9bfe6"/><text x="161" y="99" text-anchor="middle" font-size="16" font-weight="900" fill="#44377a">8</text><rect x="15.5" y="115.5" width="39" height="39" rx="5" fill="#efecf8" stroke="#c9bfe6"/><text x="35" y="141" text-anchor="middle" font-size="16" font-weight="900" fill="#44377a">9</text><rect x="57.5" y="115.5" width="39" height="39" rx="5" fill="#efecf8" stroke="#c9bfe6"/><text x="77" y="141" text-anchor="middle" font-size="16" font-weight="900" fill="#44377a">10</text><rect x="99.5" y="115.5" width="39" height="39" rx="5" fill="#efecf8" stroke="#c9bfe6"/><text x="119" y="141" text-anchor="middle" font-size="16" font-weight="900" fill="#44377a">11</text><rect x="141.5" y="115.5" width="39" height="39" rx="5" fill="#efecf8" stroke="#c9bfe6"/><text x="161" y="141" text-anchor="middle" font-size="16" font-weight="900" fill="#44377a">12</text><rect x="15.5" y="157.5" width="39" height="39" rx="5" fill="#efecf8" stroke="#c9bfe6"/><text x="35" y="183" text-anchor="middle" font-size="16" font-weight="900" fill="#44377a">13</text><rect x="57.5" y="157.5" width="39" height="39" rx="5" fill="#e6f5ec" stroke="#2f9e5c"/><text x="77" y="183" text-anchor="middle" font-size="16" font-weight="900" fill="#2f9e5c">14</text><rect x="99.5" y="157.5" width="39" height="39" rx="5" fill="#e6f5ec" stroke="#2f9e5c"/><text x="119" y="183" text-anchor="middle" font-size="16" font-weight="900" fill="#2f9e5c">15</text><rect x="141.5" y="157.5" width="39" height="39" rx="5" fill="#2f2652" stroke="#c9bfe6"/><text x="161" y="183" text-anchor="middle" font-size="12" font-weight="900" fill="#fff">空白</text><text x="98" y="218" text-anchor="middle" font-size="11.5" fill="#77708c">紫：3巡回で入れる　緑：自動でそろう</text><text x="206" y="42" font-size="12.5" font-weight="900" fill="#221d33">① 空白を右下へ動かす</text><text x="206" y="68" font-size="12.5" font-weight="900" fill="#221d33">② 1, 2, …, 13 の順に、XAX⁻¹ で</text><text x="206" y="86" font-size="12.5" font-weight="900" fill="#221d33">　 1枚ずつ定位置へ入れる</text><text x="206" y="106" font-size="11" font-weight="700" fill="#77708c">　 3巡回の3つの位置は、まだそろって</text><text x="206" y="122" font-size="11" font-weight="700" fill="#77708c">　 いない位置から選ぶ → 入れた分は崩れない</text><text x="206" y="148" font-size="12.5" font-weight="900" fill="#2f9e5c">③ 14 と 15 は、もうそろっている</text><rect x="206" y="170" width="110" height="32" rx="6" fill="#2f2652"/><rect x="210.5" y="174" width="23" height="24" rx="4" fill="#efecf8"/><text x="222" y="191" text-anchor="middle" font-size="13" font-weight="900" fill="#221d33">13</text><rect x="236.5" y="174" width="23" height="24" rx="4" fill="#e6f5ec"/><text x="248" y="191" text-anchor="middle" font-size="13" font-weight="900" fill="#221d33">14</text><rect x="262.5" y="174" width="23" height="24" rx="4" fill="#e6f5ec"/><text x="274" y="191" text-anchor="middle" font-size="13" font-weight="900" fill="#221d33">15</text><text x="324" y="191" font-size="12" font-weight="900" fill="#2f9e5c">○ そろう</text><rect x="206" y="214" width="110" height="32" rx="6" fill="#2f2652"/><rect x="210.5" y="218" width="23" height="24" rx="4" fill="#efecf8"/><text x="222" y="235" text-anchor="middle" font-size="13" font-weight="900" fill="#221d33">13</text><rect x="236.5" y="218" width="23" height="24" rx="4" fill="#fbe9e8"/><text x="248" y="235" text-anchor="middle" font-size="13" font-weight="900" fill="#221d33">15</text><rect x="262.5" y="218" width="23" height="24" rx="4" fill="#fbe9e8"/><text x="274" y="235" text-anchor="middle" font-size="13" font-weight="900" fill="#221d33">14</text><text x="324" y="227" font-size="12" font-weight="900" fill="#c8433f">× 奇置換</text><text x="324" y="243" font-size="11" fill="#c8433f">たどり着けない</text><text x="206" y="258" font-size="11" fill="#77708c">（最下段だけを表示）</text></svg>
+        <div class="diagram-caption"><strong>1枚ずつ入れていく手順</strong>。はじめに空白を右下へ動かす。そのあと 1, 2, …, 13 の順に、XAX⁻¹ の3巡回で1枚ずつ定位置へ入れる。3巡回に使う3つの位置は、まだそろっていない位置から選ぶので、入れたタイルは崩れない。13 まで入ると、残りの 14 と 15 は必ずそろっている。最下段で 14 と 15 が入れ替わった配置（下）は奇置換で、たどり着けない</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">300 手以上かかるなら、いちばん短い手順はどれくらいなんですか？ 短い手順も、群の考え方で作れるんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いい質問だね。小さなパズルで比べてみよう。3×3 のマスに 1 から 8 のタイルと空白を置いた<strong>8パズル</strong>だ。同じ方法なら、8パズルではいくつまで入れればいいかな？ それと、たどり着ける配置は何通りかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">空白を右下に置いて 1 から 6 まで入れれば、残りの 7 と 8 は、15パズルの 14 と 15 と同じ理由で必ずそろいます。配置は 9! ＝ 362880 通りで、たどり着けるのはその半分の 181440 通りです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。181440 通りなら、コンピュータで全部調べられる。そろった状態から1手で行ける配置、2手で行ける配置、…と順に広げていくと、すべての配置の<strong>最短手数</strong>が分かる。いちばん遠い配置でも 31 手だ。一方、3巡回だけの方法では、ふつう 100 手を超える。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<div class="p8-board" id="pz-e8" role="img"></div>
+        <div class="sim-controls" id="ctl-e8"></div>
+        <div class="readout" id="ro-e8"></div>
+        <div class="diagram-caption"><strong>8パズルで手数を比べる</strong>。「3巡回だけでそろえる」は、空白を右下に動かしてから、1, 2, … を XAX⁻¹ の3巡回で順に定位置へ入れる（赤の点線が右下の 2×2）。「最短手順でそろえる」は、181440 通りの配置すべての最短手数をその場で計算してから、いちばん短い手順でそろえる。どちらも、いま表示している混ぜた配置から始める。「混ぜる」で別の配置を作って、何度か比べてみよう</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">群の考え方で分かるのは、そろえられるかどうかと、そろえるための部品までで、いちばん短い手順までは決まらないということですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。最短手順は配置ごとの細かい事情で決まるので、コンピュータで探すしかない。15パズルのたどり着ける配置は約 10 兆 4600 億通りもあるけれど、1999年ごろ、ブリュンガー、マルツェッタ、福田公明、ニーフェルゲルトがコンピュータで探索して、どの配置も 80 手以内でそろえられることを示した。1枚を1マス動かすのを1手と数えた手数だ。一方、手順の組み立て方のほうは、ルービックキューブでも同じだ。キューブの解き方では、XAX⁻¹ のほかに、A をして、B をして、A を逆にたどり、B を逆にたどる手順 <strong>ABA⁻¹B⁻¹</strong> もよく使う。これを A と B の<strong>交換子</strong>という。A では動くけれど、B が動かす場所には一度も入らないピースは、どうなるかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">そのピースは、A で動いても、B と B⁻¹ では動かないので、A⁻¹ でもとの場所に戻ります。B では動くけれど A が動かす場所に一度も入らないピースも、同じように B⁻¹ で戻ります。動く可能性があるのは、A と B の両方にかかわるピースだけということですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。A と B の重なりを小さく選べば、ほんの数個のピースだけを動かす手順になる。キューブの配置は約 4325 京通りもあるけれど、こうした交換子や共役を部品として組み合わせれば、人の手でそろえられるんだ。最短手数のほうはやはりコンピュータで調べられ、2010年に、面を 90° か 180° 回すのを1手として、どの配置も 20 手以内でそろえられることが示された。交換子は、第4章で5次方程式を調べるときにも大事な役目をする。では、この章の道具が15パズルのどこで使われたか、振り返ってごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">操作を積として計算できるので、k 手の動きを k 個の互換の積と書けました。互換の個数の偶奇が書き方によらないことは、転倒数で証明しました。市松模様の色で、空白が戻るには偶数手かかることが分かりました。偶置換が全体のちょうど半分で、3巡回で全部作れることから、たどり着ける配置がちょうど半分だと分かりました。そして、共役 XAX⁻¹ で好きな3枚だけを回せるので、たどり着ける配置を実際にそろえる手順も組み立てられました。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+<svg viewBox="0 0 400 414" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="第1章で学んだことのつながりの図">
+  <defs><marker id="ar8b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#77708c"/></marker></defs>
+  <rect x="70" y="4" width="260" height="42" rx="9" fill="#5b4a9e" stroke="#5b4a9e" stroke-width="1.6"/><text x="200" y="30.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">群：操作を積として計算（1・2）</text>
+  <line x1="160" y1="48" x2="105" y2="74" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar8b)"/>
+  <line x1="240" y1="48" x2="295" y2="74" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar8b)"/>
+  <text x="100" y="92" text-anchor="middle" font-size="14.5" font-weight="900" fill="#9a6a1c">数の群</text><text x="300" y="92" text-anchor="middle" font-size="14.5" font-weight="900" fill="#c8433f">入れ替えの群</text>
+  <rect x="6" y="102" width="184" height="42" rx="9" fill="#fdf4dd" stroke="#9a6a1c" stroke-width="1.6"/><text x="98" y="128.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33"><tspan class="up">mod</tspan> の群・巡回群（3）</text>
+  <rect x="210" y="102" width="184" height="42" rx="9" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.6"/><text x="302" y="128.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33">置換・転倒数（6）</text>
+  <line x1="98" y1="146" x2="98" y2="162" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar8b)"/>
+  <line x1="302" y1="146" x2="302" y2="162" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar8b)"/>
+  <rect x="6" y="164" width="184" height="42" rx="9" fill="#fdf4dd" stroke="#9a6a1c" stroke-width="1.6"/><text x="98" y="190.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33">ラグランジュ（4）</text>
+  <rect x="210" y="164" width="184" height="42" rx="9" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.6"/><text x="302" y="190.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33">偶置換・交代群（6）</text>
+  <line x1="98" y1="208" x2="98" y2="224" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar8b)"/>
+  <line x1="302" y1="208" x2="302" y2="224" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar8b)"/>
+  <rect x="6" y="226" width="184" height="42" rx="9" fill="#fdf4dd" stroke="#9a6a1c" stroke-width="1.6"/><text x="98" y="252.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33">オイラー・RSA（5）</text>
+  <rect x="210" y="226" width="184" height="42" rx="9" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.6"/><text x="302" y="252.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33">15パズルの謎（7）</text>
+  <line x1="190" y1="185" x2="210" y2="185" stroke="#77708c" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <line x1="302" y1="270" x2="302" y2="286" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar8b)"/>
+  <rect x="210" y="288" width="184" height="42" rx="9" fill="#fbe9e8" stroke="#c8433f" stroke-width="1.6"/><text x="302" y="314.5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#221d33">15パズルを解く（8）</text>
+  <line x1="302" y1="332" x2="302" y2="352" stroke="#77708c" stroke-width="1.6" marker-end="url(#ar8b)"/>
+  <rect x="150" y="356" width="244" height="44" rx="9" fill="#e9e4f7" stroke="#5b4a9e" stroke-width="1.6"/><text x="272" y="383.5" text-anchor="middle" font-size="15" font-weight="900" fill="#44377a">第4章：解を入れ替える群</text>
+</svg>
+        <div class="diagram-caption"><strong>第1章のまとめ</strong>。操作を積として計算する「群」から、数の群（<span class="up">mod</span>、ラグランジュの定理、RSA 暗号）と、入れ替えの群（置換の偶奇、15パズルの謎と解き方）の2本の道に分かれた。かっこ内の数はステージの番号。入れ替えの群は、第4章で方程式の解の入れ替えとして再び主役になる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。群の考え方の本当の力は、もの自体ではなく、<strong>ものを動かす操作</strong>に目を向けるところにある。この考え方を最初に大きく使ったのが、フランスのガロアだ。1832年に 20 歳で亡くなったガロアは、方程式の解を入れ替える置換の群を調べて、5次方程式に解の公式がない理由を明らかにした。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">方程式の解の入れ替えも置換なら、15パズルのように「どう入れ替えても変わらない性質」を使って、できないことを言い切るんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。第4章では、方程式の解の入れ替えのうち、解の間の関係を保つものの群（ガロア群）を調べ、その群の形で、√ や ∛ だけで解けるかどうかが決まることを見る。STAGE6 の交代群 Aₙ も、今日の交換子も、そこでまた主役になる。その前に、第2章では、足し算と掛け算の両方をもつ「環」という道具で、素因数分解がただ1通りになるしくみを調べよう。この章で何度も使った「素因数分解はただ1通り」の正体だ。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果】</span>
+        <span class="step">右下の 2×2 で空白を1周させる A は、位置の番号で書くと3巡回 (11 12 15)</span>
+        <span class="step">X で3枚を右下の 2×2 に運び込み、A で回し、X⁻¹ で戻す XAX⁻¹（A の共役）は3巡回 (p q r)。ほかのタイルはすべてもとに戻る</span>
+        <span class="step">1, 2, …, 13 を3巡回で1枚ずつ定位置へ入れれば15パズルはそろう。最後に 14 と 15 だけが入れ替わることは、奇置換なので起きない</span>
+        <span class="step">群の考え方は「そろえられるか」と「手順の部品」を与えるが、最短手順はコンピュータの探索で求める（8パズルは最長 31 手、15パズルは 80 手以内）</span>
+        <span class="step">ルービックキューブも、交換子 ABA⁻¹B⁻¹ や共役 XAX⁻¹ を部品にしてそろえる。入れ替えの群は第4章（ガロア理論）へ続く</span>
+      </div>
+
+      <h2 class="quiz-head">確認クイズ</h2>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. 手順 X で、位置 p, q, r のタイルを右下の 2×2 の位置 11, 12, 15 へ運び込む。A を空白の1周とするとき、XAX⁻¹ を行うとどうなる？</p>
+        <div class="choice-list">
+          <button class="choice-btn">位置 p のタイルが q へ、q のタイルが r へ、r のタイルが p へ移り、ほかはすべてもとに戻る</button>
+          <button class="choice-btn">p, q, r の3枚に加えて、X の途中で動いたほかのタイルもいっしょに回る</button>
+          <button class="choice-btn">X と X⁻¹ が打ち消し合うので、何も変わらない</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ X で動いたほかのタイルは A では動かず、X⁻¹ でもとに戻る。p のタイルは X で位置 11、A で位置 12 に進み、X⁻¹ で、X が位置 12 に運んだタイルのもとの位置 q へ行く。打ち消し合うのは X と X⁻¹ だけで、A の効果（3巡回）が場所を移して残る。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. 1 から順に3巡回で定位置へ入れていくとき、最後に 14 と 15 だけが入れ替わって残ることがないのはなぜ？</p>
+        <div class="choice-list">
+          <button class="choice-btn">3巡回は3枚を回すので、2枚は必ず定位置に入るから</button>
+          <button class="choice-btn">14 と 15 はとなりどうしなので、最後に自然に入れ替わるから</button>
+          <button class="choice-btn">その配置は奇置換で、空白が右下にあるたどり着ける配置（偶置換）には現れないから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 14 と 15 だけが入れ替わった配置は、そろった状態から互換 (14 15) 1個だけずれた奇置換。空白が右下にあるたどり着ける配置はすべて偶置換なので、手順の途中に現れることはない。</div>
+      </div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. 8パズルや15パズルの「最短手順」について正しいものは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">3巡回だけでそろえる方法が、いつも最短手順になる</button>
+          <button class="choice-btn">群の構造だけでは決まらず、コンピュータの探索で求める（8パズルは最長 31 手）</button>
+          <button class="choice-btn">群の要素の数が分かれば、最短手数も計算で決まる</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 群の考え方は、たどり着けるかどうかと、3巡回や共役といった手順の部品を与える。最短手順は配置ごとに違い、全部の配置を調べる探索で求める。8パズルは 181440 通りを調べて最長 31 手、15パズルは 80 手以内と分かっている。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← 章のトップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=20261009a"></script>
+<script src="../js/algebra.js?v=20261009a"></script>
+<script>AQ.initStagePage("groups", 8);</script>
+<script>
+(function(){
+var core=function core(n) {
+  const NN = n * n, BR = NN - 1, TL = BR - n - 1, TR = BR - n, BL = BR - 1;
+  const NB = [];
+  for (let c = 0; c < NN; c++) {
+    const r = Math.floor(c / n), k = c % n, o = [];
+    if (r > 0) o.push(c - n); if (r < n - 1) o.push(c + n); if (k > 0) o.push(c - 1); if (k < n - 1) o.push(c + 1);
+    NB.push(o);
+  }
+  // 空白の通り道 path（空白が順に移るマス）を s に施した配置（s は書き換えない）
+  const apply = (s, path) => { const t = s.slice(); let b = t.indexOf(0); path.forEach((c) => { t[b] = t[c]; t[c] = 0; b = c; }); return t; };
+  const LOOP = [TR, TL, BL, BR];          // A：空白を上・左・下・右
+  // X：位置 p, q, r のタイルを右下 2×2 の左上・右上・左下へ、空白を右下へ運ぶ最短手順（幅優先探索）
+  function bfsX(s, p, q, r) {
+    const M = NN, key = (b, a, c, d) => ((b * M + a) * M + c) * M + d;
+    const prev = new Int32Array(M * M * M * M).fill(-2);
+    const k0 = key(s.indexOf(0), p, q, r), goal = key(BR, TL, TR, BL);
+    prev[k0] = -1; const Q = [k0]; let h = 0;
+    while (h < Q.length) {
+      const k = Q[h++]; if (k === goal) break;
+      const d = k % M, c = Math.floor(k / M) % M, a = Math.floor(k / M / M) % M, b = Math.floor(k / M / M / M);
+      NB[b].forEach((x) => {
+        const k2 = key(x, a === x ? b : a, c === x ? b : c, d === x ? b : d);
+        if (prev[k2] === -2) { prev[k2] = k; Q.push(k2); }
+      });
+    }
+    if (prev[goal] === -2) throw new Error("X が見つかりません");
+    const path = []; let k = goal;
+    while (prev[k] !== -1) { path.push(Math.floor(k / M / M / M)); k = prev[k]; }
+    return path.reverse();
+  }
+  // XAX⁻¹ の3つの部分（空白の通り道）。X⁻¹ は X の通り道を逆にたどる
+  function conj(s, p, q, r) {
+    const X = bfsX(s, p, q, r), b0 = s.indexOf(0);
+    return { X: X, A: LOOP.slice(), Xi: X.length ? X.slice(0, -1).reverse().concat([b0]) : [] };
+  }
+  return { n: n, NN: NN, BR: BR, TL: TL, TR: TR, BL: BL, NB: NB, apply: apply, LOOP: LOOP, bfsX: bfsX, conj: conj };
+};
+(function conjWidget(cfg, core) {
+  const C = core(4);
+  const host = document.getElementById("pz-" + cfg.id), ro = document.getElementById("ro-" + cfg.id), ctl = document.getElementById("ctl-" + cfg.id);
+  const inner = document.createElement("div"); inner.className = "pz-in"; host.appendChild(inner);
+  const frame = document.createElement("div"); frame.className = "cj-frame"; inner.appendChild(frame);
+  const SOLVED = []; for (let i = 1; i <= 15; i++) SOLVED.push(i); SOLVED.push(0);
+  const CLS = ["cj-a", "cj-b", "cj-c"];
+  let s = SOLVED.slice(), sel = [], base = null, token = 0, busy = false, phase = "", done = "";
+  const tiles = {};
+  for (let t = 1; t <= 15; t++) {
+    const b = document.createElement("button"); b.type = "button"; b.className = "pz-tile"; b.setAttribute("aria-label", "タイル " + t);
+    b.innerHTML = "<span>" + t + "</span><i class=\"cj-k\"></i>";
+    b.addEventListener("click", () => pick(t));
+    inner.appendChild(b); tiles[t] = b;
+  }
+  function layout() {
+    s.forEach((t, i) => {
+      if (!t) return;
+      const el = tiles[t], k = sel.indexOf(t);
+      el.style.left = (i % 4) * 25 + "%"; el.style.top = Math.floor(i / 4) * 25 + "%";
+      CLS.forEach((c, j) => el.classList.toggle(c, j === k));
+      el.classList.toggle("cj-away", !!base && k < 0 && base[i] !== t);
+      el.querySelector(".cj-k").textContent = k >= 0 ? String(k + 1) : "";
+    });
+    show();
+  }
+  function show() {
+    let h = "";
+    if (sel.length < 3) h += "<span>回したいタイルを順にタップ：<b>あと " + (3 - sel.length) + " 枚</b></span>";
+    else h += "<span>選んだ順：<b>" + sel.join(" → ") + "</b>（" + sel[0] + " は " + sel[1] + " の位置へ、" + sel[1] + " は " + sel[2] + " の位置へ、" + sel[2] + " は " + sel[0] + " の位置へ）</span>";
+    if (phase) h += "<span>" + phase + "</span>";
+    if (done) h += done;
+    ro.innerHTML = h;
+  }
+  function pick(t) {
+    if (busy) return;
+    const k = sel.indexOf(t);
+    if (k >= 0) sel.splice(k, 1); else if (sel.length < 3) sel.push(t);
+    base = null; phase = ""; done = ""; layout();
+  }
+  function rotate() {
+    if (busy) return;
+    if (sel.length < 3) { phase = "<b>先にタイルを3枚選んでください</b>"; show(); return; }
+    const pos = sel.map((t) => s.indexOf(t));
+    const c = C.conj(s, pos[0], pos[1], pos[2]);
+    const parts = [{ name: "① X（運び込む）", path: c.X }, { name: "② A（空白で1周）", path: c.A }, { name: "③ X⁻¹（X を逆にたどって戻す）", path: c.Xi }];
+    const total = c.X.length * 2 + 4;
+    base = s.slice(); done = ""; busy = true;
+    const me = ++token;
+    const finish = () => {
+      busy = false;
+      const moved = []; for (let t = 1; t <= 15; t++) if (s.indexOf(t) !== base.indexOf(t)) moved.push(t);
+      phase = "手数：X " + c.X.length + " 手 ＋ A 4 手 ＋ X⁻¹ " + c.Xi.length + " 手 ＝ <b>" + total + " 手</b>";
+      done = "<span class=\"ok\">位置が変わったタイル：<b>" + moved.join(", ") + " の " + moved.length + " 枚だけ</b>（ほかの " + (15 - moved.length) + " 枚はもとの位置）</span>";
+      layout();
+    };
+    if (FL.reducedMotion()) { parts.forEach((p) => { s = C.apply(s, p.path); }); finish(); return; }
+    let pi = 0, mi = 0, count = 0;
+    const step = () => {
+      if (me !== token) return;
+      while (pi < parts.length && mi >= parts[pi].path.length) { pi++; mi = 0; }
+      if (pi >= parts.length) { finish(); return; }
+      s = C.apply(s, [parts[pi].path[mi]]); mi++; count++;
+      phase = "<b>" + parts[pi].name + "</b>　" + mi + " / " + parts[pi].path.length + " 手（合計 " + count + " / " + total + " 手）";
+      layout(); setTimeout(step, cfg.delay);
+    };
+    phase = "<b>" + parts[0].name + "</b>　0 / " + c.X.length + " 手"; layout();
+    setTimeout(step, 300);
+  }
+  const btn = (label, fn) => { const b = document.createElement("button"); b.type = "button"; b.className = "btn"; b.textContent = label; b.addEventListener("click", fn); ctl.appendChild(b); return b; };
+  btn("選んだ3枚を回す（XAX⁻¹）", rotate);
+  btn("おまかせで3枚選ぶ", () => {
+    if (busy) return;
+    sel = []; while (sel.length < 3) { const t = 1 + Math.floor(Math.random() * 15); if (sel.indexOf(t) < 0) sel.push(t); }
+    base = null; phase = ""; done = ""; layout();
+  });
+  btn("そろった状態に戻す", () => { token++; busy = false; s = SOLVED.slice(); sel = cfg.start.slice(); base = null; phase = ""; done = ""; layout(); });
+  sel = cfg.start.slice();
+  layout();
+})({"id":"cj8","delay":140,"start":[10,11,12]}, core);
+})();
+(function(){
+var core=function core(n) {
+  const NN = n * n, BR = NN - 1, TL = BR - n - 1, TR = BR - n, BL = BR - 1;
+  const NB = [];
+  for (let c = 0; c < NN; c++) {
+    const r = Math.floor(c / n), k = c % n, o = [];
+    if (r > 0) o.push(c - n); if (r < n - 1) o.push(c + n); if (k > 0) o.push(c - 1); if (k < n - 1) o.push(c + 1);
+    NB.push(o);
+  }
+  // 空白の通り道 path（空白が順に移るマス）を s に施した配置（s は書き換えない）
+  const apply = (s, path) => { const t = s.slice(); let b = t.indexOf(0); path.forEach((c) => { t[b] = t[c]; t[c] = 0; b = c; }); return t; };
+  const LOOP = [TR, TL, BL, BR];          // A：空白を上・左・下・右
+  // X：位置 p, q, r のタイルを右下 2×2 の左上・右上・左下へ、空白を右下へ運ぶ最短手順（幅優先探索）
+  function bfsX(s, p, q, r) {
+    const M = NN, key = (b, a, c, d) => ((b * M + a) * M + c) * M + d;
+    const prev = new Int32Array(M * M * M * M).fill(-2);
+    const k0 = key(s.indexOf(0), p, q, r), goal = key(BR, TL, TR, BL);
+    prev[k0] = -1; const Q = [k0]; let h = 0;
+    while (h < Q.length) {
+      const k = Q[h++]; if (k === goal) break;
+      const d = k % M, c = Math.floor(k / M) % M, a = Math.floor(k / M / M) % M, b = Math.floor(k / M / M / M);
+      NB[b].forEach((x) => {
+        const k2 = key(x, a === x ? b : a, c === x ? b : c, d === x ? b : d);
+        if (prev[k2] === -2) { prev[k2] = k; Q.push(k2); }
+      });
+    }
+    if (prev[goal] === -2) throw new Error("X が見つかりません");
+    const path = []; let k = goal;
+    while (prev[k] !== -1) { path.push(Math.floor(k / M / M / M)); k = prev[k]; }
+    return path.reverse();
+  }
+  // XAX⁻¹ の3つの部分（空白の通り道）。X⁻¹ は X の通り道を逆にたどる
+  function conj(s, p, q, r) {
+    const X = bfsX(s, p, q, r), b0 = s.indexOf(0);
+    return { X: X, A: LOOP.slice(), Xi: X.length ? X.slice(0, -1).reverse().concat([b0]) : [] };
+  }
+  return { n: n, NN: NN, BR: BR, TL: TL, TR: TR, BL: BL, NB: NB, apply: apply, LOOP: LOOP, bfsX: bfsX, conj: conj };
+};
+var p8tools=function p8tools(core) {
+  const C = core(3), FA = [1, 1, 2, 6, 24, 120, 720, 5040, 40320], GOAL = "1,2,3,4,5,6,7,8,0";
+  const rank = (s) => { let r = 0; for (let i = 0; i < 9; i++) { let c = 0; for (let j = i + 1; j < 9; j++) if (s[j] < s[i]) c++; r += c * FA[8 - i]; } return r; };
+  const unrank = (r) => { const pool = [0, 1, 2, 3, 4, 5, 6, 7, 8], s = []; for (let i = 0; i < 9; i++) { const f = FA[8 - i], k = Math.floor(r / f); r %= f; s.push(pool.splice(k, 1)[0]); } return s; };
+  let D = null;
+  function table() {
+    if (D) return D;
+    D = new Uint8Array(362880).fill(255);
+    const Q = new Int32Array(181440); let h = 0, t = 0;
+    const r0 = rank([1, 2, 3, 4, 5, 6, 7, 8, 0]); D[r0] = 0; Q[t++] = r0;
+    while (h < t) {
+      const r = Q[h++], s = unrank(r), b = s.indexOf(0), d = D[r];
+      C.NB[b].forEach((x) => { s[b] = s[x]; s[x] = 0; const r2 = rank(s); if (D[r2] === 255) { D[r2] = d + 1; Q[t++] = r2; } s[x] = s[b]; s[b] = 0; });
+    }
+    return D;
+  }
+  function shortest(s) {
+    const T = table(); s = s.slice(); const path = [];
+    let d = T[rank(s)];
+    while (d > 0) {
+      const b = s.indexOf(0);
+      for (const x of C.NB[b]) { s[b] = s[x]; s[x] = 0; if (T[rank(s)] === d - 1) { path.push(x); d--; break; } s[x] = s[b]; s[b] = 0; }
+    }
+    return path;
+  }
+  // 空白を右下へ → 1 から順に、XAX⁻¹ の3巡回で定位置へ（使う3つの位置は、まだそろっていない位置から選ぶ）
+  function byCycles(s) {
+    s = s.slice(); const path = [], steps = [];
+    const push = (p, label) => { p.forEach((c) => path.push(c)); s = C.apply(s, p); if (p.length) steps.push({ label: label, len: p.length }); };
+    let b = s.indexOf(0); const pre = [];
+    while (b % 3 < 2) { b++; pre.push(b); }
+    while (b < 6) { b += 3; pre.push(b); }
+    push(pre, "空白を右下へ");
+    for (let k = 1; k <= 7; k++) {
+      const q = k - 1; if (s[q] === k) continue;
+      const p = s.indexOf(k); let best = null;
+      for (let r = q; r < 8; r++) {
+        if (r === p || r === q) continue;
+        const c = C.conj(s, p, q, r); if (!best || c.X.length < best.X.length) best = c;
+      }
+      push(best.X.concat(best.A, best.Xi), k + " を入れる（XAX⁻¹）");
+    }
+    return { path: path, steps: steps, ok: s.join() === GOAL };
+  }
+  return { C: C, rank: rank, table: table, shortest: shortest, byCycles: byCycles, GOAL: GOAL };
+};
+(function eightWidget(cfg, core, p8tools) {
+  const P = p8tools(core), C = P.C;
+  const host = document.getElementById("pz-" + cfg.id), ro = document.getElementById("ro-" + cfg.id), ctl = document.getElementById("ctl-" + cfg.id);
+  const inner = document.createElement("div"); inner.className = "p8-in"; host.appendChild(inner);
+  const frame = document.createElement("div"); frame.className = "p8-frame"; inner.appendChild(frame);
+  let S0 = cfg.start.slice(), s = S0.slice(), token = 0, busy = false, moves = 0, phase = "", rc = null, rs = null;
+  const tiles = {};
+  for (let t = 1; t <= 8; t++) {
+    const d = document.createElement("div"); d.className = "p8-tile"; d.innerHTML = "<span>" + t + "</span>";
+    inner.appendChild(d); tiles[t] = d;
+  }
+  host.setAttribute("aria-label", "8パズルの盤");
+  function layout() {
+    s.forEach((t, i) => { if (t) { tiles[t].style.left = (i % 3) * 33.3333 + "%"; tiles[t].style.top = Math.floor(i / 3) * 33.3333 + "%"; } });
+    let h = "<span>動かした回数：<b>" + moves + "</b></span>";
+    h += "<span>3巡回だけの方法：<b>" + (rc === null ? "—" : rc + " 手") + "</b></span>";
+    h += "<span>最短手順：<b>" + (rs === null ? "—" : rs + " 手") + "</b></span>";
+    if (phase) h += "<span>" + phase + "</span>";
+    if (s.join() === P.GOAL && moves) h += "<span class=\"ok\"><b>そろった！</b></span>";
+    ro.innerHTML = h;
+  }
+  function play(path, labelAt, onEnd) {
+    const me = ++token; busy = true; s = S0.slice(); moves = 0;
+    if (FL.reducedMotion()) { s = C.apply(s, path); moves = path.length; busy = false; onEnd(); layout(); return; }
+    let i = 0;
+    const step = () => {
+      if (me !== token) return;
+      if (i >= path.length) { busy = false; onEnd(); layout(); return; }
+      s = C.apply(s, [path[i]]); i++; moves = i; phase = labelAt(i); layout();
+      setTimeout(step, cfg.delay);
+    };
+    layout(); setTimeout(step, 250);
+  }
+  const btn = (label, fn) => { const b = document.createElement("button"); b.type = "button"; b.className = "btn"; b.textContent = label; b.addEventListener("click", fn); ctl.appendChild(b); return b; };
+  btn("混ぜる", () => {
+    token++; busy = false;
+    let t = [1, 2, 3, 4, 5, 6, 7, 8, 0], b = 8, prev = -1;
+    for (let k = 0; k < 160; k++) { const o = C.NB[b].filter((x) => x !== prev); const x = o[Math.floor(Math.random() * o.length)]; t[b] = t[x]; t[x] = 0; prev = b; b = x; }
+    if (t.join() === P.GOAL) { t[b] = t[C.NB[b][0]]; t[C.NB[b][0]] = 0; }
+    S0 = t; s = S0.slice(); moves = 0; rc = null; rs = null; phase = ""; layout();
+  });
+  btn("3巡回だけでそろえる", () => {
+    if (busy) return;
+    const r = P.byCycles(S0), ends = []; let acc = 0;
+    r.steps.forEach((st) => { acc += st.len; ends.push(acc); });
+    play(r.path, (i) => { let k = 0; while (ends[k] < i) k++; return "いま：<b>" + r.steps[k].label + "</b>"; }, () => { rc = r.path.length; phase = ""; });
+  });
+  btn("最短手順でそろえる", () => {
+    if (busy) return;
+    busy = true; phase = "<b>181440 通りの配置の最短手数を計算中…</b>"; layout();
+    setTimeout(() => {
+      const path = P.shortest(S0);
+      busy = false;
+      play(path, () => "いま：<b>最短手順</b>", () => { rs = path.length; phase = ""; });
+    }, 40);
+  });
+  layout();
+})({"id":"e8","delay":75,"start":[7,2,4,5,0,6,8,3,1]}, core, p8tools);
+})();
+</script>
+</body>
+</html>

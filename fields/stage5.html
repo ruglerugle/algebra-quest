@@ -35,8 +35,8 @@
     {
       "@type": "LearningResource",
       "name": "STAGE5 解けない作図",
-      "description": "角の三等分と立方体倍積が定規とコンパスで不可能な理由を中学生向けに証明。∛2 の次数は 3、<span class="up">cos</span> 20° は 8x³−6x−1＝0 の根で次数 3 なので、2 の累乗にならず作図できない。3倍角の公式は複素数の3乗から導く。円積問題と π の超越性も紹介。",
-      "url": "https://<span class="up">algebra</span>.habatakijuku.com/fields/stage5",
+      "description": "角の三等分と立方体倍積が定規とコンパスで不可能な理由を中学生向けに証明。∛2 の次数は 3、cos 20° は 8x³−6x−1＝0 の根で次数 3 なので、2 の累乗にならず作図できない。3倍角の公式は複素数の3乗から導く。円積問題と π の超越性も紹介。",
+      "url": "https://algebra.habatakijuku.com/fields/stage5",
       "inLanguage": "ja",
       "learningResourceType": "learning activity",
       "educationalLevel": "中学生以上",
@@ -45,11 +45,11 @@
       "isPartOf": {
         "@type": "LearningResource",
         "name": "第3章 四則演算と作図",
-        "url": "https://<span class="up">algebra</span>.habatakijuku.com/fields/",
+        "url": "https://algebra.habatakijuku.com/fields/",
         "isPartOf": {
           "@type": "LearningResource",
           "name": "群・環・体からガロア理論へ",
-          "url": "https://<span class="up">algebra</span>.habatakijuku.com/"
+          "url": "https://algebra.habatakijuku.com/"
         }
       },
       "author": {
@@ -64,26 +64,26 @@
           "@type": "ListItem",
           "position": 1,
           "name": "群・環・体からガロア理論へ",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/"
+          "item": "https://algebra.habatakijuku.com/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "第3章 四則演算と作図",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/fields/"
+          "item": "https://algebra.habatakijuku.com/fields/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "STAGE5 解けない作図",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/fields/stage5"
+          "item": "https://algebra.habatakijuku.com/fields/stage5"
         }
       ]
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="../design-system.css?v=20261008b">
+<link rel="stylesheet" href="../design-system.css?v=20261009a">
 <style>
 
 </style>
@@ -593,8 +593,8 @@
   </div>
 </div>
 
-<script src="../js/progress.js?v=20261008b"></script>
-<script src="../js/algebra.js?v=20261008b"></script>
+<script src="../js/progress.js?v=20261009a"></script>
+<script src="../js/algebra.js?v=20261009a"></script>
 <script>AQ.initStagePage("fields", 5);</script>
 <script>
 /* 3乗は角度を3倍にする回転 */
@@ -616,20 +616,20 @@
       FL.dot(ctx,v.X(x),v.Y(y),5.5,cols[k-1],'#fff');
       FL.text(ctx,labs[k-1]+'（'+(k*th)+'°）',v.X(1.13*x),v.Y(1.13*y)+4,{size:12.5,color:cols[k-1],align:x<-0.2?'right':(x>0.2?'left':'center'),halo:true});
     }
-    var c3=Math.<span class="up">cos</span>(3*th*D), s3=Math.<span class="up">sin</span>(3*th*D);
+    var c3=Math.cos(3*th*D), s3=Math.sin(3*th*D);
     FL.line(ctx,v.X(c3),v.Y(s3),v.X(c3),v.Y(0),FL.C.red,1.5,[5,4]);
     FL.dot(ctx,v.X(c3),v.Y(0),4,FL.C.red);
-    FL.text(ctx,'<span class="up">cos</span> 3θ',v.X(c3),v.Y(0)+(s3>=0?18:-8),{size:12,color:FL.C.red,align:'center',halo:true});
-    var c=Math.<span class="up">cos</span>(th*D);
-    ro.innerHTML='<span><span class="up">cos</span> θ＝'+f4(c)+'</span><span><span class="up">cos</span> 3θ＝<b>'+f4(c3)+'</b></span><span>4cos³θ−3cos θ＝<b>'+f4(4*c*c*c-3*c)+'</b></span>';
+    FL.text(ctx,'cos 3θ',v.X(c3),v.Y(0)+(s3>=0?18:-8),{size:12,color:FL.C.red,align:'center',halo:true});
+    var c=Math.cos(th*D);
+    ro.innerHTML='<span>cos θ＝'+f4(c)+'</span><span>cos 3θ＝<b>'+f4(c3)+'</b></span><span>4cos³θ−3cos θ＝<b>'+f4(4*c*c*c-3*c)+'</b></span>';
   }
   inp.addEventListener('input',function(){ st.redraw(); });
 })();
 
-/* <span class="up">cos</span> 20° がみたす3次方程式 */
+/* cos 20° がみたす3次方程式 */
 (function(){
   var P=[
-    {f:function(x){return 8*x*x*x-6*x-1;}, name:'y＝8x³−6x−1', xr:[-1.15,1.15], yr:[-6.5,5], roots:[[20,1],[140,1],[260,1]], cand:[[-1,'−1'],[-0.5,'−1/2'],[-0.25,'−1/4'],[-0.125,'−1/8'],[0.125,'1/8'],[0.25,'1/4'],[0.5,'1/2'],[1,'1']], rl:'<span class="up">cos</span> '},
+    {f:function(x){return 8*x*x*x-6*x-1;}, name:'y＝8x³−6x−1', xr:[-1.15,1.15], yr:[-6.5,5], roots:[[20,1],[140,1],[260,1]], cand:[[-1,'−1'],[-0.5,'−1/2'],[-0.25,'−1/4'],[-0.125,'−1/8'],[0.125,'1/8'],[0.25,'1/4'],[0.5,'1/2'],[1,'1']], rl:'cos '},
     {f:function(y){return y*y*y-3*y-1;}, name:'y＝x³−3x−1', xr:[-2.3,2.3], yr:[-5,5], roots:[[20,2],[140,2],[260,2]], cand:[[-1,'−1'],[1,'1']], rl:'2cos '}
   ];
   var cur=0, ro=document.getElementById('ro-cub');

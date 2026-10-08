@@ -36,7 +36,7 @@
       "@type": "LearningResource",
       "name": "STAGE4 部分群とラグランジュの定理",
       "description": "ラグランジュの定理を中学生向けに解説。部分群をずらしたコピー（剰余類）が群をきれいに等分割することを確かめ、部分群の要素の数や要素の位数が群の要素の数を割り切ることを証明する。そこからフェルマーの小定理を導く。",
-      "url": "https://<span class="up">algebra</span>.habatakijuku.com/groups/stage4",
+      "url": "https://algebra.habatakijuku.com/groups/stage4",
       "inLanguage": "ja",
       "learningResourceType": "learning activity",
       "educationalLevel": "中学生以上",
@@ -45,11 +45,11 @@
       "isPartOf": {
         "@type": "LearningResource",
         "name": "第1章 対称性を計算する",
-        "url": "https://<span class="up">algebra</span>.habatakijuku.com/groups/",
+        "url": "https://algebra.habatakijuku.com/groups/",
         "isPartOf": {
           "@type": "LearningResource",
           "name": "群・環・体からガロア理論へ",
-          "url": "https://<span class="up">algebra</span>.habatakijuku.com/"
+          "url": "https://algebra.habatakijuku.com/"
         }
       },
       "author": {
@@ -64,26 +64,26 @@
           "@type": "ListItem",
           "position": 1,
           "name": "群・環・体からガロア理論へ",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/"
+          "item": "https://algebra.habatakijuku.com/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "第1章 対称性を計算する",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/groups/"
+          "item": "https://algebra.habatakijuku.com/groups/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "STAGE4 部分群とラグランジュの定理",
-          "item": "https://<span class="up">algebra</span>.habatakijuku.com/groups/stage4"
+          "item": "https://algebra.habatakijuku.com/groups/stage4"
         }
       ]
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="../design-system.css?v=20261008b">
+<link rel="stylesheet" href="../design-system.css?v=20261009a">
 <style>
 .lg-rows{display:flex;flex-direction:column;gap:6px;align-items:center;margin-top:8px}
 .lg-row{display:flex;flex-wrap:wrap;align-items:center;gap:5px;justify-content:center}
@@ -105,8 +105,8 @@
       <div class="brand-sub">第1章 対称性を計算する ／ STAGE 4 ― 部分群とラグランジュの定理 ―</div>
     </div>
     <div class="head-progress-wrap">
-      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
-      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <div class="head-progress-label" id="progress-label">クリア 0 / 8</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
     </div>
     <div class="header-actions">
       <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
@@ -598,19 +598,19 @@
   </div>
 </div>
 
-<script src="../js/progress.js?v=20261008b"></script>
-<script src="../js/algebra.js?v=20261008b"></script>
+<script src="../js/progress.js?v=20261009a"></script>
+<script src="../js/algebra.js?v=20261009a"></script>
 <script>AQ.initStagePage("groups", 4);</script>
 <script>
 (function lagrange(cfg) {
   const selG = document.getElementById("sel-lgg"), selH = document.getElementById("sel-lgh"), host = document.getElementById("lg-rows"), ro = document.getElementById("ro-lg");
   const tri = cfg.triNames;
   const G = {
-    z12: { name: "<span class="up">mod</span> 12 の足し算", els: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], op: (a, b) => (a + b) % 12, e: 0, lab: (g) => (g === 0 ? "H" : g + "＋H"), str: String,
+    z12: { name: "mod 12 の足し算", els: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], op: (a, b) => (a + b) % 12, e: 0, lab: (g) => (g === 0 ? "H" : g + "＋H"), str: String,
       subs: [[0], [0, 6], [0, 4, 8], [0, 3, 6, 9], [0, 2, 4, 6, 8, 10], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]] },
     tri: { name: "正三角形の6つの操作", els: tri, op: (a, b) => cfg.triTab[tri.indexOf(a)][tri.indexOf(b)], e: "e", lab: (g) => (g === "e" ? "H" : g + "H"), str: String,
       subs: [["e"], ["e", "s₁"], ["e", "s₂"], ["e", "s₃"], ["e", "r", "r²"], tri] },
-    m7: { name: "<span class="up">mod</span> 7 の掛け算", els: [1, 2, 3, 4, 5, 6], op: (a, b) => (a * b) % 7, e: 1, lab: (g) => (g === 1 ? "H" : g + "H"), str: String,
+    m7: { name: "mod 7 の掛け算", els: [1, 2, 3, 4, 5, 6], op: (a, b) => (a * b) % 7, e: 1, lab: (g) => (g === 1 ? "H" : g + "H"), str: String,
       subs: [[1], [1, 6], [1, 2, 4], [1, 2, 3, 4, 5, 6]] }
   };
   function fillH() {
