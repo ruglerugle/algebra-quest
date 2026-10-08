@@ -36,7 +36,7 @@
       "@type": "LearningResource",
       "name": "STAGE4 部分群とラグランジュの定理",
       "description": "ラグランジュの定理を中学生向けに解説。部分群をずらしたコピー（剰余類）が群をきれいに等分割することを確かめ、部分群の要素の数や要素の位数が群の要素の数を割り切ることを証明する。そこからフェルマーの小定理を導く。",
-      "url": "https://algebra.habatakijuku.com/groups/stage4",
+      "url": "https://<span class="up">algebra</span>.habatakijuku.com/groups/stage4",
       "inLanguage": "ja",
       "learningResourceType": "learning activity",
       "educationalLevel": "中学生以上",
@@ -45,11 +45,11 @@
       "isPartOf": {
         "@type": "LearningResource",
         "name": "第1章 対称性を計算する",
-        "url": "https://algebra.habatakijuku.com/groups/",
+        "url": "https://<span class="up">algebra</span>.habatakijuku.com/groups/",
         "isPartOf": {
           "@type": "LearningResource",
           "name": "群・環・体からガロア理論へ",
-          "url": "https://algebra.habatakijuku.com/"
+          "url": "https://<span class="up">algebra</span>.habatakijuku.com/"
         }
       },
       "author": {
@@ -64,26 +64,26 @@
           "@type": "ListItem",
           "position": 1,
           "name": "群・環・体からガロア理論へ",
-          "item": "https://algebra.habatakijuku.com/"
+          "item": "https://<span class="up">algebra</span>.habatakijuku.com/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "第1章 対称性を計算する",
-          "item": "https://algebra.habatakijuku.com/groups/"
+          "item": "https://<span class="up">algebra</span>.habatakijuku.com/groups/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "STAGE4 部分群とラグランジュの定理",
-          "item": "https://algebra.habatakijuku.com/groups/stage4"
+          "item": "https://<span class="up">algebra</span>.habatakijuku.com/groups/stage4"
         }
       ]
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<link rel="stylesheet" href="../design-system.css?v=20261008a">
 <style>
 .lg-rows{display:flex;flex-direction:column;gap:6px;align-items:center;margin-top:8px}
 .lg-row{display:flex;flex-wrap:wrap;align-items:center;gap:5px;justify-content:center}
@@ -129,7 +129,7 @@
       </div>
       <div class="mission-box">
         <div class="mission-label">🎯 ミッション</div>
-        <div class="mission-text">剰余類が群を同じ数の要素ずつ重ならずに分けることを3段階で説明し、ラグランジュの定理（部分群の要素の数は群の要素の数を割り切る）から、フェルマーの小定理 a<sup>p−1</sup> ≡ 1 (mod p) を導こう。</div>
+        <div class="mission-text">剰余類が群を同じ数の要素ずつ重ならずに分けることを3段階で説明し、ラグランジュの定理（部分群の要素の数は群の要素の数を割り切る）から、フェルマーの小定理 a<sup>p−1</sup> ≡ 1 (<span class="up">mod</span> p) を導こう。</div>
         <span class="mission-status" id="mission-status">未達成</span>
       </div>
 
@@ -139,7 +139,7 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">前のステージの終わりで、要素の位数（くり返して初めて単位元になる回数）が、いつも群の要素の数の約数になっていた。今日はその理由を証明する。これが分かると、mod p（p で割った余りで考える世界）の累乗について、フェルマーの小定理という強い道具が手に入る。次のステージの暗号の心臓部になる定理だ。まず、群の中の小さな群を考えよう。正三角形の6つの操作のうち、回転だけを集めた e, r, r² を調べてごらん。</div>
+          <div class="dialog-bubble">前のステージの終わりで、要素の位数（くり返して初めて単位元になる回数）が、いつも群の要素の数の約数になっていた。今日はその理由を証明する。これが分かると、<span class="up">mod</span> p（p で割った余りで考える世界）の累乗について、フェルマーの小定理という強い道具が手に入る。次のステージの暗号の心臓部になる定理だ。まず、群の中の小さな群を考えよう。正三角形の6つの操作のうち、回転だけを集めた e, r, r² を調べてごらん。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -175,7 +175,7 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。mod 12 の足し算の群でも探してみよう。0 から 11 を「足して 12 で割った余り」で計算する群だったね。集まりを { } でくくって書くことにしよう。H＝{0, 4, 8} は部分群かな？</div>
+          <div class="dialog-bubble">そう。<span class="up">mod</span> 12 の足し算の群でも探してみよう。0 から 11 を「足して 12 で割った余り」で計算する群だったね。集まりを { } でくくって書くことにしよう。H＝{0, 4, 8} は部分群かな？</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -202,7 +202,7 @@
 
       <div class="diagram-box">
 <svg viewBox="0 0 360 300" style="width:100%;max-width:420px;display:block;margin:0 auto" role="img" aria-label="mod 12 の時計を、0,4,8 と 1,5,9 と 2,6,10 と 3,7,11 の4組に色分けした図"><circle cx="180" cy="150" r="112" fill="none" stroke="#e6e0d6" stroke-width="2"/><polygon points="180.0,38.0 277.0,206.0 83.0,206.0" fill="#5b4a9e" fill-opacity=".08" stroke="#5b4a9e" stroke-width="2" stroke-opacity=".75"/><polygon points="236.0,53.0 236.0,247.0 68.0,150.0" fill="#c8433f" fill-opacity=".08" stroke="#c8433f" stroke-width="2" stroke-opacity=".75"/><polygon points="277.0,94.0 180.0,262.0 83.0,94.0" fill="#3f6fb5" fill-opacity=".08" stroke="#3f6fb5" stroke-width="2" stroke-opacity=".75"/><polygon points="292.0,150.0 124.0,247.0 124.0,53.0" fill="#9a6a1c" fill-opacity=".08" stroke="#9a6a1c" stroke-width="2" stroke-opacity=".75"/><circle cx="180.0" cy="38.0" r="15" fill="#5b4a9e" stroke="#fff" stroke-width="2"/><text x="180.0" y="43.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">0</text><circle cx="236.0" cy="53.0" r="15" fill="#c8433f" stroke="#fff" stroke-width="2"/><text x="236.0" y="58.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">1</text><circle cx="277.0" cy="94.0" r="15" fill="#3f6fb5" stroke="#fff" stroke-width="2"/><text x="277.0" y="99.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">2</text><circle cx="292.0" cy="150.0" r="15" fill="#9a6a1c" stroke="#fff" stroke-width="2"/><text x="292.0" y="155.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">3</text><circle cx="277.0" cy="206.0" r="15" fill="#5b4a9e" stroke="#fff" stroke-width="2"/><text x="277.0" y="211.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">4</text><circle cx="236.0" cy="247.0" r="15" fill="#c8433f" stroke="#fff" stroke-width="2"/><text x="236.0" y="252.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">5</text><circle cx="180.0" cy="262.0" r="15" fill="#3f6fb5" stroke="#fff" stroke-width="2"/><text x="180.0" y="267.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">6</text><circle cx="124.0" cy="247.0" r="15" fill="#9a6a1c" stroke="#fff" stroke-width="2"/><text x="124.0" y="252.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">7</text><circle cx="83.0" cy="206.0" r="15" fill="#5b4a9e" stroke="#fff" stroke-width="2"/><text x="83.0" y="211.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">8</text><circle cx="68.0" cy="150.0" r="15" fill="#c8433f" stroke="#fff" stroke-width="2"/><text x="68.0" y="155.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">9</text><circle cx="83.0" cy="94.0" r="15" fill="#3f6fb5" stroke="#fff" stroke-width="2"/><text x="83.0" y="99.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">10</text><circle cx="124.0" cy="53.0" r="15" fill="#9a6a1c" stroke="#fff" stroke-width="2"/><text x="124.0" y="58.5" text-anchor="middle" font-size="15" font-weight="900" fill="#fff">11</text><text x="8" y="22" text-anchor="start" font-size="14" font-weight="900" fill="#5b4a9e">H＝{0, 4, 8}</text><text x="352" y="22" text-anchor="end" font-size="14" font-weight="900" fill="#c8433f">1＋H＝{1, 5, 9}</text><text x="8" y="288" text-anchor="start" font-size="14" font-weight="900" fill="#3f6fb5">2＋H＝{2, 6, 10}</text><text x="352" y="288" text-anchor="end" font-size="14" font-weight="900" fill="#9a6a1c">3＋H＝{3, 7, 11}</text></svg>
-        <div class="diagram-caption"><strong>mod 12 の時計の等分割</strong>。部分群 H＝{0, 4, 8} と、それに 1, 2, 3 を足した組を色分けした。どの組も 3 個ずつで、時計の上では向きの違う正三角形になる。12 個が 4 組にぴったり分かれるので 12＝4×3</div>
+        <div class="diagram-caption"><strong><span class="up">mod</span> 12 の時計の等分割</strong>。部分群 H＝{0, 4, 8} と、それに 1, 2, 3 を足した組を色分けした。どの組も 3 個ずつで、時計の上では向きの違う正三角形になる。12 個が 4 組にぴったり分かれるので 12＝4×3</div>
       </div>
 
       <div class="dialogue-scene">
@@ -224,7 +224,7 @@
 
       <div class="diagram-box">
 <div class="sim-controls">
-          <label>群 <select id="sel-lgg"><option value="z12">mod 12 の足し算</option><option value="tri">正三角形の6つの操作</option><option value="m7">mod 7 の掛け算</option></select></label>
+          <label>群 <select id="sel-lgg"><option value="z12"><span class="up">mod</span> 12 の足し算</option><option value="tri">正三角形の6つの操作</option><option value="m7"><span class="up">mod</span> 7 の掛け算</option></select></label>
           <label>部分群 H <select id="sel-lgh"></select></label>
         </div>
         <div id="lg-rows" class="lg-rows"></div>
@@ -388,7 +388,7 @@
           <path d="M220,324 L220,340" stroke="#2f9e5c" stroke-width="1.5" marker-end="url(#s4b-g)"/>
           <text x="220" y="362" font-size="12.5" fill="#2f9e5c" font-weight="800" text-anchor="middle">gH＝kH：1つでも重なれば丸ごと一致する</text>
         </svg>
-        <div class="diagram-caption"><strong>共通の要素をもつ剰余類は一致する</strong>。上の H が部分群で、その要素 h の左に g をつけたものを全部集めると gH、h′ の左に k をつけたものを全部集めると kH になる。H は部分群なので、h の逆元 h⁻¹ も、積 h″＝h′h⁻¹ も H の中にある（点線の丸）。x が gH にも kH にも入っているなら、x＝gh＝kh′ と2通りに書ける。右に h⁻¹ をして g を「k と H の要素の積」に直すと、gH のどの要素も kH に入ると分かる。役目を入れかえれば逆も言えるので、2つの剰余類は同じ集まりになる。mod 12 の例なら、1＋H＝{1, 5, 9} と 5＋H＝{5, 9, 1} は 5 を共有していて、実際に同じ集まり</div>
+        <div class="diagram-caption"><strong>共通の要素をもつ剰余類は一致する</strong>。上の H が部分群で、その要素 h の左に g をつけたものを全部集めると gH、h′ の左に k をつけたものを全部集めると kH になる。H は部分群なので、h の逆元 h⁻¹ も、積 h″＝h′h⁻¹ も H の中にある（点線の丸）。x が gH にも kH にも入っているなら、x＝gh＝kh′ と2通りに書ける。右に h⁻¹ をして g を「k と H の要素の積」に直すと、gH のどの要素も kH に入ると分かる。役目を入れかえれば逆も言えるので、2つの剰余類は同じ集まりになる。<span class="up">mod</span> 12 の例なら、1＋H＝{1, 5, 9} と 5＋H＝{5, 9, 1} は 5 を共有していて、実際に同じ集まり</div>
       </div>
 
       <div class="formula-box">
@@ -467,14 +467,14 @@
             <text x="325" y="151" text-anchor="middle">aᵐ＝aᵏᵗ＝(aᵏ)ᵗ＝eᵗ＝e</text>
             <text x="325" y="167" text-anchor="middle" font-size="10.5" fill="#77708c">輪を t 周して e に戻る</text>
             <rect x="222" y="186" width="206" height="40" rx="6" fill="#e6f5ec" stroke="#2f9e5c" stroke-width="1.5"/>
-            <text x="325" y="203" text-anchor="middle" fill="#2f9e5c">mod p の掛け算の群なら m＝p−1</text>
-            <text x="325" y="219" text-anchor="middle" fill="#2f9e5c">→ aᵖ⁻¹ ≡ 1 (mod p)</text>
+            <text x="325" y="203" text-anchor="middle" fill="#2f9e5c"><tspan class="up">mod</tspan> p の掛け算の群なら m＝p−1</text>
+            <text x="325" y="219" text-anchor="middle" fill="#2f9e5c">→ aᵖ⁻¹ ≡ 1 (<tspan class="up">mod</tspan> p)</text>
           </g>
           <path d="M325,70 L325,80" stroke="#5b4a9e" stroke-width="1.5" marker-end="url(#s4c-p)"/>
           <path d="M325,122 L325,132" stroke="#5b4a9e" stroke-width="1.5" marker-end="url(#s4c-p)"/>
           <path d="M325,174 L325,184" stroke="#5b4a9e" stroke-width="1.5" marker-end="url(#s4c-p)"/>
         </svg>
-        <div class="diagram-caption"><strong>位数からフェルマーの小定理へ</strong>。位数 k の要素 a を掛け続けると、e, a, a², … と k 個の輪を回って e に戻る。この k 個は部分群なので、ラグランジュの定理で群の要素の数 m は k の倍数 m＝kt になる。a を m 回掛けるのは、輪を t 周することなので、必ず e に戻る。mod p の掛け算の群では m＝p−1 なので、a<sup>p−1</sup> ≡ 1 (mod p)</div>
+        <div class="diagram-caption"><strong>位数からフェルマーの小定理へ</strong>。位数 k の要素 a を掛け続けると、e, a, a², … と k 個の輪を回って e に戻る。この k 個は部分群なので、ラグランジュの定理で群の要素の数 m は k の倍数 m＝kt になる。a を m 回掛けるのは、輪を t 周することなので、必ず e に戻る。<span class="up">mod</span> p の掛け算の群では m＝p−1 なので、a<sup>p−1</sup> ≡ 1 (<span class="up">mod</span> p)</div>
       </div>
 
       <div class="dialogue-scene">
@@ -483,22 +483,22 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。これを、mod p の掛け算の群（p は素数）にあてはめてごらん。</div>
+          <div class="dialog-bubble">そう。これを、<span class="up">mod</span> p の掛け算の群（p は素数）にあてはめてごらん。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">mod p の掛け算の群は 1 から p−1 の p−1 個なので、p で割り切れないどの整数 a についても <strong>a<sup>p−1</sup> ≡ 1 (mod p)</strong> です。p＝7 で確かめると、2⁶＝64＝7×9＋1 で余り 1、3⁶＝729＝7×104＋1 で余り 1。本当です。</div>
+          <div class="dialog-bubble"><span class="up">mod</span> p の掛け算の群は 1 から p−1 の p−1 個なので、p で割り切れないどの整数 a についても <strong>a<sup>p−1</sup> ≡ 1 (<span class="up">mod</span> p)</strong> です。p＝7 で確かめると、2⁶＝64＝7×9＋1 で余り 1、3⁶＝729＝7×104＋1 で余り 1。本当です。</div>
         </div>
       </div>
 
       <div class="formula-box">
-        <span class="step">mod p の掛け算の群：1 から p−1 の <span class="nw">p−1</span> 個</span>
+        <span class="step"><span class="up">mod</span> p の掛け算の群：1 から p−1 の <span class="nw">p−1</span> 個</span>
         <span class="step">a の位数を k とすると、e, a, …, a<sup>k−1</sup> は k 個の部分群 → ラグランジュの定理で、k は <span class="nw">p−1</span> を割り切る：<span class="nw">p−1＝kt</span></span>
-        <span class="step"><span class="nw">a<sup>p−1</sup>＝a<sup>kt</sup>＝(a<sup>k</sup>)<sup>t</sup> ≡ 1<sup>t</sup>＝1 (mod p)</span>（a<sup>k</sup> ≡ 1 を t 回掛ける）</span>
-        <span class="step"><strong>フェルマーの小定理</strong>：p が素数で、a が p で割り切れないとき <span class="nw">a<sup>p−1</sup> ≡ 1 (mod p)</span></span>
+        <span class="step"><span class="nw">a<sup>p−1</sup>＝a<sup>kt</sup>＝(a<sup>k</sup>)<sup>t</sup> ≡ 1<sup>t</sup>＝1 (<span class="up">mod</span> p)</span>（a<sup>k</sup> ≡ 1 を t 回掛ける）</span>
+        <span class="step"><strong>フェルマーの小定理</strong>：p が素数で、a が p で割り切れないとき <span class="nw">a<sup>p−1</sup> ≡ 1 (<span class="up">mod</span> p)</span></span>
       </div>
 
       <div class="dialogue-scene">
@@ -527,7 +527,7 @@
       </div>
 
       <div class="diagram-box">
-<svg viewBox="0 0 440 190" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="指数 100 を 6 のかたまり 16 個と余り 4 に分け、3 の 6 乗が 1 なので 3 の 100 乗は 3 の 4 乗＝81 と合同、7 で割った余りは 4 になることを示す図"><text x="220" y="18" font-size="12.5" font-weight="800" fill="#221d33" text-anchor="middle">3¹⁰⁰ の指数 100 を、6 ずつのかたまりに分ける</text><text x="212" y="38" font-size="10.5" font-weight="700" fill="#77708c" text-anchor="middle">6 が 16 個（それぞれ 3⁶ ≡ 1 になる）</text><rect x="20" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="32" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="44" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="56" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="68" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="80" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="92" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="104" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="116" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="128" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="140" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="152" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="164" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="176" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="188" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="200" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="212" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="224" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="236" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="248" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="260" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="272" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="284" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="296" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="308" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="320" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="332" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="344" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="356" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="368" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="380" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="392" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="404" y="46" width="16" height="28" fill="#2f9e5c" stroke="#fff" stroke-width="1.5"/><text x="412" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">4</text><text x="220" y="94" font-size="13" font-weight="900" fill="#221d33" text-anchor="middle">100＝6×16＋4</text><text x="220" y="122" font-size="12.5" font-weight="800" fill="#221d33" text-anchor="middle">3¹⁰⁰＝(3⁶)¹⁶×3⁴ ≡ 1¹⁶×3⁴＝81 (mod 7)</text><text x="220" y="146" font-size="12.5" font-weight="800" fill="#5b4a9e" text-anchor="middle">81＝7×11＋4 → 余りは 4</text><text x="220" y="176" font-size="11.5" font-weight="800" fill="#2f9e5c" text-anchor="middle">指数は p−1＝6 で割った余りまで縮められる</text></svg>
+<svg viewBox="0 0 440 190" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="指数 100 を 6 のかたまり 16 個と余り 4 に分け、3 の 6 乗が 1 なので 3 の 100 乗は 3 の 4 乗＝81 と合同、7 で割った余りは 4 になることを示す図"><text x="220" y="18" font-size="12.5" font-weight="800" fill="#221d33" text-anchor="middle">3¹⁰⁰ の指数 100 を、6 ずつのかたまりに分ける</text><text x="212" y="38" font-size="10.5" font-weight="700" fill="#77708c" text-anchor="middle">6 が 16 個（それぞれ 3⁶ ≡ 1 になる）</text><rect x="20" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="32" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="44" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="56" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="68" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="80" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="92" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="104" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="116" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="128" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="140" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="152" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="164" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="176" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="188" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="200" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="212" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="224" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="236" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="248" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="260" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="272" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="284" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="296" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="308" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="320" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="332" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="344" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="356" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="368" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="380" y="46" width="24" height="28" fill="#9a88d6" stroke="#fff" stroke-width="1.5"/><text x="392" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">6</text><rect x="404" y="46" width="16" height="28" fill="#2f9e5c" stroke="#fff" stroke-width="1.5"/><text x="412" y="65" font-size="10.5" font-weight="900" fill="#fff" text-anchor="middle">4</text><text x="220" y="94" font-size="13" font-weight="900" fill="#221d33" text-anchor="middle">100＝6×16＋4</text><text x="220" y="122" font-size="12.5" font-weight="800" fill="#221d33" text-anchor="middle">3¹⁰⁰＝(3⁶)¹⁶×3⁴ ≡ 1¹⁶×3⁴＝81 (<tspan class="up">mod</tspan> 7)</text><text x="220" y="146" font-size="12.5" font-weight="800" fill="#5b4a9e" text-anchor="middle">81＝7×11＋4 → 余りは 4</text><text x="220" y="176" font-size="11.5" font-weight="800" fill="#2f9e5c" text-anchor="middle">指数は p−1＝6 で割った余りまで縮められる</text></svg>
         <div class="diagram-caption"><strong>指数を縮める</strong>。3¹⁰⁰ の指数 100 を 6 ずつのかたまりに分けると、6 が 16 個と余り 4。3⁶ ≡ 1 なので、かたまり 1 つごとに 1 を掛けるのと同じになり、残るのは 3⁴＝81。81 を 7 で割った余り 4 が答え</div>
       </div>
 
@@ -552,11 +552,11 @@
 
       <div class="formula-box">
         <span class="step">【このステージの成果】</span>
-        <span class="step">部分群：群の一部分で、同じ計算でそれだけで群になっているもの（例：{e, r, r²}、{e, s₁}、mod 12 の {0, 4, 8}）</span>
+        <span class="step">部分群：群の一部分で、同じ計算でそれだけで群になっているもの（例：{e, r, r²}、{e, s₁}、<span class="up">mod</span> 12 の {0, 4, 8}）</span>
         <span class="step">剰余類 gH：部分群 H をずらしたコピー。どれも H と同じ数の要素をもち、重ならないか丸ごと一致する → 群をぴったり等分割する</span>
         <span class="step">ラグランジュの定理：部分群の要素の数は群の要素の数を割り切る（正三角形の群に 4 個や 5 個の部分群はない）</span>
         <span class="step">要素 a の位数 k は群の要素の数を割り切る（e, a, …, a<sup>k−1</sup> が部分群）→ 群の要素の数を m とすると <span class="nw">a<sup>m</sup>＝e</span></span>
-        <span class="step">フェルマーの小定理：<span class="nw">a<sup>p−1</sup> ≡ 1 (mod p)</span>。例：<span class="nw">3¹⁰⁰ ≡ 3⁴ ≡ 4 (mod 7)</span></span>
+        <span class="step">フェルマーの小定理：<span class="nw">a<sup>p−1</sup> ≡ 1 (<span class="up">mod</span> p)</span>。例：<span class="nw">3¹⁰⁰ ≡ 3⁴ ≡ 4 (<span class="up">mod</span> 7)</span></span>
       </div>
 
       <h2 class="quiz-head">確認クイズ</h2>
@@ -585,7 +585,7 @@
           <button class="choice-btn">1</button>
           <button class="choice-btn">2</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ 2⁶ ≡ 1 (mod 7)。20＝6×3＋2 なので 2²⁰＝(2⁶)³×2² ≡ 1×4＝4。</div>
+        <div class="quiz-explain" hidden>正解！ 2⁶ ≡ 1 (<span class="up">mod</span> 7)。20＝6×3＋2 なので 2²⁰＝(2⁶)³×2² ≡ 1×4＝4。</div>
       </div>
 
       <div class="stage-nav">
@@ -598,19 +598,19 @@
   </div>
 </div>
 
-<script src="../js/progress.js?v=20261005a"></script>
-<script src="../js/algebra.js?v=20261005a"></script>
+<script src="../js/progress.js?v=20261008a"></script>
+<script src="../js/algebra.js?v=20261008a"></script>
 <script>AQ.initStagePage("groups", 4);</script>
 <script>
 (function lagrange(cfg) {
   const selG = document.getElementById("sel-lgg"), selH = document.getElementById("sel-lgh"), host = document.getElementById("lg-rows"), ro = document.getElementById("ro-lg");
   const tri = cfg.triNames;
   const G = {
-    z12: { name: "mod 12 の足し算", els: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], op: (a, b) => (a + b) % 12, e: 0, lab: (g) => (g === 0 ? "H" : g + "＋H"), str: String,
+    z12: { name: "<span class="up">mod</span> 12 の足し算", els: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], op: (a, b) => (a + b) % 12, e: 0, lab: (g) => (g === 0 ? "H" : g + "＋H"), str: String,
       subs: [[0], [0, 6], [0, 4, 8], [0, 3, 6, 9], [0, 2, 4, 6, 8, 10], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]] },
     tri: { name: "正三角形の6つの操作", els: tri, op: (a, b) => cfg.triTab[tri.indexOf(a)][tri.indexOf(b)], e: "e", lab: (g) => (g === "e" ? "H" : g + "H"), str: String,
       subs: [["e"], ["e", "s₁"], ["e", "s₂"], ["e", "s₃"], ["e", "r", "r²"], tri] },
-    m7: { name: "mod 7 の掛け算", els: [1, 2, 3, 4, 5, 6], op: (a, b) => (a * b) % 7, e: 1, lab: (g) => (g === 1 ? "H" : g + "H"), str: String,
+    m7: { name: "<span class="up">mod</span> 7 の掛け算", els: [1, 2, 3, 4, 5, 6], op: (a, b) => (a * b) % 7, e: 1, lab: (g) => (g === 1 ? "H" : g + "H"), str: String,
       subs: [[1], [1, 6], [1, 2, 4], [1, 2, 3, 4, 5, 6]] }
   };
   function fillH() {

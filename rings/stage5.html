@@ -36,7 +36,7 @@
       "@type": "LearningResource",
       "name": "STAGE5 2つの平方数の和",
       "description": "フェルマーの2平方定理を中学生向けに証明。4で割って3余る素数が平方数の和にならない理由、ウィルソンの定理を逆元のペアで示して x²≡−1 を作る方法、そしてガウス整数の一意性から 4で割って1余る素数が a²＋b² になることまで。",
-      "url": "https://algebra.habatakijuku.com/rings/stage5",
+      "url": "https://<span class="up">algebra</span>.habatakijuku.com/rings/stage5",
       "inLanguage": "ja",
       "learningResourceType": "learning activity",
       "educationalLevel": "中学生以上",
@@ -45,11 +45,11 @@
       "isPartOf": {
         "@type": "LearningResource",
         "name": "第2章 素因数分解の世界",
-        "url": "https://algebra.habatakijuku.com/rings/",
+        "url": "https://<span class="up">algebra</span>.habatakijuku.com/rings/",
         "isPartOf": {
           "@type": "LearningResource",
           "name": "群・環・体からガロア理論へ",
-          "url": "https://algebra.habatakijuku.com/"
+          "url": "https://<span class="up">algebra</span>.habatakijuku.com/"
         }
       },
       "author": {
@@ -64,26 +64,26 @@
           "@type": "ListItem",
           "position": 1,
           "name": "群・環・体からガロア理論へ",
-          "item": "https://algebra.habatakijuku.com/"
+          "item": "https://<span class="up">algebra</span>.habatakijuku.com/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "第2章 素因数分解の世界",
-          "item": "https://algebra.habatakijuku.com/rings/"
+          "item": "https://<span class="up">algebra</span>.habatakijuku.com/rings/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "STAGE5 2つの平方数の和",
-          "item": "https://algebra.habatakijuku.com/rings/stage5"
+          "item": "https://<span class="up">algebra</span>.habatakijuku.com/rings/stage5"
         }
       ]
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<link rel="stylesheet" href="../design-system.css?v=20261008a">
 <style>
 .tbl-scroll{overflow-x:auto;max-width:100%}
   #tb-fs td{white-space:nowrap}
@@ -121,7 +121,7 @@
       </div>
       <div class="mission-box">
         <div class="mission-label">🎯 ミッション</div>
-        <div class="mission-text">4 で割って 3 余る素数が2つの平方数の和にならない理由を説明し、ウィルソンの定理 (p−1)!≡−1 から x²≡−1 (mod p) となる x を作ろう。p が x²＋1＝(x＋i)(x−i) を割り切ることから、p＝a²＋b² を導ければ合格。</div>
+        <div class="mission-text">4 で割って 3 余る素数が2つの平方数の和にならない理由を説明し、ウィルソンの定理 (p−1)!≡−1 から x²≡−1 (<span class="up">mod</span> p) となる x を作ろう。p が x²＋1＝(x＋i)(x−i) を割り切ることから、p＝a²＋b² を導ければ合格。</div>
         <span class="mission-status" id="mission-status">未達成</span>
       </div>
 
@@ -248,7 +248,7 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。だから残る仕事は、<strong>p が x²＋1 を割り切るような x を見つけること</strong>だけだ。第1章の言葉で言えば、x²≡−1 (mod p) となる x だね。いくつかの p で探してごらん。</div>
+          <div class="dialog-bubble">そう。だから残る仕事は、<strong>p が x²＋1 を割り切るような x を見つけること</strong>だけだ。第1章の言葉で言えば、x²≡−1 (<span class="up">mod</span> p) となる x だね。いくつかの p で探してごらん。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -284,14 +284,14 @@
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">p＝5 なら 4!＝24＝5×4＋4 で、余り 4。p＝7 なら 6!＝720＝7×102＋6 で、余り 6。どちらも p−1、つまり <strong>(p−1)!≡−1 (mod p)</strong> になっています。</div>
+          <div class="dialog-bubble">p＝5 なら 4!＝24＝5×4＋4 で、余り 4。p＝7 なら 6!＝720＝7×102＋6 で、余り 6。どちらも p−1、つまり <strong>(p−1)!≡−1 (<span class="up">mod</span> p)</strong> になっています。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">これを<strong>ウィルソンの定理</strong>という。1770年にウォーリングが弟子のウィルソンの発見として本に書き、翌1771年にラグランジュが証明した。証明には第1章の<strong>逆元</strong>を使う。mod p の世界では、1 から p−1 までのどの数 a にも、掛けて 1 になる相手 a⁻¹ がちょうど1つあったね。p＝13 で、1 から 12 を「掛けて 1 になる相手」どうしでペアにしてごらん。</div>
+          <div class="dialog-bubble">これを<strong>ウィルソンの定理</strong>という。1770年にウォーリングが弟子のウィルソンの発見として本に書き、翌1771年にラグランジュが証明した。証明には第1章の<strong>逆元</strong>を使う。<span class="up">mod</span> p の世界では、1 から p−1 までのどの数 a にも、掛けて 1 になる相手 a⁻¹ がちょうど1つあったね。p＝13 で、1 から 12 を「掛けて 1 になる相手」どうしでペアにしてごらん。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -308,7 +308,7 @@
           <label>素数 p <select id="sel-wil"></select></label>
         </div>
         <div class="readout" id="ro-wil"></div>
-        <div class="diagram-caption"><strong>逆元のペアでウィルソンの定理を見る</strong>。1 から p−1 を円周に並べ、mod p で掛けて 1 になる2つの数を線で結んだ。どの数もちょうど1本の線でつながる（第1章：逆元はちょうど1つ）。ペアの積はどれも 1 なので、(p−1)! は自分自身とペアになる数（金）だけの積になる。それは 1 と p−1 の2つだけなので、(p−1)!≡1×(p−1)≡−1</div>
+        <div class="diagram-caption"><strong>逆元のペアでウィルソンの定理を見る</strong>。1 から p−1 を円周に並べ、<span class="up">mod</span> p で掛けて 1 になる2つの数を線で結んだ。どの数もちょうど1本の線でつながる（第1章：逆元はちょうど1つ）。ペアの積はどれも 1 なので、(p−1)! は自分自身とペアになる数（金）だけの積になる。それは 1 と p−1 の2つだけなので、(p−1)!≡1×(p−1)≡−1</div>
       </div>
 
       <div class="dialogue-scene">
@@ -317,7 +317,7 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。ペアの積は 1 だから消えて、自分自身が相手になる数だけが残る。どんな素数でも、それが 1 と p−1 の2つだけだと言えれば、ウィルソンの定理が証明できる。x×x≡1 (mod p) となる x を考えよう。</div>
+          <div class="dialog-bubble">そう。ペアの積は 1 だから消えて、自分自身が相手になる数だけが残る。どんな素数でも、それが 1 と p−1 の2つだけだと言えれば、ウィルソンの定理が証明できる。x×x≡1 (<span class="up">mod</span> p) となる x を考えよう。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -329,10 +329,10 @@
       </div>
 
       <div class="formula-box">
-        <span class="step">mod p の世界で、1, 2, …, p−1 のどの数にも、掛けて 1 になる相手（逆元）がちょうど1つある（第1章）</span>
+        <span class="step"><span class="up">mod</span> p の世界で、1, 2, …, p−1 のどの数にも、掛けて 1 になる相手（逆元）がちょうど1つある（第1章）</span>
         <span class="step">自分自身が相手になる x：<span class="nw">x²≡1</span> → p が <span class="nw">(x−1)(x＋1)</span> を割り切る → 素数は素元なので x−1 か x＋1 を割り切る → <span class="nw">x＝1</span> か <span class="nw">x＝p−1</span></span>
         <span class="step">ほかの数は、相手と2つずつのペアになり、ペアの積は 1</span>
-        <span class="step"><strong><span class="nw">(p−1)!≡1×(p−1)≡−1 (mod p)</span></strong>（ウィルソンの定理）</span>
+        <span class="step"><strong><span class="nw">(p−1)!≡1×(p−1)≡−1 (<span class="up">mod</span> p)</span></strong>（ウィルソンの定理）</span>
       </div>
 
       <div class="dialogue-scene">
@@ -348,14 +348,14 @@
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">7＝13−6、8＝13−5、…、12＝13−1 です。mod 13 では 13 は 0 と同じなので、7≡−6、8≡−5、9≡−4、10≡−3、11≡−2、12≡−1。後半は (−6)(−5)(−4)(−3)(−2)(−1)＝(−1)⁶×6!＝6! です。だから 12!≡6!×6!＝(6!)²。ウィルソンの定理で 12!≡−1 なので、<strong>(6!)²≡−1 (mod 13)</strong>。6!＝720＝13×55＋5 なので x＝5 で、さっき見つけた 5²≡−1 と一致します！</div>
+          <div class="dialog-bubble">7＝13−6、8＝13−5、…、12＝13−1 です。<span class="up">mod</span> 13 では 13 は 0 と同じなので、7≡−6、8≡−5、9≡−4、10≡−3、11≡−2、12≡−1。後半は (−6)(−5)(−4)(−3)(−2)(−1)＝(−1)⁶×6!＝6! です。だから 12!≡6!×6!＝(6!)²。ウィルソンの定理で 12!≡−1 なので、<strong>(6!)²≡−1 (<span class="up">mod</span> 13)</strong>。6!＝720＝13×55＋5 なので x＝5 で、さっき見つけた 5²≡−1 と一致します！</div>
         </div>
       </div>
 
       <div class="diagram-box">
 <svg viewBox="0 0 440 206" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="1 から 12 を並べ、後半の 7 から 12 の下に −6 から −1 を対応させた図。7＝13−6 なので mod 13 では 7 と −6 は同じ。後半の積は (−1)⁶×6! で、6 が偶数なので 6! に等しく、12!≡(6!)²">
           <defs><marker id="ar-g5h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9a88d6"/></marker></defs>
-          <text x="16" y="22" font-size="12.5" font-weight="900" fill="#221d33">12!＝1×2×…×12 を前半と後半に分ける（mod 13）</text>
+          <text x="16" y="22" font-size="12.5" font-weight="900" fill="#221d33">12!＝1×2×…×12 を前半と後半に分ける（<tspan class="up">mod</tspan> 13）</text>
           <rect x="16" y="40" width="28" height="28" rx="7" fill="#5b4a9e"/><text x="30" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">1</text><rect x="50" y="40" width="28" height="28" rx="7" fill="#5b4a9e"/><text x="64" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">2</text><rect x="84" y="40" width="28" height="28" rx="7" fill="#5b4a9e"/><text x="98" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">3</text><rect x="118" y="40" width="28" height="28" rx="7" fill="#5b4a9e"/><text x="132" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">4</text><rect x="152" y="40" width="28" height="28" rx="7" fill="#5b4a9e"/><text x="166" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">5</text><rect x="186" y="40" width="28" height="28" rx="7" fill="#5b4a9e"/><text x="200" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">6</text><rect x="220" y="40" width="28" height="28" rx="7" fill="#3f6fb5"/><text x="234" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">7</text><rect x="254" y="40" width="28" height="28" rx="7" fill="#3f6fb5"/><text x="268" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">8</text><rect x="288" y="40" width="28" height="28" rx="7" fill="#3f6fb5"/><text x="302" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">9</text><rect x="322" y="40" width="28" height="28" rx="7" fill="#3f6fb5"/><text x="336" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">10</text><rect x="356" y="40" width="28" height="28" rx="7" fill="#3f6fb5"/><text x="370" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">11</text><rect x="390" y="40" width="28" height="28" rx="7" fill="#3f6fb5"/><text x="404" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">12</text>
           <line x1="217" y1="34" x2="217" y2="130" stroke="#c9c2b4" stroke-width="1.5" stroke-dasharray="4 3"/>
           <line x1="234" y1="70" x2="234" y2="92" stroke="#9a88d6" stroke-width="1.6" marker-end="url(#ar-g5h)"/><rect x="219" y="96" width="30" height="28" rx="7" fill="#c8433f"/><text x="234" y="115" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">−6</text><line x1="268" y1="70" x2="268" y2="92" stroke="#9a88d6" stroke-width="1.6" marker-end="url(#ar-g5h)"/><rect x="253" y="96" width="30" height="28" rx="7" fill="#c8433f"/><text x="268" y="115" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">−5</text><line x1="302" y1="70" x2="302" y2="92" stroke="#9a88d6" stroke-width="1.6" marker-end="url(#ar-g5h)"/><rect x="287" y="96" width="30" height="28" rx="7" fill="#c8433f"/><text x="302" y="115" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">−4</text><line x1="336" y1="70" x2="336" y2="92" stroke="#9a88d6" stroke-width="1.6" marker-end="url(#ar-g5h)"/><rect x="321" y="96" width="30" height="28" rx="7" fill="#c8433f"/><text x="336" y="115" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">−3</text><line x1="370" y1="70" x2="370" y2="92" stroke="#9a88d6" stroke-width="1.6" marker-end="url(#ar-g5h)"/><rect x="355" y="96" width="30" height="28" rx="7" fill="#c8433f"/><text x="370" y="115" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">−2</text><line x1="404" y1="70" x2="404" y2="92" stroke="#9a88d6" stroke-width="1.6" marker-end="url(#ar-g5h)"/><rect x="389" y="96" width="30" height="28" rx="7" fill="#c8433f"/><text x="404" y="115" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">−1</text>
@@ -365,7 +365,7 @@
           <text x="220" y="162" text-anchor="middle" font-size="12.5" font-weight="900" fill="#221d33">後半＝(−6)(−5)(−4)(−3)(−2)(−1)＝(−1)⁶×6!＝6!</text>
           <text x="220" y="186" text-anchor="middle" font-size="13" font-weight="900" fill="#5b4a9e">12!≡6!×6!＝(6!)²　→ ウィルソンの定理で (6!)²≡−1</text>
         </svg>
-        <div class="diagram-caption"><strong>後半は前半の符号を変えたもの</strong>。1 から 12 を前半（紫）と後半（青）に分ける。後半の数は 13 から前半の数を引いたもの（7＝13−6 など）なので、mod 13 では −6, −5, …, −1（赤）と同じ。後半の積は (−1)⁶×6! で、6 が偶数だから 6! に等しい。だから 12!≡(6!)²</div>
+        <div class="diagram-caption"><strong>後半は前半の符号を変えたもの</strong>。1 から 12 を前半（紫）と後半（青）に分ける。後半の数は 13 から前半の数を引いたもの（7＝13−6 など）なので、<span class="up">mod</span> 13 では −6, −5, …, −1（赤）と同じ。後半の積は (−1)⁶×6! で、6 が偶数だから 6! に等しい。だから 12!≡(6!)²</div>
       </div>
 
       <div class="dialogue-scene">
@@ -381,16 +381,16 @@
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">(p−1)! を前半 1×2×…×(p−1)/2 と後半に分けると、後半の数は p−1, p−2, … で、それぞれ −1, −2, …, −(p−1)/2 と同じです。後半は (−1)<sup>(p−1)/2</sup>×((p−1)/2)! で、p＝4k＋1 なら (p−1)/2＝2k は偶数なので、(−1) の偶数乗は 1 です。だから (p−1)!≡((p−1)/2)!²。ウィルソンの定理と合わせて、<strong>x＝((p−1)/2)! とすれば x²≡−1 (mod p)</strong> です。……p＝4k＋3 だと (p−1)/2＝2k＋1 が奇数なので符号が残って、((p−1)/2)!²≡1 になってしまいます。</div>
+          <div class="dialog-bubble">(p−1)! を前半 1×2×…×(p−1)/2 と後半に分けると、後半の数は p−1, p−2, … で、それぞれ −1, −2, …, −(p−1)/2 と同じです。後半は (−1)<sup>(p−1)/2</sup>×((p−1)/2)! で、p＝4k＋1 なら (p−1)/2＝2k は偶数なので、(−1) の偶数乗は 1 です。だから (p−1)!≡((p−1)/2)!²。ウィルソンの定理と合わせて、<strong>x＝((p−1)/2)! とすれば x²≡−1 (<span class="up">mod</span> p)</strong> です。……p＝4k＋3 だと (p−1)/2＝2k＋1 が奇数なので符号が残って、((p−1)/2)!²≡1 になってしまいます。</div>
         </div>
       </div>
 
       <div class="formula-box">
         <span class="step">p＝4k＋1 のとき、<span class="nw">(p−1)/2＝2k</span>（偶数）</span>
         <span class="step"><span class="nw">(p−1)!＝1×2×…×(p−1)/2 × (p−1)/2＋1 × … × (p−1)</span></span>
-        <span class="step">後半の数は mod p で <span class="nw">−(p−1)/2, …, −2, −1</span> と同じ（p から引いた数だから）</span>
+        <span class="step">後半の数は <span class="up">mod</span> p で <span class="nw">−(p−1)/2, …, −2, −1</span> と同じ（p から引いた数だから）</span>
         <span class="step"><span class="nw">(p−1)!≡((p−1)/2)! × (−1)<sup>2k</sup> × ((p−1)/2)!＝((p−1)/2)!²</span>（−1 の偶数乗は 1）</span>
-        <span class="step">ウィルソンの定理と合わせて <strong><span class="nw">((p−1)/2)!²≡−1 (mod p)</span></strong>。x＝((p−1)/2)! とすれば p は x²＋1 を割り切る</span>
+        <span class="step">ウィルソンの定理と合わせて <strong><span class="nw">((p−1)/2)!²≡−1 (<span class="up">mod</span> p)</span></strong>。x＝((p−1)/2)! とすれば p は x²＋1 を割り切る</span>
       </div>
 
       <div class="dialogue-scene">
@@ -406,9 +406,9 @@
       <div class="diagram-box">
 <svg viewBox="0 0 440 326" style="width:100%;max-width:460px;display:block;margin:0 auto" role="img" aria-label="フェルマーの2平方定理の証明の流れ。ウィルソンの定理から x＝((p−1)/2)! で x²≡−1。p は (x＋i)(x−i) を割り切るが、x±i は割り切らない。だから p は素元でなく、既約元でもなく、p＝zw で N(z)＝p、つまり p＝a²＋b²">
           <defs><marker id="ar-g5f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#77708c"/></marker></defs>
-          <rect x="20" y="6" width="400" height="32" rx="9" fill="#f2effa" stroke="#9a88d6" stroke-width="1.8"/><text x="220" y="27" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">ウィルソンの定理：(p−1)!≡−1 (mod p)</text>
+          <rect x="20" y="6" width="400" height="32" rx="9" fill="#f2effa" stroke="#9a88d6" stroke-width="1.8"/><text x="220" y="27" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">ウィルソンの定理：(p−1)!≡−1 (<tspan class="up">mod</tspan> p)</text>
           <line x1="220" y1="38" x2="220" y2="50" stroke="#77708c" stroke-width="1.8" marker-end="url(#ar-g5f)"/>
-          <rect x="20" y="52" width="400" height="44" rx="9" fill="#f2effa" stroke="#9a88d6" stroke-width="1.8"/><text x="220" y="70.5" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">p＝4k＋1 なら、後半を −1, −2, … と見て</text><text x="220" y="87.5" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">x＝((p−1)/2)! のとき x²≡−1 (mod p)</text>
+          <rect x="20" y="52" width="400" height="44" rx="9" fill="#f2effa" stroke="#9a88d6" stroke-width="1.8"/><text x="220" y="70.5" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">p＝4k＋1 なら、後半を −1, −2, … と見て</text><text x="220" y="87.5" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">x＝((p−1)/2)! のとき x²≡−1 (<tspan class="up">mod</tspan> p)</text>
           <line x1="220" y1="96" x2="220" y2="108" stroke="#77708c" stroke-width="1.8" marker-end="url(#ar-g5f)"/>
           <rect x="20" y="110" width="400" height="32" rx="9" fill="#f2effa" stroke="#9a88d6" stroke-width="1.8"/><text x="220" y="131" text-anchor="middle" font-size="12" font-weight="800" fill="#221d33">p は x²＋1＝(x＋i)(x−i) を割り切る</text>
           <line x1="220" y1="142" x2="220" y2="154" stroke="#77708c" stroke-width="1.8" marker-end="url(#ar-g5f)"/>
@@ -470,8 +470,8 @@
         <span class="step">【このステージの成果】</span>
         <span class="step">平方数を 4 で割った余りは 0 か 1 → 2つの平方数の和は 4 で割って 3 余らない</span>
         <span class="step">p が x²＋1＝(x＋i)(x−i) を割り切るのに x±i を割り切らない → p は素元でない → 既約元でない → p＝a²＋b²</span>
-        <span class="step">ウィルソンの定理 <span class="nw">(p−1)!≡−1 (mod p)</span>：逆元どうしのペアの積は 1。自分自身が相手になるのは 1 と p−1 だけ（素数は素元だから）</span>
-        <span class="step">p＝4k＋1 なら後半の数を −1, −2, … と見て <span class="nw">((p−1)/2)!²≡−1</span>。例：<span class="nw">6!≡5</span>、<span class="nw">5²≡−1 (mod 13)</span></span>
+        <span class="step">ウィルソンの定理 <span class="nw">(p−1)!≡−1 (<span class="up">mod</span> p)</span>：逆元どうしのペアの積は 1。自分自身が相手になるのは 1 と p−1 だけ（素数は素元だから）</span>
+        <span class="step">p＝4k＋1 なら後半の数を −1, −2, … と見て <span class="nw">((p−1)/2)!²≡−1</span>。例：<span class="nw">6!≡5</span>、<span class="nw">5²≡−1 (<span class="up">mod</span> 13)</span></span>
         <span class="step">フェルマーの2平方定理：4 で割って 1 余る素数は2つの平方数の和。p と x＋i の互除法で a, b が求まる（13 → −2−3i → 13＝2²＋3²）</span>
       </div>
 
@@ -486,7 +486,7 @@
         <div class="quiz-explain" hidden>正解！ (2k)²＝4k² は余り 0、(2k＋1)²＝4(k²＋k)＋1 は余り 1。和の余りは 0, 1, 2 で、3 にはならない。</div>
       </div>
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q2. mod 13 で、1 から 12 のうち自分自身が逆元（x×x≡1）になる数は？</p>
+        <p class="quiz-q">Q2. <span class="up">mod</span> 13 で、1 から 12 のうち自分自身が逆元（x×x≡1）になる数は？</p>
         <div class="choice-list">
           <button class="choice-btn">1 だけ</button>
           <button class="choice-btn">1, 5, 8, 12</button>
@@ -495,7 +495,7 @@
         <div class="quiz-explain" hidden>正解！ x²≡1 なら 13 が (x−1)(x＋1) を割り切り、素数は素元なので x−1 か x＋1 を割り切る。1〜12 では x＝1, 12 だけ。</div>
       </div>
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q3. p＝4k＋1 のとき、x²≡−1 (mod p) となる x として使えるものは？</p>
+        <p class="quiz-q">Q3. p＝4k＋1 のとき、x²≡−1 (<span class="up">mod</span> p) となる x として使えるものは？</p>
         <div class="choice-list">
           <button class="choice-btn">((p−1)/2)!</button>
           <button class="choice-btn">(p−1)!</button>
@@ -514,8 +514,8 @@
   </div>
 </div>
 
-<script src="../js/progress.js?v=20261005a"></script>
-<script src="../js/algebra.js?v=20261005a"></script>
+<script src="../js/progress.js?v=20261008a"></script>
+<script src="../js/algebra.js?v=20261008a"></script>
 <script>AQ.initStagePage("rings", 5);</script>
 <script>
 /* 逆元のペア（ウィルソンの定理） */
@@ -538,7 +538,7 @@
       FL.dot(ctx,P[0],P[1],r,self?FL.C.goldLight:'#fff',self?FL.C.gold:FL.C.themeLight);
       FL.text(ctx,String(a),P[0],P[1]+fs*0.36,{align:'center',size:fs,color:self?'#5a3d0c':FL.C.ink});
     }
-    ro.innerHTML='<span>ペア：'+pairs.join(' ')+'</span><span>自分自身が相手：<b>1 と '+(p-1)+'</b></span><span class="ok">'+(p-1)+'!≡1×'+(p-1)+'≡−1 (mod '+p+')</span>';
+    ro.innerHTML='<span>ペア：'+pairs.join(' ')+'</span><span>自分自身が相手：<b>1 と '+(p-1)+'</b></span><span class="ok">'+(p-1)+'!≡1×'+(p-1)+'≡−1 (<span class="up">mod</span> '+p+')</span>';
   }
   sel.addEventListener('change',function(){st.redraw();});
 })();

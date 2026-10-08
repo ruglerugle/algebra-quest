@@ -36,7 +36,7 @@
       "@type": "LearningResource",
       "name": "STAGE1 解けない15パズル",
       "description": "群論の入口を中学生向けに解説。14 と 15 を入れ替えた15パズルはなぜそろわないのか。謎を解く道具「群」で何ができるようになるかを示し、正三角形を回す・裏返す6つの操作と、操作を続けて行う「積」を計算する。",
-      "url": "https://algebra.habatakijuku.com/groups/stage1",
+      "url": "https://<span class="up">algebra</span>.habatakijuku.com/groups/stage1",
       "inLanguage": "ja",
       "learningResourceType": "learning activity",
       "educationalLevel": "中学生以上",
@@ -45,11 +45,11 @@
       "isPartOf": {
         "@type": "LearningResource",
         "name": "第1章 対称性を計算する",
-        "url": "https://algebra.habatakijuku.com/groups/",
+        "url": "https://<span class="up">algebra</span>.habatakijuku.com/groups/",
         "isPartOf": {
           "@type": "LearningResource",
           "name": "群・環・体からガロア理論へ",
-          "url": "https://algebra.habatakijuku.com/"
+          "url": "https://<span class="up">algebra</span>.habatakijuku.com/"
         }
       },
       "author": {
@@ -64,26 +64,26 @@
           "@type": "ListItem",
           "position": 1,
           "name": "群・環・体からガロア理論へ",
-          "item": "https://algebra.habatakijuku.com/"
+          "item": "https://<span class="up">algebra</span>.habatakijuku.com/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "第1章 対称性を計算する",
-          "item": "https://algebra.habatakijuku.com/groups/"
+          "item": "https://<span class="up">algebra</span>.habatakijuku.com/groups/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "STAGE1 解けない15パズル",
-          "item": "https://algebra.habatakijuku.com/groups/stage1"
+          "item": "https://<span class="up">algebra</span>.habatakijuku.com/groups/stage1"
         }
       ]
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<link rel="stylesheet" href="../design-system.css?v=20261008a">
 <style>
 .pz-board{position:relative;width:min(100%,300px);aspect-ratio:1/1;margin:4px auto 0;background:#2f2652;border-radius:12px;padding:6px;box-sizing:border-box}
 .pz-in{position:relative;width:100%;height:100%}
@@ -240,7 +240,7 @@
         </div>
       </div>
 
-      <div class="note-box"><span class="nb-title">この章でできるようになること</span>・回す・裏返す・入れ替えるといった操作を、掛け算のように計算できる<br>・操作の集まりがもつ共通の性質（群の4つの条件）を見分けられる<br>・時計の算術（mod）で、余りの世界の足し算・掛け算ができる<br>・群を等分割する考え方（ラグランジュの定理）から、フェルマーの小定理を証明できる<br>・RSA 暗号で、小さな数を実際に暗号化・復号できる<br>・入れ替えの偶数・奇数を使って、15パズルの謎を証明できる</div>
+      <div class="note-box"><span class="nb-title">この章でできるようになること</span>・回す・裏返す・入れ替えるといった操作を、掛け算のように計算できる<br>・操作の集まりがもつ共通の性質（群の4つの条件）を見分けられる<br>・時計の算術（<span class="up">mod</span>）で、余りの世界の足し算・掛け算ができる<br>・群を等分割する考え方（ラグランジュの定理）から、フェルマーの小定理を証明できる<br>・RSA 暗号で、小さな数を実際に暗号化・復号できる<br>・入れ替えの偶数・奇数を使って、15パズルの謎を証明できる</div>
 
       <div class="dialogue-scene">
         <div class="dialog-row right">
@@ -460,8 +460,8 @@
   </div>
 </div>
 
-<script src="../js/progress.js?v=20261005a"></script>
-<script src="../js/algebra.js?v=20261005a"></script>
+<script src="../js/progress.js?v=20261008a"></script>
+<script src="../js/algebra.js?v=20261008a"></script>
 <script>AQ.initStagePage("groups", 1);</script>
 <script>
 (function puzzle(cfg) {
@@ -569,7 +569,7 @@
   let anim = null;          // {key, t}
 
   const st = FL.canvas(cvId, cfg.aspect || 0.78, draw);
-  function pt(deg, R, v) { const r = deg * Math.PI / 180; return [v.X(R * Math.cos(r)), v.Y(R * Math.sin(r))]; }
+  function pt(deg, R, v) { const r = deg * Math.PI / 180; return [v.X(R * Math.<span class="up">cos</span>(r)), v.Y(R * Math.<span class="up">sin</span>(r))]; }
   function draw(st) {
     const ctx = st.ctx; ctx.clearRect(0, 0, st.W, st.H); ctx.fillStyle = FL.C.paper; ctx.fillRect(0, 0, st.W, st.H);
     const v = FL.view(st, cfg.span || 3.3, 0, cfg.cy || 0);

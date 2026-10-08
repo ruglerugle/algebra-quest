@@ -35,8 +35,8 @@
     {
       "@type": "LearningResource",
       "name": "STAGE7 有限の体と QR コード",
-      "description": "有限体と誤り訂正を中学生向けに解説。要素4個の体を mod 2 の多項式 x²＋x＋1 から作り、mod 4 との違いを確かめる。データを多項式の係数にして値を多めに送ると、一部が壊れても元に戻せる。QR コードのリード・ソロモン符号のしくみを mod 7 の例で体験する。",
-      "url": "https://algebra.habatakijuku.com/fields/stage7",
+      "description": "有限体と誤り訂正を中学生向けに解説。要素4個の体を <span class="up">mod</span> 2 の多項式 x²＋x＋1 から作り、<span class="up">mod</span> 4 との違いを確かめる。データを多項式の係数にして値を多めに送ると、一部が壊れても元に戻せる。QR コードのリード・ソロモン符号のしくみを <span class="up">mod</span> 7 の例で体験する。",
+      "url": "https://<span class="up">algebra</span>.habatakijuku.com/fields/stage7",
       "inLanguage": "ja",
       "learningResourceType": "learning activity",
       "educationalLevel": "中学生以上",
@@ -45,11 +45,11 @@
       "isPartOf": {
         "@type": "LearningResource",
         "name": "第3章 四則演算と作図",
-        "url": "https://algebra.habatakijuku.com/fields/",
+        "url": "https://<span class="up">algebra</span>.habatakijuku.com/fields/",
         "isPartOf": {
           "@type": "LearningResource",
           "name": "群・環・体からガロア理論へ",
-          "url": "https://algebra.habatakijuku.com/"
+          "url": "https://<span class="up">algebra</span>.habatakijuku.com/"
         }
       },
       "author": {
@@ -64,26 +64,26 @@
           "@type": "ListItem",
           "position": 1,
           "name": "群・環・体からガロア理論へ",
-          "item": "https://algebra.habatakijuku.com/"
+          "item": "https://<span class="up">algebra</span>.habatakijuku.com/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "第3章 四則演算と作図",
-          "item": "https://algebra.habatakijuku.com/fields/"
+          "item": "https://<span class="up">algebra</span>.habatakijuku.com/fields/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "STAGE7 有限の体と QR コード",
-          "item": "https://algebra.habatakijuku.com/fields/stage7"
+          "item": "https://<span class="up">algebra</span>.habatakijuku.com/fields/stage7"
         }
       ]
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<link rel="stylesheet" href="../design-system.css?v=20261008a">
 <style>
 .g4-wrap{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;margin-top:8px}
 .g4-cap{font-size:12.5px;font-weight:900;color:#44377a;margin-bottom:2px}
@@ -127,7 +127,7 @@
       </div>
       <div class="mission-box">
         <div class="mission-label">🎯 ミッション</div>
-        <div class="mission-text">mod 2 の多項式 x²＋x＋1 から要素4個の体を作り、掛け算表で 0 以外のどの数にも逆数があることを確かめよう。データを1次式の係数にして mod 7 で7つの値を送り、2か所まで壊れても元に戻せる理由（違う直線は1点でしか一致しない）を説明できれば合格。</div>
+        <div class="mission-text"><span class="up">mod</span> 2 の多項式 x²＋x＋1 から要素4個の体を作り、掛け算表で 0 以外のどの数にも逆数があることを確かめよう。データを1次式の係数にして <span class="up">mod</span> 7 で7つの値を送り、2か所まで壊れても元に戻せる理由（違う直線は1点でしか一致しない）を説明できれば合格。</div>
         <span class="mission-status" id="mission-status">未達成</span>
       </div>
 
@@ -137,56 +137,56 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">この章の最後に、体のもう1つの顔を見よう。QR コードは、一部が汚れたり欠けたりしても読み取れる。いちばん強い設定では、全体のおよそ30%が読めなくても元のデータを復元できるんだ。その仕組みの土台にあるのが、<strong>有限個の数でできた体</strong>だ。STAGE1 で、p が素数なら mod p の世界は体になると分かったね。では、要素が4個の体は作れるかな？ mod 4 の世界で考えてごらん。</div>
+          <div class="dialog-bubble">この章の最後に、体のもう1つの顔を見よう。QR コードは、一部が汚れたり欠けたりしても読み取れる。いちばん強い設定では、全体のおよそ30%が読めなくても元のデータを復元できるんだ。その仕組みの土台にあるのが、<strong>有限個の数でできた体</strong>だ。STAGE1 で、p が素数なら <span class="up">mod</span> p の世界は体になると分かったね。では、要素が4個の体は作れるかな？ <span class="up">mod</span> 4 の世界で考えてごらん。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">mod 4 では 2×1＝2、2×2＝4≡0、2×3＝6≡2 なので、2 に何を掛けても 1 になりません。2 には逆数がないので、mod 4 の世界は体ではありません。2×2≡0 のように、0 でない数どうしを掛けて 0 になってしまうのが原因です。</div>
+          <div class="dialog-bubble"><span class="up">mod</span> 4 では 2×1＝2、2×2＝4≡0、2×3＝6≡2 なので、2 に何を掛けても 1 になりません。2 には逆数がないので、<span class="up">mod</span> 4 の世界は体ではありません。2×2≡0 のように、0 でない数どうしを掛けて 0 になってしまうのが原因です。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。でも、別の作り方がある。STAGE3 で、ℚ(∛2) の計算は「多項式を既約多項式 x³−2 で割った余りで計算する」ことだった。同じことを、係数が mod 2 の数（0 と 1）の多項式でやってみよう。mod 2 では 1＋1＝0 になる。まず、x²＋x＋1 が mod 2 で既約かどうか調べてごらん。</div>
+          <div class="dialog-bubble">そう。でも、別の作り方がある。STAGE3 で、ℚ(∛2) の計算は「多項式を既約多項式 x³−2 で割った余りで計算する」ことだった。同じことを、係数が <span class="up">mod</span> 2 の数（0 と 1）の多項式でやってみよう。<span class="up">mod</span> 2 では 1＋1＝0 になる。まず、x²＋x＋1 が <span class="up">mod</span> 2 で既約かどうか調べてごらん。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">2次式なので、根があるかどうかで判定できます。x＝0 なら 0＋0＋1＝1、x＝1 なら 1＋1＋1＝3≡1。どちらも 0 にならないので根がなく、x²＋x＋1 は mod 2 で既約です。</div>
+          <div class="dialog-bubble">2次式なので、根があるかどうかで判定できます。x＝0 なら 0＋0＋1＝1、x＝1 なら 1＋1＋1＝3≡1。どちらも 0 にならないので根がなく、x²＋x＋1 は <span class="up">mod</span> 2 で既約です。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">その通り。では、x²＋x＋1 の根を α とする。α は mod 2 の世界にはない、新しい数だ。ℚ に √2 を加えたように、mod 2 の世界に α を加える。x²＋x＋1 で割った余りは1次以下だから、できる数は a＋bα（a, b は 0 か 1）の4つ、0, 1, α, α＋1 だ。α²＋α＋1＝0 から、α² は何になるかな？</div>
+          <div class="dialog-bubble">その通り。では、x²＋x＋1 の根を α とする。α は <span class="up">mod</span> 2 の世界にはない、新しい数だ。ℚ に √2 を加えたように、<span class="up">mod</span> 2 の世界に α を加える。x²＋x＋1 で割った余りは1次以下だから、できる数は a＋bα（a, b は 0 か 1）の4つ、0, 1, α, α＋1 だ。α²＋α＋1＝0 から、α² は何になるかな？</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">α²＝−α−1 で、mod 2 では −1≡1 なので α²＝α＋1 です。これを使って掛け算を計算すると、α×(α＋1)＝α²＋α＝(α＋1)＋α＝2α＋1≡1。(α＋1)²＝α²＋2α＋1≡α²＋1＝(α＋1)＋1＝α。足し算は α＋α＝2α≡0 です。α と α＋1 は掛けると 1 になるので、0 以外の 1, α, α＋1 にはどれも逆数があります。<strong>要素が4個の体</strong>ができました！</div>
+          <div class="dialog-bubble">α²＝−α−1 で、<span class="up">mod</span> 2 では −1≡1 なので α²＝α＋1 です。これを使って掛け算を計算すると、α×(α＋1)＝α²＋α＝(α＋1)＋α＝2α＋1≡1。(α＋1)²＝α²＋2α＋1≡α²＋1＝(α＋1)＋1＝α。足し算は α＋α＝2α≡0 です。α と α＋1 は掛けると 1 になるので、0 以外の 1, α, α＋1 にはどれも逆数があります。<strong>要素が4個の体</strong>ができました！</div>
         </div>
       </div>
 
       <div class="diagram-box">
 <div class="sim-controls">
           <button class="btn" data-g4="gf" aria-pressed="true">α を加えた4個の体</button>
-          <button class="btn" data-g4="m4" aria-pressed="false">mod 4（比べる）</button>
+          <button class="btn" data-g4="m4" aria-pressed="false"><span class="up">mod</span> 4（比べる）</button>
         </div>
         <div class="g4-wrap">
           <div><div class="g4-cap">足し算</div><table class="num-table" id="tb-g4a"></table></div>
           <div><div class="g4-cap">掛け算</div><table class="num-table" id="tb-g4m"></table></div>
         </div>
         <div class="readout" id="ro-g4"></div>
-        <div class="diagram-caption"><strong>要素4個の体の足し算と掛け算</strong>。0, 1, α, α＋1 の4つの数で、α²＝α＋1、1＋1＝0 として計算した表。掛け算表で 1 になるところ（緑）が、0 以外のどの行にもちょうど1つあるので、どの数にも逆数がある。「mod 4」に切りかえると、2×2＝0（赤）となり、2 の行に 1 が現れない</div>
+        <div class="diagram-caption"><strong>要素4個の体の足し算と掛け算</strong>。0, 1, α, α＋1 の4つの数で、α²＝α＋1、1＋1＝0 として計算した表。掛け算表で 1 になるところ（緑）が、0 以外のどの行にもちょうど1つあるので、どの数にも逆数がある。「<span class="up">mod</span> 4」に切りかえると、2×2＝0（赤）となり、2 の行に 1 が現れない</div>
       </div>
 
       <div class="dialogue-scene">
@@ -195,7 +195,7 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そうだね。要素の個数が有限の体を<strong>有限体（ゆうげんたい）</strong>という。実は、有限体の要素の個数は、必ず素数 p の累乗 pᵏ になり、pᵏ 個の有限体はどれも同じ形をしていることが分かっている。4＝2² 個の体はいま作ったもので、6 個や 10 個の体はない。有限体を初めて本格的に調べたのは、第4章の主人公ガロアで、有限体はガロア体とも呼ばれる。QR コードで使われるのは、mod 2 の世界に既約な8次式 x⁸＋x⁴＋x³＋x²＋1 の根を加えた、2⁸＝256 個の要素をもつ体だ。</div>
+          <div class="dialog-bubble">そうだね。要素の個数が有限の体を<strong>有限体（ゆうげんたい）</strong>という。実は、有限体の要素の個数は、必ず素数 p の累乗 pᵏ になり、pᵏ 個の有限体はどれも同じ形をしていることが分かっている。4＝2² 個の体はいま作ったもので、6 個や 10 個の体はない。有限体を初めて本格的に調べたのは、第4章の主人公ガロアで、有限体はガロア体とも呼ばれる。QR コードで使われるのは、<span class="up">mod</span> 2 の世界に既約な8次式 x⁸＋x⁴＋x³＋x²＋1 の根を加えた、2⁸＝256 個の要素をもつ体だ。</div>
         </div>
       </div>
 
@@ -235,7 +235,7 @@
           </g>
           <g font-size="11" font-weight="800" fill="#5b4a9e" text-anchor="middle"><text x="23" y="177">1</text><text x="45" y="177">0</text><text x="67" y="177">1</text><text x="89" y="177">1</text><text x="111" y="177">0</text><text x="133" y="177">0</text><text x="155" y="177">1</text><text x="177" y="177">0</text></g>
           <text x="198" y="178" font-size="12" font-weight="700" fill="#221d33">＝ 1 バイト ＝ 256 個の体の要素1つ</text>
-          <text x="230" y="200" font-size="11" fill="#77708c" text-anchor="middle">256＝2⁸：mod 2 の既約な8次式で作る体。QR コードはこれを使う</text>
+          <text x="230" y="200" font-size="11" fill="#77708c" text-anchor="middle">256＝2⁸：<tspan class="up">mod</tspan> 2 の既約な8次式で作る体。QR コードはこれを使う</text>
         </svg>
         <div class="diagram-caption"><strong>有限体の要素の個数は素数の累乗だけ</strong>。緑の 2, 3, 4＝2², 5, 7, 8＝2³, 9＝3², … には要素がその個数の体があり、赤の 6, 10, 12, … のように2種類以上の素数が混じる個数の体はない。下は QR コードで使う 256＝2⁸ 個の体で、要素1つが 0 と 1 の 8 けた、つまり 1 バイトにちょうど対応する</div>
       </div>
@@ -253,14 +253,14 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">その通り。では、体の数で、どうやって誤りを直すのか。いちばん単純なのは、同じデータを3回ずつ送って多数決をとる方法だけど、データ量が3倍になるわりに、直せる誤りは少ない。そこで多項式を使う。mod 7 の世界で考えよう。送りたいデータを2つの数 a, b（0〜6）とし、1次式 f(x)＝a＋bx を作る。そして、f(0), f(1), …, f(6) の7つの値を送るんだ。a＝2, b＝3 のとき、送る7つの値を計算してごらん。</div>
+          <div class="dialog-bubble">その通り。では、体の数で、どうやって誤りを直すのか。いちばん単純なのは、同じデータを3回ずつ送って多数決をとる方法だけど、データ量が3倍になるわりに、直せる誤りは少ない。そこで多項式を使う。<span class="up">mod</span> 7 の世界で考えよう。送りたいデータを2つの数 a, b（0〜6）とし、1次式 f(x)＝a＋bx を作る。そして、f(0), f(1), …, f(6) の7つの値を送るんだ。a＝2, b＝3 のとき、送る7つの値を計算してごらん。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">f(x)＝2＋3x を mod 7 で計算します。f(0)＝2、f(1)＝5、f(2)＝8≡1、f(3)＝11≡4、f(4)＝14≡0、f(5)＝17≡3、f(6)＝20≡6。送るのは <strong>2, 5, 1, 4, 0, 3, 6</strong> です。</div>
+          <div class="dialog-bubble">f(x)＝2＋3x を <span class="up">mod</span> 7 で計算します。f(0)＝2、f(1)＝5、f(2)＝8≡1、f(3)＝11≡4、f(4)＝14≡0、f(5)＝17≡3、f(6)＝20≡6。送るのは <strong>2, 5, 1, 4, 0, 3, 6</strong> です。</div>
         </div>
       </div>
 
@@ -278,7 +278,7 @@
             <rect x="312" y="42" width="52" height="34" rx="7" fill="#e8eef9" stroke="#3f6fb5" stroke-width="1.5"/><text x="338" y="64" fill="#3f6fb5">3</text>
           </g>
           <text x="12" y="98" font-size="11.5" font-weight="700" fill="#77708c">多数決で直す。同じ組に 2 個の誤りが入ると、直せない</text>
-          <text x="12" y="140" font-size="12.5" font-weight="800" fill="#221d33">② f(x)＝2＋3x の値を送る（7 個送る、mod 7）</text>
+          <text x="12" y="140" font-size="12.5" font-weight="800" fill="#221d33">② f(x)＝2＋3x の値を送る（7 個送る、<tspan class="up">mod</tspan> 7）</text>
           <g font-size="11" font-weight="700" fill="#77708c" text-anchor="middle">
             <text x="36" y="160">x＝0</text><text x="98" y="160">1</text><text x="160" y="160">2</text><text x="222" y="160">3</text><text x="284" y="160">4</text><text x="346" y="160">5</text><text x="408" y="160">6</text>
           </g>
@@ -293,7 +293,7 @@
           </g>
           <text x="12" y="222" font-size="11.5" font-weight="700" fill="#77708c">7 個のうちどの 2 個が壊れても直せる（このあと確かめる）</text>
         </svg>
-        <div class="diagram-caption"><strong>2つの送り方</strong>。上は、データ 2 と 3 をそれぞれ3回くり返して送る方法。下は、f(x)＝2＋3x を mod 7 で x＝0〜6 に入れた7つの値を送る方法。送る個数はほぼ同じなのに、下のほうが強い。その理由を、このあと確かめる</div>
+        <div class="diagram-caption"><strong>2つの送り方</strong>。上は、データ 2 と 3 をそれぞれ3回くり返して送る方法。下は、f(x)＝2＋3x を <span class="up">mod</span> 7 で x＝0〜6 に入れた7つの値を送る方法。送る個数はほぼ同じなのに、下のほうが強い。その理由を、このあと確かめる</div>
       </div>
 
       <div class="dialogue-scene">
@@ -309,12 +309,12 @@
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">a＋b≡5、a＋3b≡4 です。引き算すると 2b≡4−5＝−1≡6。2 の逆数は、2×4＝8≡1 なので 4 です。両辺に 4 を掛けて b≡24≡3。a≡5−3＝2。<strong>a＝2, b＝3</strong> が戻りました。ここで 2 で割るのに、mod 7 が体であることを使いました。</div>
+          <div class="dialog-bubble">a＋b≡5、a＋3b≡4 です。引き算すると 2b≡4−5＝−1≡6。2 の逆数は、2×4＝8≡1 なので 4 です。両辺に 4 を掛けて b≡24≡3。a≡5−3＝2。<strong>a＝2, b＝3</strong> が戻りました。ここで 2 で割るのに、<span class="up">mod</span> 7 が体であることを使いました。</div>
         </div>
       </div>
 
       <div class="formula-box">
-        <span class="step">データ <span class="nw">(a, b)＝(2, 3)</span> → 1次式 <span class="nw">f(x)＝2＋3x</span>（mod 7）</span>
+        <span class="step">データ <span class="nw">(a, b)＝(2, 3)</span> → 1次式 <span class="nw">f(x)＝2＋3x</span>（<span class="up">mod</span> 7）</span>
         <span class="step">送る値：<span class="nw">f(0), …, f(6)＝2, 5, 1, 4, 0, 3, 6</span>（2個のデータを7個の値にして送る）</span>
         <span class="step">正しい値が2つあれば戻せる：<span class="nw">a＋b≡5</span>、<span class="nw">a＋3b≡4</span> → <span class="nw">2b≡6</span></span>
         <span class="step">2 の逆数は 4（2×4＝8≡1）→ <span class="nw">b≡6×4＝24≡3</span>、<span class="nw">a≡5−3＝2</span></span>
@@ -326,7 +326,7 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">よし。でも本当の問題は、どの値が壊れているのか、受け取った人には分からないことだ。たとえば x＝2 と x＝5 の値が壊れて、2, 5, 6, 4, 0, 1, 6 が届いたとしよう。鍵になるのは、「違う2本の直線は、mod 7 の世界でも1点でしか一致しない」という性質だ。ここで直線とは、a＋bx の形の式のこと。確かめよう。2本の直線 f と g が2つの点 x₁, x₂ で同じ値になったとしよう。差 h＝f−g を考えてごらん。h はどんな式で、x₁, x₂ でどうなるかな？</div>
+          <div class="dialog-bubble">よし。でも本当の問題は、どの値が壊れているのか、受け取った人には分からないことだ。たとえば x＝2 と x＝5 の値が壊れて、2, 5, 6, 4, 0, 1, 6 が届いたとしよう。鍵になるのは、「違う2本の直線は、<span class="up">mod</span> 7 の世界でも1点でしか一致しない」という性質だ。ここで直線とは、a＋bx の形の式のこと。確かめよう。2本の直線 f と g が2つの点 x₁, x₂ で同じ値になったとしよう。差 h＝f−g を考えてごらん。h はどんな式で、x₁, x₂ でどうなるかな？</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -365,7 +365,7 @@
         </div>
         <svg id="svg-l2" viewBox="0 0 460 300" role="img" aria-label="mod 7 の 7×7 の格子に2本の直線 f, g の値を描いた図。一致する点は1か所だけで、差 h＝f−g の値も下に並べてある" style="width:100%;max-width:520px;display:block;margin:0 auto"></svg>
         <div class="readout" id="ro-l2"></div>
-        <div class="diagram-caption"><strong>違う直線は1点でしか一致しない（mod 7）</strong>。横が x＝0〜6、縦が値 0〜6 の格子に、直線 f＝a＋bx の値を青、g＝c＋dx の値を赤で打った。両方が同じ値になる点は緑の輪で囲んである。下の行は差 h＝f−g の値で、0 になる場所が一致する点。h も a′＋b′x の形の直線で、b′≢0 なら x≡−a′×(b′ の逆数) の1か所だけで 0 になる。上の a, b, c, d を変えて、一致が2か所以上になる組み合わせがないことを確かめられる（b≡d のときは平行で一致なし、さらに a≡c なら同じ直線で全部一致）</div>
+        <div class="diagram-caption"><strong>違う直線は1点でしか一致しない（<span class="up">mod</span> 7）</strong>。横が x＝0〜6、縦が値 0〜6 の格子に、直線 f＝a＋bx の値を青、g＝c＋dx の値を赤で打った。両方が同じ値になる点は緑の輪で囲んである。下の行は差 h＝f−g の値で、0 になる場所が一致する点。h も a′＋b′x の形の直線で、b′≢0 なら x≡−a′×(b′ の逆数) の1か所だけで 0 になる。上の a, b, c, d を変えて、一致が2か所以上になる組み合わせがないことを確かめられる（b≡d のときは平行で一致なし、さらに a≡c なら同じ直線で全部一致）</div>
       </div>
 
       <div class="dialogue-scene">
@@ -388,7 +388,7 @@
         <div style="overflow-x:auto"><table class="num-table rs-tb" id="tb-rs"></table></div>
         <div class="cv-wrap"><canvas id="cv-rs" aria-label="横軸 x、縦軸 値（mod 7）の7×7の格子に、受け取った値と、復元した直線の値を描いた図"></canvas></div>
         <div class="readout" id="ro-rs"></div>
-        <div class="diagram-caption"><strong>mod 7 のリード・ソロモン符号</strong>。データ a, b から f(x)＝a＋bx の7つの値を送る。「受け取った値」の数をタップすると、その値が1つずれて壊れる（赤）。受け取った人は 49 本の直線を全部調べて、いちばん多く一致する直線を選ぶ。下の格子は、横が x、縦が値（0〜6）。受け取った値が黒い点、復元した直線の値が緑の輪。2か所までなら必ず正しく直り、どこが壊れたかも分かる。3か所以上壊すと、間違った直線を選んだり、決められなくなったりすることがある</div>
+        <div class="diagram-caption"><strong><span class="up">mod</span> 7 のリード・ソロモン符号</strong>。データ a, b から f(x)＝a＋bx の7つの値を送る。「受け取った値」の数をタップすると、その値が1つずれて壊れる（赤）。受け取った人は 49 本の直線を全部調べて、いちばん多く一致する直線を選ぶ。下の格子は、横が x、縦が値（0〜6）。受け取った値が黒い点、復元した直線の値が緑の輪。2か所までなら必ず正しく直り、どこが壊れたかも分かる。3か所以上壊すと、間違った直線を選んだり、決められなくなったりすることがある</div>
       </div>
 
       <div class="dialogue-scene">
@@ -397,14 +397,14 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。7個の値のうち2個までの誤りを、場所が分からなくても直せる。データの個数を k、送る値の個数を n にすると、(n−k)/2 個までの誤りを直せることが分かっている。ここで、もし mod 7 のかわりに mod 8 を使ったらどうなるかな？ f(x)＝0 と g(x)＝2x を比べてごらん。</div>
+          <div class="dialog-bubble">そう。7個の値のうち2個までの誤りを、場所が分からなくても直せる。データの個数を k、送る値の個数を n にすると、(n−k)/2 個までの誤りを直せることが分かっている。ここで、もし <span class="up">mod</span> 7 のかわりに <span class="up">mod</span> 8 を使ったらどうなるかな？ f(x)＝0 と g(x)＝2x を比べてごらん。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">g(0)＝0、g(4)＝8≡0 なので、f と g は x＝0 と x＝4 の2点で一致します。違う直線なのに2点で一致してしまうので、さっきの「多くて1点」の議論が崩れます。mod 8 では 2 に逆数がないからです。体でなければ、誤り訂正の保証ができないんですね。</div>
+          <div class="dialog-bubble">g(0)＝0、g(4)＝8≡0 なので、f と g は x＝0 と x＝4 の2点で一致します。違う直線なのに2点で一致してしまうので、さっきの「多くて1点」の議論が崩れます。<span class="up">mod</span> 8 では 2 に逆数がないからです。体でなければ、誤り訂正の保証ができないんですね。</div>
         </div>
       </div>
 
@@ -412,7 +412,7 @@
 <svg viewBox="0 0 460 262" role="img" aria-label="mod 8 の 8×8 の格子に f(x)＝0 と g(x)＝2x の値を描き、x＝0 と x＝4 の2か所で一致することを示す図" style="width:100%;max-width:460px;display:block;margin:0 auto">
           <rect x="0" y="0" width="460" height="262" fill="#fdfbf6"/>
 
-          <text x="130" y="22" font-size="12.5" font-weight="800" fill="#221d33" text-anchor="middle">mod 8 では…</text>
+          <text x="130" y="22" font-size="12.5" font-weight="800" fill="#221d33" text-anchor="middle"><tspan class="up">mod</tspan> 8 では…</text>
           <g stroke="#e6e0d6" stroke-width="1">
             <line x1="46" y1="40" x2="46" y2="236"/><line x1="74" y1="40" x2="74" y2="236"/><line x1="102" y1="40" x2="102" y2="236"/><line x1="130" y1="40" x2="130" y2="236"/><line x1="158" y1="40" x2="158" y2="236"/><line x1="186" y1="40" x2="186" y2="236"/><line x1="214" y1="40" x2="214" y2="236"/><line x1="242" y1="40" x2="242" y2="236"/>
             <line x1="32" y1="54" x2="256" y2="54"/><line x1="32" y1="80" x2="256" y2="80"/><line x1="32" y1="106" x2="256" y2="106"/><line x1="32" y1="132" x2="256" y2="132"/><line x1="32" y1="158" x2="256" y2="158"/><line x1="32" y1="184" x2="256" y2="184"/><line x1="32" y1="210" x2="256" y2="210"/><line x1="32" y1="236" x2="256" y2="236"/>
@@ -439,7 +439,7 @@
             <text x="276" y="238" fill="#c8433f">→ 誤り訂正の保証が崩れる</text>
           </g>
         </svg>
-        <div class="diagram-caption"><strong>mod 8 では違う直線が2点で一致する</strong>。横が x、縦が値の 8×8 の格子に、f(x)＝0（青）と g(x)＝2x（赤）の値を打った。2×4＝8≡0 なので、x＝0 と x＝4 の2か所（緑の輪）で重なる。mod 8 は 2 に逆数がない（体でない）ため、1次式 2x≡0 の解が1つに決まらない</div>
+        <div class="diagram-caption"><strong><span class="up">mod</span> 8 では違う直線が2点で一致する</strong>。横が x、縦が値の 8×8 の格子に、f(x)＝0（青）と g(x)＝2x（赤）の値を打った。2×4＝8≡0 なので、x＝0 と x＝4 の2か所（緑の輪）で重なる。<span class="up">mod</span> 8 は 2 に逆数がない（体でない）ため、1次式 2x≡0 の解が1つに決まらない</div>
       </div>
 
       <div class="dialogue-scene">
@@ -523,7 +523,7 @@
         </div>
       </div>
 
-      <div class="note-box"><span class="nb-title">第3章のまとめ</span>・<strong>体</strong>：四則（0 以外での割り算も）で閉じた数の世界。ℚ、実数、複素数、mod p、有限体<br>・作図できる数＝ℚ から四則と √ で作れる数。作図の1手は2次方程式なので、体は1段で次数 2 までしかひろがらない<br>・<strong>次数</strong> [L：K]：基底の個数。<span class="nw">[ℚ(α)：ℚ]＝α の最小多項式の次数</span>、<span class="nw">[L：K]＝[L：M][M：K]</span><br>・作図できる数の次数は 2 の累乗 → 立方体倍積（∛2、次数 3）と 60° の三等分（cos 20°、次数 3）は不可能。円積問題は π が超越数なので不可能<br>・正 n 角形が作図できる ⇔ φ(n) が 2 の累乗（正5角形・正17角形は可、正7角形・正9角形は不可）<br>・有限体（要素は pᵏ 個）の上の多項式で、QR コードの誤り訂正ができる</div>
+      <div class="note-box"><span class="nb-title">第3章のまとめ</span>・<strong>体</strong>：四則（0 以外での割り算も）で閉じた数の世界。ℚ、実数、複素数、<span class="up">mod</span> p、有限体<br>・作図できる数＝ℚ から四則と √ で作れる数。作図の1手は2次方程式なので、体は1段で次数 2 までしかひろがらない<br>・<strong>次数</strong> [L：K]：基底の個数。<span class="nw">[ℚ(α)：ℚ]＝α の最小多項式の次数</span>、<span class="nw">[L：K]＝[L：M][M：K]</span><br>・作図できる数の次数は 2 の累乗 → 立方体倍積（∛2、次数 3）と 60° の三等分（<span class="up">cos</span> 20°、次数 3）は不可能。円積問題は π が超越数なので不可能<br>・正 n 角形が作図できる ⇔ φ(n) が 2 の累乗（正5角形・正17角形は可、正7角形・正9角形は不可）<br>・有限体（要素は pᵏ 個）の上の多項式で、QR コードの誤り訂正ができる</div>
 
       <div class="dialogue-scene">
         <div class="dialog-row right">
@@ -544,11 +544,11 @@
 
       <div class="formula-box">
         <span class="step">【このステージの成果】</span>
-        <span class="step">mod 4 は体でない（2×2≡0）。mod 2 の既約多項式 x²＋x＋1 の根 α を加えると、要素4個の体 {0, 1, α, α＋1}（α²＝α＋1）ができる</span>
+        <span class="step"><span class="up">mod</span> 4 は体でない（2×2≡0）。<span class="up">mod</span> 2 の既約多項式 x²＋x＋1 の根 α を加えると、要素4個の体 {0, 1, α, α＋1}（α²＝α＋1）ができる</span>
         <span class="step">有限体の要素の個数は素数の累乗 pᵏ。QR コードは 2⁸＝256 個の体（1 バイト＝1 要素）を使う</span>
-        <span class="step">データ a, b を f(x)＝a＋bx にして、mod 7 で f(0)〜f(6) の7つを送る。正しい値が2つあれば、2 の逆数などを使って a, b に戻せる</span>
+        <span class="step">データ a, b を f(x)＝a＋bx にして、<span class="up">mod</span> 7 で f(0)〜f(6) の7つを送る。正しい値が2つあれば、2 の逆数などを使って a, b に戻せる</span>
         <span class="step">違う直線は1点でしか一致しない（体だから）→ 7個中2個までの誤りなら、いちばん多く一致する直線が正しいものになる</span>
-        <span class="step">mod 8 では 2x と 0 が2点で一致し、保証が崩れる。リード・ソロモン符号（1960年）は QR コード・CD・探査機で使われている</span>
+        <span class="step"><span class="up">mod</span> 8 では 2x と 0 が2点で一致し、保証が崩れる。リード・ソロモン符号（1960年）は QR コード・CD・探査機で使われている</span>
       </div>
 
       <h2 class="quiz-head">確認クイズ</h2>
@@ -562,22 +562,22 @@
         <div class="quiz-explain" hidden>正解！ α×(α＋1)＝α²＋α＝(α＋1)＋α＝2α＋1≡1。だから α の逆数は α＋1。</div>
       </div>
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q2. mod 7 で f(x)＝a＋bx の7つの値を送るとき、2か所までの誤りを直せる理由は？</p>
+        <p class="quiz-q">Q2. <span class="up">mod</span> 7 で f(x)＝a＋bx の7つの値を送るとき、2か所までの誤りを直せる理由は？</p>
         <div class="choice-list">
           <button class="choice-btn">7 が 2 より大きいから</button>
           <button class="choice-btn">壊れた値はいつも 0 になるから</button>
           <button class="choice-btn">違う2本の直線は1点でしか一致しないので、正しい直線（5か所一致）がほかの直線（3か所以下）より必ず多く一致するから</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ 2点で一致する直線は同じ直線（mod 7 が体なので、1次式の根は1つ）。ほかの直線は、正しい場所で1か所以下、壊れた場所で2か所以下しか一致しない。</div>
+        <div class="quiz-explain" hidden>正解！ 2点で一致する直線は同じ直線（<span class="up">mod</span> 7 が体なので、1次式の根は1つ）。ほかの直線は、正しい場所で1か所以下、壊れた場所で2か所以下しか一致しない。</div>
       </div>
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q3. mod 8 で同じ方法を使うと保証が崩れる理由は？</p>
+        <p class="quiz-q">Q3. <span class="up">mod</span> 8 で同じ方法を使うと保証が崩れる理由は？</p>
         <div class="choice-list">
           <button class="choice-btn">2x と 0 が x＝0 と x＝4 の2点で一致するように、違う直線が2点以上で一致することがあるから</button>
           <button class="choice-btn">8 が偶数だから値を送れないから</button>
-          <button class="choice-btn">mod 8 では足し算ができないから</button>
+          <button class="choice-btn"><span class="up">mod</span> 8 では足し算ができないから</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ mod 8 では 2×4＝8≡0 のように、0 でない数どうしの積が 0 になる。2 に逆数がないので、1次式が2つ以上の根をもてる。</div>
+        <div class="quiz-explain" hidden>正解！ <span class="up">mod</span> 8 では 2×4＝8≡0 のように、0 でない数どうしの積が 0 になる。2 に逆数がないので、1次式が2つ以上の根をもてる。</div>
       </div>
 
       <div class="stage-nav">
@@ -590,11 +590,11 @@
   </div>
 </div>
 
-<script src="../js/progress.js?v=20261005a"></script>
-<script src="../js/algebra.js?v=20261005a"></script>
+<script src="../js/progress.js?v=20261008a"></script>
+<script src="../js/algebra.js?v=20261008a"></script>
 <script>AQ.initStagePage("fields", 7);</script>
 <script>
-/* 要素4個の体と mod 4 */
+/* 要素4個の体と <span class="up">mod</span> 4 */
 (function(){
   var mode='gf', ta=document.getElementById('tb-g4a'), tm=document.getElementById('tb-g4m'), ro=document.getElementById('ro-g4');
   // GF(4)：a＋bα を 2ビット (b,a) で表す
@@ -627,7 +627,7 @@
   render();
 })();
 
-/* mod 7 のリード・ソロモン符号 */
+/* <span class="up">mod</span> 7 のリード・ソロモン符号 */
 (function(){
   var inA=document.getElementById('rs-a'), inB=document.getElementById('rs-b'), tb=document.getElementById('tb-rs'), ro=document.getElementById('ro-rs');
   var err=[0,0,0,0,0,0,0];
@@ -685,7 +685,7 @@
   err=[0,0,5,0,0,5,0];
   render();
 })();
-/* 違う直線は1点でしか一致しない（mod 7） */
+/* 違う直線は1点でしか一致しない（<span class="up">mod</span> 7） */
 (function(){
   var ids=['l2-a','l2-b','l2-c','l2-d'], defs=[2,3,5,1], sel=[];
   var svg=document.getElementById('svg-l2'), ro=document.getElementById('ro-l2');
@@ -730,7 +730,7 @@
     out.push('<circle cx="246" cy="84" r="7" fill="none" stroke="'+GRN+'" stroke-width="2.5"/>'+t(258,88,'一致する点',{col:GRN,w:true,size:12.5}));
     out.push('<rect x="232" y="106" width="218" height="112" rx="8" fill="#f2effa"/>');
     out.push(t(242,126,'h＝f−g＝(a−c)＋(b−d)x',{size:12}));
-    out.push(t(242,146,'　＝'+lin(ap,bp)+'　（mod 7）',{size:12,w:true}));
+    out.push(t(242,146,'　＝'+lin(ap,bp)+'　（<span class="up">mod</span> 7）',{size:12,w:true}));
     if(bp!==0){
       var inv=1; while(m7(bp*inv)!==1) inv++;
       var x0=m7(-ap*inv);

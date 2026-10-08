@@ -36,7 +36,7 @@
       "@type": "LearningResource",
       "name": "STAGE4 余りのある割り算",
       "description": "ユークリッドの互除法を中学生向けに解説。最後の余りが最大公約数になる理由、ax＋py＝1 の作り方、そこから素数が素元であること（素因数分解の一意性）を証明する。ガウス整数でも余りを小さくできるので、一意性が成り立つ。",
-      "url": "https://algebra.habatakijuku.com/rings/stage4",
+      "url": "https://<span class="up">algebra</span>.habatakijuku.com/rings/stage4",
       "inLanguage": "ja",
       "learningResourceType": "learning activity",
       "educationalLevel": "中学生以上",
@@ -45,11 +45,11 @@
       "isPartOf": {
         "@type": "LearningResource",
         "name": "第2章 素因数分解の世界",
-        "url": "https://algebra.habatakijuku.com/rings/",
+        "url": "https://<span class="up">algebra</span>.habatakijuku.com/rings/",
         "isPartOf": {
           "@type": "LearningResource",
           "name": "群・環・体からガロア理論へ",
-          "url": "https://algebra.habatakijuku.com/"
+          "url": "https://<span class="up">algebra</span>.habatakijuku.com/"
         }
       },
       "author": {
@@ -64,26 +64,26 @@
           "@type": "ListItem",
           "position": 1,
           "name": "群・環・体からガロア理論へ",
-          "item": "https://algebra.habatakijuku.com/"
+          "item": "https://<span class="up">algebra</span>.habatakijuku.com/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "第2章 素因数分解の世界",
-          "item": "https://algebra.habatakijuku.com/rings/"
+          "item": "https://<span class="up">algebra</span>.habatakijuku.com/rings/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "STAGE4 余りのある割り算",
-          "item": "https://algebra.habatakijuku.com/rings/stage4"
+          "item": "https://<span class="up">algebra</span>.habatakijuku.com/rings/stage4"
         }
       ]
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="../design-system.css?v=20261005a">
+<link rel="stylesheet" href="../design-system.css?v=20261008a">
 <style>
 .tbl-scroll{overflow-x:auto;max-width:100%}
   #tb-ext td.hl{background:#efe9f9;color:#44377a}
@@ -131,7 +131,7 @@
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">前のステージで、<strong>既約元がどれも素元</strong>（p が ab を割り切れば a か b を割り切る数）なら、素因数分解はただ1通りになると分かった。今日はいよいよ、整数の素数が素元であることを証明する。そして同じ方法がガウス整数の世界でも使えることを確かめる。そうすれば、1つ目の謎を解く道具がそろうんだ。おまけに、第1章で存在だけ確かめた mod p の逆数を、実際に計算する方法も手に入る。道具は割り算だ。17 を 5 で割ると、どうなるかな？</div>
+          <div class="dialog-bubble">前のステージで、<strong>既約元がどれも素元</strong>（p が ab を割り切れば a か b を割り切る数）なら、素因数分解はただ1通りになると分かった。今日はいよいよ、整数の素数が素元であることを証明する。そして同じ方法がガウス整数の世界でも使えることを確かめる。そうすれば、1つ目の謎を解く道具がそろうんだ。おまけに、第1章で存在だけ確かめた <span class="up">mod</span> p の逆数を、実際に計算する方法も手に入る。道具は割り算だ。17 を 5 で割ると、どうなるかな？</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -317,21 +317,21 @@
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">p の約数は 1 と p だけで、p は a を割り切らないので、p と a の公約数は 1 だけです。だから互除法の最後の余りは 1 で、<strong>ax＋py＝1</strong> となる整数 x, y が作れます。……この式を mod p で見ると、py は p の倍数なので ax≡1 (mod p) です。x は、第1章の mod p の世界での a の<strong>逆元</strong>です！</div>
+          <div class="dialog-bubble">p の約数は 1 と p だけで、p は a を割り切らないので、p と a の公約数は 1 だけです。だから互除法の最後の余りは 1 で、<strong>ax＋py＝1</strong> となる整数 x, y が作れます。……この式を <span class="up">mod</span> p で見ると、py は p の倍数なので ax≡1 (<span class="up">mod</span> p) です。x は、第1章の <span class="up">mod</span> p の世界での a の<strong>逆元</strong>です！</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="../images/cat.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。第1章では、mod p の掛け算表の各行に 1 が1回ずつ出ることから逆元が<strong>ある</strong>ことを確かめたけれど、互除法を使うと、どんなに大きな p でも逆元を<strong>計算</strong>できる。RSA 暗号の秘密鍵 d も、e×d≡1 (mod φ(n)) をみたす数だったから、同じ計算で求まる。たとえば φ(n)＝20、e＝3 なら？</div>
+          <div class="dialog-bubble">そう。第1章では、<span class="up">mod</span> p の掛け算表の各行に 1 が1回ずつ出ることから逆元が<strong>ある</strong>ことを確かめたけれど、互除法を使うと、どんなに大きな p でも逆元を<strong>計算</strong>できる。RSA 暗号の秘密鍵 d も、e×d≡1 (<span class="up">mod</span> φ(n)) をみたす数だったから、同じ計算で求まる。たとえば φ(n)＝20、e＝3 なら？</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="../images/rabbit.webp" width="300" height="386" alt="" loading="lazy" decoding="async"></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">20＝3×6＋2、3＝2×1＋1。逆にたどると 1＝3−2＝3−(20−3×6)＝3×7−20。だから 3×7≡1 (mod 20) で、d＝7 です。確かに 3×7＝21 は 20 で割ると 1 余ります。</div>
+          <div class="dialog-bubble">20＝3×6＋2、3＝2×1＋1。逆にたどると 1＝3−2＝3−(20−3×6)＝3×7−20。だから 3×7≡1 (<span class="up">mod</span> 20) で、d＝7 です。確かに 3×7＝21 は 20 で割ると 1 余ります。</div>
         </div>
       </div>
 
@@ -346,9 +346,9 @@
           <text x="350" y="20" text-anchor="middle" font-size="12" font-weight="900" fill="#5b4a9e">差 1</text>
           <text x="60" y="30" font-size="12" font-weight="900" fill="#3f6fb5">● 3 の倍数</text>
           <text x="60" y="48" font-size="12" font-weight="900" fill="#c8433f">● 20 の倍数</text>
-          <text x="220" y="138" text-anchor="middle" font-size="12.5" font-weight="900" fill="#221d33">3×7−20×1＝1 → mod 20 で 3×7≡1、7 が 3 の逆元</text>
+          <text x="220" y="138" text-anchor="middle" font-size="12.5" font-weight="900" fill="#221d33">3×7−20×1＝1 → <tspan class="up">mod</tspan> 20 で 3×7≡1、7 が 3 の逆元</text>
         </svg>
-        <div class="diagram-caption"><strong>ax＋py＝1 を数直線で見る</strong>。3 の倍数（青）と 20 の倍数（赤）を並べると、21＝3×7 と 20 がすぐ隣にあり、差が 1。これが 3×7−20×1＝1 ということ。20 の倍数は mod 20 では 0 と同じなので、3×7≡1 となり、7 が mod 20 での 3 の逆元になる</div>
+        <div class="diagram-caption"><strong>ax＋py＝1 を数直線で見る</strong>。3 の倍数（青）と 20 の倍数（赤）を並べると、21＝3×7 と 20 がすぐ隣にあり、差が 1。これが 3×7−20×1＝1 ということ。20 の倍数は <span class="up">mod</span> 20 では 0 と同じなので、3×7≡1 となり、7 が <span class="up">mod</span> 20 での 3 の逆元になる</div>
       </div>
 
       <div class="dialogue-scene">
@@ -521,7 +521,7 @@
         <span class="step">【このステージの成果】</span>
         <span class="step">余りのある割り算：<span class="nw">a＝qb＋r</span>（0≦r＜b）。くり返すのがユークリッドの互除法</span>
         <span class="step">割り算のたびに公約数の集まりは変わらない → 最後の 0 でない余りが最大公約数（長方形を正方形で切り取る図でも見える）</span>
-        <span class="step">余りはどれも「ax＋by」の形 → 最大公約数も ax＋by。p が素数で a を割り切らなければ <span class="nw">ax＋py＝1</span>（x は mod p での a の逆元。RSA の秘密鍵もこれで求まる）</span>
+        <span class="step">余りはどれも「ax＋by」の形 → 最大公約数も ax＋by。p が素数で a を割り切らなければ <span class="nw">ax＋py＝1</span>（x は <span class="up">mod</span> p での a の逆元。RSA の秘密鍵もこれで求まる）</span>
         <span class="step">両辺に b を掛けて <span class="nw">abx＋pby＝b</span> → 素数は素元 → 整数の素因数分解はただ1通り</span>
         <span class="step">ガウス整数の割り算：z÷w にいちばん近い格子点を q にすると、距離は √2/2 以下 → <span class="nw">N(r)≦N(w)/2</span></span>
         <span class="step">ガウス整数でも互除法が使え、既約元はどれも素元 → ガウス整数の素因数分解もただ1通り</span>
@@ -538,13 +538,13 @@
         <div class="quiz-explain" hidden>正解！ d が a と b を割り切れば r＝a−qb も割り切り、d が b と r を割り切れば a＝qb＋r も割り切る。最後の (g, 0) の公約数は g の約数なので、最大公約数は g。</div>
       </div>
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q2. 互除法で 3x＋20y＝1 となる整数を求めると、mod 20 での 3 の逆元は？</p>
+        <p class="quiz-q">Q2. 互除法で 3x＋20y＝1 となる整数を求めると、<span class="up">mod</span> 20 での 3 の逆元は？</p>
         <div class="choice-list">
           <button class="choice-btn">3</button>
           <button class="choice-btn">7</button>
           <button class="choice-btn">17</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ 20＝3×6＋2、3＝2×1＋1 から 1＝3−2＝3−(20−3×6)＝3×7−20。3×7＝21≡1 (mod 20) なので逆元は 7。</div>
+        <div class="quiz-explain" hidden>正解！ 20＝3×6＋2、3＝2×1＋1 から 1＝3−2＝3−(20−3×6)＝3×7−20。3×7＝21≡1 (<span class="up">mod</span> 20) なので逆元は 7。</div>
       </div>
       <div class="quiz-card" data-quiz>
         <p class="quiz-q">Q3. ガウス整数の割り算で、余り r のノルムが必ず N(w) より小さくなる理由は？</p>
@@ -566,8 +566,8 @@
   </div>
 </div>
 
-<script src="../js/progress.js?v=20261005a"></script>
-<script src="../js/algebra.js?v=20261005a"></script>
+<script src="../js/progress.js?v=20261008a"></script>
+<script src="../js/algebra.js?v=20261008a"></script>
 <script>AQ.initStagePage("rings", 4);</script>
 <script>
 /* 互除法を長方形で見る */
@@ -618,7 +618,7 @@
       h+='<tr><td>'+(r[3]||(i===0?'（a）':'（b）'))+'</td><td'+(isG?' class="hl"':'')+'><b>'+r[0]+'</b></td><td'+(isG?' class="hl"':'')+'>'+(r[0]===0?'—':a+'×('+sg(r[1])+')＋'+b+'×('+sg(r[2])+')')+'</td></tr>';
     });
     tb.innerHTML=h;
-    ro.innerHTML='<span>最大公約数 <b>'+g[0]+'＝'+a+'×('+sg(g[1])+')＋'+b+'×('+sg(g[2])+')</b></span>'+(g[0]===1?'<span class="ok">'+a+'×('+sg(g[1])+')≡1 (mod '+b+')</span>':'');
+    ro.innerHTML='<span>最大公約数 <b>'+g[0]+'＝'+a+'×('+sg(g[1])+')＋'+b+'×('+sg(g[2])+')</b></span>'+(g[0]===1?'<span class="ok">'+a+'×('+sg(g[1])+')≡1 (<span class="up">mod</span> '+b+')</span>':'');
   }
   [ia,ib].forEach(function(el){el.addEventListener('input',draw);}); draw();
 })();

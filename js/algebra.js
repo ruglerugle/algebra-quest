@@ -69,7 +69,7 @@
   FL.text = function (ctx, s, x, y, opt) {
     opt = opt || {};
     ctx.save();
-    ctx.font = (opt.weight || 800) + " " + (opt.size || 12) + "px " + (opt.font || "system-ui, 'Hiragino Sans', 'Yu Gothic', sans-serif");
+    ctx.font = (opt.weight || 800) + " " + (opt.size || 12) + "px " + (opt.font || "MathVar, system-ui, 'Hiragino Sans', 'Yu Gothic', sans-serif");
     ctx.fillStyle = opt.color || FL.C.ink;
     ctx.textAlign = opt.align || "left";
     ctx.textBaseline = opt.base || "alphabetic";
