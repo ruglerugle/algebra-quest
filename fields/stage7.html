@@ -379,6 +379,22 @@
       </div>
 
       <div class="diagram-box">
+<svg viewBox="0 0 460 262" role="img" aria-label="受け取った値 2, 5, 6, 4, 0, 1, 6 と、mod 7 の49本の直線が何か所で一致するかの本数。正しい直線 2＋3x だけが5か所で一致し、ほかの48本は2か所以下" style="width:100%;max-width:460px;display:block;margin:0 auto">
+          <rect x="0" y="0" width="460" height="262" fill="#fdfbf6"/>
+          <rect x="39" y="44" width="200" height="162" fill="#f2effa"/>
+          <text x="139" y="60" text-anchor="middle" font-size="12" font-weight="800" fill="#5b4a9e">ほかの48本はこの中（3 か所以下）</text>
+          <line x1="39" y1="206" x2="439" y2="206" stroke="#77708c" stroke-width="1.4"/>
+          <rect x="49" y="123.5" width="30" height="82.5" fill="#9a88d6"/><text x="64" y="118.5" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">15</text><text x="64" y="223" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">0</text><rect x="99" y="85" width="30" height="121" fill="#9a88d6"/><text x="114" y="80" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">22</text><text x="114" y="223" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">1</text><rect x="149" y="145.5" width="30" height="60.5" fill="#9a88d6"/><text x="164" y="140.5" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">11</text><text x="164" y="223" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">2</text><rect x="199" y="206" width="30" height="0" fill="#9a88d6"/><text x="214" y="201" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">0</text><text x="214" y="223" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">3</text><rect x="249" y="206" width="30" height="0" fill="#9a88d6"/><text x="264" y="201" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">0</text><text x="264" y="223" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">4</text><rect x="299" y="200.5" width="30" height="5.5" fill="#2f9e5c"/><text x="314" y="195.5" text-anchor="middle" font-size="12.5" font-weight="800" fill="#2f9e5c">1</text><text x="314" y="223" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">5</text><rect x="349" y="206" width="30" height="0" fill="#9a88d6"/><text x="364" y="201" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">0</text><text x="364" y="223" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">6</text><rect x="399" y="206" width="30" height="0" fill="#9a88d6"/><text x="414" y="201" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">0</text><text x="414" y="223" text-anchor="middle" font-size="12.5" font-weight="800" fill="#221d33">7</text>
+          <text x="264" y="180" text-anchor="middle" font-size="11.5" font-weight="800" fill="#c8433f">なし</text>
+          <g font-size="12" font-weight="800" fill="#2f9e5c" text-anchor="middle"><text x="314" y="162">2＋3x</text><text x="314" y="176" font-size="11">正しい直線</text></g>
+          <text x="239" y="244" text-anchor="middle" font-size="12" font-weight="800" fill="#77708c">受け取った値と一致する場所の数</text>
+          <text x="10" y="22" font-size="12.5" font-weight="800" fill="#221d33">受け取った値：2, 5, <tspan fill="#c8433f">6</tspan>, 4, 0, <tspan fill="#c8433f">1</tspan>, 6（赤が壊れた値）</text>
+          <text x="22" y="203" font-size="11" font-weight="800" fill="#77708c" transform="rotate(-90 22 203)">直線の本数</text>
+        </svg>
+        <div class="diagram-caption"><strong>49 本の直線は、受け取った値と何か所で一致するか</strong>。x＝2 と x＝5 の値が壊れて 2, 5, 6, 4, 0, 1, 6 が届いた場合に、a＋bx（a, b は 0〜6）の 49 本すべてについて、受け取った値と一致する場所の数を数え、その本数を棒の高さにした。正しい直線 2＋3x（緑）だけが 5 か所で一致し、ほかの 48 本は薄紫の範囲（3 か所以下）に入る。4 か所一致する直線は1本もないので、いちばん多く一致する直線は迷わず決まる</div>
+      </div>
+
+      <div class="diagram-box">
 <div class="sim-controls">
           <label>a <input type="number" id="rs-a" min="0" max="6" value="2"></label>
           <label>b <input type="number" id="rs-b" min="0" max="6" value="3"></label>
